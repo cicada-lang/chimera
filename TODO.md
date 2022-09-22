@@ -93,3 +93,7 @@ Maybe add `interface` or `schema` keyword to limit type of a `Relation` (`Predic
     role: String
   }
   ```
+
+# command line interface
+
+# playground
