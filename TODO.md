@@ -1,3 +1,7 @@
+# migrate
+
+[migrate] copy code from `xieyuheng/logic-db`
+
 # Exps
 
 maybe not equation, because there are also `!=` and `>`
@@ -69,7 +73,3 @@ Maybe add `interface` or `schema` keyword to limit type of a `Relation` (`Predic
     role: String
   }
   ```
-
-# migrate
-
-[migrate] copy code from `xieyuheng/logic-db`
