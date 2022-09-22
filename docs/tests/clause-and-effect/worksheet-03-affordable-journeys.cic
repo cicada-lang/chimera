@@ -1,40 +1,39 @@
-import Logic, { v, ty } from "../.."
+Border ["sussex", "kent"]
+Border ["sussex", "surrey"]
+Border ["surrey", "kent"]
+Border ["hampshire", "sussex"]
+Border ["hampshire", "surrey"]
+Border ["hampshire", "berkshire"]
+Border ["berkshire", "surrey"]
+Border ["wiltshire", "hampshire"]
+Border ["wiltshire", "berkshire"]
 
-const border = new Logic.Table({
-  name: "border",
-  schema: ty.tuple(ty.string(), ty.string()),
-})
+Adjacent [x, y]
+---------------- border {
+  Border [x, y]
+}
 
-border.i(["sussex", "kent"])
-border.i(["sussex", "surrey"])
-border.i(["surrey", "kent"])
-border.i(["hampshire", "sussex"])
-border.i(["hampshire", "surrey"])
-border.i(["hampshire", "berkshire"])
-border.i(["berkshire", "surrey"])
-border.i(["wiltshire", "hampshire"])
-border.i(["wiltshire", "berkshire"])
+Adjacent [x, y]
+---------------- symmetry {
+  Border [y, x]
+}
 
-// to get symmetry
+Affordable [x, y]
+-------------------- {
+  fresh (z) {
+    Adjacent [x, z]
+    Adjacent [z, y]
+  }
+}
 
-const adjacent = new Logic.Table({
-  name: "adjacent",
-  schema: ty.tuple(ty.string(), ty.string()),
-})
+query (to_kent) {
+  Affordable [to_kent, "kent"]
+}
 
-adjacent.i([v`x`, v`y`], (v) => [border.o([v`x`, v`y`])])
-adjacent.i([v`x`, v`y`], (v) => [border.o([v`y`, v`x`])])
+query (to_sussex) {
+  Affordable ["sussex", to_sussex]
+}
 
-const affordable = new Logic.Table({
-  name: "affordable",
-  schema: ty.tuple(ty.string(), ty.string()),
-})
-
-affordable.i([v`x`, v`y`], (v) => [
-  adjacent.o([v`x`, v`z`]),
-  adjacent.o([v`z`, v`y`]),
-])
-
-console.log(affordable.query([v`to_kent`, "kent"]))
-console.log(affordable.query(["sussex", v`to_sussex`]))
-console.log(affordable.query([v`x`, v`y`]))
+query (x, y) {
+  Affordable [x, y]
+}
