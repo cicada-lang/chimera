@@ -1,8 +1,7 @@
 # design
 
-update syntax --  worksheet-06-length-of-a-list.cic
-update syntax --  worksheet-08-maximum-of-a-list.cic
-update syntax --  worksheet-09-searching-a-cyclic-graph.cic
+update syntax -- worksheet-08-maximum-of-a-list.cic
+update syntax -- worksheet-09-searching-a-cyclic-graph.cic
 
 update syntax -- `clause-and-effect/`
 update syntax -- `the-power-of-prolog/`
