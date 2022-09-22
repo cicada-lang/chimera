@@ -22,28 +22,3 @@ query (left, right) {
 query (left, right, alcohol) {
   Friends { left, right, alcohol }
 }
-
-console.log(
-  Logic.query(
-    (v) => [pair.o({ p1: v`x`, p2: v`y`, alcohol: v`alcohol` })],
-    ["x", "y"]
-  )
-)
-
-{
-  type Result = { x: string; y: string }
-  const results: Array<Result> = Logic.find(
-    (v) => [pair.o({ p1: v`x`, p2: v`y`, alcohol: v`alcohol` })],
-    { x: ty.string(), y: ty.string() }
-  )
-  console.log(results)
-}
-
-{
-  type Result = { x: string }
-  const results: Array<Result> = pair.find(
-    { p1: v`x`, p2: v`y`, alcohol: v`alcohol` },
-    { x: ty.string() }
-  )
-  console.log(results)
-}
