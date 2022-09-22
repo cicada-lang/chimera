@@ -1,14 +1,13 @@
 # design
 
-update syntax -- worksheet-08-maximum-of-a-list.cic
-
-update syntax -- `clause-and-effect/`
 update syntax -- `the-power-of-prolog/`
 update syntax -- `sicp/`
 
 `docs/tests/` -- design concrete syntax
 
 # Exps
+
+maybe not equation, because there are also `!=` and `>`
 
 Values.Objekt
 
