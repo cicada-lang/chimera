@@ -1,9 +1,3 @@
-# design
-
-update syntax -- `the-power-of-prolog/`
-
-`docs/tests/` -- design concrete syntax
-
 # Exps
 
 maybe not equation, because there are also `!=` and `>`
