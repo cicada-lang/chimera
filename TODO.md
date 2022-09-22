@@ -1,12 +1,26 @@
 # migrate
 
-Fact
+clause/Clause -- closed datatype -- with `Fact` and `Rule`
 
-Rule
+ctx/Ctx
 
-[migrate] understand `xieyuheng/logic-db` again
+value/Value -- closed datatype
 
-[migrate] copy code from `xieyuheng/logic-db`
+goal/Goal -- open datatype
+
+- And
+- NotUnifiable
+- Or
+- Relation
+- Unifiable
+
+goal/GoalQueue
+
+solver/Solver
+
+Solution
+
+solution/unify
 
 # Exps
 
