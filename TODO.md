@@ -1,13 +1,16 @@
 # design
 
 update syntax -- `the-power-of-prolog/`
-update syntax -- `sicp/`
 
 `docs/tests/` -- design concrete syntax
 
 # Exps
 
 maybe not equation, because there are also `!=` and `>`
+
+Values.Null
+
+Values.Boolean
 
 Values.Objekt
 
@@ -56,6 +59,22 @@ Stmts.Failure
 Stmts.AssertEqual
 
 - assert query results for testing
+
+Maybe add `interface` or `schema` keyword to limit type of a `Relation` (`Predicate`)
+
+- if we add `interface`, we should just use ts (cicada) syntax of record type
+
+  - maybe change to PascalCase
+
+- example:
+
+  ```ts
+  schema Job {
+    name: String
+    dept: String
+    role: String
+  }
+  ```
 
 # migrate
 

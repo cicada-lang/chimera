@@ -1,5 +1,3 @@
-import Logic, { v, ty, and } from "../.."
-
 // In order to illustrate what the query system does,
 // we will show how it can be used to manage the database of personnel records
 // for a thriving high-technology company in the Boston area.
@@ -12,61 +10,49 @@ import Logic, { v, ty, and } from "../.."
 // The personnel database contains assertions about company personnel.
 // We first prepare the tables:
 
-const job = new Logic.Table({
-  name: "job",
-  schema: ty.object({
-    name: ty.string(),
-    dept: ty.string(),
-    role: ty.string(),
-  }),
-})
+interface Job {
+  name: String
+  dept: String
+  role: String
+}
 
-const salary = new Logic.Table({
-  name: "salary",
-  schema: ty.object({
-    name: ty.string(),
-    amount: ty.number(),
-  }),
-})
+interface Salary {
+  name: String
+  amount: Number
+}
 
-const address = new Logic.Table({
-  name: "address",
-  schema: ty.object({
-    name: ty.string(),
-    town: ty.string(),
-    road: ty.string(),
-    door: ty.number(),
-  }),
-})
+interface Address {
+  name: String
+  town: String
+  road: String
+  door: Number
+}
 
-const supervisor = new Logic.Table({
-  name: "supervisor",
-  schema: ty.object({
-    slave: ty.string(),
-    master: ty.string(),
-  }),
-})
+interface Supervisor {
+  slave: String
+  master: String
+}
 
 // Here is the information about Ben Bitdiddle,
 // the resident computer wizard:
 
-job.i({
+Job {
   name: "Bitdiddle Ben",
   dept: "computer",
   role: "wizard",
-})
+}
 
-salary.i({
+Salary {
   name: "Bitdiddle Ben",
   amount: 60000,
-})
+}
 
-address.i({
+Address {
   name: "Bitdiddle Ben",
   town: "Slumerville",
   road: "Ridge Road",
   door: 10,
-})
+}
 
 // As resident wizard,
 // Ben is in charge of the company's computer division,
@@ -74,201 +60,201 @@ address.i({
 
 // Here is the information about them:
 
-address.i({
+Address {
   name: "Hacker Alyssa P",
   town: "Cambridge",
   road: "Mass Ave",
   door: 78,
-})
+}
 
-job.i({
+Job {
   name: "Hacker Alyssa P",
   dept: "computer",
   role: "programmer",
-})
+}
 
-salary.i({
+Salary {
   name: "Hacker Alyssa P",
   amount: 40000,
-})
+}
 
-supervisor.i({
+Supervisor {
   slave: "Hacker Alyssa P",
   master: "Bitdiddle Ben",
-})
+}
 
-address.i({
+Address {
   name: "Fect Cy D",
   town: "Cambridge",
   road: "Ames Street",
   door: 3,
-})
+}
 
-job.i({
+Job {
   name: "Fect Cy D",
   dept: "computer",
   role: "programmer",
-})
+}
 
-salary.i({
+Salary {
   name: "Fect Cy D",
   amount: 35000,
-})
+}
 
-supervisor.i({
+Supervisor {
   slave: "Fect Cy D",
   master: "Bitdiddle Ben",
-})
+}
 
-address.i({
+Address {
   name: "Tweakit Lem E",
   town: "Boston",
   road: "Bay State Road",
   door: 22,
-})
+}
 
-job.i({
+Job {
   name: "Tweakit Lem E",
   dept: "computer",
   role: "technician",
-})
+}
 
-salary.i({
+Salary {
   name: "Tweakit Lem E",
   amount: 25000,
-})
+}
 
-supervisor.i({
+Supervisor {
   slave: "Tweakit Lem E",
   master: "Bitdiddle Ben",
-})
+}
 
 // There is also a programmer trainee,
 // who is supervised by Alyssa:
 
-address.i({
+Address {
   name: "Reasoner Louis",
   town: "Slumerville",
   road: "Pine Tree Road",
   door: 80,
-})
+}
 
-job.i({
+Job {
   name: "Reasoner Louis",
   dept: "computer",
   role: "programmer trainee",
-})
+}
 
-salary.i({
+Salary {
   name: "Reasoner Louis",
   amount: 30000,
-})
+}
 
-supervisor.i({
+Supervisor {
   slave: "Reasoner Louis",
   master: "Hacker Alyssa P",
-})
+}
 
 // Ben is a high-level employee.
 // His supervisor is the company's big wheel himself:
 
-supervisor.i({
+Supervisor {
   slave: "Bitdiddle Ben",
   master: "Warbucks Oliver",
-})
+}
 
-address.i({
+Address {
   name: "Warbucks Oliver",
   town: "Swellesley",
   road: "The Manor",
   door: 1,
-})
+}
 
-job.i({
+Job {
   name: "Warbucks Oliver",
   dept: "administration",
   role: "big wheel",
-})
+}
 
-salary.i({
+Salary {
   name: "Warbucks Oliver",
   amount: 150000,
-})
+}
 
 // Besides the computer division supervised by Ben,
 // the company has an accounting division,
 // consisting of a chief accountant and his assistant:
 
-address.i({
+Address {
   name: "Scrooge Eben",
   town: "Weston",
   road: "Shady Lane",
   door: 10,
-})
+}
 
-job.i({
+Job {
   name: "Scrooge Eben",
   dept: "accounting",
   role: "chief accountant",
-})
+}
 
-salary.i({
+Salary {
   name: "Scrooge Eben",
   amount: 75000,
-})
+}
 
-supervisor.i({
+Supervisor {
   slave: "Scrooge Eben",
   master: "Warbucks Oliver",
-})
+}
 
-address.i({
+Address {
   name: "Cratchet Robert",
   town: "Allston",
   road: "N Harvard Street",
   door: 16,
-})
+}
 
-job.i({
+Job {
   name: "Cratchet Robert",
   dept: "accounting",
   role: "scrivener",
-})
+}
 
-salary.i({
+Salary {
   name: "Cratchet Robert",
   amount: 18000,
-})
+}
 
-supervisor.i({
+Supervisor {
   slave: "Cratchet Robert",
   master: "Scrooge Eben",
-})
+}
 
 // There is also a secretary for the big wheel:
 
-address.i({
+Address {
   name: "Aull DeWitt",
   town: "Slumerville",
   road: "Onion Square",
   door: 5,
-})
+}
 
-job.i({
+Job {
   name: "Aull DeWitt",
   dept: "administration",
   role: "secretary",
-})
+}
 
-salary.i({
+Salary {
   name: "Aull DeWitt",
   amount: 25000,
-})
+}
 
-supervisor.i({
+Supervisor {
   slave: "Aull DeWitt",
   master: "Warbucks Oliver",
-})
+}
 
 // The database also contains assertions about
 // which kinds of jobs can be done
@@ -278,21 +264,18 @@ supervisor.i({
 // the jobs of both a computer programmer
 // and a computer technician:
 
-const competence = new Logic.Table({
-  name: "competence",
-  schema: ty.object({
-    can: ty.object({
-      dept: ty.string(),
-      role: ty.string(),
-    }),
-    job: ty.object({
-      dept: ty.string(),
-      role: ty.string(),
-    }),
-  }),
-})
+interface Competence {
+  can: {
+    dept: String
+    role: String
+  }
+  job: {
+    dept: String
+    role: String
+  }
+}
 
-competence.i({
+Competence {
   can: {
     dept: "computer",
     role: "wizard",
@@ -301,9 +284,9 @@ competence.i({
     dept: "computer",
     role: "programmer",
   },
-})
+}
 
-competence.i({
+Competence {
   can: {
     dept: "computer",
     role: "wizard",
@@ -312,11 +295,11 @@ competence.i({
     dept: "computer",
     role: "technician",
   },
-})
+}
 
 // A computer programmer could fill in for a trainee:
 
-competence.i({
+Competence {
   can: {
     dept: "computer",
     role: "programmer",
@@ -325,11 +308,11 @@ competence.i({
     dept: "computer",
     role: "programmer trainee",
   },
-})
+}
 
 // Also, as is well known,
 
-competence.i({
+Competence {
   can: {
     dept: "administration",
     role: "secretary",
@@ -338,7 +321,7 @@ competence.i({
     dept: "administration",
     role: "big wheel",
   },
-})
+}
 
 // # Simple queries
 
@@ -346,50 +329,29 @@ competence.i({
 // to retrieve information from the database.
 // For example, to find all computer programmers one can say
 
-console.log(
-  job.query({
-    name: v`coder`,
+query (coder) {
+  Job {
+    name: coder,
     dept: "computer",
     role: "programmer",
-  })
-)
-
-// We can also use the `Table.find` method of a table,
-// and use projections and schemas to specify we are interested in which variables,
-// the returned results will be well typed -- due to the use of schemas.
-
-console.log(
-  job.find(
-    {
-      name: v`coder`,
-      dept: "computer",
-      role: "programmer",
-    },
-    { coder: ty.string() }
-  )
-)
-
-// The system will respond with the following solutions:
-
-//   [{ coder: 'Hacker Alyssa P' }, { coder: 'Fect Cy D' }]
+  }
+}
 
 // We also make assertion about the results.
 
-job.assertFindResults({
-  data: {
-    name: v`coder`,
+query (coder) {
+  Job {
+    name: coder,
     dept: "computer",
     role: "programmer",
-  },
-  projections: { coder: ty.string() },
-  results: [{ coder: "Hacker Alyssa P" }, { coder: "Fect Cy D" }],
-})
+  }
+} assert [{ coder: "Hacker Alyssa P" }, { coder: "Fect Cy D" }],
 
 // The input query specifies that
 // we are looking for entries in the database
 // that match a certain pattern.
 
-// v`coder` is a pattern variable,
+// coder is a pattern variable,
 
 // The system responds to a simple query
 // by showing all entries in the data base
@@ -399,101 +361,103 @@ job.assertFindResults({
 
 // An employee's addresses
 
-console.log(
-  address.query({
+query (town, road, door) {
+  Address {
     name: "Bitdiddle Ben",
-    town: v`town`,
-    road: v`road`,
-    door: v`door`,
-  })
-)
+    town,
+    road,
+    door,
+  }
+}
 
 // All employees at computer dept
 
-console.log(
-  job.query({
-    name: v`name`,
+query (name, role) {
+  Job {
+    name,
     dept: "computer",
-    role: v`role`,
-  })
-)
+    role,
+  }
+}
 
-// We can use `Table.assertSuccess` to assert
+// We can use `success` to assert
 // there is at least one solution of the query,
-// or use `Table.assertFailure` to assert there is no solution.
+// or use `failure` to assert there is no solution.
 
-job.assertSuccess({
-  name: "Hacker Alyssa P",
-  role: "programmer",
-  dept: v`dept`,
+success (dept) {
+  Job {
+    name: "Hacker Alyssa P",
+    role: "programmer",
+    dept,
+  }
+}
+
+failure (x) {
+  Supervisor {
+    slave: x,
+    master: x,
+  }
+}
+
+// # Rules
+
+// We can use the following syntax to create rules.
+
+interface ComputerDeptSlave {
+  slave: String
+}
+
+ComputerDeptSlave { slave }
+---------------------------- {
+  fresh (role, z) {
+    Job { name: slave, dept: "computer", role }
+    Supervisor { slave, master: z }
+  }
 })
 
-supervisor.assertFailure({
-  slave: v`x`,
-  master: v`x`,
+query (slave) {
+  ComputerDeptSlave { slave }
+}
+
+// TODO We do not have not yet.
+
+interface Bigshot {
+  name: String
+  dept: String
+}
+
+Bigshot { name, dept }
+------------------------ {
+  Job { name, dept }
+  fresh (z) {
+    not {
+      Supervisor { slave: name, master: z }
+      Job { name: z, dept }
+    }
+  }
 })
 
-// # Compound queries
+query (name, dept) {
+  Bigshot {
+    name,
+    dept,
+  }
+}
 
-// We create new `Table` to specify compound queries.
+interface NotSoPoor {
+  name: String
+  amount: Number
+}
 
-const computer_dept_slave = new Logic.Table({
-  name: "computer_dept_slave",
-  schema: ty.object({
-    slave: ty.string(),
-  }),
+NotSoPoor { name, amount }
+---------------------------- {
+  Salary { name, amount }
+  equation amount >= 40000
 })
 
-computer_dept_slave.i({ slave: v`slave` }, (v) => [
-  job.o({ name: v`slave`, dept: "computer", role: v`role` }),
-  supervisor.o({ slave: v`slave`, master: v`z` }),
-])
-
-computer_dept_slave.query({
-  slave: v`slave`,
-})
-
-// TODO We do not have `not` yet.
-
-const bigshot = new Logic.Table({
-  name: "bigshot",
-  schema: ty.object({
-    name: ty.string(),
-    dept: ty.string(),
-  }),
-})
-
-// bigshot.i({ name: v`name`, dept: v`dept` }, (v) => [
-//   job.o({ name: v`name`, dept: v`dept` }),
-//   not(
-//     and(
-//       supervisor.o({ slave: v`name`, master: v`z` }),
-//       job.o({ name: v`z`, dept: v`dept` })
-//     )
-//   ),
-// ])
-
-// bigshot.query({
-//   name: v`name`,
-//   dept: v`dept`,
-// })
-
-// TODO We do not have `assert` yet.
-
-const not_so_poor = new Logic.Table({
-  name: "not_so_poor",
-  schema: ty.object({
-    name: ty.string(),
-    amount: ty.number(),
-  }),
-})
-
-// not_so_poor.i({ name: v`name`, amount: v`amount` }, (v, ctx) => [
-//   salary.o({ name: v`name`, amount: v`amount` }),
-//   assert(ctx.get(v`amount`) >= 40000),
-// ])
-
-// not_so_poor.query({
-//   name: v`name`,
-//   amount: v`amount`,
-// })
+query (name, amount) {
+  NotSoPoor {
+    name,
+    amount,
+  }
+}

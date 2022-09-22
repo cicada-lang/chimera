@@ -2,168 +2,134 @@
 
 Some examples about translating functions to logic relations.
 
-We import `logic-db` first
+We prepare the lispy list
 
 ```js
-let logic = require("logic-db")
-```
-
-and prepare the lispy list
-
-```js
-function cons(x, y) {
-  return { car: x, cdr: y }
+function cons(head, tail) {
+  return { head, tail }
 }
 ```
 
 ## append
 
+**Function:**
+
 ```js
-{
-  // function
-
-  function append(ante, succ) {
-    if (ante === null) {
-      return succ
-    } else {
-      return cons(ante.car, append(ante.cdr, succ))
-    }
+function append(left, right) {
+  if (left === null) {
+    return right
+  } else {
+    return cons(left.head, append(left.tail, right))
   }
-
-  append(cons(1, cons(2, null)), cons(3, cons(4, null)))
-  // equals to
-  cons(1, cons(2, cons(3, cons(4, null))))
 }
 
-{
-  // relation
+append(cons(1, cons(2, null)), cons(3, cons(4, null)))
+// equals to
+cons(1, cons(2, cons(3, cons(4, null))))
+```
 
-  let append = new logic.db_t()
+**Relation:**
 
-  append.i({
-    ante: null,
-    succ: "?succ",
-    result: "?succ",
-  })
+```js
+Append [null, right, right]
+---------------------------- {}
 
-  append
-    .i({
-      ante: { car: "?car", cdr: "?ante_cdr" },
-      succ: "?succ",
-      result: { car: "?car", cdr: "?result_cdr" },
-    })
-    .cond((the) => {
-      return append.o({
-        ante: the.var.ante_cdr,
-        succ: the.var.succ,
-        result: the.var.result_cdr,
-      })
-    })
+Append [
+  { head, tail: left_tail },
+  right,
+  { head, tail: result_tail },
+]
+---------------- {
+  Append [left_tail, right, result_tail]
+}
 
-  append.query_log(1)({
-    ante: cons(1, cons(2, null)),
-    succ: cons(3, cons(4, null)),
-    result: "?result",
-  })
+query (result) {
+  Append [
+    cons(1, cons(2, null)),
+    cons(3, cons(4, null)),
+    result,
+  ]
+}
 
-  // run it backward
+// run it backward
 
-  append.query_log(10)({
-    ante: "?ante",
-    succ: "?succ",
-    result: cons(1, cons(2, cons(3, cons(4, null)))),
-  })
+query (left, right) {
+  Append [
+    left,
+    right,
+    cons(1, cons(2, cons(3, cons(4, null)))),
+  ]
 }
 ```
 
 ## merge
 
+**Function:**
+
 ```js
-{
-  // function
-
-  function merge(ante, succ) {
-    if (ante === null) {
-      return succ
-    } else if (succ === null) {
-      return ante
-    } else if (ante.car < succ.car) {
-      return cons(ante.car, merge(ante.cdr, succ))
-    } else {
-      return cons(succ.car, merge(ante, succ.cdr))
-    }
+function merge(left, right) {
+  if (left === null) {
+    return right
+  } else if (right === null) {
+    return left
+  } else if (left.head < right.head) {
+    return cons(left.head, merge(left.tail, right))
+  } else {
+    return cons(right.head, merge(left, right.tail))
   }
-
-  merge(cons(1, cons(3, null)), cons(2, cons(4, null)))
-  // equals to
-  cons(1, cons(2, cons(3, cons(4, null))))
 }
 
-{
-  // relation
+merge(cons(1, cons(3, null)), cons(2, cons(4, null)))
+// equals to
+cons(1, cons(2, cons(3, cons(4, null))))
+```
 
-  let merge = new logic.db_t()
+**Relation:**
 
-  merge.i({
-    ante: null,
-    succ: "?succ",
-    result: "?succ",
-  })
+```js
+Merge [null, right, right]
+------------------------ {}
 
-  merge.i({
-    ante: "?ante",
-    succ: null,
-    result: "?ante",
-  })
+Merge [left, null, left]
+------------------------ {}
 
-  merge
-    .i({
-      ante: { car: "?ante_car", cdr: "?ante_cdr" },
-      succ: { car: "?car", cdr: "?succ_cdr" },
-      result: { car: "?car", cdr: "?result_cdr" },
-    })
-    .cond((the) => {
-      return merge
-        .o({
-          ante: the.data.ante,
-          succ: the.var.succ_cdr,
-          result: the.var.result_cdr,
-        })
-        .pred((subst) => subst.get(the.var.ante_car) > subst.get(the.var.car))
-    })
+Merge [
+  { head: left_head, tail: left_tail },
+  { head, tail: right_tail },
+  { head, tail: result_tail },
+]
+---------------- {
+  Merge [left, right_tail, result_tail]
+  equation left_head > head
+}
 
-  merge
-    .i({
-      ante: { car: "?car", cdr: "?ante_cdr" },
-      succ: { car: "?succ_car", cdr: "?succ_cdr" },
-      result: { car: "?car", cdr: "?result_cdr" },
-    })
-    .cond((the) => {
-      return merge
-        .o({
-          ante: the.var.ante_cdr,
-          succ: the.data.succ,
-          result: the.var.result_cdr,
-        })
-        .pred((subst) => subst.get(the.var.succ_car) > subst.get(the.var.car))
-    })
+Merge [
+  { head, tail: left_tail },
+  { head: right_head, tail: right_tail },
+  { head, tail: result_tail },
+]
+---------------- {
+  Merge [
+    left_tail,
+    { head: right_head, tail: right_tail },
+    result_tail,
+  ]
+  equation right_head > head
+}
 
-  merge.query_log(1)({
-    ante: cons(1, cons(2, null)),
-    succ: cons(3, cons(4, null)),
-    result: "?result",
-  })
+query (result) {
+  Merge [
+    cons(1, cons(2, null)),
+    cons(3, cons(4, null)),
+    result
+  ]
+}
 
-  merge.query_log(1)({
-    ante: cons(1, cons(3, null)),
-    succ: cons(2, cons(4, null)),
-    result: "?result",
-  })
-
-  merge.query_log(10)({
-    ante: "?ante",
-    succ: "?succ",
-    result: cons(1, cons(2, cons(3, cons(4, null)))),
-  })
+query (left, right) {
+  Merge [
+    left,
+    right,
+    cons(1, cons(2, cons(3, cons(4, null))))
+  ]
 }
 ```
