@@ -1,5 +1,3 @@
-setup typescript project
-
-vitest
+example vitest by `utils/`
 
 design concrete syntax
