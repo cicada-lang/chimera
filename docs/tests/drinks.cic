@@ -1,0 +1,26 @@
+fact drinks { person: "john", alcohol: "martini" }
+fact drinks { person: "mary", alcohol: "gin" }
+fact drinks { person: "susan", alcohol: "vodka" }
+fact drinks { person: "john", alcohol: "gin" }
+fact drinks { person: "fred", alcohol: "gin" }
+fact drinks { person: "fred", alcohol: "vodka" }
+
+relation buddies { left, right, alcohol }
+------------------------------------
+fresh (v) {
+  drinks { person: left, alcohol: alcohol }
+  drinks { person: right, alcohol: alcohol }
+  not equal left !== right
+}
+
+query (x) {
+  buddies { left: x, right: "mary", alcohol: "gin" }
+}
+
+query (x, y) {
+  buddies { left: x, right: y, alcohol: "gin" }
+}
+
+query (x, y, alcohol) {
+  buddies { left: x, right: y, alcohol }
+}

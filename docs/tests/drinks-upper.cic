@@ -1,0 +1,24 @@
+fact Drink { person: "john", alcohol: "martini" }
+fact Drink { person: "mary", alcohol: "gin" }
+fact Drink { person: "susan", alcohol: "vodka" }
+fact Drink { person: "john", alcohol: "gin" }
+fact Drink { person: "fred", alcohol: "gin" }
+fact Drink { person: "fred", alcohol: "vodka" }
+
+relation Friends { left, right, alcohol }
+------------------------------------ {
+  relation Drink { person: left, alcohol }
+  relation Drink { person: right, alcohol }
+}
+
+query (left) {
+  relation Friends { left, right: "mary", alcohol: "gin" }
+}
+
+query (left, right) {
+  relation Friends { left, right, alcohol: "gin" }
+}
+
+query (left, right, alcohol) {
+  relation Friends { left, right, alcohol }
+}
