@@ -1,7 +1,6 @@
 # design
 
 update syntax -- worksheet-08-maximum-of-a-list.cic
-update syntax -- worksheet-09-searching-a-cyclic-graph.cic
 
 update syntax -- `clause-and-effect/`
 update syntax -- `the-power-of-prolog/`
@@ -10,6 +9,12 @@ update syntax -- `sicp/`
 `docs/tests/` -- design concrete syntax
 
 # Exps
+
+Values.Objekt
+
+Values.Array -- maybe provide ways to view this datatype as pure logical
+
+- maybe by doing this we can avoid defining `cons`
 
 # Stmts
 
@@ -32,6 +37,9 @@ Stmts.Rule
   - do we have a functional part at all?
   - maybe we need a functional part to construct data with out record name
     like `cons(head, tail)` -> `{ head, tail }`
+
+    - we must be able to apply function to pattern variables,
+      thus maybe we should define datatype and constructors instead of functions.
 
   - the language will be a subset of JavaScript,
     maybe we should design this language first.

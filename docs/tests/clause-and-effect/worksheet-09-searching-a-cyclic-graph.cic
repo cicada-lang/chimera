@@ -1,59 +1,47 @@
-import Logic, { Logical, v, ne, ty, Schema } from "../.."
-import { List, listSchema, cons } from "./list"
+Edge ["g", "h"]
+Edge ["d", "a"]
+Edge ["g", "d"]
+Edge ["e", "d"]
+Edge ["h", "f"]
+Edge ["e", "f"]
+Edge ["a", "e"]
+Edge ["a", "b"]
+Edge ["b", "f"]
+Edge ["b", "c"]
+Edge ["f", "c"]
 
-const a = new Logic.Table({
-  name: "a",
-  schema: ty.tuple(ty.string(), ty.string()),
-})
+// "a", "e", "d" -- in a loop
 
-a.i(["g", "h"])
-a.i(["d", "a"])
-a.i(["g", "d"])
-a.i(["e", "d"])
-a.i(["h", "f"])
-a.i(["e", "f"])
-a.i(["a", "e"])
-a.i(["a", "b"])
-a.i(["b", "f"])
-a.i(["b", "c"])
-a.i(["f", "c"])
+// We define `Legal` to rule out loop -- to avoid searching in a loop
 
-// a e d -- in a loop
+Legal [z, null]
+---------------- {}
 
-// we need to avoid searching in a loop
+Legal [z, cons(head, tail)]
+---------------------------- {
+  equation z != head
+  Legal [z, tail]
+}
 
-const legal = new Logic.Table({
-  name: "legal",
-  schema: ty.tuple(ty.string(), listSchema(ty.string())),
-})
+Path [x, x, occurs]
+-------------------- {}
 
-legal.i([v`z`, null])
-legal.i([v`z`, cons<string>(v`head`, v`tail`)], (v) => [
-  ne(v`z`, v`head`),
-  legal.o([v`z`, v`tail`]),
-])
+Path [x, y, occurs]
+------------------------ {
+  Edge [x, z]
+  Legal [z, occurs]
+  Path [z, y, cons(z, occurs)]
+}
 
-const path = new Logic.Table({
-  name: "path",
-  schema: ty.tuple(ty.string(), ty.string(), listSchema(ty.string())),
-})
+query () { Path ["f", "f", null] }
+query () { Path ["a", "c", null] }
+query () { Path ["g", "e", null] }
 
-path.i([v`x`, v`x`, v`occurs`])
-path.i([v`x`, v`y`, v`occurs`], (v) => [
-  a.o([v`x`, v`z`]),
-  legal.o([v`z`, v`occurs`]),
-  path.o([v`z`, v`y`, cons<string>(v`z`, v`occurs`)]),
-])
+query (x) { Path ["g", x, null] }
+query (x) { Path [x, "h", null] }
 
-console.log(path.query(["f", "f", null]))
-console.log(path.query(["a", "c", null]))
-console.log(path.query(["g", "e", null]))
+query () { Path ["g", "c", null] }
+query () { Path ["g", "c", cons("f", null)] }
 
-console.log(path.query(["g", v`x`, null]))
-console.log(path.query([v`x`, "h", null]))
-
-console.log(path.query(["g", "c", null]))
-console.log(path.query(["g", "c", cons<string>("f", null)]))
-
-console.log(path.query(["a", v`x`, cons("f", cons<string>("d", null))]))
-console.log(path.query(["a", v`x`, null]))
+query () { Path ["a", x, cons("f", cons("d", null))] }
+query () { Path ["a", x, null] }
