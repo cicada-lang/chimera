@@ -1,31 +1,36 @@
-import Logic, { Logical, v, ty, Schema, Var } from "../.."
-import { List, listSchema, cons } from "./list"
+Member [element, { head: element, tail: tail }]
+------------------------------------------------ here {}
 
-const member = new Logic.Table({
-  name: "member",
-  schema: ty.tuple(ty.string(), listSchema(ty.string())),
-})
+Member [element, { head, tail }]
+------------------------------------------------ there {
+  Member [element, tail]
+}
 
-member.i([v`element`, cons<string>(v`element`, v`tail`)])
-member.i([v`element`, cons<string>(v`head`, v`tail`)], (v) => [
-  member.o([v`element`, v`tail`]),
-])
+success {
+  Member ["john", { head: "paul", tail: { head: "john", tail: null }}]
+}
 
-member.assertSuccess(["john", cons("paul", cons<string>("john", null))])
-member.assertFailure([
-  "joe",
-  cons("marx", cons("darwin", cons<string>("freud", null))),
-])
+function cons(head, tail) {
+  return { head, tail }
+}
 
-member.assertFindResults({
-  data: [v`element`, cons("paul", cons<string>("john", null))],
-  projections: { element: ty.string() },
-  results: [{ element: "paul" }, { element: "john" }],
-})
+failure {
+  Member ["joe", cons("marx", cons("darwin", ("freud", null)))]
+}
 
-{
-  const results = member.query(["foo", v`list`], { limit: 3 })
-  for (const result of results) {
-    console.log(JSON.stringify(result))
-  }
+// TODO Maybe a functional part of the language (a subset of JavaScript).
+
+let results = query (element) {
+  Member [element, cons("paul", cons("john", null))]
+}
+
+assert_equal [
+  results,
+  ["paul", "john"]
+]
+
+
+query (list) {
+  limit 3
+  Member ["foo", list]
 }
