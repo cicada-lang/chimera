@@ -1,5 +1,9 @@
 # design
 
+update syntax --  worksheet-06-length-of-a-list.cic
+update syntax --  worksheet-08-maximum-of-a-list.cic
+update syntax --  worksheet-09-searching-a-cyclic-graph.cic
+
 update syntax -- `clause-and-effect/`
 update syntax -- `the-power-of-prolog/`
 update syntax -- `sicp/`
@@ -31,7 +35,7 @@ Stmts.Rule
     like `cons(head, tail)` -> `{ head, tail }`
 
   - the language will be a subset of JavaScript,
-    maybe we should design this language first
+    maybe we should design this language first.
 
 - like inference rules in logic books and papers, but reversed.
 
