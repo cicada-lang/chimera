@@ -1,5 +1,7 @@
 # Cicada Whereabouts
 
+Logic programming with JSON.
+
 > I asked the boy beneath the pines. <br/>
 > He said, "The master’s gone alone <br/>
 > Herb-picking, somewhere on the mount, <br/>
