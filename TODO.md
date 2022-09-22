@@ -1,5 +1,11 @@
 # migrate
 
+Fact
+
+Rule
+
+[migrate] understand `xieyuheng/logic-db` again
+
 [migrate] copy code from `xieyuheng/logic-db`
 
 # Exps
