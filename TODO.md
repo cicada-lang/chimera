@@ -1,6 +1,6 @@
 # migrate
 
-Solution
+Solution -- closed datatype -- without side-effects
 
 solution/unify
 

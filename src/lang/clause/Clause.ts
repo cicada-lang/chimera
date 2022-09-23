@@ -1,4 +1,4 @@
-import { Json } from "../utils/Json"
+import { Json } from "../../utils/Json"
 import { Goal } from "../goal"
 
 export type Clause = Fact | Rule
