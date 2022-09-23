@@ -1,3 +1,23 @@
+# Stmts
+
+assertValue
+
+Stmts.Fact
+
+Stmts.Rule
+
+Stmts.Rule -- force `PascalCase` naming convention -- keywords will be lowercase
+
+Stmts.Query
+
+Stmts.Success
+
+Stmts.Failure
+
+Stmts.AssertEqual
+
+- assert query results for testing
+
 # migrate
 
 goals/Apply -- `freshenValue`
@@ -37,28 +57,6 @@ solution/solve
 solution/deepWalk
 
 solver/Solver
-
-# Stmts
-
-Values.Relation -- has `clauses`
-
-assertValue
-
-Stmts.Fact
-
-Stmts.Rule
-
-Stmts.Rule -- force `PascalCase` naming convention -- keywords will be lowercase
-
-Stmts.Query
-
-Stmts.Success
-
-Stmts.Failure
-
-Stmts.AssertEqual
-
-- assert query results for testing
 
 # later
 
