@@ -1,7 +1,5 @@
 # migrate
 
-Solution -- closed datatype -- without side-effects
-
 solution/unify
 
 freshen
