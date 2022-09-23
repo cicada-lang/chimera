@@ -1,7 +1,5 @@
 # migrate
 
-clause/Clause -- closed datatype -- with `Fact` and `Rule`
-
 ctx/Ctx
 
 value/Value -- closed datatype
