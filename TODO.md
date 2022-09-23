@@ -1,4 +1,4 @@
-# Stmts
+goals/Apply -- `freshenValue`
 
 Stmts.Fact
 
@@ -23,14 +23,6 @@ Stmts.Failure
 Stmts.AssertEqual
 
 - assert query results for testing
-
-# migrate
-
-goals/Apply -- `freshenValue`
-
-goals/Apply take `name`
-
-- should find `Relation` from `name`
 
 # features
 

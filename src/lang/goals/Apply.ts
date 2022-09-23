@@ -1,17 +1,25 @@
 import { Clause } from "../clause"
-import { Env } from "../env"
+import { Env, lookupValueInEnv } from "../env"
+import { LangError } from "../errors"
 import { Goal, GoalQueue } from "../goal"
 import { Solution, solve } from "../solution"
 import { Value } from "../value"
+import * as Values from "../value"
 
 export class Apply extends Goal {
-  constructor(public clauses: Array<Clause>, public data: Value) {
+  constructor(public name: string, public data: Value) {
     super()
   }
 
   evaluate(env: Env, solution: Solution): Array<GoalQueue> {
+    const value = lookupValueInEnv(env, this.name)
+    if (value === undefined) {
+      throw new LangError(`Undefined name: ${this.name}`)
+    }
+
+    Values.assertRelation(value)
     const queues: Array<GoalQueue> = []
-    for (const clause of this.clauses) {
+    for (const clause of value.clauses) {
       const queue = this.evaluateClause(solution, clause)
       if (queue !== undefined) queues.push(queue)
     }
