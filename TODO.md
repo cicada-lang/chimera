@@ -2,8 +2,6 @@
 
 solution/unify
 
-freshen
-
 goals/And
 goals/NotUnifiable
 goals/Or
