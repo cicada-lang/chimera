@@ -10,26 +10,28 @@ export class Relation extends Goal {
 
   evaluate(solution: Solution): Array<GoalQueue> {
     const queues: Array<GoalQueue> = []
-
     for (const clause of this.clauses) {
-      // const data = freshenValue(clause.data)
-      const data = clause.data
-      const newSolution = solve(solution, data, this.data)
-      if (newSolution !== undefined) {
-        switch (clause.kind) {
-          case "Fact": {
-            queues.push(new GoalQueue(newSolution, []))
-            continue
-          }
-
-          case "Rule": {
-            queues.push(new GoalQueue(newSolution, clause.premises))
-            continue
-          }
-        }
-      }
+      const queue = this.evaluateClause(solution, clause)
+      if (queue !== undefined) queues.push(queue)
     }
 
     return queues
+  }
+
+  evaluateClause(solution: Solution, clause: Clause): GoalQueue | undefined {
+    // const data = freshenValue(clause.data)
+    const data = clause.data
+    const newSolution = solve(solution, data, this.data)
+    if (newSolution === undefined) return undefined
+
+    switch (clause.kind) {
+      case "Fact": {
+        return new GoalQueue(newSolution, [])
+      }
+
+      case "Rule": {
+        return new GoalQueue(newSolution, clause.premises)
+      }
+    }
   }
 }
