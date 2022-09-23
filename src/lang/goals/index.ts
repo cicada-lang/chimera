@@ -1,5 +1,5 @@
 // export * from "./Relation"
-// export * from "./Unifiable"
-// export * from "./NotUnifiable"
+export * from "./Unifiable"
+export * from "./NotUnifiable"
 export * from "./And"
 export * from "./Or"

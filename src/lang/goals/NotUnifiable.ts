@@ -1,27 +1,18 @@
-// import { Goal } from "../goal"
-// import { GoalQueue } from "../goal"
-// import { Solution } from "../solution"
+import { Goal, GoalQueue } from "../goal"
+import { Solution, solve } from "../solution"
+import { Value } from "../value"
 
-// export class NotUnifiable<T> extends Goal {
-//   left: Logical<T>
-//   right: Logical<T>
+export class NotUnifiable extends Goal {
+  constructor(public left: Value, public right: Value) {
+    super()
+  }
 
-//   constructor(left: Logical<T>, right: Logical<T>) {
-//     super()
-//     this.left = left
-//     this.right = right
-//   }
-
-//   static create<T>(left: Logical<T>, right: Logical<T>): NotUnifiable<T> {
-//     return new NotUnifiable(left, right)
-//   }
-
-//   evaluate(solution: Solution): Array<GoalQueue> {
-//     const newSolution = solution.unify(this.left, this.right)
-//     if (newSolution !== null) {
-//       return []
-//     } else {
-//       return [new GoalQueue(solution, [])]
-//     }
-//   }
-// }
+  evaluate(solution: Solution): Array<GoalQueue> {
+    const newSolution = solve(solution, this.left, this.right)
+    if (newSolution !== undefined) {
+      return []
+    } else {
+      return [new GoalQueue(solution, [])]
+    }
+  }
+}
