@@ -1,14 +1,14 @@
 # migrate
 
-solution/unify
+solution/solve
+solution/walk
+solution/deepWalk
 
 goals/And
 goals/NotUnifiable
 goals/Or
 goals/Relation
 goals/Unifiable
-
-goal/GoalQueue
 
 solver/Solver
 
