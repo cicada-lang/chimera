@@ -1,9 +1,5 @@
 # migrate
 
-ctx/Ctx
-
-value/Value -- closed datatype
-
 goal/Goal -- open datatype
 
 - And
@@ -93,5 +89,7 @@ Maybe add `interface` or `schema` keyword to limit type of a `Relation` (`Predic
   ```
 
 # command line interface
+
+the program should be called "whereabouts"
 
 # playground
