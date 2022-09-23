@@ -1,7 +1,5 @@
 # migrate
 
-env/lookupValueInEnv
-
 evaluate take `env`
 
 Mod
