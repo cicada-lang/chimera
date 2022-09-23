@@ -1,4 +1,4 @@
-goals/Apply -- `freshenValue`
+freshenValue
 
 Stmts.Fact
 
