@@ -1,7 +1,5 @@
 # migrate
 
-Span
-
 goals/Apply -- `freshenValue`
 
 goals/Apply take `name`
