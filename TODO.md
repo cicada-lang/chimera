@@ -1,7 +1,5 @@
 # migrate
 
-evaluate take `env`
-
 Mod
 
 Mod has `env`

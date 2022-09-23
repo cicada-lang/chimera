@@ -1,14 +1,15 @@
 import { Clause } from "../clause"
+import { Env } from "../env"
 import { Goal, GoalQueue } from "../goal"
 import { Solution, solve } from "../solution"
 import { Value } from "../value"
 
 export class Apply extends Goal {
-  constructor(public data: Value, public clauses: Array<Clause>) {
+  constructor(public clauses: Array<Clause>, public data: Value) {
     super()
   }
 
-  evaluate(solution: Solution): Array<GoalQueue> {
+  evaluate(env: Env, solution: Solution): Array<GoalQueue> {
     const queues: Array<GoalQueue> = []
     for (const clause of this.clauses) {
       const queue = this.evaluateClause(solution, clause)

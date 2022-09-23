@@ -1,14 +1,15 @@
+import { Env } from "../env"
 import { Goal } from "../goal"
 import { Solution } from "../solution"
 
 export class GoalQueue {
   constructor(public solution: Solution, public goals: Array<Goal>) {}
 
-  step(): Array<GoalQueue> | undefined {
+  step(env: Env): Array<GoalQueue> | undefined {
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
 
-    const queues = goal.evaluate(this.solution)
+    const queues = goal.evaluate(env, this.solution)
     return queues.map(
       // NOTE About searching again
       // push front |   depth first
