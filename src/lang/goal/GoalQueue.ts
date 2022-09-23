@@ -1,6 +1,10 @@
 import { Goal } from "../goal"
 import { Solution } from "../solution"
 
+/**
+   TODO [question] Should we simply use side-effects here?
+**/
+
 export class GoalQueue {
   constructor(public solution: Solution, public goals: Array<Goal>) {}
 
@@ -10,11 +14,11 @@ export class GoalQueue {
 
     const queues = goal.evaluate(this.solution)
     return queues.map(
-      // NOTE about searching again
+      // NOTE About searching again
       // push front |   depth first
       // push back  | breadth first
       // NOTE `concat` is like push back
-      (queue) => new GoalQueue(queue.solution, [...this.goals, ...queue.goals]),
+      (queue) => new GoalQueue(queue.solution, this.goals.concat(queue.goals)),
     )
   }
 }
