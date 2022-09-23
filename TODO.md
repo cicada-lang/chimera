@@ -1,6 +1,8 @@
 # migrate
 
-goals/Relation
+[refactor] goals/Relation -- extract helper function to avoid using continue
+goals/Relation -- freshenValue
+[refactor] rename goals/Relation to ?
 
 solution/walk
 solution/solve
