@@ -3,7 +3,7 @@ import { Goal, GoalQueue } from "../goal"
 import { Solution, solve } from "../solution"
 import { Value } from "../value"
 
-export class Relation extends Goal {
+export class Apply extends Goal {
   constructor(public data: Value, public clauses: Array<Clause>) {
     super()
   }

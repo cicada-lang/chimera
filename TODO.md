@@ -1,7 +1,14 @@
 # migrate
 
-goals/Relation -- freshenValue
-[refactor] rename goals/Relation to ?
+env/Env
+
+evaluate take `env`
+
+goals/Apply -- freshenValue
+
+goals/Apply take `name`
+
+- should find `Relation` from `name`
 
 solution/walk
 solution/solve
