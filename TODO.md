@@ -1,10 +1,14 @@
 # migrate
 
-env/Env
+env/lookupValueInEnv
 
 evaluate take `env`
 
-goals/Apply -- freshenValue
+Mod
+
+Mod has `env`
+
+goals/Apply -- `freshenValue`
 
 goals/Apply take `name`
 
