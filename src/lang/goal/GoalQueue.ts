@@ -1,10 +1,6 @@
 import { Goal } from "../goal"
 import { Solution } from "../solution"
 
-/**
-   TODO [question] Should we simply use side-effects here?
-**/
-
 export class GoalQueue {
   constructor(public solution: Solution, public goals: Array<Goal>) {}
 
