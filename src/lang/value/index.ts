@@ -1,3 +1,3 @@
 export * from "./Value"
-export * from "./assertions"
+export * from "./assertRelation"
 export * from "./freshenValue"

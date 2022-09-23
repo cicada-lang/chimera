@@ -1,5 +1,5 @@
-import { LangError } from "../../errors"
-import { Relation, Value } from "../../value"
+import { LangError } from "../errors"
+import { Relation, Value } from "../value"
 
 export function assertRelation(value: Value): asserts value is Relation {
   if (
