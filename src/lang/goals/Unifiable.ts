@@ -1,27 +1,18 @@
-// import { Goal } from "../goal"
-// import { GoalQueue } from "../goal"
-// import { Solution } from "../solution"
+import { Goal, GoalQueue } from "../goal"
+import { Solution, solve } from "../solution"
+import { Value } from "../value"
 
-// export class Unifiable<T> extends Goal {
-//   left: Logical<T>
-//   right: Logical<T>
+export class Unifiable extends Goal {
+  constructor(public left: Value, public right: Value) {
+    super()
+  }
 
-//   constructor(left: Logical<T>, right: Logical<T>) {
-//     super()
-//     this.left = left
-//     this.right = right
-//   }
-
-//   static create<T>(left: Logical<T>, right: Logical<T>): Unifiable<T> {
-//     return new Unifiable(left, right)
-//   }
-
-//   evaluate(solution: Solution): Array<GoalQueue> {
-//     const newSolution = solution.unify(this.left, this.right)
-//     if (newSolution !== null) {
-//       return [new GoalQueue(newSolution, [])]
-//     } else {
-//       return []
-//     }
-//   }
-// }
+  evaluate(solution: Solution): Array<GoalQueue> {
+    const newSolution = solve(solution, this.left, this.right)
+    if (newSolution !== undefined) {
+      return [new GoalQueue(newSolution, [])]
+    } else {
+      return []
+    }
+  }
+}

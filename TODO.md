@@ -1,6 +1,5 @@
 # migrate
 
-goals/Unifiable
 goals/NotUnifiable
 goals/Relation
 
