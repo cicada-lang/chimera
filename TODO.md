@@ -1,20 +1,20 @@
 # migrate
 
-goal/Goal -- open datatype
+Solution
 
-- And
-- NotUnifiable
-- Or
-- Relation
-- Unifiable
+solution/unify
+
+freshen
+
+goals/And
+goals/NotUnifiable
+goals/Or
+goals/Relation
+goals/Unifiable
 
 goal/GoalQueue
 
 solver/Solver
-
-Solution
-
-solution/unify
 
 # Exps
 
