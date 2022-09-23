@@ -1,10 +1,16 @@
 # Stmts
 
-assertValue
-
 Stmts.Fact
 
+Stmts.Fact -- syntax
+
+- parse fact.test.ts
+
 Stmts.Rule
+
+Stmts.Rule -- syntax
+
+- parse rule.test.ts
 
 Stmts.Rule -- force `PascalCase` naming convention -- keywords will be lowercase
 
