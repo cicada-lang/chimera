@@ -1,6 +1,6 @@
 export const stmt = {
   $grammar: {
-    "stmt:fact": ['"check"', { exp: "exp" }, '":"', { t: "exp" }],
+    // "stmt:fact": ['"check"', { exp: "exp" }, '":"', { t: "exp" }],
   },
 }
 
