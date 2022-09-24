@@ -49,9 +49,9 @@ export function freshenValue(
     case "Objekt": {
       return Values.Objekt(
         Object.fromEntries(
-          Object.entries(exp.properties).map(([name, element]) => [
+          Object.entries(exp.properties).map(([name, property]) => [
             name,
-            freshenValue(usedNames, element),
+            freshenValue(usedNames, property),
           ]),
         ),
       )

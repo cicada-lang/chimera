@@ -1,7 +1,7 @@
+import { Env } from "../env"
 import { Goal, GoalQueue } from "../goal"
 import { Solution, solve } from "../solution"
 import { Value } from "../value"
-import { Env } from "../env"
 
 export class Unifiable extends Goal {
   constructor(public left: Value, public right: Value) {

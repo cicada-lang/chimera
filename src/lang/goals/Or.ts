@@ -1,6 +1,6 @@
+import { Env } from "../env"
 import { Goal, GoalQueue } from "../goal"
 import { Solution } from "../solution"
-import { Env } from "../env"
 
 export class Or extends Goal {
   constructor(public goals: Array<Goal>) {
