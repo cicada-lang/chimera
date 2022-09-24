@@ -9,6 +9,10 @@ Stmts.Success -- syntax -- parse success.test.ts
 Stmts.Failure.execute
 Stmts.Failure -- syntax -- parse failure.test.ts
 
+# command line interface
+
+the program should be called "whereabouts"
+
 # functional
 
 We need a functional part to construct data with out record name
@@ -66,9 +70,6 @@ maybe not equation, because there are also `!=` and `>`
 
 - maybe by doing this we can avoid defining `cons`
 
-# command line interface
-
-the program should be called "whereabouts"
 
 # playground
 
