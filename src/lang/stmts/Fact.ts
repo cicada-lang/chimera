@@ -10,6 +10,6 @@ export class Fact extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    mod.defineClause(this.name, Clauses.Fact(this.exp))
+    mod.defineClause(this.name, Clauses.Rule("TODO", this.exp, []))
   }
 }

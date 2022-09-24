@@ -43,10 +43,6 @@ export class Apply extends Goal {
     if (newSolution === undefined) return undefined
 
     switch (clause.kind) {
-      case "Fact": {
-        return new GoalQueue(newSolution, [])
-      }
-
       case "Rule": {
         return new GoalQueue(newSolution, clause.goals)
       }

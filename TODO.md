@@ -1,4 +1,3 @@
-remove Fact -- only Rule
 inline Rule to Clause
 move Clause to goal
 

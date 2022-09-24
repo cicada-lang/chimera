@@ -1,19 +1,7 @@
 import { Exp } from "../exp"
 import { Goal } from "../goal"
 
-export type Clause = Fact | Rule
-
-export type Fact = {
-  kind: "Fact"
-  exp: Exp
-}
-
-export function Fact(exp: Exp): Fact {
-  return {
-    kind: "Fact",
-    exp,
-  }
-}
+export type Clause = Rule
 
 /**
 
