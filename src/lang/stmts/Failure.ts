@@ -1,4 +1,3 @@
-import * as Clauses from "../clause"
 import { Exp } from "../exp"
 import { Mod } from "../mod"
 import { Span } from "../span"
