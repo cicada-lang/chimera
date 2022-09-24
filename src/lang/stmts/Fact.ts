@@ -1,4 +1,4 @@
-import * as Clauses from "../clause"
+import { Clause } from "../clause"
 import { Exp } from "../exp"
 import { Mod } from "../mod"
 import { Span } from "../span"
@@ -10,6 +10,6 @@ export class Fact extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    mod.defineClause(this.name, Clauses.Rule("TODO", this.exp, []))
+    mod.defineClause(this.name, Clause("TODO", this.exp, []))
   }
 }

@@ -1,29 +1,25 @@
 import { Exp } from "../exp"
 import { Goal } from "../goal"
 
-export type Clause = Rule
-
 /**
 
-   ## Named rules
+   ## Named clauses
 
-   A rule has a name -- written after the rule line.
+   A clause has a name -- written after the line.
 
-   With named rules, we can write proofs by hand,
+   With named clauses, we can write proofs by hand,
    just like writing inductive datatype in dependent type.
 
 **/
 
-export type Rule = {
-  kind: "Rule"
+export type Clause = {
   name: string
   exp: Exp
   goals: Array<Goal>
 }
 
-export function Rule(name: string, exp: Exp, goals: Array<Goal>): Rule {
+export function Clause(name: string, exp: Exp, goals: Array<Goal>): Clause {
   return {
-    kind: "Rule",
     name,
     exp,
     goals,

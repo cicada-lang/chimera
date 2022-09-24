@@ -42,10 +42,6 @@ export class Apply extends Goal {
     const newSolution = solve(solution, pattern, arg)
     if (newSolution === undefined) return undefined
 
-    switch (clause.kind) {
-      case "Rule": {
-        return new GoalQueue(newSolution, clause.goals)
-      }
-    }
+    return new GoalQueue(newSolution, clause.goals)
   }
 }

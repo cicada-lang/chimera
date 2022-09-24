@@ -1,4 +1,3 @@
-inline Rule to Clause
 move Clause to goal
 
 Stmts.Rule -- syntax -- parse rule.test.ts
