@@ -6,8 +6,8 @@ export const optional = pt.grammars.optional
 
 export * from "./dashline"
 export * from "./exp"
+export * from "./goal"
 export * from "./key"
 export * from "./name"
 export * from "./property"
 export * from "./stmt"
-export * from "./goal"

@@ -7,7 +7,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
     "stmt:fact": ({ name, exp }, { span }) =>
       new Stmts.Fact(pt.str(name), matchers.exp_matcher(exp), span),
-    "stmt:goal": ({ name, exp, goals }, { span }) =>
+    "stmt:rule": ({ name, exp, goals }, { span }) =>
       new Stmts.Rule(
         pt.str(name),
         undefined,

@@ -1,5 +1,3 @@
-Stmts.Rule -- syntax -- parse rule.test.ts
-
 syntax for capitalized_name -- upstream support
 
 Stmts.Rule -- force `PascalCase` naming convention -- keywords will be lowercase
