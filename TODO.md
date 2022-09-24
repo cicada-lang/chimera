@@ -1,25 +1,16 @@
-Stmts.Rule.execute
-Stmts.Fact -- syntax
+Stmts.Fact -- syntax -- parse fact.test.ts
 
-- parse fact.test.ts
-
-
-
-Stmts.Rule -- syntax
-
-- parse rule.test.ts
-
+Stmts.Rule -- syntax -- parse rule.test.ts
 Stmts.Rule -- force `PascalCase` naming convention -- keywords will be lowercase
 
-Stmts.Query
+Stmts.Query.execute
+Stmts.Query -- syntax -- parse query.test.ts
 
-Stmts.Success
+Stmts.Success.execute
+Stmts.Success -- syntax  -- parse success.test.ts
 
-Stmts.Failure
-
-Stmts.AssertEqual
-
-- assert query results for testing
+Stmts.Failure.execute
+Stmts.Failure -- syntax  -- parse failure.test.ts
 
 # solution
 
@@ -91,3 +82,9 @@ maybe not equation, because there are also `!=` and `>`
 the program should be called "whereabouts"
 
 # playground
+
+# later
+
+Stmts.AssertEqual
+
+- assert query results for testing

@@ -1,2 +1,5 @@
 export * from "./Fact"
 export * from "./Rule"
+export * from  "./Query"
+export * from  "./Success"
+export * from  "./Failure"
