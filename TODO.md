@@ -1,5 +1,3 @@
-syntax for goals
-
 Stmts.Rule -- syntax -- parse rule.test.ts
 
 syntax for capitalized_name -- upstream support
