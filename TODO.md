@@ -1,3 +1,5 @@
+Rule take `exp` instead of `data`
+
 freshenValue
 
 - freshenValue.test.ts

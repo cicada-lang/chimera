@@ -1,121 +1,97 @@
-import { Clause } from "../clause"
-
-export type Value =
-  | PatternVar
-  | String
-  | Number
-  | Boolean
-  | Null
-  | Arrai
-  | Objekt
-  | Relation
+export type Exp = PatternVar | String | Number | Boolean | Null | Arrai | Objekt
 
 export type PatternVar = {
-  family: "Value"
+  family: "Exp"
   kind: "PatternVar"
   name: string
 }
 
 export function PatternVar(name: string): PatternVar {
   return {
-    family: "Value",
+    family: "Exp",
     kind: "PatternVar",
     name,
   }
 }
 
 export type String = {
-  family: "Value"
+  family: "Exp"
   kind: "String"
   data: string
 }
 
 export function String(data: string): String {
   return {
-    family: "Value",
+    family: "Exp",
     kind: "String",
     data,
   }
 }
 
 export type Number = {
-  family: "Value"
+  family: "Exp"
   kind: "Number"
   data: number
 }
 
 export function Number(data: number): Number {
   return {
-    family: "Value",
+    family: "Exp",
     kind: "Number",
     data,
   }
 }
 
 export type Boolean = {
-  family: "Value"
+  family: "Exp"
   kind: "Boolean"
   data: boolean
 }
 
 export function Boolean(data: boolean): Boolean {
   return {
-    family: "Value",
+    family: "Exp",
     kind: "Boolean",
     data,
   }
 }
 
 export type Null = {
-  family: "Value"
+  family: "Exp"
   kind: "Null"
 }
 
 export function Null(): Null {
   return {
-    family: "Value",
+    family: "Exp",
     kind: "Null",
   }
 }
 
 export type Arrai = {
-  family: "Value"
+  family: "Exp"
   kind: "Arrai"
-  elements: Array<Value>
+  elements: Array<Exp>
 }
 
-export function Arrai(elements: Array<Value>): Arrai {
+export function Arrai(elements: Array<Exp>): Arrai {
   return {
-    family: "Value",
+    family: "Exp",
     kind: "Arrai",
     elements,
   }
 }
 
 export type Objekt = {
-  family: "Value"
+  family: "Exp"
   kind: "Objekt"
-  properties: Record<string, Value>
+  properties: Record<string, Exp>
 }
 
-export function Objekt(properties: Record<string, Value>): Objekt {
+export function Objekt(properties: Record<string, Exp>): Objekt {
   return {
-    family: "Value",
+    family: "Exp",
     kind: "Objekt",
     properties,
-  }
-}
-
-export type Relation = {
-  family: "Value"
-  kind: "Relation"
-  clauses: Array<Clause>
-}
-
-export function Relation(clauses: Array<Clause>): Relation {
-  return {
-    family: "Value",
-    kind: "Relation",
-    clauses,
   }
 }
