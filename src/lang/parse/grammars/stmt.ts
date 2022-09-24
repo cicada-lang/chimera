@@ -1,6 +1,7 @@
 export const stmt = {
   $grammar: {
-     "stmt:fact": [{ name: "name" }, { exp: "exp" }],
+    "stmt:fact": [{ name: "name" }, { exp: "exp" }],
+    "stmt:rule": [{ name: "name" }, { exp: "exp" }, "dashline", ],
   },
 }
 

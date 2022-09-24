@@ -6,8 +6,8 @@ Female { name: "camilla" }
 
 Pair { male, female }
 ------------------------ {
-  Male { name: male },
-  Female { name: female },
+  Male { name: male }
+  Female { name: female }
 }
 
 success {
