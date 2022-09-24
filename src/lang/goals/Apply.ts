@@ -48,7 +48,7 @@ export class Apply extends Goal {
       }
 
       case "Rule": {
-        return new GoalQueue(newSolution, clause.premises)
+        return new GoalQueue(newSolution, clause.goals)
       }
     }
   }

@@ -30,14 +30,14 @@ export type Rule = {
   kind: "Rule"
   name: string
   exp: Exp
-  premises: Array<Goal>
+  goals: Array<Goal>
 }
 
-export function Rule(name: string, exp: Exp, premises: Array<Goal>): Rule {
+export function Rule(name: string, exp: Exp, goals: Array<Goal>): Rule {
   return {
     kind: "Rule",
     name,
     exp,
-    premises,
+    goals,
   }
 }

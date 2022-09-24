@@ -1,3 +1,4 @@
+import * as Clauses from "../clause"
 import { Exp } from "../exp"
 import { Goal } from "../goal"
 import { Mod } from "../mod"
@@ -9,13 +10,16 @@ export class Rule extends Stmt {
     public name: string,
     public ruleName: string,
     public exp: Exp,
-    public premises: Array<Goal>,
+    public goals: Array<Goal>,
     public span?: Span,
   ) {
     super()
   }
 
   async execute(mod: Mod): Promise<void> {
-    throw new Error()
+    mod.defineClause(
+      this.name,
+      Clauses.Rule(this.ruleName, this.exp, this.goals),
+    )
   }
 }
