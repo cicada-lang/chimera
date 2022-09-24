@@ -10,8 +10,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
     "stmt:goal": ({ name, exp, goals }, { span }) =>
       new Stmts.Rule(
         pt.str(name),
-        matchers.exp_matcher(exp),
         undefined,
+        matchers.exp_matcher(exp),
         matchers.goals_matcher(goals),
         span,
       ),

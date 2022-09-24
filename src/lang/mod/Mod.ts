@@ -1,7 +1,7 @@
-import * as Clauses from "../clause"
 import { Clause } from "../clause"
-import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
+import { Env, EnvNull, lookupValueInEnv } from "../env"
 import { Exp } from "../exp"
+import { Goal } from "../goal"
 import { Stmt, StmtOutput } from "../stmt"
 import * as Values from "../value"
 
@@ -24,13 +24,29 @@ export class Mod {
     return outputs
   }
 
-  defineClause(name: string, clause: Clause): void {
+  defineClause(
+    name: string,
+    clauseName: string | undefined,
+    exp: Exp,
+    goals?: Array<Goal>,
+  ): void {
+    const relation = this.findOrCreateRelation(name)
+    relation.clauses.push(
+      Clause(
+        clauseName || relation.clauses.length.toString(),
+        exp,
+        goals || [],
+      ),
+    )
+  }
+
+  private findOrCreateRelation(name: string): Values.Relation {
     const relation = lookupValueInEnv(this.env, name)
     if (relation === undefined) {
-      this.env = EnvCons(name, Values.Relation([clause]), this.env)
+      return Values.Relation([])
     } else {
       Values.assertRelation(relation)
-      relation.clauses.push(clause)
+      return relation
     }
   }
 }
