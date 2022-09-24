@@ -3,5 +3,5 @@ import { GoalQueue } from "../goal"
 import { Solution } from "../solution"
 
 export abstract class Goal {
-  abstract evaluate(env: Env, solution: Solution): Array<GoalQueue>
+  abstract pursue(env: Env, solution: Solution): Array<GoalQueue>
 }

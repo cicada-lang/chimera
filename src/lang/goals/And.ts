@@ -7,7 +7,7 @@ export class And extends Goal {
     super()
   }
 
-  evaluate(env: Env, solution: Solution): Array<GoalQueue> {
+  pursue(env: Env, solution: Solution): Array<GoalQueue> {
     return [new GoalQueue(solution, this.goals)]
   }
 }

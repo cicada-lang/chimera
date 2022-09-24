@@ -1,3 +1,5 @@
+exp/evaluate -- trivial for now
+
 goal as exp instead of value
 
 Stmts.Fact.execute

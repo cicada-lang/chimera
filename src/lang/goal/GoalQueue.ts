@@ -9,7 +9,7 @@ export class GoalQueue {
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
 
-    const queues = goal.evaluate(env, this.solution)
+    const queues = goal.pursue(env, this.solution)
     return queues.map(
       // NOTE About searching again
       // push front |   depth first

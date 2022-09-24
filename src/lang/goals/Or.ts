@@ -7,7 +7,7 @@ export class Or extends Goal {
     super()
   }
 
-  evaluate(env: Env, solution: Solution): Array<GoalQueue> {
+  pursue(env: Env, solution: Solution): Array<GoalQueue> {
     return this.goals.map((goal) => new GoalQueue(solution, [goal]))
   }
 }

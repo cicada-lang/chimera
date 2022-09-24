@@ -8,7 +8,7 @@ export class NotUnifiable extends Goal {
     super()
   }
 
-  evaluate(env: Env, solution: Solution): Array<GoalQueue> {
+  pursue(env: Env, solution: Solution): Array<GoalQueue> {
     const newSolution = solve(solution, this.left, this.right)
     if (newSolution !== undefined) {
       return []

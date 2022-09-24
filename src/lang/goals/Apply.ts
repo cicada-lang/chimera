@@ -11,7 +11,7 @@ export class Apply extends Goal {
     super()
   }
 
-  evaluate(env: Env, solution: Solution): Array<GoalQueue> {
+  pursue(env: Env, solution: Solution): Array<GoalQueue> {
     const value = lookupValueInEnv(env, this.name)
     if (value === undefined) {
       throw new LangError(`Undefined name: ${this.name}`)
@@ -20,14 +20,14 @@ export class Apply extends Goal {
     Values.assertRelation(value)
     const queues: Array<GoalQueue> = []
     for (const clause of value.clauses) {
-      const queue = this.evaluateClause(solution, clause)
+      const queue = this.pursueClause(solution, clause)
       if (queue !== undefined) queues.push(queue)
     }
 
     return queues
   }
 
-  evaluateClause(solution: Solution, clause: Clause): GoalQueue | undefined {
+  pursueClause(solution: Solution, clause: Clause): GoalQueue | undefined {
     const usedNames = solutionNames(solution)
     const data = Values.freshenValue(usedNames, clause.exp)
     const newSolution = solve(solution, data, this.data)
