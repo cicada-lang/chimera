@@ -11,8 +11,8 @@ export function freshenValue(
   exp: Exp,
 ): Value {
   switch (exp.kind) {
-    case "PatternVar": {
-      return Values.PatternVar(exp.name)
+    case "Var": {
+      return Values.Var(exp.name)
     }
 
     case "String": {

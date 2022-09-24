@@ -1,15 +1,15 @@
-export type Exp = PatternVar | String | Number | Boolean | Null | Arrai | Objekt
+export type Exp = Var | String | Number | Boolean | Null | Arrai | Objekt
 
-export type PatternVar = {
+export type Var = {
   family: "Exp"
-  kind: "PatternVar"
+  kind: "Var"
   name: string
 }
 
-export function PatternVar(name: string): PatternVar {
+export function Var(name: string): Var {
   return {
     family: "Exp",
-    kind: "PatternVar",
+    kind: "Var",
     name,
   }
 }

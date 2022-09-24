@@ -1,7 +1,7 @@
 import { Clause } from "../clause"
 
 export type Value =
-  | PatternVar
+  | Var
   | String
   | Number
   | Boolean
@@ -10,16 +10,16 @@ export type Value =
   | Objekt
   | Relation
 
-export type PatternVar = {
+export type Var = {
   family: "Value"
-  kind: "PatternVar"
+  kind: "Var"
   name: string
 }
 
-export function PatternVar(name: string): PatternVar {
+export function Var(name: string): Var {
   return {
     family: "Value",
-    kind: "PatternVar",
+    kind: "Var",
     name,
   }
 }

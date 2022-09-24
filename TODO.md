@@ -1,5 +1,3 @@
-ambr PatternVar Var
-
 freshenValue
 
 - freshenValue.test.ts
