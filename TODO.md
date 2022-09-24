@@ -1,7 +1,3 @@
-syntax for capitalized_name -- upstream support
-
-Stmts.Rule -- force `PascalCase` naming convention -- keywords will be lowercase
-
 Stmts.Query.execute
 Stmts.Query -- syntax -- parse query.test.ts
 
