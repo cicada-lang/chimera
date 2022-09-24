@@ -1,3 +1,6 @@
+solution/solve
+solution/occur
+
 formatValue
 
 Stmts.Success.execute
@@ -5,9 +8,6 @@ Stmts.Success -- syntax -- parse success.test.ts
 
 Stmts.Failure.execute
 Stmts.Failure -- syntax -- parse failure.test.ts
-
-solution/solve
-solution/deepWalk
 
 # functional
 
