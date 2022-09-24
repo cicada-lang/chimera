@@ -9,6 +9,15 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
+    "stmt:query": [
+      '"query"',
+      '"("',
+      { names: "names" },
+      '")"',
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
   },
 }
 

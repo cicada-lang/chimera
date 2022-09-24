@@ -13,3 +13,13 @@ export const name = pt.grammars.pattern_unless_preserved("identifier", [
   "true",
   "false",
 ])
+
+export const names = {
+  $grammar: {
+    "names:names": [
+      { properties: { $ap: ["zero_or_more", "name", '","'] } },
+      { last_property: "name" },
+      { $ap: ["optional", '","'] },
+    ],
+  },
+}
