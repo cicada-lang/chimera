@@ -2,7 +2,7 @@ import { Clause } from "../clause"
 import { Env, lookupValueInEnv } from "../env"
 import { LangError } from "../errors"
 import { Goal, GoalQueue } from "../goal"
-import { solutionNames, Solution, solve } from "../solution"
+import { Solution, solutionNames, solve } from "../solution"
 import * as Values from "../value"
 import { Value } from "../value"
 
@@ -29,7 +29,7 @@ export class Apply extends Goal {
 
   evaluateClause(solution: Solution, clause: Clause): GoalQueue | undefined {
     const usedNames = solutionNames(solution)
-    const data = Values.freshenValue(usedNames, clause.data)
+    const data = Values.freshenValue(usedNames, clause.exp)
     const newSolution = solve(solution, data, this.data)
     if (newSolution === undefined) return undefined
 

@@ -1,4 +1,4 @@
-import { Json } from "../../utils/Json"
+import { Exp } from "../exp"
 import * as Values from "../value"
 import { Value } from "../value"
 
@@ -8,27 +8,44 @@ import { Value } from "../value"
 
 export function freshenValue(
   usedNames: Set<string> | Array<string>,
-  json: Json,
+  exp: Exp,
 ): Value {
-  if (typeof json === "string") {
-    return Values.String(json)
-  }
+  switch (exp.kind) {
+    case "PatternVar": {
+      return Values.PatternVar(exp.name)
+    }
 
-  if (typeof json === "number") {
-    return Values.Number(json)
-  }
+    case "String": {
+      return Values.String(exp.data)
+    }
 
-  if (typeof json === "boolean") {
-    return Values.Boolean(json)
-  }
+    case "Number": {
+      return Values.Number(exp.data)
+    }
 
-  if (json === null) {
-    return Values.Null()
-  }
+    case "Boolean": {
+      return Values.Boolean(exp.data)
+    }
 
-  if (json instanceof Array) {
-    return Values.Arrai(json.map((item) => freshenValue(usedNames, item)))
-  }
+    case "Null": {
+      return Values.Null()
+    }
 
-  throw new Error("TODO")
+    case "Arrai": {
+      return Values.Arrai(
+        exp.elements.map((element) => freshenValue(usedNames, element)),
+      )
+    }
+
+    case "Objekt": {
+      return Values.Objekt(
+        Object.fromEntries(
+          Object.entries(exp.properties).map(([name, element]) => [
+            name,
+            freshenValue(usedNames, element),
+          ]),
+        ),
+      )
+    }
+  }
 }

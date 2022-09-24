@@ -1,17 +1,17 @@
-import { Json } from "../../utils/Json"
+import { Exp } from "../exp"
 import { Goal } from "../goal"
 
 export type Clause = Fact | Rule
 
 export type Fact = {
   kind: "Fact"
-  data: Json
+  exp: Exp
 }
 
-export function Fact(data: Json): Fact {
+export function Fact(exp: Exp): Fact {
   return {
     kind: "Fact",
-    data,
+    exp,
   }
 }
 
@@ -26,19 +26,18 @@ export function Fact(data: Json): Fact {
 
 **/
 
-
 export type Rule = {
   kind: "Rule"
   name: string
-  data: Json
+  exp: Exp
   premises: Array<Goal>
 }
 
-export function Rule(name: string, data: Json, premises: Array<Goal>): Rule {
+export function Rule(name: string, exp: Exp, premises: Array<Goal>): Rule {
   return {
     kind: "Rule",
-    name    ,
-    data,
+    name,
+    exp,
     premises,
   }
 }

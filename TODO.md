@@ -1,4 +1,4 @@
-Rule take `exp` instead of `data`
+ambr PatternVar Var
 
 freshenValue
 
