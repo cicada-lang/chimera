@@ -9,7 +9,6 @@ Stmts.Failure -- syntax  -- parse failure.test.ts
 
 # solution
 
-solution/walk
 solution/solve
 solution/deepWalk
 
