@@ -1,5 +1,3 @@
-Stmts.Query -- syntax -- parse query.test.ts
-
 formatValue
 
 Stmts.Success.execute

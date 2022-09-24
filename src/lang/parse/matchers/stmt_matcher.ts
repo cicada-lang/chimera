@@ -15,6 +15,12 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
+    "stmt:query": ({ names, goals }, { span }) =>
+      new Stmts.Query(
+        matchers.names_matcher(names),
+        matchers.goals_matcher(goals),
+        span,
+      ),
   })(tree)
 }
 

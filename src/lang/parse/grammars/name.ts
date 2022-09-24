@@ -17,8 +17,8 @@ export const name = pt.grammars.pattern_unless_preserved("identifier", [
 export const names = {
   $grammar: {
     "names:names": [
-      { properties: { $ap: ["zero_or_more", "name", '","'] } },
-      { last_property: "name" },
+      { names: { $ap: ["zero_or_more", "name", '","'] } },
+      { last_name: "name" },
       { $ap: ["optional", '","'] },
     ],
   },
