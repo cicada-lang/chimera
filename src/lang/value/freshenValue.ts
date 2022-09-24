@@ -7,11 +7,9 @@ import { Value } from "../value"
 **/
 
 export function freshenValue(
-  usedNames: Set<string> | Array<string>,
+  usedNames: Set<string>,
   value: Value,
 ): Value {
-  usedNames = new Set(usedNames)
-
   switch (value.kind) {
     case "Var": {
       if (usedNames.has(value.name)) {

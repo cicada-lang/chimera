@@ -36,7 +36,7 @@ export class Apply extends Goal {
     clause: Clause,
   ): GoalQueue | undefined {
     const value = evaluate(env, clause.exp)
-    const usedNames = solutionNames(solution)
+    const usedNames = new Set(solutionNames(solution))
     const pattern = Values.freshenValue(usedNames, value)
 
     const newSolution = solve(solution, pattern, arg)
