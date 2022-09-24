@@ -1,4 +1,4 @@
-import * as Clauses from "../clause"
+import { Clause } from "../clause"
 import { Exp } from "../exp"
 import { Goal } from "../goal"
 import { Mod } from "../mod"
@@ -9,7 +9,7 @@ export class Rule extends Stmt {
   constructor(
     public name: string,
     public exp: Exp,
-    public ruleName: string | undefined,
+    public clauseName: string | undefined,
     public goals: Array<Goal>,
     public span?: Span,
   ) {
@@ -17,9 +17,9 @@ export class Rule extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    // mod.defineClause(
-    //   this.name,
-    //   Clauses.Rule(this.ruleName, this.exp, this.goals),
-    // )
+    mod.defineClause(
+      this.name,
+      Clause(this.clauseName, this.exp, this.goals),
+    )
   }
 }
