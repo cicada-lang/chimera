@@ -1,4 +1,4 @@
-Stmts.Fact
+Stmts.Fact.execute
 
 Stmts.Fact -- syntax
 
