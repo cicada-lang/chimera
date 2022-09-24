@@ -1,5 +1,3 @@
-isPatternVar.ts
-
 freshenValue
 
 - freshenValue.test.ts
