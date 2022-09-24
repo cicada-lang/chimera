@@ -1,3 +1,8 @@
+solver/Solversolution/solve
+solution/deepWalk
+
+
+
 Stmts.Query.execute
 Stmts.Query -- syntax -- parse query.test.ts
 
@@ -7,12 +12,7 @@ Stmts.Success -- syntax  -- parse success.test.ts
 Stmts.Failure.execute
 Stmts.Failure -- syntax  -- parse failure.test.ts
 
-# solution
 
-solution/solve
-solution/deepWalk
-
-solver/Solver
 
 # functional
 
