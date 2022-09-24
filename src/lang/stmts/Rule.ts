@@ -8,8 +8,8 @@ import { Stmt } from "../stmt"
 export class Rule extends Stmt {
   constructor(
     public name: string,
-    public ruleName: string,
     public exp: Exp,
+    public ruleName: string | undefined,
     public goals: Array<Goal>,
     public span?: Span,
   ) {
@@ -17,9 +17,9 @@ export class Rule extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    mod.defineClause(
-      this.name,
-      Clauses.Rule(this.ruleName, this.exp, this.goals),
-    )
+    // mod.defineClause(
+    //   this.name,
+    //   Clauses.Rule(this.ruleName, this.exp, this.goals),
+    // )
   }
 }

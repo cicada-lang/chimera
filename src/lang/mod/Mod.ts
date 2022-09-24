@@ -1,5 +1,7 @@
+import * as Clauses from "../clause"
 import { Clause } from "../clause"
 import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
+import { Exp } from "../exp"
 import { Stmt, StmtOutput } from "../stmt"
 import * as Values from "../value"
 

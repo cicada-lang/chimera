@@ -1,3 +1,7 @@
+remove Fact -- only Rule
+inline Rule to Clause
+move Clause to goal
+
 Stmts.Rule -- syntax -- parse rule.test.ts
 
 syntax for capitalized_name -- upstream support
