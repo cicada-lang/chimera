@@ -1,12 +1,14 @@
 import { Clause } from "../clause"
 
-export type Value = PatternVar | ValueAtom | ValueArray | ValueObject | Relation
-
-export type ValueAtom = string | number | boolean | null
-
-export type ValueArray = Array<Value>
-
-export type ValueObject = { [x: string]: Value }
+export type Value =
+  | PatternVar
+  | String
+  | Number
+  | Boolean
+  | Null
+  | Arrai
+  | Objekt
+  | Relation
 
 export type PatternVar = {
   family: "Value"
@@ -20,6 +22,41 @@ export function PatternVar(name: string): PatternVar {
     kind: "PatternVar",
     name,
   }
+}
+
+export type String = {
+  family: "Value"
+  kind: "String"
+  data: string
+}
+
+export type Number = {
+  family: "Value"
+  kind: "Number"
+  data: number
+}
+
+export type Boolean = {
+  family: "Value"
+  kind: "Boolean"
+  data: boolean
+}
+
+export type Null = {
+  family: "Value"
+  kind: "Null"
+}
+
+export type Arrai = {
+  family: "Value"
+  kind: "Arrai"
+  values: Array<Value>
+}
+
+export type Objekt = {
+  family: "Value"
+  kind: "Objekt"
+  properties: Record<string, Value>
 }
 
 export type Relation = {

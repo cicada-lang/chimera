@@ -1,8 +1,9 @@
 import { Value } from "../value"
+import { Json } from "../../utils/Json"
 
 export function freshenValue(
   usedNames: Set<string> | Array<string>,
-  value: Value,
+  json: Json,
 ): Value {
-  return value
+  throw new Error("TODO")
 }
