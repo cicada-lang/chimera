@@ -1,10 +1,12 @@
+goal as exp instead of value
+
 Stmts.Fact.execute
 
 Stmts.Fact -- syntax
 
 - parse fact.test.ts
 
-Stmts.Rule
+Stmts.Rule.execute
 
 Stmts.Rule -- syntax
 
