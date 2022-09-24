@@ -2,7 +2,15 @@ import { Span } from "../span"
 
 type ExpMeta = { span?: Span }
 
-export type Exp = Var | String | Number | Boolean | Null | Arrai | Objekt
+export type Exp =
+  | Var
+  | String
+  | Number
+  | Boolean
+  | Null
+  | Arrai
+  | Objekt
+  | ObjektUnfolded
 
 export type Var = {
   family: "Exp"
@@ -104,5 +112,39 @@ export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
     kind: "Objekt",
     properties,
     span,
+  }
+}
+
+export type ObjektUnfolded = {
+  family: "Exp"
+  kind: "ObjektUnfolded"
+  properties: Array<Property>
+} & ExpMeta
+
+export function ObjektUnfolded(
+  properties: Array<Property>,
+  span?: Span,
+): ObjektUnfolded {
+  return {
+    family: "Exp",
+    kind: "ObjektUnfolded",
+    properties,
+    span,
+  }
+}
+
+export type Property = PropertyPlain
+
+export type PropertyPlain = {
+  kind: "PropertyPlain"
+  name: string
+  exp: Exp
+}
+
+export function PropertyPlain(name: string, exp: Exp): PropertyPlain {
+  return {
+    kind: "PropertyPlain",
+    name,
+    exp,
   }
 }

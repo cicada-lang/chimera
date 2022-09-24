@@ -1,4 +1,5 @@
 import { Env } from "../env"
+import * as Exps from "../exp"
 import { Exp } from "../exp"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -38,6 +39,10 @@ export function evaluate(env: Env, exp: Exp): Value {
           ]),
         ),
       )
+    }
+
+    case "ObjektUnfolded": {
+      return evaluate(env, Exps.Objekt(Exps.prepareProperties(exp.properties)))
     }
   }
 }

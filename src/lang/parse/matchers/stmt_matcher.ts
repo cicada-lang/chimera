@@ -6,8 +6,8 @@ import * as matchers from "../matchers"
 
 export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
-    // "stmt:fact": ({ exp, t }, { span }) =>
-    //   new Stmts.Check(matchers.exp_matcher(exp), matchers.exp_matcher(t), span),
+    "stmt:fact": ({ name, exp }, { span }) =>
+      new Stmts.Fact(pt.str(name), matchers.exp_matcher(exp), span),
   })(tree)
 }
 
