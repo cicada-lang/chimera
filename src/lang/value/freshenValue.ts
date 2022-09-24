@@ -1,4 +1,5 @@
 import { Exp } from "../exp"
+import { freshen } from "../utils/freshen"
 import * as Values from "../value"
 import { Value } from "../value"
 
@@ -10,9 +11,17 @@ export function freshenValue(
   usedNames: Set<string> | Array<string>,
   exp: Exp,
 ): Value {
+  usedNames = new Set(usedNames)
+
   switch (exp.kind) {
     case "Var": {
-      return Values.Var(exp.name)
+      if (usedNames.has(exp.name)) {
+        const freshName = freshen(usedNames, exp.name)
+        usedNames.add(freshName)
+        return Values.Var(freshName)
+      } else {
+        return Values.Var(exp.name)
+      }
     }
 
     case "String": {
