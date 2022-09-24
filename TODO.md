@@ -1,5 +1,3 @@
-goal as exp instead of value
-
 Stmts.Fact.execute
 
 Stmts.Fact -- syntax

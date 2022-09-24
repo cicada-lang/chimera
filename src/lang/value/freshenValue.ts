@@ -1,4 +1,3 @@
-import { Exp } from "../exp"
 import { freshen } from "../utils/freshen"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -9,31 +8,31 @@ import { Value } from "../value"
 
 export function freshenValue(
   usedNames: Set<string> | Array<string>,
-  exp: Exp,
+  value: Value,
 ): Value {
   usedNames = new Set(usedNames)
 
-  switch (exp.kind) {
+  switch (value.kind) {
     case "Var": {
-      if (usedNames.has(exp.name)) {
-        const freshName = freshen(usedNames, exp.name)
+      if (usedNames.has(value.name)) {
+        const freshName = freshen(usedNames, value.name)
         usedNames.add(freshName)
         return Values.Var(freshName)
       } else {
-        return Values.Var(exp.name)
+        return Values.Var(value.name)
       }
     }
 
     case "String": {
-      return Values.String(exp.data)
+      return Values.String(value.data)
     }
 
     case "Number": {
-      return Values.Number(exp.data)
+      return Values.Number(value.data)
     }
 
     case "Boolean": {
-      return Values.Boolean(exp.data)
+      return Values.Boolean(value.data)
     }
 
     case "Null": {
@@ -42,19 +41,23 @@ export function freshenValue(
 
     case "Arrai": {
       return Values.Arrai(
-        exp.elements.map((element) => freshenValue(usedNames, element)),
+        value.elements.map((element) => freshenValue(usedNames, element)),
       )
     }
 
     case "Objekt": {
       return Values.Objekt(
         Object.fromEntries(
-          Object.entries(exp.properties).map(([name, property]) => [
+          Object.entries(value.properties).map(([name, property]) => [
             name,
             freshenValue(usedNames, property),
           ]),
         ),
       )
+    }
+
+    case "Relation": {
+      return value
     }
   }
 }
