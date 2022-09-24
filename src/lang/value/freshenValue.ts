@@ -6,10 +6,7 @@ import { Value } from "../value"
    Side-effects on `usedNames`.
 **/
 
-export function freshenValue(
-  usedNames: Set<string>,
-  value: Value,
-): Value {
+export function freshenValue(usedNames: Set<string>, value: Value): Value {
   switch (value.kind) {
     case "Var": {
       if (usedNames.has(value.name)) {

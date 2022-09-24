@@ -1,10 +1,9 @@
-Stmts.Fact.execute
-
+Stmts.Rule.execute
 Stmts.Fact -- syntax
 
 - parse fact.test.ts
 
-Stmts.Rule.execute
+
 
 Stmts.Rule -- syntax
 
@@ -22,7 +21,24 @@ Stmts.AssertEqual
 
 - assert query results for testing
 
-# features
+# solution
+
+solution/walk
+solution/solve
+solution/deepWalk
+
+solver/Solver
+
+# functional
+
+We need a functional part to construct data with out record name
+like `cons(head, tail)` -> `{ head, tail }`
+
+- we must be able to apply function to pattern variables,
+  thus maybe we should define datatype and constructors instead of functions.
+
+- the language will be a subset of JavaScript,
+  maybe we should design this language first.
 
 [question] scope of `Stmts.Rule`
 
@@ -45,29 +61,6 @@ Stmts.AssertEqual
 - Solution 3:
 
   - Add a keyword for writing data in bindings (like `implicit`)
-
-# solution
-
-solution/walk
-solution/solve
-solution/deepWalk
-
-solver/Solver
-
-# later
-
-[feature] how about the functional part of the language?
-
-- do we have a functional part at all?
-
-- maybe we need a functional part to construct data with out record name
-  like `cons(head, tail)` -> `{ head, tail }`
-
-  - we must be able to apply function to pattern variables,
-    thus maybe we should define datatype and constructors instead of functions.
-
-- the language will be a subset of JavaScript,
-  maybe we should design this language first.
 
 [feature] Maybe add `interface` or `schema` keyword to limit type of a `Relation` (`Predicate`)
 

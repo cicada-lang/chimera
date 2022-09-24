@@ -1,6 +1,7 @@
-import { Env, EnvCons, EnvNull } from "../env"
+import { Clause } from "../clause"
+import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
 import { Stmt, StmtOutput } from "../stmt"
-import { Value } from "../value"
+import * as Values from "../value"
 
 export class Mod {
   env: Env = EnvNull()
@@ -21,7 +22,13 @@ export class Mod {
     return outputs
   }
 
-  define(name: string, type: Value, value: Value): void {
-    this.env = EnvCons(name, value, this.env)
+  defineClause(name: string, clause: Clause): void {
+    const relation = lookupValueInEnv(this.env, name)
+    if (relation === undefined) {
+      this.env = EnvCons(name, Values.Relation([clause]), this.env)
+    } else {
+      Values.assertRelation(relation)
+      relation.clauses.push(clause)
+    }
   }
 }
