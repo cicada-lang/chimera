@@ -1,0 +1,43 @@
+import { Env } from "../env"
+import { Exp } from "../exp"
+import * as Values from "../value"
+import { Value } from "../value"
+
+export function evaluate(env: Env, exp: Exp): Value {
+  switch (exp.kind) {
+    case "Var": {
+      return Values.Var(exp.name)
+    }
+
+    case "String": {
+      return Values.String(exp.data)
+    }
+
+    case "Number": {
+      return Values.Number(exp.data)
+    }
+
+    case "Boolean": {
+      return Values.Boolean(exp.data)
+    }
+
+    case "Null": {
+      return Values.Null()
+    }
+
+    case "Arrai": {
+      return Values.Arrai(exp.elements.map((element) => evaluate(env, element)))
+    }
+
+    case "Objekt": {
+      return Values.Objekt(
+        Object.fromEntries(
+          Object.entries(exp.properties).map(([name, property]) => [
+            name,
+            evaluate(env, property),
+          ]),
+        ),
+      )
+    }
+  }
+}
