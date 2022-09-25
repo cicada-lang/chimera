@@ -1,4 +1,4 @@
-import { Solution, SolutionCons, walk } from "../solution"
+import { occur, Solution, SolutionCons, walk } from "../solution"
 import { Value } from "../value"
 
 export function solve(
@@ -14,12 +14,12 @@ export function solve(
   }
 
   if (left.kind === "Var") {
-    // TODO occur check
+    if (occur(left.name, right)) return undefined
     return SolutionCons(left.name, right, solution)
   }
 
   if (right.kind === "Var") {
-    // TODO occur check
+    if (occur(right.name, left)) return undefined
     return SolutionCons(right.name, left, solution)
   }
 

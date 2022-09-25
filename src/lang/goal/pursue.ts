@@ -22,7 +22,7 @@ export function pursue(
       const queues: Array<GoalQueue> = []
       for (let clause of relation.clauses) {
         // NOTE side-effects on usedNames
-        clause = Values.freshenClause(mod, new Map(), clause)
+        clause = Values.freshenClause(mod, clause)
         const newSolution = solve(solution, clause.value, goal.arg)
 
         if (newSolution !== undefined) {

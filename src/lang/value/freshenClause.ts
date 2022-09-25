@@ -10,30 +10,30 @@ import { Value } from "../value"
 
 export function freshenClause(
   mod: Mod,
-  varMap: Map<string, Values.Var>,
   clause: Values.Clause,
+  varMap: Map<string, Values.Var> = new Map(),
 ): Values.Clause {
   return Values.Clause(
     clause.name,
-    freshenValue(mod, varMap, clause.value),
-    clause.goals.map((goal) => freshenGoal(mod, varMap, goal)),
+    freshenValue(mod, clause.value, varMap),
+    clause.goals.map((goal) => freshenGoal(mod, goal, varMap)),
   )
 }
 
 function freshenGoal(
   mod: Mod,
-  varMap: Map<string, Values.Var>,
   goal: Goal,
+  varMap: Map<string, Values.Var>,
 ): Goal {
   switch (goal.kind) {
     case "Apply": {
-      return Goals.Apply(goal.name, freshenValue(mod, varMap, goal.arg))
+      return Goals.Apply(goal.name, freshenValue(mod, goal.arg, varMap))
     }
 
     case "Unifiable": {
       return Goals.Unifiable(
-        freshenValue(mod, varMap, goal.left),
-        freshenValue(mod, varMap, goal.right),
+        freshenValue(mod, goal.left, varMap),
+        freshenValue(mod, goal.right, varMap),
       )
     }
   }
@@ -41,8 +41,8 @@ function freshenGoal(
 
 function freshenValue(
   mod: Mod,
-  varMap: Map<string, Values.Var>,
   value: Value,
+  varMap: Map<string, Values.Var>,
 ): Value {
   switch (value.kind) {
     case "Var": {
@@ -76,7 +76,7 @@ function freshenValue(
 
     case "Arrai": {
       return Values.Arrai(
-        value.elements.map((element) => freshenValue(mod, varMap, element)),
+        value.elements.map((element) => freshenValue(mod, element, varMap)),
       )
     }
 
@@ -85,7 +85,7 @@ function freshenValue(
         Object.fromEntries(
           Object.entries(value.properties).map(([name, property]) => [
             name,
-            freshenValue(mod, varMap, property),
+            freshenValue(mod, property, varMap),
           ]),
         ),
       )
