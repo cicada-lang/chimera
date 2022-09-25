@@ -10,28 +10,28 @@
 // The personnel database contains assertions about company personnel.
 // We first prepare the tables:
 
-interface Job {
-  name: String
-  dept: String
-  role: String
-}
+// interface Job {
+//   name: String
+//   dept: String
+//   role: String
+// }
 
-interface Salary {
-  name: String
-  amount: Number
-}
+// interface Salary {
+//   name: String
+//   amount: Number
+// }
 
-interface Address {
-  name: String
-  town: String
-  road: String
-  door: Number
-}
+// interface Address {
+//   name: String
+//   town: String
+//   road: String
+//   door: Number
+// }
 
-interface Supervisor {
-  slave: String
-  master: String
-}
+// interface Supervisor {
+//   slave: String
+//   master: String
+// }
 
 // Here is the information about Ben Bitdiddle,
 // the resident computer wizard:
@@ -264,16 +264,16 @@ Supervisor {
 // the jobs of both a computer programmer
 // and a computer technician:
 
-interface Competence {
-  can: {
-    dept: String
-    role: String
-  }
-  job: {
-    dept: String
-    role: String
-  }
-}
+// interface Competence {
+//   can: {
+//     dept: String
+//     role: String
+//   }
+//   job: {
+//     dept: String
+//     role: String
+//   }
+// }
 
 Competence {
   can: {
@@ -403,17 +403,15 @@ failure (x) {
 
 // We can use the following syntax to create rules.
 
-interface ComputerDeptSlave {
-  slave: String
-}
+// interface ComputerDeptSlave {
+//   slave: String
+// }
 
 ComputerDeptSlave { slave }
 ---------------------------- {
-  fresh (role, z) {
-    Job { name: slave, dept: "computer", role }
-    Supervisor { slave, master: z }
-  }
-})
+  Job { name: slave, dept: "computer", role }
+  Supervisor { slave, master: z }
+}
 
 query (slave) {
   ComputerDeptSlave { slave }
@@ -421,43 +419,43 @@ query (slave) {
 
 // TODO We do not have not yet.
 
-interface Bigshot {
-  name: String
-  dept: String
-}
+// interface Bigshot {
+//   name: String
+//   dept: String
+// }
 
-Bigshot { name, dept }
------------------------- {
-  Job { name, dept }
-  fresh (z) {
-    not {
-      Supervisor { slave: name, master: z }
-      Job { name: z, dept }
-    }
-  }
-})
+// Bigshot { name, dept }
+// ------------------------ {
+//   Job { name, dept }
+//   not {
+//     Supervisor { slave: name, master: z }
+//     Job { name: z, dept }
+//   }
+// }
 
-query (name, dept) {
-  Bigshot {
-    name,
-    dept,
-  }
-}
+// query (name, dept) {
+//   Bigshot {
+//     name,
+//     dept,
+//   }
+// }
 
-interface NotSoPoor {
-  name: String
-  amount: Number
-}
+// interface NotSoPoor {
+//   name: String
+//   amount: Number
+// }
 
-NotSoPoor { name, amount }
----------------------------- {
-  Salary { name, amount }
-  equation amount >= 40000
-})
+// TODO `equation >=`
 
-query (name, amount) {
-  NotSoPoor {
-    name,
-    amount,
-  }
-}
+// NotSoPoor { name, amount }
+// ---------------------------- {
+//   Salary { name, amount }
+//   equation amount >= 40000
+// })
+
+// query (name, amount) {
+//   NotSoPoor {
+//     name,
+//     amount,
+//   }
+// }

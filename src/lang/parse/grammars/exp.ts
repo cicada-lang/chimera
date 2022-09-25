@@ -13,7 +13,7 @@ export const operator = {
 
 export const operand = {
   $grammar: {
-    "operand:quote": [{ literal: { $pattern: ["string"] } }],
+    "operand:string": [{ literal: { $pattern: ["string"] } }],
     "operand:null": ['"null"'],
     "operand:true": ['"true"'],
     "operand:false": ['"false"'],

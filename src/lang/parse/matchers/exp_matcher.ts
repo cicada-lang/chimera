@@ -18,7 +18,7 @@ export function operator_matcher(tree: pt.Tree): Exp {
 
 export function operand_matcher(tree: pt.Tree): Exp {
   return pt.matcher<Exp>({
-    "operand:quote": ({ literal }, { span }) =>
+    "operand:string": ({ literal }, { span }) =>
       Exps.String(pt.trim_boundary(pt.str(literal), 1), span),
     "operand:null": ({}, { span }) => Exps.Null(span),
     "operand:true": ({}, { span }) => Exps.Boolean(true, span),
