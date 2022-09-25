@@ -3,9 +3,9 @@
 Logic programming with JSON.
 
 > I asked the boy beneath the pines. <br/>
-> He said, "The master’s gone alone <br/>
+> He said, "The master's gone alone <br/>
 > Herb-picking, somewhere on the mount, <br/>
-> Cloud-hidden, whereabouts unknown." <br/>
+> Cloud-hidden, **whereabouts unknown**." <br/>
 > -- [Jia Dao](https://en.wikipedia.org/wiki/Jia_Dao)
 
 ## Install
