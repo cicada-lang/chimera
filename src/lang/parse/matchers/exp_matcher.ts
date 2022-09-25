@@ -23,6 +23,17 @@ export function operand_matcher(tree: pt.Tree): Exp {
     "operand:null": ({}, { span }) => Exps.Null(span),
     "operand:true": ({}, { span }) => Exps.Boolean(true, span),
     "operand:false": ({}, { span }) => Exps.Boolean(false, span),
+    "operand:arrai": ({ elements, last_element }, { span }) =>
+      Exps.Arrai(
+        [
+          ...pt.matchers
+            .zero_or_more_matcher(elements)
+            .map(matchers.exp_matcher),
+          matchers.exp_matcher(last_element),
+        ],
+        span,
+      ),
+    "operand:arrai_empty": ({}, { span }) => Exps.Arrai([], span),
     "operand:objekt": ({ properties, last_property }, { span }) =>
       Exps.ObjektUnfolded(
         [

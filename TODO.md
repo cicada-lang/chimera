@@ -1,7 +1,3 @@
-syntax for array
-
-- tests/basic/array.cw
-
 syntax for number
 
 - tests/basic/number.cw
