@@ -1,5 +1,3 @@
-Stmts.Rule -- optional name
-
 solution/occur
 
 formatValue
