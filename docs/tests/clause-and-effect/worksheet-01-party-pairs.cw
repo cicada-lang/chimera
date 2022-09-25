@@ -10,13 +10,13 @@ Pair { male, female }
   Female { name: female }
 }
 
-// success {
-//   Pair { male: "bertram", female: "lucinda" }
-// }
+success {
+  Pair { male: "bertram", female: "lucinda" }
+}
 
-// failure {
-//   Pair { male: "apollo", female: "daphne" }
-// }
+failure {
+  Pair { male: "apollo", female: "daphne" }
+}
 
 query (female) {
   Pair { male: "percival", female }
