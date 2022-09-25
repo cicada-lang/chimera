@@ -7,7 +7,7 @@ import { deleteUndefined } from "../utils"
 test("parse Fact", () => {
   expect(parseStmts(`
 
-fact Male { name: "bertram" }
+Male { name: "bertram" }
 
 `)).toMatchObject(
     deleteUndefined([
