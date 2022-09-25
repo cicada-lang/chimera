@@ -2,7 +2,7 @@ exp/evaluateGoal
 
 - Relation should have Values.Goal
 
-move Goal to `value/`
+goal has value instead of exp
 
 freshenValue -- handle Relation
 

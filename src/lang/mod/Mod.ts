@@ -1,9 +1,9 @@
 import { Loader } from "../../loader"
 import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
-import { Exp } from "../exp"
 import { Goal } from "../goal"
 import { Stmt, StmtOutput } from "../stmt"
 import * as Values from "../value"
+import { Value } from "../value"
 
 export interface ModOptions {
   loader: Loader
@@ -34,14 +34,14 @@ export class Mod {
   defineClause(
     name: string,
     clauseName: string | undefined,
-    exp: Exp,
+    value: Value,
     goals?: Array<Goal>,
   ): void {
     const relation = this.findOrCreateRelation(name)
     relation.clauses.push(
       Values.Clause(
         clauseName || relation.clauses.length.toString(),
-        exp,
+        value,
         goals || [],
       ),
     )

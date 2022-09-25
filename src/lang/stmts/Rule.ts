@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import { evaluate, Exp } from "../exp"
 import { Goal } from "../goal"
 import { Mod } from "../mod"
 import { Span } from "../span"
@@ -16,6 +16,7 @@ export class Rule extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    mod.defineClause(this.name, this.clauseName, this.exp, this.goals)
+    const value = evaluate(mod.env, this.exp)
+    mod.defineClause(this.name, this.clauseName, value, this.goals)
   }
 }

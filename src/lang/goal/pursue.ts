@@ -50,9 +50,8 @@ function pursueClause(
   arg: Value,
   clause: Values.Clause,
 ): GoalQueue | undefined {
-  const value = evaluate(env, clause.exp)
   const usedNames = new Set(solutionNames(solution))
-  const pattern = Values.freshenValue(usedNames, value)
+  const pattern = Values.freshenValue(usedNames, clause.value)
 
   const newSolution = solve(solution, pattern, arg)
   if (newSolution === undefined) return undefined

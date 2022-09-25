@@ -134,14 +134,14 @@ export function Relation(clauses: Array<Clause>): Relation {
 
 export type Clause = {
   name: string
-  exp: Exp
+  value: Value
   goals: Array<Goal>
 }
 
-export function Clause(name: string, exp: Exp, goals: Array<Goal>): Clause {
+export function Clause(name: string, value: Value, goals: Array<Goal>): Clause {
   return {
     name,
-    exp,
+    value,
     goals,
   }
 }
