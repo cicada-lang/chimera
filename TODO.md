@@ -1,7 +1,13 @@
+Stmts.Success -- syntax -- parse success.test.ts
+
+Stmts.Failure.execute
+Stmts.Failure -- syntax -- parse failure.test.ts
+
+syntax for array
+
 syntax for null
 syntax for boolean
 syntax for number
-syntax for array
 
 solution/occur
 
@@ -9,11 +15,7 @@ no need to use `fresh`
 
 summary number of solutions
 
-Stmts.Success.execute
-Stmts.Success -- syntax -- parse success.test.ts
 
-Stmts.Failure.execute
-Stmts.Failure -- syntax -- parse failure.test.ts
 
 # functional
 
