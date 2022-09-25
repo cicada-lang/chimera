@@ -1,7 +1,5 @@
 solution/occur
 
-fix repl bug
-
 Stmts.Success.execute
 Stmts.Success -- syntax -- parse success.test.ts
 
@@ -72,3 +70,5 @@ maybe not equation, because there are also `!=` and `>`
 Stmts.AssertEqual
 
 - assert query results for testing
+
+fix repl bug
