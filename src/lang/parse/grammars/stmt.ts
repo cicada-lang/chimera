@@ -18,12 +18,7 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:query_no_name": [
-      '"query"',
-      '"{"',
-      { goals: "goals" },
-      '"}"',
-    ],
+    "stmt:query_no_name": ['"query"', '"{"', { goals: "goals" }, '"}"'],
     "stmt:query_no_name_2": [
       '"query"',
       '"("',
@@ -41,14 +36,27 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:success_no_name": [
+    "stmt:success_no_name": ['"success"', '"{"', { goals: "goals" }, '"}"'],
+    "stmt:success_no_name_2": [
       '"success"',
+      '"("',
+      '")"',
       '"{"',
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:success_no_name_2": [
-      '"success"',
+    "stmt:failure": [
+      '"failure"',
+      '"("',
+      { names: "names" },
+      '")"',
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
+    "stmt:failure_no_name": ['"failure"', '"{"', { goals: "goals" }, '"}"'],
+    "stmt:failure_no_name_2": [
+      '"failure"',
       '"("',
       '")"',
       '"{"',

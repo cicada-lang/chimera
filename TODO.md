@@ -1,6 +1,3 @@
-Stmts.Failure.execute
-Stmts.Failure -- syntax -- parse failure.test.ts
-
 syntax for array
 
 syntax for null

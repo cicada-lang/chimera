@@ -35,6 +35,16 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.Success([], matchers.goals_matcher(goals), span),
     "stmt:success_no_name_2": ({ goals }, { span }) =>
       new Stmts.Success([], matchers.goals_matcher(goals), span),
+    "stmt:failure": ({ names, goals }, { span }) =>
+      new Stmts.Failure(
+        matchers.names_matcher(names),
+        matchers.goals_matcher(goals),
+        span,
+      ),
+    "stmt:failure_no_name": ({ goals }, { span }) =>
+      new Stmts.Failure([], matchers.goals_matcher(goals), span),
+    "stmt:failure_no_name_2": ({ goals }, { span }) =>
+      new Stmts.Failure([], matchers.goals_matcher(goals), span),    
   })(tree)
 }
 
