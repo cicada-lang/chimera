@@ -8,6 +8,62 @@ Logic programming with JSON.
 > Cloud-hidden, whereabouts unknown." <br/>
 > -- [Jia Dao](https://en.wikipedia.org/wiki/Jia_Dao)
 
+## Install
+
+```
+npm install -g @cicada-lang/cicada-whereabouts
+```
+
+The command line program is called `whereabouts`:
+
+Example usage:
+
+```
+whereabouts docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw
+```
+
+Where [worksheet-03-affordable-journeys.cw](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw):
+
+```js
+Border ["sussex", "kent"]
+Border ["sussex", "surrey"]
+Border ["surrey", "kent"]
+Border ["hampshire", "sussex"]
+Border ["hampshire", "surrey"]
+Border ["hampshire", "berkshire"]
+Border ["berkshire", "surrey"]
+Border ["wiltshire", "hampshire"]
+Border ["wiltshire", "berkshire"]
+
+Adjacent [x, y]
+---------------- border {
+  Border [x, y]
+}
+
+Adjacent [x, y]
+---------------- symmetry {
+  Border [y, x]
+}
+
+Affordable [x, y]
+-------------------- {
+  Adjacent [x, z]
+  Adjacent [z, y]
+}
+
+query (to_kent) {
+  Affordable [to_kent, "kent"]
+}
+```
+
+Making use of [jq](https://stedolan.github.io/jq/):
+
+```
+whereabouts docs/tests/clause-and-effect/worksheet-05-member.cw | jq
+```
+
+See [docs/tests](docs/tests) for more examples.
+
 ## Development
 
 ```sh
