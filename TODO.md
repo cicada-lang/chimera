@@ -1,6 +1,4 @@
-exp/evaluateGoal
-
-- Relation should have Values.Goal
+fix exp/evaluateGoal
 
 goal has value instead of exp
 

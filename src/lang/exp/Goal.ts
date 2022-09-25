@@ -3,7 +3,6 @@ import { Exp } from "../exp"
 export type Goal = Apply | Unifiable
 
 export type Apply = {
-  family: "Goal"
   kind: "Apply"
   name: string
   exp: Exp
@@ -11,7 +10,6 @@ export type Apply = {
 
 export function Apply(name: string, exp: Exp): Apply {
   return {
-    family: "Goal",
     kind: "Apply",
     name,
     exp,
@@ -19,7 +17,6 @@ export function Apply(name: string, exp: Exp): Apply {
 }
 
 export type Unifiable = {
-  family: "Goal"
   kind: "Unifiable"
   left: Exp
   right: Exp
@@ -27,7 +24,6 @@ export type Unifiable = {
 
 export function Unifiable(left: Exp, right: Exp): Unifiable {
   return {
-    family: "Goal",
     kind: "Unifiable",
     left,
     right,
