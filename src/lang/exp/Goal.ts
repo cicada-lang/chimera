@@ -5,14 +5,14 @@ export type Goal = GoalApply | GoalUnifiable
 export type GoalApply = {
   kind: "GoalApply"
   name: string
-  exp: Exp
+  arg: Exp
 }
 
-export function GoalApply(name: string, exp: Exp): GoalApply {
+export function GoalApply(name: string, arg: Exp): GoalApply {
   return {
     kind: "GoalApply",
     name,
-    exp,
+    arg,
   }
 }
 

@@ -20,10 +20,10 @@ export function pursueGoal(
       }
 
       Values.assertRelation(relation)
-      const arg = goal.value
+
       const queues: Array<GoalQueue> = []
       for (const clause of relation.clauses) {
-        const queue = pursueClause(env, solution, arg, clause)
+        const queue = pursueClause(env, solution, goal.arg, clause)
         if (queue !== undefined) queues.push(queue)
       }
 

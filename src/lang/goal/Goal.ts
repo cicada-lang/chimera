@@ -6,15 +6,15 @@ export type Apply = {
   family: "Goal"
   kind: "Apply"
   name: string
-  value: Value
+  arg: Value
 }
 
-export function Apply(name: string, value: Value): Apply {
+export function Apply(name: string, arg: Value): Apply {
   return {
     family: "Goal",
     kind: "Apply",
     name,
-    value,
+    arg,
   }
 }
 
