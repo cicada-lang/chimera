@@ -1,5 +1,3 @@
-exp/Goal v.s. value/Goal
-
 exp/evaluateGoal
 
 - Relation should have Values.Goal
