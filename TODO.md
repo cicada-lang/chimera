@@ -6,6 +6,8 @@ solution/occur
 
 add test:tests scripts
 
+summary number of solutions
+
 Stmts.Success.execute
 Stmts.Success -- syntax -- parse success.test.ts
 
