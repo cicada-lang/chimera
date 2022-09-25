@@ -1,6 +1,3 @@
-tests/basic/string.cw
-
-
 tests/basic/object.cw
 
 syntax for array
