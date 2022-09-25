@@ -1,5 +1,3 @@
-syntax for number
-
 support query limit
 
 # functional

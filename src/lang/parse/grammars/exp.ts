@@ -13,10 +13,11 @@ export const operator = {
 
 export const operand = {
   $grammar: {
-    "operand:string": [{ literal: { $pattern: ["string"] } }],
     "operand:null": ['"null"'],
     "operand:true": ['"true"'],
     "operand:false": ['"false"'],
+    "operand:string": [{ data: { $pattern: ["string"] } }],
+    "operand:number": [{ data: { $pattern: ["number"] } }],
     "operand:arrai": [
       '"["',
       { elements: { $ap: ["zero_or_more", "exp", '","'] } },

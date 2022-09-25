@@ -18,8 +18,10 @@ export function operator_matcher(tree: pt.Tree): Exp {
 
 export function operand_matcher(tree: pt.Tree): Exp {
   return pt.matcher<Exp>({
-    "operand:string": ({ literal }, { span }) =>
-      Exps.String(pt.trim_boundary(pt.str(literal), 1), span),
+    "operand:string": ({ data }, { span }) =>
+      Exps.String(pt.trim_boundary(pt.str(data), 1), span),
+    "operand:number": ({ data }, { span }) =>
+      Exps.Number(Number.parseFloat(pt.str(data)), span),
     "operand:null": ({}, { span }) => Exps.Null(span),
     "operand:true": ({}, { span }) => Exps.Boolean(true, span),
     "operand:false": ({}, { span }) => Exps.Boolean(false, span),
