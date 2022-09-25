@@ -19,16 +19,39 @@ The command line program is called `whereabouts`:
 Example usage:
 
 ```
-whereabouts docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw
+whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw
 ```
 
-You can also make use of [jq](https://stedolan.github.io/jq/):
+You can also make use of [**jq**](https://stedolan.github.io/jq/):
 
 ```
-whereabouts docs/tests/clause-and-effect/worksheet-05-member.cw | jq
+whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw | jq
 ```
 
-The content of [worksheet-03-affordable-journeys.cw](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw) is:
+The content of [worksheet-02-drinking-pairs.cw](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw) is:
+
+```js
+Drink { person: "john", alcohol: "martini" }
+Drink { person: "mary", alcohol: "gin" }
+Drink { person: "susan", alcohol: "vodka" }
+Drink { person: "john", alcohol: "gin" }
+Drink { person: "fred", alcohol: "gin" }
+Drink { person: "fred", alcohol: "vodka" }
+
+Friends { left, right, alcohol }
+------------------------------------ {
+  Drink { person: left, alcohol }
+  Drink { person: right, alcohol }
+}
+
+query (left) {
+  Friends { left, right: "mary", alcohol: "gin" }
+}
+```
+
+The above example use JSON object, we can also use JSON array.
+
+Like in [worksheet-03-affordable-journeys.cw](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw):
 
 ```js
 Border ["sussex", "kent"]
@@ -59,30 +82,6 @@ Affordable [x, y]
 
 query (to_kent) {
   Affordable [to_kent, "kent"]
-}
-```
-
-The above example use JSON array, we can also use JSON object.
-
-For example, in [worksheet-02-drinking-pairs.cw](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw),
-we have the following:
-
-```js
-Drink { person: "john", alcohol: "martini" }
-Drink { person: "mary", alcohol: "gin" }
-Drink { person: "susan", alcohol: "vodka" }
-Drink { person: "john", alcohol: "gin" }
-Drink { person: "fred", alcohol: "gin" }
-Drink { person: "fred", alcohol: "vodka" }
-
-Friends { left, right, alcohol }
------------------------------------- {
-  Drink { person: left, alcohol }
-  Drink { person: right, alcohol }
-}
-
-query (left) {
-  Friends { left, right: "mary", alcohol: "gin" }
 }
 ```
 
