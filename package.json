@@ -6,6 +6,9 @@
   "files": [
     "lib"
   ],
+  "bin": {
+    "whereabouts": "bin/whereabouts.js"
+  },
   "scripts": {
     "prepare": "husky install",
     "build": "tsc",

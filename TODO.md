@@ -1,3 +1,7 @@
+loader
+app
+console
+
 solution/occur
 
 formatValue
@@ -7,10 +11,6 @@ Stmts.Success -- syntax -- parse success.test.ts
 
 Stmts.Failure.execute
 Stmts.Failure -- syntax -- parse failure.test.ts
-
-# command line interface
-
-the program should be called "whereabouts"
 
 # functional
 
