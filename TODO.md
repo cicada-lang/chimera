@@ -1,4 +1,10 @@
+syntax for null
+syntax for boolean
+syntax for number
+
 solution/occur
+
+add test:tests scripts
 
 Stmts.Success.execute
 Stmts.Success -- syntax -- parse success.test.ts
