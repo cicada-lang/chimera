@@ -1,10 +1,6 @@
-syntax for number
-
-- tests/basic/number.cw
+no need to use `fresh`
 
 solution/occur
-
-no need to use `fresh`
 
 summary number of solutions
 

@@ -1,0 +1,3 @@
+{ "solutions": [{ "to_kent": "sussex" }, { "to_kent": "surrey" }] }
+{ "solutions": [{ "to_sussex": "kent" }, { "to_sussex": "surrey" }, { "to_sussex": "hampshire" }] }
+{ "solutions": [] }

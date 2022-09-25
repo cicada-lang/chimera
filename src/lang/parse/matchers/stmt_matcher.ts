@@ -7,10 +7,18 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
     "stmt:fact": ({ name, exp }, { span }) =>
       new Stmts.Fact(pt.str(name), matchers.exp_matcher(exp), span),
-    "stmt:rule": ({ name, exp, goals }, { span }) =>
+    "stmt:rule_nameless": ({ name, exp, goals }, { span }) =>
       new Stmts.Rule(
         pt.str(name),
         undefined,
+        matchers.exp_matcher(exp),
+        matchers.goals_matcher(goals),
+        span,
+      ),
+    "stmt:rule_named": ({ name, clause_name, exp, goals }, { span }) =>
+      new Stmts.Rule(
+        pt.str(name),
+        pt.str(clause_name),
         matchers.exp_matcher(exp),
         matchers.goals_matcher(goals),
         span,
@@ -44,7 +52,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
     "stmt:failure_no_name": ({ goals }, { span }) =>
       new Stmts.Failure([], matchers.goals_matcher(goals), span),
     "stmt:failure_no_name_2": ({ goals }, { span }) =>
-      new Stmts.Failure([], matchers.goals_matcher(goals), span),    
+      new Stmts.Failure([], matchers.goals_matcher(goals), span),
   })(tree)
 }
 
