@@ -3,7 +3,7 @@ import { Value } from "../value"
 export function formatValue(value: Value): string {
   switch (value.kind) {
     case "Var": {
-      return value.name
+      return JSON.stringify(`#var:${value.name}`)
     }
 
     case "String": {
@@ -29,13 +29,13 @@ export function formatValue(value: Value): string {
 
     case "Objekt": {
       const properties = Object.entries(value.properties)
-        .map(([name, property]) => `${name}: ${formatValue(property)}`)
+        .map(([name, property]) => `"${name}": ${formatValue(property)}`)
         .join(", ")
       return `{ ${properties} }`
     }
 
     case "Relation": {
-      return "#Relation"
+      return JSON.stringify("#relation")
     }
   }
 }

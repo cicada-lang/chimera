@@ -1,9 +1,9 @@
 import { Goal } from "../goal"
 import { Mod } from "../mod"
+import { formatSolution } from "../solution"
+import { Solver } from "../solver"
 import { Span } from "../span"
 import { Stmt } from "../stmt"
-import { Solver } from "../solver"
-import { formatSolution } from "../solution"
 
 export class Query extends Stmt {
   constructor(
@@ -17,8 +17,12 @@ export class Query extends Stmt {
   async execute(mod: Mod): Promise<void> {
     const solver = Solver.forGoals(this.goals)
     const solutions = solver.solve(mod.env)
+    const s = solutions
+      .map((solution) => formatSolution(solution, this.names))
+      .join(", ")
+
     for (const solution of solutions) {
-      console.log(formatSolution(solution, this.names))
+      console.log(`{ "solutions": [${s}] }`)
     }
   }
 }

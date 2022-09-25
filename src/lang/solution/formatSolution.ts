@@ -9,10 +9,10 @@ export function formatSolution(
   for (const name of names) {
     let value = lookupValueInSolution(solution, name)
     if (value === undefined) {
-      properties.push(`${name}: unknown`)
+      properties.push(`"${name}": "#unknown"`)
     } else {
       value = deepWalk(solution, value)
-      properties.push(`${name}: ${formatValue(value)}`)
+      properties.push(`"${name}": ${formatValue(value)}`)
     }
   }
 

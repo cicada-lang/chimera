@@ -1,5 +1,3 @@
-improve formatSolution
-
 solution/occur
 
 fix repl bug
