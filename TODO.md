@@ -1,6 +1,8 @@
-move goal to `relation/`
+Relation should be value
 
-exp/Goal
+move goal to value
+
+exp/Goal v.s. value/Goal
 
 fix scope of clause -- no need to use `fresh`
 
