@@ -14,6 +14,7 @@ export const operator = {
 export const operand = {
   $grammar: {
     "operand:quote": [{ literal: { $pattern: ["string"] } }],
+    "operand:null": ['"null"' ],
     "operand:objekt": [
       '"{"',
       { properties: { $ap: ["zero_or_more", "property", '","'] } },

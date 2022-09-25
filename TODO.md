@@ -1,6 +1,7 @@
+pass tests/basic/null.cw
+
 syntax for array
 
-syntax for null
 syntax for boolean
 syntax for number
 
@@ -9,8 +10,6 @@ solution/occur
 no need to use `fresh`
 
 summary number of solutions
-
-
 
 # functional
 

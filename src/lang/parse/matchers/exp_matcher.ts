@@ -20,6 +20,8 @@ export function operand_matcher(tree: pt.Tree): Exp {
   return pt.matcher<Exp>({
     "operand:quote": ({ literal }, { span }) =>
       Exps.String(pt.trim_boundary(pt.str(literal), 1), span),
+    "operand:null": ({  }, { span }) =>
+      Exps.Null(span),
     "operand:objekt": ({ properties, last_property }, { span }) =>
       Exps.ObjektUnfolded(
         [
