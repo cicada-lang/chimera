@@ -21,9 +21,13 @@ export function pursueGoal(
       Values.assertRelation(relation)
       const queues: Array<GoalQueue> = []
       for (let clause of relation.clauses) {
-        const usedNames = new Set(solutionNames(solution))
+        const usedNames = new Set([
+          ...solutionNames(solution),
+          ...Values.valueUsedNames(goal.arg),
+        ])
+
         // NOTE side-effects on usedNames
-        clause = Values.freshenClause(usedNames, clause)
+        clause = Values.freshenClause(usedNames, new Map(), clause)
         const newSolution = solve(solution, clause.value, goal.arg)
         if (newSolution !== undefined) {
           queues.push(new GoalQueue(newSolution, clause.goals))

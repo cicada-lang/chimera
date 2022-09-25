@@ -9,8 +9,8 @@ export function solve(
   left = deepWalk(solution, left)
   right = deepWalk(solution, right)
 
-  if (left.kind === "Var" && right.kind === "Var") {
-    if (left.name === right.name) return solution
+  if (left.kind === "Var" && right.kind === "Var" && left.name === right.name) {
+    return solution
   }
 
   if (left.kind === "Var") {
