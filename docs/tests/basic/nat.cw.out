@@ -1,0 +1,3 @@
+{ "success": true, "count": 1, "solutions": [{ "z": { "prev": { "prev": "zero" } } }] }
+{ "success": true, "count": 3, "solutions": [{ "x": "zero", "y": { "prev": { "prev": "zero" } } }, { "x": { "prev": "zero" }, "y": { "prev": "zero" } }, { "x": { "prev": { "prev": "zero" } }, "y": "zero" }] }
+{ "success": true, "count": 1, "solutions": [{ "z": { "prev": { "prev": { "prev": { "prev": "zero" } } } } }] }

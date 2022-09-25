@@ -63,6 +63,8 @@ export class Solver<T> {
   solve(mod: Mod, env: Env, options: { limit?: number } = {}): Array<Solution> {
     const { limit } = options
 
+    // const limit = 3
+
     const solutions = []
     while (limit === undefined || solutions.length < limit) {
       const solution = this.next(mod, env)
