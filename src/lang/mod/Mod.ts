@@ -11,6 +11,8 @@ export interface ModOptions {
 }
 
 export class Mod {
+  variableCount = 0
+
   env: Env = EnvNull()
   outputs: Map<number, StmtOutput> = new Map()
   stmts: Array<Stmt> = []

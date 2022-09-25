@@ -32,9 +32,6 @@ export const operand = {
       { $ap: ["optional", '","'] },
       '"}"',
     ],
-    "operand:objekt_empty": [
-      '"{"',
-      '"}"',
-    ],
+    "operand:objekt_empty": ['"{"', '"}"'],
   },
 }

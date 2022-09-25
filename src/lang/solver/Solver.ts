@@ -1,7 +1,13 @@
 import { Env } from "../env"
 import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { Solution, SolutionNull } from "../solution"
+import {
+  formatSolution,
+  Solution,
+  solutionNames,
+  SolutionNull,
+} from "../solution"
+import { formatValue } from "../value"
 
 /**
 
@@ -23,6 +29,7 @@ export class Solver<T> {
 
   next(mod: Mod, env: Env): Solution | undefined {
     while (true) {
+      // this.report()
       const queue = this.queues.shift()
       if (queue === undefined) return undefined
       const queues = queue.step(mod, env)
@@ -34,17 +41,48 @@ export class Solver<T> {
     }
   }
 
+  report(): void {
+    console.log("solver.report:")
+    console.log()
+
+    for (const queue of this.queues) {
+      console.log(
+        "  solution:",
+        formatSolution(queue.solution, solutionNames(queue.solution)),
+      )
+      console.log()
+
+      for (const goal of queue.goals) {
+        console.log("   ", formatGoal(goal))
+      }
+
+      console.log()
+    }
+  }
+
   solve(mod: Mod, env: Env, options: { limit?: number } = {}): Array<Solution> {
     const { limit } = options
 
     const solutions = []
     while (limit === undefined || solutions.length < limit) {
-      const subst = this.next(mod, env)
-      if (subst === undefined) break
+      const solution = this.next(mod, env)
+      if (solution === undefined) break
 
-      solutions.push(subst)
+      solutions.push(solution)
     }
 
     return solutions
+  }
+}
+
+export function formatGoal(goal: Goal): string {
+  switch (goal.kind) {
+    case "Apply": {
+      return `${goal.name} ${formatValue(goal.arg)}`
+    }
+
+    case "Unifiable": {
+      return `equation ${formatValue(goal.left)} = ${formatValue(goal.right)}`
+    }
   }
 }

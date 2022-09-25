@@ -2,10 +2,10 @@ import { Env, lookupValueInEnv } from "../env"
 import { LangError } from "../errors"
 import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { Solution, solutionNames, solve } from "../solution"
+import { Solution, solve } from "../solution"
 import * as Values from "../value"
 
-export function pursueGoal(
+export function pursue(
   mod: Mod,
   env: Env,
   solution: Solution,
@@ -21,14 +21,10 @@ export function pursueGoal(
       Values.assertRelation(relation)
       const queues: Array<GoalQueue> = []
       for (let clause of relation.clauses) {
-        const usedNames = new Set([
-          ...solutionNames(solution),
-          ...Values.valueUsedNames(goal.arg),
-        ])
-
         // NOTE side-effects on usedNames
-        clause = Values.freshenClause(usedNames, new Map(), clause)
+        clause = Values.freshenClause(mod, new Map(), clause)
         const newSolution = solve(solution, clause.value, goal.arg)
+
         if (newSolution !== undefined) {
           queues.push(new GoalQueue(newSolution, clause.goals))
         }

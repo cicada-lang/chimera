@@ -1,4 +1,4 @@
-export * from "./formatValue"
 export * from "./assertRelation"
-export * from "./freshenValue"
+export * from "./formatValue"
+export * from "./freshenClause"
 export * from "./Value"
