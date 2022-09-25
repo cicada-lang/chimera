@@ -4,6 +4,7 @@ import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
 import { Exp } from "../exp"
 import { Goal } from "../goal"
 import { Stmt, StmtOutput } from "../stmt"
+import { Relation } from "../relation"
 import * as Values from "../value"
 
 export interface ModOptions {
@@ -12,6 +13,7 @@ export interface ModOptions {
 }
 
 export class Mod {
+  relations: Map<string, Relation> = new Map()
   env: Env = EnvNull()
   outputs: Map<number, StmtOutput> = new Map()
   stmts: Array<Stmt> = []

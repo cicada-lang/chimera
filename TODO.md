@@ -1,4 +1,4 @@
-Relation have its own namespace -- Relation is not value
+Relation is not value
 
 move goal and clause to `relation/`
 
