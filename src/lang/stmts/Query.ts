@@ -21,8 +21,6 @@ export class Query extends Stmt {
       .map((solution) => formatSolution(solution, this.names))
       .join(", ")
 
-    for (const solution of solutions) {
-      console.log(`{ "solutions": [${s}] }`)
-    }
+    console.log(`{ "solutions": [${s}] }`)
   }
 }
