@@ -20,10 +20,8 @@ Adjacent [x, y]
 
 Affordable [x, y]
 -------------------- {
-  fresh (z) {
-    Adjacent [x, z]
-    Adjacent [z, y]
-  }
+  Adjacent [x, z]
+  Adjacent [z, y]
 }
 
 query (to_kent) {
