@@ -16,7 +16,7 @@ export class Query extends Stmt {
 
   async execute(mod: Mod): Promise<void> {
     const solver = Solver.forGoals(this.goals)
-    const solutions = solver.solve(mod.env)
+    const solutions = solver.solve(mod, mod.env)
     const success = solutions.length > 0
     const properties = [
       `"success": ${success}`,

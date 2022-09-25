@@ -1,4 +1,4 @@
-import { Clause } from "../clause"
+
 
 export type Value =
   | Var
@@ -8,7 +8,7 @@ export type Value =
   | Null
   | Arrai
   | Objekt
-  | Relation
+
 
 export type Var = {
   family: "Value"
@@ -103,19 +103,5 @@ export function Objekt(properties: Record<string, Value>): Objekt {
     family: "Value",
     kind: "Objekt",
     properties,
-  }
-}
-
-export type Relation = {
-  family: "Value"
-  kind: "Relation"
-  clauses: Array<Clause>
-}
-
-export function Relation(clauses: Array<Clause>): Relation {
-  return {
-    family: "Value",
-    kind: "Relation",
-    clauses,
   }
 }

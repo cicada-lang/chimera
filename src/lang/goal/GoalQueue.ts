@@ -1,15 +1,16 @@
 import { Env } from "../env"
 import { Goal } from "../goal"
+import { Mod } from "../mod"
 import { Solution } from "../solution"
 
 export class GoalQueue {
   constructor(public solution: Solution, public goals: Array<Goal>) {}
 
-  step(env: Env): Array<GoalQueue> | undefined {
+  step(mod: Mod, env: Env): Array<GoalQueue> | undefined {
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
 
-    const queues = goal.pursue(env, this.solution)
+    const queues = goal.pursue(mod, env, this.solution)
     return queues.map(
       // NOTE About searching again
       // push front |   depth first

@@ -1,5 +1,3 @@
-export * from "./And"
 export * from "./Apply"
 export * from "./NotUnifiable"
-export * from "./Or"
 export * from "./Unifiable"

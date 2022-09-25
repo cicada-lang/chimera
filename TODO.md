@@ -1,5 +1,3 @@
-Relation is not value
-
 move goal and clause to `relation/`
 
 goal should be closed datatype

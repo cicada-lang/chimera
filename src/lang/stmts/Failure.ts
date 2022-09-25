@@ -16,7 +16,7 @@ export class Failure extends Stmt {
 
   async execute(mod: Mod): Promise<void> {
     const solver = Solver.forGoals(this.goals)
-    const solutions = solver.solve(mod.env)
+    const solutions = solver.solve(mod, mod.env)
     if (solutions.length > 0) {
       throw new LangError(`expect failure`)
     }

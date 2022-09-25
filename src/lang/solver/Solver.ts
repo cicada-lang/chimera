@@ -1,5 +1,6 @@
 import { Env } from "../env"
 import { Goal, GoalQueue } from "../goal"
+import { Mod } from "../mod"
 import { Solution, SolutionNull } from "../solution"
 
 /**
@@ -20,11 +21,11 @@ export class Solver<T> {
     return new Solver(queues)
   }
 
-  next(env: Env): Solution | null {
+  next(mod: Mod, env: Env): Solution | null {
     while (true) {
       const queue = this.queues.shift()
       if (queue === undefined) return null
-      const queues = queue.step(env)
+      const queues = queue.step(mod, env)
       if (queues === undefined) return queue.solution
       // NOTE about searching
       // push front |   depth first
@@ -33,12 +34,12 @@ export class Solver<T> {
     }
   }
 
-  solve(env: Env, options: { limit?: number } = {}): Array<Solution> {
+  solve(mod: Mod, env: Env, options: { limit?: number } = {}): Array<Solution> {
     const { limit } = options
 
     const solutions = []
     while (limit === undefined || solutions.length < limit) {
-      const subst = this.next(env)
+      const subst = this.next(mod, env)
       if (subst === null) break
       solutions.push(subst)
     }

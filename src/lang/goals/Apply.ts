@@ -1,8 +1,9 @@
 import { Clause } from "../clause"
-import { Env, lookupValueInEnv } from "../env"
+import { Env } from "../env"
 import { LangError } from "../errors"
 import { evaluate, Exp } from "../exp"
 import { Goal, GoalQueue } from "../goal"
+import { Mod } from "../mod"
 import { Solution, solutionNames, solve } from "../solution"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -12,13 +13,12 @@ export class Apply extends Goal {
     super()
   }
 
-  pursue(env: Env, solution: Solution): Array<GoalQueue> {
-    const relation = lookupValueInEnv(env, this.name)
+  pursue(mod: Mod, env: Env, solution: Solution): Array<GoalQueue> {
+    const relation = mod.relations.get(this.name)
     if (relation === undefined) {
       throw new LangError(`Undefined name: ${this.name}`)
     }
 
-    Values.assertRelation(relation)
     const arg = evaluate(env, this.exp)
     const queues: Array<GoalQueue> = []
     for (const clause of relation.clauses) {

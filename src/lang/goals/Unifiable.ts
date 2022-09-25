@@ -1,6 +1,7 @@
 import { Env } from "../env"
 import { evaluate, Exp } from "../exp"
 import { Goal, GoalQueue } from "../goal"
+import { Mod } from "../mod"
 import { Solution, solve } from "../solution"
 
 export class Unifiable extends Goal {
@@ -8,7 +9,7 @@ export class Unifiable extends Goal {
     super()
   }
 
-  pursue(env: Env, solution: Solution): Array<GoalQueue> {
+  pursue(mod: Mod, env: Env, solution: Solution): Array<GoalQueue> {
     const left = evaluate(env, this.left)
     const right = evaluate(env, this.right)
     const newSolution = solve(solution, left, right)
