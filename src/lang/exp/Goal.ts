@@ -1,30 +1,30 @@
 import { Exp } from "../exp"
 
-export type Goal = Apply | Unifiable
+export type Goal = GoalApply | GoalUnifiable
 
-export type Apply = {
-  kind: "Apply"
+export type GoalApply = {
+  kind: "GoalApply"
   name: string
   exp: Exp
 }
 
-export function Apply(name: string, exp: Exp): Apply {
+export function GoalApply(name: string, exp: Exp): GoalApply {
   return {
-    kind: "Apply",
+    kind: "GoalApply",
     name,
     exp,
   }
 }
 
-export type Unifiable = {
-  kind: "Unifiable"
+export type GoalUnifiable = {
+  kind: "GoalUnifiable"
   left: Exp
   right: Exp
 }
 
-export function Unifiable(left: Exp, right: Exp): Unifiable {
+export function GoalUnifiable(left: Exp, right: Exp): GoalUnifiable {
   return {
-    kind: "Unifiable",
+    kind: "GoalUnifiable",
     left,
     right,
   }

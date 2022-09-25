@@ -1,3 +1,4 @@
+parse 
 fix exp/evaluateGoal
 
 goal has value instead of exp

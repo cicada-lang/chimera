@@ -1,4 +1,3 @@
-import { Exp } from "../exp"
 import { Goal } from "../goal"
 
 export type Value =

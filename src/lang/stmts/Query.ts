@@ -1,4 +1,4 @@
-import { Goal } from "../goal"
+import * as Exps from "../exp"
 import { Mod } from "../mod"
 import { formatSolutions } from "../solution"
 import { Solver } from "../solver"
@@ -8,14 +8,15 @@ import { Stmt } from "../stmt"
 export class Query extends Stmt {
   constructor(
     public names: Array<string>,
-    public goals: Array<Goal>,
+    public goals: Array<Exps.Goal>,
     public span?: Span,
   ) {
     super()
   }
 
   async execute(mod: Mod): Promise<void> {
-    const solver = Solver.forGoals(this.goals)
+    const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
+    const solver = Solver.forGoals(goals)
     const solutions = solver.solve(mod, mod.env)
     const success = solutions.length > 0
     const properties = [

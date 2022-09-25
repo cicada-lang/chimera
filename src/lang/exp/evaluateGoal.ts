@@ -5,11 +5,11 @@ import { Goal } from "../goal"
 
 export function evaluateGoal(env: Env, goal: Exps.Goal): Goal {
   switch (goal.kind) {
-    case "Apply": {
+    case "GoalApply": {
       return Goals.Apply(goal.name, goal.exp)
     }
 
-    case "Unifiable": {
+    case "GoalUnifiable": {
       return Goals.Unifiable(goal.left, goal.right)
     }
   }

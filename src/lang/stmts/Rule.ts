@@ -1,5 +1,5 @@
+import * as Exps from "../exp"
 import { evaluate, Exp } from "../exp"
-import { Goal } from "../goal"
 import { Mod } from "../mod"
 import { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -9,7 +9,7 @@ export class Rule extends Stmt {
     public name: string,
     public clauseName: string | undefined,
     public exp: Exp,
-    public goals: Array<Goal>,
+    public goals: Array<Exps.Goal>,
     public span?: Span,
   ) {
     super()
@@ -17,6 +17,7 @@ export class Rule extends Stmt {
 
   async execute(mod: Mod): Promise<void> {
     const value = evaluate(mod.env, this.exp)
-    mod.defineClause(this.name, this.clauseName, value, this.goals)
+    const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
+    mod.defineClause(this.name, this.clauseName, value, goals)
   }
 }
