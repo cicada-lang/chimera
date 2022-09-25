@@ -1,20 +1,22 @@
 // TODO define `zero` and `add1` constructor of `Nat`
 
-Length [null, zero]
--------------------- {}
+// Length [null, zero]
+// -------------------- {}
 
-Length [{ head, tail }, length]
--------------------------------- {
-  fresh (prev) {
-    Length [tail, prev]
-    equation length = add1(prev)
-  }
-}
+// Length [{ head, tail }, length]
+// -------------------------------- {
+//   fresh (prev) {
+//     Length [tail, prev]
+//     equation length = add1(prev)
+//   }
+// }
 
-query (length) {
-  Length [cons("apple", cons("pear", null)), length]
-} assert { length: add1(add1(zero)) }
+// query (length) {
+//   Length [cons("apple", cons("pear", null)), length]
+// }
 
-query (list) { Length [list, zero] }
-query (list) { Length [list, add1(zero)] }
-query (list) { Length [list, add1(add1(zero))] }
+// // assert { length: add1(add1(zero)) }
+
+// query (list) { Length [list, zero] }
+// query (list) { Length [list, add1(zero)] }
+// query (list) { Length [list, add1(add1(zero))] }

@@ -1,5 +1,3 @@
-no need to use `fresh`
-
 syntax for null
 syntax for boolean
 syntax for number
@@ -7,7 +5,7 @@ syntax for array
 
 solution/occur
 
-add test:tests scripts
+no need to use `fresh`
 
 summary number of solutions
 

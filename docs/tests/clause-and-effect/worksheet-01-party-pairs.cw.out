@@ -1,0 +1,6 @@
+{ "solutions": [{ "female": "lucinda" }, { "female": "camilla" }] }
+{ "solutions": [] }
+{ "solutions": [{ "male": "bertram" }, { "male": "percival" }] }
+{ "solutions": [] }
+{ "solutions": [] }
+{ "solutions": [{ "male": "bertram", "female": "lucinda" }, { "male": "bertram", "female": "camilla" }, { "male": "percival", "female": "lucinda" }, { "male": "percival", "female": "camilla" }] }
