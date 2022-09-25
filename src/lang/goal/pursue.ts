@@ -1,9 +1,8 @@
-import { Env } from "../env"
+import { Env, lookupValueInEnv } from "../env"
 import { LangError } from "../errors"
 import { evaluate } from "../exp"
 import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { Clause } from "../relation"
 import { Solution, solutionNames, solve } from "../solution"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -16,11 +15,12 @@ export function pursue(
 ): Array<GoalQueue> {
   switch (goal.kind) {
     case "Apply": {
-      const relation = mod.relations.get(goal.name)
+      const relation = lookupValueInEnv(env, goal.name)
       if (relation === undefined) {
         throw new LangError(`Undefined relation name: ${goal.name}`)
       }
 
+      Values.assertRelation(relation)
       const arg = evaluate(env, goal.exp)
       const queues: Array<GoalQueue> = []
       for (const clause of relation.clauses) {
@@ -48,7 +48,7 @@ function pursueClause(
   env: Env,
   solution: Solution,
   arg: Value,
-  clause: Clause,
+  clause: Values.Clause,
 ): GoalQueue | undefined {
   const value = evaluate(env, clause.exp)
   const usedNames = new Set(solutionNames(solution))

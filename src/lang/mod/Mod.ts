@@ -1,9 +1,9 @@
 import { Loader } from "../../loader"
-import { Env, EnvNull } from "../env"
+import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
 import { Exp } from "../exp"
 import { Goal } from "../goal"
-import { Clause, Relation } from "../relation"
 import { Stmt, StmtOutput } from "../stmt"
+import * as Values from "../value"
 
 export interface ModOptions {
   loader: Loader
@@ -11,7 +11,6 @@ export interface ModOptions {
 }
 
 export class Mod {
-  relations: Map<string, Relation> = new Map()
   env: Env = EnvNull()
   outputs: Map<number, StmtOutput> = new Map()
   stmts: Array<Stmt> = []
@@ -40,7 +39,7 @@ export class Mod {
   ): void {
     const relation = this.findOrCreateRelation(name)
     relation.clauses.push(
-      Clause(
+      Values.Clause(
         clauseName || relation.clauses.length.toString(),
         exp,
         goals || [],
@@ -48,12 +47,15 @@ export class Mod {
     )
   }
 
-  private findOrCreateRelation(name: string): Relation {
-    let relation = this.relations.get(name)
-    if (relation !== undefined) return relation
+  private findOrCreateRelation(name: string): Values.Relation {
+    let relation = lookupValueInEnv(this.env, name)
+    if (relation !== undefined) {
+      Values.assertRelation(relation)
+      return relation
+    }
 
-    relation = Relation([])
-    this.relations.set(name, relation)
+    relation = Values.Relation([])
+    this.env = EnvCons(name, relation, this.env)
     return relation
   }
 }

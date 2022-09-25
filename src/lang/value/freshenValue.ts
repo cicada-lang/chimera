@@ -50,5 +50,10 @@ export function freshenValue(usedNames: Set<string>, value: Value): Value {
         ),
       )
     }
+
+    case "Relation": {
+      // TODO
+      return value
+    }
   }
 }

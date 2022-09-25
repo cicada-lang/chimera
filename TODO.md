@@ -1,8 +1,12 @@
-Relation should be value
-
-move goal to value
-
 exp/Goal v.s. value/Goal
+
+exp/evaluateGoal
+
+- Relation should have Values.Goal
+
+move Goal to `value/`
+
+freshenValue -- handle Relation
 
 fix scope of clause -- no need to use `fresh`
 
