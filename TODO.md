@@ -1,4 +1,3 @@
-solution/solve
 solution/occur
 
 formatValue
@@ -69,7 +68,6 @@ maybe not equation, because there are also `!=` and `>`
 [maybe] provide ways to view array as pure logical
 
 - maybe by doing this we can avoid defining `cons`
-
 
 # playground
 
