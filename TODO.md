@@ -1,8 +1,6 @@
 move goal to `relation/`
 
-goal should be closed datatype
-
-- relation/pursueGoal
+exp/Goal
 
 fix scope of clause -- no need to use `fresh`
 

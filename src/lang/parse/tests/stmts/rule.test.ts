@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
 import * as Exps from "../../../exp"
-import * as Goals from "../../../goals"
+import * as Goals from "../../../goal"
 import * as Stmts from "../../../stmts"
 import { parseStmts } from "../../index"
 import { deleteUndefined } from "../utils"
@@ -27,14 +27,14 @@ Friends { left, right, alcohol }
           Exps.PropertyPlain("alcohol", Exps.Var("alcohol")),
         ]),
         [
-          new Goals.Apply(
+          Goals.Apply(
             "Drink",
             Exps.ObjektUnfolded([
               Exps.PropertyPlain("person", Exps.Var("left")),
               Exps.PropertyPlain("alcohol", Exps.Var("alcohol")),
             ]),
           ),
-          new Goals.Apply(
+          Goals.Apply(
             "Drink",
             Exps.ObjektUnfolded([
               Exps.PropertyPlain("person", Exps.Var("right")),

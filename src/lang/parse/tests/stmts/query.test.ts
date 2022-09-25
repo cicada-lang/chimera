@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
 import * as Exps from "../../../exp"
-import * as Goals from "../../../goals"
+import * as Goals from "../../../goal"
 import * as Stmts from "../../../stmts"
 import { parseStmts } from "../../index"
 import { deleteUndefined } from "../utils"
@@ -19,7 +19,7 @@ query (left) {
       new Stmts.Query(
         ["left"],
         [
-          new Goals.Apply(
+          Goals.Apply(
             "Friends",
             Exps.ObjektUnfolded([
               Exps.PropertyPlain("left", Exps.Var("left")),
@@ -47,7 +47,7 @@ query {
       new Stmts.Query(
         [],
         [
-          new Goals.Apply(
+          Goals.Apply(
             "Friends",
             Exps.ObjektUnfolded([
               Exps.PropertyPlain("left", Exps.String("mary")),
@@ -75,7 +75,7 @@ query () {
       new Stmts.Query(
         [],
         [
-          new Goals.Apply(
+          Goals.Apply(
             "Friends",
             Exps.ObjektUnfolded([
               Exps.PropertyPlain("left", Exps.String("mary")),
