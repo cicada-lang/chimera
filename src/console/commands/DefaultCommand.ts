@@ -2,8 +2,7 @@ import { Command, CommandRunner } from "@xieyuheng/command-line"
 import ty from "@xieyuheng/ty"
 import * as Commands from "../commands"
 
-// type Args = { file?: string }
-type Args = { file: string }
+type Args = { file?: string }
 type Opts = { help?: boolean; version?: boolean }
 
 export class DefaultCommand extends Command<Args, Opts> {
@@ -12,8 +11,7 @@ export class DefaultCommand extends Command<Args, Opts> {
   // description = "Open REPL or run an file"
   description = "Run an file"
 
-  // args = { file: ty.optional(ty.string()) }
-  args = { file: ty.string() }
+  args = { file: ty.optional(ty.string()) }
   opts = { help: ty.optional(ty.boolean()), version: ty.optional(ty.boolean()) }
   alias = { help: ["h"], version: ["v"] }
 
@@ -31,18 +29,17 @@ export class DefaultCommand extends Command<Args, Opts> {
 
     const file = argv["file"]
 
-    {
+    if (file === undefined) {
+      const command = new Commands.CommonHelpCommand()
+      await command.execute({}, runner)
+      return
+
+      // const dir = process.cwd()
+      // const command = new Commands.ReplCommand()
+      // await command.execute({ dir })
+    } else {
       const command = new Commands.RunCommand()
       await command.execute({ file })
     }
-
-    // if (file === undefined) {
-    //   const dir = process.cwd()
-    //   const command = new Commands.ReplCommand()
-    //   await command.execute({ dir })
-    // } else {
-    //   const command = new Commands.RunCommand()
-    //   await command.execute({ file })
-    // }
   }
 }
