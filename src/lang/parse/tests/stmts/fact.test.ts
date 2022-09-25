@@ -5,7 +5,7 @@ import { parseStmts } from "../../index"
 import { deleteUndefined } from "../utils"
 
 test("parse Fact", () => {
-  expect(parseStmts('Male { name: "bertram" }')).toMatchObject(
+  expect(parseStmts('fact Male { name: "bertram" }')).toMatchObject(
     deleteUndefined([
       new Stmts.Fact(
         "Male",

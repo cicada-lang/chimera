@@ -9,7 +9,7 @@ test("parse Rule", () => {
   expect(
     parseStmts(`
 
-Friends { left, right, alcohol }
+rule Friends { left, right, alcohol }
 ------------------------------------ {
   Drink { person: left, alcohol }
   Drink { person: right, alcohol }
