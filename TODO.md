@@ -1,4 +1,4 @@
-fix scope of clause -- no need to use `fresh`
+fix scope of clause
 
 solution/occur
 

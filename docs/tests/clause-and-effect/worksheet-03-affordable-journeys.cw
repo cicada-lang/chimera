@@ -20,8 +20,9 @@ Adjacent [x, y]
 
 Affordable [x, y]
 -------------------- {
-  Adjacent [x, z]
-  Adjacent [z, y]
+  Adjacent [x, y]
+  // Adjacent [x, z]
+  // Adjacent [z, y]
 }
 
 query (to_kent) {

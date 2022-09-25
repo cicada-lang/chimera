@@ -4,7 +4,6 @@ import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { Solution, solutionNames, solve } from "../solution"
 import * as Values from "../value"
-import { Value } from "../value"
 
 export function pursueGoal(
   mod: Mod,
@@ -14,17 +13,21 @@ export function pursueGoal(
 ): Array<GoalQueue> {
   switch (goal.kind) {
     case "Apply": {
-      const relation = lookupValueInEnv(env, goal.name)
+      let relation = lookupValueInEnv(env, goal.name)
       if (relation === undefined) {
         throw new LangError(`Undefined relation name: ${goal.name}`)
       }
 
       Values.assertRelation(relation)
-
       const queues: Array<GoalQueue> = []
-      for (const clause of relation.clauses) {
-        const queue = pursueClause(env, solution, goal.arg, clause)
-        if (queue !== undefined) queues.push(queue)
+      for (let clause of relation.clauses) {
+        const usedNames = new Set(solutionNames(solution))
+        // NOTE side-effects on usedNames
+        clause = Values.freshenClause(usedNames, clause)
+        const newSolution = solve(solution, clause.value, goal.arg)
+        if (newSolution !== undefined) {
+          queues.push(new GoalQueue(newSolution, clause.goals))
+        }
       }
 
       return queues
@@ -39,19 +42,4 @@ export function pursueGoal(
       }
     }
   }
-}
-
-function pursueClause(
-  env: Env,
-  solution: Solution,
-  arg: Value,
-  clause: Values.Clause,
-): GoalQueue | undefined {
-  const usedNames = new Set(solutionNames(solution))
-  const pattern = Values.freshenValue(usedNames, clause.value)
-
-  const newSolution = solve(solution, pattern, arg)
-  if (newSolution === undefined) return undefined
-
-  return new GoalQueue(newSolution, clause.goals)
 }

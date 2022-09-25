@@ -54,9 +54,7 @@ export function freshenValue(usedNames: Set<string>, value: Value): Value {
     }
 
     case "Relation": {
-      return Values.Relation(
-        value.clauses.map((clause) => freshenClause(usedNames, clause)),
-      )
+      return value
     }
   }
 }
