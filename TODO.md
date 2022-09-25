@@ -1,5 +1,3 @@
-query syntax -- can take zero names
-
 Stmts.Failure.execute
 Stmts.Failure -- syntax -- parse failure.test.ts
 

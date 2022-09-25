@@ -21,6 +21,10 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
+    "stmt:query_no_name": ({ goals }, { span }) =>
+      new Stmts.Query([], matchers.goals_matcher(goals), span),
+    "stmt:query_no_name_2": ({ goals }, { span }) =>
+      new Stmts.Query([], matchers.goals_matcher(goals), span),
     "stmt:success": ({ names, goals }, { span }) =>
       new Stmts.Success(
         matchers.names_matcher(names),
@@ -28,6 +32,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       ),
     "stmt:success_no_name": ({ goals }, { span }) =>
+      new Stmts.Success([], matchers.goals_matcher(goals), span),
+    "stmt:success_no_name_2": ({ goals }, { span }) =>
       new Stmts.Success([], matchers.goals_matcher(goals), span),
   })(tree)
 }

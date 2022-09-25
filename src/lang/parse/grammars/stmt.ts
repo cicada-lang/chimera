@@ -18,6 +18,20 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
+    "stmt:query_no_name": [
+      '"query"',
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
+    "stmt:query_no_name_2": [
+      '"query"',
+      '"("',
+      '")"',
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
     "stmt:success": [
       '"success"',
       '"("',
@@ -29,6 +43,14 @@ export const stmt = {
     ],
     "stmt:success_no_name": [
       '"success"',
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
+    "stmt:success_no_name_2": [
+      '"success"',
+      '"("',
+      '")"',
       '"{"',
       { goals: "goals" },
       '"}"',
