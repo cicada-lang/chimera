@@ -7,7 +7,7 @@ import { Solution, solutionNames, solve } from "../solution"
 import * as Values from "../value"
 import { Value } from "../value"
 
-export function pursue(
+export function pursueGoal(
   mod: Mod,
   env: Env,
   solution: Solution,
