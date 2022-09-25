@@ -1,33 +1,31 @@
-// Edge ["g", "h"]
-// Edge ["g", "d"]
-// Edge ["e", "d"]
-// Edge ["h", "f"]
-// Edge ["e", "f"]
-// Edge ["a", "e"]
-// Edge ["a", "b"]
-// Edge ["b", "f"]
-// Edge ["b", "c"]
-// Edge ["f", "c"]
+Edge ["g", "h"]
+Edge ["g", "d"]
+Edge ["e", "d"]
+Edge ["h", "f"]
+Edge ["e", "f"]
+Edge ["a", "e"]
+Edge ["a", "b"]
+Edge ["b", "f"]
+Edge ["b", "c"]
+Edge ["f", "c"]
 
-// Path [x, x]
-// ------------ {}
+Path [x, x]
+------------ {}
 
-// Path [x, y]
-// ------------ {
-//   fresh (z) {
-//     Edge [x, z]
-//     Path [z, y]
-//   }
-// }
+Path [x, y]
+------------ {
+  Edge [x, z]
+  Path [z, y]
+}
 
-// query (x) {
-//   Path ["g", x]
-// }
+query (x) {
+  Path ["g", x]
+}
 
-// query (x) {
-//   Path [x, "h"]
-// }
+query (x) {
+  Path [x, "h"]
+}
 
-// query (x, y) {
-//   Path [x, y]
-// }
+query (x, y) {
+  Path [x, y]
+}
