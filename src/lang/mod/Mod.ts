@@ -1,6 +1,6 @@
 import { Loader } from "../../loader"
 import { Clause } from "../clause"
-import { Env, EnvNull, lookupValueInEnv } from "../env"
+import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
 import { Exp } from "../exp"
 import { Goal } from "../goal"
 import { Stmt, StmtOutput } from "../stmt"
@@ -49,9 +49,11 @@ export class Mod {
   }
 
   private findOrCreateRelation(name: string): Values.Relation {
-    const relation = lookupValueInEnv(this.env, name)
+    let relation = lookupValueInEnv(this.env, name)
     if (relation === undefined) {
-      return Values.Relation([])
+      relation = Values.Relation([])
+      this.env = EnvCons(name, relation, this.env)
+      return relation
     } else {
       Values.assertRelation(relation)
       return relation
