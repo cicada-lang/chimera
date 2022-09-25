@@ -22,6 +22,10 @@ export function operand_matcher(tree: pt.Tree): Exp {
       Exps.String(pt.trim_boundary(pt.str(literal), 1), span),
     "operand:null": ({  }, { span }) =>
       Exps.Null(span),
+    "operand:true": ({  }, { span }) =>
+      Exps.Boolean(true, span),
+    "operand:false": ({  }, { span }) =>
+      Exps.Boolean(false, span),
     "operand:objekt": ({ properties, last_property }, { span }) =>
       Exps.ObjektUnfolded(
         [

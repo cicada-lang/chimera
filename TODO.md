@@ -1,8 +1,9 @@
 pass tests/basic/null.cw
+pass tests/basic/boolean.cw
 
 syntax for array
 
-syntax for boolean
+
 syntax for number
 
 solution/occur
