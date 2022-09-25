@@ -1,7 +1,3 @@
-fix worksheet-04-acyclic-directed-graph
-
-- `{ "x": "?y", "y": "#unknown" }`
-
 solution/occur
 
 # functional
