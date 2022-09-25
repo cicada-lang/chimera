@@ -1,6 +1,4 @@
-loader
-app
-console
+Stmts.Rule -- optional name
 
 solution/occur
 

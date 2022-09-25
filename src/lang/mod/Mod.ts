@@ -1,3 +1,4 @@
+import { Loader } from "../../loader"
 import { Clause } from "../clause"
 import { Env, EnvNull, lookupValueInEnv } from "../env"
 import { Exp } from "../exp"
@@ -5,10 +6,17 @@ import { Goal } from "../goal"
 import { Stmt, StmtOutput } from "../stmt"
 import * as Values from "../value"
 
+export interface ModOptions {
+  loader: Loader
+  url: URL
+}
+
 export class Mod {
   env: Env = EnvNull()
   outputs: Map<number, StmtOutput> = new Map()
   stmts: Array<Stmt> = []
+
+  constructor(public options: ModOptions) {}
 
   async executeStmts(stmts: Array<Stmt>): Promise<Array<StmtOutput>> {
     const outputs = []
