@@ -21,10 +21,10 @@ export class Solver<T> {
     return new Solver(queues)
   }
 
-  next(mod: Mod, env: Env): Solution | null {
+  next(mod: Mod, env: Env): Solution | undefined {
     while (true) {
       const queue = this.queues.shift()
-      if (queue === undefined) return null
+      if (queue === undefined) return undefined
       const queues = queue.step(mod, env)
       if (queues === undefined) return queue.solution
       // NOTE about searching
@@ -40,7 +40,8 @@ export class Solver<T> {
     const solutions = []
     while (limit === undefined || solutions.length < limit) {
       const subst = this.next(mod, env)
-      if (subst === null) break
+      if (subst === undefined) break
+
       solutions.push(subst)
     }
 

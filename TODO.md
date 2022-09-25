@@ -1,4 +1,6 @@
-fix scope of clause
+solver.report() -- for debug
+
+fix docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw
 
 solution/occur
 

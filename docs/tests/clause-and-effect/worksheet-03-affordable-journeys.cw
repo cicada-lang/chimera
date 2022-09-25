@@ -24,13 +24,13 @@ Affordable [x, y]
   Adjacent [z, y]
 }
 
-query (to_kent) {
-  Affordable [to_kent, "kent"]
-}
+// query (to_kent) {
+//   Affordable [to_kent, "kent"]
+// }
 
-query (to_sussex) {
-  Affordable ["sussex", to_sussex]
-}
+// query (to_sussex) {
+//   Affordable ["sussex", to_sussex]
+// }
 
 query (x, y) {
   Affordable [x, y]

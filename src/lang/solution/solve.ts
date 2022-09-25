@@ -1,4 +1,4 @@
-import { deepWalk, Solution, SolutionCons } from "../solution"
+import { Solution, SolutionCons, walk } from "../solution"
 import { Value } from "../value"
 
 export function solve(
@@ -6,8 +6,8 @@ export function solve(
   left: Value,
   right: Value,
 ): Solution | undefined {
-  left = deepWalk(solution, left)
-  right = deepWalk(solution, right)
+  left = walk(solution, left)
+  right = walk(solution, right)
 
   if (left.kind === "Var" && right.kind === "Var" && left.name === right.name) {
     return solution
@@ -46,8 +46,10 @@ export function solve(
     for (const [index, leftElement] of left.elements.entries()) {
       const rightElement = right.elements[index]
       if (rightElement === undefined) return solution
+
       const nextSolution = solve(solution, leftElement, rightElement)
       if (nextSolution === undefined) return undefined
+
       solution = nextSolution
     }
 
@@ -58,8 +60,10 @@ export function solve(
     for (const [name, leftProperty] of Object.entries(left.properties)) {
       const rightProperty = right.properties[name]
       if (rightProperty === undefined) return solution
+
       const nextSolution = solve(solution, leftProperty, rightProperty)
       if (nextSolution === undefined) return undefined
+
       solution = nextSolution
     }
 
