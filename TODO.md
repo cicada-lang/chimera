@@ -1,5 +1,3 @@
-solution/occur
-
 support query limit
 
 # functional

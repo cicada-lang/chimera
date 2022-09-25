@@ -14,12 +14,12 @@ export function solve(
   }
 
   if (left.kind === "Var") {
-    if (occur(left.name, right)) return undefined
+    if (occur(solution, left.name, right)) return undefined
     return SolutionCons(left.name, right, solution)
   }
 
   if (right.kind === "Var") {
-    if (occur(right.name, left)) return undefined
+    if (occur(solution, right.name, left)) return undefined
     return SolutionCons(right.name, left, solution)
   }
 
