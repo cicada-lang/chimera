@@ -1,9 +1,8 @@
 import { Loader } from "../../loader"
-import { Clause } from "../clause"
 import { Env, EnvNull } from "../env"
 import { Exp } from "../exp"
 import { Goal } from "../goal"
-import { Relation } from "../relation"
+import { Clause, Relation } from "../relation"
 import { Stmt, StmtOutput } from "../stmt"
 
 export interface ModOptions {

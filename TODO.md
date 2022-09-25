@@ -1,4 +1,4 @@
-move goal and clause to `relation/`
+move goal to `relation/`
 
 goal should be closed datatype
 

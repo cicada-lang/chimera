@@ -1,4 +1,4 @@
-import { Clause } from "../clause"
+import { Clause } from "../relation"
 
 export type Relation = {
   kind: "Relation"
