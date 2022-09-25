@@ -22,7 +22,13 @@ Example usage:
 whereabouts docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw
 ```
 
-Where [worksheet-03-affordable-journeys.cw](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw):
+You can also make use of [jq](https://stedolan.github.io/jq/):
+
+```
+whereabouts docs/tests/clause-and-effect/worksheet-05-member.cw | jq
+```
+
+The content of [worksheet-03-affordable-journeys.cw](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw) is:
 
 ```js
 Border ["sussex", "kent"]
@@ -56,13 +62,7 @@ query (to_kent) {
 }
 ```
 
-Making use of [jq](https://stedolan.github.io/jq/):
-
-```
-whereabouts docs/tests/clause-and-effect/worksheet-05-member.cw | jq
-```
-
-See [docs/tests](docs/tests) for more examples.
+Please see [docs/tests](docs/tests) for more examples.
 
 ## Development
 
