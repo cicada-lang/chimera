@@ -7,6 +7,8 @@ export function goal_matcher(tree: pt.Tree): Goal {
   return pt.matcher<Goal>({
     "goal:apply": ({ name, exp }, { span }) =>
       new Goals.Apply(pt.str(name), matchers.exp_matcher(exp)),
+    "goal:equation": ({ left, right }, { span }) =>
+      new Goals.Unifiable(matchers.exp_matcher(left), matchers.exp_matcher(right)),
   })(tree)
 }
 

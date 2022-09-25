@@ -1,10 +1,15 @@
-pass tests/basic/null.cw
-pass tests/basic/boolean.cw
+tests/basic/string.cw
+
+
+tests/basic/object.cw
 
 syntax for array
 
+- tests/basic/array.cw
 
 syntax for number
+
+- tests/basic/number.cw
 
 solution/occur
 

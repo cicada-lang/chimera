@@ -1,6 +1,7 @@
 export const goal = {
   $grammar: {
     "goal:apply": [{ name: "name" }, { exp: "exp" }],
+    "goal:equation": ['"equation"', { left: "exp" }, '"="', { right: "exp" }],
   },
 }
 
