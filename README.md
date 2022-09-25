@@ -62,6 +62,30 @@ query (to_kent) {
 }
 ```
 
+The above example use JSON array, we can also use JSON object.
+
+For example, in [worksheet-02-drinking-pairs.cw](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw),
+we have the following:
+
+```js
+Drink { person: "john", alcohol: "martini" }
+Drink { person: "mary", alcohol: "gin" }
+Drink { person: "susan", alcohol: "vodka" }
+Drink { person: "john", alcohol: "gin" }
+Drink { person: "fred", alcohol: "gin" }
+Drink { person: "fred", alcohol: "vodka" }
+
+Friends { left, right, alcohol }
+------------------------------------ {
+  Drink { person: left, alcohol }
+  Drink { person: right, alcohol }
+}
+
+query (left) {
+  Friends { left, right: "mary", alcohol: "gin" }
+}
+```
+
 Please see [docs/tests](docs/tests) for more examples.
 
 ## Development
