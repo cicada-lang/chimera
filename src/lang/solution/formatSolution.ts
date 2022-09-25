@@ -1,4 +1,5 @@
 import { deepWalk, lookupValueInSolution, Solution } from "../solution"
+import { formatValue } from "../value"
 
 export function formatSolution(
   solution: Solution,
@@ -11,7 +12,7 @@ export function formatSolution(
       properties.push(`${name}: unknown`)
     } else {
       value = deepWalk(solution, value)
-      properties.push(`${name}: ${JSON.stringify(value)}`)
+      properties.push(`${name}: ${formatValue(value)}`)
     }
   }
 
