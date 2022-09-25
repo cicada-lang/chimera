@@ -1,5 +1,3 @@
-freshenValue -- handle Relation
-
 fix scope of clause -- no need to use `fresh`
 
 solution/occur

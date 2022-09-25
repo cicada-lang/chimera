@@ -1,3 +1,5 @@
+import * as Goals from "../goal"
+import { Goal } from "../goal"
 import { freshen } from "../utils/freshen"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -52,8 +54,35 @@ export function freshenValue(usedNames: Set<string>, value: Value): Value {
     }
 
     case "Relation": {
-      // TODO
-      return value
+      return Values.Relation(
+        value.clauses.map((clause) => freshenClause(usedNames, clause)),
+      )
+    }
+  }
+}
+
+export function freshenClause(
+  usedNames: Set<string>,
+  clause: Values.Clause,
+): Values.Clause {
+  return Values.Clause(
+    clause.name,
+    freshenValue(usedNames, clause.value),
+    clause.goals.map((goal) => freshenGoal(usedNames, goal)),
+  )
+}
+
+export function freshenGoal(usedNames: Set<string>, goal: Goal): Goal {
+  switch (goal.kind) {
+    case "Apply": {
+      return Goals.Apply(goal.name, freshenValue(usedNames, goal.arg))
+    }
+
+    case "Unifiable": {
+      return Goals.Unifiable(
+        freshenValue(usedNames, goal.left),
+        freshenValue(usedNames, goal.right),
+      )
     }
   }
 }
