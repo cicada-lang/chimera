@@ -18,6 +18,21 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
+    "stmt:success": [
+      '"success"',
+      '"("',
+      { names: "names" },
+      '")"',
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
+    "stmt:success_no_name": [
+      '"success"',
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
   },
 }
 
