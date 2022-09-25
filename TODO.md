@@ -1,4 +1,12 @@
-no need to use `fresh`
+Relation have its own namespace -- Relation is not value
+
+move goal and clause to `relation/`
+
+goal should be closed datatype
+
+- relation/pursueGoal
+
+fix scope of clause -- no need to use `fresh`
 
 solution/occur
 
