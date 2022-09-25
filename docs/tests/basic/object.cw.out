@@ -1,2 +1,3 @@
 { "solutions": [{ "abc": { "a": "a", "b": "b", "c": "c" } }] }
 { "solutions": [{ "a": "a", "b": "b", "c": "c" }] }
+{ "solutions": [{ "empty": {  } }] }

@@ -13,3 +13,7 @@ query (a, b, c) {
     c: "c",
   }
 }
+
+query (empty) {
+  equation empty = {}
+}
