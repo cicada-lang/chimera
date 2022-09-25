@@ -18,3 +18,10 @@ export function formatSolution(
 
   return `{ ${properties.join(", ")} }`
 }
+
+export function formatSolutions(
+  solutions: Array<Solution>,
+  names: Array<string>,
+): string {
+  return solutions.map((solution) => formatSolution(solution, names)).join(", ")
+}

@@ -1,3 +1,3 @@
-{ "solutions": [{ "to_kent": "sussex" }, { "to_kent": "surrey" }] }
-{ "solutions": [{ "to_sussex": "kent" }, { "to_sussex": "surrey" }, { "to_sussex": "hampshire" }] }
-{ "solutions": [] }
+{ "success": true, "count": 2, "solutions": [{ "to_kent": "sussex" }, { "to_kent": "surrey" }] }
+{ "success": true, "count": 3, "solutions": [{ "to_sussex": "kent" }, { "to_sussex": "surrey" }, { "to_sussex": "hampshire" }] }
+{ "success": false, "count": 0, "solutions": [] }

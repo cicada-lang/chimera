@@ -1,1 +1,1 @@
-{ "solutions": [{ "x": true, "y": false }] }
+{ "success": true, "count": 1, "solutions": [{ "x": true, "y": false }] }

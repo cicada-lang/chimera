@@ -1,6 +1,6 @@
 import { Goal } from "../goal"
 import { Mod } from "../mod"
-import { formatSolution } from "../solution"
+import { formatSolutions } from "../solution"
 import { Solver } from "../solver"
 import { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -17,10 +17,12 @@ export class Query extends Stmt {
   async execute(mod: Mod): Promise<void> {
     const solver = Solver.forGoals(this.goals)
     const solutions = solver.solve(mod.env)
-    const s = solutions
-      .map((solution) => formatSolution(solution, this.names))
-      .join(", ")
-
-    console.log(`{ "solutions": [${s}] }`)
+    const success = solutions.length > 0
+    const properties = [
+      `"success": ${success}`,
+      `"count": ${solutions.length}`,
+      `"solutions": [${formatSolutions(solutions, this.names)}]`,
+    ]
+    console.log(`{ ${properties.join(", ")} }`)
   }
 }

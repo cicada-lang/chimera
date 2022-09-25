@@ -1,6 +1,6 @@
-{ "solutions": [{ "female": "lucinda" }, { "female": "camilla" }] }
-{ "solutions": [] }
-{ "solutions": [{ "male": "bertram" }, { "male": "percival" }] }
-{ "solutions": [] }
-{ "solutions": [] }
-{ "solutions": [{ "male": "bertram", "female": "lucinda" }, { "male": "bertram", "female": "camilla" }, { "male": "percival", "female": "lucinda" }, { "male": "percival", "female": "camilla" }] }
+{ "success": true, "count": 2, "solutions": [{ "female": "lucinda" }, { "female": "camilla" }] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": true, "count": 2, "solutions": [{ "male": "bertram" }, { "male": "percival" }] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": true, "count": 4, "solutions": [{ "male": "bertram", "female": "lucinda" }, { "male": "bertram", "female": "camilla" }, { "male": "percival", "female": "lucinda" }, { "male": "percival", "female": "camilla" }] }
