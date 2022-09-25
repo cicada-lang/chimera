@@ -1,6 +1,5 @@
 import { Env, lookupValueInEnv } from "../env"
 import { LangError } from "../errors"
-import { evaluate } from "../exp"
 import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { Solution, solutionNames, solve } from "../solution"
@@ -21,7 +20,7 @@ export function pursueGoal(
       }
 
       Values.assertRelation(relation)
-      const arg = evaluate(env, goal.exp)
+      const arg = goal.value
       const queues: Array<GoalQueue> = []
       for (const clause of relation.clauses) {
         const queue = pursueClause(env, solution, arg, clause)
@@ -32,9 +31,7 @@ export function pursueGoal(
     }
 
     case "Unifiable": {
-      const left = evaluate(env, goal.left)
-      const right = evaluate(env, goal.right)
-      const newSolution = solve(solution, left, right)
+      const newSolution = solve(solution, goal.left, goal.right)
       if (newSolution !== undefined) {
         return [new GoalQueue(newSolution, [])]
       } else {

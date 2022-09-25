@@ -6,11 +6,14 @@ import { Goal } from "../goal"
 export function evaluateGoal(env: Env, goal: Exps.Goal): Goal {
   switch (goal.kind) {
     case "GoalApply": {
-      return Goals.Apply(goal.name, goal.exp)
+      return Goals.Apply(goal.name, Exps.evaluate(env, goal.exp))
     }
 
     case "GoalUnifiable": {
-      return Goals.Unifiable(goal.left, goal.right)
+      return Goals.Unifiable(
+        Exps.evaluate(env, goal.left),
+        Exps.evaluate(env, goal.right),
+      )
     }
   }
 }

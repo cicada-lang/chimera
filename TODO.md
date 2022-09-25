@@ -1,8 +1,3 @@
-parse 
-fix exp/evaluateGoal
-
-goal has value instead of exp
-
 freshenValue -- handle Relation
 
 fix scope of clause -- no need to use `fresh`
