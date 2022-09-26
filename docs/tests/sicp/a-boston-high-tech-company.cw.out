@@ -1,0 +1,5 @@
+{ "success": true, "count": 2, "solutions": [{ "coder": "Hacker Alyssa P" }, { "coder": "Fect Cy D" }] }
+{ "success": true, "count": 2, "solutions": [{ "coder": "Hacker Alyssa P" }, { "coder": "Fect Cy D" }] }
+{ "success": true, "count": 1, "solutions": [{ "town": "Slumerville", "road": "Ridge Road", "door": 10 }] }
+{ "success": true, "count": 5, "solutions": [{ "name": "Bitdiddle Ben", "role": "wizard" }, { "name": "Hacker Alyssa P", "role": "programmer" }, { "name": "Fect Cy D", "role": "programmer" }, { "name": "Tweakit Lem E", "role": "technician" }, { "name": "Reasoner Louis", "role": "programmer trainee" }] }
+{ "success": true, "count": 5, "solutions": [{ "slave": "Bitdiddle Ben" }, { "slave": "Hacker Alyssa P" }, { "slave": "Fect Cy D" }, { "slave": "Tweakit Lem E" }, { "slave": "Reasoner Louis" }] }

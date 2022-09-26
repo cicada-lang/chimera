@@ -345,7 +345,9 @@ query (coder) {
     dept: "computer",
     role: "programmer",
   }
-} assert [{ coder: "Hacker Alyssa P" }, { coder: "Fect Cy D" }],
+}
+
+// assert [{ coder: "Hacker Alyssa P" }, { coder: "Fect Cy D" }],
 
 // The input query specifies that
 // we are looking for entries in the database

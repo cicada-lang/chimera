@@ -1,4 +1,4 @@
-port Nat: https://gist.github.com/LittleJianCH/373ed5d86afaf0c72fe4dc986895332e
+[little] chapter 1 2 3
 
 support query limit
 
@@ -20,70 +20,37 @@ support query with debug info
   }
   ```
 
+port Nat: https://gist.github.com/LittleJianCH/373ed5d86afaf0c72fe4dc986895332e
+
+Array -- provide ways to view array as pure logical
+
+- maybe just use js syntax -- `[head, ...rest]`
+- maybe by doing this we can avoid defining `cons`
+
 # functional
 
-If we implement proper tail-call,
-we can play with "the little schemer"
-and compare it with logic programming.
+[maybe] We need a functional part to construct data with out record name
 
-- the only way of implementing proper tail-call that I know of
-  is to compile to forth-like threaded code interpreter
+- like `cons(head, tail)` -> `{ head, tail }`
 
-We need a functional part to construct data with out record name
-like `cons(head, tail)` -> `{ head, tail }`
+- define `datatype` with `family` and `kind` fields.
 
 - we must be able to apply function to pattern variables,
   thus maybe we should define datatype and constructors instead of functions.
-
-- the language will be a subset of JavaScript,
-  maybe we should design this language first.
 
 [question] scope of `Stmts.Rule`
 
 - Because the `data` of a `Rule` will introduce bindings to scope,
   we can not reference to const value in `env`.
 
+- Preserve some keywords.
+
   - Examples: `null`, `false`, `true`
 
-- Solution 1:
+- Add a keyword for writing data in bindings
 
-  - Preserve some keywords.
-  - Force `PascalCase` naming convention for data constructors.
-
-- Solution 2:
-
-  - Preserve some keywords.
-  - Allow function call.
-  - Warn about const variable.
-
-- Solution 3:
-
-  - Add a keyword for writing data in bindings -- maybe `compute` or `ref`
-
-[feature] Maybe add `interface` or `schema` keyword to limit type of a `Relation` (`Predicate`)
-
-- if we add `interface`, we should just use ts (cicada) syntax of record type
-
-  - maybe change to PascalCase
-
-- example:
-
-  ```ts
-  interface Job {
-    name: String
-    dept: String
-    role: String
-  }
-  ```
-
-# Value
-
-maybe not equation, because there are also `!=` and `>`
-
-[maybe] provide ways to view array as pure logical
-
-- maybe just use js syntax -- `[head, ...rest]`
-- maybe by doing this we can avoid defining `cons`
+  - maybe `ref`
+  - maybe `compute` -- if we have functional part
 
 # playground
 
