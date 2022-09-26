@@ -52,7 +52,7 @@ function freshenValue(
       const count = mod.variableCount
       mod.variableCount++
 
-      const freshName = `${value.name}#${count}`
+      const freshName = `?${value.name}_${count}`
       const variable = Values.Var(freshName)
       varMap.set(value.name, variable)
       return variable

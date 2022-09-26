@@ -1,6 +1,31 @@
 support query limit
 
+- maybe:
+
+  ```
+  query (...) limit () {
+    ...
+  }
+  ```
+
+support query with debug info
+
+- maybe:
+
+  ```
+  report (...) [limit ()] {
+
+  }
+  ```
+
 # functional
+
+If we implement proper tail-call,
+we can play with "the little schemer"
+and compare it with logic programming.
+
+- the only way of implementing proper tail-call that I know of
+  is to compile to forth-like threaded code interpreter
 
 We need a functional part to construct data with out record name
 like `cons(head, tail)` -> `{ head, tail }`
@@ -31,7 +56,7 @@ like `cons(head, tail)` -> `{ head, tail }`
 
 - Solution 3:
 
-  - Add a keyword for writing data in bindings (like `implicit`)
+  - Add a keyword for writing data in bindings -- maybe `compute` or `ref`
 
 [feature] Maybe add `interface` or `schema` keyword to limit type of a `Relation` (`Predicate`)
 
@@ -55,6 +80,7 @@ maybe not equation, because there are also `!=` and `>`
 
 [maybe] provide ways to view array as pure logical
 
+- maybe just use js syntax -- `[head, ...rest]`
 - maybe by doing this we can avoid defining `cons`
 
 # playground
