@@ -1,6 +1,8 @@
-module system
+Array -- provide ways to view array as pure logical
 
-server for query
+- maybe just use js syntax -- `[head, ...rest]`
+- maybe by doing this we can avoid defining `cons`
+
 
 [little] chapter 1 2 3
 
@@ -26,10 +28,12 @@ support query with debug info
 
 port Nat: https://gist.github.com/LittleJianCH/373ed5d86afaf0c72fe4dc986895332e
 
-Array -- provide ways to view array as pure logical
 
-- maybe just use js syntax -- `[head, ...rest]`
-- maybe by doing this we can avoid defining `cons`
+playground
+
+module system
+
+server for query
 
 # functional
 
@@ -55,8 +59,6 @@ Array -- provide ways to view array as pure logical
 
   - maybe `ref`
   - maybe `compute` -- if we have functional part
-
-# playground
 
 # later
 
