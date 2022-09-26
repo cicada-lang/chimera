@@ -1,17 +1,16 @@
+[little] chapter 1
+
 Array -- provide ways to view array as pure logical
 
 - maybe just use js syntax -- `[head, ...rest]`
 - maybe by doing this we can avoid defining `cons`
-
-
-[little] chapter 1 2 3
 
 support query limit
 
 - maybe:
 
   ```
-  query (...) limit () {
+  query (...) limit <number> {
     ...
   }
   ```
@@ -21,13 +20,12 @@ support query with debug info
 - maybe:
 
   ```
-  report (...) [limit ()] {
+  report (...) [limit <number>] {
 
   }
   ```
 
 port Nat: https://gist.github.com/LittleJianCH/373ed5d86afaf0c72fe4dc986895332e
-
 
 playground
 
