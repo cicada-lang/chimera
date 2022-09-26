@@ -1,6 +1,9 @@
 # Cicada Whereabouts
 
-Logic programming with JSON.
+Logic programming with [JSON](https://www.json.org).
+
+In the sense that the syntax is close to JavaScript,
+and the query outputs are [JSON lines](https://jsonlines.org).
 
 > I asked the boy beneath the pines. <br/>
 > He said, "The master's gone alone <br/>
@@ -22,7 +25,16 @@ Example usage:
 whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw
 ```
 
-You can also make use of [**jq**](https://stedolan.github.io/jq/):
+Outputs:
+
+```js
+{ "success": true, "count": 3, "solutions": [{ "left": "mary" }, { "left": "john" }, { "left": "fred" }] }
+{ "success": true, "count": 9, "solutions": [{ "left": "mary", "right": "mary" }, { "left": "mary", "right": "john" }, { "left": "mary", "right": "fred" }, { "left": "john", "right": "mary" }, { "left": "john", "right": "john" }, { "left": "john", "right": "fred" }, { "left": "fred", "right": "mary" }, { "left": "fred", "right": "john" }, { "left": "fred", "right": "fred" }] }
+{ "success": true, "count": 14, "solutions": [{ "left": "john", "right": "john", "alcohol": "martini" }, { "left": "mary", "right": "mary", "alcohol": "gin" }, { "left": "mary", "right": "john", "alcohol": "gin" }, { "left": "mary", "right": "fred", "alcohol": "gin" }, { "left": "susan", "right": "susan", "alcohol": "vodka" }, { "left": "susan", "right": "fred", "alcohol": "vodka" }, { "left": "john", "right": "mary", "alcohol": "gin" }, { "left": "john", "right": "john", "alcohol": "gin" }, { "left": "john", "right": "fred", "alcohol": "gin" }, { "left": "fred", "right": "mary", "alcohol": "gin" }, { "left": "fred", "right": "john", "alcohol": "gin" }, { "left": "fred", "right": "fred", "alcohol": "gin" }, { "left": "fred", "right": "susan", "alcohol": "vodka" }, { "left": "fred", "right": "fred", "alcohol": "vodka" }] }
+```
+
+The outputs are [JSON lines](https://jsonlines.org),
+You can also make use of [**jq**](https://stedolan.github.io/jq/) to format them:
 
 ```
 whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw | jq
