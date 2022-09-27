@@ -5,6 +5,16 @@ import { Mod } from "../mod"
 import { Solution, unify } from "../solution"
 import * as Values from "../value"
 
+/**
+
+   What is a goal?
+
+   It is something that either _succeeds_, _fails_, or _has no value_.
+
+   TODO interpret the above in our context. 
+
+**/
+
 export function pursue(
   mod: Mod,
   env: Env,
@@ -19,14 +29,13 @@ export function pursue(
       }
 
       Values.assertRelation(relation)
-      const queues: Array<GoalQueue> = []
-      for (let clause of relation.clauses) {
-        // NOTE side-effects on usedNames
-        clause = Values.freshenClause(mod, clause)
-        const newSolution = unify(solution, clause.value, goal.arg)
 
+      const queues: Array<GoalQueue> = []
+      for (const clause of relation.clauses) {
+        const freshClause = Values.freshenClause(mod, clause)
+        const newSolution = unify(solution, freshClause.value, goal.arg)
         if (newSolution !== undefined) {
-          queues.push(new GoalQueue(newSolution, clause.goals))
+          queues.push(new GoalQueue(newSolution, freshClause.goals))
         }
       }
 

@@ -1,5 +1,17 @@
 [little] chapter 1
 
+[little] chapter 2
+
+[maybe] variant of `query` to return unnamed array instead of named object
+
+- `query [<name>, ...] { ... }`
+
+[maybe] variant of `query` to return array of values instead of array of arrays or array of objects
+
+- `query <name> { ... }`
+
+[maybe] command line support watch with jq
+
 Array -- provide ways to view array as pure logical
 
 - maybe `PatternArray`
