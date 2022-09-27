@@ -6,8 +6,8 @@ import { Value } from "../value"
 
 export function evaluate(env: Env, exp: Exp): Value {
   switch (exp.kind) {
-    case "Var": {
-      return Values.Var(exp.name)
+    case "PatternVar": {
+      return Values.PatternVar(exp.name)
     }
 
     case "String": {

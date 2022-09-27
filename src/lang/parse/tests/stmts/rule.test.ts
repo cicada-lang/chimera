@@ -21,23 +21,23 @@ Friends { left, right, alcohol }
         "Friends",
         undefined,
         Exps.ObjektUnfolded([
-          Exps.PropertyPlain("left", Exps.Var("left")),
-          Exps.PropertyPlain("right", Exps.Var("right")),
-          Exps.PropertyPlain("alcohol", Exps.Var("alcohol")),
+          Exps.PropertyPlain("left", Exps.PatternVar("left")),
+          Exps.PropertyPlain("right", Exps.PatternVar("right")),
+          Exps.PropertyPlain("alcohol", Exps.PatternVar("alcohol")),
         ]),
         [
           Exps.GoalApply(
             "Drink",
             Exps.ObjektUnfolded([
-              Exps.PropertyPlain("person", Exps.Var("left")),
-              Exps.PropertyPlain("alcohol", Exps.Var("alcohol")),
+              Exps.PropertyPlain("person", Exps.PatternVar("left")),
+              Exps.PropertyPlain("alcohol", Exps.PatternVar("alcohol")),
             ]),
           ),
           Exps.GoalApply(
             "Drink",
             Exps.ObjektUnfolded([
-              Exps.PropertyPlain("person", Exps.Var("right")),
-              Exps.PropertyPlain("alcohol", Exps.Var("alcohol")),
+              Exps.PropertyPlain("person", Exps.PatternVar("right")),
+              Exps.PropertyPlain("alcohol", Exps.PatternVar("alcohol")),
             ]),
           ),
         ],

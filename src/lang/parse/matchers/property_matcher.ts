@@ -7,7 +7,7 @@ export function property_matcher(tree: pt.Tree): Exps.Property {
     "property:field_shorthand": ({ key }) =>
       Exps.PropertyPlain(
         matchers.key_matcher(key),
-        Exps.Var(matchers.key_matcher(key)),
+        Exps.PatternVar(matchers.key_matcher(key)),
       ),
     "property:field": ({ key, exp }) =>
       Exps.PropertyPlain(matchers.key_matcher(key), matchers.exp_matcher(exp)),

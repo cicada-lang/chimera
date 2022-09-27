@@ -9,16 +9,16 @@ export function unify(
   left = walk(solution, left)
   right = walk(solution, right)
 
-  if (left.kind === "Var" && right.kind === "Var" && left.name === right.name) {
+  if (left.kind === "PatternVar" && right.kind === "PatternVar" && left.name === right.name) {
     return solution
   }
 
-  if (left.kind === "Var") {
+  if (left.kind === "PatternVar") {
     if (occur(solution, left.name, right)) return undefined
     return SolutionCons(left.name, right, solution)
   }
 
-  if (right.kind === "Var") {
+  if (right.kind === "PatternVar") {
     if (occur(solution, right.name, left)) return undefined
     return SolutionCons(right.name, left, solution)
   }

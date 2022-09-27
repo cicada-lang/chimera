@@ -3,7 +3,7 @@ import { Span } from "../span"
 type ExpMeta = { span?: Span }
 
 export type Exp =
-  | Var
+  | PatternVar
   | String
   | Number
   | Boolean
@@ -12,16 +12,16 @@ export type Exp =
   | Objekt
   | ObjektUnfolded
 
-export type Var = {
+export type PatternVar = {
   family: "Exp"
-  kind: "Var"
+  kind: "PatternVar"
   name: string
 } & ExpMeta
 
-export function Var(name: string, span?: Span): Var {
+export function PatternVar(name: string, span?: Span): PatternVar {
   return {
     family: "Exp",
-    kind: "Var",
+    kind: "PatternVar",
     name,
     span,
   }

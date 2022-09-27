@@ -2,6 +2,8 @@
 
 Array -- provide ways to view array as pure logical
 
+- maybe `PatternArray`
+
 - maybe just use js syntax -- `[head, ...rest]`
 - maybe by doing this we can avoid defining `cons`
 

@@ -1,5 +1,5 @@
-import { Value, Var } from "../value"
+import { Value, PatternVar } from "../value"
 
-export function isVar(value: Value): value is Var {
-  return value.kind === "Var"
+export function isPatternVar(value: Value): value is PatternVar {
+  return value.kind === "PatternVar"
 }

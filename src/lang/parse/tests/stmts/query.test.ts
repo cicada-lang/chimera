@@ -21,7 +21,7 @@ query (left) {
           Exps.GoalApply(
             "Friends",
             Exps.ObjektUnfolded([
-              Exps.PropertyPlain("left", Exps.Var("left")),
+              Exps.PropertyPlain("left", Exps.PatternVar("left")),
               Exps.PropertyPlain("right", Exps.String("mary")),
               Exps.PropertyPlain("alcohol", Exps.String("gin")),
             ]),

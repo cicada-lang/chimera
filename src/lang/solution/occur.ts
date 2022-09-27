@@ -5,7 +5,7 @@ export function occur(solution: Solution, name: String, value: Value): boolean {
   value = walk(solution, value)
 
   switch (value.kind) {
-    case "Var": {
+    case "PatternVar": {
       return value.name === name
     }
 

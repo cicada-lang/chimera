@@ -11,7 +11,7 @@ import { Value } from "../value"
 export function freshenClause(
   mod: Mod,
   clause: Values.Clause,
-  varMap: Map<string, Values.Var> = new Map(),
+  varMap: Map<string, Values.PatternVar> = new Map(),
 ): Values.Clause {
   return Values.Clause(
     clause.name,
@@ -23,7 +23,7 @@ export function freshenClause(
 function freshenGoal(
   mod: Mod,
   goal: Goal,
-  varMap: Map<string, Values.Var>,
+  varMap: Map<string, Values.PatternVar>,
 ): Goal {
   switch (goal.kind) {
     case "Apply": {
@@ -42,10 +42,10 @@ function freshenGoal(
 function freshenValue(
   mod: Mod,
   value: Value,
-  varMap: Map<string, Values.Var>,
+  varMap: Map<string, Values.PatternVar>,
 ): Value {
   switch (value.kind) {
-    case "Var": {
+    case "PatternVar": {
       const found = varMap.get(value.name)
       if (found !== undefined) return found
 
@@ -53,7 +53,7 @@ function freshenValue(
       mod.variableCount++
 
       const freshName = `?${value.name}_${count}`
-      const variable = Values.Var(freshName)
+      const variable = Values.PatternVar(freshName)
       varMap.set(value.name, variable)
       return variable
     }
