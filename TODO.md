@@ -2,9 +2,23 @@
 
 [design] syntax to write proofs by hand
 
+```ts
+Member [element, cons(element, tail)]
+------------------------------------- here {}
 
+Member [element, cons(head, tail)]
+---------------------------------- there {
+  Member [element, tail]
+}
 
-
+proof {
+  Member ["john", cons("paul", cons("john", null))]
+  ------------------------------------------------- Member.there {
+    Member ["john", cons("john", null)]
+    ----------------------------------- Member.here
+  }
+}
+```
 
 [maybe] we should add `disj {}` to define unnamed relation (clauses)
 
