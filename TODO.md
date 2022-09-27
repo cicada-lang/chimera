@@ -39,6 +39,15 @@ server for query
 
 - like `cons(head, tail)` -> `{ head, tail }`
 
+  - Maybe we do not need functional, we can do
+
+    ```
+    Cons pair
+    ------------ {
+      unify pair = { head, tail }
+    }
+    ```
+
 - define `datatype` with `family` and `kind` fields.
 
 - we must be able to apply function to pattern variables,
