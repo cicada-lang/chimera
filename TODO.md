@@ -1,3 +1,5 @@
+rename equation to unify
+
 [little] chapter 1
 
 Array -- provide ways to view array as pure logical

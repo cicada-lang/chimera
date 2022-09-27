@@ -2,7 +2,7 @@ import { Env, lookupValueInEnv } from "../env"
 import { LangError } from "../errors"
 import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { Solution, solve } from "../solution"
+import { Solution, unify } from "../solution"
 import * as Values from "../value"
 
 export function pursue(
@@ -23,7 +23,7 @@ export function pursue(
       for (let clause of relation.clauses) {
         // NOTE side-effects on usedNames
         clause = Values.freshenClause(mod, clause)
-        const newSolution = solve(solution, clause.value, goal.arg)
+        const newSolution = unify(solution, clause.value, goal.arg)
 
         if (newSolution !== undefined) {
           queues.push(new GoalQueue(newSolution, clause.goals))
@@ -34,7 +34,7 @@ export function pursue(
     }
 
     case "Unifiable": {
-      const newSolution = solve(solution, goal.left, goal.right)
+      const newSolution = unify(solution, goal.left, goal.right)
       if (newSolution !== undefined) {
         return [new GoalQueue(newSolution, [])]
       } else {

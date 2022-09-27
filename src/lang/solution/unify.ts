@@ -1,7 +1,7 @@
 import { occur, Solution, SolutionCons, walk } from "../solution"
 import { Value } from "../value"
 
-export function solve(
+export function unify(
   solution: Solution,
   left: Value,
   right: Value,
@@ -47,7 +47,7 @@ export function solve(
       const rightElement = right.elements[index]
       if (rightElement === undefined) return solution
 
-      const nextSolution = solve(solution, leftElement, rightElement)
+      const nextSolution = unify(solution, leftElement, rightElement)
       if (nextSolution === undefined) return undefined
 
       solution = nextSolution
@@ -61,7 +61,7 @@ export function solve(
       const rightProperty = right.properties[name]
       if (rightProperty === undefined) return solution
 
-      const nextSolution = solve(solution, leftProperty, rightProperty)
+      const nextSolution = unify(solution, leftProperty, rightProperty)
       if (nextSolution === undefined) return undefined
 
       solution = nextSolution
