@@ -9,14 +9,6 @@ query (q) {
   Fail []
 }
 
-failure {
-  Fail []
-}
-
-success {
-  Succeed []
-}
-
 query (q) {
   unify "pea" = "pod"
 }
@@ -27,4 +19,90 @@ query (q) {
 
 query (q) {
   unify "pea" = q
+}
+
+query (q) {
+  Succeed []
+}
+
+query (q) {
+  unify "pea" = "pea"
+}
+
+query (q) {
+  unify q = q
+}
+
+query (q) {
+  unify q = x
+}
+
+query (q) {
+  unify q = [x]
+}
+
+query (q) {
+  unify [[["pea"]], "pod"] = [[["pea"]], "pod"]
+}
+
+query (q) {
+  unify [[[q]], "pod"] = [[[x]], "pod"]
+}
+
+query (q) {
+  unify [[[q]], x] = [[[x]], "pod"]
+}
+
+query (q) {
+  unify [x, x] = q
+}
+
+query (q) {
+  unify [x, y] = q
+}
+
+query (s) {
+  unify [t, u] = s
+}
+
+query (q) {
+  unify [x, y, x] = q
+}
+
+query (q) {
+  unify ["pea"] = "pea"
+}
+
+query (q) {
+  unify [x] = x
+}
+
+query (q) {
+  Succeed []
+  Succeed []
+}
+
+query (q) {
+  Succeed []
+  unify "corn" = q
+}
+
+query (q) {
+  Fail []
+  unify "corn" = q
+}
+
+query (q) {
+  unify "corn" = q
+  Fail []
+}
+
+query (q) {
+  unify "corn" = q
+  unify "meal" = q
+}
+
+query (q) {
+  unify "corn" = q
+  unify "corn" = q
 }

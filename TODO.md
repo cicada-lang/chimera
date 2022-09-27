@@ -1,10 +1,57 @@
 [little] chapter 1
 
+[design] syntax to write proofs by hand
+
+
+
+
+
+[maybe] we should add `disj {}` to define unnamed relation (clauses)
+
+- we must also add `conj {}` for symmetry
+
+- the problem of unnamed relation is that, it make us unable to write proofs by hand.
+
+[maybe] with out `reify` the following queries have different outputs:
+
+```
+query (q) {
+  unify q = q
+}
+
+// { "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+
+query (q) {
+  unify q = x
+}
+
+// { "success": true, "count": 1, "solutions": [{ "q": "?x" }] }
+```
+
+[maybe] without `reify` we do not have alpha equivalence between expressions
+-- consistently changing the names of pattern variables.
+
+```
+query (q) {
+  unify [x, y] = q
+}
+
+// { "success": true, "count": 1, "solutions": [{ "q": ["?x", "?y"] }] }
+
+query (s) {
+  unify [t, u] = s
+}
+
+// { "success": true, "count": 1, "solutions": [{ "s": ["?t", "?u"] }] }
+```
+
 [little] chapter 2
 
 [maybe] variant of `query` to return unnamed array instead of named object
 
 - `query [<name>, ...] { ... }`
+
+- if we do so, we might need `reify` to distinguish different `#unknown`s
 
 [maybe] variant of `query` to return array of values instead of array of arrays or array of objects
 
