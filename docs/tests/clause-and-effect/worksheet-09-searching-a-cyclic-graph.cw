@@ -19,7 +19,7 @@
 
 // Legal [z, cons(head, tail)]
 // ---------------------------- {
-//   equation z != head
+//   unify z != head
 //   Legal [z, tail]
 // }
 

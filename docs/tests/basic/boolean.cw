@@ -1,4 +1,4 @@
 query (x, y) {
-  equation x = true
-  equation y = false
+  unify x = true
+  unify y = false
 }

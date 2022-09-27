@@ -1,7 +1,7 @@
 failure (x) {
-  equation x = [x]
+  unify x = [x]
 }
 
 failure (x) {
-  equation x = { x }
+  unify x = { x }
 }

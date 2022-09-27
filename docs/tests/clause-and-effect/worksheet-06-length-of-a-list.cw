@@ -7,7 +7,7 @@
 // -------------------------------- {
 //   fresh (prev) {
 //     Length [tail, prev]
-//     equation length = add1(prev)
+//     unify length = add1(prev)
 //   }
 // }
 

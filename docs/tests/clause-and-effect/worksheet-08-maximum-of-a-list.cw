@@ -4,13 +4,13 @@
 // Max [cons(x, rest), n, max]
 // ---------------------------- {
 //   Max [rest, x, max]
-//   equation x > n
+//   unify x > n
 // }
 
 // Max [cons (x, rest), n, max]
 // ---------------------------- {
 //   Max [rest, n, max]
-//   equation x <= n
+//   unify x <= n
 // }
 
 // // TODO We need to view `Array` as `cons` and `null` here.

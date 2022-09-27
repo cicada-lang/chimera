@@ -447,12 +447,12 @@ query (slave) {
 //   amount: Number
 // }
 
-// TODO `equation >=`
+// TODO `unify >=`
 
 // NotSoPoor { name, amount }
 // ---------------------------- {
 //   Salary { name, amount }
-//   equation amount >= 40000
+//   unify amount >= 40000
 // })
 
 // query (name, amount) {

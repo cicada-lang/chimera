@@ -1,11 +1,11 @@
 query (abc) {
-  equation abc = ["a", "b", "c"]
+  unify abc = ["a", "b", "c"]
 }
 
 query (a, b, c) {
-  equation [a, b, c] = ["a", "b", "c"]
+  unify [a, b, c] = ["a", "b", "c"]
 }
 
 query (empty) {
-  equation empty = []
+  unify empty = []
 }

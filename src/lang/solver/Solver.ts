@@ -84,7 +84,7 @@ export function formatGoal(goal: Goal): string {
     }
 
     case "Unifiable": {
-      return `equation ${formatValue(goal.left)} = ${formatValue(goal.right)}`
+      return `unify ${formatValue(goal.left)} = ${formatValue(goal.right)}`
     }
   }
 }

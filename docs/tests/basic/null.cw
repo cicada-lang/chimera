@@ -1,3 +1,3 @@
 query (x) {
-  equation x = null
+  unify x = null
 }

@@ -1,3 +1,3 @@
 query (abc) {
-  equation abc = "abc"
+  unify abc = "abc"
 }
