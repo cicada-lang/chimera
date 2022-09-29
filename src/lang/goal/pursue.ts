@@ -15,12 +15,7 @@ import * as Values from "../value"
 
 **/
 
-export function pursue(
-  mod: Mod,
-  env: Env,
-  solution: Solution,
-  goal: Goal,
-): Array<GoalQueue> {
+export function pursue(mod: Mod, env: Env, solution: Solution, goal: Goal): Array<GoalQueue> {
   switch (goal.kind) {
     case "Apply": {
       let relation = lookupValueInEnv(env, goal.name)

@@ -7,9 +7,7 @@ export function deepWalk(solution: Solution, value: Value): Value {
 
   switch (value.kind) {
     case "Arrai": {
-      return Values.Arrai(
-        value.elements.map((element) => deepWalk(solution, element)),
-      )
+      return Values.Arrai(value.elements.map((element) => deepWalk(solution, element)))
     }
 
     case "Objekt": {

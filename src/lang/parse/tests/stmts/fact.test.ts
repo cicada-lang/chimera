@@ -15,9 +15,7 @@ Male { name: "bertram" }
     deleteUndefined([
       new Stmts.Fact(
         "Male",
-        Exps.ObjektUnfolded([
-          Exps.PropertyPlain("name", Exps.String("bertram")),
-        ]),
+        Exps.ObjektUnfolded([Exps.PropertyPlain("name", Exps.String("bertram"))]),
       ),
     ]),
   )

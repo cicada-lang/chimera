@@ -24,31 +24,19 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       ),
     "stmt:query": ({ names, goals }, { span }) =>
-      new Stmts.Query(
-        matchers.names_matcher(names),
-        matchers.goals_matcher(goals),
-        span,
-      ),
+      new Stmts.Query(matchers.names_matcher(names), matchers.goals_matcher(goals), span),
     "stmt:query_no_name": ({ goals }, { span }) =>
       new Stmts.Query([], matchers.goals_matcher(goals), span),
     "stmt:query_no_name_2": ({ goals }, { span }) =>
       new Stmts.Query([], matchers.goals_matcher(goals), span),
     "stmt:success": ({ names, goals }, { span }) =>
-      new Stmts.Success(
-        matchers.names_matcher(names),
-        matchers.goals_matcher(goals),
-        span,
-      ),
+      new Stmts.Success(matchers.names_matcher(names), matchers.goals_matcher(goals), span),
     "stmt:success_no_name": ({ goals }, { span }) =>
       new Stmts.Success([], matchers.goals_matcher(goals), span),
     "stmt:success_no_name_2": ({ goals }, { span }) =>
       new Stmts.Success([], matchers.goals_matcher(goals), span),
     "stmt:failure": ({ names, goals }, { span }) =>
-      new Stmts.Failure(
-        matchers.names_matcher(names),
-        matchers.goals_matcher(goals),
-        span,
-      ),
+      new Stmts.Failure(matchers.names_matcher(names), matchers.goals_matcher(goals), span),
     "stmt:failure_no_name": ({ goals }, { span }) =>
       new Stmts.Failure([], matchers.goals_matcher(goals), span),
     "stmt:failure_no_name_2": ({ goals }, { span }) =>
@@ -58,7 +46,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
 
 export function stmts_matcher(tree: pt.Tree): Array<Stmt> {
   return pt.matcher({
-    "stmts:stmts": ({ stmts }) =>
-      pt.matchers.zero_or_more_matcher(stmts).map(stmt_matcher),
+    "stmts:stmts": ({ stmts }) => pt.matchers.zero_or_more_matcher(stmts).map(stmt_matcher),
   })(tree)
 }

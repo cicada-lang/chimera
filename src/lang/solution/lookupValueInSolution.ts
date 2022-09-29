@@ -1,10 +1,7 @@
 import { Solution } from "../solution"
 import { Value } from "../value"
 
-export function lookupValueInSolution(
-  solution: Solution,
-  name: string,
-): Value | undefined {
+export function lookupValueInSolution(solution: Solution, name: string): Value | undefined {
   switch (solution.kind) {
     case "SolutionNull": {
       return undefined

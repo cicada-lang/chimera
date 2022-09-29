@@ -10,10 +10,7 @@ export function evaluateGoal(env: Env, goal: Exps.Goal): Goal {
     }
 
     case "GoalUnifiable": {
-      return Goals.Unifiable(
-        Exps.evaluate(env, goal.left),
-        Exps.evaluate(env, goal.right),
-      )
+      return Goals.Unifiable(Exps.evaluate(env, goal.left), Exps.evaluate(env, goal.right))
     }
   }
 }

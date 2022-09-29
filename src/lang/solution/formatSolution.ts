@@ -1,10 +1,7 @@
 import { deepWalk, lookupValueInSolution, Solution } from "../solution"
 import { formatValue } from "../value"
 
-export function formatSolution(
-  solution: Solution,
-  names: Array<string>,
-): string {
+export function formatSolution(solution: Solution, names: Array<string>): string {
   const properties: Array<string> = []
   for (const name of names) {
     let value = lookupValueInSolution(solution, name)
@@ -19,9 +16,6 @@ export function formatSolution(
   return `{ ${properties.join(", ")} }`
 }
 
-export function formatSolutions(
-  solutions: Array<Solution>,
-  names: Array<string>,
-): string {
+export function formatSolutions(solutions: Array<Solution>, names: Array<string>): string {
   return solutions.map((solution) => formatSolution(solution, names)).join(", ")
 }

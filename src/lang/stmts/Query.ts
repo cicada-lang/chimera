@@ -6,11 +6,7 @@ import { Span } from "../span"
 import { Stmt } from "../stmt"
 
 export class Query extends Stmt {
-  constructor(
-    public names: Array<string>,
-    public goals: Array<Exps.Goal>,
-    public span?: Span,
-  ) {
+  constructor(public names: Array<string>, public goals: Array<Exps.Goal>, public span?: Span) {
     super()
   }
 

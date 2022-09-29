@@ -41,11 +41,7 @@ export class Mod {
   ): void {
     const relation = this.findOrCreateRelation(name)
     relation.clauses.push(
-      Values.Clause(
-        clauseName || relation.clauses.length.toString(),
-        value,
-        goals || [],
-      ),
+      Values.Clause(clauseName || relation.clauses.length.toString(), value, goals || []),
     )
   }
 

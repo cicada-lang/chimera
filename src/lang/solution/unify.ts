@@ -1,19 +1,11 @@
 import { occur, Solution, SolutionCons, walk } from "../solution"
 import { Value } from "../value"
 
-export function unify(
-  solution: Solution,
-  left: Value,
-  right: Value,
-): Solution | undefined {
+export function unify(solution: Solution, left: Value, right: Value): Solution | undefined {
   left = walk(solution, left)
   right = walk(solution, right)
 
-  if (
-    left.kind === "PatternVar" &&
-    right.kind === "PatternVar" &&
-    left.name === right.name
-  ) {
+  if (left.kind === "PatternVar" && right.kind === "PatternVar" && left.name === right.name) {
     return solution
   }
 

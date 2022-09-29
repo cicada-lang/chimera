@@ -9,18 +9,14 @@ export class AppReplEventHandler extends ReplEventHandler {
 
   constructor() {
     super()
-    this.loader.fetcher.register("file", (url) =>
-      fs.promises.readFile(url.pathname, "utf8"),
-    )
+    this.loader.fetcher.register("file", (url) => fs.promises.readFile(url.pathname, "utf8"))
     this.loader.fetcher.register("repl", (url) =>
       url.pathname ? fs.promises.readFile("./" + url.pathname, "utf8") : "",
     )
   }
 
   greeting(): void {
-    console.log(
-      `Welcome to Cicada Whereabouts ${app.config.pkg.version} *^-^*/`,
-    )
+    console.log(`Welcome to Cicada Whereabouts ${app.config.pkg.version} *^-^*/`)
     console.log(`Type ".help" for more information`)
   }
 

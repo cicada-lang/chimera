@@ -1,14 +1,6 @@
 import { Goal } from "../goal"
 
-export type Value =
-  | PatternVar
-  | String
-  | Number
-  | Boolean
-  | Null
-  | Arrai
-  | Objekt
-  | Relation
+export type Value = PatternVar | String | Number | Boolean | Null | Arrai | Objekt | Relation
 
 export type PatternVar = {
   family: "Value"

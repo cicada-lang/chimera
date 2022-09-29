@@ -33,10 +33,7 @@ export function evaluate(env: Env, exp: Exp): Value {
     case "Objekt": {
       return Values.Objekt(
         Object.fromEntries(
-          Object.entries(exp.properties).map(([name, property]) => [
-            name,
-            evaluate(env, property),
-          ]),
+          Object.entries(exp.properties).map(([name, property]) => [name, evaluate(env, property)]),
         ),
       )
     }
