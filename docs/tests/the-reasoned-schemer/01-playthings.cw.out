@@ -1,0 +1,24 @@
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": true, "count": 1, "solutions": [{ "q": "pea" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "pea" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "?x" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": ["?x"] }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "?x" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "pod" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": ["?x", "?x"] }] }
+{ "success": true, "count": 1, "solutions": [{ "q": ["?x", "?y"] }] }
+{ "success": true, "count": 1, "solutions": [{ "s": ["?t", "?u"] }] }
+{ "success": true, "count": 1, "solutions": [{ "q": ["?x", "?y", "?x"] }] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "corn" }] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": false, "count": 0, "solutions": [] }
+{ "success": true, "count": 1, "solutions": [{ "q": "corn" }] }
