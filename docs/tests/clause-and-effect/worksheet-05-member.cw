@@ -1,21 +1,21 @@
-Member [element, { head: element, tail: tail }]
------------------------------------------------- here {}
+Member [element, [element, ...tail]]
+------------------------------------ here {}
 
-Member [element, { head, tail }]
------------------------------------------------- there {
+Member [element, [head, ...tail]]
+--------------------------------- there {
   Member [element, tail]
 }
 
 success {
-  Member ["john", { head: "paul", tail: { head: "john", tail: null }}]
+  Member ["john", ["paul", "john"]]
 }
 
 failure {
-  Member ["joe", { head: "marx", tail: { head: "darwin", tail: { head: "freud", tail: null }}}]
+  Member ["joe", ["marx", "darwin", "freud" ]]
 }
 
 query (element) {
-  Member [element, { head: "marx", tail: { head: "darwin", tail: { head: "freud", tail: null }}}]
+  Member [element, ["marx", "darwin", "freud"]]
 }
 
 // TODO need query limit
