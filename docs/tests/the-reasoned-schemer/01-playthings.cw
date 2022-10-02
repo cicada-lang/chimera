@@ -106,3 +106,17 @@ query (q) {
   unify "corn" = q
   unify "corn" = q
 }
+
+OliveOrOil [x]
+--------------- {
+  unify x = "olive"
+}
+
+OliveOrOil [x]
+--------------- {
+  unify x = "oil"
+}
+
+query (q) {
+  OliveOrOil [q]
+}
