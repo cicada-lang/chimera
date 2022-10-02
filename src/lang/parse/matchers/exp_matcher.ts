@@ -23,7 +23,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
     "operand:null": ({}, { span }) => Exps.Null(span),
     "operand:true": ({}, { span }) => Exps.Boolean(true, span),
     "operand:false": ({}, { span }) => Exps.Boolean(false, span),
-    "operand:arrai": ({ elements, last_element }, { span }) =>
+    "operand:list": ({ elements, last_element }, { span }) =>
       pt.matchers
         .zero_or_more_matcher(elements)
         .map(matchers.exp_matcher)
@@ -32,7 +32,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
           Exps.Cons(matchers.exp_matcher(last_element), Exps.Null(), span),
         ),
 
-    "operand:arrai_empty": ({}, { span }) => Exps.Null(span),
+    "operand:list_empty": ({}, { span }) => Exps.Null(span),
     "operand:objekt": ({ properties, last_property }, { span }) =>
       Exps.ObjektUnfolded(
         [

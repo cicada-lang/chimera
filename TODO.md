@@ -1,6 +1,6 @@
 use js syntax -- `[head, ...rest]` as syntax for cons
 
-empty array should be different from null
+ListEmpty -- should be different from null
 
 [maybe] command line support watch with jq
 
