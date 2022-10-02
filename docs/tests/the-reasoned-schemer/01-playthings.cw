@@ -107,16 +107,30 @@ query (q) {
   unify "corn" = q
 }
 
-OliveOrOil [x]
---------------- {
-  unify x = "olive"
+Teacup [t]
+--------------- tea {
+  unify t = "tea"
 }
 
-OliveOrOil [x]
---------------- {
-  unify x = "oil"
+Teacup [t]
+--------------- cup {
+  unify t = "cup"
 }
 
 query (q) {
-  OliveOrOil [q]
+  Teacup [q]
+}
+
+query (x, y) {
+  Teacup [x]
+  Teacup [y]
+}
+
+query (x, y) {
+  Teacup [x]
+  Teacup [x]
+}
+
+query (x, y) {
+  Teacup [x]
 }
