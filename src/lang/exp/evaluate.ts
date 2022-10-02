@@ -26,8 +26,8 @@ export function evaluate(env: Env, exp: Exp): Value {
       return Values.Null()
     }
 
-    case "Arrai": {
-      return Values.Arrai(exp.elements.map((element) => evaluate(env, element)))
+    case "Cons": {
+      return Values.Cons(evaluate(env, exp.car), evaluate(env, exp.cdr))
     }
 
     case "Objekt": {

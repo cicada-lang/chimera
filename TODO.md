@@ -1,9 +1,6 @@
-Array -- provide ways to view array as pure logical
+use js syntax -- `[head, ...rest]` as syntax for cons
 
-- maybe `PatternArray`
-
-- maybe just use js syntax -- `[head, ...rest]`
-- maybe by doing this we can avoid defining `cons`
+empty array should be different from null
 
 [maybe] command line support watch with jq
 

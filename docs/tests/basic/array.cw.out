@@ -1,3 +1,0 @@
-{ "success": true, "count": 1, "solutions": [{ "abc": ["a", "b", "c"] }] }
-{ "success": true, "count": 1, "solutions": [{ "a": "a", "b": "b", "c": "c" }] }
-{ "success": true, "count": 1, "solutions": [{ "empty": [] }] }

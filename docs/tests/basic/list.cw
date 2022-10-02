@@ -9,3 +9,7 @@ query (a, b, c) {
 query (empty) {
   unify empty = []
 }
+
+query (head, rest) {
+  unify [head, ...rest] = ["a", "b", "c"]
+}

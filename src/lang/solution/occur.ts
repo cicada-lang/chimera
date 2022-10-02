@@ -9,8 +9,8 @@ export function occur(solution: Solution, name: String, value: Value): boolean {
       return value.name === name
     }
 
-    case "Arrai": {
-      return value.elements.some((element) => occur(solution, name, element))
+    case "Cons": {
+      return occur(solution, name, value.car) || occur(solution, name, value.cdr)
     }
 
     case "Objekt": {

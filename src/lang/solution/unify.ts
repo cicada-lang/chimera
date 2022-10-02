@@ -38,18 +38,11 @@ export function unify(solution: Solution, left: Value, right: Value): Solution |
     return solution
   }
 
-  if (left.kind === "Arrai" && right.kind === "Arrai") {
-    for (const [index, leftElement] of left.elements.entries()) {
-      const rightElement = right.elements[index]
-      if (rightElement === undefined) return solution
-
-      const nextSolution = unify(solution, leftElement, rightElement)
-      if (nextSolution === undefined) return undefined
-
-      solution = nextSolution
-    }
-
-    return solution
+  if (left.kind === "Cons" && right.kind === "Cons") {
+    const carSolution = unify(solution, left.car, right.car)
+    if (carSolution === undefined) return undefined
+    const cdrSolution = unify(carSolution, left.cdr, right.cdr)
+    return cdrSolution
   }
 
   if (left.kind === "Objekt" && right.kind === "Objekt") {

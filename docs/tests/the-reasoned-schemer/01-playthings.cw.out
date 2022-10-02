@@ -22,4 +22,7 @@
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
 { "success": true, "count": 1, "solutions": [{ "q": "corn" }] }
-{ "success": true, "count": 2, "solutions": [{ "q": "olive" }, { "q": "oil" }] }
+{ "success": true, "count": 2, "solutions": [{ "q": "tea" }, { "q": "cup" }] }
+{ "success": true, "count": 4, "solutions": [{ "x": "tea", "y": "tea" }, { "x": "tea", "y": "cup" }, { "x": "cup", "y": "tea" }, { "x": "cup", "y": "cup" }] }
+{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "#unknown" }, { "x": "cup", "y": "#unknown" }] }
+{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "#unknown" }, { "x": "cup", "y": "#unknown" }] }

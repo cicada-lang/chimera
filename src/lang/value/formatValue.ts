@@ -22,9 +22,11 @@ export function formatValue(value: Value): string {
       return "null"
     }
 
-    case "Arrai": {
-      const elements = value.elements.map(formatValue).join(", ")
-      return `[${elements}]`
+    case "Cons": {
+      const { elements, last } = foldCons(value.car, value.cdr)
+      return last === undefined
+        ? `[${elements.map(formatValue).join(", ")}]`
+        : `[${elements.map(formatValue).join(", ")}, ...${formatValue(last)}]`
     }
 
     case "Objekt": {
@@ -36,6 +38,23 @@ export function formatValue(value: Value): string {
 
     case "Relation": {
       return "#relation"
+    }
+  }
+}
+
+function foldCons(car: Value, cdr: Value): { elements: Array<Value>; last?: Value } {
+  switch (cdr.kind) {
+    case "Null": {
+      return { elements: [car] }
+    }
+
+    case "Cons": {
+      const { elements, last } = foldCons(cdr.car, cdr.cdr)
+      return { elements: [car, ...elements], last }
+    }
+
+    default: {
+      return { elements: [car], last: cdr }
     }
   }
 }
