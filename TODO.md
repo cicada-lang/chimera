@@ -1,5 +1,3 @@
-use js syntax -- `[head, ...rest]` as syntax for cons
-
 ListEmpty -- should be different from null
 
 [maybe] command line support watch with jq

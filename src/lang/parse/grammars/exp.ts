@@ -25,6 +25,16 @@ export const operand = {
       { $ap: ["optional", '","'] },
       '"]"',
     ],
+    "operand:list_cons": [
+      '"["',
+      { elements: { $ap: ["zero_or_more", "exp", '","'] } },
+      '"."',
+      '"."',
+      '"."',
+      { last_element: "exp" },
+      { $ap: ["optional", '","'] },
+      '"]"',
+    ],
     "operand:list_empty": ['"["', '"]"'],
     "operand:objekt": [
       '"{"',
