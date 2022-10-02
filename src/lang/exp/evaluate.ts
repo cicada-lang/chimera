@@ -30,6 +30,10 @@ export function evaluate(env: Env, exp: Exp): Value {
       return Values.ListCons(evaluate(env, exp.car), evaluate(env, exp.cdr))
     }
 
+    case "ListNull": {
+      return Values.ListNull()
+    }
+
     case "Objekt": {
       return Values.Objekt(
         Object.fromEntries(

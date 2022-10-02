@@ -73,6 +73,10 @@ function freshenValue(mod: Mod, value: Value, varMap: Map<string, Values.Pattern
       )
     }
 
+    case "ListNull": {
+      return value
+    }
+
     case "Objekt": {
       return Values.Objekt(
         Object.fromEntries(

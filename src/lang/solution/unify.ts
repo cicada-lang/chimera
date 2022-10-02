@@ -45,6 +45,10 @@ export function unify(solution: Solution, left: Value, right: Value): Solution |
     return cdrSolution
   }
 
+  if (left.kind === "ListNull" && right.kind === "ListNull") {
+    return solution
+  }
+
   if (left.kind === "Objekt" && right.kind === "Objekt") {
     for (const [name, leftProperty] of Object.entries(left.properties)) {
       const rightProperty = right.properties[name]

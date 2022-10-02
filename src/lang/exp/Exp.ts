@@ -2,7 +2,16 @@ import { Span } from "../span"
 
 type ExpMeta = { span?: Span }
 
-export type Exp = PatternVar | String | Number | Boolean | Null | ListCons | Objekt | ObjektUnfolded
+export type Exp =
+  | PatternVar
+  | String
+  | Number
+  | Boolean
+  | Null
+  | ListCons
+  | ListNull
+  | Objekt
+  | ObjektUnfolded
 
 export type PatternVar = {
   family: "Exp"
@@ -90,6 +99,19 @@ export function ListCons(car: Exp, cdr: Exp, span?: Span): ListCons {
     kind: "ListCons",
     car,
     cdr,
+    span,
+  }
+}
+
+export type ListNull = {
+  family: "Exp"
+  kind: "ListNull"
+} & ExpMeta
+
+export function ListNull(span?: Span): ListNull {
+  return {
+    family: "Exp",
+    kind: "ListNull",
     span,
   }
 }

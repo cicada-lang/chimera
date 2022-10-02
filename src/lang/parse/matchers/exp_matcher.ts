@@ -29,7 +29,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
         .map(matchers.exp_matcher)
         .reduceRight(
           (result, element) => Exps.ListCons(element, result, span),
-          Exps.ListCons(matchers.exp_matcher(last_element), Exps.Null(), span),
+          Exps.ListCons(matchers.exp_matcher(last_element), Exps.ListNull(), span),
         ),
     "operand:list_cons": ({ elements, last_element }, { span }) =>
       pt.matchers
@@ -39,7 +39,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
           (result, element) => Exps.ListCons(element, result, span),
           matchers.exp_matcher(last_element),
         ),
-    "operand:list_empty": ({}, { span }) => Exps.Null(span),
+    "operand:list_empty": ({}, { span }) => Exps.ListNull(span),
     "operand:objekt": ({ properties, last_property }, { span }) =>
       Exps.ObjektUnfolded(
         [

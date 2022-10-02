@@ -29,6 +29,10 @@ export function formatValue(value: Value): string {
         : `[${elements.map(formatValue).join(", ")}, ...${formatValue(last)}]`
     }
 
+    case "ListNull": {
+      return "[]"
+    }
+
     case "Objekt": {
       const properties = Object.entries(value.properties)
         .map(([name, property]) => `"${name}": ${formatValue(property)}`)
@@ -44,7 +48,7 @@ export function formatValue(value: Value): string {
 
 function foldListCons(car: Value, cdr: Value): { elements: Array<Value>; last?: Value } {
   switch (cdr.kind) {
-    case "Null": {
+    case "ListNull": {
       return { elements: [car] }
     }
 

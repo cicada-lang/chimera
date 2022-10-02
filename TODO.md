@@ -1,5 +1,3 @@
-ListEmpty -- should be different from null
-
 [maybe] command line support watch with jq
 
 playground
