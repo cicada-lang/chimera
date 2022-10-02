@@ -66,8 +66,11 @@ function freshenValue(mod: Mod, value: Value, varMap: Map<string, Values.Pattern
       return value
     }
 
-    case "Cons": {
-      return Values.Cons(freshenValue(mod, value.car, varMap), freshenValue(mod, value.cdr, varMap))
+    case "ListCons": {
+      return Values.ListCons(
+        freshenValue(mod, value.car, varMap),
+        freshenValue(mod, value.cdr, varMap),
+      )
     }
 
     case "Objekt": {

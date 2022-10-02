@@ -1,6 +1,6 @@
 import { Goal } from "../goal"
 
-export type Value = PatternVar | String | Number | Boolean | Null | Cons | Objekt | Relation
+export type Value = PatternVar | String | Number | Boolean | Null | ListCons | Objekt | Relation
 
 export type PatternVar = {
   family: "Value"
@@ -70,17 +70,17 @@ export function Null(): Null {
   }
 }
 
-export type Cons = {
+export type ListCons = {
   family: "Value"
-  kind: "Cons"
+  kind: "ListCons"
   car: Value
   cdr: Value
 }
 
-export function Cons(car: Value, cdr: Value): Cons {
+export function ListCons(car: Value, cdr: Value): ListCons {
   return {
     family: "Value",
-    kind: "Cons",
+    kind: "ListCons",
     car,
     cdr,
   }

@@ -28,8 +28,8 @@ export function operand_matcher(tree: pt.Tree): Exp {
         .zero_or_more_matcher(elements)
         .map(matchers.exp_matcher)
         .reduceRight(
-          (result, element) => Exps.Cons(element, result, span),
-          Exps.Cons(matchers.exp_matcher(last_element), Exps.Null(), span),
+          (result, element) => Exps.ListCons(element, result, span),
+          Exps.ListCons(matchers.exp_matcher(last_element), Exps.Null(), span),
         ),
 
     "operand:list_empty": ({}, { span }) => Exps.Null(span),

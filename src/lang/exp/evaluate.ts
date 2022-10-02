@@ -26,8 +26,8 @@ export function evaluate(env: Env, exp: Exp): Value {
       return Values.Null()
     }
 
-    case "Cons": {
-      return Values.Cons(evaluate(env, exp.car), evaluate(env, exp.cdr))
+    case "ListCons": {
+      return Values.ListCons(evaluate(env, exp.car), evaluate(env, exp.cdr))
     }
 
     case "Objekt": {

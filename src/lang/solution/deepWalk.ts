@@ -6,8 +6,8 @@ export function deepWalk(solution: Solution, value: Value): Value {
   value = walk(solution, value)
 
   switch (value.kind) {
-    case "Cons": {
-      return Values.Cons(deepWalk(solution, value.car), deepWalk(solution, value.cdr))
+    case "ListCons": {
+      return Values.ListCons(deepWalk(solution, value.car), deepWalk(solution, value.cdr))
     }
 
     case "Objekt": {

@@ -22,8 +22,8 @@ export function formatValue(value: Value): string {
       return "null"
     }
 
-    case "Cons": {
-      const { elements, last } = foldCons(value.car, value.cdr)
+    case "ListCons": {
+      const { elements, last } = foldListCons(value.car, value.cdr)
       return last === undefined
         ? `[${elements.map(formatValue).join(", ")}]`
         : `[${elements.map(formatValue).join(", ")}, ...${formatValue(last)}]`
@@ -42,14 +42,14 @@ export function formatValue(value: Value): string {
   }
 }
 
-function foldCons(car: Value, cdr: Value): { elements: Array<Value>; last?: Value } {
+function foldListCons(car: Value, cdr: Value): { elements: Array<Value>; last?: Value } {
   switch (cdr.kind) {
     case "Null": {
       return { elements: [car] }
     }
 
-    case "Cons": {
-      const { elements, last } = foldCons(cdr.car, cdr.cdr)
+    case "ListCons": {
+      const { elements, last } = foldListCons(cdr.car, cdr.cdr)
       return { elements: [car, ...elements], last }
     }
 

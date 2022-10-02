@@ -38,7 +38,7 @@ export function unify(solution: Solution, left: Value, right: Value): Solution |
     return solution
   }
 
-  if (left.kind === "Cons" && right.kind === "Cons") {
+  if (left.kind === "ListCons" && right.kind === "ListCons") {
     const carSolution = unify(solution, left.car, right.car)
     if (carSolution === undefined) return undefined
     const cdrSolution = unify(carSolution, left.cdr, right.cdr)
