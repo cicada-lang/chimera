@@ -53,6 +53,34 @@ query (left) {
 END
 ```
 
+The outputs are [JSON lines](https://jsonlines.org),
+You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
+
+- Note that, we use `curl -s` to disable curl's progress bar.
+
+```bash
+curl -s https://api.whereabouts.cicada-lang.org/run -d @- <<END | jq
+
+Drink { person: "john", alcohol: "martini" }
+Drink { person: "mary", alcohol: "gin" }
+Drink { person: "susan", alcohol: "vodka" }
+Drink { person: "john", alcohol: "gin" }
+Drink { person: "fred", alcohol: "gin" }
+Drink { person: "fred", alcohol: "vodka" }
+
+Friends { left, right, alcohol }
+------------------------------------ {
+  Drink { person: left, alcohol }
+  Drink { person: right, alcohol }
+}
+
+query (left) {
+  Friends { left, right: "mary", alcohol: "gin" }
+}
+
+END
+```
+
 ### Command line tool
 
 Install it by the following command:
