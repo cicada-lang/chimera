@@ -140,9 +140,7 @@ npm run test:watch    # Watch the testing
 
 ## Contributions
 
-To make a contribution,
-[fork this project](https://github.com/cicada-lang/cicada/fork)
-and create a pull request.
+To make a contribution, fork this project and create a pull request.
 
 Please read the [STYLE-GUIDE.md](STYLE-GUIDE.md) before you change the code.
 
