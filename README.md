@@ -17,6 +17,42 @@ and the query outputs are [JSON lines](https://jsonlines.org).
 
 Visit the [Cicada Whereabouts Playground](https://whereabouts.cicada-lang.org/playground/RHJpbmsgeyBwZXJzb246ICJqb2huIiwgYWxjb2hvbDogIm1hcnRpbmkiIH0KRHJpbmsgeyBwZXJzb246ICJtYXJ5IiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogInN1c2FuIiwgYWxjb2hvbDogInZvZGthIiB9CkRyaW5rIHsgcGVyc29uOiAiam9obiIsIGFsY29ob2w6ICJnaW4iIH0KRHJpbmsgeyBwZXJzb246ICJmcmVkIiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogImZyZWQiLCBhbGNvaG9sOiAidm9ka2EiIH0KCkZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB7CiAgRHJpbmsgeyBwZXJzb246IGxlZnQsIGFsY29ob2wgfQogIERyaW5rIHsgcGVyc29uOiByaWdodCwgYWxjb2hvbCB9Cn0KCnF1ZXJ5IChsZWZ0KSB7CiAgRnJpZW5kcyB7IGxlZnQsIHJpZ2h0OiAibWFyeSIsIGFsY29ob2w6ICJnaW4iIH0KfQ).
 
+### Use our server
+
+[**cicada-whereabouts-server:**](https://github.com/cicada-lang/cicada-whereabouts-server) A server that can run whereabouts code.
+
+Run a file:
+
+```bash
+curl https://api.whereabouts.cicada-lang.org/run \
+  -d @docs/tests/clause-and-effect/worksheet-01-party-pairs.cw
+```
+
+Run multiline text (bash and zsh):
+
+```bash
+curl https://api.whereabouts.cicada-lang.org/run -d @- <<END
+
+Drink { person: "john", alcohol: "martini" }
+Drink { person: "mary", alcohol: "gin" }
+Drink { person: "susan", alcohol: "vodka" }
+Drink { person: "john", alcohol: "gin" }
+Drink { person: "fred", alcohol: "gin" }
+Drink { person: "fred", alcohol: "vodka" }
+
+Friends { left, right, alcohol }
+------------------------------------ {
+  Drink { person: left, alcohol }
+  Drink { person: right, alcohol }
+}
+
+query (left) {
+  Friends { left, right: "mary", alcohol: "gin" }
+}
+
+END
+```
+
 ### Command line tool
 
 Install it by the following command:
