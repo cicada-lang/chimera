@@ -53,7 +53,7 @@ query (left) {
 END
 ```
 
-The outputs are [JSON lines](https://jsonlines.org),
+The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
 
 - Note that, we use `curl -s` to disable curl's progress bar.
@@ -105,7 +105,7 @@ Outputs:
 { "success": true, "count": 14, "solutions": [{ "left": "john", "right": "john", "alcohol": "martini" }, { "left": "mary", "right": "mary", "alcohol": "gin" }, { "left": "mary", "right": "john", "alcohol": "gin" }, { "left": "mary", "right": "fred", "alcohol": "gin" }, { "left": "susan", "right": "susan", "alcohol": "vodka" }, { "left": "susan", "right": "fred", "alcohol": "vodka" }, { "left": "john", "right": "mary", "alcohol": "gin" }, { "left": "john", "right": "john", "alcohol": "gin" }, { "left": "john", "right": "fred", "alcohol": "gin" }, { "left": "fred", "right": "mary", "alcohol": "gin" }, { "left": "fred", "right": "john", "alcohol": "gin" }, { "left": "fred", "right": "fred", "alcohol": "gin" }, { "left": "fred", "right": "susan", "alcohol": "vodka" }, { "left": "fred", "right": "fred", "alcohol": "vodka" }] }
 ```
 
-The outputs are [JSON lines](https://jsonlines.org),
+The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can also make use of [**jq**](https://stedolan.github.io/jq/) to format them:
 
 ```
