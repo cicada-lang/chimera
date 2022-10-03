@@ -11,15 +11,23 @@ and the query outputs are [JSON lines](https://jsonlines.org).
 > Cloud-hidden, **whereabouts unknown**." <br/>
 > -- [Jia Dao](https://en.wikipedia.org/wiki/Jia_Dao)
 
-## Install
+## Usage
+
+### Online playground
+
+Visit the [Cicada Whereabouts Playground](https://whereabouts.cicada-lang.org/playground/RHJpbmsgeyBwZXJzb246ICJqb2huIiwgYWxjb2hvbDogIm1hcnRpbmkiIH0KRHJpbmsgeyBwZXJzb246ICJtYXJ5IiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogInN1c2FuIiwgYWxjb2hvbDogInZvZGthIiB9CkRyaW5rIHsgcGVyc29uOiAiam9obiIsIGFsY29ob2w6ICJnaW4iIH0KRHJpbmsgeyBwZXJzb246ICJmcmVkIiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogImZyZWQiLCBhbGNvaG9sOiAidm9ka2EiIH0KCkZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB7CiAgRHJpbmsgeyBwZXJzb246IGxlZnQsIGFsY29ob2wgfQogIERyaW5rIHsgcGVyc29uOiByaWdodCwgYWxjb2hvbCB9Cn0KCnF1ZXJ5IChsZWZ0KSB7CiAgRnJpZW5kcyB7IGxlZnQsIHJpZ2h0OiAibWFyeSIsIGFsY29ob2w6ICJnaW4iIH0KfQ).
+
+### Command line tool
+
+Install it by the following command:
 
 ```
 npm install -g @cicada-lang/cicada-whereabouts
 ```
 
-The command line program is called `whereabouts`:
+The command line program is called `whereabouts`.
 
-Example usage:
+## Examples
 
 ```
 whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw
@@ -41,6 +49,8 @@ whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw | jq
 ```
 
 The content of [worksheet-02-drinking-pairs.cw](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw) is:
+
+[ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/RHJpbmsgeyBwZXJzb246ICJqb2huIiwgYWxjb2hvbDogIm1hcnRpbmkiIH0KRHJpbmsgeyBwZXJzb246ICJtYXJ5IiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogInN1c2FuIiwgYWxjb2hvbDogInZvZGthIiB9CkRyaW5rIHsgcGVyc29uOiAiam9obiIsIGFsY29ob2w6ICJnaW4iIH0KRHJpbmsgeyBwZXJzb246ICJmcmVkIiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogImZyZWQiLCBhbGNvaG9sOiAidm9ka2EiIH0KCkZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB7CiAgRHJpbmsgeyBwZXJzb246IGxlZnQsIGFsY29ob2wgfQogIERyaW5rIHsgcGVyc29uOiByaWdodCwgYWxjb2hvbCB9Cn0KCnF1ZXJ5IChsZWZ0KSB7CiAgRnJpZW5kcyB7IGxlZnQsIHJpZ2h0OiAibWFyeSIsIGFsY29ob2w6ICJnaW4iIH0KfQoKcXVlcnkgKGxlZnQsIHJpZ2h0KSB7CiAgRnJpZW5kcyB7IGxlZnQsIHJpZ2h0LCBhbGNvaG9sOiAiZ2luIiB9Cn0KCnF1ZXJ5IChsZWZ0LCByaWdodCwgYWxjb2hvbCkgewogIEZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Cn0) ]
 
 ```js
 Drink { person: "john", alcohol: "martini" }
@@ -72,6 +82,8 @@ query (left, right, alcohol) {
 The above example use JSON object, we can also use JSON array.
 
 Like in [worksheet-03-affordable-journeys.cw](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw):
+
+[ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/Qm9yZGVyIFsic3Vzc2V4IiwgImtlbnQiXQpCb3JkZXIgWyJzdXNzZXgiLCAic3VycmV5Il0KQm9yZGVyIFsic3VycmV5IiwgImtlbnQiXQpCb3JkZXIgWyJoYW1wc2hpcmUiLCAic3Vzc2V4Il0KQm9yZGVyIFsiaGFtcHNoaXJlIiwgInN1cnJleSJdCkJvcmRlciBbImhhbXBzaGlyZSIsICJiZXJrc2hpcmUiXQpCb3JkZXIgWyJiZXJrc2hpcmUiLCAic3VycmV5Il0KQm9yZGVyIFsid2lsdHNoaXJlIiwgImhhbXBzaGlyZSJdCkJvcmRlciBbIndpbHRzaGlyZSIsICJiZXJrc2hpcmUiXQoKQWRqYWNlbnQgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0gYm9yZGVyIHsKICBCb3JkZXIgW3gsIHldCn0KCkFkamFjZW50IFt4LCB5XQotLS0tLS0tLS0tLS0tLS0tIHN5bW1ldHJ5IHsKICBCb3JkZXIgW3ksIHhdCn0KCkFmZm9yZGFibGUgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0tLS0tIHsKICBBZGphY2VudCBbeCwgel0KICBBZGphY2VudCBbeiwgeV0KfQoKcXVlcnkgKHRvX2tlbnQpIHsKICBBZmZvcmRhYmxlIFt0b19rZW50LCAia2VudCJdCn0KCnF1ZXJ5ICh0b19zdXNzZXgpIHsKICBBZmZvcmRhYmxlIFsic3Vzc2V4IiwgdG9fc3Vzc2V4XQp9CgpxdWVyeSAoeCwgeSkgewogIEFmZm9yZGFibGUgW3gsIHldCn0) ]
 
 ```js
 Border ["sussex", "kent"]
