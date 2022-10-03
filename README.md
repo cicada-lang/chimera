@@ -59,6 +59,14 @@ Friends { left, right, alcohol }
 query (left) {
   Friends { left, right: "mary", alcohol: "gin" }
 }
+
+query (left, right) {
+  Friends { left, right, alcohol: "gin" }
+}
+
+query (left, right, alcohol) {
+  Friends { left, right, alcohol }
+}
 ```
 
 The above example use JSON object, we can also use JSON array.
