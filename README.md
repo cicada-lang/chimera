@@ -103,6 +103,14 @@ Affordable [x, y]
 query (to_kent) {
   Affordable [to_kent, "kent"]
 }
+
+query (to_sussex) {
+  Affordable ["sussex", to_sussex]
+}
+
+query (x, y) {
+  Affordable [x, y]
+}
 ```
 
 Please see [docs/tests](docs/tests) for more examples.
