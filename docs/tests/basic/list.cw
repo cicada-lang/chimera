@@ -13,3 +13,12 @@ query (empty) {
 query (head, rest) {
   unify [head, ...rest] = ["a", "b", "c"]
 }
+
+query (head, rest) {
+  unify [head, ...rest] = ["a", ..."b"]
+}
+
+query (head, rest, result) {
+  unify [head, ...rest] = ["a", ..."b"]
+  unify result = [head, ...rest]
+}

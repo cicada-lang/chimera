@@ -23,10 +23,11 @@ export function formatValue(value: Value): string {
     }
 
     case "ListCons": {
+      // NOTE Always format valid JSON.
       const { elements, last } = foldListCons(value.car, value.cdr)
       return last === undefined
         ? `[${elements.map(formatValue).join(", ")}]`
-        : `[${elements.map(formatValue).join(", ")}, ...${formatValue(last)}]`
+        : `[${elements.map(formatValue).join(", ")}, {"...": ${formatValue(last)}}]`
     }
 
     case "ListNull": {

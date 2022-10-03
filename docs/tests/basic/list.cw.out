@@ -2,3 +2,5 @@
 { "success": true, "count": 1, "solutions": [{ "a": "a", "b": "b", "c": "c" }] }
 { "success": true, "count": 1, "solutions": [{ "empty": [] }] }
 { "success": true, "count": 1, "solutions": [{ "head": "a", "rest": ["b", "c"] }] }
+{ "success": true, "count": 1, "solutions": [{ "head": "a", "rest": "b" }] }
+{ "success": true, "count": 1, "solutions": [{ "head": "a", "rest": "b", "result": ["a", {"...": "b"}] }] }
