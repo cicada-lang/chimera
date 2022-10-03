@@ -21,12 +21,13 @@ export class Mod {
 
   async executeStmts(stmts: Array<Stmt>): Promise<Array<StmtOutput>> {
     const outputs = []
+    const offset = this.stmts.length
     for (const [index, stmt] of stmts.entries()) {
       const output = await stmt.execute(this)
       this.stmts.push(stmt)
       if (output) {
+        this.outputs.set(offset + index, output)
         outputs.push(output)
-        this.outputs.set(index, output)
       }
     }
 

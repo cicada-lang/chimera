@@ -10,7 +10,7 @@ export class Query extends Stmt {
     super()
   }
 
-  async execute(mod: Mod): Promise<void> {
+  async execute(mod: Mod): Promise<string> {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
     const solver = Solver.forGoals(goals)
     const solutions = solver.solve(mod, mod.env)
@@ -20,6 +20,6 @@ export class Query extends Stmt {
       `"count": ${solutions.length}`,
       `"solutions": [${formatSolutions(solutions, this.names)}]`,
     ]
-    console.log(`{ ${properties.join(", ")} }`)
+    return `{ ${properties.join(", ")} }`
   }
 }
