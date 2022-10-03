@@ -6,12 +6,12 @@ export class Loader {
   cache: Map<string, Mod> = new Map()
   fetcher = new Fetcher()
 
-  async load(url: URL): Promise<Mod> {
+  async load(url: URL, options?: { text?: string }): Promise<Mod> {
     const found = this.cache.get(url.href)
     if (found !== undefined) return found
 
-    const code = await this.fetcher.fetch(url)
-    const stmts = parseStmts(code)
+    const text = options?.text || (await this.fetcher.fetch(url))
+    const stmts = parseStmts(text)
     const mod = new Mod({ loader: this, url })
     await mod.executeStmts(stmts)
 
