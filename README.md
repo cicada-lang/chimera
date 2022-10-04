@@ -25,7 +25,7 @@ Run a file:
 
 ```bash
 curl https://api.whereabouts.cicada-lang.org/run \
-  -d @docs/tests/clause-and-effect/worksheet-01-party-pairs.cw
+  -d @docs/tests/clause-and-effect/worksheet-01-party-pairs.wa
 ```
 
 Run multiline text (bash and zsh):
@@ -94,25 +94,48 @@ The command line program is called `wa`.
 ## Examples
 
 ```
-wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw
+wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
 ```
 
 Outputs:
 
 ```js
-{ "success": true, "count": 3, "solutions": [{ "left": "mary" }, { "left": "john" }, { "left": "fred" }] }
-{ "success": true, "count": 9, "solutions": [{ "left": "mary", "right": "mary" }, { "left": "mary", "right": "john" }, { "left": "mary", "right": "fred" }, { "left": "john", "right": "mary" }, { "left": "john", "right": "john" }, { "left": "john", "right": "fred" }, { "left": "fred", "right": "mary" }, { "left": "fred", "right": "john" }, { "left": "fred", "right": "fred" }] }
-{ "success": true, "count": 14, "solutions": [{ "left": "john", "right": "john", "alcohol": "martini" }, { "left": "mary", "right": "mary", "alcohol": "gin" }, { "left": "mary", "right": "john", "alcohol": "gin" }, { "left": "mary", "right": "fred", "alcohol": "gin" }, { "left": "susan", "right": "susan", "alcohol": "vodka" }, { "left": "susan", "right": "fred", "alcohol": "vodka" }, { "left": "john", "right": "mary", "alcohol": "gin" }, { "left": "john", "right": "john", "alcohol": "gin" }, { "left": "john", "right": "fred", "alcohol": "gin" }, { "left": "fred", "right": "mary", "alcohol": "gin" }, { "left": "fred", "right": "john", "alcohol": "gin" }, { "left": "fred", "right": "fred", "alcohol": "gin" }, { "left": "fred", "right": "susan", "alcohol": "vodka" }, { "left": "fred", "right": "fred", "alcohol": "vodka" }] }
+;[["mary"], ["john"], ["fred"]][
+  (["mary", "mary"],
+  ["mary", "john"],
+  ["mary", "fred"],
+  ["john", "mary"],
+  ["john", "john"],
+  ["john", "fred"],
+  ["fred", "mary"],
+  ["fred", "john"],
+  ["fred", "fred"])
+][
+  (["john", "john", "martini"],
+  ["mary", "mary", "gin"],
+  ["mary", "john", "gin"],
+  ["mary", "fred", "gin"],
+  ["susan", "susan", "vodka"],
+  ["susan", "fred", "vodka"],
+  ["john", "mary", "gin"],
+  ["john", "john", "gin"],
+  ["john", "fred", "gin"],
+  ["fred", "mary", "gin"],
+  ["fred", "john", "gin"],
+  ["fred", "fred", "gin"],
+  ["fred", "susan", "vodka"],
+  ["fred", "fred", "vodka"])
+]
 ```
 
 The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can also make use of [**jq**](https://stedolan.github.io/jq/) to format them:
 
 ```
-wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw | jq
+wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa | jq
 ```
 
-The content of [worksheet-02-drinking-pairs.cw](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw) is:
+The content of [worksheet-02-drinking-pairs.wa](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa) is:
 
 [ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/RHJpbmsgeyBwZXJzb246ICJqb2huIiwgYWxjb2hvbDogIm1hcnRpbmkiIH0KRHJpbmsgeyBwZXJzb246ICJtYXJ5IiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogInN1c2FuIiwgYWxjb2hvbDogInZvZGthIiB9CkRyaW5rIHsgcGVyc29uOiAiam9obiIsIGFsY29ob2w6ICJnaW4iIH0KRHJpbmsgeyBwZXJzb246ICJmcmVkIiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogImZyZWQiLCBhbGNvaG9sOiAidm9ka2EiIH0KCkZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB7CiAgRHJpbmsgeyBwZXJzb246IGxlZnQsIGFsY29ob2wgfQogIERyaW5rIHsgcGVyc29uOiByaWdodCwgYWxjb2hvbCB9Cn0KCnF1ZXJ5IChsZWZ0KSB7CiAgRnJpZW5kcyB7IGxlZnQsIHJpZ2h0OiAibWFyeSIsIGFsY29ob2w6ICJnaW4iIH0KfQoKcXVlcnkgKGxlZnQsIHJpZ2h0KSB7CiAgRnJpZW5kcyB7IGxlZnQsIHJpZ2h0LCBhbGNvaG9sOiAiZ2luIiB9Cn0KCnF1ZXJ5IChsZWZ0LCByaWdodCwgYWxjb2hvbCkgewogIEZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Cn0) ]
 
@@ -145,7 +168,7 @@ query (left, right, alcohol) {
 
 The above example use JSON object, we can also use JSON array.
 
-Like in [worksheet-03-affordable-journeys.cw](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.cw):
+Like in [worksheet-03-affordable-journeys.wa](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.wa):
 
 [ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/Qm9yZGVyIFsic3Vzc2V4IiwgImtlbnQiXQpCb3JkZXIgWyJzdXNzZXgiLCAic3VycmV5Il0KQm9yZGVyIFsic3VycmV5IiwgImtlbnQiXQpCb3JkZXIgWyJoYW1wc2hpcmUiLCAic3Vzc2V4Il0KQm9yZGVyIFsiaGFtcHNoaXJlIiwgInN1cnJleSJdCkJvcmRlciBbImhhbXBzaGlyZSIsICJiZXJrc2hpcmUiXQpCb3JkZXIgWyJiZXJrc2hpcmUiLCAic3VycmV5Il0KQm9yZGVyIFsid2lsdHNoaXJlIiwgImhhbXBzaGlyZSJdCkJvcmRlciBbIndpbHRzaGlyZSIsICJiZXJrc2hpcmUiXQoKQWRqYWNlbnQgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0gYm9yZGVyIHsKICBCb3JkZXIgW3gsIHldCn0KCkFkamFjZW50IFt4LCB5XQotLS0tLS0tLS0tLS0tLS0tIHN5bW1ldHJ5IHsKICBCb3JkZXIgW3ksIHhdCn0KCkFmZm9yZGFibGUgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0tLS0tIHsKICBBZGphY2VudCBbeCwgel0KICBBZGphY2VudCBbeiwgeV0KfQoKcXVlcnkgKHRvX2tlbnQpIHsKICBBZmZvcmRhYmxlIFt0b19rZW50LCAia2VudCJdCn0KCnF1ZXJ5ICh0b19zdXNzZXgpIHsKICBBZmZvcmRhYmxlIFsic3Vzc2V4IiwgdG9fc3Vzc2V4XQp9CgpxdWVyeSAoeCwgeSkgewogIEFmZm9yZGFibGUgW3gsIHldCn0) ]
 
