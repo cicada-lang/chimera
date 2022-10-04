@@ -106,18 +106,18 @@ query (s) {
 [design] syntax to write proofs by hand
 
 ```ts
-Member [element, cons(element, tail)]
+Member [element, [element, ...tail]]
 ------------------------------------- here {}
 
-Member [element, cons(head, tail)]
+Member [element, [head, ...tail]]
 ---------------------------------- there {
   Member [element, tail]
 }
 
 proof {
-  Member ["john", cons("paul", cons("john", null))]
+  Member ["john", ["paul", "john"]]
   ------------------------------------------------- Member.there {
-    Member ["john", cons("john", null)]
+    Member ["john", ["john"]]
     ----------------------------------- Member.here
   }
 }
