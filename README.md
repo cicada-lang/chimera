@@ -89,12 +89,12 @@ Install it by the following command:
 npm install -g @cicada-lang/whereabouts
 ```
 
-The command line program is called `whereabouts`.
+The command line program is called `wa`.
 
 ## Examples
 
 ```
-whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw
+wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw
 ```
 
 Outputs:
@@ -109,7 +109,7 @@ The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can also make use of [**jq**](https://stedolan.github.io/jq/) to format them:
 
 ```
-whereabouts docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw | jq
+wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw | jq
 ```
 
 The content of [worksheet-02-drinking-pairs.cw](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.cw) is:
