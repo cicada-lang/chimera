@@ -24,14 +24,13 @@ Visit the [Whereabouts Playground](https://whereabouts.cicada-lang.org/playgroun
 Run a file:
 
 ```bash
-curl https://api.whereabouts.cicada-lang.org/run \
-  -d @docs/tests/clause-and-effect/worksheet-01-party-pairs.wa
+curl https://api.whereabouts.cicada-lang.org/run --data-binary @docs/tests/clause-and-effect/worksheet-01-party-pairs.wa
 ```
 
 Run multiline text (bash and zsh):
 
 ```bash
-curl https://api.whereabouts.cicada-lang.org/run -d @- << END
+curl https://api.whereabouts.cicada-lang.org/run --data-binary @- << END
 
 Drink { person: "john", alcohol: "martini" }
 Drink { person: "mary", alcohol: "gin" }
@@ -59,7 +58,7 @@ You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
 - Note that, we use `curl -s` to disable curl's progress bar.
 
 ```bash
-curl -s https://api.whereabouts.cicada-lang.org/run -d @- << END | jq
+curl -s https://api.whereabouts.cicada-lang.org/run --data-binary @- << END | jq
 
 Drink { person: "john", alcohol: "martini" }
 Drink { person: "mary", alcohol: "gin" }
