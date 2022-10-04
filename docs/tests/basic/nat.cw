@@ -43,14 +43,21 @@ query (x, y) {
 
 Mul ["zero", y, "zero"]
 
-Mul [{ prev }, y, result]
+Mul [{ prev }, "zero", "zero"]
+
+Mul [{ prev: prev_x }, { prev: prev_y } , result]
 ---------------------------- {
-  Add [z, y, result]
-  Mul [prev, y, z]
+  Add [{ prev: prev_y }, z, result]
+  Mul [prev_x, { prev: prev_y }, z]
 }
 
 query (z) {
   Two x
   Two y
+  Mul [x, y, z]
+}
+
+query (x, y) {
+  Two z
   Mul [x, y, z]
 }
