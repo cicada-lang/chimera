@@ -8,63 +8,7 @@ test("parse Success", () => {
   expect(
     parseStmts(`
 
-success (left) {
-  Friends { left, right: "mary", alcohol: "gin" }
-}
-
-`),
-  ).toMatchObject(
-    deleteUndefined([
-      new Stmts.Success(
-        ["left"],
-        [
-          Exps.GoalApply(
-            "Friends",
-            Exps.ObjektUnfolded([
-              Exps.PropertyPlain("left", Exps.PatternVar("left")),
-              Exps.PropertyPlain("right", Exps.String("mary")),
-              Exps.PropertyPlain("alcohol", Exps.String("gin")),
-            ]),
-          ),
-        ],
-      ),
-    ]),
-  )
-})
-
-test("parse Success -- no name", () => {
-  expect(
-    parseStmts(`
-
 success {
-  Friends { left: "mary", right: "mary", alcohol: "gin" }
-}
-
-`),
-  ).toMatchObject(
-    deleteUndefined([
-      new Stmts.Success(
-        [],
-        [
-          Exps.GoalApply(
-            "Friends",
-            Exps.ObjektUnfolded([
-              Exps.PropertyPlain("left", Exps.String("mary")),
-              Exps.PropertyPlain("right", Exps.String("mary")),
-              Exps.PropertyPlain("alcohol", Exps.String("gin")),
-            ]),
-          ),
-        ],
-      ),
-    ]),
-  )
-})
-
-test("parse Success -- no name 2", () => {
-  expect(
-    parseStmts(`
-
-success () {
   Friends { left: "mary", right: "mary", alcohol: "gin" }
 }
 

@@ -6,7 +6,7 @@ export function formatVariables(solution: Solution, names: Array<string>): strin
   return `[${values.join(", ")}]`
 }
 
-function formatVariable(solution: Solution, name: string): string {
+export function formatVariable(solution: Solution, name: string): string {
   let value = lookupValueInSolution(solution, name)
   if (value === undefined) {
     return `"?${name}"`
