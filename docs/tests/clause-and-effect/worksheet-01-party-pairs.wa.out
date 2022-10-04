@@ -1,6 +1,6 @@
-{ "success": true, "count": 2, "solutions": [{ "female": "lucinda" }, { "female": "camilla" }] }
+{ "success": true, "count": 2, "solutions": [["lucinda"], ["camilla"]] }
 { "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 2, "solutions": [{ "male": "bertram" }, { "male": "percival" }] }
+{ "success": true, "count": 2, "solutions": [["bertram"], ["percival"]] }
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 4, "solutions": [{ "male": "bertram", "female": "lucinda" }, { "male": "bertram", "female": "camilla" }, { "male": "percival", "female": "lucinda" }, { "male": "percival", "female": "camilla" }] }
+{ "success": true, "count": 4, "solutions": [["bertram", "lucinda"], ["bertram", "camilla"], ["percival", "lucinda"], ["percival", "camilla"]] }

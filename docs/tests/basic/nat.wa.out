@@ -1,4 +1,4 @@
-{ "success": true, "count": 1, "solutions": [{ "z": { "prev": { "prev": "zero" } } }] }
-{ "success": true, "count": 3, "solutions": [{ "x": "zero", "y": { "prev": { "prev": "zero" } } }, { "x": { "prev": "zero" }, "y": { "prev": "zero" } }, { "x": { "prev": { "prev": "zero" } }, "y": "zero" }] }
-{ "success": true, "count": 1, "solutions": [{ "z": { "prev": { "prev": { "prev": { "prev": "zero" } } } } }] }
-{ "success": true, "count": 2, "solutions": [{ "x": { "prev": "zero" }, "y": { "prev": { "prev": "zero" } } }, { "x": { "prev": { "prev": "zero" } }, "y": { "prev": "zero" } }] }
+{ "success": true, "count": 1, "solutions": [[{ "prev": { "prev": "zero" } }]] }
+{ "success": true, "count": 3, "solutions": [["zero", { "prev": { "prev": "zero" } }], [{ "prev": "zero" }, { "prev": "zero" }], [{ "prev": { "prev": "zero" } }, "zero"]] }
+{ "success": true, "count": 1, "solutions": [[{ "prev": { "prev": { "prev": { "prev": "zero" } } } }]] }
+{ "success": true, "count": 2, "solutions": [[{ "prev": "zero" }, { "prev": { "prev": "zero" } }], [{ "prev": { "prev": "zero" } }, { "prev": "zero" }]] }

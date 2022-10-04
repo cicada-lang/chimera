@@ -1,28 +1,28 @@
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 1, "solutions": [{ "q": "pea" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "pea" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "?x" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": ["?x"] }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "?x" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "pod" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": ["?x", "?x"] }] }
-{ "success": true, "count": 1, "solutions": [{ "q": ["?x", "?y"] }] }
-{ "success": true, "count": 1, "solutions": [{ "s": ["?t", "?u"] }] }
-{ "success": true, "count": 1, "solutions": [{ "q": ["?x", "?y", "?x"] }] }
+{ "success": true, "count": 1, "solutions": [["pea"]] }
+{ "success": true, "count": 1, "solutions": [["pea"]] }
+{ "success": true, "count": 1, "solutions": [["?q"]] }
+{ "success": true, "count": 1, "solutions": [["?q"]] }
+{ "success": true, "count": 1, "solutions": [["?q"]] }
+{ "success": true, "count": 1, "solutions": [["?x"]] }
+{ "success": true, "count": 1, "solutions": [[["?x"]]] }
+{ "success": true, "count": 1, "solutions": [["?q"]] }
+{ "success": true, "count": 1, "solutions": [["?x"]] }
+{ "success": true, "count": 1, "solutions": [["pod"]] }
+{ "success": true, "count": 1, "solutions": [[["?x", "?x"]]] }
+{ "success": true, "count": 1, "solutions": [[["?x", "?y"]]] }
+{ "success": true, "count": 1, "solutions": [[["?t", "?u"]]] }
+{ "success": true, "count": 1, "solutions": [[["?x", "?y", "?x"]]] }
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "corn" }] }
+{ "success": true, "count": 1, "solutions": [["?q"]] }
+{ "success": true, "count": 1, "solutions": [["corn"]] }
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 1, "solutions": [{ "q": "corn" }] }
-{ "success": true, "count": 2, "solutions": [{ "q": "tea" }, { "q": "cup" }] }
-{ "success": true, "count": 4, "solutions": [{ "x": "tea", "y": "tea" }, { "x": "tea", "y": "cup" }, { "x": "cup", "y": "tea" }, { "x": "cup", "y": "cup" }] }
-{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "?y" }, { "x": "cup", "y": "?y" }] }
-{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "?y" }, { "x": "cup", "y": "?y" }] }
+{ "success": true, "count": 1, "solutions": [["corn"]] }
+{ "success": true, "count": 2, "solutions": [["tea"], ["cup"]] }
+{ "success": true, "count": 4, "solutions": [["tea", "tea"], ["tea", "cup"], ["cup", "tea"], ["cup", "cup"]] }
+{ "success": true, "count": 2, "solutions": [["tea", "?y"], ["cup", "?y"]] }
+{ "success": true, "count": 2, "solutions": [["tea", "?y"], ["cup", "?y"]] }

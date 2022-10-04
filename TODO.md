@@ -1,4 +1,8 @@
-support query limit
+query without metadata
+
+QueryOption & QueryOptions
+
+support query option `limit`
 
 - maybe learn from SQL syntax design
 
@@ -10,29 +14,15 @@ support query limit
   }
   ```
 
-support query with debug info
+support query option `debug`
 
-- maybe:
-
-  ```
-  debug (...) [limit <number>] {
-
-  }
-  ```
+support query option `order by`
 
 module system
 
 # bug
 
 fix repl bug
-
-# later
-
-Stmts.AssertEqual
-
-- maybe use a functional part
-
-- assert query results for testing
 
 # functional
 

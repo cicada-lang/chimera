@@ -2,17 +2,17 @@ import { deepWalk, lookupValueInSolution, Solution } from "../solution"
 import { formatValue } from "../value"
 
 export function formatSolution(solution: Solution, names: Array<string>): string {
-  const properties = names.map((name) => formatProperty(solution, name))
-  return `{ ${properties.join(", ")} }`
+  const values = names.map((name) => formatVariable(solution, name))
+  return `[${values.join(", ")}]`
 }
 
-function formatProperty(solution: Solution, name: string): string {
+function formatVariable(solution: Solution, name: string): string {
   let value = lookupValueInSolution(solution, name)
   if (value === undefined) {
-    return `"${name}": "?${name}"`
+    return `"?${name}"`
   } else {
     value = deepWalk(solution, value)
-    return `"${name}": ${formatValue(value)}`
+    return `${formatValue(value)}`
   }
 }
 

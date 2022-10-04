@@ -1,1 +1,1 @@
-{ "success": true, "count": 3, "solutions": [{ "element": "marx" }, { "element": "darwin" }, { "element": "freud" }] }
+{ "success": true, "count": 3, "solutions": [["marx"], ["darwin"], ["freud"]] }
