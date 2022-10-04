@@ -1,5 +1,7 @@
 support query limit
 
+- maybe learn from SQL syntax design
+
 - maybe:
 
   ```
@@ -20,17 +22,15 @@ support query with debug info
 
 module system
 
-edge server for query
-
 # bug
 
 fix repl bug
 
 # later
 
-port Nat: https://gist.github.com/LittleJianCH/373ed5d86afaf0c72fe4dc986895332e
-
 Stmts.AssertEqual
+
+- maybe use a functional part
 
 - assert query results for testing
 
