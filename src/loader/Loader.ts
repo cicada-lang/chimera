@@ -1,4 +1,5 @@
 import { Fetcher } from "../framework/fetcher"
+import * as Errors from "../lang/errors"
 import { Mod } from "../lang/mod"
 import { parseStmts } from "../lang/parse"
 
@@ -11,11 +12,21 @@ export class Loader {
     if (found !== undefined) return found
 
     const text = options?.text || (await this.fetcher.fetch(url))
-    const stmts = parseStmts(text)
-    const mod = new Mod({ loader: this, url })
-    await mod.executeStmts(stmts)
 
-    this.cache.set(url.href, mod)
-    return mod
+    try {
+      const stmts = parseStmts(text)
+      const mod = new Mod({ loader: this, url })
+      await mod.executeStmts(stmts)
+
+      this.cache.set(url.href, mod)
+
+      return mod
+    } catch (error) {
+      if (error instanceof Errors.ParsingError) {
+        throw new Errors.ErrorReport(error.report(text))
+      }
+
+      throw error
+    }
   }
 }
