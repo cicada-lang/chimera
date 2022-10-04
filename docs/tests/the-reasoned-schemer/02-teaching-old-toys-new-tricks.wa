@@ -3,15 +3,15 @@ Car [list, car]
   unify [car, ...cdr] = list
 }
 
-query (q) {
+query q {
   Car [["a", "c", "o", "r", "n"], q]
 }
 
-query (q) {
+query q {
   Car [["a", "c", "o", "r", "n"], "a"]
 }
 
-query (r) {
+query r {
   Car [[r, ...y], x]
-  unify "pear" = x  
+  unify "pear" = x
 }
