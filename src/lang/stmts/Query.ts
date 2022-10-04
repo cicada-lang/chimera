@@ -14,12 +14,7 @@ export class Query extends Stmt {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
     const solver = Solver.forGoals(goals)
     const solutions = solver.solve(mod, mod.env)
-    const success = solutions.length > 0
-    const properties = [
-      `"success": ${success}`,
-      `"count": ${solutions.length}`,
-      `"solutions": [${formatSolutions(solutions, this.names)}]`,
-    ]
-    return `{ ${properties.join(", ")} }`
+    // const success = solutions.length > 0
+    return `[${formatSolutions(solutions, this.names)}]`
   }
 }

@@ -1,6 +1,6 @@
-{ "success": true, "count": 1, "solutions": [[["a", "b", "c"]]] }
-{ "success": true, "count": 1, "solutions": [["a", "b", "c"]] }
-{ "success": true, "count": 1, "solutions": [[[]]] }
-{ "success": true, "count": 1, "solutions": [["a", ["b", "c"]]] }
-{ "success": true, "count": 1, "solutions": [["a", "b"]] }
-{ "success": true, "count": 1, "solutions": [["a", "b", ["a", {"...": "b"}]]] }
+[[["a", "b", "c"]]]
+[["a", "b", "c"]]
+[[[]]]
+[["a", ["b", "c"]]]
+[["a", "b"]]
+[["a", "b", ["a", {"...": "b"}]]]

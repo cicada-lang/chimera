@@ -1,5 +1,5 @@
-{ "success": true, "count": 2, "solutions": [["Hacker Alyssa P"], ["Fect Cy D"]] }
-{ "success": true, "count": 2, "solutions": [["Hacker Alyssa P"], ["Fect Cy D"]] }
-{ "success": true, "count": 1, "solutions": [["Slumerville", "Ridge Road", 10]] }
-{ "success": true, "count": 5, "solutions": [["Bitdiddle Ben", "wizard"], ["Hacker Alyssa P", "programmer"], ["Fect Cy D", "programmer"], ["Tweakit Lem E", "technician"], ["Reasoner Louis", "programmer trainee"]] }
-{ "success": true, "count": 5, "solutions": [["Bitdiddle Ben"], ["Hacker Alyssa P"], ["Fect Cy D"], ["Tweakit Lem E"], ["Reasoner Louis"]] }
+[["Hacker Alyssa P"], ["Fect Cy D"]]
+[["Hacker Alyssa P"], ["Fect Cy D"]]
+[["Slumerville", "Ridge Road", 10]]
+[["Bitdiddle Ben", "wizard"], ["Hacker Alyssa P", "programmer"], ["Fect Cy D", "programmer"], ["Tweakit Lem E", "technician"], ["Reasoner Louis", "programmer trainee"]]
+[["Bitdiddle Ben"], ["Hacker Alyssa P"], ["Fect Cy D"], ["Tweakit Lem E"], ["Reasoner Louis"]]

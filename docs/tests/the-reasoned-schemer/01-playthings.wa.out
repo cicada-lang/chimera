@@ -1,28 +1,28 @@
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 1, "solutions": [["pea"]] }
-{ "success": true, "count": 1, "solutions": [["pea"]] }
-{ "success": true, "count": 1, "solutions": [["?q"]] }
-{ "success": true, "count": 1, "solutions": [["?q"]] }
-{ "success": true, "count": 1, "solutions": [["?q"]] }
-{ "success": true, "count": 1, "solutions": [["?x"]] }
-{ "success": true, "count": 1, "solutions": [[["?x"]]] }
-{ "success": true, "count": 1, "solutions": [["?q"]] }
-{ "success": true, "count": 1, "solutions": [["?x"]] }
-{ "success": true, "count": 1, "solutions": [["pod"]] }
-{ "success": true, "count": 1, "solutions": [[["?x", "?x"]]] }
-{ "success": true, "count": 1, "solutions": [[["?x", "?y"]]] }
-{ "success": true, "count": 1, "solutions": [[["?t", "?u"]]] }
-{ "success": true, "count": 1, "solutions": [[["?x", "?y", "?x"]]] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 1, "solutions": [["?q"]] }
-{ "success": true, "count": 1, "solutions": [["corn"]] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 1, "solutions": [["corn"]] }
-{ "success": true, "count": 2, "solutions": [["tea"], ["cup"]] }
-{ "success": true, "count": 4, "solutions": [["tea", "tea"], ["tea", "cup"], ["cup", "tea"], ["cup", "cup"]] }
-{ "success": true, "count": 2, "solutions": [["tea", "?y"], ["cup", "?y"]] }
-{ "success": true, "count": 2, "solutions": [["tea", "?y"], ["cup", "?y"]] }
+[]
+[]
+[["pea"]]
+[["pea"]]
+[["?q"]]
+[["?q"]]
+[["?q"]]
+[["?x"]]
+[[["?x"]]]
+[["?q"]]
+[["?x"]]
+[["pod"]]
+[[["?x", "?x"]]]
+[[["?x", "?y"]]]
+[[["?t", "?u"]]]
+[[["?x", "?y", "?x"]]]
+[]
+[]
+[["?q"]]
+[["corn"]]
+[]
+[]
+[]
+[["corn"]]
+[["tea"], ["cup"]]
+[["tea", "tea"], ["tea", "cup"], ["cup", "tea"], ["cup", "cup"]]
+[["tea", "?y"], ["cup", "?y"]]
+[["tea", "?y"], ["cup", "?y"]]

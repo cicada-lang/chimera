@@ -1,6 +1,6 @@
-{ "success": true, "count": 2, "solutions": [["lucinda"], ["camilla"]] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 2, "solutions": [["bertram"], ["percival"]] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 4, "solutions": [["bertram", "lucinda"], ["bertram", "camilla"], ["percival", "lucinda"], ["percival", "camilla"]] }
+[["lucinda"], ["camilla"]]
+[]
+[["bertram"], ["percival"]]
+[]
+[]
+[["bertram", "lucinda"], ["bertram", "camilla"], ["percival", "lucinda"], ["percival", "camilla"]]

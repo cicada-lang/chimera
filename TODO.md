@@ -1,5 +1,3 @@
-query without metadata
-
 QueryOption & QueryOptions
 
 support query option `limit`

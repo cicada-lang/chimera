@@ -1,4 +1,4 @@
-{ "success": true, "count": 1, "solutions": [[{ "prev": { "prev": "zero" } }]] }
-{ "success": true, "count": 3, "solutions": [["zero", { "prev": { "prev": "zero" } }], [{ "prev": "zero" }, { "prev": "zero" }], [{ "prev": { "prev": "zero" } }, "zero"]] }
-{ "success": true, "count": 1, "solutions": [[{ "prev": { "prev": { "prev": { "prev": "zero" } } } }]] }
-{ "success": true, "count": 2, "solutions": [[{ "prev": "zero" }, { "prev": { "prev": "zero" } }], [{ "prev": { "prev": "zero" } }, { "prev": "zero" }]] }
+[[{ "prev": { "prev": "zero" } }]]
+[["zero", { "prev": { "prev": "zero" } }], [{ "prev": "zero" }, { "prev": "zero" }], [{ "prev": { "prev": "zero" } }, "zero"]]
+[[{ "prev": { "prev": { "prev": { "prev": "zero" } } } }]]
+[[{ "prev": "zero" }, { "prev": { "prev": "zero" } }], [{ "prev": { "prev": "zero" } }, { "prev": "zero" }]]
