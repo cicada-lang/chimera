@@ -1,5 +1,5 @@
 export * from "./deepWalk"
-export * from "./formatSolution"
+export * from "./formatVariable"
 export * from "./lookupValueInSolution"
 export * from "./occur"
 export * from "./Solution"

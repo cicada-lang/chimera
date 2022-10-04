@@ -1,7 +1,7 @@
 import { Env } from "../env"
 import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { formatSolution, Solution, solutionNames, SolutionNull } from "../solution"
+import { formatVariables, Solution, solutionNames, SolutionNull } from "../solution"
 import { formatValue } from "../value"
 
 /**
@@ -41,7 +41,7 @@ export class Solver<T> {
     console.log()
 
     for (const queue of this.queues) {
-      console.log("  solution:", formatSolution(queue.solution, solutionNames(queue.solution)))
+      console.log("  solution:", formatVariables(queue.solution, solutionNames(queue.solution)))
       console.log()
 
       for (const goal of queue.goals) {

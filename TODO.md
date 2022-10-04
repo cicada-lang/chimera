@@ -1,3 +1,7 @@
+QuerySingle
+
+- `query <name> { ... }` should not return list
+
 QueryOption & QueryOptions
 
 query option -- `limit`

@@ -6,3 +6,12 @@ Car [list, car]
 query (q) {
   Car [["a", "c", "o", "r", "n"], q]
 }
+
+query (q) {
+  Car [["a", "c", "o", "r", "n"], "a"]
+}
+
+query (r) {
+  Car [[r, ...y], x]
+  unify "pear" = x  
+}
