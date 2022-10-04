@@ -25,10 +25,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       ),
     "stmt:query": ({ names, goals }, { span }) =>
       new Stmts.Query(matchers.names_matcher(names), matchers.goals_matcher(goals), span),
-    "stmt:query_no_name": ({ goals }, { span }) =>
-      new Stmts.Query([], matchers.goals_matcher(goals), span),
-    "stmt:query_no_name_2": ({ goals }, { span }) =>
-      new Stmts.Query([], matchers.goals_matcher(goals), span),
     "stmt:success": ({ goals }, { span }) =>
       new Stmts.Success([], matchers.goals_matcher(goals), span),
     "stmt:failure": ({ goals }, { span }) =>

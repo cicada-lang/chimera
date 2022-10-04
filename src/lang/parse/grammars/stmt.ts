@@ -19,8 +19,6 @@ export const stmt = {
       '"}"',
     ],
     "stmt:query": ['"query"', '"("', { names: "names" }, '")"', '"{"', { goals: "goals" }, '"}"'],
-    "stmt:query_no_name": ['"query"', '"{"', { goals: "goals" }, '"}"'],
-    "stmt:query_no_name_2": ['"query"', '"("', '")"', '"{"', { goals: "goals" }, '"}"'],
     "stmt:success": ['"success"', '"{"', { goals: "goals" }, '"}"'],
     "stmt:failure": ['"failure"', '"{"', { goals: "goals" }, '"}"'],
   },

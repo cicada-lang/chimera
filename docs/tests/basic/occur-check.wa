@@ -1,7 +1,7 @@
-failure (x) {
+failure {
   unify x = [x]
 }
 
-failure (x) {
+failure {
   unify x = { x }
 }
