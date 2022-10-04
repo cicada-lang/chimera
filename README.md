@@ -31,7 +31,7 @@ curl https://api.whereabouts.cicada-lang.org/run \
 Run multiline text (bash and zsh):
 
 ```bash
-curl https://api.whereabouts.cicada-lang.org/run -d @- <<END
+curl https://api.whereabouts.cicada-lang.org/run -d @- << END
 
 Drink { person: "john", alcohol: "martini" }
 Drink { person: "mary", alcohol: "gin" }
@@ -59,7 +59,7 @@ You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
 - Note that, we use `curl -s` to disable curl's progress bar.
 
 ```bash
-curl -s https://api.whereabouts.cicada-lang.org/run -d @- <<END | jq
+curl -s https://api.whereabouts.cicada-lang.org/run -d @- << END | jq
 
 Drink { person: "john", alcohol: "martini" }
 Drink { person: "mary", alcohol: "gin" }
