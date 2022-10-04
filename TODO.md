@@ -1,6 +1,6 @@
 QueryOption & QueryOptions
 
-support query option `limit`
+query option -- `limit`
 
 - maybe learn from SQL syntax design
 
@@ -12,9 +12,9 @@ support query option `limit`
   }
   ```
 
-support query option `debug`
+query option -- `debug`
 
-support query option `order by`
+query option -- to return object instead of array
 
 module system
 
