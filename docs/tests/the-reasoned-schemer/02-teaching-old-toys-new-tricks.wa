@@ -15,3 +15,78 @@ query r {
   Car [[r, ...y], x]
   unify "pear" = x
 }
+
+query r {
+  Car [["grape", "raisin", "pear"], x]
+  Car [[["a"], ["b"], ["c"]], y]
+  unify [x, ...y] = r
+}
+
+Cdr [p, d]
+---------- {
+  unify [a, ...d] = p
+}
+
+query r {
+  Cdr [["a", "c", "o", "r", "n"], v]
+  Cdr [v, w]
+  Car [w, r]
+}
+
+query r {
+  Cdr [["grape", "raisin", "pear"], x]
+  Car [[["a"], ["b"], ["c"]], y]
+  unify [x, ...y] = r
+}
+
+query q {
+  Cdr [["a", "c", "o", "r", "n"], ["c", "o", "r", "n"]]
+}
+
+query x {
+  Cdr [["c", "o", "r", "n"], [x, "r", "n"]]
+}
+
+query l {
+  Cdr [l, ["c", "o", "r", "n"]]
+  Car [l, x]
+  unify x = "a"
+}
+
+// Cons [a, d, p]
+// --------------- {
+//   unify [a, ...d] = p
+// }
+
+Cons [a, d, p]
+--------------- {
+  Car [p, a]
+  Cdr [p, d]
+}
+
+query l {
+  Cons [["a", "b", "c"], ["d", "e"], l]
+}
+
+query x {
+  Cons [x, ["a", "b", "c"], ["d", "a", "b", "c"]]
+}
+
+query r {
+  unify ["e", "a", "d", x] = r
+  Cons [y, ["a", z, "c"], r]
+}
+
+query x {
+  Cons [x, ["a", x, "c"], ["d", "a", x, "c"]]
+}
+
+query l {
+  unify ["d", "a", x, "c"] = l
+  Cons [x, ["a", x, "c"], l]
+}
+
+query l {
+  Cons [x, ["a", x, "c"], l]
+  unify ["d", "a", x, "c"] = l
+}
