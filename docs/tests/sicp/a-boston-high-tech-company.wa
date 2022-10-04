@@ -386,7 +386,7 @@ query (name, role) {
 // there is at least one solution of the query,
 // or use `failure` to assert there is no solution.
 
-success (dept) {
+success {
   Job {
     name: "Hacker Alyssa P",
     role: "programmer",
@@ -394,7 +394,7 @@ success (dept) {
   }
 }
 
-failure (x) {
+failure {
   Supervisor {
     slave: x,
     master: x,
