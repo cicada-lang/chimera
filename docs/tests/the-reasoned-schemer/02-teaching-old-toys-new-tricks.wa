@@ -1,8 +1,8 @@
-Car [car, list]
+Car [list, car]
 --------------- {
   unify [car, ...cdr] = list
 }
 
 query (q) {
-  Car [q, ["a", "c", "o", "r", "n"]]
+  Car [["a", "c", "o", "r", "n"], q]
 }

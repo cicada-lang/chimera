@@ -44,7 +44,7 @@ function freshenValue(mod: Mod, value: Value, varMap: Map<string, Values.Pattern
       const count = mod.variableCount
       mod.variableCount++
 
-      const freshName = `?${value.name}_${count}`
+      const freshName = `${value.name}_${count}`
       const variable = Values.PatternVar(freshName)
       varMap.set(value.name, variable)
       return variable
