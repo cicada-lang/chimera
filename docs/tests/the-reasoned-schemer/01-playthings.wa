@@ -61,7 +61,7 @@ query q {
   unify [x, y] = q
 }
 
-query (s) {
+query s {
   unify [t, u] = s
 }
 

@@ -14,7 +14,7 @@ failure {
   Member ["joe", ["marx", "darwin", "freud" ]]
 }
 
-query (element) {
+query element {
   Member [element, ["marx", "darwin", "freud"]]
 }
 

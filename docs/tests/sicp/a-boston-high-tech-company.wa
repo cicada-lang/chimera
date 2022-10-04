@@ -329,7 +329,7 @@ Competence {
 // to retrieve information from the database.
 // For example, to find all computer programmers one can say
 
-query (coder) {
+query coder {
   Job {
     name: coder,
     dept: "computer",
@@ -339,7 +339,7 @@ query (coder) {
 
 // We also make assertion about the results.
 
-query (coder) {
+query coder {
   Job {
     name: coder,
     dept: "computer",
@@ -415,7 +415,7 @@ ComputerDeptSlave { slave }
   Supervisor { slave, master: z }
 }
 
-query (slave) {
+query slave {
   ComputerDeptSlave { slave }
 }
 

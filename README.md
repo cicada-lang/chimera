@@ -45,7 +45,7 @@ Friends { left, right, alcohol }
   Drink { person: right, alcohol }
 }
 
-query (left) {
+query left {
   Friends { left, right: "mary", alcohol: "gin" }
 }
 
@@ -73,7 +73,7 @@ Friends { left, right, alcohol }
   Drink { person: right, alcohol }
 }
 
-query (left) {
+query left {
   Friends { left, right: "mary", alcohol: "gin" }
 }
 
@@ -129,7 +129,7 @@ Friends { left, right, alcohol }
   Drink { person: right, alcohol }
 }
 
-query (left) {
+query left {
   Friends { left, right: "mary", alcohol: "gin" }
 }
 
@@ -175,11 +175,11 @@ Affordable [x, y]
   Adjacent [z, y]
 }
 
-query (to_kent) {
+query to_kent {
   Affordable [to_kent, "kent"]
 }
 
-query (to_sussex) {
+query to_sussex {
   Affordable ["sussex", to_sussex]
 }
 

@@ -18,23 +18,23 @@ failure {
   Pair { male: "apollo", female: "daphne" }
 }
 
-query (female) {
+query female {
   Pair { male: "percival", female }
 }
 
-query (female) {
+query female {
   Pair { male: "camilla", female }
 }
 
-query (male) {
+query male {
   Pair { male, female: "lucinda" }
 }
 
-query (x) {
+query x {
   Pair { male: x, female: x }
 }
 
-query (x) {
+query x {
   Pair { male, female: "fido" }
 }
 

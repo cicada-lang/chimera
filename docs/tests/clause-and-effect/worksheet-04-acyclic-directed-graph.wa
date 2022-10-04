@@ -18,11 +18,11 @@ Path [x, y]
   Path [z, y]
 }
 
-query (x) {
+query x {
   Path ["g", x]
 }
 
-query (x) {
+query x {
   Path [x, "h"]
 }
 

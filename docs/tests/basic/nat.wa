@@ -24,7 +24,7 @@ Add [{ prev }, y, { prev: result_prev } ]
   Add [prev, y, result_prev]
 }
 
-query (z) {
+query z {
   One x
   One y
   Add [x, y, z]
@@ -51,7 +51,7 @@ Mul [{ prev: prev_x }, { prev: prev_y } , result]
   Mul [prev_x, { prev: prev_y }, z]
 }
 
-query (z) {
+query z {
   Two x
   Two y
   Mul [x, y, z]
