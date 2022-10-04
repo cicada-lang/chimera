@@ -1,7 +1,3 @@
-[maybe] command line support watch with jq
-
-playground
-
 support query limit
 
 - maybe:

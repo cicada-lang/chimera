@@ -6,7 +6,7 @@ export function formatSolution(solution: Solution, names: Array<string>): string
   for (const name of names) {
     let value = lookupValueInSolution(solution, name)
     if (value === undefined) {
-      properties.push(`"${name}": "#unknown"`)
+      properties.push(`"${name}": "?${name}"`)
     } else {
       value = deepWalk(solution, value)
       properties.push(`"${name}": ${formatValue(value)}`)

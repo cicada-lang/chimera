@@ -2,12 +2,12 @@
 { "success": false, "count": 0, "solutions": [] }
 { "success": true, "count": 1, "solutions": [{ "q": "pea" }] }
 { "success": true, "count": 1, "solutions": [{ "q": "pea" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
 { "success": true, "count": 1, "solutions": [{ "q": "?x" }] }
 { "success": true, "count": 1, "solutions": [{ "q": ["?x"] }] }
-{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
 { "success": true, "count": 1, "solutions": [{ "q": "?x" }] }
 { "success": true, "count": 1, "solutions": [{ "q": "pod" }] }
 { "success": true, "count": 1, "solutions": [{ "q": ["?x", "?x"] }] }
@@ -16,7 +16,7 @@
 { "success": true, "count": 1, "solutions": [{ "q": ["?x", "?y", "?x"] }] }
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
-{ "success": true, "count": 1, "solutions": [{ "q": "#unknown" }] }
+{ "success": true, "count": 1, "solutions": [{ "q": "?q" }] }
 { "success": true, "count": 1, "solutions": [{ "q": "corn" }] }
 { "success": false, "count": 0, "solutions": [] }
 { "success": false, "count": 0, "solutions": [] }
@@ -24,5 +24,5 @@
 { "success": true, "count": 1, "solutions": [{ "q": "corn" }] }
 { "success": true, "count": 2, "solutions": [{ "q": "tea" }, { "q": "cup" }] }
 { "success": true, "count": 4, "solutions": [{ "x": "tea", "y": "tea" }, { "x": "tea", "y": "cup" }, { "x": "cup", "y": "tea" }, { "x": "cup", "y": "cup" }] }
-{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "#unknown" }, { "x": "cup", "y": "#unknown" }] }
-{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "#unknown" }, { "x": "cup", "y": "#unknown" }] }
+{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "?y" }, { "x": "cup", "y": "?y" }] }
+{ "success": true, "count": 2, "solutions": [{ "x": "tea", "y": "?y" }, { "x": "cup", "y": "?y" }] }

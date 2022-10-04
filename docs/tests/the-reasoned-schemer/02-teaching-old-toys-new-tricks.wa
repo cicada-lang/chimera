@@ -1,0 +1,8 @@
+Car [car, list]
+--------------- {
+  unify [car, ...cdr] = list
+}
+
+query (q) {
+  Car [q, ["a", "c", "o", "r", "n"]]
+}
