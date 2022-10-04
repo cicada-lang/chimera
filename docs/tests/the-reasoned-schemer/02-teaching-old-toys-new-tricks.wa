@@ -1,6 +1,6 @@
-Car [list, car]
---------------- {
-  unify [car, ...cdr] = list
+Car [p, a]
+---------- {
+  unify [a, ...d] = p
 }
 
 query q {
