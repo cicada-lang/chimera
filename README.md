@@ -19,7 +19,7 @@ Visit the [Cicada Whereabouts Playground](https://whereabouts.cicada-lang.org/pl
 
 ### Use our server
 
-[**cicada-whereabouts-server:**](https://github.com/cicada-lang/cicada-whereabouts-server) A server that can run whereabouts code.
+[**whereabouts-server:**](https://github.com/cicada-lang/whereabouts-server) A server that can run whereabouts code.
 
 Run a file:
 
@@ -86,7 +86,7 @@ END
 Install it by the following command:
 
 ```
-npm install -g @cicada-lang/cicada-whereabouts
+npm install -g @cicada-lang/whereabouts
 ```
 
 The command line program is called `whereabouts`.
