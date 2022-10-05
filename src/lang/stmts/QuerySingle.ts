@@ -14,7 +14,7 @@ export class QuerySingle extends Stmt {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
     const solver = Solver.forGoals(goals)
     const solutions = solver.solve(mod, mod.env)
-    const results = solutions.map((solution) => formatVariable(solution, this.name)).join(", ")
-    return `[ ${results} ]`
+    const results = solutions.map((solution) => formatVariable(solution, this.name))
+    return results.length === 0 ? "[]" : `[ ${results.join(", ")} ]`
   }
 }
