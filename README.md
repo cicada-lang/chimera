@@ -27,6 +27,17 @@ Run a file:
 curl https://wa.cic.run --data-binary @docs/tests/clause-and-effect/worksheet-01-party-pairs.wa
 ```
 
+You can fetch code from a URL, and run:
+
+- We use `curl -s` to disable curl's progress bar.
+- All files in [**docs/**](docs/), can be fetched from: `https://docs.wa.cic.run/<path>`,
+  and any other http server that serves `.wa` code also works.
+
+```bash
+curl -s https://docs.wa.cic.run/tests/clause-and-effect/worksheet-01-party-pairs.wa |
+curl -s https://wa.cic.run --data-binary @-
+```
+
 Run multiline text (bash and zsh):
 
 ```bash
@@ -54,8 +65,6 @@ END
 
 The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
-
-- Note that, we use `curl -s` to disable curl's progress bar.
 
 ```bash
 curl -s https://wa.cic.run --data-binary @- << END | jq
@@ -103,9 +112,6 @@ wa run docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa --watch
 ```
 
 Run a URL:
-
-- Note that, all files in [**docs/**](docs/), can be fetched from: `https://docs.wa.cic.run/<path>`,
-  and any other http server that serves `.wa` code also works.
 
 ```bash
 wa run https://docs.wa.cic.run/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
