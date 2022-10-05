@@ -104,8 +104,10 @@ wa run docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa --watch
 
 Run a URL:
 
+- Note that all files in [**docs/**](docs/), can be fetched from: https://docs.wa.cic.run
+
 ```bash
-wa run https://docs.whereabouts.cicada-lang.org/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
+wa run https://docs.wa.cic.run/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
 ```
 
 Outputs:
