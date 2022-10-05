@@ -121,3 +121,65 @@ query x {
 query r {
   unify [x, y, "salad"] = r
 }
+
+Pair p
+------ {
+  Cons [a, d, p]
+}
+
+query q {
+  Pair [q, ...q]
+}
+
+query q {
+  Pair []
+}
+
+query q {
+  Pair "pair"
+}
+
+query x {
+  Pair x
+}
+
+query r {
+  Pair [r]
+}
+
+// Singleton l
+// ----------- {
+//   Pair l
+//   Cdr [l, d]
+//   Null d
+// }
+
+Singleton l
+----------- {
+  Cdr [l, d]
+  Null d
+}
+
+query r {
+  Singleton ["tofu"]
+}
+
+query r {
+  Singleton [["tofu"]]
+}
+
+query r {
+  Singleton "tofu"
+}
+
+query r {
+  Singleton ["e", "tofu"]
+}
+
+query r {
+  Singleton []
+}
+
+query r {
+  Singleton ["e", ..."tofu"]
+}

@@ -99,9 +99,9 @@ wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
 Outputs:
 
 ```json
-["mary", "john", "fred"]
-[["mary", "mary"], ["mary", "john"], ["mary", "fred"], ["john", "mary"], ["john", "john"], ["john", "fred"], ["fred", "mary"], ["fred", "john"], ["fred", "fred"]]
-[["john", "john", "martini"], ["mary", "mary", "gin"], ["mary", "john", "gin"], ["mary", "fred", "gin"], ["susan", "susan", "vodka"], ["susan", "fred", "vodka"], ["john", "mary", "gin"], ["john", "john", "gin"], ["john", "fred", "gin"], ["fred", "mary", "gin"], ["fred", "john", "gin"], ["fred", "fred", "gin"], ["fred", "susan", "vodka"], ["fred", "fred", "vodka"]]
+[ "mary", "john", "fred" ]
+[ ["mary", "mary"], ["mary", "john"], ["mary", "fred"], ["john", "mary"], ["john", "john"], ["john", "fred"], ["fred", "mary"], ["fred", "john"], ["fred", "fred"] ]
+[ ["john", "john", "martini"], ["mary", "mary", "gin"], ["mary", "john", "gin"], ["mary", "fred", "gin"], ["susan", "susan", "vodka"], ["susan", "fred", "vodka"], ["john", "mary", "gin"], ["john", "john", "gin"], ["john", "fred", "gin"], ["fred", "mary", "gin"], ["fred", "john", "gin"], ["fred", "fred", "gin"], ["fred", "susan", "vodka"], ["fred", "fred", "vodka"] ]
 ```
 
 The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
