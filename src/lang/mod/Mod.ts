@@ -19,6 +19,10 @@ export class Mod {
 
   constructor(public options: ModOptions) {}
 
+  resolve(href: string): URL {
+    return new URL(href, this.options.url)
+  }
+
   async executeStmts(stmts: Array<Stmt>): Promise<Array<StmtOutput>> {
     const outputs = []
     const offset = this.stmts.length

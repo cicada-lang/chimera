@@ -1,5 +1,6 @@
 export * from "./Fact"
 export * from "./Failure"
+export * from "./import"
 export * from "./Query"
 export * from "./QuerySingle"
 export * from "./Rule"
