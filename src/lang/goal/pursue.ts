@@ -10,7 +10,11 @@ import * as Values from "../value"
 
    It is something that either _succeeds_, _fails_, or _has no value_.
 
-   TODO interpret the above in our context.
+   In our context:
+
+   - succeeds: find some solutions
+   - fails: no solutions
+   - has no value: infinite loop
 
 **/
 
