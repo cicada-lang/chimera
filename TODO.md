@@ -16,10 +16,6 @@ query option -- `debug`
 
 query option -- to return object instead of array
 
-# bug
-
-fix repl bug
-
 # functional
 
 [maybe] We need a functional part to construct data with out record name
