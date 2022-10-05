@@ -1,7 +1,3 @@
-vercel serve `docs/`
-
-- curl https://whereabouts-lac.vercel.app/docs/tests/the-reasoned-schemer/02-teaching-old-toys-new-tricks.wa
-
 QueryOption & QueryOptions
 
 query option -- `limit`
