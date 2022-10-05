@@ -11,7 +11,7 @@ and the query outputs are [JSON lines](https://jsonlines.org).
 > Cloud-hidden, **whereabouts unknown**." <br/>
 > -- [Jia Dao](https://en.wikipedia.org/wiki/Jia_Dao)
 
-## Usage
+## Usages
 
 ### Online playground
 
