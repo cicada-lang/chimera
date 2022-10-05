@@ -36,3 +36,6 @@ But the code follows this line is not valid:
 The whole code is not ambiguous,
 but when processed line-by-line,
 it is ambiguous and has syntax error.
+
+We can custom the general REPL to handle this ambiguity.
+But we leave it for now.
