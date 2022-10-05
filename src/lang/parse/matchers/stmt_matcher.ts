@@ -31,6 +31,12 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.Success([], matchers.goals_matcher(goals), span),
     "stmt:failure": ({ goals }, { span }) =>
       new Stmts.Failure([], matchers.goals_matcher(goals), span),
+    "stmt:import": ({ bindings, path }, { span }) =>
+      new Stmts.Import(
+        pt.matchers.zero_or_more_matcher(bindings).map(matchers.import_binding_matcher),
+        pt.trim_boundary(pt.str(path), 1),
+        span,
+      ),
   })(tree)
 }
 

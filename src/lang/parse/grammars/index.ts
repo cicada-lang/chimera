@@ -7,6 +7,7 @@ export const dashline = pt.grammars.dashline
 
 export * from "./exp"
 export * from "./goal"
+export * from "./import_binding"
 export * from "./key"
 export * from "./name"
 export * from "./property"

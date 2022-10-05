@@ -1,7 +1,3 @@
-Stmts.Import -- syntax
-
-Stmts.Import -- test
-
 QueryOption & QueryOptions
 
 query option -- `limit`

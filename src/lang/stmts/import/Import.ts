@@ -3,7 +3,6 @@ import * as Errors from "../../errors"
 import { Mod } from "../../mod"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import * as Values from "../../value"
 import { defineBinding, ImportBinding } from "../import"
 
 export class Import extends Stmt {
@@ -25,8 +24,6 @@ export class Import extends Stmt {
           `I meet undefined name: ${binding.name}, when importing module: ${this.path}`,
         )
       }
-
-      Values.assertRelation(relation)
 
       defineBinding(mod, binding, relation)
     }

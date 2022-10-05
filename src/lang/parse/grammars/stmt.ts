@@ -22,6 +22,14 @@ export const stmt = {
     "stmt:query_single": ['"query"', { name: "name" }, '"{"', { goals: "goals" }, '"}"'],
     "stmt:success": ['"success"', '"{"', { goals: "goals" }, '"}"'],
     "stmt:failure": ['"failure"', '"{"', { goals: "goals" }, '"}"'],
+    "stmt:import": [
+      '"import"',
+      '"{"',
+      { bindings: { $ap: ["zero_or_more", "import_binding"] } },
+      '"}"',
+      '"from"',
+      { path: { $pattern: ["string"] } },
+    ],
   },
 }
 
