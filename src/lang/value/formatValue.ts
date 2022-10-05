@@ -35,6 +35,10 @@ export function formatValue(value: Value): string {
     }
 
     case "Objekt": {
+      if (Object.entries(value.properties).length === 0) {
+        return "{}"
+      }
+
       const properties = Object.entries(value.properties)
         .map(([name, property]) => `"${name}": ${formatValue(property)}`)
         .join(", ")
