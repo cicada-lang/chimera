@@ -159,7 +159,7 @@ query (left, right, alcohol) {
 We can also use the module system to import from URL:
 
 ```js
-import { Friends } from "https://docs.whereabouts.cicada-lang.org/tests/clause-and-effect/worksheet-02-drinking-pairs.wa"
+import { Friends } from "https://docs.wa.cic.run/tests/clause-and-effect/worksheet-02-drinking-pairs.wa"
 
 query left {
   Friends { left, right: "mary", alcohol: "gin" }
