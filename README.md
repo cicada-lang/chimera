@@ -90,10 +90,22 @@ npm install -g @cicada-lang/whereabouts
 
 The command line program is called `wa`.
 
-## Examples
+Run a file:
 
+```bash
+wa run docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
 ```
-wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
+
+Run a file and watch file change:
+
+```bash
+wa run docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa --watch
+```
+
+Run a URL:
+
+```bash
+wa run https://docs.whereabouts.cicada-lang.org/tests/clause-and-effect/worksheet-02-drinking-pairs.wa
 ```
 
 Outputs:
@@ -107,11 +119,13 @@ Outputs:
 The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can also make use of [**jq**](https://stedolan.github.io/jq/) to format them:
 
-```
+```bash
 wa docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa | jq
 ```
 
-The content of [worksheet-02-drinking-pairs.wa](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa) is:
+## Examples
+
+[**worksheet-02-drinking-pairs.wa:**](docs/tests/clause-and-effect/worksheet-02-drinking-pairs.wa)
 
 [ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/RHJpbmsgeyBwZXJzb246ICJqb2huIiwgYWxjb2hvbDogIm1hcnRpbmkiIH0KRHJpbmsgeyBwZXJzb246ICJtYXJ5IiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogInN1c2FuIiwgYWxjb2hvbDogInZvZGthIiB9CkRyaW5rIHsgcGVyc29uOiAiam9obiIsIGFsY29ob2w6ICJnaW4iIH0KRHJpbmsgeyBwZXJzb246ICJmcmVkIiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogImZyZWQiLCBhbGNvaG9sOiAidm9ka2EiIH0KCkZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB7CiAgRHJpbmsgeyBwZXJzb246IGxlZnQsIGFsY29ob2wgfQogIERyaW5rIHsgcGVyc29uOiByaWdodCwgYWxjb2hvbCB9Cn0KCnF1ZXJ5IGxlZnQgewogIEZyaWVuZHMgeyBsZWZ0LCByaWdodDogIm1hcnkiLCBhbGNvaG9sOiAiZ2luIiB9Cn0KCnF1ZXJ5IChsZWZ0LCByaWdodCkgewogIEZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbDogImdpbiIgfQp9CgpxdWVyeSAobGVmdCwgcmlnaHQsIGFsY29ob2wpIHsKICBGcmllbmRzIHsgbGVmdCwgcmlnaHQsIGFsY29ob2wgfQp9) ]
 
@@ -142,9 +156,27 @@ query (left, right, alcohol) {
 }
 ```
 
+We can also use the module system to import from URL:
+
+```js
+import { Friends } from "https://docs.whereabouts.cicada-lang.org/tests/clause-and-effect/worksheet-02-drinking-pairs.wa"
+
+query left {
+  Friends { left, right: "mary", alcohol: "gin" }
+}
+
+query (left, right) {
+  Friends { left, right, alcohol: "gin" }
+}
+
+query (left, right, alcohol) {
+  Friends { left, right, alcohol }
+}
+```
+
 The above example use JSON object, we can also use JSON array.
 
-Like in [worksheet-03-affordable-journeys.wa](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.wa):
+[**worksheet-03-affordable-journeys.wa:**](docs/tests/clause-and-effect/worksheet-03-affordable-journeys.wa)
 
 [ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/Qm9yZGVyIFsic3Vzc2V4IiwgImtlbnQiXQpCb3JkZXIgWyJzdXNzZXgiLCAic3VycmV5Il0KQm9yZGVyIFsic3VycmV5IiwgImtlbnQiXQpCb3JkZXIgWyJoYW1wc2hpcmUiLCAic3Vzc2V4Il0KQm9yZGVyIFsiaGFtcHNoaXJlIiwgInN1cnJleSJdCkJvcmRlciBbImhhbXBzaGlyZSIsICJiZXJrc2hpcmUiXQpCb3JkZXIgWyJiZXJrc2hpcmUiLCAic3VycmV5Il0KQm9yZGVyIFsid2lsdHNoaXJlIiwgImhhbXBzaGlyZSJdCkJvcmRlciBbIndpbHRzaGlyZSIsICJiZXJrc2hpcmUiXQoKQWRqYWNlbnQgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0gYm9yZGVyIHsKICBCb3JkZXIgW3gsIHldCn0KCkFkamFjZW50IFt4LCB5XQotLS0tLS0tLS0tLS0tLS0tIHN5bW1ldHJ5IHsKICBCb3JkZXIgW3ksIHhdCn0KCkFmZm9yZGFibGUgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0tLS0tIHsKICBBZGphY2VudCBbeCwgel0KICBBZGphY2VudCBbeiwgeV0KfQoKcXVlcnkgdG9fa2VudCB7CiAgQWZmb3JkYWJsZSBbdG9fa2VudCwgImtlbnQiXQp9CgpxdWVyeSB0b19zdXNzZXggewogIEFmZm9yZGFibGUgWyJzdXNzZXgiLCB0b19zdXNzZXhdCn0KCnF1ZXJ5ICh4LCB5KSB7CiAgQWZmb3JkYWJsZSBbeCwgeV0KfQ) ]
 

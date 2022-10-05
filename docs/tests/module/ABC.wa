@@ -1,9 +1,7 @@
-import { A } from "./A.wa"
 import { AB } from "./AB.wa"
 
 ABC [a, b, c]
 -------------- {
-  A [a]
   AB [a, b]
   unify c = "c"
 }

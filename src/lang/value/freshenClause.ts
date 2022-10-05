@@ -23,7 +23,8 @@ export function freshenClause(
 function freshenGoal(mod: Mod, goal: Goal, varMap: Map<string, Values.PatternVar>): Goal {
   switch (goal.kind) {
     case "Apply": {
-      return Goals.Apply(goal.name, freshenValue(mod, goal.arg, varMap))
+      // NOTE Should not recurse on the `relation`.
+      return Goals.Apply(goal.name, goal.relation, freshenValue(mod, goal.arg, varMap))
     }
 
     case "Unifiable": {

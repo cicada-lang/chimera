@@ -1,3 +1,4 @@
+import * as Values from "../value"
 import { Value } from "../value"
 
 export type Goal = Apply | Unifiable
@@ -6,14 +7,16 @@ export type Apply = {
   family: "Goal"
   kind: "Apply"
   name: string
+  relation: Values.Relation
   arg: Value
 }
 
-export function Apply(name: string, arg: Value): Apply {
+export function Apply(name: string, relation: Values.Relation, arg: Value): Apply {
   return {
     family: "Goal",
     kind: "Apply",
     name,
+    relation,
     arg,
   }
 }
