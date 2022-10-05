@@ -90,3 +90,34 @@ query l {
   Cons [x, ["a", x, "c"], l]
   unify ["d", "a", x, "c"] = l
 }
+
+query l {
+  Cons [w, ["n", "u", "s"], t]
+  Cdr [l, t]
+  Car [l, x]
+  unify "b" = x
+  Cdr [l, d]
+  Car [d, y]
+  unify "o" = y
+}
+
+Null x
+---------- {
+  unify [] = x
+}
+
+query q {
+  Null ["grape", "raisin", "pear"]
+}
+
+query q {
+  Null []
+}
+
+query x {
+  Null x
+}
+
+query r {
+  unify [x, y, "salad"] = r
+}

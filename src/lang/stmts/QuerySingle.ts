@@ -15,6 +15,6 @@ export class QuerySingle extends Stmt {
     const solver = Solver.forGoals(goals)
     const solutions = solver.solve(mod, mod.env)
     const results = solutions.map((solution) => formatVariable(solution, this.name)).join(", ")
-    return `[${results}]`
+    return `[ ${results} ]`
   }
 }

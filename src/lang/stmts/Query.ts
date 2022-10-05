@@ -15,6 +15,6 @@ export class Query extends Stmt {
     const solver = Solver.forGoals(goals)
     const solutions = solver.solve(mod, mod.env)
     const results = solutions.map((solution) => formatVariables(solution, this.names)).join(", ")
-    return `[${results}]`
+    return `[ ${results} ]`
   }
 }
