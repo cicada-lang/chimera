@@ -30,7 +30,7 @@ curl https://wa.cic.run --data-binary @docs/tests/clause-and-effect/worksheet-01
 You can fetch code from a URL, and run:
 
 - We use `curl -s` to disable curl's progress bar.
-- All files in [**docs/**](docs/), can be fetched from: `https://docs.wa.cic.run/<path>`,
+- All files in [**docs/**](docs/), can be fetched from: `https://docs.wa.cic.run/<path>`, <br/>
   and any other http server that serves `.wa` code also works.
 
 ```bash
