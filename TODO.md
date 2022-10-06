@@ -50,28 +50,6 @@ query option -- to return object instead of array
   - maybe `ref`
   - maybe `compute` -- if we have functional part
 
-# proof
-
-[design] syntax to write proofs by hand
-
-```ts
-Member [element, [element, ...tail]]
-------------------------------------- here {}
-
-Member [element, [head, ...tail]]
----------------------------------- there {
-  Member [element, tail]
-}
-
-proof {
-  Member ["john", ["paul", "john"]]
-  ------------------------------------------------- Member.there {
-    Member ["john", ["john"]]
-    ----------------------------------- Member.here
-  }
-}
-```
-
 # nameless relation
 
 [maybe] we should add `disj {}` to define unnamed relation (clauses)
