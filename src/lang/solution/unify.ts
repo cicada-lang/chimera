@@ -52,7 +52,7 @@ export function unify(solution: Solution, left: Value, right: Value): Solution |
   if (left.kind === "Objekt" && right.kind === "Objekt") {
     for (const [name, leftProperty] of Object.entries(left.properties)) {
       const rightProperty = right.properties[name]
-      if (rightProperty === undefined) return solution
+      if (rightProperty === undefined) continue
 
       const nextSolution = unify(solution, leftProperty, rightProperty)
       if (nextSolution === undefined) return undefined

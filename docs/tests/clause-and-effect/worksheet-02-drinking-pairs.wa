@@ -15,6 +15,10 @@ query left {
   Friends { left, right: "mary", alcohol: "gin" }
 }
 
+query left {
+  Friends { left, alcohol: "gin" }
+}
+
 query (left, right) {
   Friends { left, right, alcohol: "gin" }
 }
