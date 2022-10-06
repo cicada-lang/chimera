@@ -17,6 +17,8 @@ and the query outputs are [JSON lines](https://jsonlines.org).
 
 Visit the [Whereabouts Playground](https://whereabouts.cicada-lang.org/playground/RHJpbmsgeyBwZXJzb246ICJqb2huIiwgYWxjb2hvbDogIm1hcnRpbmkiIH0KRHJpbmsgeyBwZXJzb246ICJtYXJ5IiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogInN1c2FuIiwgYWxjb2hvbDogInZvZGthIiB9CkRyaW5rIHsgcGVyc29uOiAiam9obiIsIGFsY29ob2w6ICJnaW4iIH0KRHJpbmsgeyBwZXJzb246ICJmcmVkIiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogImZyZWQiLCBhbGNvaG9sOiAidm9ka2EiIH0KCkZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB7CiAgRHJpbmsgeyBwZXJzb246IGxlZnQsIGFsY29ob2wgfQogIERyaW5rIHsgcGVyc29uOiByaWdodCwgYWxjb2hvbCB9Cn0KCnF1ZXJ5IGxlZnQgewogIEZyaWVuZHMgeyBsZWZ0LCByaWdodDogIm1hcnkiLCBhbGNvaG9sOiAiZ2luIiB9Cn0).
 
+- Source code of the playground: https://github.com/cicada-lang/whereabouts-website
+
 ### Use our server
 
 [**whereabouts-server:**](https://github.com/cicada-lang/whereabouts-server) A server that can run whereabouts code.
