@@ -10,11 +10,11 @@ Pair { male, female }
   Female { name: female }
 }
 
-success {
+query q {
   Pair { male: "bertram", female: "lucinda" }
 }
 
-failure {
+query q {
   Pair { male: "apollo", female: "daphne" }
 }
 

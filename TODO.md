@@ -12,9 +12,9 @@ Option syntax -- the order is required
 
 success and failure as query options
 
-- `query <args> assert success`
+[maybe] `query <args> assert success`
 
-- `query <args> assert failure`
+[maybe] `query <args> assert failure`
 
 `query <args> fuel <number> | infinite` -- the number of steps
 

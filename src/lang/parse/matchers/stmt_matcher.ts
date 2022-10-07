@@ -27,10 +27,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.Query(matchers.names_matcher(names), matchers.goals_matcher(goals), span),
     "stmt:query_single": ({ name, goals }, { span }) =>
       new Stmts.QuerySingle(pt.str(name), matchers.goals_matcher(goals), span),
-    "stmt:success": ({ goals }, { span }) =>
-      new Stmts.Success([], matchers.goals_matcher(goals), span),
-    "stmt:failure": ({ goals }, { span }) =>
-      new Stmts.Failure([], matchers.goals_matcher(goals), span),
     "stmt:import": ({ bindings, path }, { span }) =>
       new Stmts.Import(
         pt.matchers.zero_or_more_matcher(bindings).map(matchers.import_binding_matcher),

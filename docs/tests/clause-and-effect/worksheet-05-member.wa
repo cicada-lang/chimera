@@ -6,11 +6,11 @@ Member [element, [head, ...tail]]
   Member [element, tail]
 }
 
-success {
+query q {
   Member ["john", ["paul", "john"]]
 }
 
-failure {
+query q {
   Member ["joe", ["marx", "darwin", "freud" ]]
 }
 

@@ -20,8 +20,6 @@ export const stmt = {
     ],
     "stmt:query": ['"query"', '"("', { names: "names" }, '")"', '"{"', { goals: "goals" }, '"}"'],
     "stmt:query_single": ['"query"', { name: "name" }, '"{"', { goals: "goals" }, '"}"'],
-    "stmt:success": ['"success"', '"{"', { goals: "goals" }, '"}"'],
-    "stmt:failure": ['"failure"', '"{"', { goals: "goals" }, '"}"'],
     "stmt:import": [
       '"import"',
       '"{"',

@@ -1,7 +1,7 @@
-failure {
+query q {
   unify x = [x]
 }
 
-failure {
+query q {
   unify x = { x }
 }
