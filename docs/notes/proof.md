@@ -21,3 +21,9 @@ proof {
   }
 }
 ```
+
+# nameless relation
+
+We do not have syntax for unnamed relation such as `disj {}`.
+
+Unnamed relation will make us unable to write proofs by hand.
