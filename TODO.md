@@ -2,7 +2,7 @@ chapter 3, frame 12
 
 # query
 
-extract formatGoal
+rename pursue to pursueGoal
 
 `query <args> limit <number>` -- the number of solutions
 

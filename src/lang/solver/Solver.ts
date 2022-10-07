@@ -1,8 +1,7 @@
 import { Env } from "../env"
-import { Goal, GoalQueue } from "../goal"
+import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { formatVariables, Solution, solutionNames, SolutionNull } from "../solution"
-import { formatValue } from "../value"
 
 /**
 
@@ -63,17 +62,5 @@ export class Solver<T> {
     }
 
     return solutions
-  }
-}
-
-export function formatGoal(goal: Goal): string {
-  switch (goal.kind) {
-    case "Apply": {
-      return `${goal.name} ${formatValue(goal.arg)}`
-    }
-
-    case "Unifiable": {
-      return `unify ${formatValue(goal.left)} = ${formatValue(goal.right)}`
-    }
   }
 }
