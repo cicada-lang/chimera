@@ -2,8 +2,6 @@ chapter 3, frame 12
 
 # query
 
-rename pursue to pursueGoal
-
 `query <args> limit <number>` -- the number of solutions
 
 Option syntax -- the order is required
