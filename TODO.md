@@ -1,21 +1,21 @@
-# query
+chapter 3, frame 12
 
-> learn from SQL
+# query
 
 QueryOption & QueryOptions
 
-query option -- `limit`
+- options order is required
 
-- maybe learn from SQL syntax design
+`query <args> limit <number>` -- the number of solutions
 
-- maybe:
+`query <args> fuel <number> | infinite` -- the number of steps
 
-  ```
-  query (...) limit <number> {
-    ...
-  }
-  ```
+- [maybe] default to a finite number
 
-query option -- `debug`
+`query <args> debug`
 
-query option -- to return object instead of array
+- [maybe] provide step in command line and web
+
+`query <args> return object`
+
+`query <args> return count`

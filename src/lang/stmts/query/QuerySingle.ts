@@ -1,9 +1,9 @@
-import * as Exps from "../exp"
-import { Mod } from "../mod"
-import { formatVariable } from "../solution"
-import { Solver } from "../solver"
-import { Span } from "../span"
-import { Stmt } from "../stmt"
+import * as Exps from "../../exp"
+import { Mod } from "../../mod"
+import { formatVariable } from "../../solution"
+import { Solver } from "../../solver"
+import { Span } from "../../span"
+import { Stmt } from "../../stmt"
 
 export class QuerySingle extends Stmt {
   constructor(public name: string, public goals: Array<Exps.Goal>, public span?: Span) {
