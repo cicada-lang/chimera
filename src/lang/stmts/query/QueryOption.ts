@@ -1,4 +1,4 @@
-export type Option = Limit
+export type QueryOption = Limit
 
 export type Limit = {
   family: "Option"

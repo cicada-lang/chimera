@@ -1,6 +1,9 @@
 import { Loader } from "../../loader"
 import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
+import * as Exps from "../exp"
 import { Goal } from "../goal"
+import { Solution } from "../solution"
+import { Solver } from "../solver"
 import { Stmt, StmtOutput } from "../stmt"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -60,5 +63,11 @@ export class Mod {
     relation = Values.Relation([])
     this.env = EnvCons(name, relation, this.env)
     return relation
+  }
+
+  solve(goals: Array<Exps.Goal>): Array<Solution> {
+    const solver = Solver.forGoals(goals.map((goal) => Exps.evaluateGoal(this.env, goal)))
+    const solutions = solver.solve(this, this.env)
+    return solutions
   }
 }
