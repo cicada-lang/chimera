@@ -2,15 +2,11 @@ chapter 3, frame 12
 
 # query
 
+query_options -- syntax -- the order is required
+
+query_option -- syntax
+
 `query <args> limit <number>` -- the number of solutions
-
-Option syntax -- the order is required
-
-success and failure as query options
-
-[maybe] `query <args> assert success`
-
-[maybe] `query <args> assert failure`
 
 `query <args> fuel <number> | infinite` -- the number of steps
 

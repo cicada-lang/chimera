@@ -24,9 +24,13 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       ),
     "stmt:query": ({ names, goals }, { span }) =>
-      new Stmts.Query(matchers.names_matcher(names), matchers.goals_matcher(goals), span),
+      new Stmts.Query(
+        Stmts.QueryPatternNames(matchers.names_matcher(names)),
+        matchers.goals_matcher(goals),
+        span,
+      ),
     "stmt:query_single": ({ name, goals }, { span }) =>
-      new Stmts.QuerySingle(pt.str(name), matchers.goals_matcher(goals), span),
+      new Stmts.Query(Stmts.QueryPatternName(pt.str(name)), matchers.goals_matcher(goals), span),
     "stmt:import": ({ bindings, path }, { span }) =>
       new Stmts.Import(
         pt.matchers.zero_or_more_matcher(bindings).map(matchers.import_binding_matcher),
