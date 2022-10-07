@@ -1,5 +1,5 @@
+import { Goal, GoalQueue } from "."
 import { Env } from "../env"
-import { Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { Solution, unify } from "../solution"
 import * as Values from "../value"
@@ -18,7 +18,7 @@ import * as Values from "../value"
 
 **/
 
-export function pursue(mod: Mod, env: Env, solution: Solution, goal: Goal): Array<GoalQueue> {
+export function pursueGoal(mod: Mod, env: Env, solution: Solution, goal: Goal): Array<GoalQueue> {
   switch (goal.kind) {
     case "Apply": {
       const queues: Array<GoalQueue> = []

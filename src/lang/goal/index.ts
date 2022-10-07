@@ -1,4 +1,4 @@
 export * from "./formatGoal"
 export * from "./Goal"
 export * from "./GoalQueue"
-export * from "./pursue"
+export * from "./pursueGoal"
