@@ -1,9 +1,9 @@
-import { LangError } from "../errors"
-import * as Exps from "../exp"
-import { Mod } from "../mod"
-import { Solver } from "../solver"
-import { Span } from "../span"
-import { Stmt } from "../stmt"
+import { LangError } from "../../errors"
+import * as Exps from "../../exp"
+import { Mod } from "../../mod"
+import { Solver } from "../../solver"
+import { Span } from "../../span"
+import { Stmt } from "../../stmt"
 
 export class Failure extends Stmt {
   constructor(public names: Array<string>, public goals: Array<Exps.Goal>, public span?: Span) {

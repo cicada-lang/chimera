@@ -1,6 +1,3 @@
-export * from "./Fact"
-export * from "./Failure"
+export * from "./definitions"
 export * from "./import"
 export * from "./query"
-export * from "./Rule"
-export * from "./Success"

@@ -1,8 +1,8 @@
-import * as Exps from "../exp"
-import { evaluate, Exp } from "../exp"
-import { Mod } from "../mod"
-import { Span } from "../span"
-import { Stmt } from "../stmt"
+import * as Exps from "../../exp"
+import { evaluate, Exp } from "../../exp"
+import { Mod } from "../../mod"
+import { Span } from "../../span"
+import { Stmt } from "../../stmt"
 
 export class Rule extends Stmt {
   constructor(
