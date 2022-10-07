@@ -382,7 +382,7 @@ query (name, role) {
   }
 }
 
-query (dept) {
+query dept {
   Job {
     name: "Hacker Alyssa P",
     role: "programmer",
@@ -390,7 +390,7 @@ query (dept) {
   }
 }
 
-query (x) {
+query x {
   Supervisor {
     slave: x,
     master: x,
