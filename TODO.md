@@ -2,11 +2,9 @@ chapter 3, frame 12
 
 # query
 
-QueryOption & QueryOptions
-
-- options order is required
-
 `query <args> limit <number>` -- the number of solutions
+
+Option syntax -- the order is required
 
 `query <args> fuel <number> | infinite` -- the number of steps
 
@@ -19,3 +17,9 @@ QueryOption & QueryOptions
 `query <args> return object`
 
 `query <args> return count`
+
+[maybe] success and failure as query options
+
+- `query <args> assert success`
+
+- `query <args> assert failure`
