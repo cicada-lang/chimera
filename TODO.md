@@ -2,6 +2,8 @@ chapter 3, frame 12
 
 # query
 
+extract formatGoal
+
 `query <args> limit <number>` -- the number of solutions
 
 Option syntax -- the order is required

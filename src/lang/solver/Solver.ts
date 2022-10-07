@@ -17,7 +17,7 @@ import { formatValue } from "../value"
 export class Solver<T> {
   constructor(public queues: Array<GoalQueue>) {}
 
-  static forGoals<T>(goals: Array<Goal>): Solver<T> {
+  static fromGoals<T>(goals: Array<Goal>): Solver<T> {
     const queues = [new GoalQueue(SolutionNull(), goals)]
     return new Solver(queues)
   }
@@ -52,16 +52,13 @@ export class Solver<T> {
     }
   }
 
-  solve(mod: Mod, env: Env, options: { limit?: number } = {}): Array<Solution> {
+  solve(mod: Mod, env: Env, options: { limit?: number }): Array<Solution> {
     const { limit } = options
-
-    // const limit = 3
 
     const solutions = []
     while (limit === undefined || solutions.length < limit) {
       const solution = this.next(mod, env)
       if (solution === undefined) break
-
       solutions.push(solution)
     }
 
