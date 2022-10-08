@@ -2,9 +2,9 @@ chapter 3, frame 12
 
 # query
 
-query_options -- syntax -- the order is required
+QueryOption -- for parsing
 
-query_option -- syntax
+query_option_matcher
 
 `query <args> limit <number>` -- the number of solutions
 
