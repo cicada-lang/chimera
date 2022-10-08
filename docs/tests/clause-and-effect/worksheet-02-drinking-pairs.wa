@@ -26,7 +26,3 @@ query (left, right) {
 query (left, right, alcohol) {
   Friends { left, right, alcohol }
 }
-
-query left debug {
-  Friends { left, right: "mary", alcohol: "gin" }
-}

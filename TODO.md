@@ -4,6 +4,8 @@ chapter 3, frame 12
 
 [maybe] `query <query_pattern> debug` -- provide step in command line and web
 
+- [maybe] inject `SolverInterrupter`
+
 `query <query_pattern> fuel <number> | infinite` -- the number of steps
 
 - [maybe] default to a finite number

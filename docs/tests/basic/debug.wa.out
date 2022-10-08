@@ -1,16 +1,25 @@
-- solution: {}
-  goals:
-    - unify "?x" = true
-    - unify "?y" = false
+---
+step: 0
+queues:
+  - solution: {}
+    goals:
+      - unify "?x" = true
+      - unify "?y" = false
 
-- solution:
-    x: true
-  goals:
-    - unify "?y" = false
+---
+step: 1
+queues:
+  - solution:
+      x: true
+    goals:
+      - unify "?y" = false
 
-- solution:
-    y: false
-    x: true
-  goals: []
+---
+step: 2
+queues:
+  - solution:
+      y: false
+      x: true
+    goals: []
 
 [ [true, false] ]
