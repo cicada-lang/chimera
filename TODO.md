@@ -6,6 +6,10 @@ extract `Script` and support markdown
 
 # debug
 
+inject `Debugger` -- can not just use `console.log` -- for the web
+
+inject different `Debugger` on the web
+
 `Runner` output one by one -- for using `debug` in command line
 
 [maybe] `query <query_pattern> debug` -- provide step in command line and web
