@@ -2,7 +2,7 @@ chapter 3, frame 12
 
 # query
 
-QueryOption -- for parsing
+Stmts.Query -- has `options`
 
 query_option_matcher
 

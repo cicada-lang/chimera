@@ -7,7 +7,12 @@ import { Stmt } from "../../stmt"
 import { QueryPattern } from "../query"
 
 export class Query extends Stmt {
-  constructor(public pattern: QueryPattern, public goals: Array<Exps.Goal>, public span?: Span) {
+  constructor(
+    public pattern: QueryPattern,
+    // public options: Array<QueryOption>,
+    public goals: Array<Exps.Goal>,
+    public span?: Span,
+  ) {
     super()
   }
 
