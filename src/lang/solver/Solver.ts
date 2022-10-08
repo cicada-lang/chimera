@@ -25,9 +25,22 @@ export class Solver<T> {
     return new Solver(queues)
   }
 
-  next(mod: Mod, env: Env): Solution | undefined {
+  solve(mod: Mod, env: Env, options: SolveOptions): Array<Solution> {
+    const { limit } = options
+
+    const solutions = []
+    while (limit === undefined || solutions.length < limit) {
+      const solution = this.next(mod, env, options)
+      if (solution === undefined) break
+      solutions.push(solution)
+    }
+
+    return solutions
+  }
+
+  private next(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
     while (true) {
-      // this.report()
+      // this.debug()
       const queue = this.queues.shift()
       if (queue === undefined) return undefined
       const queues = queue.step(mod, env)
@@ -39,8 +52,8 @@ export class Solver<T> {
     }
   }
 
-  report(): void {
-    console.log("solver.report:")
+  private debug(): void {
+    console.log("debug:")
     console.log()
 
     for (const queue of this.queues) {
@@ -53,18 +66,5 @@ export class Solver<T> {
 
       console.log()
     }
-  }
-
-  solve(mod: Mod, env: Env, options: SolveOptions): Array<Solution> {
-    const { limit } = options
-
-    const solutions = []
-    while (limit === undefined || solutions.length < limit) {
-      const solution = this.next(mod, env)
-      if (solution === undefined) break
-      solutions.push(solution)
-    }
-
-    return solutions
   }
 }
