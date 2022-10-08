@@ -4,12 +4,12 @@ import { formatVariable, formatVariables } from "../../solution"
 import { Solver } from "../../solver"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import { QueryPattern } from "../query"
+import { QueryOption, QueryPattern } from "../query"
 
 export class Query extends Stmt {
   constructor(
     public pattern: QueryPattern,
-    // public options: Array<QueryOption>,
+    public options: Array<QueryOption>,
     public goals: Array<Exps.Goal>,
     public span?: Span,
   ) {

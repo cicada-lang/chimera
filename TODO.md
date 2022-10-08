@@ -2,8 +2,6 @@ chapter 3, frame 12
 
 # query
 
-Stmts.Query -- has `options`
-
 `query <args> limit <number>` -- the number of solutions
 
 `query <args> fuel <number> | infinite` -- the number of steps
