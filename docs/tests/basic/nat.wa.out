@@ -1,5 +1,6 @@
 [ { "prev": { "prev": "zero" } } ]
 [ ["zero", "?z", "?z"] ]
+[ ["zero", "?z", "?z"], [{ "prev": "zero" }, "?result_prev_17", { "prev": "?result_prev_17" }], [{ "prev": { "prev": "zero" } }, "?result_prev_21", { "prev": { "prev": "?result_prev_21" } }] ]
 [ ["zero", { "prev": { "prev": "zero" } }], [{ "prev": "zero" }, { "prev": "zero" }], [{ "prev": { "prev": "zero" } }, "zero"] ]
 [ { "prev": { "prev": { "prev": { "prev": "zero" } } } } ]
 [ [{ "prev": "zero" }, { "prev": { "prev": "zero" } }], [{ "prev": { "prev": "zero" } }, { "prev": "zero" }] ]

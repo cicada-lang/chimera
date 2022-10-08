@@ -34,6 +34,10 @@ query (x, y, z) limit 1 {
   Add [x, y, z]
 }
 
+query (x, y, z) limit 3 {
+  Add [x, y, z]
+}
+
 query (x, y) {
   Two z
   Add [x, y, z]
