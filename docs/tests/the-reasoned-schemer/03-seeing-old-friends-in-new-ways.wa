@@ -15,6 +15,10 @@ query x {
   List ["a", "b", x, "d"]
 }
 
-// query x limit 1 {
-//   List ["a", "b", ...x]
-// }
+query x limit 1 {
+  List ["a", "b", ...x]
+}
+
+query x limit 3 {
+  List ["a", "b", ...x]
+}

@@ -1,3 +1,4 @@
+export * from "./buildSolveOptions"
 export * from "./formatQueryPattern"
 export * from "./Query"
 export * from "./QueryOption"

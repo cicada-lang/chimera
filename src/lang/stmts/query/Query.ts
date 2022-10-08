@@ -3,7 +3,7 @@ import { Mod } from "../../mod"
 import { Solver } from "../../solver"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import { formatQueryPattern, QueryOption, QueryPattern } from "../query"
+import { buildSolveOptions, formatQueryPattern, QueryOption, QueryPattern } from "../query"
 
 export class Query extends Stmt {
   constructor(
@@ -18,7 +18,7 @@ export class Query extends Stmt {
   async execute(mod: Mod): Promise<string> {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
     const solver = Solver.fromGoals(goals)
-    const solutions = solver.solve(mod, mod.env, { limit: undefined })
+    const solutions = solver.solve(mod, mod.env, buildSolveOptions(this.options))
     return formatQueryPattern(solutions, this.pattern)
   }
 }

@@ -13,6 +13,10 @@ import { formatVariables, Solution, solutionNames, SolutionNull } from "../solut
 
 **/
 
+export type SolveOptions = {
+  limit?: number
+}
+
 export class Solver<T> {
   constructor(public queues: Array<GoalQueue>) {}
 
@@ -51,7 +55,7 @@ export class Solver<T> {
     }
   }
 
-  solve(mod: Mod, env: Env, options: { limit?: number }): Array<Solution> {
+  solve(mod: Mod, env: Env, options: SolveOptions): Array<Solution> {
     const { limit } = options
 
     const solutions = []

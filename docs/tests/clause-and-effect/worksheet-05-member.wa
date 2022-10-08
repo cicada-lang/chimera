@@ -18,8 +18,6 @@ query element {
   Member [element, ["marx", "darwin", "freud"]]
 }
 
-// TODO need query limit
-
-// query (list) {
-//   Member ["foo", list]
-// }
+query (list) limit 3 {
+  Member ["foo", list]
+}

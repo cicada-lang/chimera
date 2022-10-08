@@ -30,11 +30,9 @@ query z {
   Add [x, y, z]
 }
 
-// TODO need limit
-
-// query (x, y, z) {
-//   Add [x, y, z]
-// }
+query (x, y, z) limit 1 {
+  Add [x, y, z]
+}
 
 query (x, y) {
   Two z

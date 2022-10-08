@@ -1,4 +1,5 @@
 [ { "prev": { "prev": "zero" } } ]
+[ ["zero", "?z", "?z"] ]
 [ ["zero", { "prev": { "prev": "zero" } }], [{ "prev": "zero" }, { "prev": "zero" }], [{ "prev": { "prev": "zero" } }, "zero"] ]
 [ { "prev": { "prev": { "prev": { "prev": "zero" } } } } ]
 [ [{ "prev": "zero" }, { "prev": { "prev": "zero" } }], [{ "prev": { "prev": "zero" } }, { "prev": "zero" }] ]
