@@ -20,7 +20,10 @@ export type SolveOptions = {
   debug?: boolean
 }
 
-export type SolverReport = Array<SolverReportQueue>
+export type SolverReport = {
+  step: number
+  queues: Array<SolverReportQueue>
+}
 
 export type SolverReportQueue = {
   solution: Record<string, Json>
@@ -28,6 +31,8 @@ export type SolverReportQueue = {
 }
 
 export class Solver<T> {
+  step = 0
+
   constructor(public queues: Array<GoalQueue>) {}
 
   static fromGoals<T>(goals: Array<Goal>): Solver<T> {
@@ -54,6 +59,7 @@ export class Solver<T> {
         this.debug()
       }
 
+      this.step++
       const queue = this.queues.shift()
       if (queue === undefined) return undefined
       const queues = queue.step(mod, env)
@@ -68,6 +74,7 @@ export class Solver<T> {
   private debug(): void {
     if (this.queues.length === 0) return
 
+    console.log("---")
     console.log(this.reportFormatYAML())
   }
 
@@ -76,16 +83,19 @@ export class Solver<T> {
   }
 
   private report(): SolverReport {
-    const queues = []
-    for (const queue of this.queues) {
+    const queues = this.queues.map((queue) => {
       const names = solutionNames(queue.solution)
-      const solution = Object.fromEntries(
-        names.map((name) => [name, JSON.parse(formatVariable(queue.solution, name))]),
-      )
-      const goals = queue.goals.map(formatGoal)
-      queues.push({ solution, goals })
-    }
+      return {
+        solution: Object.fromEntries(
+          names.map((name) => [name, JSON.parse(formatVariable(queue.solution, name))]),
+        ),
+        goals: queue.goals.map(formatGoal),
+      }
+    })
 
-    return queues
+    return {
+      step: this.step,
+      queues,
+    }
   }
 }
