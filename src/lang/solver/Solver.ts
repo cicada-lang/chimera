@@ -1,3 +1,4 @@
+import YAML from "yaml"
 import { Env } from "../env"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
@@ -16,6 +17,13 @@ import { formatVariables, Solution, solutionNames, SolutionNull } from "../solut
 export type SolveOptions = {
   limit?: number
   debug?: boolean
+}
+
+export type SolverReport = Array<SolverReportQueue>
+
+export type SolverReportQueue = {
+  solution: Array<string>
+  goals: Array<string>
 }
 
 export class Solver<T> {
@@ -57,18 +65,23 @@ export class Solver<T> {
   }
 
   private debug(): void {
-    console.log("debug:")
-    console.log()
+    if (this.queues.length === 0) return
 
+    console.log(this.reportFormatYAML())
+  }
+
+  private reportFormatYAML(): string {
+    return YAML.stringify(this.report())
+  }
+
+  private report(): SolverReport {
+    const queues = []
     for (const queue of this.queues) {
-      console.log("  solution:", formatVariables(queue.solution, solutionNames(queue.solution)))
-      console.log()
-
-      for (const goal of queue.goals) {
-        console.log("   ", formatGoal(goal))
-      }
-
-      console.log()
+      const solution = formatVariables(queue.solution, solutionNames(queue.solution))
+      const goals = queue.goals.map(formatGoal)
+      queues.push({ solution, goals })
     }
+
+    return queues
   }
 }
