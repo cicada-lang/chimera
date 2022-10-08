@@ -4,8 +4,6 @@ chapter 3, frame 12
 
 Stmts.Query -- has `options`
 
-query_option_matcher
-
 `query <args> limit <number>` -- the number of solutions
 
 `query <args> fuel <number> | infinite` -- the number of steps
