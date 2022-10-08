@@ -1,10 +1,14 @@
-import { formatVariable, formatVariables, Solution } from "../../solution"
+import { formatVariable, Solution } from "../../solution"
 import { QueryPattern } from "../query"
 
 export function formatQueryPattern(solutions: Array<Solution>, pattern: QueryPattern): string {
   switch (pattern.kind) {
     case "QueryPatternNames": {
-      const results = solutions.map((solution) => formatVariables(solution, pattern.names))
+      const results = solutions.map((solution) => {
+        const results = pattern.names.map((name) => formatVariable(solution, name))
+        return `[${results.join(", ")}]`
+      })
+
       return results.length === 0 ? "[]" : `[ ${results.join(", ")} ]`
     }
 

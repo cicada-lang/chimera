@@ -2,7 +2,6 @@ chapter 3, frame 12
 
 # query
 
-inline formatVariables
 solver.report -- `solution` has key
 
 [maybe] `query <query_pattern> debug` -- provide step in command line and web

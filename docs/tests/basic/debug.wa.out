@@ -1,21 +1,16 @@
-debug:
+- solution: []
+  goals:
+    - unify "?x" = true
+    - unify "?y" = false
 
-  solution: []
+- solution:
+    - "true"
+  goals:
+    - unify "?y" = false
 
-    unify "?x" = true
-    unify "?y" = false
-
-debug:
-
-  solution: [true]
-
-    unify "?y" = false
-
-debug:
-
-  solution: [false, true]
-
-
-debug:
+- solution:
+    - "false"
+    - "true"
+  goals: []
 
 [ [true, false] ]

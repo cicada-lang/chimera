@@ -2,7 +2,7 @@ import YAML from "yaml"
 import { Env } from "../env"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { formatVariables, Solution, solutionNames, SolutionNull } from "../solution"
+import { formatVariable, Solution, solutionNames, SolutionNull } from "../solution"
 
 /**
 
@@ -77,7 +77,9 @@ export class Solver<T> {
   private report(): SolverReport {
     const queues = []
     for (const queue of this.queues) {
-      const solution = formatVariables(queue.solution, solutionNames(queue.solution))
+      const solution = solutionNames(queue.solution).map((name) =>
+        formatVariable(queue.solution, name),
+      )
       const goals = queue.goals.map(formatGoal)
       queues.push({ solution, goals })
     }
