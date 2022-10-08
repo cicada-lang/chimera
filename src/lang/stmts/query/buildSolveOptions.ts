@@ -16,5 +16,10 @@ function collectQueryOption(option: QueryOption, solveOptions: SolveOptions): vo
       solveOptions.limit = option.value
       return
     }
+
+    case "QueryOptionDebug": {
+      solveOptions.debug = true
+      return
+    }
   }
 }

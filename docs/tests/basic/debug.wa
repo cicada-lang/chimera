@@ -1,0 +1,4 @@
+query (x, y) debug {
+  unify x = true
+  unify y = false
+}

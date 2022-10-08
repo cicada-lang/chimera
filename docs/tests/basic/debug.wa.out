@@ -1,0 +1,21 @@
+debug:
+
+  solution: []
+
+    unify "?x" = true
+    unify "?y" = false
+
+debug:
+
+  solution: [true]
+
+    unify "?y" = false
+
+debug:
+
+  solution: [false, true]
+
+
+debug:
+
+[ [true, false] ]

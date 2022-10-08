@@ -2,7 +2,7 @@ chapter 3, frame 12
 
 # query
 
-`query <query_pattern> debug`
+improve `solver.debug`
 
 [maybe] `query <query_pattern> debug` -- provide step in command line and web
 

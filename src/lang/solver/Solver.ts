@@ -15,6 +15,7 @@ import { formatVariables, Solution, solutionNames, SolutionNull } from "../solut
 
 export type SolveOptions = {
   limit?: number
+  debug?: boolean
 }
 
 export class Solver<T> {
@@ -40,7 +41,10 @@ export class Solver<T> {
 
   private next(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
     while (true) {
-      // this.debug()
+      if (options.debug) {
+        this.debug()
+      }
+
       const queue = this.queues.shift()
       if (queue === undefined) return undefined
       const queues = queue.step(mod, env)
