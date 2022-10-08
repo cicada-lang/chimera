@@ -2,7 +2,7 @@ chapter 3, frame 12
 
 # query
 
-solver.report -- `solution` has key
+solver.report -- count steps
 
 [maybe] `query <query_pattern> debug` -- provide step in command line and web
 

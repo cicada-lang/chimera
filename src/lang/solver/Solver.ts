@@ -1,4 +1,5 @@
 import YAML from "yaml"
+import { Json } from "../../utils/Json"
 import { Env } from "../env"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
@@ -22,7 +23,7 @@ export type SolveOptions = {
 export type SolverReport = Array<SolverReportQueue>
 
 export type SolverReportQueue = {
-  solution: Array<string>
+  solution: Record<string, Json>
   goals: Array<string>
 }
 
@@ -77,8 +78,9 @@ export class Solver<T> {
   private report(): SolverReport {
     const queues = []
     for (const queue of this.queues) {
-      const solution = solutionNames(queue.solution).map((name) =>
-        formatVariable(queue.solution, name),
+      const names = solutionNames(queue.solution)
+      const solution = Object.fromEntries(
+        names.map((name) => [name, JSON.parse(formatVariable(queue.solution, name))]),
       )
       const goals = queue.goals.map(formatGoal)
       queues.push({ solution, goals })

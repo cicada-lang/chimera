@@ -1,16 +1,16 @@
-- solution: []
+- solution: {}
   goals:
     - unify "?x" = true
     - unify "?y" = false
 
 - solution:
-    - "true"
+    x: true
   goals:
     - unify "?y" = false
 
 - solution:
-    - "false"
-    - "true"
+    y: false
+    x: true
   goals: []
 
 [ [true, false] ]
