@@ -36,8 +36,8 @@ export class Solver<T> {
   constructor(public queues: Array<GoalQueue>) {}
 
   static fromGoals<T>(goals: Array<Goal>): Solver<T> {
-    const queues = [new GoalQueue(SolutionNull(), goals)]
-    return new Solver(queues)
+    const queue = new GoalQueue(SolutionNull(), goals)
+    return new Solver([queue])
   }
 
   solve(mod: Mod, env: Env, options: SolveOptions): Array<Solution> {
