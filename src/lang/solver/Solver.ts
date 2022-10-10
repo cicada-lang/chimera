@@ -17,7 +17,9 @@ import { formatVariable, Solution, solutionNames, SolutionNull } from "../soluti
 
 export type SolveOptions = {
   limit?: number
-  debug?: boolean
+  debug?: {
+    skipPrompt: number
+  }
 }
 
 export type SolverReport = {
@@ -54,15 +56,20 @@ export class Solver {
   }
 
   private nextSolution(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
-    let skipPrompt = 0
+    const { prompt, report } = mod.options.loader.options.debugger
+
+    let skipPrompt = options.debug?.skipPrompt || 0
 
     while (this.queues.length > 0) {
       if (options.debug) {
-        mod.options.loader.options.debugger.report(this)
-        if (skipPrompt <= 0 || Number.isNaN(skipPrompt)) {
-          skipPrompt = mod.options.loader.options.debugger.prompt(this)
-        } else {
-          skipPrompt--
+        report(this)
+
+        if (prompt) {
+          if (skipPrompt <= 0 || Number.isNaN(skipPrompt)) {
+            skipPrompt = prompt(this)
+          } else {
+            skipPrompt--
+          }
         }
       }
 

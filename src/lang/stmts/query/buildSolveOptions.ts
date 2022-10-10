@@ -18,7 +18,7 @@ function collectQueryOption(option: QueryOption, solveOptions: SolveOptions): vo
     }
 
     case "QueryOptionDebug": {
-      solveOptions.debug = true
+      solveOptions.debug = option
       return
     }
   }

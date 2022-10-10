@@ -14,10 +14,12 @@ export function QueryOptionLimit(value: number): QueryOptionLimit {
 
 export type QueryOptionDebug = {
   kind: "QueryOptionDebug"
+  skipPrompt: number
 }
 
-export function QueryOptionDebug(): QueryOptionDebug {
+export function QueryOptionDebug(skipPrompt: number): QueryOptionDebug {
   return {
     kind: "QueryOptionDebug",
+    skipPrompt,
   }
 }
