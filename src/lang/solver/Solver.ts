@@ -56,12 +56,12 @@ export class Solver {
   }
 
   private nextSolution(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
-    const { prompt, report } = mod.options.loader.options.debugger
-
     let skipPrompt = options.debug?.skipPrompt || 0
 
     while (this.queues.length > 0) {
-      if (options.debug) {
+      if (options.debug && mod.options.loader.options.debugger) {
+        const { prompt, report } = mod.options.loader.options.debugger
+
         report(this)
 
         if (prompt) {

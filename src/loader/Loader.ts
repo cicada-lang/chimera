@@ -5,7 +5,7 @@ import { Script } from "../script"
 import * as Scripts from "../scripts"
 
 export interface LoaderOptions {
-  debugger: Debugger
+  debugger?: Debugger
 }
 
 export class Loader {
