@@ -59,7 +59,7 @@ query z {
   Mul [x, y, z]
 }
 
-query (x, y) {
+query (x, y) debug {
   Two z
   Mul [x, y, z]
 }

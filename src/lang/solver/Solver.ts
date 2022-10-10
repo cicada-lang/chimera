@@ -5,6 +5,7 @@ import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { formatVariable, Solution, solutionNames, SolutionNull } from "../solution"
 import { Debugger } from "../solver"
+import { formatQueryPattern, QueryPattern } from "../stmts/query"
 
 /**
 
@@ -26,6 +27,7 @@ export type SolveOptions = {
 export type SolverReport = {
   count: number
   queues: Array<SolverReportQueue>
+  solutions: Array<Json>
 }
 
 export type SolverReportQueue = {
@@ -37,11 +39,11 @@ export class Solver {
   count = 0
   solutions: Array<Solution> = []
 
-  constructor(public queues: Array<GoalQueue>) {}
+  constructor(public pattern: QueryPattern, public queues: Array<GoalQueue>) {}
 
-  static fromGoals(goals: Array<Goal>): Solver {
+  static fromGoals(pattern: QueryPattern, goals: Array<Goal>): Solver {
     const queue = new GoalQueue(SolutionNull(), goals)
-    return new Solver([queue])
+    return new Solver(pattern, [queue])
   }
 
   solve(mod: Mod, env: Env, options: SolveOptions): Array<Solution> {
@@ -76,29 +78,6 @@ export class Solver {
     }
   }
 
-  private nextSolution(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
-    let skipPrompt = options.debug?.skipPrompt || 0
-
-    while (this.queues.length > 0) {
-      if (options.debug && mod.options.loader.options.debugger) {
-        const { prompt, report } = mod.options.loader.options.debugger
-
-        report(this)
-
-        if (prompt) {
-          if (skipPrompt <= 0 || Number.isNaN(skipPrompt)) {
-            skipPrompt = prompt(this)
-          } else {
-            skipPrompt--
-          }
-        }
-      }
-
-      const solution = this.step(mod, env, options)
-      if (solution !== undefined) return solution
-    }
-  }
-
   private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
     this.count++
     const queue = this.queues.shift() as GoalQueue
@@ -118,6 +97,7 @@ export class Solver {
     return {
       count: this.count,
       queues: this.queues.map(reportQueue),
+      solutions: JSON.parse(formatQueryPattern(this.solutions, this.pattern)),
     }
   }
 }
