@@ -1,12 +1,18 @@
 import fs from "fs"
+import readlineSync from "readline-sync"
 import { Loader } from "../loader"
 
 export class Runner {
   loader = new Loader({
     debugger: {
-      onStep(solver) {
+      report(solver) {
         console.log("---")
         console.log(solver.reportFormatYAML())
+      },
+      prompt(solver) {
+        const input = readlineSync.question("debugger> ")
+        if (input === "") return 0
+        else return Number.parseInt(input)
       },
     },
   })

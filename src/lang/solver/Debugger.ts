@@ -1,5 +1,7 @@
 import { Solver } from "../solver"
 
 export interface Debugger {
-  onStep(solver: Solver): void
+  report(solver: Solver): void
+  // NOTE Return number of steps without prompt.
+  prompt(solver: Solver): number
 }

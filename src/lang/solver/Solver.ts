@@ -45,7 +45,7 @@ export class Solver {
 
     const solutions = []
     while (limit === undefined || solutions.length < limit) {
-      const solution = this.next(mod, env, options)
+      const solution = this.nextSolution(mod, env, options)
       if (solution === undefined) break
       solutions.push(solution)
     }
@@ -53,27 +53,29 @@ export class Solver {
     return solutions
   }
 
-  private next(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
+  private nextSolution(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
+    let skipPrompt = 0
+
     while (this.queues.length > 0) {
-      const solution = this.step(mod, env, options)
-      if (solution !== undefined) return solution
+      if (options.debug) {
+        mod.options.loader.options.debugger.report(this)
+        if (skipPrompt <= 0 || Number.isNaN(skipPrompt)) {
+          skipPrompt = mod.options.loader.options.debugger.prompt(this)
+        } else {
+          skipPrompt--
+        }
+      }
+
+      this.count++
+
+      const queue = this.queues.shift() as GoalQueue
+      const queues = queue.step(mod, env)
+      if (queues === undefined) return queue.solution
+      // NOTE about searching
+      // push front |   depth first
+      // push back  | breadth first
+      this.queues.push(...queues)
     }
-  }
-
-  private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
-    if (options.debug) {
-      mod.options.loader.options.debugger.onStep(this)
-    }
-
-    this.count++
-
-    const queue = this.queues.shift() as GoalQueue
-    const queues = queue.step(mod, env)
-    if (queues === undefined) return queue.solution
-    // NOTE about searching
-    // push front |   depth first
-    // push back  | breadth first
-    this.queues.push(...queues)
   }
 
   reportFormatYAML(): string {
