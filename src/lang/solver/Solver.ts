@@ -21,7 +21,7 @@ export type SolveOptions = {
 }
 
 export type SolverReport = {
-  step: number
+  count: number
   queues: Array<SolverReportQueue>
 }
 
@@ -31,7 +31,7 @@ export type SolverReportQueue = {
 }
 
 export class Solver<T> {
-  step = 0
+  count = 0
 
   constructor(public queues: Array<GoalQueue>) {}
 
@@ -54,21 +54,22 @@ export class Solver<T> {
   }
 
   private next(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
-    while (true) {
-      if (options.debug) {
-        this.debug()
-      }
-
-      this.step++
-      const queue = this.queues.shift()
-      if (queue === undefined) return undefined
-      const queues = queue.step(mod, env)
-      if (queues === undefined) return queue.solution
-      // NOTE about searching
-      // push front |   depth first
-      // push back  | breadth first
-      this.queues.push(...queues)
+    while (this.queues.length > 0) {
+      const solution = this.step(mod, env, options)
+      if (solution !== undefined) return solution
     }
+  }
+
+  private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
+    if (options.debug) this.debug()
+    this.count++
+    const queue = this.queues.shift() as GoalQueue
+    const queues = queue.step(mod, env)
+    if (queues === undefined) return queue.solution
+    // NOTE about searching
+    // push front |   depth first
+    // push back  | breadth first
+    this.queues.push(...queues)
   }
 
   private debug(): void {
@@ -94,7 +95,7 @@ export class Solver<T> {
     })
 
     return {
-      step: this.step,
+      count: this.count,
       queues,
     }
   }

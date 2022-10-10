@@ -1,5 +1,5 @@
 ---
-step: 0
+count: 0
 queues:
   - solution: {}
     goals:
@@ -7,7 +7,7 @@ queues:
       - unify "?y" = false
 
 ---
-step: 1
+count: 1
 queues:
   - solution:
       x: true
@@ -15,7 +15,7 @@ queues:
       - unify "?y" = false
 
 ---
-step: 2
+count: 2
 queues:
   - solution:
       y: false

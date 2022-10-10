@@ -4,7 +4,9 @@
 
 # debug
 
-inject `Debugger` -- can not just use `console.log` -- for the web
+inject `Debugger` to `Solver` -- we should not just use `console.log` -- for the web
+
+- Debugger.onStep
 
 inject different `Debugger` on the web
 
