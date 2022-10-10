@@ -12,7 +12,16 @@ export class Loader {
     if (found !== undefined) return found.mod
 
     const text = options?.text || (await this.fetcher.fetch(url))
-    const mod = new Mod({ loader: this, url })
+    const mod = new Mod({
+      url,
+      loader: this,
+      debugger: {
+        onStep(solver) {
+          console.log("---")
+          console.log(solver.reportFormatYAML())
+        },
+      },
+    })
     const script = Scripts.createScript(mod, text)
     await script.run()
     this.cache.set(url.href, script)

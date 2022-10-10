@@ -30,12 +30,12 @@ export type SolverReportQueue = {
   goals: Array<string>
 }
 
-export class Solver<T> {
+export class Solver {
   count = 0
 
   constructor(public queues: Array<GoalQueue>) {}
 
-  static fromGoals<T>(goals: Array<Goal>): Solver<T> {
+  static fromGoals(goals: Array<Goal>): Solver {
     const queue = new GoalQueue(SolutionNull(), goals)
     return new Solver([queue])
   }
@@ -61,8 +61,12 @@ export class Solver<T> {
   }
 
   private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
-    if (options.debug) this.debug()
+    if (options.debug) {
+      mod.options.debugger.onStep(this)
+    }
+
     this.count++
+
     const queue = this.queues.shift() as GoalQueue
     const queues = queue.step(mod, env)
     if (queues === undefined) return queue.solution
@@ -72,18 +76,11 @@ export class Solver<T> {
     this.queues.push(...queues)
   }
 
-  private debug(): void {
-    if (this.queues.length === 0) return
-
-    console.log("---")
-    console.log(this.reportFormatYAML())
-  }
-
-  private reportFormatYAML(): string {
+  reportFormatYAML(): string {
     return YAML.stringify(this.report())
   }
 
-  private report(): SolverReport {
+  report(): SolverReport {
     const queues = this.queues.map((queue) => {
       const names = solutionNames(queue.solution)
       return {

@@ -4,10 +4,6 @@
 
 # debug
 
-inject `Debugger` to `Solver` -- we should not just use `console.log` -- for the web
-
-- Debugger.onStep
-
 inject different `Debugger` on the web
 
 `Runner` output one by one -- for using `debug` in command line
