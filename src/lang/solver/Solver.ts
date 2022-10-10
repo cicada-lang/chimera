@@ -4,6 +4,7 @@ import { Env } from "../env"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { formatVariable, Solution, solutionNames, SolutionNull } from "../solution"
+import { Debugger } from "../solver"
 
 /**
 
@@ -34,6 +35,7 @@ export type SolverReportQueue = {
 
 export class Solver {
   count = 0
+  solutions: Array<Solution> = []
 
   constructor(public queues: Array<GoalQueue>) {}
 
@@ -43,16 +45,35 @@ export class Solver {
   }
 
   solve(mod: Mod, env: Env, options: SolveOptions): Array<Solution> {
-    const { limit } = options
+    const limit = options.limit || Infinity
+    const debugOptions = { skipPrompt: options.debug?.skipPrompt || 0 }
 
-    const solutions = []
-    while (limit === undefined || solutions.length < limit) {
-      const solution = this.nextSolution(mod, env, options)
-      if (solution === undefined) break
-      solutions.push(solution)
+    while (this.solutions.length < limit && this.queues.length > 0) {
+      if (options.debug && mod.options.loader.options.debugger) {
+        this.debugStep(mod.options.loader.options.debugger, debugOptions)
+      }
+
+      const solution = this.step(mod, env, options)
+      if (solution !== undefined) {
+        this.solutions.push(solution)
+      }
     }
 
-    return solutions
+    return this.solutions
+  }
+
+  private debugStep({ prompt, report }: Debugger, debugOptions: { skipPrompt: number }): void {
+    // NOTE Side-effect on `debugOptions`
+
+    report(this)
+
+    if (prompt) {
+      if (debugOptions.skipPrompt <= 0 || Number.isNaN(debugOptions.skipPrompt)) {
+        debugOptions.skipPrompt = prompt(this)
+      } else {
+        debugOptions.skipPrompt--
+      }
+    }
   }
 
   private nextSolution(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
@@ -74,9 +95,7 @@ export class Solver {
       }
 
       const solution = this.step(mod, env, options)
-      if (solution !== undefined) {
-        return solution
-      }
+      if (solution !== undefined) return solution
     }
   }
 
@@ -96,19 +115,23 @@ export class Solver {
   }
 
   report(): SolverReport {
-    const queues = this.queues.map((queue) => {
-      const names = solutionNames(queue.solution)
-      return {
-        solution: Object.fromEntries(
-          names.map((name) => [name, JSON.parse(formatVariable(queue.solution, name))]),
-        ),
-        goals: queue.goals.map(formatGoal),
-      }
-    })
-
     return {
       count: this.count,
-      queues,
+      queues: this.queues.map(reportQueue),
     }
+  }
+}
+
+function reportQueue(queue: GoalQueue): SolverReportQueue {
+  const names = solutionNames(queue.solution)
+  const solution = Object.fromEntries(
+    names.map((name) => [name, JSON.parse(formatVariable(queue.solution, name))]),
+  )
+
+  const goals = queue.goals.map(formatGoal)
+
+  return {
+    solution,
+    goals,
   }
 }

@@ -1,5 +1,9 @@
 `Runner` output one by one -- for using `debug` in command line
 
+solver.report -- with `solutions`
+
+solver.report -- print `queues[].solution` with `prune` and `deepWalk`
+
 # learn
 
 [the reasoned schemer] chapter 3, frame 12

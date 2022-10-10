@@ -12,7 +12,7 @@ export class Runner {
       prompt(solver) {
         const input = readlineSync.question("debugger> ")
         if (input === "") return 0
-        else return Number.parseInt(input)
+        return Number.parseInt(input)
       },
     },
   })
@@ -25,8 +25,8 @@ export class Runner {
     try {
       const mod = await this.loader.load(url)
       const outputs = Array.from(mod.outputs.values())
-      const output = outputs.join("\n")
       if (!opts?.silent) {
+        const output = outputs.join("\n")
         if (output) console.log(output)
       }
 
