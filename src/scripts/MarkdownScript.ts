@@ -15,12 +15,8 @@ export class MarkdownScript extends Script {
   }
 
   buildText(block: Block): string | undefined {
-    if (block.info === "cicada") {
+    if (block.info === "whereabouts") {
       return block.code
-    }
-
-    if (block.info.startsWith("cicada") && (block.info + " ").includes(" compute ")) {
-      return "compute " + block.code
     }
   }
 
