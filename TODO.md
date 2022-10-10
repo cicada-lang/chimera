@@ -1,3 +1,5 @@
+`Runner` output one by one -- for using `debug` in command line
+
 # learn
 
 [the reasoned schemer] chapter 3, frame 12
