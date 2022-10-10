@@ -1,4 +1,4 @@
-createScript
+load use Script
 
 # learn
 
