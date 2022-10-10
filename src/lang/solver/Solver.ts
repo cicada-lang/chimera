@@ -73,16 +73,22 @@ export class Solver {
         }
       }
 
-      this.count++
-
-      const queue = this.queues.shift() as GoalQueue
-      const queues = queue.step(mod, env)
-      if (queues === undefined) return queue.solution
-      // NOTE about searching
-      // push front |   depth first
-      // push back  | breadth first
-      this.queues.push(...queues)
+      const solution = this.step(mod, env, options)
+      if (solution !== undefined) {
+        return solution
+      }
     }
+  }
+
+  private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
+    this.count++
+    const queue = this.queues.shift() as GoalQueue
+    const queues = queue.step(mod, env)
+    if (queues === undefined) return queue.solution
+    // NOTE about searching
+    // push front |   depth first
+    // push back  | breadth first
+    this.queues.push(...queues)
   }
 
   reportFormatYAML(): string {
