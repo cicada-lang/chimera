@@ -1,4 +1,3 @@
-MarkdownScript
 createScript
 
 # learn
