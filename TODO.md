@@ -4,13 +4,13 @@
 
 # debug
 
+Runner -- debugger -- interrupt step by step
+
 inject different `Debugger` on the web
 
 `Runner` output one by one -- for using `debug` in command line
 
 [maybe] `query <query_pattern> debug` -- provide step in command line and web
-
-- [maybe] inject `SolverInterrupter` to `Solver` -- from `Loader`
 
 # query
 

@@ -62,7 +62,7 @@ export class Solver {
 
   private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
     if (options.debug) {
-      mod.options.debugger.onStep(this)
+      mod.options.loader.options.debugger.onStep(this)
     }
 
     this.count++

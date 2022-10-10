@@ -2,7 +2,14 @@ import fs from "fs"
 import { Loader } from "../loader"
 
 export class Runner {
-  loader = new Loader()
+  loader = new Loader({
+    debugger: {
+      onStep(solver) {
+        console.log("---")
+        console.log(solver.reportFormatYAML())
+      },
+    },
+  })
 
   constructor() {
     this.loader.fetcher.register("file", (url) => fs.promises.readFile(url.pathname, "utf8"))

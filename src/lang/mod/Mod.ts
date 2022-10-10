@@ -1,7 +1,6 @@
 import { Loader } from "../../loader"
 import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
 import { Goal } from "../goal"
-import { Debugger } from "../solver"
 import { Stmt, StmtOutput } from "../stmt"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -9,7 +8,6 @@ import { Value } from "../value"
 export interface ModOptions {
   url: URL
   loader: Loader
-  debugger: Debugger
 }
 
 export class Mod {
