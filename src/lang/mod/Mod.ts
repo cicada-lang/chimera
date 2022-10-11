@@ -29,8 +29,10 @@ export class Mod {
       const output = await stmt.execute(this)
       this.stmts.push(stmt)
       if (output) {
-        this.options.loader.options.onOutput(output)
         this.outputs.set(offset + index, output)
+        if (this.options.loader.options.onOutput) {
+          this.options.loader.options.onOutput(output)
+        }
       }
     }
   }

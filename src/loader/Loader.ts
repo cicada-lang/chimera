@@ -7,7 +7,7 @@ import * as Scripts from "../scripts"
 
 export interface LoaderOptions {
   debugger?: Debugger
-  onOutput: (output: StmtOutput) => void
+  onOutput?: (output: StmtOutput) => void
 }
 
 export class Loader {
