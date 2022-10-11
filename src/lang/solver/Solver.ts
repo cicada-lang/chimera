@@ -5,7 +5,7 @@ import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { formatVariable, Solution, solutionNames, SolutionNull } from "../solution"
 import { Debugger } from "../solver"
-import { formatSolutionForQueryPattern, QueryPattern } from "../stmts/query"
+import { formatQueryPattern, formatSolutionForQueryPattern, QueryPattern } from "../stmts/query"
 
 /**
 
@@ -25,9 +25,10 @@ export type SolveOptions = {
 }
 
 export type SolverReport = {
-  count: number
+  step_count: number
   queues: Array<SolverReportQueue>
   solutions: Array<Json>
+  query_pattern: string
 }
 
 export type SolverReportQueue = {
@@ -36,7 +37,7 @@ export type SolverReportQueue = {
 }
 
 export class Solver {
-  count = 0
+  step_count = 0
   solutions: Array<Solution> = []
 
   constructor(public pattern: QueryPattern, public queues: Array<GoalQueue>) {}
@@ -79,7 +80,7 @@ export class Solver {
   }
 
   private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
-    this.count++
+    this.step_count++
     const queue = this.queues.shift() as GoalQueue
     const queues = queue.step(mod, env)
     if (queues === undefined) return queue.solution
@@ -95,8 +96,9 @@ export class Solver {
 
   report(): SolverReport {
     return {
-      count: this.count,
+      step_count: this.step_count,
       queues: this.queues.map(reportQueue),
+      query_pattern: formatQueryPattern(this.pattern),
       solutions: JSON.parse(formatSolutionForQueryPattern(this.solutions, this.pattern)),
     }
   }
