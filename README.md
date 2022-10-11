@@ -159,13 +159,6 @@ Outputs:
   ["fred", "fred", "vodka"] ]
 ```
 
-The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
-You can also make use of [**jq**](https://stedolan.github.io/jq/) to format them:
-
-```bash
-wa docs/tests/clause-and-effect/02-drinking-pairs.wa | jq
-```
-
 ## Examples
 
 [**02-drinking-pairs.wa:**](docs/tests/clause-and-effect/02-drinking-pairs.wa)
