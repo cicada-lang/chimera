@@ -1,4 +1,8 @@
 [ "?q" ]
 []
-[ "marx", "darwin", "freud" ]
-[ [["foo", {"...": "?tail_56"}]], [["?head_58", "foo", {"...": "?tail_61"}]], [["?head_58", "?head_63", "foo", {"...": "?tail_66"}]] ]
+[ "marx", 
+  "darwin", 
+  "freud" ]
+[ [["foo", {"...": "?tail_56"}]], 
+  [["?head_58", "foo", {"...": "?tail_61"}]], 
+  [["?head_58", "?head_63", "foo", {"...": "?tail_66"}]] ]

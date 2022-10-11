@@ -1,8 +1,13 @@
 [ "?q" ]
 []
-[ "lucinda", "camilla" ]
+[ "lucinda", 
+  "camilla" ]
 []
-[ "bertram", "percival" ]
+[ "bertram", 
+  "percival" ]
 []
 []
-[ ["bertram", "lucinda"], ["bertram", "camilla"], ["percival", "lucinda"], ["percival", "camilla"] ]
+[ ["bertram", "lucinda"], 
+  ["bertram", "camilla"], 
+  ["percival", "lucinda"], 
+  ["percival", "camilla"] ]

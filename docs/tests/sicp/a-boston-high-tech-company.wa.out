@@ -1,7 +1,17 @@
-[ "Hacker Alyssa P", "Fect Cy D" ]
-[ "Hacker Alyssa P", "Fect Cy D" ]
+[ "Hacker Alyssa P", 
+  "Fect Cy D" ]
+[ "Hacker Alyssa P", 
+  "Fect Cy D" ]
 [ ["Slumerville", "Ridge Road", 10] ]
-[ ["Bitdiddle Ben", "wizard"], ["Hacker Alyssa P", "programmer"], ["Fect Cy D", "programmer"], ["Tweakit Lem E", "technician"], ["Reasoner Louis", "programmer trainee"] ]
+[ ["Bitdiddle Ben", "wizard"], 
+  ["Hacker Alyssa P", "programmer"], 
+  ["Fect Cy D", "programmer"], 
+  ["Tweakit Lem E", "technician"], 
+  ["Reasoner Louis", "programmer trainee"] ]
 [ "computer" ]
 []
-[ "Bitdiddle Ben", "Hacker Alyssa P", "Fect Cy D", "Tweakit Lem E", "Reasoner Louis" ]
+[ "Bitdiddle Ben", 
+  "Hacker Alyssa P", 
+  "Fect Cy D", 
+  "Tweakit Lem E", 
+  "Reasoner Louis" ]

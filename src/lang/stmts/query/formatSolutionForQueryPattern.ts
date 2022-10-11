@@ -12,12 +12,16 @@ export function formatSolutionForQueryPattern(
         return `[${results.join(", ")}]`
       })
 
-      return results.length === 0 ? "[]" : `[ ${results.join(", ")} ]`
+      return formatResults(results)
     }
 
     case "QueryPatternName": {
       const results = solutions.map((solution) => formatVariable(solution, pattern.name))
-      return results.length === 0 ? "[]" : `[ ${results.join(", ")} ]`
+      return formatResults(results)
     }
   }
+}
+
+function formatResults(results: Array<string>): string {
+  return results.length === 0 ? "[]" : `[ ${results.join(", \n  ")} ]`
 }

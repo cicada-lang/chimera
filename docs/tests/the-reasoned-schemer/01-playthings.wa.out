@@ -22,7 +22,13 @@
 []
 []
 [ "corn" ]
-[ "tea", "cup" ]
-[ ["tea", "tea"], ["tea", "cup"], ["cup", "tea"], ["cup", "cup"] ]
-[ ["tea", "?y"], ["cup", "?y"] ]
-[ ["tea", "?y"], ["cup", "?y"] ]
+[ "tea", 
+  "cup" ]
+[ ["tea", "tea"], 
+  ["tea", "cup"], 
+  ["cup", "tea"], 
+  ["cup", "cup"] ]
+[ ["tea", "?y"], 
+  ["cup", "?y"] ]
+[ ["tea", "?y"], 
+  ["cup", "?y"] ]

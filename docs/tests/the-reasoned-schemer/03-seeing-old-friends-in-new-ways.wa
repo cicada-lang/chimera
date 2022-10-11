@@ -19,6 +19,76 @@ query x limit 1 {
   List ["a", "b", ...x]
 }
 
-query x limit 3 {
+query x limit 5 {
   List ["a", "b", ...x]
+}
+
+ListOfLists l
+------------- {
+  Null l
+}
+
+ListOfLists l
+------------- {
+  Car [l, a]
+  List a
+  Cdr [l, d]
+  ListOfLists d
+}
+
+query q {
+  ListOfLists [["a", "b"], [x, "c"], ["d", y]]
+}
+
+query l limit 1 {
+  ListOfLists l
+}
+
+query l limit 5 {
+  ListOfLists l
+}
+
+query x limit 5 {
+  ListOfLists [["a", "b"], ...x]
+}
+
+query x limit 5 {
+  ListOfLists [["a", "b"], ["c", "d"], ...x]
+}
+
+Singleton l
+----------- {
+  unify l = [a]
+}
+
+ListOfSingletons l
+------------------- {
+  Null l
+}
+
+ListOfSingletons l
+-------------------- {
+  Car [l, a]
+  Singleton a
+  Cdr [l, d]
+  ListOfSingletons d
+}
+
+
+query l limit 1 {
+  ListOfSingletons l
+}
+
+query l limit 5 {
+  ListOfSingletons l
+}
+
+query r limit 5 {
+  ListOfSingletons [["g"], ["e", ...w], [x, ...y], ...z]
+  unify r = [w, [x, ...y], z]
+}
+
+query out limit 5 {
+  unify [["g"], ["e", ...w], [x, ...y], ...z] = out
+  ListOfSingletons out
 }
