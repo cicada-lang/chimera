@@ -23,7 +23,7 @@ Visit the [Whereabouts Playground](https://whereabouts.cicada-lang.org/playgroun
 
 [**whereabouts-server:**](https://github.com/cicada-lang/whereabouts-server) A server that can run whereabouts code.
 
-Run a file:
+Post a file:
 
 ```bash
 curl https://wa.cic.run --data-binary @docs/tests/clause-and-effect/01-party-pairs.wa
