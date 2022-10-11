@@ -1,0 +1,27 @@
+<theme color="blue" />
+
+<question>
+  How do we translate a function into a relation?
+
+  <answer>
+    The Translation (Final)
+
+    To translate a function into a relation,
+    first replace define with defrel.
+
+    Then unnest each expression in each cond line,
+    and replace each cond with conde.
+
+    To unnest a #t, replace it with #s.
+
+    To unnest a #f, replace it with #u.
+
+    If the value of at least one cond line can be a non-Boolean,
+    add an argument, say out, to defrel to hold
+    what would have been the function's value.
+
+    When unnesting a line whose value is not a Boolean,
+    ensure that either some value is associated with out,
+    or that out is the last argument to a recursion.
+  </answer>
+</question>

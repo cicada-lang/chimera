@@ -3,9 +3,10 @@ import { Json } from "../../utils/Json"
 import { Env } from "../env"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { formatVariable, Solution, solutionNames, SolutionNull } from "../solution"
+import { deepWalk, lookupValueInSolution, Solution, solutionNames, SolutionNull } from "../solution"
 import { Debugger } from "../solver"
 import { formatQueryPattern, formatSolutionForQueryPattern, QueryPattern } from "../stmts/query"
+import { formatValue } from "../value"
 
 /**
 
@@ -105,9 +106,11 @@ export class Solver {
 }
 
 function reportQueue(queue: GoalQueue): SolverReportQueue {
-  const names = solutionNames(queue.solution)
   const solution = Object.fromEntries(
-    names.map((name) => [name, JSON.parse(formatVariable(queue.solution, name))]),
+    solutionNames(queue.solution).map((name) => [
+      name,
+      JSON.parse(formatVariableNoReify(queue.solution, name)),
+    ]),
   )
 
   const goals = queue.goals.map(formatGoal)
@@ -115,5 +118,14 @@ function reportQueue(queue: GoalQueue): SolverReportQueue {
   return {
     solution,
     goals,
+  }
+}
+
+function formatVariableNoReify(solution: Solution, name: string): string {
+  const value = lookupValueInSolution(solution, name)
+  if (value === undefined) {
+    return `"?${name}"`
+  } else {
+    return `${formatValue(deepWalk(solution, value))}`
   }
 }

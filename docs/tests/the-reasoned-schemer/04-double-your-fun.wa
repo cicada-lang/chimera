@@ -1,0 +1,35 @@
+import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
+
+Append [l, t, out]
+------------------ {
+  Null l
+  unify out = t
+}
+
+Append [l, t, out]
+------------------ {
+  Cdr [l, d]
+  Append [d, t, res]
+  Car [l, a]
+  Cons [a, res, out]
+}
+
+query q {
+  Append [[1, 2, 3], [4, 5], q]
+}
+
+query q {
+  Append [[], [4, 5], q]
+}
+
+query q {
+  Append [1, [4, 5], q]
+}
+
+query q {
+  Append [[4, 5], 1, q]
+}
+
+query (x, y, z) limit 6 {
+  Append [x, y, z]
+}

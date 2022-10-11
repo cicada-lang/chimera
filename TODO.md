@@ -1,4 +1,6 @@
-04-double-your-fun.wa
+inline `formatVariable`
+
+04-double-your-fun.wa -- frame 17
 05-members-only.wa
 06-the-fun-never-ends.wa
 07-a-bit-too-much.wa
