@@ -1,4 +1,5 @@
-import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
+import { Succeed, Fail } from "./01-playthings.wa"
+import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
 
 List l
 ----------- {
@@ -91,4 +92,91 @@ query r limit 5 {
 query out limit 5 {
   unify [["g"], ["e", ...w], [x, ...y], ...z] = out
   ListOfSingletons out
+}
+
+// NOTE By "The Law of Fail", we can drop the following clause.
+
+// Member [x, l]
+// ------------- {
+//   Null l
+//   Fail []
+// }
+
+// Member [x, l]
+// ------------- {
+//   Car [l, a]
+//   unify x = a
+// }
+
+Member [x, l]
+------------- {
+  Car [l, x]
+}
+
+Member [x, l]
+------------- {
+  Cdr [l, d]
+  Member [x, d]
+}
+
+query q {
+  Member ["olive", ["virgin", "olive", "oil"]]
+}
+
+query x {
+  Member [x, ["virgin", "olive", "oil"]]
+}
+
+query x {
+  Member [x, ["hummus", "with", "pita"]]
+}
+
+query x {
+  Member [x, ["pear", "grape", ..."peaches"]]
+}
+
+query x {
+  Member ["e", ["pasta", x, "fagioli"]]
+}
+
+query x {
+  Member ["e", ["pasta", "e", x, "fagioli"]]
+}
+
+query x {
+  Member ["e", ["pasta", x, "e", "fagioli"]]
+}
+
+query (x, y) {
+  Member ["e", ["pasta", x, "fagioli", y]]
+}
+
+query q {
+  unify ["pasta", x, "fagioli", y] = q
+  Member ["e", q]
+}
+
+query l limit 5 {
+  Member ["tofu", l]
+}
+
+ProperMember [x, l]
+------------------- {
+  Car [l, x]
+  Cdr [l, d]
+  List d
+}
+
+ProperMember [x, l]
+------------------- {
+  Cdr [l, d]
+  ProperMember [x, d]
+}
+
+query l limit 5 {
+  ProperMember ["tofu", l]
+}
+
+query l limit 12 {
+  ProperMember ["tofu", l]
 }

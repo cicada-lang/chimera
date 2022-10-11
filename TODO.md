@@ -1,4 +1,5 @@
-03-seeing-old-friends-in-new-ways.wa -- frame 12
+we need `reify` -- to make sense of the output
+
 04-double-your-fun.wa
 05-members-only.wa
 06-the-fun-never-ends.wa
