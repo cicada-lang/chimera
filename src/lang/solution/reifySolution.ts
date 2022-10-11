@@ -7,9 +7,9 @@ export function reifySolution(solution: Solution, value: Value): Solution {
 
   switch (value.kind) {
     case "PatternVar": {
-      const n = solutionLength(solution)
-      const v = Values.PatternVar(`_.${n}`)
-      return SolutionCons(value.name, v, solution)
+      const count = solutionLength(solution)
+      const reifiedValue = Values.String(`_.${count}`)
+      return SolutionCons(value.name, reifiedValue, solution)
     }
 
     case "ListCons": {

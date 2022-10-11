@@ -11,7 +11,7 @@ export function formatSolutionForQueryPattern(
     case "QueryPatternNames": {
       const variables: Array<Value> = pattern.names.map(Values.PatternVar)
       const list = variables.reduceRight(
-        (result, element) => Values.ListCons(element, result),
+        (result, variable) => Values.ListCons(variable, result),
         Values.ListNull(),
       )
       const results = solutions.map((solution) => formatValue(reify(solution, list)))

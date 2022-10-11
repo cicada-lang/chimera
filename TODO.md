@@ -1,5 +1,3 @@
-fix reify order for -- 04-double-your-fun.wa -- frame 21
-
 04-double-your-fun.wa -- frame 21
 05-members-only.wa
 06-the-fun-never-ends.wa

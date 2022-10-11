@@ -3,9 +3,7 @@ import { Value } from "../value"
 export function formatValue(value: Value): string {
   switch (value.kind) {
     case "PatternVar": {
-      return value.name.startsWith("_.")
-        ? JSON.stringify(value.name)
-        : JSON.stringify(`?${value.name}`)
+      return JSON.stringify(`?${value.name}`)
     }
 
     case "String": {
