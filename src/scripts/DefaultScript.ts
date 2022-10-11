@@ -1,3 +1,4 @@
+import * as Errors from "../lang/errors"
 import { Mod } from "../lang/mod"
 import { parseStmts } from "../lang/parse"
 import { Script } from "../script"
@@ -8,7 +9,15 @@ export class DefaultScript extends Script {
   }
 
   async run(): Promise<void> {
-    const stmts = parseStmts(this.text)
-    await this.mod.executeStmts(stmts)
+    try {
+      const stmts = parseStmts(this.text)
+      await this.mod.executeStmts(stmts)
+    } catch (error) {
+      if (error instanceof Errors.ParsingError) {
+        throw new Errors.ErrorReport(error.report(this.text))
+      }
+
+      throw error
+    }
   }
 }

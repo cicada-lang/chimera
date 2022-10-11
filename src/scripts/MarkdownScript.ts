@@ -1,4 +1,5 @@
 import * as commonmark from "commonmark"
+import * as Errors from "../lang/errors"
 import { Mod } from "../lang/mod"
 import { parseStmts } from "../lang/parse"
 import { Script } from "../script"
@@ -24,8 +25,16 @@ export class MarkdownScript extends Script {
     const text = this.buildText(block)
     if (text === undefined) return
 
-    const stmts = parseStmts(text)
-    await this.mod.executeStmts(stmts)
+    try {
+      const stmts = parseStmts(text)
+      await this.mod.executeStmts(stmts)
+    } catch (error) {
+      if (error instanceof Errors.ParsingError) {
+        throw new Errors.ErrorReport(error.report(text))
+      }
+
+      throw error
+    }
   }
 }
 

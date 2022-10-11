@@ -1,28 +1,31 @@
 ---
-count: 0
+step_count: 0
 queues:
   - solution: {}
     goals:
       - unify "?x" = true
       - unify "?y" = false
+query_pattern: (x, y)
 solutions: []
 
 ---
-count: 1
+step_count: 1
 queues:
   - solution:
       x: true
     goals:
       - unify "?y" = false
+query_pattern: (x, y)
 solutions: []
 
 ---
-count: 2
+step_count: 2
 queues:
   - solution:
       y: false
       x: true
     goals: []
+query_pattern: (x, y)
 solutions: []
 
 [ [true, false] ]
