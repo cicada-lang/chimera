@@ -1,0 +1,27 @@
+<theme color="blue" />
+
+<question>
+  How do we translate a function into a relation?
+
+  <answer>
+    The Translation (Initial)
+
+    To translate a function into a relation,
+    first replace define with defrel.
+
+    Then unnest each expression in each cond line,
+    and replace each cond with conde.
+
+    To unnest a #t, replace it with #s.
+
+    To unnest a #f, replace it with #u.
+  </answer>
+</question>
+
+<question>
+  The Law of #u (fail)
+
+  <answer>
+    Any conde line that has #u as a top-level goal cannot contribute values.
+  </answer>
+</question>

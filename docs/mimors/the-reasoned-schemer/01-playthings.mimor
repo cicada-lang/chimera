@@ -1,0 +1,105 @@
+<theme color="orange" />
+
+<question>
+  What is a goal?
+
+  <answer>
+    It is something that either succeeds, fails, or has no value.
+  </answer>
+</question>
+
+<question>
+  What is a fresh variable?
+
+  <answer>
+    Every variable is initially fresh.
+
+    A variable is no longer fresh
+    if it becomes associated with a non-variable value
+    or if it becomes associated with a variable that,
+    itself, is no longer fresh.
+  </answer>
+</question>
+
+<question>
+  When are two variables different?
+
+  <answer>
+    Two variables are different if they have not been fused.
+
+    Every variable introduced by fresh (or run*)
+    is initially different from every other variable.
+  </answer>
+</question>
+
+<question>
+  What does it mean for x to occur?
+
+  <answer>
+    A variable x occurs in a variable y
+    when x (or any variable fused with x)
+    appears in the value associated with y.
+  </answer>
+</question>
+
+<question>
+  When do we say a variable occurs in a list?
+
+  <answer>
+    A variable x occurs in a list l
+    when x (or any variable fused with x) is an element of l,
+    or when x occurs in an element of l.
+  </answer>
+</question>
+
+<question>
+  What is a relation?
+
+  <answer>
+    A relation is a kind of function that,
+    when given arguments, produces a goal.
+
+    Thanks, Robert A. Kowalski (1941 --).
+  </answer>
+</question>
+
+<question>
+  The Second Law of unify
+
+  <answer>
+    If x is fresh, then
+
+    <code>
+      unify v = x
+    </code>
+
+    succeeds and associates v with x,
+    unless x occurs in v.
+  </answer>
+</question>
+
+<question>
+  The First Law of unify
+
+  <answer>
+    <code>
+      unify v = w
+    </code>
+
+    can be replaced by
+
+    <code>
+      unify w = v
+    </code>
+  </answer>
+</question>
+
+<question>
+  What does the "e" in conde stand for?
+
+  <answer>
+    It stands for every,
+    since every successful conde line
+    contributes one or more values (to the solution).
+  </answer>
+</question>
