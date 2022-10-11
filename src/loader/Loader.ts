@@ -1,11 +1,13 @@
 import { Fetcher } from "../framework/fetcher"
 import { Mod } from "../lang/mod"
 import { Debugger } from "../lang/solver"
+import { StmtOutput } from "../lang/stmt"
 import { Script } from "../script"
 import * as Scripts from "../scripts"
 
 export interface LoaderOptions {
   debugger?: Debugger
+  onOutput: (output: StmtOutput) => void
 }
 
 export class Loader {

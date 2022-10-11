@@ -4,6 +4,7 @@ import { Loader } from "../loader"
 
 export class Runner {
   loader = new Loader({
+    onOutput: console.log,
     debugger: {
       report(solver) {
         console.log("---")
@@ -23,13 +24,7 @@ export class Runner {
 
   async run(url: URL, opts?: { silent?: boolean }): Promise<{ error?: unknown }> {
     try {
-      const mod = await this.loader.load(url)
-      const outputs = Array.from(mod.outputs.values())
-      if (!opts?.silent) {
-        const output = outputs.join("\n")
-        if (output) console.log(output)
-      }
-
+      await this.loader.load(url)
       return { error: undefined }
     } catch (error) {
       if (!opts?.silent) {
