@@ -1,7 +1,10 @@
 import { formatVariable, Solution } from "../../solution"
 import { QueryPattern } from "../query"
 
-export function formatQueryPattern(solutions: Array<Solution>, pattern: QueryPattern): string {
+export function formatSolutionForQueryPattern(
+  solutions: Array<Solution>,
+  pattern: QueryPattern,
+): string {
   switch (pattern.kind) {
     case "QueryPatternNames": {
       const results = solutions.map((solution) => {

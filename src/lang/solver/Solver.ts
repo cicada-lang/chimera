@@ -5,7 +5,7 @@ import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import { formatVariable, Solution, solutionNames, SolutionNull } from "../solution"
 import { Debugger } from "../solver"
-import { formatQueryPattern, QueryPattern } from "../stmts/query"
+import { formatSolutionForQueryPattern, QueryPattern } from "../stmts/query"
 
 /**
 
@@ -97,7 +97,7 @@ export class Solver {
     return {
       count: this.count,
       queues: this.queues.map(reportQueue),
-      solutions: JSON.parse(formatQueryPattern(this.solutions, this.pattern)),
+      solutions: JSON.parse(formatSolutionForQueryPattern(this.solutions, this.pattern)),
     }
   }
 }

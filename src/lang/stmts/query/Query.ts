@@ -3,7 +3,12 @@ import { Mod } from "../../mod"
 import { Solver } from "../../solver"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import { buildSolveOptions, formatQueryPattern, QueryOption, QueryPattern } from "../query"
+import {
+  buildSolveOptions,
+  formatSolutionForQueryPattern,
+  QueryOption,
+  QueryPattern,
+} from "../query"
 
 export class Query extends Stmt {
   constructor(
@@ -19,6 +24,6 @@ export class Query extends Stmt {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
     const solver = Solver.fromGoals(this.pattern, goals)
     const solutions = solver.solve(mod, mod.env, buildSolveOptions(this.options))
-    return formatQueryPattern(solutions, this.pattern)
+    return formatSolutionForQueryPattern(solutions, this.pattern)
   }
 }
