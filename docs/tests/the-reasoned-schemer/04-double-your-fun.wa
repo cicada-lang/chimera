@@ -30,6 +30,10 @@ query q {
   Append [[4, 5], 1, q]
 }
 
+query x limit 6 {
+  Append [x, y, z]
+}
+
 query (x, y, z) limit 6 {
   Append [x, y, z]
 }
