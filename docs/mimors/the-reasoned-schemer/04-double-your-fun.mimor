@@ -25,3 +25,21 @@
     or that out is the last argument to a recursion.
   </answer>
 </question>
+
+<question>
+  The First Commandment
+
+  <answer>
+    Within each sequence of goals,
+    move non-recursive goals before recursive goals.
+  </answer>
+</question>
+
+<question>
+  The Law of Swapping conde Lines
+
+  <answer>
+    Swapping two conde lines
+    does not affect the values contributed by conde.
+  </answer>
+</question>

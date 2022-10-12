@@ -37,3 +37,76 @@ query x limit 6 {
 query (x, y, z) limit 6 {
   Append [x, y, z]
 }
+
+query x {
+  Append [
+    ["cake"],
+    ["tastes", "yummy"],
+    x,
+  ]
+}
+
+query x {
+  Append [
+    ["cake", "&", "ice", y],
+    ["tastes", "yummy"],
+    x,
+  ]
+}
+
+query x {
+  Append [
+    ["cake", "&", "ice", "cream"],
+    y,
+    x,
+  ]
+}
+
+query x limit 1 {
+  Append [
+    ["cake", "&", "ice", ...y],
+    ["d", "t"],
+    x,
+  ]
+}
+
+query x limit 5 {
+  Append [
+    ["cake", "&", "ice", ...y],
+    ["d", "t"],
+    x,
+  ]
+}
+
+query y limit 5 {
+  Append [
+    ["cake", "&", "ice", ...y],
+    ["d", "t"],
+    x,
+  ]
+}
+
+query x limit 5 {
+  Append [
+    ["cake", "&", "ice", ...y],
+    ["d", "t", ...y],
+    x,
+  ]
+}
+
+query x {
+  Append [
+    ["cake", "&", "ice", "cream"],
+    ["d", "t", ...z],
+    x,
+  ]
+}
+
+query (x, y) {
+  Append [
+    x,
+    y,
+    ["cake", "&", "ice", "d", "t"],
+  ]
+}
+
