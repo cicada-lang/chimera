@@ -49,7 +49,7 @@ export class Mod {
     )
   }
 
-  private findOrCreateRelation(name: string): Values.Relation {
+  findOrCreateRelation(name: string): Values.Relation {
     let relation = lookupValueInEnv(this.env, name)
     if (relation !== undefined) {
       Values.assertRelation(relation)

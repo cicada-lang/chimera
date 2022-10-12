@@ -112,13 +112,13 @@ query (x, y) {
 
 Unwrap [x, out]
 --------------- {
-  unify x = out
+  Car [x, a]
+  Unwrap [a, out]
 }
 
 Unwrap [x, out]
 --------------- {
-  Car [x, a]
-  Unwrap [a, out]
+  unify x = out
 }
 
 query x {
