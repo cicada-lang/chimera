@@ -1,0 +1,57 @@
+import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
+
+Mem [x, l, out]
+--------------- {
+  Car [l, x]
+  unify out = l
+}
+
+Mem [x, l, out]
+--------------- {
+  Cdr [l, d]
+  Mem [x, d, out]
+}
+
+query x {
+  Mem [
+    "fig",
+    ["roll", "okra", "fig", "beet", "roll", "pea"],
+    x,
+  ]
+}
+
+query x {
+  Mem [
+    "fig",
+    ["roll", "okra", "beet", "beet", "roll", "pea"],
+    x,
+  ]
+}
+
+query x {
+  Mem ["fig", ["pea"], ["pea"]]
+}
+
+query out {
+  Mem ["fig", ["fig"], out]
+}
+
+query out {
+  Mem ["fig", ["fig", "pea"], out]
+}
+
+query x {
+  Mem [
+    x,
+    ["roll", "okra", "fig", "beet", "roll", "pea"],
+    ["fig", "beet", "roll", "pea"],
+  ]
+}
+
+query x {
+  Mem ["fig", ["fig", "pea"], ["pea", x]]
+}
+
+query x {
+  Mem ["fig", ["fig", "pea"], [x, "pea"]]
+}
