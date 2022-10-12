@@ -110,3 +110,34 @@ query (x, y) {
   ]
 }
 
+Unwrap [x, out]
+--------------- {
+  unify x = out
+}
+
+Unwrap [x, out]
+--------------- {
+  Car [x, a]
+  Unwrap [a, out]
+}
+
+query x {
+  Unwrap [
+    [[["pizza"]]],
+    x,
+  ]
+}
+
+query x limit 3 {
+  Unwrap [
+    x,
+    "pizza",
+  ]
+}
+
+query x limit 3 {
+  Unwrap [
+    [[x]],
+    "pizza",
+  ]
+}

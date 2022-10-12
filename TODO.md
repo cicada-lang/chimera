@@ -1,5 +1,3 @@
-04-double-your-fun.wa -- Unwrap
-
 be able to define recursive relation
 
 - docs/tests/the-reasoned-schemer/04-double-your-fun.wa

@@ -261,6 +261,10 @@ npm run test          # Run test
 npm run test:watch    # Watch the testing
 ```
 
+## Thanks
+
+Thank you, Daniel P. Friedman, William E. Byrd, Oleg Kiselyov and Jason Hemann, for your book ["The Reasoned Schemer"](https://mitpress.mit.edu/9780262535519/the-reasoned-schemer/).
+
 ## Contributions
 
 To make a contribution, fork this project and create a pull request.
