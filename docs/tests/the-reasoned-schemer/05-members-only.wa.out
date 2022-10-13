@@ -37,3 +37,7 @@
 [ "fig" ]
 []
 [ "fig" ]
+[ ["fig", "fig", "pea"], 
+  ["fig", "pea"] ]
+[ ["fig", "c", "fig", "e"], 
+  ["fig", "e"] ]

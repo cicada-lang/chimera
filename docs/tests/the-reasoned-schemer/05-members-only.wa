@@ -55,3 +55,11 @@ query x {
 query x {
   Mem ["fig", ["fig", "pea"], [x, "pea"]]
 }
+
+query out {
+  Mem ["fig", ["fig", "fig", "pea"], out]
+}
+
+query out {
+  Mem ["fig", ["a", x, "c", "fig", "e"], out]
+}
