@@ -20,29 +20,18 @@ Nat n
   Nat prev
 }
 
-One n
------------- {
-  Sub1 [n, prev]
-  Zero prev
-}
-
-Two n
------------- {
-  Sub1 [n, prev]
-  One prev
-}
-
-Three n
------------- {
-  Sub1 [n, prev]
-  Two prev
-}
-
-Four n
------------- {
-  Sub1 [n, prev]
-  Three prev
-}
+One n -- { Sub1 [n, prev] Zero prev }
+Two n -- { Sub1 [n, prev] One prev }
+Three n -- { Sub1 [n, prev] Two prev }
+Four n -- { Sub1 [n, prev] Three prev }
+Five n -- { Sub1 [n, prev] Four prev }
+Six n -- { Sub1 [n, prev] Five prev }
+Seven n -- { Sub1 [n, prev] Six prev }
+Eight n -- { Sub1 [n, prev] Seven prev }
+Nine n -- { Sub1 [n, prev] Eight prev }
+Ten n -- { Sub1 [n, prev] Nine prev }
+Eleven n -- { Sub1 [n, prev] Ten prev }
+Twelve n -- { Sub1 [n, prev] Eleven prev }
 
 Add [x, y, y]
 ------------- {
@@ -102,12 +91,13 @@ query z {
   Mul [x, y, z]
 }
 
-query (x, y) {
-  Two z
-  Mul [x, y, z]
-}
-
-query (x, y) {
-  Four z
-  Mul [x, y, z]
-}
+query (x, y) { Two z Mul [x, y, z] }
+query (x, y) { Four z Mul [x, y, z] }
+query (x, y) { Five z Mul [x, y, z] }
+query (x, y) { Six z Mul [x, y, z] }
+// query (x, y) { Seven z Mul [x, y, z] }
+// query (x, y) { Eight z Mul [x, y, z] }
+// query (x, y) { Nine z Mul [x, y, z] }
+// query (x, y) { Ten z Mul [x, y, z] }
+// query (x, y) { Eleven z Mul [x, y, z] }
+// query (x, y) { Twelve z Mul [x, y, z] }

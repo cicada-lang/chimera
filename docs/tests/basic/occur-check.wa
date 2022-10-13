@@ -5,3 +5,7 @@ query q {
 query q {
   unify x = { x }
 }
+
+query q {
+  unify x = { y: x }
+}

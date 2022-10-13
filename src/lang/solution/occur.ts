@@ -14,9 +14,7 @@ export function occur(solution: Solution, name: String, value: Value): boolean {
     }
 
     case "Objekt": {
-      return Object.entries(value.properties).some(([name, property]) =>
-        occur(solution, name, property),
-      )
+      return Object.values(value.properties).some((property) => occur(solution, name, property))
     }
 
     default: {
