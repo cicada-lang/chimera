@@ -52,14 +52,14 @@ Drink { person: "john", alcohol: "gin" }
 Drink { person: "fred", alcohol: "gin" }
 Drink { person: "fred", alcohol: "vodka" }
 
-Friends { left, right, alcohol }
+Friendship { left, right, alcohol }
 ------------------------------------ {
   Drink { person: left, alcohol }
   Drink { person: right, alcohol }
 }
 
 query left {
-  Friends { left, right: "mary", alcohol: "gin" }
+  Friendship { left, right: "mary", alcohol: "gin" }
 }
 
 END
@@ -78,14 +78,14 @@ Drink { person: "john", alcohol: "gin" }
 Drink { person: "fred", alcohol: "gin" }
 Drink { person: "fred", alcohol: "vodka" }
 
-Friends { left, right, alcohol }
+Friendship { left, right, alcohol }
 ------------------------------------ {
   Drink { person: left, alcohol }
   Drink { person: right, alcohol }
 }
 
 query left {
-  Friends { left, right: "mary", alcohol: "gin" }
+  Friendship { left, right: "mary", alcohol: "gin" }
 }
 
 END
@@ -173,32 +173,32 @@ Drink { person: "john", alcohol: "gin" }
 Drink { person: "fred", alcohol: "gin" }
 Drink { person: "fred", alcohol: "vodka" }
 
-Friends { left, right, alcohol }
+Friendship { left, right, alcohol }
 ------------------------------------ {
   Drink { person: left, alcohol }
   Drink { person: right, alcohol }
 }
 
 query left {
-  Friends { left, right: "mary", alcohol: "gin" }
+  Friendship { left, right: "mary", alcohol: "gin" }
 }
 
 query (left, right) {
-  Friends { left, right, alcohol: "gin" }
+  Friendship { left, right, alcohol: "gin" }
 }
 
 query (left, right, alcohol) {
-  Friends { left, right, alcohol }
+  Friendship { left, right, alcohol }
 }
 ```
 
 We can also use the module system to import from URL:
 
 ```js
-import { Friends } from "https://docs.wa.cic.run/tests/clause-and-effect/02-drinking-pairs.wa"
+import { Friendship } from "https://docs.wa.cic.run/tests/clause-and-effect/02-drinking-pairs.wa"
 
 query left {
-  Friends { left, right: "mary", alcohol: "gin" }
+  Friendship { left, right: "mary", alcohol: "gin" }
 }
 ```
 

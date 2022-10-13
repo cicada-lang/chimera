@@ -9,7 +9,7 @@ test("parse Query", () => {
     parseStmts(`
 
 query (left) {
-  Friends { left, right: "mary", alcohol: "gin" }
+  Friendship { left, right: "mary", alcohol: "gin" }
 }
 
 `),
@@ -20,7 +20,7 @@ query (left) {
         [],
         [
           Exps.GoalApply(
-            "Friends",
+            "Friendship",
 
             Exps.ObjektUnfolded([
               Exps.PropertyPlain("left", Exps.PatternVar("left")),
@@ -39,7 +39,7 @@ test("parse Query -- with limit", () => {
     parseStmts(`
 
 query (left) limit 1 {
-  Friends { left, right: "mary", alcohol: "gin" }
+  Friendship { left, right: "mary", alcohol: "gin" }
 }
 
 `),
@@ -50,7 +50,7 @@ query (left) limit 1 {
         [Stmts.QueryOptionLimit(1)],
         [
           Exps.GoalApply(
-            "Friends",
+            "Friendship",
 
             Exps.ObjektUnfolded([
               Exps.PropertyPlain("left", Exps.PatternVar("left")),

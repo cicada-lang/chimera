@@ -8,7 +8,7 @@ test("parse Rule", () => {
   expect(
     parseStmts(`
 
-Friends { left, right, alcohol }
+Friendship { left, right, alcohol }
 ------------------------------------ {
   Drink { person: left, alcohol }
   Drink { person: right, alcohol }
@@ -18,7 +18,7 @@ Friends { left, right, alcohol }
   ).toMatchObject(
     deleteUndefined([
       new Stmts.Rule(
-        "Friends",
+        "Friendship",
         undefined,
         Exps.ObjektUnfolded([
           Exps.PropertyPlain("left", Exps.PatternVar("left")),
