@@ -1,19 +1,27 @@
-Nat "zero"
+Zero "zero"
 
-Nat { prev }
------------- {
+Sub1 [{ prev }, prev]
+
+Nat n
+--------- {
+  Zero n
+}
+
+Nat n
+----------- {
+  Sub1 [n, prev]
   Nat prev
 }
 
-Zero "zero"
-
-One { prev }
+One n
 ------------ {
+  Sub1 [n, prev]
   Zero prev
 }
 
-Two { prev }
+Two n
 ------------ {
+  Sub1 [n, prev]
   One prev
 }
 
