@@ -1,6 +1,13 @@
-Zero "zero"
+// Zero 0
+// Add1 [n, { prev: n }]
 
-Sub1 [{ prev }, prev]
+Zero []
+Add1 [n, [1, ...n]]
+
+Sub1 [n, prev]
+----------------- {
+  Add1 [prev, n]
+}
 
 Nat n
 --------- {
@@ -25,11 +32,28 @@ Two n
   One prev
 }
 
-Add ["zero", y, y]
+Three n
+------------ {
+  Sub1 [n, prev]
+  Two prev
+}
 
-Add [{ prev }, y, { prev: result_prev } ]
----------------------------------------- {
-  Add [prev, y, result_prev]
+Four n
+------------ {
+  Sub1 [n, prev]
+  Three prev
+}
+
+Add [x, y, y]
+------------- {
+  Zero x
+}
+
+Add [x, y, out]
+-------------------- {
+  Sub1 [x, prev]
+  Sub1 [out, res]
+  Add [prev, y, res]
 }
 
 query z {
@@ -51,14 +75,25 @@ query (x, y) {
   Add [x, y, z]
 }
 
-Mul ["zero", y, "zero"]
+Mul [x, y, out]
+--------------- {
+  Zero x
+  Zero out
+}
 
-Mul [{ prev }, "zero", "zero"]
+Mul [x, y, out]
+----------------- {
+  Sub1 [x, prev]
+  Zero y
+  Zero out
+}
 
-Mul [{ prev: prev_x }, { prev: prev_y } , result]
----------------------------- {
-  Add [{ prev: prev_y }, z, result]
-  Mul [prev_x, { prev: prev_y }, z]
+Mul [x, y , out]
+----------------- {
+  Sub1 [x, prev]
+  Sub1 [y, _prev]
+  Add [y, z, out]
+  Mul [prev, y, z]
 }
 
 query z {
@@ -69,5 +104,10 @@ query z {
 
 query (x, y) {
   Two z
+  Mul [x, y, z]
+}
+
+query (x, y) {
+  Four z
   Mul [x, y, z]
 }
