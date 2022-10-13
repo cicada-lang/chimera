@@ -63,3 +63,59 @@ query out {
 query out {
   Mem ["fig", ["a", x, "c", "fig", "e"], out]
 }
+
+query (x, y) limit 5 {
+  Mem ["fig", ["fig", "d", "fig", "e", ...y], x]
+}
+
+Rember [x, l, out]
+------------------ {
+  Null l
+  Null out
+}
+
+Rember [x, l, out]
+------------------ {
+  Car [l, x]
+  Cdr [l, out]
+}
+
+Rember [x, l, out]
+------------------ {
+  Cdr [l, d]
+  Rember [x, d, res]
+  Car [l, a]
+  Cons [a, res, out]
+}
+
+query out {
+  Rember ["pea", ["a", "b", "pea", "d", "pea", "e"], out]
+}
+
+query out {
+  Rember ["pea", ["pea"], out]
+}
+
+query out {
+  Rember ["pea", ["pea", "pea"], out]
+}
+
+query out {
+  Rember ["pea", ["pea", "pea", "pea"], out]
+}
+
+query out {
+  Rember [y, ["a", "b", y, "d", z, "e"], out]
+}
+
+query (y, z) {
+  Rember [y, [y, "d", z, "e"], [y, "d", "e"]]
+}
+
+query (y, z, w, out) limit 4 {
+  Rember [y, [z, ...w], out]
+}
+
+query (y, z, w, out) limit 5 {
+  Rember [y, [z, ...w], out]
+}

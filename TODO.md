@@ -1,4 +1,3 @@
-05-members-only.wa -- 19
 06-the-fun-never-ends.wa
 07-a-bit-too-much.wa
 08-just-a-bit-more.wa
