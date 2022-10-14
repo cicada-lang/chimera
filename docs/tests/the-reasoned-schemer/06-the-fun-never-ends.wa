@@ -1,0 +1,16 @@
+import { Succeed } from "./01-playthings.wa"
+import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
+
+Always []
+--------- {
+  Succeed []
+}
+
+Always []
+--------- {
+  Always []
+}
+
+query (x) limit 3 {
+  Always []
+}
