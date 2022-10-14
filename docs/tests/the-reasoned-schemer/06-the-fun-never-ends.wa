@@ -1,4 +1,4 @@
-import { Succeed } from "./01-playthings.wa"
+import { Succeed, Fail } from "./01-playthings.wa"
 import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
 
 Always []
@@ -11,6 +11,48 @@ Always []
   Always []
 }
 
-query (x) limit 3 {
+query q limit 3 {
   Always []
+}
+
+query q limit 3 {
+  unify q = "onion"
+  Always []
+}
+
+query q limit 3 {
+  Always []
+  unify q = "onion"
+}
+
+query q {
+  Always []
+  Fail []
+}
+
+query q {
+  unify q = "garlic"
+  Always []
+  unify q = "onion"
+}
+
+Never []
+--------- {
+  Never []
+}
+
+query q {
+  Fail []
+  Never []
+}
+
+query q {
+  Never []
+  Fail []
+}
+
+query q {
+  Never []
+  Fail []
+  Never []
 }
