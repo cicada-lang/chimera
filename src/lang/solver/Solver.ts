@@ -85,9 +85,14 @@ export class Solver {
     const queue = this.queues.shift() as GoalQueue
     const queues = queue.step(mod, env)
     if (queues === undefined) return queue.solution
-    // NOTE about searching
-    // push front |   depth first
-    // push back  | breadth first
+
+    /**
+       NOTE About searching
+
+       | push front |   depth first |
+       | push back  | breadth first |
+    **/
+
     this.queues.push(...queues)
   }
 

@@ -10,13 +10,14 @@ export class GoalQueue {
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
 
+    /**
+       NOTE About searching (again)
+
+       | push front |   depth first |
+       | push back  | breadth first |
+    **/
+
     const queues = pursueGoal(mod, env, this.solution, goal)
-    return queues.map(
-      // NOTE About searching again
-      // push front |   depth first
-      // push back  | breadth first
-      // NOTE `concat` is like push back
-      (queue) => new GoalQueue(queue.solution, this.goals.concat(queue.goals)),
-    )
+    return queues.map((queue) => new GoalQueue(queue.solution, this.goals.concat(queue.goals)))
   }
 }
