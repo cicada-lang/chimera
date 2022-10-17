@@ -25,7 +25,7 @@ Visit the [Whereabouts Playground](https://whereabouts.cicada-lang.org/playgroun
 
 Post a file:
 
-```bash
+```sh
 curl https://wa.cic.run --data-binary @docs/tests/clause-and-effect/01-party-pairs.wa
 ```
 
@@ -35,14 +35,14 @@ You can fetch code from a URL, and run:
 - All files in [**docs/**](docs/), can be fetched from: `https://cdn.wa.cic.run/<path>`, <br/>
   and any other http server that serves `.wa` code would also work.
 
-```bash
+```sh
 curl -s https://cdn.wa.cic.run/tests/clause-and-effect/01-party-pairs.wa |
 curl -s https://wa.cic.run --data-binary @-
 ```
 
 Run multiline text (bash and zsh):
 
-```bash
+```sh
 curl https://wa.cic.run --data-binary @- << END
 
 Drink { person: "john", alcohol: "martini" }
@@ -68,7 +68,7 @@ END
 The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
 
-```bash
+```sh
 curl -s https://wa.cic.run --data-binary @- << END | jq
 
 Drink { person: "john", alcohol: "martini" }
@@ -103,19 +103,19 @@ The command line program is called `wa`.
 
 Run a file:
 
-```bash
+```sh
 wa run docs/tests/clause-and-effect/02-drinking-pairs.wa
 ```
 
 Run a file and watch file change:
 
-```bash
+```sh
 wa run docs/tests/clause-and-effect/02-drinking-pairs.wa --watch
 ```
 
 Run a URL:
 
-```bash
+```sh
 wa run https://cdn.wa.cic.run/tests/clause-and-effect/02-drinking-pairs.wa
 ```
 
