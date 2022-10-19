@@ -32,11 +32,11 @@ curl https://wa.cic.run --data-binary @docs/tests/clause-and-effect/01-party-pai
 You can fetch code from a URL, and run:
 
 - We use `curl -s` to disable curl's progress bar.
-- All files in [**docs/**](docs/), can be fetched from: `https://cdn.wa.cic.run/<path>`, <br/>
+- All files in [**docs/**](docs/), can be fetched from: `https://cdn.wa.cic.run/docs/<path>`, <br/>
   and any other http server that serves `.wa` code would also work.
 
 ```sh
-curl -s https://cdn.wa.cic.run/tests/clause-and-effect/01-party-pairs.wa |
+curl -s https://cdn.wa.cic.run/docs/tests/clause-and-effect/01-party-pairs.wa |
 curl -s https://wa.cic.run --data-binary @-
 ```
 
@@ -116,7 +116,7 @@ wa run docs/tests/clause-and-effect/02-drinking-pairs.wa --watch
 Run a URL:
 
 ```sh
-wa run https://cdn.wa.cic.run/tests/clause-and-effect/02-drinking-pairs.wa
+wa run https://cdn.wa.cic.run/docs/tests/clause-and-effect/02-drinking-pairs.wa
 ```
 
 Outputs:
@@ -195,7 +195,7 @@ query (left, right, alcohol) {
 We can also use the module system to import from URL:
 
 ```js
-import { Friendship } from "https://cdn.wa.cic.run/tests/clause-and-effect/02-drinking-pairs.wa"
+import { Friendship } from "https://cdn.wa.cic.run/docs/tests/clause-and-effect/02-drinking-pairs.wa"
 
 query left {
   Friendship { left, right: "mary", alcohol: "gin" }
