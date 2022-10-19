@@ -32,7 +32,7 @@ curl https://wa.cic.run --data-binary @docs/tests/clause-and-effect/01-party-pai
 You can fetch code from a URL, and run:
 
 - We use `curl -s` to disable curl's progress bar.
-- All files in this repo, can be fetched from: `https://cdn.wa.cic.run/<path>`, <br/>
+- All files in this repo, can be fetched from: [`https://cdn.wa.cic.run/<path>`](https://cdn.wa.cic.run), <br/>
   and any other http server that serves `.wa` code would also work.
 
 ```sh
