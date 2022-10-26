@@ -26,7 +26,7 @@ Visit the [Whereabouts Playground](https://whereabouts.cicada-lang.org/playgroun
 Post a file:
 
 ```sh
-curl https://wa.cic.run --data-binary @docs/tests/clause-and-effect/01-party-pairs.wa
+curl https://wa.cic.run --data-binary @tests/clause-and-effect/01-party-pairs.wa
 ```
 
 You can fetch code from a URL, and run:
@@ -36,7 +36,7 @@ You can fetch code from a URL, and run:
   and any other http server that serves `.wa` code would also work.
 
 ```sh
-curl -s https://cdn.wa.cic.run/docs/tests/clause-and-effect/01-party-pairs.wa |
+curl -s https://cdn.wa.cic.run/tests/clause-and-effect/01-party-pairs.wa |
 curl -s https://wa.cic.run --data-binary @-
 ```
 
@@ -104,19 +104,19 @@ The command line program is called `wa`.
 Run a file:
 
 ```sh
-wa run docs/tests/clause-and-effect/02-drinking-pairs.wa
+wa run tests/clause-and-effect/02-drinking-pairs.wa
 ```
 
 Run a file and watch file change:
 
 ```sh
-wa run docs/tests/clause-and-effect/02-drinking-pairs.wa --watch
+wa run tests/clause-and-effect/02-drinking-pairs.wa --watch
 ```
 
 Run a URL:
 
 ```sh
-wa run https://cdn.wa.cic.run/docs/tests/clause-and-effect/02-drinking-pairs.wa
+wa run https://cdn.wa.cic.run/tests/clause-and-effect/02-drinking-pairs.wa
 ```
 
 Outputs:
@@ -161,7 +161,7 @@ Outputs:
 
 ## Examples
 
-[**02-drinking-pairs.wa:**](docs/tests/clause-and-effect/02-drinking-pairs.wa)
+[**02-drinking-pairs.wa:**](tests/clause-and-effect/02-drinking-pairs.wa)
 
 [ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/RHJpbmsgeyBwZXJzb246ICJqb2huIiwgYWxjb2hvbDogIm1hcnRpbmkiIH0KRHJpbmsgeyBwZXJzb246ICJtYXJ5IiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogInN1c2FuIiwgYWxjb2hvbDogInZvZGthIiB9CkRyaW5rIHsgcGVyc29uOiAiam9obiIsIGFsY29ob2w6ICJnaW4iIH0KRHJpbmsgeyBwZXJzb246ICJmcmVkIiwgYWxjb2hvbDogImdpbiIgfQpEcmluayB7IHBlcnNvbjogImZyZWQiLCBhbGNvaG9sOiAidm9ka2EiIH0KCkZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbCB9Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB7CiAgRHJpbmsgeyBwZXJzb246IGxlZnQsIGFsY29ob2wgfQogIERyaW5rIHsgcGVyc29uOiByaWdodCwgYWxjb2hvbCB9Cn0KCnF1ZXJ5IGxlZnQgewogIEZyaWVuZHMgeyBsZWZ0LCByaWdodDogIm1hcnkiLCBhbGNvaG9sOiAiZ2luIiB9Cn0KCnF1ZXJ5IChsZWZ0LCByaWdodCkgewogIEZyaWVuZHMgeyBsZWZ0LCByaWdodCwgYWxjb2hvbDogImdpbiIgfQp9CgpxdWVyeSAobGVmdCwgcmlnaHQsIGFsY29ob2wpIHsKICBGcmllbmRzIHsgbGVmdCwgcmlnaHQsIGFsY29ob2wgfQp9) ]
 
@@ -195,7 +195,7 @@ query (left, right, alcohol) {
 We can also use the module system to import from URL:
 
 ```js
-import { Friendship } from "https://cdn.wa.cic.run/docs/tests/clause-and-effect/02-drinking-pairs.wa"
+import { Friendship } from "https://cdn.wa.cic.run/tests/clause-and-effect/02-drinking-pairs.wa"
 
 query left {
   Friendship { left, right: "mary", alcohol: "gin" }
@@ -204,7 +204,7 @@ query left {
 
 The above example use JSON object, we can also use JSON array.
 
-[**03-affordable-journeys.wa:**](docs/tests/clause-and-effect/03-affordable-journeys.wa)
+[**03-affordable-journeys.wa:**](tests/clause-and-effect/03-affordable-journeys.wa)
 
 [ [PLAYGROUND](https://whereabouts.cicada-lang.org/playground/Qm9yZGVyIFsic3Vzc2V4IiwgImtlbnQiXQpCb3JkZXIgWyJzdXNzZXgiLCAic3VycmV5Il0KQm9yZGVyIFsic3VycmV5IiwgImtlbnQiXQpCb3JkZXIgWyJoYW1wc2hpcmUiLCAic3Vzc2V4Il0KQm9yZGVyIFsiaGFtcHNoaXJlIiwgInN1cnJleSJdCkJvcmRlciBbImhhbXBzaGlyZSIsICJiZXJrc2hpcmUiXQpCb3JkZXIgWyJiZXJrc2hpcmUiLCAic3VycmV5Il0KQm9yZGVyIFsid2lsdHNoaXJlIiwgImhhbXBzaGlyZSJdCkJvcmRlciBbIndpbHRzaGlyZSIsICJiZXJrc2hpcmUiXQoKQWRqYWNlbnQgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0gYm9yZGVyIHsKICBCb3JkZXIgW3gsIHldCn0KCkFkamFjZW50IFt4LCB5XQotLS0tLS0tLS0tLS0tLS0tIHN5bW1ldHJ5IHsKICBCb3JkZXIgW3ksIHhdCn0KCkFmZm9yZGFibGUgW3gsIHldCi0tLS0tLS0tLS0tLS0tLS0tLS0tIHsKICBBZGphY2VudCBbeCwgel0KICBBZGphY2VudCBbeiwgeV0KfQoKcXVlcnkgdG9fa2VudCB7CiAgQWZmb3JkYWJsZSBbdG9fa2VudCwgImtlbnQiXQp9CgpxdWVyeSB0b19zdXNzZXggewogIEFmZm9yZGFibGUgWyJzdXNzZXgiLCB0b19zdXNzZXhdCn0KCnF1ZXJ5ICh4LCB5KSB7CiAgQWZmb3JkYWJsZSBbeCwgeV0KfQ) ]
 
@@ -248,7 +248,7 @@ query (x, y) {
 }
 ```
 
-Please see [docs/tests](docs/tests) for more examples.
+Please see [tests](tests) for more examples.
 
 ## Development
 

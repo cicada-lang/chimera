@@ -17,8 +17,8 @@
     "test:watch": "vitest --dir src --threads false",
     "test:coverage": "vitest --dir src --threads false --run --coverage ",
     "test:gui": "vitest --dir src --threads false --ui",
-    "test:tests": "test-runner snapshot './bin/wa.js' 'docs/tests/**/*.(wa)' --exclude 'docs/tests/**/*.error.(wa)'",
-    "test:tests-error": "test-runner snapshot-error './bin/wa.js' 'docs/tests/**/*.error.(wa)'",
+    "test:tests": "test-runner snapshot './bin/wa.js' 'tests/**/*.(wa)' --exclude 'tests/**/*.error.(wa)'",
+    "test:tests-error": "test-runner snapshot-error './bin/wa.js' 'tests/**/*.error.(wa)'",
     "test": "npm run test:ts && npm run test:tests && npm run test:tests-error",
     "format": "prettier src --write"
   },

@@ -1,5 +1,3 @@
-move tests/ out of docs/
-
 07-a-bit-too-much.wa
 08-just-a-bit-more.wa
 09-thin-ice.wa
