@@ -18,7 +18,12 @@ import * as Values from "../value"
 
 **/
 
-export function pursueGoal(mod: Mod, env: Env, solution: Solution, goal: Goal): Array<GoalQueue> {
+export function pursueGoal(
+  mod: Mod,
+  env: Env,
+  solution: Solution,
+  goal: Goal,
+): Array<GoalQueue> {
   switch (goal.kind) {
     case "Apply": {
       const queues: Array<GoalQueue> = []

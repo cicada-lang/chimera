@@ -18,6 +18,8 @@ export class GoalQueue {
     **/
 
     const queues = pursueGoal(mod, env, this.solution, goal)
-    return queues.map((queue) => new GoalQueue(queue.solution, this.goals.concat(queue.goals)))
+    return queues.map(
+      (queue) => new GoalQueue(queue.solution, this.goals.concat(queue.goals)),
+    )
   }
 }

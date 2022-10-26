@@ -10,11 +10,15 @@ export function occur(solution: Solution, name: String, value: Value): boolean {
     }
 
     case "ListCons": {
-      return occur(solution, name, value.car) || occur(solution, name, value.cdr)
+      return (
+        occur(solution, name, value.car) || occur(solution, name, value.cdr)
+      )
     }
 
     case "Objekt": {
-      return Object.values(value.properties).some((property) => occur(solution, name, property))
+      return Object.values(value.properties).some((property) =>
+        occur(solution, name, property),
+      )
     }
 
     default: {

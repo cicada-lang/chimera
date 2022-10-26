@@ -23,7 +23,11 @@ export class Query extends Stmt {
   async execute(mod: Mod): Promise<string> {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod.env, goal))
     const solver = Solver.fromGoals(this.pattern, goals)
-    const solutions = solver.solve(mod, mod.env, buildSolveOptions(this.options))
+    const solutions = solver.solve(
+      mod,
+      mod.env,
+      buildSolveOptions(this.options),
+    )
     return formatSolutionForQueryPattern(solutions, this.pattern)
   }
 }

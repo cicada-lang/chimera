@@ -10,7 +10,10 @@ export function buildSolveOptions(options: Array<QueryOption>): SolveOptions {
   return solveOptions
 }
 
-function collectQueryOption(option: QueryOption, solveOptions: SolveOptions): void {
+function collectQueryOption(
+  option: QueryOption,
+  solveOptions: SolveOptions,
+): void {
   switch (option.kind) {
     case "QueryOptionLimit": {
       solveOptions.limit = option.value

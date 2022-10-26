@@ -11,7 +11,11 @@ export type Apply = {
   arg: Value
 }
 
-export function Apply(name: string, relation: Values.Relation, arg: Value): Apply {
+export function Apply(
+  name: string,
+  relation: Values.Relation,
+  arg: Value,
+): Apply {
   return {
     family: "Goal",
     kind: "Apply",

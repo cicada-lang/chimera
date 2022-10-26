@@ -3,7 +3,11 @@ import { Mod } from "../../mod"
 import { Value } from "../../value"
 import { ImportBinding } from "../import"
 
-export function defineBinding(mod: Mod, binding: ImportBinding, value: Value): void {
+export function defineBinding(
+  mod: Mod,
+  binding: ImportBinding,
+  value: Value,
+): void {
   switch (binding.kind) {
     case "ImportBindingName": {
       mod.env = EnvCons(binding.name, value, mod.env)

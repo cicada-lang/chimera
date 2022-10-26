@@ -14,13 +14,17 @@ export function formatSolutionForQueryPattern(
         (result, variable) => Values.ListCons(variable, result),
         Values.ListNull(),
       )
-      const results = solutions.map((solution) => formatValue(reify(solution, list)))
+      const results = solutions.map((solution) =>
+        formatValue(reify(solution, list)),
+      )
       return formatResults(results)
     }
 
     case "QueryPatternName": {
       const variable = Values.PatternVar(pattern.name)
-      const results = solutions.map((solution) => formatValue(reify(solution, variable)))
+      const results = solutions.map((solution) =>
+        formatValue(reify(solution, variable)),
+      )
       return formatResults(results)
     }
   }

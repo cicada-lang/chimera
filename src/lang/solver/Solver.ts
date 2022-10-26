@@ -3,9 +3,19 @@ import { Json } from "../../utils/Json"
 import { Env } from "../env"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
-import { deepWalk, lookupValueInSolution, Solution, solutionNames, SolutionNull } from "../solution"
+import {
+  deepWalk,
+  lookupValueInSolution,
+  Solution,
+  solutionNames,
+  SolutionNull,
+} from "../solution"
 import { Debugger } from "../solver"
-import { formatQueryPattern, formatSolutionForQueryPattern, QueryPattern } from "../stmts/query"
+import {
+  formatQueryPattern,
+  formatSolutionForQueryPattern,
+  QueryPattern,
+} from "../stmts/query"
 import { formatValue } from "../value"
 
 /**
@@ -66,13 +76,19 @@ export class Solver {
     return this.solutions
   }
 
-  private debugStep({ prompt, report }: Debugger, debugOptions: { skipPrompt: number }): void {
+  private debugStep(
+    { prompt, report }: Debugger,
+    debugOptions: { skipPrompt: number },
+  ): void {
     // NOTE Side-effect on `debugOptions`
 
     report(this)
 
     if (prompt) {
-      if (debugOptions.skipPrompt <= 0 || Number.isNaN(debugOptions.skipPrompt)) {
+      if (
+        debugOptions.skipPrompt <= 0 ||
+        Number.isNaN(debugOptions.skipPrompt)
+      ) {
         debugOptions.skipPrompt = prompt(this)
       } else {
         debugOptions.skipPrompt--
@@ -80,7 +96,11 @@ export class Solver {
     }
   }
 
-  private step(mod: Mod, env: Env, options: SolveOptions): Solution | undefined {
+  private step(
+    mod: Mod,
+    env: Env,
+    options: SolveOptions,
+  ): Solution | undefined {
     this.step_count++
     const queue = this.queues.shift() as GoalQueue
     const queues = queue.step(mod, env)
@@ -105,7 +125,9 @@ export class Solver {
       step_count: this.step_count,
       queues: this.queues.map(reportQueue),
       query_pattern: formatQueryPattern(this.pattern),
-      solutions: JSON.parse(formatSolutionForQueryPattern(this.solutions, this.pattern)),
+      solutions: JSON.parse(
+        formatSolutionForQueryPattern(this.solutions, this.pattern),
+      ),
     }
   }
 }

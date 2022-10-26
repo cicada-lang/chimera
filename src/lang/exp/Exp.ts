@@ -137,7 +137,10 @@ export type ObjektUnfolded = {
   properties: Array<Property>
 } & ExpMeta
 
-export function ObjektUnfolded(properties: Array<Property>, span?: Span): ObjektUnfolded {
+export function ObjektUnfolded(
+  properties: Array<Property>,
+  span?: Span,
+): ObjektUnfolded {
   return {
     family: "Exp",
     kind: "ObjektUnfolded",

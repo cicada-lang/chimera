@@ -27,7 +27,9 @@ export function formatValue(value: Value): string {
       const { elements, last } = foldListCons(value.car, value.cdr)
       return last === undefined
         ? `[${elements.map(formatValue).join(", ")}]`
-        : `[${elements.map(formatValue).join(", ")}, { "...": ${formatValue(last)} }]`
+        : `[${elements.map(formatValue).join(", ")}, { "...": ${formatValue(
+            last,
+          )} }]`
     }
 
     case "ListNull": {
@@ -51,7 +53,10 @@ export function formatValue(value: Value): string {
   }
 }
 
-function foldListCons(car: Value, cdr: Value): { elements: Array<Value>; last?: Value } {
+function foldListCons(
+  car: Value,
+  cdr: Value,
+): { elements: Array<Value>; last?: Value } {
   switch (cdr.kind) {
     case "ListNull": {
       return { elements: [car] }

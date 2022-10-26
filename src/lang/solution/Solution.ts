@@ -19,7 +19,11 @@ export type SolutionCons = {
   rest: Solution
 }
 
-export function SolutionCons(name: string, value: Value, rest: Solution): SolutionCons {
+export function SolutionCons(
+  name: string,
+  value: Value,
+  rest: Solution,
+): SolutionCons {
   return {
     kind: "SolutionCons",
     name,

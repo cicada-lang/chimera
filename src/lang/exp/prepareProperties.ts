@@ -2,7 +2,9 @@ import { LangError } from "../errors"
 import * as Exps from "../exp"
 import { Exp } from "../exp"
 
-export function prepareProperties(properties: Array<Exps.Property>): Record<string, Exp> {
+export function prepareProperties(
+  properties: Array<Exps.Property>,
+): Record<string, Exp> {
   const found: Set<string> = new Set()
   const record: Record<string, Exp> = {}
 

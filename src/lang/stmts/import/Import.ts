@@ -6,7 +6,11 @@ import { Stmt } from "../../stmt"
 import { defineBinding, ImportBinding } from "../import"
 
 export class Import extends Stmt {
-  constructor(public bindings: Array<ImportBinding>, public path: string, public span?: Span) {
+  constructor(
+    public bindings: Array<ImportBinding>,
+    public path: string,
+    public span?: Span,
+  ) {
     super()
   }
 

@@ -18,8 +18,10 @@ export function operator_matcher(tree: pt.Tree): Exp {
 
 export function operand_matcher(tree: pt.Tree): Exp {
   return pt.matcher<Exp>({
-    "operand:string": ({ data }, { span }) => Exps.String(pt.trim_boundary(pt.str(data), 1), span),
-    "operand:number": ({ data }, { span }) => Exps.Number(Number.parseFloat(pt.str(data)), span),
+    "operand:string": ({ data }, { span }) =>
+      Exps.String(pt.trim_boundary(pt.str(data), 1), span),
+    "operand:number": ({ data }, { span }) =>
+      Exps.Number(Number.parseFloat(pt.str(data)), span),
     "operand:null": ({}, { span }) => Exps.Null(span),
     "operand:true": ({}, { span }) => Exps.Boolean(true, span),
     "operand:false": ({}, { span }) => Exps.Boolean(false, span),
@@ -29,7 +31,11 @@ export function operand_matcher(tree: pt.Tree): Exp {
         .map(matchers.exp_matcher)
         .reduceRight(
           (result, element) => Exps.ListCons(element, result, span),
-          Exps.ListCons(matchers.exp_matcher(last_element), Exps.ListNull(), span),
+          Exps.ListCons(
+            matchers.exp_matcher(last_element),
+            Exps.ListNull(),
+            span,
+          ),
         ),
     "operand:list_cons": ({ elements, last_element }, { span }) =>
       pt.matchers
@@ -43,7 +49,9 @@ export function operand_matcher(tree: pt.Tree): Exp {
     "operand:objekt": ({ properties, last_property }, { span }) =>
       Exps.ObjektUnfolded(
         [
-          ...pt.matchers.zero_or_more_matcher(properties).map(matchers.property_matcher),
+          ...pt.matchers
+            .zero_or_more_matcher(properties)
+            .map(matchers.property_matcher),
           matchers.property_matcher(last_property),
         ],
         span,
