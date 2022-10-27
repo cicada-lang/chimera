@@ -1,6 +1,7 @@
 import { Nat, Zero, Add1 } from "./nat.wa"
 import { Add, Mul } from "./nat.wa"
-import { One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Eleven, Twelve } from "./nat.wa"
+import { One, Two, Three, Four, Five, Six } from "./nat.wa"
+import { Seven, Eight, Nine, Ten, Eleven, Twelve } from "./nat.wa"
 
 find  z {
   Two x
@@ -12,10 +13,9 @@ find  [x, y] { Two z Mul [x, y, z] }
 find  [x, y] { Four z Mul [x, y, z] }
 find  [x, y] { Five z Mul [x, y, z] }
 find  [x, y] { Six z Mul [x, y, z] }
-// TODO too slow
-// find  [x, y] { Seven z Mul [x, y, z] }
-// find  [x, y] { Eight z Mul [x, y, z] }
-// find  [x, y] { Nine z Mul [x, y, z] }
-// find  [x, y] { Ten z Mul [x, y, z] }
-// find  [x, y] { Eleven z Mul [x, y, z] }
-// find  [x, y] { Twelve z Mul [x, y, z] }
+find  [x, y] { Seven z Mul [x, y, z] }
+find  [x, y] { Eight z Mul [x, y, z] }
+find  [x, y] { Nine z Mul [x, y, z] }
+find  [x, y] { Ten z Mul [x, y, z] }
+find  [x, y] { Eleven z Mul [x, y, z] }
+find  [x, y] { Twelve z Mul [x, y, z] }

@@ -1,64 +1,49 @@
 Zero []
 Add1 [n, [1, ...n]]
 
-Sub1 [n, prev]
------------------ {
-  Add1 [prev, n]
-}
+// Nat n
+// --------- {
+//   Zero n
+// }
 
-Nat n
---------- {
-  Zero n
-}
+Nat []
 
 Nat n
 ----------- {
-  Sub1 [n, prev]
+  Add1 [prev, n]
   Nat prev
 }
 
-One n -- { Sub1 [n, prev] Zero prev }
-Two n -- { Sub1 [n, prev] One prev }
-Three n -- { Sub1 [n, prev] Two prev }
-Four n -- { Sub1 [n, prev] Three prev }
-Five n -- { Sub1 [n, prev] Four prev }
-Six n -- { Sub1 [n, prev] Five prev }
-Seven n -- { Sub1 [n, prev] Six prev }
-Eight n -- { Sub1 [n, prev] Seven prev }
-Nine n -- { Sub1 [n, prev] Eight prev }
-Ten n -- { Sub1 [n, prev] Nine prev }
-Eleven n -- { Sub1 [n, prev] Ten prev }
-Twelve n -- { Sub1 [n, prev] Eleven prev }
+One n -- { Add1 [prev, n] Zero prev }
+Two n -- { Add1 [prev, n] One prev }
+Three n -- { Add1 [prev, n] Two prev }
+Four n -- { Add1 [prev, n] Three prev }
+Five n -- { Add1 [prev, n] Four prev }
+Six n -- { Add1 [prev, n] Five prev }
+Seven n -- { Add1 [prev, n] Six prev }
+Eight n -- { Add1 [prev, n] Seven prev }
+Nine n -- { Add1 [prev, n] Eight prev }
+Ten n -- { Add1 [prev, n] Nine prev }
+Eleven n -- { Add1 [prev, n] Ten prev }
+Twelve n -- { Add1 [prev, n] Eleven prev }
 
-Add [x, y, y]
-------------- {
-  Zero x
-}
+Add [[], y, y]
 
 Add [x, y, out]
 -------------------- {
-  Sub1 [x, prev]
-  Sub1 [out, res]
+  Add1 [prev, x]
+  Add1 [res, out]
   Add [prev, y, res]
 }
 
-Mul [x, y, out]
---------------- {
-  Zero x
-  Zero out
-}
+Mul [[], y, []]
 
-Mul [x, y, out]
------------------ {
-  Sub1 [x, prev]
-  Zero y
-  Zero out
-}
+Mul [x, [], []] -- { Add1 [prev, x] }
 
 Mul [x, y , out]
 ----------------- {
-  Sub1 [x, prev]
-  Sub1 [y, _prev]
+  Add1 [prev, x]
+  Add1 [_prev, y]
   Add [y, z, out]
   Mul [prev, y, z]
 }
