@@ -6,6 +6,6 @@ AB [a, b]
   b = "b"
 }
 
-query [x, y] {
+find [x, y] {
   AB [x, y]
 }

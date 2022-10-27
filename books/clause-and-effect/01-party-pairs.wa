@@ -10,34 +10,34 @@ Pair { male, female }
   Female { name: female }
 }
 
-query q {
+find q {
   Pair { male: "bertram", female: "lucinda" }
 }
 
-query q {
+find q {
   Pair { male: "apollo", female: "daphne" }
 }
 
-query female {
+find female {
   Pair { male: "percival", female }
 }
 
-query female {
+find female {
   Pair { male: "camilla", female }
 }
 
-query male {
+find male {
   Pair { male, female: "lucinda" }
 }
 
-query x {
+find x {
   Pair { male: x, female: x }
 }
 
-query x {
+find x {
   Pair { male, female: "fido" }
 }
 
-query [male, female] {
+find [male, female] {
   Pair { male, female }
 }

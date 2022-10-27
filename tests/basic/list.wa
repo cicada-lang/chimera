@@ -1,24 +1,24 @@
-query abc {
+find abc {
   abc = ["a", "b", "c"]
 }
 
-query [a, b, c] {
+find [a, b, c] {
   [a, b, c] = ["a", "b", "c"]
 }
 
-query empty {
+find empty {
   empty = []
 }
 
-query [head, rest] {
+find [head, rest] {
   [head, ...rest] = ["a", "b", "c"]
 }
 
-query [head, rest] {
+find [head, rest] {
   [head, ...rest] = ["a", ..."b"]
 }
 
-query [head, rest, result] {
+find [head, rest, result] {
   [head, ...rest] = ["a", ..."b"]
   result = [head, ...rest]
 }

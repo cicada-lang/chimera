@@ -1,4 +1,4 @@
-query [x, y] {
+find [x, y] {
   x = true
   y = false
 }

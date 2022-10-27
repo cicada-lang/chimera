@@ -1,4 +1,4 @@
-query abc {
+find abc {
   abc = {
     a: "a",
     b: "b",
@@ -6,7 +6,7 @@ query abc {
   }
 }
 
-query [a, b, c] {
+find [a, b, c] {
   { a, b, c } = {
     a: "a",
     b: "b",
@@ -14,6 +14,6 @@ query [a, b, c] {
   }
 }
 
-query empty {
+find empty {
   empty = {}
 }

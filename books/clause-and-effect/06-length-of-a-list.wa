@@ -11,10 +11,10 @@ Length [[head, ...tail], n]
   Add1 [prev, n]
 }
 
-query n {
+find n {
   Length [["apple", "pear"], n]
 }
 
-query list { Length [list, n] Zero n }
-query list { Length [list, n] One n }
-query list { Length [list, n] Two n }
+find list { Length [list, n] Zero n }
+find list { Length [list, n] One n }
+find list { Length [list, n] Two n }

@@ -1,4 +1,4 @@
-// In order to illustrate what the query system does,
+// In order to illustrate what the system does,
 // we will show how it can be used to manage the database of personnel records
 // for a thriving high-technology company in the Boston area.
 
@@ -325,11 +325,9 @@ Competence {
 
 // # Simple queries
 
-// The query language allows users
-// to retrieve information from the database.
-// For example, to find all computer programmers one can say
+// To find all computer programmers one can say
 
-query coder {
+find coder {
   Job {
     name: coder,
     dept: "computer",
@@ -339,7 +337,7 @@ query coder {
 
 // We also make assertion about the results.
 
-query coder {
+find coder {
   Job {
     name: coder,
     dept: "computer",
@@ -349,7 +347,7 @@ query coder {
 
 // assert [{ coder: "Hacker Alyssa P" }, { coder: "Fect Cy D" }],
 
-// The input query specifies that
+// The input find specifies that
 // we are looking for entries in the database
 // that match a certain pattern.
 
@@ -363,7 +361,7 @@ query coder {
 
 // An employee's addresses
 
-query [town, road, door] {
+find [town, road, door] {
   Address {
     name: "Bitdiddle Ben",
     town,
@@ -374,7 +372,7 @@ query [town, road, door] {
 
 // All employees at computer dept
 
-query [name, role] {
+find [name, role] {
   Job {
     name,
     dept: "computer",
@@ -382,7 +380,7 @@ query [name, role] {
   }
 }
 
-query dept {
+find dept {
   Job {
     name: "Hacker Alyssa P",
     role: "programmer",
@@ -390,7 +388,7 @@ query dept {
   }
 }
 
-query x {
+find x {
   Supervisor {
     slave: x,
     master: x,
@@ -411,7 +409,7 @@ ComputerDeptSlave { slave }
   Supervisor { slave, master: z }
 }
 
-query slave {
+find slave {
   ComputerDeptSlave { slave }
 }
 
@@ -431,7 +429,7 @@ query slave {
 //   }
 // }
 
-// query [name, dept] {
+// find [name, dept] {
 //   Bigshot {
 //     name,
 //     dept,
@@ -451,7 +449,7 @@ query slave {
 //   amount >= 40000
 // })
 
-// query [name, amount] {
+// find [name, amount] {
 //   NotSoPoor {
 //     name,
 //     amount,

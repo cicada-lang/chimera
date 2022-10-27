@@ -7,13 +7,13 @@ title: Reify
 Without `reify` the following queries have different outputs:
 
 ```
-query q {
+find q {
   q = q
 }
 
 // [ "?q" ]
 
-query q {
+find q {
   q = x
 }
 
@@ -26,13 +26,13 @@ Without `reify` we do not have alpha equivalence between expressions
 -- consistently changing the names of pattern variables.
 
 ```
-query q {
+find q {
   [x, y] = q
 }
 
 // [ ["?x", "?y"] ]
 
-query s {
+find s {
   [t, u] = s
 }
 

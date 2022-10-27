@@ -14,31 +14,31 @@ Append [l, t, out]
   Cons [a, res, out]
 }
 
-query q {
+find q {
   Append [[1, 2, 3], [4, 5], q]
 }
 
-query q {
+find q {
   Append [[], [4, 5], q]
 }
 
-query q {
+find q {
   Append [1, [4, 5], q]
 }
 
-query q {
+find q {
   Append [[4, 5], 1, q]
 }
 
-query x limit 6 {
+find x limit 6 {
   Append [x, y, z]
 }
 
-query [x, y, z] limit 6 {
+find [x, y, z] limit 6 {
   Append [x, y, z]
 }
 
-query x {
+find x {
   Append [
     ["cake"],
     ["tastes", "yummy"],
@@ -46,7 +46,7 @@ query x {
   ]
 }
 
-query x {
+find x {
   Append [
     ["cake", "&", "ice", y],
     ["tastes", "yummy"],
@@ -54,7 +54,7 @@ query x {
   ]
 }
 
-query x {
+find x {
   Append [
     ["cake", "&", "ice", "cream"],
     y,
@@ -62,7 +62,7 @@ query x {
   ]
 }
 
-query x limit 1 {
+find x limit 1 {
   Append [
     ["cake", "&", "ice", ...y],
     ["d", "t"],
@@ -70,7 +70,7 @@ query x limit 1 {
   ]
 }
 
-query x limit 5 {
+find x limit 5 {
   Append [
     ["cake", "&", "ice", ...y],
     ["d", "t"],
@@ -78,7 +78,7 @@ query x limit 5 {
   ]
 }
 
-query y limit 5 {
+find y limit 5 {
   Append [
     ["cake", "&", "ice", ...y],
     ["d", "t"],
@@ -86,7 +86,7 @@ query y limit 5 {
   ]
 }
 
-query x limit 5 {
+find x limit 5 {
   Append [
     ["cake", "&", "ice", ...y],
     ["d", "t", ...y],
@@ -94,7 +94,7 @@ query x limit 5 {
   ]
 }
 
-query x {
+find x {
   Append [
     ["cake", "&", "ice", "cream"],
     ["d", "t", ...z],
@@ -102,7 +102,7 @@ query x {
   ]
 }
 
-query [x, y] {
+find [x, y] {
   Append [
     x,
     y,
@@ -121,21 +121,21 @@ Unwrap [x, out]
   x = out
 }
 
-query x {
+find x {
   Unwrap [
     [[["pizza"]]],
     x,
   ]
 }
 
-query x limit 3 {
+find x limit 3 {
   Unwrap [
     x,
     "pizza",
   ]
 }
 
-query x limit 3 {
+find x limit 3 {
   Unwrap [
     [[x]],
     "pizza",

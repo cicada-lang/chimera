@@ -1,11 +1,11 @@
-query q {
+find q {
   x = [x]
 }
 
-query q {
+find q {
   x = { x }
 }
 
-query q {
+find q {
   x = { y: x }
 }

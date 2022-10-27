@@ -3,20 +3,20 @@ Car [p, a]
   [a, ...d] = p
 }
 
-query q {
+find q {
   Car [["a", "c", "o", "r", "n"], q]
 }
 
-query q {
+find q {
   Car [["a", "c", "o", "r", "n"], "a"]
 }
 
-query r {
+find r {
   Car [[r, ...y], x]
   "pear" = x
 }
 
-query r {
+find r {
   Car [["grape", "raisin", "pear"], x]
   Car [[["a"], ["b"], ["c"]], y]
   [x, ...y] = r
@@ -27,27 +27,27 @@ Cdr [p, d]
   [a, ...d] = p
 }
 
-query r {
+find r {
   Cdr [["a", "c", "o", "r", "n"], v]
   Cdr [v, w]
   Car [w, r]
 }
 
-query r {
+find r {
   Cdr [["grape", "raisin", "pear"], x]
   Car [[["a"], ["b"], ["c"]], y]
   [x, ...y] = r
 }
 
-query q {
+find q {
   Cdr [["a", "c", "o", "r", "n"], ["c", "o", "r", "n"]]
 }
 
-query x {
+find x {
   Cdr [["c", "o", "r", "n"], [x, "r", "n"]]
 }
 
-query l {
+find l {
   Cdr [l, ["c", "o", "r", "n"]]
   Car [l, x]
   x = "a"
@@ -64,34 +64,34 @@ Cons [a, d, p]
   Cdr [p, d]
 }
 
-query l {
+find l {
   Cons [["a", "b", "c"], ["d", "e"], l]
 }
 
-query x {
+find x {
   Cons [x, ["a", "b", "c"], ["d", "a", "b", "c"]]
 }
 
-query r {
+find r {
   ["e", "a", "d", x] = r
   Cons [y, ["a", z, "c"], r]
 }
 
-query x {
+find x {
   Cons [x, ["a", x, "c"], ["d", "a", x, "c"]]
 }
 
-query l {
+find l {
   ["d", "a", x, "c"] = l
   Cons [x, ["a", x, "c"], l]
 }
 
-query l {
+find l {
   Cons [x, ["a", x, "c"], l]
   ["d", "a", x, "c"] = l
 }
 
-query l {
+find l {
   Cons [w, ["n", "u", "s"], t]
   Cdr [l, t]
   Car [l, x]
@@ -106,19 +106,19 @@ Null x
   [] = x
 }
 
-query q {
+find q {
   Null ["grape", "raisin", "pear"]
 }
 
-query q {
+find q {
   Null []
 }
 
-query x {
+find x {
   Null x
 }
 
-query r {
+find r {
   [x, y, "salad"] = r
 }
 
@@ -127,23 +127,23 @@ Pair p
   Cons [a, d, p]
 }
 
-query q {
+find q {
   Pair [q, ...q]
 }
 
-query q {
+find q {
   Pair []
 }
 
-query q {
+find q {
   Pair "pair"
 }
 
-query x {
+find x {
   Pair x
 }
 
-query r {
+find r {
   Pair [r]
 }
 
@@ -160,26 +160,26 @@ Singleton l
   Null d
 }
 
-query r {
+find r {
   Singleton ["tofu"]
 }
 
-query r {
+find r {
   Singleton [["tofu"]]
 }
 
-query r {
+find r {
   Singleton "tofu"
 }
 
-query r {
+find r {
   Singleton ["e", "tofu"]
 }
 
-query r {
+find r {
   Singleton []
 }
 
-query r {
+find r {
   Singleton ["e", ..."tofu"]
 }

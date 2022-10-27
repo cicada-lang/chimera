@@ -1,3 +1,5 @@
+rename `Query` to `Find`
+
 # the-reasoned-schemer
 
 07-a-bit-too-much.wa

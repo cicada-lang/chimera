@@ -3,6 +3,6 @@ A [a]
   a = "a"
 }
 
-query [x] {
+find [x] {
   A [x]
 }

@@ -6,18 +6,18 @@ Member [element, [head, ...tail]]
   Member [element, tail]
 }
 
-query q {
+find q {
   Member ["john", ["paul", "john"]]
 }
 
-query q {
+find q {
   Member ["joe", ["marx", "darwin", "freud" ]]
 }
 
-query element {
+find element {
   Member [element, ["marx", "darwin", "freud"]]
 }
 
-query [list] limit 3 {
+find [list] limit 3 {
   Member ["foo", list]
 }

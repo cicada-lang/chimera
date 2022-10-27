@@ -12,7 +12,7 @@ Mem [x, l, out]
   Mem [x, d, out]
 }
 
-query x {
+find x {
   Mem [
     "fig",
     ["roll", "okra", "fig", "beet", "roll", "pea"],
@@ -20,7 +20,7 @@ query x {
   ]
 }
 
-query x {
+find x {
   Mem [
     "fig",
     ["roll", "okra", "beet", "beet", "roll", "pea"],
@@ -28,19 +28,19 @@ query x {
   ]
 }
 
-query x {
+find x {
   Mem ["fig", ["pea"], ["pea"]]
 }
 
-query out {
+find out {
   Mem ["fig", ["fig"], out]
 }
 
-query out {
+find out {
   Mem ["fig", ["fig", "pea"], out]
 }
 
-query x {
+find x {
   Mem [
     x,
     ["roll", "okra", "fig", "beet", "roll", "pea"],
@@ -48,23 +48,23 @@ query x {
   ]
 }
 
-query x {
+find x {
   Mem ["fig", ["fig", "pea"], ["pea", x]]
 }
 
-query x {
+find x {
   Mem ["fig", ["fig", "pea"], [x, "pea"]]
 }
 
-query out {
+find out {
   Mem ["fig", ["fig", "fig", "pea"], out]
 }
 
-query out {
+find out {
   Mem ["fig", ["a", x, "c", "fig", "e"], out]
 }
 
-query [x, y] limit 5 {
+find [x, y] limit 5 {
   Mem ["fig", ["fig", "d", "fig", "e", ...y], x]
 }
 
@@ -88,34 +88,34 @@ Rember [x, l, out]
   Cons [a, res, out]
 }
 
-query out {
+find out {
   Rember ["pea", ["a", "b", "pea", "d", "pea", "e"], out]
 }
 
-query out {
+find out {
   Rember ["pea", ["pea"], out]
 }
 
-query out {
+find out {
   Rember ["pea", ["pea", "pea"], out]
 }
 
-query out {
+find out {
   Rember ["pea", ["pea", "pea", "pea"], out]
 }
 
-query out {
+find out {
   Rember [y, ["a", "b", y, "d", z, "e"], out]
 }
 
-query [y, z] {
+find [y, z] {
   Rember [y, [y, "d", z, "e"], [y, "d", "e"]]
 }
 
-query [y, z, w, out] limit 4 {
+find [y, z, w, out] limit 4 {
   Rember [y, [z, ...w], out]
 }
 
-query [y, z, w, out] limit 5 {
+find [y, z, w, out] limit 5 {
   Rember [y, [z, ...w], out]
 }

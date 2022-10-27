@@ -18,14 +18,14 @@ Path [x, y]
   Path [z, y]
 }
 
-query x {
+find x {
   Path ["g", x]
 }
 
-query x {
+find x {
   Path [x, "h"]
 }
 
-query [x, y] {
+find [x, y] {
   Path [x, y]
 }

@@ -1,4 +1,4 @@
-query [x, y, z] {
+find [x, y, z] {
   x = 100
   y = -100
   z = 3.14

@@ -8,7 +8,7 @@ test("parse Query", () => {
   expect(
     parseStmts(`
 
-query [left] {
+find [left] {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 
@@ -38,7 +38,7 @@ test("parse Query -- with limit", () => {
   expect(
     parseStmts(`
 
-query [left] limit 1 {
+find [left] limit 1 {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 

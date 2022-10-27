@@ -43,7 +43,7 @@ Append [
   Append [left_tail, right, result_tail]
 }
 
-query [result] {
+find [result] {
   Append [
     cons(1, cons(2, null)),
     cons(3, cons(4, null)),
@@ -53,7 +53,7 @@ query [result] {
 
 // run it backward
 
-query [left, right] {
+find [left, right] {
   Append [
     left,
     right,
@@ -117,7 +117,7 @@ Merge [
   right_head > head
 }
 
-query [result] {
+find [result] {
   Merge [
     cons(1, cons(2, null)),
     cons(3, cons(4, null)),
@@ -125,7 +125,7 @@ query [result] {
   ]
 }
 
-query [left, right] {
+find [left, right] {
   Merge [
     left,
     right,

@@ -19,7 +19,7 @@ export const stmt = {
       '"}"',
     ],
     "stmt:query": [
-      '"query"',
+      '"find"',
       '"["',
       { names: "names" },
       '"]"',
@@ -29,7 +29,7 @@ export const stmt = {
       '"}"',
     ],
     "stmt:query_single": [
-      '"query"',
+      '"find"',
       { name: "name" },
       { options: { $ap: ["zero_or_more", "query_option"] } },
       '"{"',

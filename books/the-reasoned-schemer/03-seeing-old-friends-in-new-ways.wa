@@ -12,15 +12,15 @@ List l
   List d
 }
 
-query x {
+find x {
   List ["a", "b", x, "d"]
 }
 
-query x limit 1 {
+find x limit 1 {
   List ["a", "b", ...x]
 }
 
-query x limit 5 {
+find x limit 5 {
   List ["a", "b", ...x]
 }
 
@@ -37,23 +37,23 @@ ListOfLists l
   ListOfLists d
 }
 
-query q {
+find q {
   ListOfLists [["a", "b"], [x, "c"], ["d", y]]
 }
 
-query l limit 1 {
+find l limit 1 {
   ListOfLists l
 }
 
-query l limit 5 {
+find l limit 5 {
   ListOfLists l
 }
 
-query x limit 5 {
+find x limit 5 {
   ListOfLists [["a", "b"], ...x]
 }
 
-query x limit 5 {
+find x limit 5 {
   ListOfLists [["a", "b"], ["c", "d"], ...x]
 }
 
@@ -76,20 +76,20 @@ ListOfSingletons l
 }
 
 
-query l limit 1 {
+find l limit 1 {
   ListOfSingletons l
 }
 
-query l limit 5 {
+find l limit 5 {
   ListOfSingletons l
 }
 
-query r limit 5 {
+find r limit 5 {
   ListOfSingletons [["g"], ["e", ...w], [x, ...y], ...z]
   r = [w, [x, ...y], z]
 }
 
-query out limit 5 {
+find out limit 5 {
   [["g"], ["e", ...w], [x, ...y], ...z] = out
   ListOfSingletons out
 }
@@ -119,44 +119,44 @@ Member [x, l]
   Member [x, d]
 }
 
-query q {
+find q {
   Member ["olive", ["virgin", "olive", "oil"]]
 }
 
-query x {
+find x {
   Member [x, ["virgin", "olive", "oil"]]
 }
 
-query x {
+find x {
   Member [x, ["hummus", "with", "pita"]]
 }
 
-query x {
+find x {
   Member [x, ["pear", "grape", ..."peaches"]]
 }
 
-query x {
+find x {
   Member ["e", ["pasta", x, "fagioli"]]
 }
 
-query x {
+find x {
   Member ["e", ["pasta", "e", x, "fagioli"]]
 }
 
-query x {
+find x {
   Member ["e", ["pasta", x, "e", "fagioli"]]
 }
 
-query [x, y] {
+find [x, y] {
   Member ["e", ["pasta", x, "fagioli", y]]
 }
 
-query q {
+find q {
   ["pasta", x, "fagioli", y] = q
   Member ["e", q]
 }
 
-query l limit 5 {
+find l limit 5 {
   Member ["tofu", l]
 }
 
@@ -173,10 +173,10 @@ ProperMember [x, l]
   ProperMember [x, d]
 }
 
-query l limit 5 {
+find l limit 5 {
   ProperMember ["tofu", l]
 }
 
-query l limit 12 {
+find l limit 12 {
   ProperMember ["tofu", l]
 }

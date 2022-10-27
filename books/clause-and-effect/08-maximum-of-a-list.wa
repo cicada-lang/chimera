@@ -15,6 +15,6 @@
 
 // // TODO We need to view `Array` as `cons` and `null` here.
 
-// query [max] { Max [[3, 1, 4, 1, 5, 8, 2, 6], 0, max] }
-// query [max] { Max [[3, 1, 4, 1, 5, 8, 2, 6], 9, max] }
-// query [max] { Max [[2, 4, 7, 7, 7, 2, 1, 6], 5, max] }
+// find [max] { Max [[3, 1, 4, 1, 5, 8, 2, 6], 0, max] }
+// find [max] { Max [[3, 1, 4, 1, 5, 8, 2, 6], 9, max] }
+// find [max] { Max [[2, 4, 7, 7, 7, 2, 1, 6], 5, max] }

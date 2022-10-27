@@ -10,26 +10,26 @@ Always []
   Always []
 }
 
-query q limit 3 {
+find q limit 3 {
   Always []
 }
 
-query q limit 3 {
+find q limit 3 {
   q = "onion"
   Always []
 }
 
-query q limit 3 {
+find q limit 3 {
   Always []
   q = "onion"
 }
 
-query q {
+find q {
   Always []
   Fail []
 }
 
-query q {
+find q {
   q = "garlic"
   Always []
   q = "onion"
@@ -40,17 +40,17 @@ Never []
   Never []
 }
 
-query q {
+find q {
   Fail []
   Never []
 }
 
-query q {
+find q {
   Never []
   Fail []
 }
 
-query q {
+find q {
   Never []
   Fail []
   Never []

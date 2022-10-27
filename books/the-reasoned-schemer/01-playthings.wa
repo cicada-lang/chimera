@@ -5,104 +5,104 @@ Fail []
   1 = 2
 }
 
-query q {
+find q {
   Fail []
 }
 
-query q {
+find q {
   "pea" = "pod"
 }
 
-query q {
+find q {
   q = "pea"
 }
 
-query q {
+find q {
   "pea" = q
 }
 
-query q {
+find q {
   Succeed []
 }
 
-query q {
+find q {
   "pea" = "pea"
 }
 
-query q {
+find q {
   q = q
 }
 
-query q {
+find q {
   q = x
 }
 
-query q {
+find q {
   q = [x]
 }
 
-query q {
+find q {
   [[["pea"]], "pod"] = [[["pea"]], "pod"]
 }
 
-query q {
+find q {
   [[[q]], "pod"] = [[[x]], "pod"]
 }
 
-query q {
+find q {
   [[[q]], x] = [[[x]], "pod"]
 }
 
-query q {
+find q {
   [x, x] = q
 }
 
-query q {
+find q {
   [x, y] = q
 }
 
-query s {
+find s {
   [t, u] = s
 }
 
-query q {
+find q {
   [x, y, x] = q
 }
 
-query q {
+find q {
   ["pea"] = "pea"
 }
 
-query q {
+find q {
   [x] = x
 }
 
-query q {
+find q {
   Succeed []
   Succeed []
 }
 
-query q {
+find q {
   Succeed []
   "corn" = q
 }
 
-query q {
+find q {
   Fail []
   "corn" = q
 }
 
-query q {
+find q {
   "corn" = q
   Fail []
 }
 
-query q {
+find q {
   "corn" = q
   "meal" = q
 }
 
-query q {
+find q {
   "corn" = q
   "corn" = q
 }
@@ -117,20 +117,20 @@ Teacup [t]
   t = "cup"
 }
 
-query q {
+find q {
   Teacup [q]
 }
 
-query [x, y] {
+find [x, y] {
   Teacup [x]
   Teacup [y]
 }
 
-query [x, y] {
+find [x, y] {
   Teacup [x]
   Teacup [x]
 }
 
-query [x, y] {
+find [x, y] {
   Teacup [x]
 }

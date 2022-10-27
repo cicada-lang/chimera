@@ -1,7 +1,7 @@
 Bit 0
 Bit 1
 
-query x {
+find x {
   Bit x
 }
 
@@ -10,15 +10,15 @@ BitXor [x, y, r] -- { x = 0  y = 1  r = 1 }
 BitXor [x, y, r] -- { x = 1  y = 0  r = 1 }
 BitXor [x, y, r] -- { x = 1  y = 1  r = 0 }
 
-query [x, y] {
+find [x, y] {
   BitXor [x, y, 0]
 }
 
-query [x, y] {
+find [x, y] {
   BitXor [x, y, 1]
 }
 
-query [x, y, r] {
+find [x, y, r] {
   BitXor [x, y, r]
 }
 
@@ -27,7 +27,7 @@ BitAnd [x, y, r] -- { x = 0  y = 1  r = 0 }
 BitAnd [x, y, r] -- { x = 1  y = 0  r = 0 }
 BitAnd [x, y, r] -- { x = 1  y = 1  r = 1 }
 
-query [x, y] {
+find [x, y] {
   BitAnd [x, y, 1]
 }
 
@@ -38,10 +38,10 @@ HalfAdder [x, y, r, c]
   BitAnd [x, y, c]
 }
 
-query r {
+find r {
   HalfAdder [1, 1, r, 1]
 }
 
-query [x, y, r, c] {
+find [x, y, r, c] {
   HalfAdder [x, y, r, c]
 }

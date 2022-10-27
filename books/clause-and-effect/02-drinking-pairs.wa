@@ -11,18 +11,18 @@ Friendship { left, right, alcohol }
   Drink { person: right, alcohol }
 }
 
-query left {
+find left {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 
-query left {
+find left {
   Friendship { left, alcohol: "gin" }
 }
 
-query [left, right] {
+find [left, right] {
   Friendship { left, right, alcohol: "gin" }
 }
 
-query [left, right, alcohol] {
+find [left, right, alcohol] {
   Friendship { left, right, alcohol }
 }
