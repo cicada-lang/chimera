@@ -164,6 +164,12 @@ Adder [b, n, m, r]
   GenAdder [b, n, m, r]
 }
 
+// Given the carry bit b,
+// and the numbers n, m, and r,
+// `GenAdder` satisfies b + n + m = r,
+// provided that n is positive
+// and m and r are greater than one.
+
 GenAdder [b, n, m, r]
 ------------------------- {
   [a, ...x] = n
