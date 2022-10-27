@@ -35,9 +35,9 @@ Append [null, right, right]
 ---------------------------- {}
 
 Append [
-  { head, tail: left_tail },
+  [head, ...left_tail],
   right,
-  { head, tail: result_tail },
+  [head, ...result_tail],
 ]
 ---------------- {
   Append [left_tail, right, result_tail]
@@ -45,8 +45,8 @@ Append [
 
 find [result] {
   Append [
-    cons(1, cons(2, null)),
-    cons(3, cons(4, null)),
+    [1, 2],
+    [3, 4],
     result,
   ]
 }
@@ -57,7 +57,7 @@ find [left, right] {
   Append [
     left,
     right,
-    cons(1, cons(2, cons(3, cons(4, null)))),
+    [1, 2, 3, 4],
   ]
 }
 ```
@@ -94,9 +94,9 @@ Merge [left, null, left]
 ------------------------ {}
 
 Merge [
-  { head: left_head, tail: left_tail },
-  { head, tail: right_tail },
-  { head, tail: result_tail },
+  [left_head, ...left_tail],
+  [head, ...right_tail],
+  [head, ...result_tail],
 ]
 ---------------- {
   Merge [left, right_tail, result_tail]
@@ -104,14 +104,14 @@ Merge [
 }
 
 Merge [
-  { head, tail: left_tail },
-  { head: right_head, tail: right_tail },
-  { head, tail: result_tail },
+  [head, ...left_tail],
+  [right_head, ...right_tail],
+  [head, ...result_tail],
 ]
 ---------------- {
   Merge [
     left_tail,
-    { head: right_head, tail: right_tail },
+    [right_head, ...right_tail],
     result_tail,
   ]
   right_head > head
@@ -119,8 +119,8 @@ Merge [
 
 find [result] {
   Merge [
-    cons(1, cons(2, null)),
-    cons(3, cons(4, null)),
+    [1, 2],
+    [3, 4],
     result
   ]
 }
@@ -129,7 +129,7 @@ find [left, right] {
   Merge [
     left,
     right,
-    cons(1, cons(2, cons(3, cons(4, null))))
+    [1, 2, 3, 4]
   ]
 }
 ```
