@@ -11,6 +11,8 @@ find x {
 // BitXor [x, y, r] -- { x = 1  y = 1  r = 0 }
 
 // TODO Why the above definition is much slower than the following definition?
+// What optimization on the implementation is needed
+// to make the above the same as the following?
 
 BitXor [0, 0, 0]
 BitXor [0, 1, 1]
@@ -126,55 +128,14 @@ find r {
   GreaterThanOne r
 }
 
-Adder [b, n, m, r]
------------------------ {
-  0 = b  [] = m  n = r
-}
-
-Adder [b, n, m, r]
------------------------ {
-  0 = b  [] = n  m = r
-  Pos m
-}
-
-Adder [b, n, m, r]
------------------------ {
-  1 = b  [] = m
-  Adder [0, n, [1], r]
-}
-
-Adder [b, n, m, r]
------------------------ {
-  1 = b  [] = n  Pos m
-  Adder [0, [1], m, r]
-}
-
-Adder [b, n, m, r]
------------------------ {
-  [1] = n  [1] = m
-  [a, c] = r
-  FullAdder [b, 1, 1, a, c]
-}
-
-Adder [b, n, m, r]
------------------------ {
-  [1] = n
-  GenAdder [b, n, m, r]
-}
-
-Adder [b, n, m, r]
------------------------ {
-  [1] = m
-  GreaterThanOne n
-  GreaterThanOne r
-  Adder [b, [1], n, r]
-}
-
-Adder [b, n, m, r]
------------------------ {
-  GreaterThanOne n
-  GenAdder [b, n, m, r]
-}
+Adder [0, n, [], n]
+Adder [0, [], m, m] -- { Pos m }
+Adder [1, n, [], r] -- { Adder [0, n, [1], r] }
+Adder [1, [], m, r] -- { Pos m Adder [0, [1], m, r] }
+Adder [b, [1], [1], [a, c]] -- { FullAdder [b, 1, 1, a, c] }
+Adder [b, [1], m, r] -- { GenAdder [b, [1], m, r] }
+Adder [b, n, [1], r] -- { GreaterThanOne n GreaterThanOne r Adder [b, [1], n, r] }
+Adder [b, n, m, r] -- { GreaterThanOne n GenAdder [b, n, m, r] }
 
 // Given the carry bit b,
 // and the numbers n, m, and r,
@@ -260,3 +221,24 @@ find q {
 find q {
   Add [[1, 1], [1, 0, 1], q]
 }
+
+Length [[], []]
+Length [[a, ...d], n] -- { Length [d, res] Add [[1], res, n] }
+
+find n {
+  Length [["jicama", "rhubarb", "guava"], n]
+}
+
+find l {
+  Length [l, [1]]
+}
+
+// TODO too slow
+
+// find l {
+//   Length [l, [0, 1]]
+// }
+
+// find q {
+//   Length [q, q]
+// }
