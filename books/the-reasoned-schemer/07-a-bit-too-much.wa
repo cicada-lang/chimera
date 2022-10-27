@@ -177,9 +177,13 @@ find [x, y, r] limit 3 {
   Adder [0, x, y, r]
 }
 
-find [x, y, r] limit 5 {
-  Adder [0, x, y, r]
-}
+// find [x, y, r] limit 4 {
+//   Adder [0, x, y, r]
+// }
+
+// find [x, y, r] limit 5 {
+//   Adder [0, x, y, r]
+// }
 
 // find [x, y, r] limit 19 {
 //   Adder [0, x, y, r]
