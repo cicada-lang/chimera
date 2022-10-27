@@ -18,7 +18,7 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:query": [
+    "stmt:find": [
       '"find"',
       '"["',
       { names: "names" },
@@ -28,7 +28,7 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:query_single": [
+    "stmt:find_single": [
       '"find"',
       { name: "name" },
       { options: { $ap: ["zero_or_more", "find_option"] } },
