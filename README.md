@@ -58,7 +58,7 @@ Friendship { left, right, alcohol }
   Drink { person: right, alcohol }
 }
 
-query left {
+find left {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 
@@ -84,7 +84,7 @@ Friendship { left, right, alcohol }
   Drink { person: right, alcohol }
 }
 
-query left {
+find left {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 
@@ -177,15 +177,15 @@ Friendship { left, right, alcohol }
   Drink { person: right, alcohol }
 }
 
-query left {
+find left {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 
-query [left, right] {
+find [left, right] {
   Friendship { left, right, alcohol: "gin" }
 }
 
-query [left, right, alcohol] {
+find [left, right, alcohol] {
   Friendship { left, right, alcohol }
 }
 ```
@@ -195,7 +195,7 @@ We can also use the module system to import from URL:
 ```js
 import { Friendship } from "https://cdn.wa.cic.run/books/clause-and-effect/02-drinking-pairs.wa"
 
-query left {
+find left {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 ```
@@ -231,20 +231,20 @@ Affordable [x, y]
   Adjacent [z, y]
 }
 
-query to_kent {
+find to_kent {
   Affordable [to_kent, "kent"]
 }
 
-query to_sussex {
+find to_sussex {
   Affordable ["sussex", to_sussex]
 }
 
-query [x, y] {
+find [x, y] {
   Affordable [x, y]
 }
 ```
 
-Please see [tests](tests) for more examples.
+Please see [tests/](tests/), [books/](books/) and [std/](std/) for more examples.
 
 ## Development
 
