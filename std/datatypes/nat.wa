@@ -1,6 +1,3 @@
-// Zero 0
-// Add1 [n, { prev: n }]
-
 Zero []
 Add1 [n, [1, ...n]]
 
@@ -45,25 +42,6 @@ Add [x, y, out]
   Add [prev, y, res]
 }
 
-query z {
-  One x
-  One y
-  Add [x, y, z]
-}
-
-query (x, y, z) limit 1 {
-  Add [x, y, z]
-}
-
-query (x, y, z) limit 3 {
-  Add [x, y, z]
-}
-
-query (x, y) {
-  Two z
-  Add [x, y, z]
-}
-
 Mul [x, y, out]
 --------------- {
   Zero x
@@ -84,20 +62,3 @@ Mul [x, y , out]
   Add [y, z, out]
   Mul [prev, y, z]
 }
-
-query z {
-  Two x
-  Two y
-  Mul [x, y, z]
-}
-
-query (x, y) { Two z Mul [x, y, z] }
-query (x, y) { Four z Mul [x, y, z] }
-query (x, y) { Five z Mul [x, y, z] }
-query (x, y) { Six z Mul [x, y, z] }
-// query (x, y) { Seven z Mul [x, y, z] }
-// query (x, y) { Eight z Mul [x, y, z] }
-// query (x, y) { Nine z Mul [x, y, z] }
-// query (x, y) { Ten z Mul [x, y, z] }
-// query (x, y) { Eleven z Mul [x, y, z] }
-// query (x, y) { Twelve z Mul [x, y, z] }
