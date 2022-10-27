@@ -1,0 +1,20 @@
+Bit 0
+Bit 1
+
+query x {
+  Bit x
+}
+
+BitXor [x, y, r] -- { unify x = 0  unify y = 0  unify r = 0 }
+BitXor [x, y, r] -- { unify x = 0  unify y = 1  unify r = 1 }
+BitXor [x, y, r] -- { unify x = 1  unify y = 0  unify r = 1 }
+BitXor [x, y, r] -- { unify x = 1  unify y = 1  unify r = 0 }
+
+BitNand [x, y, r] -- { unify x = 0  unify y = 0  unify r = 1 }
+BitNand [x, y, r] -- { unify x = 0  unify y = 1  unify r = 1 }
+BitNand [x, y, r] -- { unify x = 1  unify y = 0  unify r = 1 }
+BitNand [x, y, r] -- { unify x = 1  unify y = 1  unify r = 0 }
+
+query [x, y] {
+  BitXor [x, y, 0]
+}

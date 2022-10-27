@@ -20,9 +20,9 @@ export const stmt = {
     ],
     "stmt:query": [
       '"query"',
-      '"("',
+      '"["',
       { names: "names" },
-      '")"',
+      '"]"',
       { options: { $ap: ["zero_or_more", "query_option"] } },
       '"{"',
       { goals: "goals" },

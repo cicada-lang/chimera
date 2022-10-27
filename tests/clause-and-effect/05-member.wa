@@ -18,6 +18,6 @@ query element {
   Member [element, ["marx", "darwin", "freud"]]
 }
 
-query (list) limit 3 {
+query [list] limit 3 {
   Member ["foo", list]
 }

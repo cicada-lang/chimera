@@ -37,8 +37,8 @@
 // query () { Path ["a", "c", null] }
 // query () { Path ["g", "e", null] }
 
-// query (x) { Path ["g", x, null] }
-// query (x) { Path [x, "h", null] }
+// query [x] { Path ["g", x, null] }
+// query [x] { Path [x, "h", null] }
 
 // query () { Path ["g", "c", null] }
 // query () { Path ["g", "c", cons("f", null)] }

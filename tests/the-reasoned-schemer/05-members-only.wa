@@ -64,7 +64,7 @@ query out {
   Mem ["fig", ["a", x, "c", "fig", "e"], out]
 }
 
-query (x, y) limit 5 {
+query [x, y] limit 5 {
   Mem ["fig", ["fig", "d", "fig", "e", ...y], x]
 }
 
@@ -108,14 +108,14 @@ query out {
   Rember [y, ["a", "b", y, "d", z, "e"], out]
 }
 
-query (y, z) {
+query [y, z] {
   Rember [y, [y, "d", z, "e"], [y, "d", "e"]]
 }
 
-query (y, z, w, out) limit 4 {
+query [y, z, w, out] limit 4 {
   Rember [y, [z, ...w], out]
 }
 
-query (y, z, w, out) limit 5 {
+query [y, z, w, out] limit 5 {
   Rember [y, [z, ...w], out]
 }

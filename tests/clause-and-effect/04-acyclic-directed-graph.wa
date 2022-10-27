@@ -26,6 +26,6 @@ query x {
   Path [x, "h"]
 }
 
-query (x, y) {
+query [x, y] {
   Path [x, y]
 }

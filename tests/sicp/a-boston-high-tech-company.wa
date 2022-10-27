@@ -363,7 +363,7 @@ query coder {
 
 // An employee's addresses
 
-query (town, road, door) {
+query [town, road, door] {
   Address {
     name: "Bitdiddle Ben",
     town,
@@ -374,7 +374,7 @@ query (town, road, door) {
 
 // All employees at computer dept
 
-query (name, role) {
+query [name, role] {
   Job {
     name,
     dept: "computer",
@@ -431,7 +431,7 @@ query slave {
 //   }
 // }
 
-// query (name, dept) {
+// query [name, dept] {
 //   Bigshot {
 //     name,
 //     dept,
@@ -451,7 +451,7 @@ query slave {
 //   unify amount >= 40000
 // })
 
-// query (name, amount) {
+// query [name, amount] {
 //   NotSoPoor {
 //     name,
 //     amount,

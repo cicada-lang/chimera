@@ -121,16 +121,16 @@ query q {
   Teacup [q]
 }
 
-query (x, y) {
+query [x, y] {
   Teacup [x]
   Teacup [y]
 }
 
-query (x, y) {
+query [x, y] {
   Teacup [x]
   Teacup [x]
 }
 
-query (x, y) {
+query [x, y] {
   Teacup [x]
 }

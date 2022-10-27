@@ -3,6 +3,6 @@ A [a]
   unify a = "a"
 }
 
-query (x) {
+query [x] {
   A [x]
 }

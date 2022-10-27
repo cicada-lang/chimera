@@ -6,6 +6,6 @@ ABC [a, b, c]
   unify c = "c"
 }
 
-query (x, y, z) {
+query [x, y, z] {
   ABC [x, y, z]
 }

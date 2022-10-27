@@ -19,10 +19,10 @@ query left {
   Friendship { left, alcohol: "gin" }
 }
 
-query (left, right) {
+query [left, right] {
   Friendship { left, right, alcohol: "gin" }
 }
 
-query (left, right, alcohol) {
+query [left, right, alcohol] {
   Friendship { left, right, alcohol }
 }

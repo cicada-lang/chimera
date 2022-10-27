@@ -38,6 +38,6 @@ query x {
   Pair { male, female: "fido" }
 }
 
-query (male, female) {
+query [male, female] {
   Pair { male, female }
 }

@@ -34,7 +34,7 @@ query x limit 6 {
   Append [x, y, z]
 }
 
-query (x, y, z) limit 6 {
+query [x, y, z] limit 6 {
   Append [x, y, z]
 }
 
@@ -102,7 +102,7 @@ query x {
   ]
 }
 
-query (x, y) {
+query [x, y] {
   Append [
     x,
     y,

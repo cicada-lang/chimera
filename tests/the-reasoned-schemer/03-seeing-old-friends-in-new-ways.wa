@@ -147,7 +147,7 @@ query x {
   Member ["e", ["pasta", x, "e", "fagioli"]]
 }
 
-query (x, y) {
+query [x, y] {
   Member ["e", ["pasta", x, "fagioli", y]]
 }
 

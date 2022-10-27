@@ -32,6 +32,6 @@ query to_sussex {
   Affordable ["sussex", to_sussex]
 }
 
-query (x, y) {
+query [x, y] {
   Affordable [x, y]
 }

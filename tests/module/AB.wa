@@ -6,6 +6,6 @@ AB [a, b]
   unify b = "b"
 }
 
-query (x, y) {
+query [x, y] {
   AB [x, y]
 }

@@ -11,12 +11,12 @@
 //   }
 // }
 
-// query (length) {
+// query [length] {
 //   Length [cons("apple", cons("pear", null)), length]
 // }
 
 // // assert { length: add1(add1(zero)) }
 
-// query (list) { Length [list, zero] }
-// query (list) { Length [list, add1(zero)] }
-// query (list) { Length [list, add1(add1(zero))] }
+// query [list] { Length [list, zero] }
+// query [list] { Length [list, add1(zero)] }
+// query [list] { Length [list, add1(add1(zero))] }

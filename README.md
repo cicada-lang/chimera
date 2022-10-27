@@ -183,11 +183,11 @@ query left {
   Friendship { left, right: "mary", alcohol: "gin" }
 }
 
-query (left, right) {
+query [left, right] {
   Friendship { left, right, alcohol: "gin" }
 }
 
-query (left, right, alcohol) {
+query [left, right, alcohol] {
   Friendship { left, right, alcohol }
 }
 ```
@@ -243,7 +243,7 @@ query to_sussex {
   Affordable ["sussex", to_sussex]
 }
 
-query (x, y) {
+query [x, y] {
   Affordable [x, y]
 }
 ```

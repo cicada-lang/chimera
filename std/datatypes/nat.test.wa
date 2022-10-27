@@ -8,13 +8,13 @@ query z {
   Mul [x, y, z]
 }
 
-query (x, y) { Two z Mul [x, y, z] }
-query (x, y) { Four z Mul [x, y, z] }
-query (x, y) { Five z Mul [x, y, z] }
-query (x, y) { Six z Mul [x, y, z] }
-// query (x, y) { Seven z Mul [x, y, z] }
-// query (x, y) { Eight z Mul [x, y, z] }
-// query (x, y) { Nine z Mul [x, y, z] }
-// query (x, y) { Ten z Mul [x, y, z] }
-// query (x, y) { Eleven z Mul [x, y, z] }
-// query (x, y) { Twelve z Mul [x, y, z] }
+query [x, y] { Two z Mul [x, y, z] }
+query [x, y] { Four z Mul [x, y, z] }
+query [x, y] { Five z Mul [x, y, z] }
+query [x, y] { Six z Mul [x, y, z] }
+// query [x, y] { Seven z Mul [x, y, z] }
+// query [x, y] { Eight z Mul [x, y, z] }
+// query [x, y] { Nine z Mul [x, y, z] }
+// query [x, y] { Ten z Mul [x, y, z] }
+// query [x, y] { Eleven z Mul [x, y, z] }
+// query [x, y] { Twelve z Mul [x, y, z] }

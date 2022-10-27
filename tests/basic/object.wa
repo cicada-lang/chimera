@@ -6,7 +6,7 @@ query abc {
   }
 }
 
-query (a, b, c) {
+query [a, b, c] {
   unify { a, b, c } = {
     a: "a",
     b: "b",
