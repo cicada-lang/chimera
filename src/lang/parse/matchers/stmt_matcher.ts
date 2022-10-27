@@ -24,7 +24,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       ),
     "stmt:query": ({ names, options, goals }, { span }) =>
-      new Stmts.Query(
+      new Stmts.Find(
         Stmts.QueryPatternNames(matchers.names_matcher(names)),
         pt.matchers
           .zero_or_more_matcher(options)
@@ -33,7 +33,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       ),
     "stmt:query_single": ({ name, options, goals }, { span }) =>
-      new Stmts.Query(
+      new Stmts.Find(
         Stmts.QueryPatternName(pt.str(name)),
         pt.matchers
           .zero_or_more_matcher(options)

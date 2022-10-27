@@ -15,7 +15,7 @@ import {
   formatQueryPattern,
   formatSolutionForQueryPattern,
   QueryPattern,
-} from "../stmts/query"
+} from "../stmts/find"
 import { formatValue } from "../value"
 
 /**

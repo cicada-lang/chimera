@@ -1,4 +1,4 @@
-import { QueryPattern } from "../query"
+import { QueryPattern } from "."
 
 export function formatQueryPattern(pattern: QueryPattern): string {
   switch (pattern.kind) {

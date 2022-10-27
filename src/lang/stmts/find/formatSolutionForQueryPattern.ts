@@ -1,7 +1,7 @@
 import { reify, Solution } from "../../solution"
 import * as Values from "../../value"
 import { formatValue, Value } from "../../value"
-import { QueryPattern } from "../query"
+import { QueryPattern } from "../find"
 
 export function formatSolutionForQueryPattern(
   solutions: Array<Solution>,

@@ -15,7 +15,7 @@ find [left] {
 `),
   ).toMatchObject(
     deleteUndefined([
-      new Stmts.Query(
+      new Stmts.Find(
         Stmts.QueryPatternNames(["left"]),
         [],
         [
@@ -45,9 +45,9 @@ find [left] limit 1 {
 `),
   ).toMatchObject(
     deleteUndefined([
-      new Stmts.Query(
+      new Stmts.Find(
         Stmts.QueryPatternNames(["left"]),
-        [Stmts.QueryOptionLimit(1)],
+        [Stmts.FindOptionLimit(1)],
         [
           Exps.GoalApply(
             "Friendship",

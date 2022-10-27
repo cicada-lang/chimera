@@ -1,19 +1,19 @@
+import {
+  buildSolveOptions,
+  FindOption,
+  formatSolutionForQueryPattern,
+  QueryPattern,
+} from "."
 import * as Exps from "../../exp"
 import { Mod } from "../../mod"
 import { Solver } from "../../solver"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import {
-  buildSolveOptions,
-  formatSolutionForQueryPattern,
-  QueryOption,
-  QueryPattern,
-} from "../query"
 
-export class Query extends Stmt {
+export class Find extends Stmt {
   constructor(
     public pattern: QueryPattern,
-    public options: Array<QueryOption>,
+    public options: Array<FindOption>,
     public goals: Array<Exps.Goal>,
     public span?: Span,
   ) {
