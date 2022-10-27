@@ -17,7 +17,7 @@ title: Functional Part
     ```
     Cons pair
     ------------ {
-      unify pair = { head, tail }
+      pair = { head, tail }
     }
     ```
 

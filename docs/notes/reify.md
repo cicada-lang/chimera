@@ -8,13 +8,13 @@ Without `reify` the following queries have different outputs:
 
 ```
 query q {
-  unify q = q
+  q = q
 }
 
 // [ "?q" ]
 
 query q {
-  unify q = x
+  q = x
 }
 
 // [ "?x" ]
@@ -27,13 +27,13 @@ Without `reify` we do not have alpha equivalence between expressions
 
 ```
 query q {
-  unify [x, y] = q
+  [x, y] = q
 }
 
 // [ ["?x", "?y"] ]
 
 query s {
-  unify [t, u] = s
+  [t, u] = s
 }
 
 // [ ["?t", "?u"] ]

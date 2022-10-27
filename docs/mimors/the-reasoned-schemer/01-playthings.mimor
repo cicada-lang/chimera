@@ -70,7 +70,7 @@
     If x is fresh, then
 
     <code>
-      unify v = x
+      v = x
     </code>
 
     succeeds and associates v with x,
@@ -83,13 +83,13 @@
 
   <answer>
     <code>
-      unify v = w
+      v = w
     </code>
 
     can be replaced by
 
     <code>
-      unify w = v
+      w = v
     </code>
   </answer>
 </question>
