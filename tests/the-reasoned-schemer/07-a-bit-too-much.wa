@@ -18,3 +18,7 @@ BitNand [x, y, r] -- { unify x = 1  unify y = 1  unify r = 0 }
 query [x, y] {
   BitXor [x, y, 0]
 }
+
+query [x, y] {
+  BitXor [x, y, 1]
+}
