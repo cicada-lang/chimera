@@ -233,12 +233,20 @@ find l {
   Length [l, [1]]
 }
 
-// TODO too slow
+// TODO too slow, but why?
 
 // find l {
 //   Length [l, [0, 1]]
 // }
 
-// find q {
+// find q limit 3 {
+//   Length [q, q]
+// }
+
+// This expression has no value,
+// since it is still looking for the fourth value,
+// but there is non.
+
+// find q limit 4 {
 //   Length [q, q]
 // }
