@@ -1,6 +1,6 @@
 import { Zero, Add1, One, Two } from "../../std/datatypes/nat.wa"
 
-Length [null, n]
+Length [[], n]
 -------------------- {
   Zero n
 }
