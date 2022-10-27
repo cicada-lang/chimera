@@ -32,6 +32,7 @@ find [x, y] {
 }
 
 // x + y = r + 2 * c
+
 HalfAdder [x, y, r, c]
 ---------------------- {
   BitXor [x, y, r]
@@ -45,3 +46,141 @@ find r {
 find [x, y, r, c] {
   HalfAdder [x, y, r, c]
 }
+
+// b + x + y = r + 2 * c
+
+FullAdder [b, x, y, r, c]
+------------------------- {
+  HalfAdder [x, y, w, xy]
+  HalfAdder [w, b, r, wz]
+  BitXor [xy, wz, c]
+}
+
+find [r, c] {
+  FullAdder [0, 1, 1, r, c]
+}
+
+find [r, c] {
+  FullAdder [1, 1, 1, r, c]
+}
+
+find [b, x, y, r, c] {
+  FullAdder [b, x, y, r, c]
+}
+
+Pos n
+---------------- {
+  [a, ...d] = n
+}
+
+find q {
+  Pos [0, 1, 1]
+}
+
+find q {
+  Pos [1]
+}
+
+find q {
+  Pos []
+}
+
+find r {
+  Pos r
+}
+
+GreaterThanOne n
+--------------------- {
+  [a, ad, ...dd] = n
+}
+
+find q {
+  GreaterThanOne [0, 1, 1]
+}
+
+find q {
+  GreaterThanOne [0, 1]
+}
+
+find q {
+  GreaterThanOne [1]
+}
+
+find q {
+  GreaterThanOne []
+}
+
+find r {
+  GreaterThanOne r
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  0 = b  [] = m  n = r
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  0 = b  [] = n  m = r
+  Pos m
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  1 = b  [] = m
+  Adder [0, n, [1], r]
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  1 = b  [] = n  Pos m
+  Adder [0, [1], m, r]
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  [1] = n  [1] = m
+  [a, c] = r
+  FullAdder [b, 1, 1, a, c]
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  [1] = n
+  GenAdder [b, n, m, r]
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  [1] = m
+  GreaterThanOne n
+  GreaterThanOne r
+  Adder [b, [1], n, r]
+}
+
+Adder [b, n, m, r]
+----------------------- {
+  GreaterThanOne n
+  GenAdder [b, n, m, r]
+}
+
+GenAdder [b, n, m, r]
+------------------------- {
+  [a, ...x] = n
+  [d, ...y] = m  Pos y
+  [c, ...z] = r  Pos z
+  FullAdder [b, a, d, c, e]
+  Adder [e, x, y, z]
+}
+
+find [x, y, r] limit 3 {
+  Adder [0, x, y, r]
+}
+
+find [x, y, r] limit 5 {
+  Adder [0, x, y, r]
+}
+
+// find [x, y, r] limit 19 {
+//   Adder [0, x, y, r]
+// }

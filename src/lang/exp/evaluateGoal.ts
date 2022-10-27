@@ -1,18 +1,16 @@
 import { Env, lookupValueInEnv } from "../env"
-import * as Errors from "../errors"
 import * as Exps from "../exp"
 import * as Goals from "../goal"
 import { Goal } from "../goal"
+import { Mod } from "../mod"
 import * as Values from "../value"
 
-export function evaluateGoal(env: Env, goal: Exps.Goal): Goal {
+export function evaluateGoal(mod: Mod, env: Env, goal: Exps.Goal): Goal {
   switch (goal.kind) {
     case "GoalApply": {
-      const relation = lookupValueInEnv(env, goal.name)
-      if (relation === undefined) {
-        throw new Errors.LangError(`Undefined relation name: ${goal.name}`)
-      }
-
+      /** NOTE Support mutual recursive relations. **/
+      const relation =
+        lookupValueInEnv(env, goal.name) || mod.findOrCreateRelation(goal.name)
       Values.assertRelation(relation)
       return Goals.Apply(goal.name, relation, Exps.evaluate(env, goal.arg))
     }
