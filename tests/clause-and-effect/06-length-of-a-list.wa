@@ -1,22 +1,20 @@
-// TODO define `zero` and `add1` constructor of `Nat`
+import { Zero, Add1, One, Two } from "../../std/datatypes/nat.wa"
 
-// Length [null, zero]
-// -------------------- {}
+Length [null, n]
+-------------------- {
+  Zero n
+}
 
-// Length [{ head, tail }, length]
-// -------------------------------- {
-//   fresh (prev) {
-//     Length [tail, prev]
-//     unify length = add1(prev)
-//   }
-// }
+Length [[head, ...tail], n]
+-------------------------------- {
+  Length [tail, prev]
+  Add1 [prev, n]
+}
 
-// query [length] {
-//   Length [cons("apple", cons("pear", null)), length]
-// }
+query n {
+  Length [["apple", "pear"], n]
+}
 
-// // assert { length: add1(add1(zero)) }
-
-// query [list] { Length [list, zero] }
-// query [list] { Length [list, add1(zero)] }
-// query [list] { Length [list, add1(add1(zero))] }
+query list { Length [list, n] Zero n }
+query list { Length [list, n] One n }
+query list { Length [list, n] Two n }

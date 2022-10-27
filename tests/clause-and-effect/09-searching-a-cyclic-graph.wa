@@ -1,18 +1,18 @@
-// Edge ["g", "h"]
-// Edge ["d", "a"]
-// Edge ["g", "d"]
-// Edge ["e", "d"]
-// Edge ["h", "f"]
-// Edge ["e", "f"]
-// Edge ["a", "e"]
-// Edge ["a", "b"]
-// Edge ["b", "f"]
-// Edge ["b", "c"]
-// Edge ["f", "c"]
+Edge ["g", "h"]
+Edge ["d", "a"]
+Edge ["g", "d"]
+Edge ["e", "d"]
+Edge ["h", "f"]
+Edge ["e", "f"]
+Edge ["a", "e"]
+Edge ["a", "b"]
+Edge ["b", "f"]
+Edge ["b", "c"]
+Edge ["f", "c"]
 
-// // "a", "e", "d" -- in a loop
+// "a", "e", "d" -- in a loop
 
-// // We define `Legal` to rule out loop -- to avoid searching in a loop
+// We define `Legal` to rule out loop -- to avoid searching in a loop
 
 // Legal [z, null]
 // ---------------- {}
@@ -33,15 +33,15 @@
 //   Path [z, y, cons(z, occurs)]
 // }
 
-// query () { Path ["f", "f", null] }
-// query () { Path ["a", "c", null] }
-// query () { Path ["g", "e", null] }
+// query [] { Path ["f", "f", null] }
+// query [] { Path ["a", "c", null] }
+// query [] { Path ["g", "e", null] }
 
 // query [x] { Path ["g", x, null] }
 // query [x] { Path [x, "h", null] }
 
-// query () { Path ["g", "c", null] }
-// query () { Path ["g", "c", cons("f", null)] }
+// query [] { Path ["g", "c", null] }
+// query [] { Path ["g", "c", cons("f", null)] }
 
-// query () { Path ["a", x, cons("f", cons("d", null))] }
-// query () { Path ["a", x, null] }
+// query [] { Path ["a", x, cons("f", cons("d", null))] }
+// query [] { Path ["a", x, null] }
