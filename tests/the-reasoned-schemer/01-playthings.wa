@@ -2,7 +2,7 @@ Succeed []
 
 Fail []
 -------- {
-  unify 1 = 2
+  1 = 2
 }
 
 query q {
@@ -10,15 +10,15 @@ query q {
 }
 
 query q {
-  unify "pea" = "pod"
+  "pea" = "pod"
 }
 
 query q {
-  unify q = "pea"
+  q = "pea"
 }
 
 query q {
-  unify "pea" = q
+  "pea" = q
 }
 
 query q {
@@ -26,95 +26,95 @@ query q {
 }
 
 query q {
-  unify "pea" = "pea"
+  "pea" = "pea"
 }
 
 query q {
-  unify q = q
+  q = q
 }
 
 query q {
-  unify q = x
+  q = x
 }
 
 query q {
-  unify q = [x]
+  q = [x]
 }
 
 query q {
-  unify [[["pea"]], "pod"] = [[["pea"]], "pod"]
+  [[["pea"]], "pod"] = [[["pea"]], "pod"]
 }
 
 query q {
-  unify [[[q]], "pod"] = [[[x]], "pod"]
+  [[[q]], "pod"] = [[[x]], "pod"]
 }
 
 query q {
-  unify [[[q]], x] = [[[x]], "pod"]
+  [[[q]], x] = [[[x]], "pod"]
 }
 
 query q {
-  unify [x, x] = q
+  [x, x] = q
 }
 
 query q {
-  unify [x, y] = q
+  [x, y] = q
 }
 
 query s {
-  unify [t, u] = s
+  [t, u] = s
 }
 
 query q {
-  unify [x, y, x] = q
+  [x, y, x] = q
 }
 
 query q {
-  unify ["pea"] = "pea"
+  ["pea"] = "pea"
 }
 
 query q {
-  unify [x] = x
-}
-
-query q {
-  Succeed []
-  Succeed []
+  [x] = x
 }
 
 query q {
   Succeed []
-  unify "corn" = q
+  Succeed []
+}
+
+query q {
+  Succeed []
+  "corn" = q
 }
 
 query q {
   Fail []
-  unify "corn" = q
+  "corn" = q
 }
 
 query q {
-  unify "corn" = q
+  "corn" = q
   Fail []
 }
 
 query q {
-  unify "corn" = q
-  unify "meal" = q
+  "corn" = q
+  "meal" = q
 }
 
 query q {
-  unify "corn" = q
-  unify "corn" = q
+  "corn" = q
+  "corn" = q
 }
 
 Teacup [t]
 --------------- tea {
-  unify t = "tea"
+  t = "tea"
 }
 
 Teacup [t]
 --------------- cup {
-  unify t = "cup"
+  t = "cup"
 }
 
 query q {

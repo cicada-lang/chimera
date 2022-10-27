@@ -1,5 +1,5 @@
 query [x, y, z] {
-  unify x = 100
-  unify y = -100
-  unify z = 3.14
+  x = 100
+  y = -100
+  z = 3.14
 }

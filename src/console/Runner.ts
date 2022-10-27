@@ -54,7 +54,6 @@ export class Runner {
       if (event === "remove") {
         this.loader.cache.delete(url.href)
         app.logger.info({ tag: event, msg: url.pathname })
-        process.exit(1)
       }
 
       if (event === "update") {

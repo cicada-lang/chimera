@@ -19,7 +19,7 @@ Edge ["f", "c"]
 
 // Legal [z, cons(head, tail)]
 // ---------------------------- {
-//   unify z != head
+//   z != head
 //   Legal [z, tail]
 // }
 

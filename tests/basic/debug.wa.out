@@ -3,8 +3,8 @@ step_count: 0
 queues:
   - solution: {}
     goals:
-      - unify "?x" = true
-      - unify "?y" = false
+      - '"?x" = true'
+      - '"?y" = false'
 query_pattern: (x, y)
 solutions: []
 
@@ -14,7 +14,7 @@ queues:
   - solution:
       x: true
     goals:
-      - unify "?y" = false
+      - '"?y" = false'
 query_pattern: (x, y)
 solutions: []
 

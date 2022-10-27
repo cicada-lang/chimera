@@ -1,24 +1,24 @@
 query abc {
-  unify abc = ["a", "b", "c"]
+  abc = ["a", "b", "c"]
 }
 
 query [a, b, c] {
-  unify [a, b, c] = ["a", "b", "c"]
+  [a, b, c] = ["a", "b", "c"]
 }
 
 query empty {
-  unify empty = []
+  empty = []
 }
 
 query [head, rest] {
-  unify [head, ...rest] = ["a", "b", "c"]
+  [head, ...rest] = ["a", "b", "c"]
 }
 
 query [head, rest] {
-  unify [head, ...rest] = ["a", ..."b"]
+  [head, ...rest] = ["a", ..."b"]
 }
 
 query [head, rest, result] {
-  unify [head, ...rest] = ["a", ..."b"]
-  unify result = [head, ...rest]
+  [head, ...rest] = ["a", ..."b"]
+  result = [head, ...rest]
 }

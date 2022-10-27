@@ -3,7 +3,7 @@ import { A } from "./A.wa"
 AB [a, b]
 ---------- {
   A [a]
-  unify b = "b"
+  b = "b"
 }
 
 query [x, y] {

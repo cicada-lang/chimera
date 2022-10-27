@@ -1,11 +1,11 @@
 query q {
-  unify x = [x]
+  x = [x]
 }
 
 query q {
-  unify x = { x }
+  x = { x }
 }
 
 query q {
-  unify x = { y: x }
+  x = { y: x }
 }

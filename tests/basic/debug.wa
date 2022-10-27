@@ -1,4 +1,4 @@
 query [x, y] debug 3 {
-  unify x = true
-  unify y = false
+  x = true
+  y = false
 }

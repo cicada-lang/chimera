@@ -100,7 +100,7 @@ Merge [
 ]
 ---------------- {
   Merge [left, right_tail, result_tail]
-  unify left_head > head
+  left_head > head
 }
 
 Merge [
@@ -114,7 +114,7 @@ Merge [
     { head: right_head, tail: right_tail },
     result_tail,
   ]
-  unify right_head > head
+  right_head > head
 }
 
 query [result] {

@@ -3,7 +3,7 @@ import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
 Append [l, t, out]
 ------------------ {
   Null l
-  unify out = t
+  out = t
 }
 
 Append [l, t, out]
@@ -118,7 +118,7 @@ Unwrap [x, out]
 
 Unwrap [x, out]
 --------------- {
-  unify x = out
+  x = out
 }
 
 query x {

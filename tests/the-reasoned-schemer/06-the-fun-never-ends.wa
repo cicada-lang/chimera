@@ -15,13 +15,13 @@ query q limit 3 {
 }
 
 query q limit 3 {
-  unify q = "onion"
+  q = "onion"
   Always []
 }
 
 query q limit 3 {
   Always []
-  unify q = "onion"
+  q = "onion"
 }
 
 query q {
@@ -30,9 +30,9 @@ query q {
 }
 
 query q {
-  unify q = "garlic"
+  q = "garlic"
   Always []
-  unify q = "onion"
+  q = "onion"
 }
 
 Never []

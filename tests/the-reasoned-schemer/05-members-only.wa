@@ -3,7 +3,7 @@ import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
 Mem [x, l, out]
 --------------- {
   Car [l, x]
-  unify out = l
+  out = l
 }
 
 Mem [x, l, out]

@@ -1,4 +1,4 @@
 query [x, y] {
-  unify x = true
-  unify y = false
+  x = true
+  y = false
 }

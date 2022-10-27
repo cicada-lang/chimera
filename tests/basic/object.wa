@@ -1,5 +1,5 @@
 query abc {
-  unify abc = {
+  abc = {
     a: "a",
     b: "b",
     c: "c",
@@ -7,7 +7,7 @@ query abc {
 }
 
 query [a, b, c] {
-  unify { a, b, c } = {
+  { a, b, c } = {
     a: "a",
     b: "b",
     c: "c",
@@ -15,5 +15,5 @@ query [a, b, c] {
 }
 
 query empty {
-  unify empty = {}
+  empty = {}
 }

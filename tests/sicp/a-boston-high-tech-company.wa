@@ -443,12 +443,12 @@ query slave {
 //   amount: Number
 // }
 
-// TODO `unify >=`
+// TODO `>=`
 
 // NotSoPoor { name, amount }
 // ---------------------------- {
 //   Salary { name, amount }
-//   unify amount >= 40000
+//   amount >= 40000
 // })
 
 // query [name, amount] {

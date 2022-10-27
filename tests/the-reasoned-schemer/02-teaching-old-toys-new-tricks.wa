@@ -1,6 +1,6 @@
 Car [p, a]
 ---------- {
-  unify [a, ...d] = p
+  [a, ...d] = p
 }
 
 query q {
@@ -13,18 +13,18 @@ query q {
 
 query r {
   Car [[r, ...y], x]
-  unify "pear" = x
+  "pear" = x
 }
 
 query r {
   Car [["grape", "raisin", "pear"], x]
   Car [[["a"], ["b"], ["c"]], y]
-  unify [x, ...y] = r
+  [x, ...y] = r
 }
 
 Cdr [p, d]
 ---------- {
-  unify [a, ...d] = p
+  [a, ...d] = p
 }
 
 query r {
@@ -36,7 +36,7 @@ query r {
 query r {
   Cdr [["grape", "raisin", "pear"], x]
   Car [[["a"], ["b"], ["c"]], y]
-  unify [x, ...y] = r
+  [x, ...y] = r
 }
 
 query q {
@@ -50,12 +50,12 @@ query x {
 query l {
   Cdr [l, ["c", "o", "r", "n"]]
   Car [l, x]
-  unify x = "a"
+  x = "a"
 }
 
 // Cons [a, d, p]
 // --------------- {
-//   unify [a, ...d] = p
+//   [a, ...d] = p
 // }
 
 Cons [a, d, p]
@@ -73,7 +73,7 @@ query x {
 }
 
 query r {
-  unify ["e", "a", "d", x] = r
+  ["e", "a", "d", x] = r
   Cons [y, ["a", z, "c"], r]
 }
 
@@ -82,28 +82,28 @@ query x {
 }
 
 query l {
-  unify ["d", "a", x, "c"] = l
+  ["d", "a", x, "c"] = l
   Cons [x, ["a", x, "c"], l]
 }
 
 query l {
   Cons [x, ["a", x, "c"], l]
-  unify ["d", "a", x, "c"] = l
+  ["d", "a", x, "c"] = l
 }
 
 query l {
   Cons [w, ["n", "u", "s"], t]
   Cdr [l, t]
   Car [l, x]
-  unify "b" = x
+  "b" = x
   Cdr [l, d]
   Car [d, y]
-  unify "o" = y
+  "o" = y
 }
 
 Null x
 ---------- {
-  unify [] = x
+  [] = x
 }
 
 query q {
@@ -119,7 +119,7 @@ query x {
 }
 
 query r {
-  unify [x, y, "salad"] = r
+  [x, y, "salad"] = r
 }
 
 Pair p

@@ -1,6 +1,6 @@
 A [a]
 ------ {
-  unify a = "a"
+  a = "a"
 }
 
 query [x] {

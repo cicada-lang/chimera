@@ -59,7 +59,7 @@ query x limit 5 {
 
 Singleton l
 ----------- {
-  unify l = [a]
+  l = [a]
 }
 
 ListOfSingletons l
@@ -86,11 +86,11 @@ query l limit 5 {
 
 query r limit 5 {
   ListOfSingletons [["g"], ["e", ...w], [x, ...y], ...z]
-  unify r = [w, [x, ...y], z]
+  r = [w, [x, ...y], z]
 }
 
 query out limit 5 {
-  unify [["g"], ["e", ...w], [x, ...y], ...z] = out
+  [["g"], ["e", ...w], [x, ...y], ...z] = out
   ListOfSingletons out
 }
 
@@ -105,7 +105,7 @@ query out limit 5 {
 // Member [x, l]
 // ------------- {
 //   Car [l, a]
-//   unify x = a
+//   x = a
 // }
 
 Member [x, l]
@@ -152,7 +152,7 @@ query [x, y] {
 }
 
 query q {
-  unify ["pasta", x, "fagioli", y] = q
+  ["pasta", x, "fagioli", y] = q
   Member ["e", q]
 }
 
