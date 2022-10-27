@@ -179,9 +179,13 @@ GenAdder [b, n, m, r]
   Adder [e, x, y, z]
 }
 
-find [x, y, r] limit 3 {
+find [x, y, r] limit 2 {
   Adder [0, x, y, r]
 }
+
+// find [x, y, r] limit 3 {
+//   Adder [0, x, y, r]
+// }
 
 // find [x, y, r] limit 4 {
 //   Adder [0, x, y, r]
@@ -194,3 +198,25 @@ find [x, y, r] limit 3 {
 // find [x, y, r] limit 19 {
 //   Adder [0, x, y, r]
 // }
+
+find [x, y] {
+  Adder [0, x, y, [1, 0, 1]]
+}
+
+Add [x, y, r]
+--------------------- {
+  Adder [0, x, y, r]
+}
+
+find [x, y] {
+  Add [x, y, [1, 0, 1]]
+}
+
+Sub [n, m, k]
+---------------- {
+  Add [m, k, n]
+}
+
+find q {
+  Sub [[0, 0, 0, 1], [1, 0, 1], q]
+}
