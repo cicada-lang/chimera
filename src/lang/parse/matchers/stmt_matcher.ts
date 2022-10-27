@@ -28,7 +28,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         Stmts.QueryPatternNames(matchers.names_matcher(names)),
         pt.matchers
           .zero_or_more_matcher(options)
-          .map(matchers.query_option_matcher),
+          .map(matchers.find_option_matcher),
         matchers.goals_matcher(goals),
         span,
       ),
@@ -37,7 +37,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         Stmts.QueryPatternName(pt.str(name)),
         pt.matchers
           .zero_or_more_matcher(options)
-          .map(matchers.query_option_matcher),
+          .map(matchers.find_option_matcher),
         matchers.goals_matcher(goals),
         span,
       ),

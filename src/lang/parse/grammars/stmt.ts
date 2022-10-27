@@ -23,7 +23,7 @@ export const stmt = {
       '"["',
       { names: "names" },
       '"]"',
-      { options: { $ap: ["zero_or_more", "query_option"] } },
+      { options: { $ap: ["zero_or_more", "find_option"] } },
       '"{"',
       { goals: "goals" },
       '"}"',
@@ -31,7 +31,7 @@ export const stmt = {
     "stmt:query_single": [
       '"find"',
       { name: "name" },
-      { options: { $ap: ["zero_or_more", "query_option"] } },
+      { options: { $ap: ["zero_or_more", "find_option"] } },
       '"{"',
       { goals: "goals" },
       '"}"',
