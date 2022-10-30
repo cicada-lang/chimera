@@ -42,7 +42,7 @@ curl -s https://wa.cic.run --data-binary @-
 Run multiline text (bash and zsh):
 
 ```sh
-curl https://wa.cic.run --data-binary @- << END
+curl https://wa.cic.run --data-binary @-<< END
 
 Drink { person: "john", alcohol: "martini" }
 Drink { person: "mary", alcohol: "gin" }
@@ -68,7 +68,7 @@ The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
 You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
 
 ```sh
-curl -s https://wa.cic.run --data-binary @- << END | jq
+curl -s https://wa.cic.run --data-binary @-<< END | jq
 
 Drink { person: "john", alcohol: "martini" }
 Drink { person: "mary", alcohol: "gin" }
