@@ -32,8 +32,7 @@ curl https://wa.cic.run --data-binary @books/clause-and-effect/01-party-pairs.wa
 You can fetch code from a URL, and run:
 
 - We use `curl -s` to disable curl's progress bar.
-- All files in this repo, can be fetched from: [`https://cdn.wa.cic.run/<path>`](https://cdn.wa.cic.run), <br/>
-  and any other http server that serves `.wa` code would also work.
+- All files in this repo, can be fetched from: [`https://cdn.wa.cic.run/<path>`](https://cdn.wa.cic.run)
 
 ```sh
 curl -s https://cdn.wa.cic.run/books/clause-and-effect/01-party-pairs.wa |
@@ -95,8 +94,8 @@ END
 
 Install it by the following command:
 
-```
-npm install -g @cicada-lang/whereabouts
+```sh
+sudo npm install -g @cicada-lang/whereabouts
 ```
 
 The command line program is called `wa`.
