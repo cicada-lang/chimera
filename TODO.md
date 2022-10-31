@@ -8,3 +8,7 @@
 
 08-maximum-of-a-list.wa -- need `<=`
 09-searching-a-cyclic-graph.wa -- need `!=`
+
+# later
+
+use logic programming to play with many-valued logic
