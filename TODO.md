@@ -12,3 +12,5 @@
 # later
 
 use logic programming to play with many-valued logic
+
+- search how to construct truth function by composition of given set of connectives
