@@ -26,7 +26,7 @@ Visit the [Whereabouts Playground](https://whereabouts.cicada-lang.org/playgroun
 Post a file:
 
 ```sh
-curl https://wa.cic.run --data-binary @books/clause-and-effect/01-party-pairs.wa
+curl https://wa.cic.run --data-binary @docs/books/clause-and-effect/01-party-pairs.wa
 ```
 
 You can fetch code from a URL, and run:
@@ -35,7 +35,7 @@ You can fetch code from a URL, and run:
 - All files in this repo, can be fetched from: [`https://cdn.wa.cic.run/<path>`](https://cdn.wa.cic.run)
 
 ```sh
-curl -s https://cdn.wa.cic.run/books/clause-and-effect/01-party-pairs.wa |
+curl -s https://cdn.wa.cic.run/docs/books/clause-and-effect/01-party-pairs.wa |
 curl -s https://wa.cic.run --data-binary @-
 ```
 
@@ -103,19 +103,19 @@ The command line program is called `wa`.
 Run a file:
 
 ```sh
-wa run books/clause-and-effect/02-drinking-pairs.wa
+wa run docs/books/clause-and-effect/02-drinking-pairs.wa
 ```
 
 Run a file and watch file change:
 
 ```sh
-wa run books/clause-and-effect/02-drinking-pairs.wa --watch
+wa run docs/books/clause-and-effect/02-drinking-pairs.wa --watch
 ```
 
 Run a URL:
 
 ```sh
-wa run https://cdn.wa.cic.run/books/clause-and-effect/02-drinking-pairs.wa
+wa run https://cdn.wa.cic.run/docs/books/clause-and-effect/02-drinking-pairs.wa
 ```
 
 Outputs:
@@ -160,7 +160,7 @@ Outputs:
 
 ## Examples
 
-[**02-drinking-pairs.wa:**](books/clause-and-effect/02-drinking-pairs.wa)
+[**02-drinking-pairs.wa:**](docs/books/clause-and-effect/02-drinking-pairs.wa)
 
 ```js
 Drink { person: "john", alcohol: "martini" }
@@ -192,7 +192,7 @@ find [left, right, alcohol] {
 We can also use the module system to import from URL:
 
 ```js
-import { Friendship } from "https://cdn.wa.cic.run/books/clause-and-effect/02-drinking-pairs.wa"
+import { Friendship } from "https://cdn.wa.cic.run/docs/books/clause-and-effect/02-drinking-pairs.wa"
 
 find left {
   Friendship { left, right: "mary", alcohol: "gin" }
@@ -201,7 +201,7 @@ find left {
 
 The above example use JSON object, we can also use JSON array.
 
-[**03-affordable-journeys.wa:**](books/clause-and-effect/03-affordable-journeys.wa)
+[**03-affordable-journeys.wa:**](docs/books/clause-and-effect/03-affordable-journeys.wa)
 
 ```js
 Border ["sussex", "kent"]
@@ -243,7 +243,7 @@ find [x, y] {
 }
 ```
 
-Please see [tests/](tests/), [books/](books/) and [std/](std/) for more examples.
+Please see [tests/](tests/), [std/](std/) and [docs/books/](docs/books/) for more examples.
 
 ## Development
 
