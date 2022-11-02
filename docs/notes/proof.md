@@ -4,7 +4,7 @@ title: Proof
 
 Syntax for writing proofs by hand.
 
-```ts
+```
 Member [element, [element, ...tail]]
 ------------------------------------ here {}
 

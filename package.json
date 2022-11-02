@@ -21,9 +21,9 @@
     "test:tests-error": "test-runner snapshot-error './bin/wa.js' 'tests/**/*.error.(wa|md)'",
     "test:std": "test-runner snapshot './bin/wa.js' 'std/**/*.(wa|md)' --exclude 'std/**/*.error.(wa|md)'",
     "test:std-error": "test-runner snapshot-error './bin/wa.js' 'std/**/*.error.(wa|md)'",
-    "test:books": "test-runner snapshot './bin/wa.js' 'books/**/*.(wa|md)' --exclude 'books/**/*.error.(wa|md)'",
-    "test:books-error": "test-runner snapshot-error './bin/wa.js' 'books/**/*.error.(wa|md)'",
-    "test": "npm run test:ts && npm run test:tests && npm run test:tests-error && npm run test:std && npm run test:std-error && npm run test:books && npm run test:books-error",
+    "test:docs": "test-runner snapshot './bin/wa.js' 'docs/**/*.(wa|md)' --exclude 'docs/**/*.error.(wa|md)'",
+    "test:docs-error": "test-runner snapshot-error './bin/wa.js' 'docs/**/*.error.(wa|md)'",
+    "test": "npm run test:ts && npm run test:tests && npm run test:tests-error && npm run test:std && npm run test:std-error && npm run test:docs && npm run test:docs-error",
     "format": "prettier src --write"
   },
   "dependencies": {
