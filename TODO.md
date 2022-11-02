@@ -1,3 +1,5 @@
+single the-reasoned-schemer.mimor -- instead of many files
+
 # the-reasoned-schemer
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
