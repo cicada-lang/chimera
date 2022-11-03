@@ -1,0 +1,16 @@
+import { Zero, Add1, Nat } from "Nat.wa"
+import { Add, Mul } from "Nat.wa"
+import {
+  One,
+  Two,
+  Three,
+  Four,
+  Five,
+  Six,
+  Seven,
+  Eight,
+  Nine,
+  Ten,
+  Eleven,
+  Twelve,
+} from "Nat.wa"
