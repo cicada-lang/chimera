@@ -1,8 +1,4 @@
-Zero []
-Add1 [n, [1, ...n]]
-
-Nat n -- { Zero n }
-Nat n -- { Add1 [prev, n] Nat prev }
+import { Zero, Add1 } from "Nat.wa"
 
 One n -- { Add1 [prev, n] Zero prev }
 Two n -- { Add1 [prev, n] One prev }

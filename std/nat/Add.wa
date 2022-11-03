@@ -1,0 +1,20 @@
+import { Zero, Add1, Nat } from "Nat.wa"
+
+// TODO It is important to inline `Zero x`,
+//   the following would be too slow,
+//   we should optimize this so that
+//   we do not need to always inline.
+
+// Add [x, y, y]
+// ------------- {
+//   Zero x
+// }
+
+Add [[], y, y]
+
+Add [x, y, out]
+-------------------- {
+  Add1 [prev, x]
+  Add1 [res, out]
+  Add [prev, y, res]
+}

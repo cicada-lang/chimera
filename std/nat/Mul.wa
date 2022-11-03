@@ -1,0 +1,14 @@
+import { Zero, Add1, Nat } from "Nat.wa"
+import { Add } from "Add.wa"
+
+Mul [[], y, []]
+
+Mul [x, [], []] -- { Add1 [prev, x] }
+
+Mul [x, y , out]
+----------------- {
+  Add1 [prev, x]
+  Add1 [_prev, y]
+  Add [y, z, out]
+  Mul [prev, y, z]
+}

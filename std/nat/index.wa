@@ -1,5 +1,6 @@
 import { Zero, Add1, Nat } from "Nat.wa"
-import { Add, Mul } from "Nat.wa"
+import { Add } from "Add.wa"
+import { Mul } from "Mul.wa"
 import {
   One,
   Two,
@@ -13,4 +14,4 @@ import {
   Ten,
   Eleven,
   Twelve,
-} from "Nat.wa"
+} from "numbers.wa"
