@@ -1,3 +1,5 @@
+understand the depth first search in prolog and minikanren
+
 # the-reasoned-schemer
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
