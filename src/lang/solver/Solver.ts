@@ -19,11 +19,14 @@ import {
 
 /**
 
-   # Solver
+   A solver has a queue of tasks,
+   one task represents a path we are searching.
 
-   In implementation, we use queue of tasks to do search,
-   but we should be thinking in terms of tree instead of queue,
-   only by doing so, we can have a clear understanding of the implementation.
+   A task has a queue of goals.
+
+   Pursuing a goal will generate new tasks,
+   one task for each clause of a relation,
+   representing a new branching path to search.
 
 **/
 

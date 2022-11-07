@@ -27,14 +27,14 @@ export class Task {
     // pop + append = ?
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
-    return pursueGoal(mod, this.solution, goal).map(
+    return pursue(mod, this.solution, goal).map(
       (task) => new Task(task.solution, this.goals.concat(task.goals)),
       // (task) => new Task(task.solution, task.goals.concat(this.goals)),
     )
   }
 }
 
-function pursueGoal(mod: Mod, solution: Solution, goal: Goal): Array<Task> {
+function pursue(mod: Mod, solution: Solution, goal: Goal): Array<Task> {
   switch (goal.kind) {
     case "Apply": {
       return goal.relation.clauses.flatMap((clause) => {
