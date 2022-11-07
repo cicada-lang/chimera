@@ -1,3 +1,21 @@
+making whereabout no closure
+
+add proof syntax
+
+add function application style proof syntax
+
+add top level function definition to whereabout (still no closure)
+
+- this language should be a language to play with the idea about "having no closure".
+
+read "a surprisingly competitive conditional operator"
+
+- minikanrenizing the inference rules of pie
+
+implement langs/simple type checker in whereabout
+
+- maybe also try prolog
+
 # the-reasoned-schemer
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
