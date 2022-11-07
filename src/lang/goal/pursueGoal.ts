@@ -24,25 +24,16 @@ export function pursueGoal(
 ): Array<GoalQueue> {
   switch (goal.kind) {
     case "Apply": {
-      const queues: Array<GoalQueue> = []
-      for (const clause of goal.relation.clauses) {
-        const freshClause = Exps.freshenClause(mod, clause)
-        const newSolution = unify(solution, freshClause.exp, goal.arg)
-        if (newSolution !== undefined) {
-          queues.push(new GoalQueue(newSolution, freshClause.goals))
-        }
-      }
-
-      return queues
+      return goal.relation.clauses.flatMap((clause) => {
+        const { exp, goals } = Exps.freshenClause(mod, clause)
+        const newSolution = unify(solution, exp, goal.arg)
+        return newSolution ? [new GoalQueue(newSolution, goals)] : []
+      })
     }
 
     case "Unifiable": {
       const newSolution = unify(solution, goal.left, goal.right)
-      if (newSolution !== undefined) {
-        return [new GoalQueue(newSolution, [])]
-      } else {
-        return []
-      }
+      return newSolution ? [new GoalQueue(newSolution, [])] : []
     }
   }
 }

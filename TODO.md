@@ -8,8 +8,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 # optimize
 
-How to inline goal?
-
 ```
 Add [[], y, y]
 ```
