@@ -11,6 +11,31 @@ and the query outputs are [JSON lines](https://jsonlines.org).
 > Cloud-hidden, **whereabouts unknown**." <br/>
 > -- [Jia Dao](https://en.wikipedia.org/wiki/Jia_Dao)
 
+## Notes
+
+### Reversed inference rule style syntax for defining relation
+
+Instead of writing inference rule:
+
+```
+premise
+premise
+...
+----------
+conclusion
+```
+
+We write reversed inference rule (which is easier to edit):
+
+```
+conclusion
+----------- {
+  premise
+  premise
+  ...
+}
+```
+
 ## Usages
 
 ### Online playground
