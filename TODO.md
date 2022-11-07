@@ -1,4 +1,4 @@
-mod has `definitions` instead of `env`
+mod has `denotations` instead of `env`
 
 making whereabout no closure
 
