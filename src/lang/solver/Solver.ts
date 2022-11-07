@@ -1,7 +1,7 @@
 import YAML from "yaml"
 import { Json } from "../../utils/Json"
 import { formatExp } from "../exp"
-import { formatGoal, Goal, GoalQueue } from "../goal"
+import { formatGoal, Goal } from "../goal"
 import { Mod } from "../mod"
 import {
   deepWalk,
@@ -10,7 +10,7 @@ import {
   solutionNames,
   SolutionNull,
 } from "../solution"
-import { Debugger } from "../solver"
+import { Debugger, Task } from "../solver"
 import {
   formatQueryPattern,
   formatSolutionForQueryPattern,
@@ -50,10 +50,10 @@ export class Solver {
   step_count = 0
   solutions: Array<Solution> = []
 
-  constructor(public pattern: QueryPattern, public queues: Array<GoalQueue>) {}
+  constructor(public pattern: QueryPattern, public queues: Array<Task>) {}
 
   static fromGoals(pattern: QueryPattern, goals: Array<Goal>): Solver {
-    const queue = new GoalQueue(SolutionNull(), goals)
+    const queue = new Task(SolutionNull(), goals)
     return new Solver(pattern, [queue])
   }
 
@@ -97,7 +97,7 @@ export class Solver {
 
   private step(mod: Mod, options: SolveOptions): Solution | undefined {
     this.step_count++
-    const queue = this.queues.shift() as GoalQueue
+    const queue = this.queues.shift() as Task
     const queues = queue.step(mod)
     if (queues === undefined) return queue.solution
 
@@ -127,7 +127,7 @@ export class Solver {
   }
 }
 
-function reportQueue(queue: GoalQueue): SolverReportQueue {
+function reportQueue(queue: Task): SolverReportQueue {
   const solution = Object.fromEntries(
     solutionNames(queue.solution).map((name) => [
       name,
