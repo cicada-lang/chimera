@@ -1,7 +1,3 @@
-remove `evaluateGoal`
-
-making whereabout no closure
-
 add proof syntax
 
 add function application style proof syntax
