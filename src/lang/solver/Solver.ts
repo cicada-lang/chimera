@@ -97,17 +97,11 @@ export class Solver {
 
   private step(mod: Mod, options: SolveOptions): Solution | undefined {
     this.step_count++
+    // pop + push = depth first
+    // shift + push = breadth first
     const task = this.tasks.shift() as Task
     const tasks = task.step(mod)
     if (tasks === undefined) return task.solution
-
-    /**
-       NOTE About searching
-
-       | push front |   depth first |
-       | push back  | breadth first |
-    **/
-
     this.tasks.push(...tasks)
   }
 

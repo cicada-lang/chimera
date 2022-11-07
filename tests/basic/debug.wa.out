@@ -1,6 +1,6 @@
 ---
 step_count: 0
-queues:
+tasks:
   - solution: {}
     goals:
       - '"?x" = true'
@@ -10,7 +10,7 @@ solutions: []
 
 ---
 step_count: 1
-queues:
+tasks:
   - solution:
       x: true
     goals:
@@ -20,7 +20,7 @@ solutions: []
 
 ---
 step_count: 2
-queues:
+tasks:
   - solution:
       y: false
       x: true
