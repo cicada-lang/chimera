@@ -1,4 +1,4 @@
-import { Value } from "../value"
+import { Exp } from "../exp"
 
 export type Solution = SolutionNull | SolutionCons
 
@@ -15,19 +15,19 @@ export function SolutionNull(): SolutionNull {
 export type SolutionCons = {
   kind: "SolutionCons"
   name: string
-  value: Value
+  exp: Exp
   rest: Solution
 }
 
 export function SolutionCons(
   name: string,
-  value: Value,
+  exp: Exp,
   rest: Solution,
 ): SolutionCons {
   return {
     kind: "SolutionCons",
     name,
-    value,
+    exp,
     rest,
   }
 }

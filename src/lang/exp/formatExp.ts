@@ -1,21 +1,21 @@
-import { Value } from "../value"
+import { Exp } from "../exp"
 
-export function formatValue(value: Value): string {
-  switch (value.kind) {
+export function formatExp(exp: Exp): string {
+  switch (exp.kind) {
     case "PatternVar": {
-      return JSON.stringify(`?${value.name}`)
+      return JSON.stringify(`?${exp.name}`)
     }
 
     case "String": {
-      return JSON.stringify(value.data)
+      return JSON.stringify(exp.data)
     }
 
     case "Number": {
-      return value.data.toString()
+      return exp.data.toString()
     }
 
     case "Boolean": {
-      return value.data.toString()
+      return exp.data.toString()
     }
 
     case "Null": {
@@ -24,10 +24,10 @@ export function formatValue(value: Value): string {
 
     case "ListCons": {
       // NOTE Always format valid JSON.
-      const { elements, last } = foldListCons(value.car, value.cdr)
+      const { elements, last } = foldListCons(exp.car, exp.cdr)
       return last === undefined
-        ? `[${elements.map(formatValue).join(", ")}]`
-        : `[${elements.map(formatValue).join(", ")}, { "...": ${formatValue(
+        ? `[${elements.map(formatExp).join(", ")}]`
+        : `[${elements.map(formatExp).join(", ")}, { "...": ${formatExp(
             last,
           )} }]`
     }
@@ -37,12 +37,12 @@ export function formatValue(value: Value): string {
     }
 
     case "Objekt": {
-      if (Object.entries(value.properties).length === 0) {
+      if (Object.entries(exp.properties).length === 0) {
         return "{}"
       }
 
-      const properties = Object.entries(value.properties)
-        .map(([name, property]) => `"${name}": ${formatValue(property)}`)
+      const properties = Object.entries(exp.properties)
+        .map(([name, property]) => `"${name}": ${formatExp(property)}`)
         .join(", ")
       return `{ ${properties} }`
     }
@@ -50,9 +50,9 @@ export function formatValue(value: Value): string {
 }
 
 function foldListCons(
-  car: Value,
-  cdr: Value,
-): { elements: Array<Value>; last?: Value } {
+  car: Exp,
+  cdr: Exp,
+): { elements: Array<Exp>; last?: Exp } {
   switch (cdr.kind) {
     case "ListNull": {
       return { elements: [car] }

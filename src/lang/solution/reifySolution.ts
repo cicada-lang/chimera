@@ -1,25 +1,25 @@
+import * as Exps from "../exp"
+import { Exp } from "../exp"
 import { Solution, SolutionCons, solutionLength, walk } from "../solution"
-import * as Values from "../value"
-import { Value } from "../value"
 
-export function reifySolution(solution: Solution, value: Value): Solution {
-  value = walk(solution, value)
+export function reifySolution(solution: Solution, exp: Exp): Solution {
+  exp = walk(solution, exp)
 
-  switch (value.kind) {
+  switch (exp.kind) {
     case "PatternVar": {
       const count = solutionLength(solution)
-      const reifiedValue = Values.String(`_.${count}`)
-      return SolutionCons(value.name, reifiedValue, solution)
+      const reifiedExp = Exps.String(`_.${count}`)
+      return SolutionCons(exp.name, reifiedExp, solution)
     }
 
     case "ListCons": {
-      solution = reifySolution(solution, value.car)
-      solution = reifySolution(solution, value.cdr)
+      solution = reifySolution(solution, exp.car)
+      solution = reifySolution(solution, exp.cdr)
       return solution
     }
 
     case "Objekt": {
-      for (const property of Object.values(value.properties)) {
+      for (const property of Object.values(exp.properties)) {
         solution = reifySolution(solution, property)
       }
 

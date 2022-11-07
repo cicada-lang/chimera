@@ -1,5 +1,5 @@
 import * as Exps from "../../exp"
-import { evaluate, Exp } from "../../exp"
+import { Exp } from "../../exp"
 import { Mod } from "../../mod"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"
@@ -17,8 +17,7 @@ export class Rule extends Stmt {
 
   async execute(mod: Mod): Promise<void> {
     mod.findOrCreateRelation(this.name)
-    const value = evaluate(this.exp)
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod, goal))
-    mod.defineClause(this.name, this.clauseName, value, goals)
+    mod.defineClause(this.name, this.clauseName, this.exp, goals)
   }
 }

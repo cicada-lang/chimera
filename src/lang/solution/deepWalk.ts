@@ -1,22 +1,22 @@
+import * as Exps from "../exp"
+import { Exp } from "../exp"
 import { Solution, walk } from "../solution"
-import * as Values from "../value"
-import { Value } from "../value"
 
-export function deepWalk(solution: Solution, value: Value): Value {
-  value = walk(solution, value)
+export function deepWalk(solution: Solution, exp: Exp): Exp {
+  exp = walk(solution, exp)
 
-  switch (value.kind) {
+  switch (exp.kind) {
     case "ListCons": {
-      return Values.ListCons(
-        deepWalk(solution, value.car),
-        deepWalk(solution, value.cdr),
+      return Exps.ListCons(
+        deepWalk(solution, exp.car),
+        deepWalk(solution, exp.cdr),
       )
     }
 
     case "Objekt": {
-      return Values.Objekt(
+      return Exps.Objekt(
         Object.fromEntries(
-          Object.entries(value.properties).map(([name, property]) => [
+          Object.entries(exp.properties).map(([name, property]) => [
             name,
             deepWalk(solution, property),
           ]),
@@ -25,7 +25,7 @@ export function deepWalk(solution: Solution, value: Value): Value {
     }
 
     default: {
-      return value
+      return exp
     }
   }
 }

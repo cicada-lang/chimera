@@ -1,10 +1,11 @@
 import YAML from "yaml"
 import { Json } from "../../utils/Json"
+import { formatExp } from "../exp"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import {
   deepWalk,
-  lookupValueInSolution,
+  lookupSolution,
   Solution,
   solutionNames,
   SolutionNull,
@@ -15,7 +16,6 @@ import {
   formatSolutionForQueryPattern,
   QueryPattern,
 } from "../stmts/find"
-import { formatValue } from "../value"
 
 /**
 
@@ -144,10 +144,10 @@ function reportQueue(queue: GoalQueue): SolverReportQueue {
 }
 
 function formatVariableNoReify(solution: Solution, name: string): string {
-  const value = lookupValueInSolution(solution, name)
-  if (value === undefined) {
+  const exp = lookupSolution(solution, name)
+  if (exp === undefined) {
     return `"?${name}"`
   } else {
-    return `${formatValue(deepWalk(solution, value))}`
+    return `${formatExp(deepWalk(solution, exp))}`
   }
 }

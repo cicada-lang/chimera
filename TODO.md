@@ -1,4 +1,4 @@
-merge `Value` and `Exp` -- remove `evaluate`
+remove `evaluateGoal`
 
 making whereabout no closure
 

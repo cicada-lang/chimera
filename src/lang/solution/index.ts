@@ -1,5 +1,5 @@
 export * from "./deepWalk"
-export * from "./lookupValueInSolution"
+export * from "./lookupSolution"
 export * from "./occur"
 export * from "./reify"
 export * from "./reifySolution"

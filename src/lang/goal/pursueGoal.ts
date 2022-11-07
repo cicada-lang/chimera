@@ -1,7 +1,7 @@
 import { Goal, GoalQueue } from "."
+import * as Exps from "../exp"
 import { Mod } from "../mod"
 import { Solution, unify } from "../solution"
-import * as Values from "../value"
 
 /**
 
@@ -26,8 +26,8 @@ export function pursueGoal(
     case "Apply": {
       const queues: Array<GoalQueue> = []
       for (const clause of goal.relation.clauses) {
-        const freshClause = Values.freshenClause(mod, clause)
-        const newSolution = unify(solution, freshClause.value, goal.arg)
+        const freshClause = Exps.freshenClause(mod, clause)
+        const newSolution = unify(solution, freshClause.exp, goal.arg)
         if (newSolution !== undefined) {
           queues.push(new GoalQueue(newSolution, freshClause.goals))
         }

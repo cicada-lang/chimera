@@ -16,7 +16,7 @@ function collectFindOption(
 ): void {
   switch (option.kind) {
     case "FindOptionLimit": {
-      solveOptions.limit = option.value
+      solveOptions.limit = option.exp
       return
     }
 

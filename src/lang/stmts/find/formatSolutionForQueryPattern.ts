@@ -1,6 +1,6 @@
+import * as Exps from "../../exp"
+import { Exp, formatExp } from "../../exp"
 import { reify, Solution } from "../../solution"
-import * as Values from "../../value"
-import { formatValue, Value } from "../../value"
 import { QueryPattern } from "../find"
 
 export function formatSolutionForQueryPattern(
@@ -9,21 +9,23 @@ export function formatSolutionForQueryPattern(
 ): string {
   switch (pattern.kind) {
     case "QueryPatternNames": {
-      const variables: Array<Value> = pattern.names.map(Values.PatternVar)
+      const variables: Array<Exp> = pattern.names.map((name) =>
+        Exps.PatternVar(name),
+      )
       const list = variables.reduceRight(
-        (result, variable) => Values.ListCons(variable, result),
-        Values.ListNull(),
+        (result, variable) => Exps.ListCons(variable, result),
+        Exps.ListNull(),
       )
       const results = solutions.map((solution) =>
-        formatValue(reify(solution, list)),
+        formatExp(reify(solution, list)),
       )
       return formatResults(results)
     }
 
     case "QueryPatternName": {
-      const variable = Values.PatternVar(pattern.name)
+      const variable = Exps.PatternVar(pattern.name)
       const results = solutions.map((solution) =>
-        formatValue(reify(solution, variable)),
+        formatExp(reify(solution, variable)),
       )
       return formatResults(results)
     }

@@ -1,5 +1,5 @@
+import { Exp } from "../exp"
 import { Relation } from "../relation"
-import { Value } from "../value"
 
 export type Goal = Apply | Unifiable
 
@@ -8,10 +8,10 @@ export type Apply = {
   kind: "Apply"
   name: string
   relation: Relation
-  arg: Value
+  arg: Exp
 }
 
-export function Apply(name: string, relation: Relation, arg: Value): Apply {
+export function Apply(name: string, relation: Relation, arg: Exp): Apply {
   return {
     family: "Goal",
     kind: "Apply",
@@ -24,11 +24,11 @@ export function Apply(name: string, relation: Relation, arg: Value): Apply {
 export type Unifiable = {
   family: "Goal"
   kind: "Unifiable"
-  left: Value
-  right: Value
+  left: Exp
+  right: Exp
 }
 
-export function Unifiable(left: Value, right: Value): Unifiable {
+export function Unifiable(left: Exp, right: Exp): Unifiable {
   return {
     family: "Goal",
     kind: "Unifiable",

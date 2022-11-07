@@ -1,22 +1,20 @@
+import { Exp } from "../exp"
 import { Solution, walk } from "../solution"
-import { Value } from "../value"
 
-export function occur(solution: Solution, name: String, value: Value): boolean {
-  value = walk(solution, value)
+export function occur(solution: Solution, name: String, exp: Exp): boolean {
+  exp = walk(solution, exp)
 
-  switch (value.kind) {
+  switch (exp.kind) {
     case "PatternVar": {
-      return value.name === name
+      return exp.name === name
     }
 
     case "ListCons": {
-      return (
-        occur(solution, name, value.car) || occur(solution, name, value.cdr)
-      )
+      return occur(solution, name, exp.car) || occur(solution, name, exp.cdr)
     }
 
     case "Objekt": {
-      return Object.values(value.properties).some((property) =>
+      return Object.values(exp.properties).some((property) =>
         occur(solution, name, property),
       )
     }

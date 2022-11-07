@@ -1,3 +1,3 @@
-export function deleteUndefined(value: any) {
-  return JSON.parse(JSON.stringify(value))
+export function deleteUndefined(exp: any) {
+  return JSON.parse(JSON.stringify(exp))
 }

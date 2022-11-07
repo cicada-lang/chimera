@@ -1,12 +1,12 @@
-import { lookupValueInSolution, Solution } from "../solution"
-import { Value } from "../value"
+import { Exp } from "../exp"
+import { lookupSolution, Solution } from "../solution"
 
-export function walk(solution: Solution, value: Value): Value {
-  while (value.kind === "PatternVar") {
-    const found = lookupValueInSolution(solution, value.name)
-    if (found === undefined) return value
-    value = found
+export function walk(solution: Solution, exp: Exp): Exp {
+  while (exp.kind === "PatternVar") {
+    const found = lookupSolution(solution, exp.name)
+    if (found === undefined) return exp
+    exp = found
   }
 
-  return value
+  return exp
 }

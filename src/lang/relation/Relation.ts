@@ -1,5 +1,5 @@
+import { Exp } from "../exp"
 import { Goal } from "../goal"
-import { Value } from "../value"
 
 export class Relation {
   constructor(public clauses: Array<Clause>) {}
@@ -18,14 +18,14 @@ export class Relation {
 
 export type Clause = {
   name: string
-  value: Value
+  exp: Exp
   goals: Array<Goal>
 }
 
-export function Clause(name: string, value: Value, goals: Array<Goal>): Clause {
+export function Clause(name: string, exp: Exp, goals: Array<Goal>): Clause {
   return {
     name,
-    value,
+    exp,
     goals,
   }
 }

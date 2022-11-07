@@ -1,8 +1,8 @@
 import { Loader } from "../../loader"
+import { Exp } from "../exp"
 import { Goal } from "../goal"
 import { Clause, Relation } from "../relation"
 import { Stmt } from "../stmt"
-import { Value } from "../value"
 
 export interface ModOptions {
   url: URL
@@ -39,14 +39,14 @@ export class Mod {
   defineClause(
     name: string,
     clauseName: string | undefined,
-    value: Value,
+    exp: Exp,
     goals?: Array<Goal>,
   ): void {
     const relation = this.findOrCreateRelation(name)
     relation.clauses.push(
       Clause(
         clauseName || relation.clauses.length.toString(),
-        value,
+        exp,
         goals || [],
       ),
     )

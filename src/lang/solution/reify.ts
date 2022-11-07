@@ -1,8 +1,8 @@
+import { Exp } from "../exp"
 import { deepWalk, reifySolution, Solution, SolutionNull } from "../solution"
-import { Value } from "../value"
 
-export function reify(solution: Solution, value: Value): Value {
-  value = deepWalk(solution, value)
-  solution = reifySolution(SolutionNull(), value)
-  return deepWalk(solution, value)
+export function reify(solution: Solution, exp: Exp): Exp {
+  exp = deepWalk(solution, exp)
+  solution = reifySolution(SolutionNull(), exp)
+  return deepWalk(solution, exp)
 }

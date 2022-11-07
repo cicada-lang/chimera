@@ -1,4 +1,4 @@
-import { evaluate, Exp } from "../../exp"
+import { Exp } from "../../exp"
 import { Mod } from "../../mod"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"
@@ -9,7 +9,6 @@ export class Fact extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    const value = evaluate(this.exp)
-    mod.defineClause(this.name, undefined, value)
+    mod.defineClause(this.name, undefined, this.exp)
   }
 }

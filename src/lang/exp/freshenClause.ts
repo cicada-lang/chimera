@@ -1,9 +1,9 @@
+import * as Exps from "../exp"
+import { Exp } from "../exp"
 import * as Goals from "../goal"
 import { Goal } from "../goal"
 import { Mod } from "../mod"
 import { Clause } from "../relation"
-import * as Values from "../value"
-import { Value } from "../value"
 
 /**
    Side-effects.
@@ -12,11 +12,11 @@ import { Value } from "../value"
 export function freshenClause(
   mod: Mod,
   clause: Clause,
-  varMap: Map<string, Values.PatternVar> = new Map(),
+  varMap: Map<string, Exps.PatternVar> = new Map(),
 ): Clause {
   return Clause(
     clause.name,
-    freshenValue(mod, clause.value, varMap),
+    freshenExp(mod, clause.exp, varMap),
     clause.goals.map((goal) => freshenGoal(mod, goal, varMap)),
   )
 }
@@ -24,7 +24,7 @@ export function freshenClause(
 function freshenGoal(
   mod: Mod,
   goal: Goal,
-  varMap: Map<string, Values.PatternVar>,
+  varMap: Map<string, Exps.PatternVar>,
 ): Goal {
   switch (goal.kind) {
     case "Apply": {
@@ -32,71 +32,71 @@ function freshenGoal(
       return Goals.Apply(
         goal.name,
         goal.relation,
-        freshenValue(mod, goal.arg, varMap),
+        freshenExp(mod, goal.arg, varMap),
       )
     }
 
     case "Unifiable": {
       return Goals.Unifiable(
-        freshenValue(mod, goal.left, varMap),
-        freshenValue(mod, goal.right, varMap),
+        freshenExp(mod, goal.left, varMap),
+        freshenExp(mod, goal.right, varMap),
       )
     }
   }
 }
 
-function freshenValue(
+function freshenExp(
   mod: Mod,
-  value: Value,
-  varMap: Map<string, Values.PatternVar>,
-): Value {
-  switch (value.kind) {
+  exp: Exp,
+  varMap: Map<string, Exps.PatternVar>,
+): Exp {
+  switch (exp.kind) {
     case "PatternVar": {
-      const found = varMap.get(value.name)
+      const found = varMap.get(exp.name)
       if (found !== undefined) return found
 
       const count = mod.variableCount
       mod.variableCount++
 
-      const freshName = `${value.name}_${count}`
-      const variable = Values.PatternVar(freshName)
-      varMap.set(value.name, variable)
+      const freshName = `${exp.name}_${count}`
+      const variable = Exps.PatternVar(freshName)
+      varMap.set(exp.name, variable)
       return variable
     }
 
     case "String": {
-      return value
+      return exp
     }
 
     case "Number": {
-      return value
+      return exp
     }
 
     case "Boolean": {
-      return value
+      return exp
     }
 
     case "Null": {
-      return value
+      return exp
     }
 
     case "ListCons": {
-      return Values.ListCons(
-        freshenValue(mod, value.car, varMap),
-        freshenValue(mod, value.cdr, varMap),
+      return Exps.ListCons(
+        freshenExp(mod, exp.car, varMap),
+        freshenExp(mod, exp.cdr, varMap),
       )
     }
 
     case "ListNull": {
-      return value
+      return exp
     }
 
     case "Objekt": {
-      return Values.Objekt(
+      return Exps.Objekt(
         Object.fromEntries(
-          Object.entries(value.properties).map(([name, property]) => [
+          Object.entries(exp.properties).map(([name, property]) => [
             name,
-            freshenValue(mod, property, varMap),
+            freshenExp(mod, property, varMap),
           ]),
         ),
       )

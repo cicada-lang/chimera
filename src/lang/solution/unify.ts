@@ -1,10 +1,10 @@
+import { Exp } from "../exp"
 import { occur, Solution, SolutionCons, walk } from "../solution"
-import { Value } from "../value"
 
 export function unify(
   solution: Solution,
-  left: Value,
-  right: Value,
+  left: Exp,
+  right: Exp,
 ): Solution | undefined {
   left = walk(solution, left)
   right = walk(solution, right)

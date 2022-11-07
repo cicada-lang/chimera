@@ -1,13 +1,13 @@
+import { Exp } from "../exp"
 import { Solution } from "../solution"
-import { Value } from "../value"
 
-export function lookupValueInSolution(
+export function lookupSolution(
   solution: Solution,
   name: string,
-): Value | undefined {
+): Exp | undefined {
   while (solution.kind !== "SolutionNull") {
     if (solution.name === name) {
-      return solution.value
+      return solution.exp
     } else {
       solution = solution.rest
     }
