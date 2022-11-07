@@ -1,19 +1,3 @@
-add proof syntax
-
-add function application style proof syntax
-
-add top level function definition to whereabout (still no closure)
-
-- this language should be a language to play with the idea about "having no closure".
-
-read "a surprisingly competitive conditional operator"
-
-- minikanrenizing the inference rules of pie
-
-implement langs/simple type checker in whereabout
-
-- maybe also try prolog
-
 # the-reasoned-schemer
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
@@ -21,6 +5,37 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 08-just-a-bit-more.wa
 09-thin-ice.wa
 10-under-the-hood.wa
+
+# optimize
+
+How to inline goal?
+
+```
+Add [[], y, y]
+```
+
+The above is much faster than the following:
+
+```
+Zero []
+
+Add [x, y, y]
+------------- {
+  Zero x
+}
+```
+
+This means doing abstraction by defining relation cost a lot.
+
+How to optimize this?
+
+# langs
+
+implement langs/simple type checker in whereabout
+
+read "a surprisingly competitive conditional operator"
+
+- minikanrenizing the inference rules of pie
 
 # clause-and-effect
 
