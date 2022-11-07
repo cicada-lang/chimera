@@ -21,12 +21,11 @@ find [left] {
         [
           Exps.GoalApply(
             "Friendship",
-
-            Exps.ObjektUnfolded([
-              Exps.PropertyPlain("left", Exps.PatternVar("left")),
-              Exps.PropertyPlain("right", Exps.String("mary")),
-              Exps.PropertyPlain("alcohol", Exps.String("gin")),
-            ]),
+            Exps.Objekt({
+              left: Exps.PatternVar("left"),
+              right: Exps.String("mary"),
+              alcohol: Exps.String("gin"),
+            }),
           ),
         ],
       ),
@@ -52,11 +51,11 @@ find [left] limit 1 {
           Exps.GoalApply(
             "Friendship",
 
-            Exps.ObjektUnfolded([
-              Exps.PropertyPlain("left", Exps.PatternVar("left")),
-              Exps.PropertyPlain("right", Exps.String("mary")),
-              Exps.PropertyPlain("alcohol", Exps.String("gin")),
-            ]),
+            Exps.Objekt({
+              left: Exps.PatternVar("left"),
+              right: Exps.String("mary"),
+              alcohol: Exps.String("gin"),
+            }),
           ),
         ],
       ),

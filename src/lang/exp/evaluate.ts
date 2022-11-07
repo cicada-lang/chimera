@@ -1,4 +1,3 @@
-import * as Exps from "../exp"
 import { Exp } from "../exp"
 import * as Values from "../value"
 import { Value } from "../value"
@@ -42,10 +41,6 @@ export function evaluate(exp: Exp): Value {
           ]),
         ),
       )
-    }
-
-    case "ObjektUnfolded": {
-      return evaluate(Exps.Objekt(Exps.prepareProperties(exp.properties)))
     }
   }
 }

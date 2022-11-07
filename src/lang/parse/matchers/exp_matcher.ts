@@ -47,15 +47,15 @@ export function operand_matcher(tree: pt.Tree): Exp {
         ),
     "operand:list_empty": ({}, { span }) => Exps.ListNull(span),
     "operand:objekt": ({ properties, last_property }, { span }) =>
-      Exps.ObjektUnfolded(
-        [
+      Exps.Objekt(
+        Object.fromEntries([
           ...pt.matchers
             .zero_or_more_matcher(properties)
             .map(matchers.property_matcher),
           matchers.property_matcher(last_property),
-        ],
+        ]),
         span,
       ),
-    "operand:objekt_empty": ({}, { span }) => Exps.ObjektUnfolded([], span),
+    "operand:objekt_empty": ({}, { span }) => Exps.Objekt({}, span),
   })(tree)
 }

@@ -11,7 +11,6 @@ export type Exp =
   | ListCons
   | ListNull
   | Objekt
-  | ObjektUnfolded
 
 export type PatternVar = {
   family: "Exp"
@@ -128,39 +127,5 @@ export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
     kind: "Objekt",
     properties,
     span,
-  }
-}
-
-export type ObjektUnfolded = {
-  family: "Exp"
-  kind: "ObjektUnfolded"
-  properties: Array<Property>
-} & ExpMeta
-
-export function ObjektUnfolded(
-  properties: Array<Property>,
-  span?: Span,
-): ObjektUnfolded {
-  return {
-    family: "Exp",
-    kind: "ObjektUnfolded",
-    properties,
-    span,
-  }
-}
-
-export type Property = PropertyPlain
-
-export type PropertyPlain = {
-  kind: "PropertyPlain"
-  name: string
-  exp: Exp
-}
-
-export function PropertyPlain(name: string, exp: Exp): PropertyPlain {
-  return {
-    kind: "PropertyPlain",
-    name,
-    exp,
   }
 }

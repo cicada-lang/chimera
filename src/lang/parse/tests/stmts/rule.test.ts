@@ -20,25 +20,25 @@ Friendship { left, right, alcohol }
       new Stmts.Rule(
         "Friendship",
         undefined,
-        Exps.ObjektUnfolded([
-          Exps.PropertyPlain("left", Exps.PatternVar("left")),
-          Exps.PropertyPlain("right", Exps.PatternVar("right")),
-          Exps.PropertyPlain("alcohol", Exps.PatternVar("alcohol")),
-        ]),
+        Exps.Objekt({
+          left: Exps.PatternVar("left"),
+          right: Exps.PatternVar("right"),
+          alcohol: Exps.PatternVar("alcohol"),
+        }),
         [
           Exps.GoalApply(
             "Drink",
-            Exps.ObjektUnfolded([
-              Exps.PropertyPlain("person", Exps.PatternVar("left")),
-              Exps.PropertyPlain("alcohol", Exps.PatternVar("alcohol")),
-            ]),
+            Exps.Objekt({
+              person: Exps.PatternVar("left"),
+              alcohol: Exps.PatternVar("alcohol"),
+            }),
           ),
           Exps.GoalApply(
             "Drink",
-            Exps.ObjektUnfolded([
-              Exps.PropertyPlain("person", Exps.PatternVar("right")),
-              Exps.PropertyPlain("alcohol", Exps.PatternVar("alcohol")),
-            ]),
+            Exps.Objekt({
+              person: Exps.PatternVar("right"),
+              alcohol: Exps.PatternVar("alcohol"),
+            }),
           ),
         ],
       ),
