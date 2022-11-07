@@ -1,3 +1,5 @@
+mod has `definitions` instead of `env`
+
 making whereabout no closure
 
 add proof syntax

@@ -1,7 +1,7 @@
 import { Loader } from "../../loader"
 import { Env, EnvCons, EnvNull, lookupValueInEnv } from "../env"
 import { Goal } from "../goal"
-import { Stmt, StmtOutput } from "../stmt"
+import { Stmt } from "../stmt"
 import * as Values from "../value"
 import { Value } from "../value"
 
@@ -14,7 +14,7 @@ export class Mod {
   variableCount = 0
 
   env: Env = EnvNull()
-  outputs: Map<number, StmtOutput> = new Map()
+  outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
 
   constructor(public options: ModOptions) {}
