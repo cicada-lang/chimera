@@ -38,3 +38,17 @@ Use logic programming to play with many-valued logic.
 - How to search high-order things like connective in logic programming?
 
 command line watch need to trace import dependence
+
+# [feature] reference data by URL in JSON #3
+
+https://github.com/cicada-lang/whereabouts/issues/3
+
+There are a lot of related semantic web ideas:
+
+- https://en.wikipedia.org/wiki/JSON-LD
+
+# [feature] improve solver.report #2
+
+https://github.com/cicada-lang/whereabouts/issues/2
+
+[maybe] print queues[].solution with prune and deepWalk
