@@ -3,19 +3,19 @@ import { Add, Mul } from "../nat/index.wa"
 import { One, Two, Three, Four, Five, Six } from "../nat/index.wa"
 import { Seven, Eight, Nine, Ten, Eleven, Twelve } from "../nat/index.wa"
 
-find  z {
+find z {
   Two x
   Two y
   Mul [x, y, z]
 }
 
-find  [x, y] { Two z Mul [x, y, z] }
-find  [x, y] { Four z Mul [x, y, z] }
-find  [x, y] { Five z Mul [x, y, z] }
-find  [x, y] { Six z Mul [x, y, z] }
-find  [x, y] { Seven z Mul [x, y, z] }
-find  [x, y] { Eight z Mul [x, y, z] }
-find  [x, y] { Nine z Mul [x, y, z] }
-find  [x, y] { Ten z Mul [x, y, z] }
-find  [x, y] { Eleven z Mul [x, y, z] }
-find  [x, y] { Twelve z Mul [x, y, z] }
+find [x, y] { Two z Mul [x, y, z] }
+find [x, y] { Four z Mul [x, y, z] }
+find [x, y] { Five z Mul [x, y, z] }
+find [x, y] { Six z Mul [x, y, z] }
+find [x, y] { Seven z Mul [x, y, z] }
+find [x, y] { Eight z Mul [x, y, z] }
+find [x, y] { Nine z Mul [x, y, z] }
+find [x, y] { Ten z Mul [x, y, z] }
+find [x, y] { Eleven z Mul [x, y, z] }
+find [x, y] { Twelve z Mul [x, y, z] }
