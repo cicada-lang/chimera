@@ -1,6 +1,7 @@
 import * as Goals from "../goal"
 import { Goal } from "../goal"
 import { Mod } from "../mod"
+import { Clause } from "../relation"
 import * as Values from "../value"
 import { Value } from "../value"
 
@@ -10,10 +11,10 @@ import { Value } from "../value"
 
 export function freshenClause(
   mod: Mod,
-  clause: Values.Clause,
+  clause: Clause,
   varMap: Map<string, Values.PatternVar> = new Map(),
-): Values.Clause {
-  return Values.Clause(
+): Clause {
+  return Clause(
     clause.name,
     freshenValue(mod, clause.value, varMap),
     clause.goals.map((goal) => freshenGoal(mod, goal, varMap)),
@@ -99,10 +100,6 @@ function freshenValue(
           ]),
         ),
       )
-    }
-
-    case "Relation": {
-      return value
     }
   }
 }

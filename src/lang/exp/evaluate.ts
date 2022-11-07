@@ -1,10 +1,9 @@
-import { Env } from "../env"
 import * as Exps from "../exp"
 import { Exp } from "../exp"
 import * as Values from "../value"
 import { Value } from "../value"
 
-export function evaluate(env: Env, exp: Exp): Value {
+export function evaluate(exp: Exp): Value {
   switch (exp.kind) {
     case "PatternVar": {
       return Values.PatternVar(exp.name)
@@ -27,7 +26,7 @@ export function evaluate(env: Env, exp: Exp): Value {
     }
 
     case "ListCons": {
-      return Values.ListCons(evaluate(env, exp.car), evaluate(env, exp.cdr))
+      return Values.ListCons(evaluate(exp.car), evaluate(exp.cdr))
     }
 
     case "ListNull": {
@@ -39,14 +38,14 @@ export function evaluate(env: Env, exp: Exp): Value {
         Object.fromEntries(
           Object.entries(exp.properties).map(([name, property]) => [
             name,
-            evaluate(env, property),
+            evaluate(property),
           ]),
         ),
       )
     }
 
     case "ObjektUnfolded": {
-      return evaluate(env, Exps.Objekt(Exps.prepareProperties(exp.properties)))
+      return evaluate(Exps.Objekt(Exps.prepareProperties(exp.properties)))
     }
   }
 }

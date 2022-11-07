@@ -1,11 +1,8 @@
-import { Denotation } from "../denotation"
 import { Goal } from "../goal"
 import { Value } from "../value"
 
-export class Relation extends Denotation {
-  constructor(public clauses: Array<Clause>) {
-    super()
-  }
+export class Relation {
+  constructor(public clauses: Array<Clause>) {}
 }
 
 /**

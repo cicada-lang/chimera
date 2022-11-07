@@ -46,10 +46,6 @@ export function formatValue(value: Value): string {
         .join(", ")
       return `{ ${properties} }`
     }
-
-    case "Relation": {
-      return "#relation"
-    }
   }
 }
 

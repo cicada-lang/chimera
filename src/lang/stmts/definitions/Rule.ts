@@ -17,10 +17,8 @@ export class Rule extends Stmt {
 
   async execute(mod: Mod): Promise<void> {
     mod.findOrCreateRelation(this.name)
-    const value = evaluate(mod.env, this.exp)
-    const goals = this.goals.map((goal) =>
-      Exps.evaluateGoal(mod, mod.env, goal),
-    )
+    const value = evaluate(this.exp)
+    const goals = this.goals.map((goal) => Exps.evaluateGoal(mod, goal))
     mod.defineClause(this.name, this.clauseName, value, goals)
   }
 }

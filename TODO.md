@@ -1,4 +1,4 @@
-mod has `denotations` instead of `env`
+merge `Value` and `Exp`
 
 making whereabout no closure
 

@@ -1,4 +1,3 @@
-import { Env } from "../env"
 import { Goal, pursueGoal } from "../goal"
 import { Mod } from "../mod"
 import { Solution } from "../solution"
@@ -6,7 +5,7 @@ import { Solution } from "../solution"
 export class GoalQueue {
   constructor(public solution: Solution, public goals: Array<Goal>) {}
 
-  step(mod: Mod, env: Env): Array<GoalQueue> | undefined {
+  step(mod: Mod): Array<GoalQueue> | undefined {
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
 
@@ -17,7 +16,7 @@ export class GoalQueue {
        | push back  | breadth first |
     **/
 
-    const queues = pursueGoal(mod, env, this.solution, goal)
+    const queues = pursueGoal(mod, this.solution, goal)
     return queues.map(
       (queue) => new GoalQueue(queue.solution, this.goals.concat(queue.goals)),
     )

@@ -1,6 +1,5 @@
 import YAML from "yaml"
 import { Json } from "../../utils/Json"
-import { Env } from "../env"
 import { formatGoal, Goal, GoalQueue } from "../goal"
 import { Mod } from "../mod"
 import {
@@ -58,7 +57,7 @@ export class Solver {
     return new Solver(pattern, [queue])
   }
 
-  solve(mod: Mod, env: Env, options: SolveOptions): Array<Solution> {
+  solve(mod: Mod, options: SolveOptions): Array<Solution> {
     const limit = options.limit || Infinity
     const debugOptions = { skipPrompt: options.debug?.skipPrompt || 0 }
 
@@ -67,7 +66,7 @@ export class Solver {
         this.debugStep(mod.options.loader.options.debugger, debugOptions)
       }
 
-      const solution = this.step(mod, env, options)
+      const solution = this.step(mod, options)
       if (solution !== undefined) {
         this.solutions.push(solution)
       }
@@ -96,14 +95,10 @@ export class Solver {
     }
   }
 
-  private step(
-    mod: Mod,
-    env: Env,
-    options: SolveOptions,
-  ): Solution | undefined {
+  private step(mod: Mod, options: SolveOptions): Solution | undefined {
     this.step_count++
     const queue = this.queues.shift() as GoalQueue
-    const queues = queue.step(mod, env)
+    const queues = queue.step(mod)
     if (queues === undefined) return queue.solution
 
     /**

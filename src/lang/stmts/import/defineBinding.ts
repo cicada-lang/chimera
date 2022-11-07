@@ -1,21 +1,20 @@
-import { EnvCons } from "../../env"
 import { Mod } from "../../mod"
-import { Value } from "../../value"
+import { Relation } from "../../relation"
 import { ImportBinding } from "../import"
 
 export function defineBinding(
   mod: Mod,
   binding: ImportBinding,
-  value: Value,
+  relation: Relation,
 ): void {
   switch (binding.kind) {
     case "ImportBindingName": {
-      mod.env = EnvCons(binding.name, value, mod.env)
+      mod.relations.set(binding.name, relation)
       return
     }
 
     case "ImportBindingAlias": {
-      mod.env = EnvCons(binding.alias, value, mod.env)
+      mod.relations.set(binding.alias, relation)
       return
     }
   }

@@ -1,4 +1,3 @@
-import { lookupValueInEnv } from "../../env"
 import * as Errors from "../../errors"
 import { Mod } from "../../mod"
 import { Span } from "../../span"
@@ -22,7 +21,7 @@ export class Import extends Stmt {
 
     const importedMod = await mod.options.loader.load(url)
     for (const binding of this.bindings) {
-      const relation = lookupValueInEnv(importedMod.env, binding.name)
+      const relation = importedMod.relations.get(binding.name)
       if (relation === undefined) {
         throw new Errors.LangError(
           `I meet undefined name: ${binding.name}, when importing module: ${this.path}`,

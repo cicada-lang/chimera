@@ -9,7 +9,7 @@ export class Fact extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    const value = evaluate(mod.env, this.exp)
+    const value = evaluate(this.exp)
     mod.defineClause(this.name, undefined, value)
   }
 }
