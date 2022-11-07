@@ -21,8 +21,8 @@ import {
 
    # Solver
 
-   In implementation, we use array of queues to do search,
-   but we should be thinking in terms of tree instead of queues,
+   In implementation, we use queue of tasks to do search,
+   but we should be thinking in terms of tree instead of queue,
    only by doing so, we can have a clear understanding of the implementation.
 
 **/
@@ -36,12 +36,12 @@ export type SolveOptions = {
 
 export type SolverReport = {
   step_count: number
-  queues: Array<SolverReportQueue>
+  tasks: Array<SolverReportTask>
   solutions: Array<Json>
   query_pattern: string
 }
 
-export type SolverReportQueue = {
+export type SolverReportTask = {
   solution: Record<string, Json>
   goals: Array<string>
 }
@@ -50,18 +50,18 @@ export class Solver {
   step_count = 0
   solutions: Array<Solution> = []
 
-  constructor(public pattern: QueryPattern, public queues: Array<Task>) {}
+  constructor(public pattern: QueryPattern, public tasks: Array<Task>) {}
 
   static fromGoals(pattern: QueryPattern, goals: Array<Goal>): Solver {
-    const queue = new Task(SolutionNull(), goals)
-    return new Solver(pattern, [queue])
+    const task = new Task(SolutionNull(), goals)
+    return new Solver(pattern, [task])
   }
 
   solve(mod: Mod, options: SolveOptions): Array<Solution> {
     const limit = options.limit || Infinity
     const debugOptions = { skipPrompt: options.debug?.skipPrompt || 0 }
 
-    while (this.solutions.length < limit && this.queues.length > 0) {
+    while (this.solutions.length < limit && this.tasks.length > 0) {
       if (options.debug && mod.options.loader.options.debugger) {
         this.debugStep(mod.options.loader.options.debugger, debugOptions)
       }
@@ -97,9 +97,9 @@ export class Solver {
 
   private step(mod: Mod, options: SolveOptions): Solution | undefined {
     this.step_count++
-    const queue = this.queues.shift() as Task
-    const queues = queue.step(mod)
-    if (queues === undefined) return queue.solution
+    const task = this.tasks.shift() as Task
+    const tasks = task.step(mod)
+    if (tasks === undefined) return task.solution
 
     /**
        NOTE About searching
@@ -108,7 +108,7 @@ export class Solver {
        | push back  | breadth first |
     **/
 
-    this.queues.push(...queues)
+    this.tasks.push(...tasks)
   }
 
   reportFormatYAML(): string {
@@ -118,7 +118,7 @@ export class Solver {
   report(): SolverReport {
     return {
       step_count: this.step_count,
-      queues: this.queues.map(reportQueue),
+      tasks: this.tasks.map(reportTask),
       query_pattern: formatQueryPattern(this.pattern),
       solutions: JSON.parse(
         formatSolutionForQueryPattern(this.solutions, this.pattern),
@@ -127,15 +127,15 @@ export class Solver {
   }
 }
 
-function reportQueue(queue: Task): SolverReportQueue {
+function reportTask(task: Task): SolverReportTask {
   const solution = Object.fromEntries(
-    solutionNames(queue.solution).map((name) => [
+    solutionNames(task.solution).map((name) => [
       name,
-      JSON.parse(formatVariableNoReify(queue.solution, name)),
+      JSON.parse(formatVariableNoReify(task.solution, name)),
     ]),
   )
 
-  const goals = queue.goals.map(formatGoal)
+  const goals = task.goals.map(formatGoal)
 
   return {
     solution,

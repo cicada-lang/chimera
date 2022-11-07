@@ -32,7 +32,7 @@ export class Task {
     **/
 
     return pursueGoal(mod, this.solution, goal).map(
-      (queue) => new Task(queue.solution, this.goals.concat(queue.goals)),
+      (task) => new Task(task.solution, this.goals.concat(task.goals)),
     )
   }
 }
