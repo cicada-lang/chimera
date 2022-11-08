@@ -30,5 +30,7 @@ export class Import extends Stmt {
 
       defineBinding(mod, binding, relation)
     }
+
+    mod.imported.push(url)
   }
 }

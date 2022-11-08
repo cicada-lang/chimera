@@ -11,10 +11,10 @@ export interface ModOptions {
 
 export class Mod {
   variableCount = 0
-
   relations: Map<string, Relation> = new Map()
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
+  imported: Array<URL> = []
 
   constructor(public options: ModOptions) {}
 

@@ -10,7 +10,7 @@ export interface LoaderOptions {
 }
 
 export class Loader {
-  cache: Map<string, Script> = new Map()
+  private cache: Map<string, Script> = new Map()
   fetcher = new Fetcher()
 
   constructor(public options: LoaderOptions) {}
@@ -25,5 +25,19 @@ export class Loader {
     await script.run()
     this.cache.set(url.href, script)
     return script.mod
+  }
+
+  delete(url: URL): void {
+    this.cache.delete(url.href)
+
+    for (const script of this.cache.values()) {
+      if (script.mod.imported.find(({ href }) => href === url.href)) {
+        this.delete(script.mod.options.url)
+      }
+    }
+  }
+
+  get loaded(): Array<URL> {
+    return Array.from(this.cache.keys()).map((href) => new URL(href))
   }
 }
