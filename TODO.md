@@ -1,3 +1,11 @@
+Maybe we should limit ourself to JSON only on output,
+we still can support data constructors
+and convert them back and forth to JSON.
+
+- For example, with `family` and `kind`,
+  maybe add `@` for such meta property,
+  to avoid preserving property names.
+
 # learn
 
 understand the depth first search in prolog and minikanren
