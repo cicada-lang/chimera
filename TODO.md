@@ -22,29 +22,6 @@ and convert them back and forth to JSON.
   maybe add `@` for such meta property,
   to avoid preserving property names.
 
-# optimize
-
-note about -- doing abstraction by defining relation costs a lot
-
-```
-Add [[], y, y]
-```
-
-The above is much faster than the following:
-
-```
-Zero []
-
-Add [x, y, y]
-------------- {
-  Zero x
-}
-```
-
-This means doing abstraction by defining relation cost a lot.
-
-How to optimize this?
-
 # langs
 
 implement langs/simple type checker in whereabout
