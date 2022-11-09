@@ -69,3 +69,5 @@ There are a lot of related semantic web ideas:
 https://github.com/cicada-lang/whereabouts/issues/2
 
 [maybe] print queues[].solution with prune and deepWalk
+
+[maybe] use the named clause during debug -- only print named clause
