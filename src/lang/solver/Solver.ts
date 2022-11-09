@@ -100,8 +100,9 @@ export class Solver {
 
   private step(mod: Mod, options: SolveOptions): Solution | undefined {
     this.step_count++
-    // pop + push = depth first
-    // shift + push = breadth first
+    // NOTE pop + push = depth-first search
+    // const task = this.tasks.pop() as Task
+    // NOTE shift + push = breadth-first search
     const task = this.tasks.shift() as Task
     const tasks = task.step(mod)
     if (tasks === undefined) return task.solution

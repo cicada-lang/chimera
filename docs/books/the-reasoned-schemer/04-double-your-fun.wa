@@ -102,7 +102,7 @@ find x {
   ]
 }
 
-find [x, y] {
+find [x, y] limit 6 {
   Append [
     x,
     y,

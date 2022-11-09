@@ -21,16 +21,16 @@ export class Task {
   constructor(public solution: Solution, public goals: Array<Goal>) {}
 
   step(mod: Mod): Array<Task> | undefined {
-    // shift + prepend = breadth first
-    // shift + append = minikanren?
-    // pop + prepend = ?
-    // pop + append = ?
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
-    return pursue(mod, this.solution, goal).map(
-      (task) => new Task(task.solution, this.goals.concat(task.goals)),
-      // (task) => new Task(task.solution, task.goals.concat(this.goals)),
-    )
+
+    return pursue(mod, this.solution, goal).map((task) => {
+      // NOTE shift + append = depth-first search
+      const goals = task.goals.concat(this.goals)
+      // NOTE shift + prepend = breadth-first search
+      // const goals = this.goals.concat(task.goals)
+      return new Task(task.solution, goals)
+    })
   }
 }
 

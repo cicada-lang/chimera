@@ -24,15 +24,23 @@ find q limit 3 {
   q = "onion"
 }
 
-find q {
-  Always []
-  Fail []
-}
+// NOTE Infinite loop
+// find q {
+//   Always []
+//   Fail []
+// }
+
+// NOTE Infinite loop
+// find q {
+//   q = "garlic"
+//   Always []
+//   q = "onion"
+// }
 
 find q {
   q = "garlic"
-  Always []
   q = "onion"
+  Always []
 }
 
 Never []
@@ -45,13 +53,15 @@ find q {
   Never []
 }
 
-find q {
-  Never []
-  Fail []
-}
+// NOTE Infinite loop
+// find q {
+//   Never []
+//   Fail []
+// }
 
-find q {
-  Never []
-  Fail []
-  Never []
-}
+// NOTE Infinite loop
+// find q {
+//   Never []
+//   Fail []
+//   Never []
+// }

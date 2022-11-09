@@ -1,12 +1,21 @@
 import { Zero, Add1, Nat } from "Nat.wa"
 import { Add } from "Add.wa"
 
-Mul [[], y, []]
+Mul [x, y, z]
+--------------- zero_left {
+  Zero x
+  Zero z
+}
 
-Mul [x, [], []] -- { Add1 [prev, x] }
+Mul [x, y, z]
+----------------- add1_left_zero_right {
+  Zero y
+  Zero z
+  Add1 [prev, x]
+}
 
-Mul [x, y , out]
------------------ {
+Mul [x, y, out]
+----------------- add1_left_add1_right {
   Add1 [prev, x]
   Add1 [_prev, y]
   Add [y, z, out]

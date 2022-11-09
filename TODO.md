@@ -1,5 +1,3 @@
-change to depth-first search
-
 # the-reasoned-schemer
 
 08-just-a-bit-more.wa

@@ -222,10 +222,14 @@ find q {
   Add [[1, 1], [1, 0, 1], q]
 }
 
-Length [[], []]
-Length [[a, ...d], n] -- { Length [d, res] Add [[1], res, n] }
 
-find n {
+Length [[], []]
+Length [[a, ...d], n] -- {
+  Add [[1], res, n]
+  Length [d, res]
+}
+
+find n limit 1 {
   Length [["jicama", "rhubarb", "guava"], n]
 }
 
@@ -233,15 +237,13 @@ find l {
   Length [l, [1]]
 }
 
-// TODO too slow, but why?
+find l {
+  Length [l, [0, 1]]
+}
 
-// find l {
-//   Length [l, [0, 1]]
-// }
-
-// find q limit 3 {
-//   Length [q, q]
-// }
+find q limit 3 {
+  Length [q, q]
+}
 
 // This expression has no value,
 // since it is still looking for the fourth value,
