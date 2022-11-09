@@ -1,5 +1,5 @@
-import { Succeed, Fail } from "./01-playthings.wa"
-import { Null, Cons, Car, Cdr } from "./02-teaching-old-toys-new-tricks.wa"
+import { Succeed, Fail } from "01-playthings.wa"
+import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
 
 List l
 ----------- {

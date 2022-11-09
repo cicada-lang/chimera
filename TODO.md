@@ -2,7 +2,7 @@
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
-08-just-a-bit-more.wa
+08-just-a-bit-more.wa -- frame 35
 
 09-thin-ice.wa
 
@@ -19,6 +19,20 @@ and convert them back and forth to JSON.
 - For example, with `family` and `kind`,
   maybe add `@` for such meta property,
   to avoid preserving property names.
+
+# [constraint] valid json
+
+> Currently one of our design constraint is that
+> the query output should be valid JSON.
+
+The consequence is that the output are very noisy.
+
+Thinking about the use of `["_.0", { "...": "_.1" }]`,
+instead of `["_.0", ..."_.1"]`,
+maybe we should not limit ourself to JSON at all.
+
+Maybe we should also view `_.n` as special syntax for reified variables,
+instead of using string -- `"_.n"`.
 
 # langs
 
