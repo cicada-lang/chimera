@@ -43,17 +43,17 @@
     "@types/readline-sync": "^1.4.4",
     "@types/commonmark": "^0.27.5",
     "@types/node": "^18.11.9",
-    "@vitest/coverage-c8": "^0.24.5",
-    "@vitest/coverage-istanbul": "^0.24.5",
-    "@vitest/ui": "^0.24.5",
+    "@vitest/coverage-c8": "^0.25.1",
+    "@vitest/coverage-istanbul": "^0.25.1",
+    "@vitest/ui": "^0.25.1",
     "@xieyuheng/test-runner": "^0.2.7",
-    "husky": "^8.0.1",
+    "husky": "^8.0.2",
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.1.1",
     "pretty-quick": "^3.1.3",
     "typescript": "^4.8.4",
-    "vite": "^3.2.2",
-    "vitest": "^0.24.5"
+    "vite": "^3.2.3",
+    "vitest": "^0.25.1"
   },
   "license": "GPL-3.0-or-later"
 }

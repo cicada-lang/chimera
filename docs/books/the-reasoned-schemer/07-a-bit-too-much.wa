@@ -5,15 +5,6 @@ find x {
   Bit x
 }
 
-// BitXor [x, y, r] -- { x = 0  y = 0  r = 0 }
-// BitXor [x, y, r] -- { x = 0  y = 1  r = 1 }
-// BitXor [x, y, r] -- { x = 1  y = 0  r = 1 }
-// BitXor [x, y, r] -- { x = 1  y = 1  r = 0 }
-
-// TODO Why the above definition is much slower than the following definition?
-// What optimization on the implementation is needed
-// to make the above the same as the following?
-
 BitXor [0, 0, 0]
 BitXor [0, 1, 1]
 BitXor [1, 0, 1]
@@ -30,11 +21,6 @@ find [x, y] {
 find [x, y, r] {
   BitXor [x, y, r]
 }
-
-// BitAnd [x, y, r] -- { x = 0  y = 0  r = 0 }
-// BitAnd [x, y, r] -- { x = 0  y = 1  r = 0 }
-// BitAnd [x, y, r] -- { x = 1  y = 0  r = 0 }
-// BitAnd [x, y, r] -- { x = 1  y = 1  r = 1 }
 
 BitAnd [0, 0, 0]
 BitAnd [0, 1, 0]
@@ -245,7 +231,7 @@ find q limit 3 {
   Length [q, q]
 }
 
-// This expression has no value,
+// NOTE The following query has no value,
 // since it is still looking for the fourth value,
 // but there is non.
 

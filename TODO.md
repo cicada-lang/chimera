@@ -1,8 +1,8 @@
 # the-reasoned-schemer
 
-08-just-a-bit-more.wa
-
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
+
+08-just-a-bit-more.wa
 
 09-thin-ice.wa
 

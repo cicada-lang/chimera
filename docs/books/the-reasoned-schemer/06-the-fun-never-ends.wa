@@ -25,12 +25,14 @@ find q limit 3 {
 }
 
 // NOTE Infinite loop
+
 // find q {
 //   Always []
 //   Fail []
 // }
 
 // NOTE Infinite loop
+
 // find q {
 //   q = "garlic"
 //   Always []
@@ -54,12 +56,14 @@ find q {
 }
 
 // NOTE Infinite loop
+
 // find q {
 //   Never []
 //   Fail []
 // }
 
 // NOTE Infinite loop
+
 // find q {
 //   Never []
 //   Fail []
