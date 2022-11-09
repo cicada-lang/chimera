@@ -68,25 +68,25 @@ find [b, x, y, r, c] {
   FullAdder [b, x, y, r, c]
 }
 
-Pos n
+Positive n
 ---------------- {
   [a, ...d] = n
 }
 
 find q {
-  Pos [0, 1, 1]
+  Positive [0, 1, 1]
 }
 
 find q {
-  Pos [1]
+  Positive [1]
 }
 
 find q {
-  Pos []
+  Positive []
 }
 
 find r {
-  Pos r
+  Positive r
 }
 
 GreaterThanOne n
@@ -115,9 +115,9 @@ find r {
 }
 
 Adder [0, n, [], n]
-Adder [0, [], m, m] -- { Pos m }
+Adder [0, [], m, m] -- { Positive m }
 Adder [1, n, [], r] -- { Adder [0, n, [1], r] }
-Adder [1, [], m, r] -- { Pos m Adder [0, [1], m, r] }
+Adder [1, [], m, r] -- { Positive m Adder [0, [1], m, r] }
 Adder [b, [1], [1], [a, c]] -- { FullAdder [b, 1, 1, a, c] }
 Adder [b, [1], m, r] -- { GenAdder [b, [1], m, r] }
 Adder [b, n, [1], r] -- { GreaterThanOne n GreaterThanOne r Adder [b, [1], n, r] }
@@ -132,8 +132,8 @@ Adder [b, n, m, r] -- { GreaterThanOne n GenAdder [b, n, m, r] }
 GenAdder [b, n, m, r]
 ------------------------- {
   [a, ...x] = n
-  [d, ...y] = m  Pos y
-  [c, ...z] = r  Pos z
+  [d, ...y] = m  Positive y
+  [c, ...z] = r  Positive z
   FullAdder [b, a, d, c, e]
   Adder [e, x, y, z]
 }
