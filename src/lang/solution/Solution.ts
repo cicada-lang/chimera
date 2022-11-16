@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import type { Exp } from "../exp"
 
 export type Solution = SolutionNull | SolutionCons
 

@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import type { Exp } from "../exp"
 
 export function formatExp(exp: Exp): string {
   switch (exp.kind) {

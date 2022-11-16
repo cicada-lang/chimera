@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import type { Exp } from "../exp"
 import { deepWalk, reifySolution, Solution, SolutionNull } from "../solution"
 
 export function reify(solution: Solution, exp: Exp): Exp {

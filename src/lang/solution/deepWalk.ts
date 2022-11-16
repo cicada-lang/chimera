@@ -1,5 +1,5 @@
+import type { Exp } from "../exp"
 import * as Exps from "../exp"
-import { Exp } from "../exp"
 import { Solution, walk } from "../solution"
 
 export function deepWalk(solution: Solution, exp: Exp): Exp {

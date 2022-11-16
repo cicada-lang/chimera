@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import type { Exp } from "../exp"
 import { lookupSolution, Solution } from "../solution"
 
 export function walk(solution: Solution, exp: Exp): Exp {

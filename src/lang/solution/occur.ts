@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import type { Exp } from "../exp"
 import { Solution, walk } from "../solution"
 
 export function occur(solution: Solution, name: String, exp: Exp): boolean {

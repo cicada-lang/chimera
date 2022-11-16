@@ -1,5 +1,5 @@
+import type { Exp } from "../exp"
 import * as Exps from "../exp"
-import { Exp } from "../exp"
 import { Solution, SolutionCons, solutionLength, walk } from "../solution"
 
 export function reifySolution(solution: Solution, exp: Exp): Solution {

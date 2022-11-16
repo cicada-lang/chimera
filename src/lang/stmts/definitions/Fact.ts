@@ -1,4 +1,4 @@
-import { Exp } from "../../exp"
+import type { Exp } from "../../exp"
 import { Mod } from "../../mod"
 import { Span } from "../../span"
 import { Stmt } from "../../stmt"

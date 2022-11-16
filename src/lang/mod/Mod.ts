@@ -1,5 +1,5 @@
 import { Loader } from "../../loader"
-import { Exp } from "../exp"
+import type { Exp } from "../exp"
 import { Goal } from "../goal"
 import { Clause, Relation } from "../relation"
 import { Stmt } from "../stmt"
