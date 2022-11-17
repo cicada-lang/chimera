@@ -1,24 +1,29 @@
 # datatype
 
-> ADT is import for implementing language expressions.
+> ADT is important for implementing language expressions.
 
 We should limit ourself to JSON only on output,
 we still can support data constructors
 and convert them back and forth to JSON.
 
-- For example, with `@type` and `@kind`.
+[note] about unify the style of json ADT
 
-  - Adding `@` for such meta property
-    to avoid preserving property names.
+- target host languages:
+
+  - typescript
+  - whereabouts
+  - cicada
 
 - learn from json semantic web.
 
   - https://en.wikipedia.org/wiki/JSON-LD
 
-- unify the style of json ADT
-  - typescript
-  - whereabouts
-  - cicada
+- For example, with `@type` and `@kind`.
+
+  Adding `@` for such meta property
+  to avoid preserving property names.
+
+- learn naming from: https://en.wikipedia.org/wiki/Algebraic_data_type
 
 # the-reasoned-schemer
 
