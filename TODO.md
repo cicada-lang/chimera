@@ -1,3 +1,17 @@
+# datatype
+
+> ADT is import for implementing language expressions.
+
+We should limit ourself to JSON only on output,
+we still can support data constructors
+and convert them back and forth to JSON.
+
+- For example, with `family` and `kind`,
+  maybe add `@` for such meta property,
+  to avoid preserving property names.
+
+- learn from json semantic web.
+
 # the-reasoned-schemer
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
@@ -7,18 +21,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 09-thin-ice.wa
 
 10-under-the-hood.wa
-
-# datatype
-
-> ADT is import for implementing language expressions.
-
-Maybe we should limit ourself to JSON only on output,
-we still can support data constructors
-and convert them back and forth to JSON.
-
-- For example, with `family` and `kind`,
-  maybe add `@` for such meta property,
-  to avoid preserving property names.
 
 # [constraint] valid json
 
