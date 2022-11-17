@@ -1,3 +1,5 @@
+rename `parse/` to `syntax/`
+
 # datatype
 
 > ADT is import for implementing language expressions.
