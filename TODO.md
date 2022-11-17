@@ -12,6 +12,13 @@ and convert them back and forth to JSON.
 
 - learn from json semantic web.
 
+  - https://en.wikipedia.org/wiki/JSON-LD
+
+- unify the style of json ADT
+  - typescript
+  - whereabouts
+  - cicada
+
 # the-reasoned-schemer
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
