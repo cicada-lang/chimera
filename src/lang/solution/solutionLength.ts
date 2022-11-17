@@ -1,4 +1,4 @@
-import { Solution } from "../solution"
+import type { Solution } from "../solution"
 
 export function solutionLength(solution: Solution): number {
   switch (solution.kind) {

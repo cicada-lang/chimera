@@ -1,5 +1,5 @@
-import { Mod } from "../mod"
-import { Span } from "../span"
+import type { Mod } from "../mod"
+import type { Span } from "../span"
 
 export abstract class Stmt {
   abstract span?: Span

@@ -1,8 +1,8 @@
 import type { Exp } from "../exp"
 import * as Exps from "../exp"
+import type { Goal } from "../goal"
 import * as Goals from "../goal"
-import { Goal } from "../goal"
-import { Mod } from "../mod"
+import type { Mod } from "../mod"
 import { Clause } from "../relation"
 
 /**

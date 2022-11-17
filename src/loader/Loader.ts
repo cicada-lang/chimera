@@ -1,7 +1,7 @@
 import { Fetcher } from "../framework/fetcher"
 import { Mod } from "../lang/mod"
-import { Debugger } from "../lang/solver"
-import { Script } from "../script"
+import type { Debugger } from "../lang/solver"
+import type { Script } from "../script"
 import * as Scripts from "../scripts"
 
 export interface LoaderOptions {

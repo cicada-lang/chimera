@@ -1,7 +1,7 @@
-import * as Exps from "../exp"
+import type * as Exps from "../exp"
+import type { Goal } from "../goal"
 import * as Goals from "../goal"
-import { Goal } from "../goal"
-import { Mod } from "../mod"
+import type { Mod } from "../mod"
 
 export function evaluateGoal(mod: Mod, goal: Exps.Goal): Goal {
   switch (goal.kind) {

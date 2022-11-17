@@ -1,5 +1,5 @@
 import * as Errors from "../lang/errors"
-import { Mod } from "../lang/mod"
+import type { Mod } from "../lang/mod"
 import { parseStmts } from "../lang/syntax"
 import { Script } from "../script"
 

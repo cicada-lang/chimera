@@ -1,6 +1,6 @@
 import * as Errors from "../../errors"
-import { Mod } from "../../mod"
-import { Span } from "../../span"
+import type { Mod } from "../../mod"
+import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
 import { defineBinding, ImportBinding } from "../import"
 

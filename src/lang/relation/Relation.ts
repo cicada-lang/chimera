@@ -1,5 +1,5 @@
 import type { Exp } from "../exp"
-import { Goal } from "../goal"
+import type { Goal } from "../goal"
 
 export class Relation {
   constructor(public clauses: Array<Clause>) {}

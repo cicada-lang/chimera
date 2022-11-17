@@ -1,8 +1,8 @@
 import YAML from "yaml"
-import { Json } from "../../utils/Json"
+import type { Json } from "../../utils/Json"
 import { formatExp } from "../exp"
 import { formatGoal, Goal } from "../goal"
-import { Mod } from "../mod"
+import type { Mod } from "../mod"
 import {
   deepWalk,
   lookupSolution,

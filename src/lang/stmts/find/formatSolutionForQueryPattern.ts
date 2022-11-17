@@ -1,7 +1,7 @@
 import * as Exps from "../../exp"
 import { Exp, formatExp } from "../../exp"
 import { reify, Solution } from "../../solution"
-import { QueryPattern } from "../find"
+import type { QueryPattern } from "../find"
 
 export function formatSolutionForQueryPattern(
   solutions: Array<Solution>,

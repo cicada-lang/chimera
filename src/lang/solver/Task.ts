@@ -1,6 +1,6 @@
 import * as Exps from "../exp"
-import { Goal } from "../goal"
-import { Mod } from "../mod"
+import type { Goal } from "../goal"
+import type { Mod } from "../mod"
 import { Solution, unify } from "../solution"
 
 /**

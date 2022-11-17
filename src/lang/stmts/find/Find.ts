@@ -5,9 +5,9 @@ import {
   QueryPattern,
 } from "."
 import * as Exps from "../../exp"
-import { Mod } from "../../mod"
+import type { Mod } from "../../mod"
 import { Solver } from "../../solver"
-import { Span } from "../../span"
+import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
 
 export class Find extends Stmt {

@@ -1,4 +1,4 @@
-import { Solver } from "../solver"
+import type { Solver } from "../solver"
 
 export interface Debugger {
   report(solver: Solver): void

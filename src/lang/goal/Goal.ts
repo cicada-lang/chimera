@@ -1,5 +1,5 @@
 import type { Exp } from "../exp"
-import { Relation } from "../relation"
+import type { Relation } from "../relation"
 
 export type Goal = Apply | Unifiable
 

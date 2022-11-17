@@ -1,5 +1,5 @@
 import { formatExp } from "../exp"
-import { Goal } from "../goal"
+import type { Goal } from "../goal"
 
 export function formatGoal(goal: Goal): string {
   switch (goal.kind) {
