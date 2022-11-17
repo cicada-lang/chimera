@@ -1,5 +1,3 @@
-rename `parse/` to `syntax/`
-
 # datatype
 
 > ADT is import for implementing language expressions.
@@ -8,9 +6,10 @@ We should limit ourself to JSON only on output,
 we still can support data constructors
 and convert them back and forth to JSON.
 
-- For example, with `family` and `kind`,
-  maybe add `@` for such meta property,
-  to avoid preserving property names.
+- For example, with `@type` and `@kind`.
+
+  - Adding `@` for such meta property
+    to avoid preserving property names.
 
 - learn from json semantic web.
 
