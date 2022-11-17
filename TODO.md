@@ -18,10 +18,22 @@ and convert them back and forth to JSON.
 
   - https://en.wikipedia.org/wiki/JSON-LD
 
-- For example, with `@type` and `@kind`.
+- For example, with `@type` `@kind` `@args`.
 
   Adding `@` for such meta property
   to avoid preserving property names.
+
+  No need for datatype definition, just a syntax sugar:
+
+  ```
+  List.cons(head, tail)
+
+  {
+    "@type": "List",
+    "@kind": "cons",
+    "@args": [head, tail],
+  }
+  ```
 
 - learn naming from: https://en.wikipedia.org/wiki/Algebraic_data_type
 
@@ -45,6 +57,11 @@ The consequence is that the output are very noisy.
 Thinking about the use of `["_.0", { "...": "_.1" }]`,
 instead of `["_.0", ..."_.1"]`,
 maybe we should not limit ourself to JSON at all.
+
+We should provide a option to output valid JSON.
+
+- It is ok to use more elaborated format here,
+  because it is intended to be read by machine.
 
 Maybe we should also view `_.n` as special syntax for reified variables,
 instead of using string -- `"_.n"`.
