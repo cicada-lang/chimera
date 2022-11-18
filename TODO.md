@@ -26,12 +26,21 @@ and convert them back and forth to JSON.
   No need for datatype definition, just a syntax sugar:
 
   ```
-  List.cons(head, tail)
+  datatype List = null | cons(head, tail)
+
+  List.cons(x, y)
 
   {
     "@type": "List",
     "@kind": "cons",
-    "@args": [head, tail],
+    "head": x,
+    "tail": y,
+  }
+
+  {
+    "@type": "List",
+    "@kind": "cons",
+    "@args": [x, y],
   }
   ```
 
