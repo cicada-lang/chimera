@@ -1,0 +1,8 @@
+Var [exp, name]
+--------------- {
+  exp = { type: "Exp", kind: "Var", name }
+}
+
+find exp {
+  Var [exp, "x"]
+}
