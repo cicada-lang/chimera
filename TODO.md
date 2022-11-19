@@ -1,3 +1,5 @@
+[diary] about unified algebraic datatype
+
 # datatype
 
 > ADT is important for implementing language expressions.

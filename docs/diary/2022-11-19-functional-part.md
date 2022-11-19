@@ -1,5 +1,7 @@
 ---
 title: Functional Part
+author: Xie Yuheng
+date: 2022-11-19
 ---
 
 # functional

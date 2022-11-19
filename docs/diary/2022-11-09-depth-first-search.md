@@ -1,5 +1,7 @@
 ---
 title: Depth-first search
+author: Xie Yuheng
+date: 2022-11-09
 ---
 
 For performance reason,
