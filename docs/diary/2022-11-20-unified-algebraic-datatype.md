@@ -4,48 +4,40 @@ author: Xie Yuheng
 date: 2022-11-20
 ---
 
-> ADT is important for implementing language expressions.
+ADT is important for implementing language expressions.
 
-We should limit ourself to JSON only on output,
-we still can support data constructors
+We should support data constructors
 and convert them back and forth to JSON.
 
-[note] about unify the style of json ADT
+No need for datatype definition,
+thus not need for a type system yet,
+just a syntax sugar:
 
-- target host languages:
+```
+List::cons(x, y)
+```
 
-  - typescript
-  - whereabouts
-  - cicada
+Is the same as:
 
-- learn from json semantic web.
+```
+{
+  "@type": "List",
+  "@kind": "cons",
+  "@args": [x, y]
+}
+```
 
-  - https://en.wikipedia.org/wiki/JSON-LD
+Adding `@` for such meta property to avoid preserving property names,
+This is learned from [JSON Linked Data](https://en.wikipedia.org/wiki/JSON-LD).
 
-- For example, with `@type` `@kind` `@args`.
+We call this "unified algebraic datatype",
+because this idea can be used in different languages:
 
-  Adding `@` for such meta property
-  to avoid preserving property names.
+- typescript
+- whereabouts
+- cicada
+- rewrite
 
-  No need for datatype definition, just a syntax sugar:
+TODO Learn more from json semantic web: https://en.wikipedia.org/wiki/JSON-LD
 
-  ```
-  datatype List = null | cons(head, tail)
-
-  List.cons(x, y)
-
-  {
-    "@type": "List",
-    "@kind": "cons",
-    "head": x,
-    "tail": y,
-  }
-
-  {
-    "@type": "List",
-    "@kind": "cons",
-    "@args": [x, y],
-  }
-  ```
-
-- learn naming from: https://en.wikipedia.org/wiki/Algebraic_data_type
+TODO Learn naming from: https://en.wikipedia.org/wiki/Algebraic_data_type
