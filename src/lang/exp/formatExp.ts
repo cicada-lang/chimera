@@ -29,11 +29,10 @@ export function formatExp(exp: Exp): string {
     case "ListCons": {
       // NOTE Always format valid JSON.
       const { elements, last } = foldListCons(exp.car, exp.cdr)
+
       return last === undefined
         ? `[${elements.map(formatExp).join(", ")}]`
-        : `[${elements.map(formatExp).join(", ")}, { "...": ${formatExp(
-            last,
-          )} }]`
+        : `[${elements.map(formatExp).join(", ")}, ...${formatExp(last)} ]`
     }
 
     case "ListNull": {

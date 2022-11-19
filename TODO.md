@@ -1,18 +1,21 @@
-# breaking constraint -- valid JSON
+[maybe] syntax of `ListCons` use `[car | cdr]` instead of `[car, ...cdr]`
 
-> Currently one of our design constraint is that
-> the query output should be valid JSON.
+- which is more clean and closer to Prolog
 
-output to `[_.0, ..._.1]` instead of `[_.0, { "...": _.1 }]`
+- the semantic of `ListCons` is indeed different from JavaScript's `[car, ...cdr]`
 
-optional option valid JSON
+# datatype
 
-- It is ok to use more elaborated format here,
-  because it is intended to be read by machine.
+`Exps.Data` -- `type`, `kind` and `args`
 
-- `_.0` -> TODO
+# optional output valid JSON
 
-- `[_.0, ..._.1]` -> TODO
+> It is ok to use more elaborated format here,
+> because it is intended to be read by machine.
+
+`_.0` -> TODO
+
+`[_.0, ..._.1]` -> TODO
 
 # the-reasoned-schemer
 
