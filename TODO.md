@@ -1,3 +1,21 @@
+# breaking constraint -- valid JSON
+
+> Currently one of our design constraint is that
+> the query output should be valid JSON.
+
+output to `_.0` instead of `"_.0"`
+
+output to `[_.0, ..._.1]` instead of `[_.0, { "...": _.1 }]`
+
+optional option valid JSON
+
+- It is ok to use more elaborated format here,
+  because it is intended to be read by machine.
+
+- `_.0` -> TODO
+
+- `[_.0, ..._.1]` -> TODO
+
 # the-reasoned-schemer
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
@@ -7,25 +25,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 09-thin-ice.wa
 
 10-under-the-hood.wa
-
-# [constraint] valid json
-
-> Currently one of our design constraint is that
-> the query output should be valid JSON.
-
-The consequence is that the output are very noisy.
-
-Thinking about the use of `["_.0", { "...": "_.1" }]`,
-instead of `["_.0", ..."_.1"]`,
-maybe we should not limit ourself to JSON at all.
-
-We should provide a option to output valid JSON.
-
-- It is ok to use more elaborated format here,
-  because it is intended to be read by machine.
-
-Maybe we should also view `_.n` as special syntax for reified variables,
-instead of using string -- `"_.n"`.
 
 # langs
 

@@ -33,10 +33,13 @@ This is learned from [JSON Linked Data](https://en.wikipedia.org/wiki/JSON-LD).
 We call this "unified algebraic datatype",
 because this idea can be used in different languages:
 
-- typescript
-- whereabouts
-- cicada
-- rewrite
+- typescript -- at least this is valid in typescript,
+  but maybe we should not use this all the time.
+
+- whereabouts & rewrite -- these are our languages,
+  we can just use the same idea in them.
+
+- cicada -- can exchange data in this format.
 
 TODO Learn more from json semantic web: https://en.wikipedia.org/wiki/JSON-LD
 
