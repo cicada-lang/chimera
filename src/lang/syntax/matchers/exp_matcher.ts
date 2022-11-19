@@ -37,13 +37,17 @@ export function operand_matcher(tree: pt.Tree): Exp {
             span,
           ),
         ),
-    "operand:list_cons": ({ elements, last_element }, { span }) =>
+    "operand:list_cons": ({ elements, last_element, tail_element }, { span }) =>
       pt.matchers
         .zero_or_more_matcher(elements)
         .map(matchers.exp_matcher)
         .reduceRight(
           (result, element) => Exps.ListCons(element, result, span),
-          matchers.exp_matcher(last_element),
+          Exps.ListCons(
+            matchers.exp_matcher(last_element),
+            matchers.exp_matcher(tail_element),
+            span,
+          ),
         ),
     "operand:list_empty": ({}, { span }) => Exps.ListNull(span),
     "operand:objekt": ({ properties, last_property }, { span }) =>

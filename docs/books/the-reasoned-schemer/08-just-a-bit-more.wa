@@ -8,9 +8,9 @@ Mul [[], m, []]
 Mul [n, [], []] -- { Positive n }
 Mul [[1], m, m] -- { Positive m }
 Mul [n, [1], n] -- { GreaterThanOne n }
-Mul [[0, ...x], m, [0, ...z]] -- { Positive x Positive z GreaterThanOne m Mul [x, m, z] }
-Mul [[1, ...x], [0, ...y], p] -- { Positive x Positive y Mul [[0, ...y], [1, ...x], p] }
-Mul [[1, ...x], [1, ...y], p] -- { Positive x Positive y MulOdd [x, [1, ...x], [1, ...y], p] }
+Mul [[0 | x], m, [0 | z]] -- { Positive x Positive z GreaterThanOne m Mul [x, m, z] }
+Mul [[1 | x], [0 | y], p] -- { Positive x Positive y Mul [[0 | y], [1 | x], p] }
+Mul [[1 | x], [1 | y], p] -- { Positive x Positive y MulOdd [x, [1 | x], [1 | y], p] }
 
 // x = (n - 1) / 2
 
@@ -18,14 +18,14 @@ MulOdd [x, n, m, p]
 -------------------- {
   MulBound [q, p, n, m]
   Mul [x, m, q]
-  Add [[0, ...q], m, p]
+  Add [[0 | q], m, p]
 }
 
 // NOTE Limit the length of the q above.
 
 MulBound [[], p, n, m] -- { Positive p }
-MulBound [[a0, ...x], [a1, ...y], [], [a2, ...z]] -- { MulBound [x, y, z, []] }
-MulBound [[a0, ...x], [a1, ...y], [a2, ...z], m] -- { MulBound [x, y, z, m] }
+MulBound [[a0 | x], [a1 | y], [], [a2 | z]] -- { MulBound [x, y, z, []] }
+MulBound [[a0 | x], [a1 | y], [a2 | z], m] -- { MulBound [x, y, z, m] }
 
 find [x, y, r] limit 10 {
   Mul [x, y, r]
@@ -53,7 +53,7 @@ find [n, m] limit 2 {
 // NOTE Without MulBound,
 // the following query has no value,
 // because Mul tries
-//   n = 2, 3, 4, ...
+//   n = 2, 3, 4, ... 
 //   m = 2, 3, 4, ...
 // We need MulBound to make this query fail.
 
@@ -76,7 +76,7 @@ find p {
 
 EqualLength [[], []]
 EqualLength [[1], [1]]
-EqualLength [[a, ...x], [b, ...y]]
+EqualLength [[a | x], [b | y]]
 ----------------------------------- {
   Positive x
   Positive y
@@ -84,7 +84,7 @@ EqualLength [[a, ...x], [b, ...y]]
 }
 
 find [w, x, y] {
-  EqualLength [[1, w, x, ...y], [0, 1, 1, 0, 1]]
+  EqualLength [[1, w, x | y], [0, 1, 1, 0, 1]]
 }
 
 find b {
@@ -92,13 +92,13 @@ find b {
 }
 
 find n {
-  EqualLength [[1, 0, 1, ...n], [0, 1, 1, 0, 1]]
+  EqualLength [[1, 0, 1 | n], [0, 1, 1, 0, 1]]
 }
 
 find [y, z] limit 5 {
-  EqualLength [[1, ...y], [1, ...z]]
+  EqualLength [[1 | y], [1 | z]]
 }
 
 find [y, z] limit 5 {
-  EqualLength [[1, ...y], [0, ...z]]
+  EqualLength [[1 | y], [0 | z]]
 }

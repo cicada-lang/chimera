@@ -5,7 +5,7 @@ Length [[], n]
   Zero n
 }
 
-Length [[head, ...tail], n]
+Length [[head | tail], n]
 -------------------------------- {
   Add1 [prev, n]
   Length [tail, prev]

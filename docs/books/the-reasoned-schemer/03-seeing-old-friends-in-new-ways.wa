@@ -17,11 +17,11 @@ find x {
 }
 
 find x limit 1 {
-  List ["a", "b", ...x]
+  List ["a", "b" | x]
 }
 
 find x limit 5 {
-  List ["a", "b", ...x]
+  List ["a", "b" | x]
 }
 
 ListOfLists l
@@ -50,11 +50,11 @@ find l limit 5 {
 }
 
 find x limit 5 {
-  ListOfLists [["a", "b"], ...x]
+  ListOfLists [["a", "b"] | x]
 }
 
 find x limit 5 {
-  ListOfLists [["a", "b"], ["c", "d"], ...x]
+  ListOfLists [["a", "b"], ["c", "d"] | x]
 }
 
 Singleton l
@@ -85,12 +85,12 @@ find l limit 5 {
 }
 
 find r limit 5 {
-  ListOfSingletons [["g"], ["e", ...w], [x, ...y], ...z]
-  r = [w, [x, ...y], z]
+  ListOfSingletons [["g"], ["e" | w], [x | y] | z]
+  r = [w, [x | y], z]
 }
 
 find out limit 5 {
-  [["g"], ["e", ...w], [x, ...y], ...z] = out
+  [["g"], ["e" | w], [x | y] | z] = out
   ListOfSingletons out
 }
 
@@ -132,7 +132,7 @@ find x {
 }
 
 find x {
-  Member [x, ["pear", "grape", ..."peaches"]]
+  Member [x, ["pear", "grape" | "peaches"]]
 }
 
 find x {

@@ -1,6 +1,6 @@
 Car [p, a]
 ---------- {
-  [a, ...d] = p
+  [a | d] = p
 }
 
 find q {
@@ -12,19 +12,19 @@ find q {
 }
 
 find r {
-  Car [[r, ...y], x]
+  Car [[r | y], x]
   "pear" = x
 }
 
 find r {
   Car [["grape", "raisin", "pear"], x]
   Car [[["a"], ["b"], ["c"]], y]
-  [x, ...y] = r
+  [x | y] = r
 }
 
 Cdr [p, d]
 ---------- {
-  [a, ...d] = p
+  [a | d] = p
 }
 
 find r {
@@ -36,7 +36,7 @@ find r {
 find r {
   Cdr [["grape", "raisin", "pear"], x]
   Car [[["a"], ["b"], ["c"]], y]
-  [x, ...y] = r
+  [x | y] = r
 }
 
 find q {
@@ -55,7 +55,7 @@ find l {
 
 // Cons [a, d, p]
 // --------------- {
-//   [a, ...d] = p
+//   [a | d] = p
 // }
 
 Cons [a, d, p]
@@ -128,7 +128,7 @@ Pair p
 }
 
 find q {
-  Pair [q, ...q]
+  Pair [q | q]
 }
 
 find q {
@@ -181,5 +181,5 @@ find r {
 }
 
 find r {
-  Singleton ["e", ..."tofu"]
+  Singleton ["e" | "tofu"]
 }

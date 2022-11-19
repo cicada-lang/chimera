@@ -32,7 +32,7 @@ export function formatExp(exp: Exp): string {
 
       return last === undefined
         ? `[${elements.map(formatExp).join(", ")}]`
-        : `[${elements.map(formatExp).join(", ")}, ...${formatExp(last)} ]`
+        : `[${elements.map(formatExp).join(", ")} | ${formatExp(last)} ]`
     }
 
     case "ListNull": {

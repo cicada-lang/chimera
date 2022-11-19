@@ -1,9 +1,3 @@
-[maybe] syntax of `ListCons` use `[car | cdr]` instead of `[car, ...cdr]`
-
-- which is more clean and closer to Prolog
-
-- the semantic of `ListCons` is indeed different from JavaScript's `[car, ...cdr]`
-
 # datatype
 
 `Exps.Data` -- `type`, `kind` and `args`
@@ -13,9 +7,9 @@
 > It is ok to use more elaborated format here,
 > because it is intended to be read by machine.
 
-`_.0` -> TODO
+`Exps.ReifiedVar` -- valid JSON -- `_.0` -> `{ @type: ..., @kind: ..., name: ... }`
 
-`[_.0, ..._.1]` -> TODO
+`Exps.ListCons` -- valid JSON -- `[_.0 | _.1]` -> `{ @type: ..., @kind: ..., head: ..., tail: ... }`
 
 # the-reasoned-schemer
 

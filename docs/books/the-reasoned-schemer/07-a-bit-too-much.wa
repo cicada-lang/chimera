@@ -70,7 +70,7 @@ find [b, x, y, r, c] {
 
 Positive n
 ---------------- {
-  [a, ...d] = n
+  [a | d] = n
 }
 
 find q {
@@ -91,7 +91,7 @@ find r {
 
 GreaterThanOne n
 --------------------- {
-  [a, ad, ...dd] = n
+  [a, ad | dd] = n
 }
 
 find q {
@@ -131,9 +131,9 @@ Adder [b, n, m, r] -- { GreaterThanOne n GenAdder [b, n, m, r] }
 
 GenAdder [b, n, m, r]
 ------------------------- {
-  [a, ...x] = n
-  [d, ...y] = m  Positive y
-  [c, ...z] = r  Positive z
+  [a | x] = n
+  [d | y] = m  Positive y
+  [c | z] = r  Positive z
   FullAdder [b, a, d, c, e]
   Adder [e, x, y, z]
 }
@@ -210,7 +210,7 @@ find q {
 
 
 Length [[], []]
-Length [[a, ...d], n] -- {
+Length [[a | d], n] -- {
   Add [[1], res, n]
   Length [d, res]
 }

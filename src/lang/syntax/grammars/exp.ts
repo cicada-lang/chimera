@@ -28,11 +28,10 @@ export const operand = {
     "operand:list_cons": [
       '"["',
       { elements: { $ap: ["zero_or_more", "exp", '","'] } },
-      '"."',
-      '"."',
-      '"."',
       { last_element: "exp" },
       { $ap: ["optional", '","'] },
+      '"|"',
+      { tail_element: "exp" },
       '"]"',
     ],
     "operand:list_empty": ['"["', '"]"'],

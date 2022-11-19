@@ -35,9 +35,9 @@ Append [null, right, right]
 ---------------------------- {}
 
 Append [
-  [head, ...left_tail],
+  [head | left_tail],
   right,
-  [head, ...result_tail],
+  [head | result_tail],
 ]
 ---------------- {
   Append [left_tail, right, result_tail]
@@ -94,9 +94,9 @@ Merge [left, null, left]
 ------------------------ {}
 
 Merge [
-  [left_head, ...left_tail],
-  [head, ...right_tail],
-  [head, ...result_tail],
+  [left_head | left_tail],
+  [head | right_tail],
+  [head | result_tail],
 ]
 ---------------- {
   Merge [left, right_tail, result_tail]
@@ -104,14 +104,14 @@ Merge [
 }
 
 Merge [
-  [head, ...left_tail],
-  [right_head, ...right_tail],
-  [head, ...result_tail],
+  [head | left_tail],
+  [right_head | right_tail],
+  [head | result_tail],
 ]
 ---------------- {
   Merge [
     left_tail,
-    [right_head, ...right_tail],
+    [right_head | right_tail],
     result_tail,
   ]
   right_head > head

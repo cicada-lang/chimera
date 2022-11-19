@@ -64,7 +64,7 @@ find x {
 
 find x limit 1 {
   Append [
-    ["cake", "&", "ice", ...y],
+    ["cake", "&", "ice" | y],
     ["d", "t"],
     x,
   ]
@@ -72,7 +72,7 @@ find x limit 1 {
 
 find x limit 5 {
   Append [
-    ["cake", "&", "ice", ...y],
+    ["cake", "&", "ice" | y],
     ["d", "t"],
     x,
   ]
@@ -80,7 +80,7 @@ find x limit 5 {
 
 find y limit 5 {
   Append [
-    ["cake", "&", "ice", ...y],
+    ["cake", "&", "ice" | y],
     ["d", "t"],
     x,
   ]
@@ -88,8 +88,8 @@ find y limit 5 {
 
 find x limit 5 {
   Append [
-    ["cake", "&", "ice", ...y],
-    ["d", "t", ...y],
+    ["cake", "&", "ice" | y],
+    ["d", "t" | y],
     x,
   ]
 }
@@ -97,7 +97,7 @@ find x limit 5 {
 find x {
   Append [
     ["cake", "&", "ice", "cream"],
-    ["d", "t", ...z],
+    ["d", "t" | z],
     x,
   ]
 }
