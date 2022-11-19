@@ -3,8 +3,6 @@
 > Currently one of our design constraint is that
 > the query output should be valid JSON.
 
-output to `_.0` instead of `"_.0"`
-
 output to `[_.0, ..._.1]` instead of `[_.0, { "...": _.1 }]`
 
 optional option valid JSON

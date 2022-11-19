@@ -6,6 +6,10 @@ export function formatExp(exp: Exp): string {
       return JSON.stringify(`?${exp.name}`)
     }
 
+    case "ReifiedVar": {
+      return `_.${exp.name}`
+    }
+
     case "String": {
       return JSON.stringify(exp.data)
     }

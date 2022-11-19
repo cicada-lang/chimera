@@ -64,6 +64,10 @@ function freshenExp(
       return variable
     }
 
+    case "ReifiedVar": {
+      return exp
+    }
+
     case "String": {
       return exp
     }

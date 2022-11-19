@@ -4,6 +4,7 @@ type ExpMeta = { span?: Span }
 
 export type Exp =
   | PatternVar
+  | ReifiedVar
   | String
   | Number
   | Boolean
@@ -22,6 +23,21 @@ export function PatternVar(name: string, span?: Span): PatternVar {
   return {
     family: "Exp",
     kind: "PatternVar",
+    name,
+    span,
+  }
+}
+
+export type ReifiedVar = {
+  family: "Exp"
+  kind: "ReifiedVar"
+  name: string
+} & ExpMeta
+
+export function ReifiedVar(name: string, span?: Span): ReifiedVar {
+  return {
+    family: "Exp",
+    kind: "ReifiedVar",
     name,
     span,
   }

@@ -8,7 +8,7 @@ export function reifySolution(solution: Solution, exp: Exp): Solution {
   switch (exp.kind) {
     case "PatternVar": {
       const count = solutionLength(solution)
-      const reifiedExp = Exps.String(`_.${count}`)
+      const reifiedExp = Exps.ReifiedVar(count.toString())
       return SolutionCons(exp.name, reifiedExp, solution)
     }
 
