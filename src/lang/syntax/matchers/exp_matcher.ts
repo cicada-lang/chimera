@@ -71,5 +71,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
         ],
         span,
       ),
+    "operand:data_empty": ({ type, kind }, { span }) =>
+      Exps.Data(pt.str(type), pt.str(kind), [], span),
   })(tree)
 }

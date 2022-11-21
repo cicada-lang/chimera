@@ -54,5 +54,6 @@ export const operand = {
       { $ap: ["optional", '","'] },
       '")"',
     ],
+    "operand:data_empty": [{ type: "name" }, '":"', '":"', { kind: "name" }],
   },
 }
