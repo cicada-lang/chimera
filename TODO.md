@@ -1,7 +1,5 @@
 # datatype
 
-`Exps.Data` -- `solutionReify`
-
 test my-list.wa
 
 # langs

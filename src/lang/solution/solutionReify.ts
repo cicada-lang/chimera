@@ -31,6 +31,14 @@ export function solutionReify(solution: Solution, exp: Exp): Solution {
       return solution
     }
 
+    case "Data": {
+      for (const arg of exp.args) {
+        solution = solutionReify(solution, arg)
+      }
+
+      return solution
+    }
+
     default: {
       return solution
     }
