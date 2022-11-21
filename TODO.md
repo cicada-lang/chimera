@@ -12,6 +12,8 @@ read "a surprisingly competitive conditional operator"
 
 # programming by rewriting
 
+[note] about rewriting system
+
 Use rewrite rule based (dynamic) language
 to implement lambda calculus.
 
@@ -50,6 +52,16 @@ Learn:
 - https://github.com/pangloss/pattern
 - nanopass
 - sussman new book
+
+# as a in memory datacase
+
+To use this language as web app backend.
+
+[problem] how to handle large data?
+
+Learn:
+
+- CMU course
 
 # optional output valid JSON
 
