@@ -1,3 +1,4 @@
+export * from "./arg_matcher"
 export * from "./exp_matcher"
 export * from "./find_option_matcher"
 export * from "./goal_matcher"

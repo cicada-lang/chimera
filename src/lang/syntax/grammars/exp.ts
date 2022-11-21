@@ -43,5 +43,16 @@ export const operand = {
       '"}"',
     ],
     "operand:objekt_empty": ['"{"', '"}"'],
+    "operand:data": [
+      { type: "name" },
+      '":"',
+      '":"',
+      { kind: "name" },
+      '"("',
+      { args: { $ap: ["zero_or_more", "arg", '","'] } },
+      { last_arg: "arg" },
+      { $ap: ["optional", '","'] },
+      '")"',
+    ],
   },
 }

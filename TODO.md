@@ -1,13 +1,9 @@
 # datatype
 
-`Exps.Data` -- syntax
-
-```
-Type::cons(arg, ...)
-Type::cons { ... }
-```
-
-`Exps.Data` unify by first converting to JSON
+`Exps.Data` -- `occor`
+`Exps.Data` -- `solutionDeepWalk`
+`Exps.Data` -- `solutionReify`
+`Exps.Data` -- `unify` -- by first converting to JSON
 
 # langs
 
@@ -63,6 +59,10 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 # later
 
 [later] `formatArg` -- `indent` for long `args`
+
+[maybe] `Exps.Data` -- syntax -- support named args
+
+- `Type::cons { ... }`
 
 Use logic programming to play with many-valued logic.
 
