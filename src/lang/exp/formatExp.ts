@@ -51,9 +51,14 @@ export function formatExp(exp: Exp): string {
     }
 
     case "Data": {
-      return "TODO"
+      const args = exp.args.map(formatExp)
+      return `${exp.type}::${exp.kind}${formatArgs(args)}`
     }
   }
+}
+
+function formatArgs(args: Array<string>): string {
+  return `(${args.join(", ")})`
 }
 
 function foldListCons(

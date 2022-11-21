@@ -1,7 +1,5 @@
 # datatype
 
-`formatExp` -- `Exps.Data`
-
 `Exps.Data` -- syntax
 
 ```
@@ -63,6 +61,8 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 09-searching-a-cyclic-graph.wa -- need `!=`
 
 # later
+
+[later] `formatArg` -- `indent` for long `args`
 
 Use logic programming to play with many-valued logic.
 
