@@ -2,14 +2,14 @@ import type { Exp } from "../exp"
 import * as Exps from "../exp"
 import { Solution, solutionWalk } from "../solution"
 
-export function deepWalk(solution: Solution, exp: Exp): Exp {
+export function solutionDeepWalk(solution: Solution, exp: Exp): Exp {
   exp = solutionWalk(solution, exp)
 
   switch (exp["@kind"]) {
     case "ListCons": {
       return Exps.ListCons(
-        deepWalk(solution, exp.car),
-        deepWalk(solution, exp.cdr),
+        solutionDeepWalk(solution, exp.car),
+        solutionDeepWalk(solution, exp.cdr),
       )
     }
 
@@ -18,7 +18,7 @@ export function deepWalk(solution: Solution, exp: Exp): Exp {
         Object.fromEntries(
           Object.entries(exp.properties).map(([name, property]) => [
             name,
-            deepWalk(solution, property),
+            solutionDeepWalk(solution, property),
           ]),
         ),
       )

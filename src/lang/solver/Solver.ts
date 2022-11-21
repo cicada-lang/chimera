@@ -4,9 +4,9 @@ import { formatExp } from "../exp"
 import { formatGoal, Goal } from "../goal"
 import type { Mod } from "../mod"
 import {
-  deepWalk,
   lookupSolution,
   Solution,
+  solutionDeepWalk,
   solutionNames,
   SolutionNull,
 } from "../solution"
@@ -146,6 +146,6 @@ function formatVariableNoReify(solution: Solution, name: string): string {
   if (exp === undefined) {
     return `"?${name}"`
   } else {
-    return `${formatExp(deepWalk(solution, exp))}`
+    return `${formatExp(solutionDeepWalk(solution, exp))}`
   }
 }

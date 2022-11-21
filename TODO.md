@@ -1,8 +1,3 @@
-rename deepWalk to solutionDeepWalk
-
-mv ./lang/solution/deepWalk.ts ./lang/solution/solutionDeepWalk.ts
-ambr deepWalk solutionDeepWalk
-
 rename lookupSolution to solutionLookup
 
 mv ./lang/solution/lookupSolution.ts ./lang/solution/solutionLookup.ts
