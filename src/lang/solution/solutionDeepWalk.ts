@@ -24,6 +24,14 @@ export function solutionDeepWalk(solution: Solution, exp: Exp): Exp {
       )
     }
 
+    case "Data": {
+      return Exps.Data(
+        exp.type,
+        exp.kind,
+        exp.args.map((arg) => solutionDeepWalk(solution, arg)),
+      )
+    }
+
     default: {
       return exp
     }

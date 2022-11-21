@@ -1,6 +1,5 @@
 # datatype
 
-`Exps.Data` -- `solutionDeepWalk`
 `Exps.Data` -- `solutionReify`
 
 test my-list.wa
