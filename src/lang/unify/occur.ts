@@ -19,6 +19,10 @@ export function occur(solution: Solution, name: String, exp: Exp): boolean {
       )
     }
 
+    case "Data": {
+      return exp.args.some((arg) => occur(solution, name, arg))
+    }
+
     default: {
       return false
     }
