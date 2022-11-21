@@ -1,7 +1,3 @@
-# datatype
-
-test my-list.wa
-
 # langs
 
 implement `langs/simple` type checker in whereabouts
