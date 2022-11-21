@@ -1,9 +1,9 @@
 import type { Exp } from "../exp"
-import { lookupSolution, Solution } from "../solution"
+import { Solution, solutionLookup } from "../solution"
 
 export function solutionWalk(solution: Solution, exp: Exp): Exp {
   while (exp["@kind"] === "PatternVar") {
-    const found = lookupSolution(solution, exp.name)
+    const found = solutionLookup(solution, exp.name)
     if (found === undefined) return exp
     exp = found
   }

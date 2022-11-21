@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { Solution } from "../solution"
 
-export function lookupSolution(
+export function solutionLookup(
   solution: Solution,
   name: string,
 ): Exp | undefined {

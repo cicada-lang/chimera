@@ -1,8 +1,3 @@
-rename lookupSolution to solutionLookup
-
-mv ./lang/solution/lookupSolution.ts ./lang/solution/solutionLookup.ts
-ambr lookupSolution solutionLookup
-
 # datatype
 
 `Exps.Data` -- `formatExp`

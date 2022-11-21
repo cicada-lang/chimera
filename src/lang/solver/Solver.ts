@@ -4,9 +4,9 @@ import { formatExp } from "../exp"
 import { formatGoal, Goal } from "../goal"
 import type { Mod } from "../mod"
 import {
-  lookupSolution,
   Solution,
   solutionDeepWalk,
+  solutionLookup,
   solutionNames,
   SolutionNull,
 } from "../solution"
@@ -142,7 +142,7 @@ function reportTask(task: Task): SolverReportTask {
 }
 
 function formatVariableNoReify(solution: Solution, name: string): string {
-  const exp = lookupSolution(solution, name)
+  const exp = solutionLookup(solution, name)
   if (exp === undefined) {
     return `"?${name}"`
   } else {
