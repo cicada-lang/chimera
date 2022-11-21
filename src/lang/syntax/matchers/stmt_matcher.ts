@@ -6,9 +6,9 @@ import * as matchers from "../matchers"
 export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
     "stmt:fact": ({ name, exp }, { span }) =>
-      new Stmts.Fact(pt.str(name), matchers.exp_matcher(exp), span),
+      new Stmts.RelationFact(pt.str(name), matchers.exp_matcher(exp), span),
     "stmt:rule_nameless": ({ name, exp, goals }, { span }) =>
-      new Stmts.Rule(
+      new Stmts.RelationRule(
         pt.str(name),
         undefined,
         matchers.exp_matcher(exp),
@@ -16,7 +16,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       ),
     "stmt:rule_named": ({ name, clause_name, exp, goals }, { span }) =>
-      new Stmts.Rule(
+      new Stmts.RelationRule(
         pt.str(name),
         pt.str(clause_name),
         matchers.exp_matcher(exp),

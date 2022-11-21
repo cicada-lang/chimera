@@ -3,7 +3,7 @@ import type { Mod } from "../../mod"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
 
-export class Fact extends Stmt {
+export class RelationFact extends Stmt {
   constructor(public name: string, public exp: Exp, public span?: Span) {
     super()
   }

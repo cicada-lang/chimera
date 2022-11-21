@@ -17,7 +17,7 @@ Friendship { left, right, alcohol }
 `),
   ).toMatchObject(
     deleteUndefined([
-      new Stmts.Rule(
+      new Stmts.RelationRule(
         "Friendship",
         undefined,
         Exps.Objekt({

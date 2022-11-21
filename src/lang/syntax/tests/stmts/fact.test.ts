@@ -13,7 +13,7 @@ Male { name: "bertram" }
 `),
   ).toMatchObject(
     deleteUndefined([
-      new Stmts.Fact(
+      new Stmts.RelationFact(
         "Male",
         Exps.Objekt({
           name: Exps.String("bertram"),

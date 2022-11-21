@@ -4,7 +4,7 @@ import type { Mod } from "../../mod"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
 
-export class Rule extends Stmt {
+export class RelationRule extends Stmt {
   constructor(
     public name: string,
     public clauseName: string | undefined,

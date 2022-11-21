@@ -1,3 +1,5 @@
+rename RelationRule to RelationClause
+
 # langs
 
 implement `langs/simple` type checker in whereabouts
@@ -8,10 +10,8 @@ read "a surprisingly competitive conditional operator"
 
 # programming by rewriting
 
-rename Stmts.Fact and Stmts.Rule to Stmts.RelationFact and Stmts.RelationRule
-
-Stmts.RewriteRule
-Stmts.Rewrite
+`Stmts.RewriteRule`
+`Stmts.Rewrite`
 
 # as a in memory database
 
@@ -56,11 +56,11 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 # later
 
-[later] `formatArg` -- `indent` for long `args`
-
 [maybe] `Exps.Data` -- syntax -- support named args
 
 - `Type::cons { ... }`
+
+[later] `formatArg` -- `indent` for long `args`
 
 Use logic programming to play with many-valued logic.
 
