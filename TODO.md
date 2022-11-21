@@ -1,7 +1,5 @@
 # datatype
 
-`Exps.Data` -- `unify` -- by first converting to JSON
-
 `Exps.Data` -- `solutionDeepWalk`
 `Exps.Data` -- `solutionReify`
 

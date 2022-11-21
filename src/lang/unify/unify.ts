@@ -65,7 +65,21 @@ export function unify(
 
       const nextSolution = unify(solution, leftProperty, rightProperty)
       if (nextSolution === undefined) return undefined
+      solution = nextSolution
+    }
 
+    return solution
+  }
+
+  if (left["@kind"] === "Data" && right["@kind"] === "Data") {
+    if (left.type !== right.type) return undefined
+    if (left.kind !== right.kind) return undefined
+    if (left.args.length !== right.args.length) return undefined
+
+    for (const [i, leftArg] of left.args.entries()) {
+      const rightArg = right.args[i]
+      const nextSolution = unify(solution, leftArg, rightArg)
+      if (nextSolution === undefined) return undefined
       solution = nextSolution
     }
 
