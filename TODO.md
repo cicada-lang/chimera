@@ -1,6 +1,6 @@
 # datatype
 
-`Exps.Data` -- `formatExp`
+`formatExp` -- `Exps.Data`
 
 `Exps.Data` -- syntax
 

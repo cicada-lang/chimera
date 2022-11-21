@@ -3,8 +3,8 @@ step_count: 0
 tasks:
   - solution: {}
     goals:
-      - '"?x" = true'
-      - '"?y" = false'
+      - ?x = true
+      - ?y = false
 query_pattern: (x, y)
 solutions: []
 
@@ -14,7 +14,7 @@ tasks:
   - solution:
       x: true
     goals:
-      - '"?y" = false'
+      - ?y = false
 query_pattern: (x, y)
 solutions: []
 
