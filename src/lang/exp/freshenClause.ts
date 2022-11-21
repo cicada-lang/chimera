@@ -26,7 +26,7 @@ function freshenGoal(
   goal: Goal,
   varMap: Map<string, Exps.PatternVar>,
 ): Goal {
-  switch (goal.kind) {
+  switch (goal["@kind"]) {
     case "Apply": {
       // NOTE Should not recurse on the `relation`.
       return Goals.Apply(
@@ -50,7 +50,7 @@ function freshenExp(
   exp: Exp,
   varMap: Map<string, Exps.PatternVar>,
 ): Exp {
-  switch (exp.kind) {
+  switch (exp["@kind"]) {
     case "PatternVar": {
       const found = varMap.get(exp.name)
       if (found !== undefined) return found

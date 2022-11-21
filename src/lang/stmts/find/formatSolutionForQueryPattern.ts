@@ -7,7 +7,7 @@ export function formatSolutionForQueryPattern(
   solutions: Array<Solution>,
   pattern: QueryPattern,
 ): string {
-  switch (pattern.kind) {
+  switch (pattern["@kind"]) {
     case "QueryPatternNames": {
       const variables: Array<Exp> = pattern.names.map((name) =>
         Exps.PatternVar(name),

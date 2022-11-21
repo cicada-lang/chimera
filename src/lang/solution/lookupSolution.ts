@@ -5,7 +5,7 @@ export function lookupSolution(
   solution: Solution,
   name: string,
 ): Exp | undefined {
-  while (solution.kind !== "SolutionNull") {
+  while (solution["@kind"] !== "SolutionNull") {
     if (solution.name === name) {
       return solution.exp
     } else {

@@ -5,7 +5,7 @@ import { Solution, SolutionCons, solutionLength, walk } from "../solution"
 export function reifySolution(solution: Solution, exp: Exp): Solution {
   exp = walk(solution, exp)
 
-  switch (exp.kind) {
+  switch (exp["@kind"]) {
     case "PatternVar": {
       const count = solutionLength(solution)
       const reifiedExp = Exps.ReifiedVar(count.toString())

@@ -5,7 +5,7 @@ import { Solution, walk } from "../solution"
 export function deepWalk(solution: Solution, exp: Exp): Exp {
   exp = walk(solution, exp)
 
-  switch (exp.kind) {
+  switch (exp["@kind"]) {
     case "ListCons": {
       return Exps.ListCons(
         deepWalk(solution, exp.car),

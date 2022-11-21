@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 
 export function formatExp(exp: Exp): string {
-  switch (exp.kind) {
+  switch (exp["@kind"]) {
     case "PatternVar": {
       return JSON.stringify(`?${exp.name}`)
     }
@@ -56,7 +56,7 @@ function foldListCons(
   car: Exp,
   cdr: Exp,
 ): { elements: Array<Exp>; last?: Exp } {
-  switch (cdr.kind) {
+  switch (cdr["@kind"]) {
     case "ListNull": {
       return { elements: [car] }
     }

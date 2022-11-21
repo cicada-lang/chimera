@@ -1,7 +1,7 @@
 import type { Solution } from "../solution"
 
 export function solutionLength(solution: Solution): number {
-  switch (solution.kind) {
+  switch (solution["@kind"]) {
     case "SolutionNull": {
       return 0
     }

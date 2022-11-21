@@ -7,7 +7,7 @@ export function defineBinding(
   binding: ImportBinding,
   relation: Relation,
 ): void {
-  switch (binding.kind) {
+  switch (binding["@kind"]) {
     case "ImportBindingName": {
       mod.relations.set(binding.name, relation)
       return

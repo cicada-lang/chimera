@@ -3,17 +3,17 @@ import type { Exp } from "../exp"
 export type Solution = SolutionNull | SolutionCons
 
 export type SolutionNull = {
-  kind: "SolutionNull"
+  "@kind": "SolutionNull"
 }
 
 export function SolutionNull(): SolutionNull {
   return {
-    kind: "SolutionNull",
+    "@kind": "SolutionNull",
   }
 }
 
 export type SolutionCons = {
-  kind: "SolutionCons"
+  "@kind": "SolutionCons"
   name: string
   exp: Exp
   rest: Solution
@@ -25,7 +25,7 @@ export function SolutionCons(
   rest: Solution,
 ): SolutionCons {
   return {
-    kind: "SolutionCons",
+    "@kind": "SolutionCons",
     name,
     exp,
     rest,

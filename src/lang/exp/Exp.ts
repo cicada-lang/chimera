@@ -14,104 +14,104 @@ export type Exp =
   | Objekt
 
 export type PatternVar = {
-  family: "Exp"
-  kind: "PatternVar"
+  "@type": "Exp"
+  "@kind": "PatternVar"
   name: string
 } & ExpMeta
 
 export function PatternVar(name: string, span?: Span): PatternVar {
   return {
-    family: "Exp",
-    kind: "PatternVar",
+    "@type": "Exp",
+    "@kind": "PatternVar",
     name,
     span,
   }
 }
 
 export type ReifiedVar = {
-  family: "Exp"
-  kind: "ReifiedVar"
+  "@type": "Exp"
+  "@kind": "ReifiedVar"
   name: string
 } & ExpMeta
 
 export function ReifiedVar(name: string, span?: Span): ReifiedVar {
   return {
-    family: "Exp",
-    kind: "ReifiedVar",
+    "@type": "Exp",
+    "@kind": "ReifiedVar",
     name,
     span,
   }
 }
 
 export type String = {
-  family: "Exp"
-  kind: "String"
+  "@type": "Exp"
+  "@kind": "String"
   data: string
 } & ExpMeta
 
 export function String(data: string, span?: Span): String {
   return {
-    family: "Exp",
-    kind: "String",
+    "@type": "Exp",
+    "@kind": "String",
     data,
     span,
   }
 }
 
 export type Number = {
-  family: "Exp"
-  kind: "Number"
+  "@type": "Exp"
+  "@kind": "Number"
   data: number
 } & ExpMeta
 
 export function Number(data: number, span?: Span): Number {
   return {
-    family: "Exp",
-    kind: "Number",
+    "@type": "Exp",
+    "@kind": "Number",
     data,
     span,
   }
 }
 
 export type Boolean = {
-  family: "Exp"
-  kind: "Boolean"
+  "@type": "Exp"
+  "@kind": "Boolean"
   data: boolean
 } & ExpMeta
 
 export function Boolean(data: boolean, span?: Span): Boolean {
   return {
-    family: "Exp",
-    kind: "Boolean",
+    "@type": "Exp",
+    "@kind": "Boolean",
     data,
     span,
   }
 }
 
 export type Null = {
-  family: "Exp"
-  kind: "Null"
+  "@type": "Exp"
+  "@kind": "Null"
 } & ExpMeta
 
 export function Null(span?: Span): Null {
   return {
-    family: "Exp",
-    kind: "Null",
+    "@type": "Exp",
+    "@kind": "Null",
     span,
   }
 }
 
 export type ListCons = {
-  family: "Exp"
-  kind: "ListCons"
+  "@type": "Exp"
+  "@kind": "ListCons"
   car: Exp
   cdr: Exp
 } & ExpMeta
 
 export function ListCons(car: Exp, cdr: Exp, span?: Span): ListCons {
   return {
-    family: "Exp",
-    kind: "ListCons",
+    "@type": "Exp",
+    "@kind": "ListCons",
     car,
     cdr,
     span,
@@ -119,28 +119,28 @@ export function ListCons(car: Exp, cdr: Exp, span?: Span): ListCons {
 }
 
 export type ListNull = {
-  family: "Exp"
-  kind: "ListNull"
+  "@type": "Exp"
+  "@kind": "ListNull"
 } & ExpMeta
 
 export function ListNull(span?: Span): ListNull {
   return {
-    family: "Exp",
-    kind: "ListNull",
+    "@type": "Exp",
+    "@kind": "ListNull",
     span,
   }
 }
 
 export type Objekt = {
-  family: "Exp"
-  kind: "Objekt"
+  "@type": "Exp"
+  "@kind": "Objekt"
   properties: Record<string, Exp>
 } & ExpMeta
 
 export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
   return {
-    family: "Exp",
-    kind: "Objekt",
+    "@type": "Exp",
+    "@kind": "Objekt",
     properties,
     span,
   }

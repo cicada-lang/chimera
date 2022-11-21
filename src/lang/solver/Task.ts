@@ -35,7 +35,7 @@ export class Task {
 }
 
 function pursue(mod: Mod, solution: Solution, goal: Goal): Array<Task> {
-  switch (goal.kind) {
+  switch (goal["@kind"]) {
     case "Apply": {
       return goal.relation.clauses.flatMap((clause) => {
         const { exp, goals } = Exps.freshenClause(mod, clause)

@@ -1,6 +1,17 @@
+Use unified JSON ADT -- change `CamelCase` to `camelCase`
+
 # datatype
 
 `Exps.Data` -- `type`, `kind` and `args`
+
+- syntax
+
+  ```
+  Type::cons(arg, ...)
+  Type::cons { ... }
+  ```
+
+`Exps.Data` unify by first converting to JSON
 
 # langs
 

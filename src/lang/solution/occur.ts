@@ -4,7 +4,7 @@ import { Solution, walk } from "../solution"
 export function occur(solution: Solution, name: String, exp: Exp): boolean {
   exp = walk(solution, exp)
 
-  switch (exp.kind) {
+  switch (exp["@kind"]) {
     case "PatternVar": {
       return exp.name === name
     }
