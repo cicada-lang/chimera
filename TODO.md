@@ -8,6 +8,11 @@ read "a surprisingly competitive conditional operator"
 
 # programming by rewriting
 
+rename Stmts.Fact and Stmts.Rule to Stmts.RelationFact and Stmts.RelationRule
+
+Stmts.RewriteRule
+Stmts.Rewrite
+
 # as a in memory database
 
 To use this language as web app backend.
