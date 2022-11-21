@@ -14,6 +14,11 @@ export const name = pt.grammars.pattern_unless_preserved("identifier", [
   "false",
 ])
 
+export const name_no_preserved = pt.grammars.pattern_unless_preserved(
+  "identifier",
+  [],
+)
+
 export const names = {
   $grammar: {
     "names:names": [
