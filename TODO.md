@@ -2,8 +2,6 @@
 
 `Exps.Data` -- `formatExp`
 
-`freshenExp` -- keep `exp.span`
-
 `Exps.Data` -- syntax
 
 ```

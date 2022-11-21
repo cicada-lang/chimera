@@ -59,7 +59,7 @@ function freshenExp(
       mod.variableCount++
 
       const freshName = `${exp.name}_${count}`
-      const variable = Exps.PatternVar(freshName)
+      const variable = Exps.PatternVar(freshName, exp.span)
       varMap.set(exp.name, variable)
       return variable
     }
@@ -88,6 +88,7 @@ function freshenExp(
       return Exps.ListCons(
         freshenExp(mod, exp.car, varMap),
         freshenExp(mod, exp.cdr, varMap),
+        exp.span,
       )
     }
 
@@ -103,6 +104,7 @@ function freshenExp(
             freshenExp(mod, property, varMap),
           ]),
         ),
+        exp.span,
       )
     }
 
