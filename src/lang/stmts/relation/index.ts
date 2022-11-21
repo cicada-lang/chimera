@@ -1,2 +1,2 @@
+export * from "./RelationClause"
 export * from "./RelationFact"
-export * from "./RelationRule"

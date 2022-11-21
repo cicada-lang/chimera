@@ -1,5 +1,3 @@
-rename RelationRule to RelationClause
-
 # langs
 
 implement `langs/simple` type checker in whereabouts

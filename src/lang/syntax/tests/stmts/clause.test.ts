@@ -4,7 +4,7 @@ import * as Stmts from "../../../stmts"
 import { parseStmts } from "../../index"
 import { deleteUndefined } from "../utils"
 
-test("parse Rule", () => {
+test("parse Clause", () => {
   expect(
     parseStmts(`
 
@@ -17,7 +17,7 @@ Friendship { left, right, alcohol }
 `),
   ).toMatchObject(
     deleteUndefined([
-      new Stmts.RelationRule(
+      new Stmts.RelationClause(
         "Friendship",
         undefined,
         Exps.Objekt({

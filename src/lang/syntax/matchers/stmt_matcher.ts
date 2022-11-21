@@ -7,16 +7,16 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
     "stmt:fact": ({ name, exp }, { span }) =>
       new Stmts.RelationFact(pt.str(name), matchers.exp_matcher(exp), span),
-    "stmt:rule_nameless": ({ name, exp, goals }, { span }) =>
-      new Stmts.RelationRule(
+    "stmt:clause_nameless": ({ name, exp, goals }, { span }) =>
+      new Stmts.RelationClause(
         pt.str(name),
         undefined,
         matchers.exp_matcher(exp),
         matchers.goals_matcher(goals),
         span,
       ),
-    "stmt:rule_named": ({ name, clause_name, exp, goals }, { span }) =>
-      new Stmts.RelationRule(
+    "stmt:clause_named": ({ name, clause_name, exp, goals }, { span }) =>
+      new Stmts.RelationClause(
         pt.str(name),
         pt.str(clause_name),
         matchers.exp_matcher(exp),

@@ -1,7 +1,7 @@
 export const stmt = {
   $grammar: {
     "stmt:fact": [{ name: "name" }, { exp: "exp" }],
-    "stmt:rule_nameless": [
+    "stmt:clause_nameless": [
       { name: "name" },
       { exp: "exp" },
       "dashline",
@@ -9,7 +9,7 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:rule_named": [
+    "stmt:clause_named": [
       { name: "name" },
       { exp: "exp" },
       "dashline",
