@@ -54,20 +54,28 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 # later
 
-[maybe] `Exps.Data` -- syntax -- support named args
-
-- `Type::cons { ... }`
+[later] restrict the parser -- relation name must be in `CamelCase`
 
 [later] `formatArg` -- `indent` for long `args`
 
-Use logic programming to play with many-valued logic.
+# std
+
+[std] Use logic programming to play with many-valued logic.
 
 - Can `Trileans.mul` be defined by composition of other connectives (not, min, max)?
 - Search how to construct truth function by composition of given set of connectives.
 - How to search high-order things like connective in logic programming?
 
-# [feature] improve solver.report #2
+# maybe
 
-[maybe] print queues[].solution with prune and deepWalk
+[maybe] `Exps.Data` -- syntax -- support named args
+
+- `Type::cons { ... }`
+
+[maybe] print `queues[].solution` with prune and `deepWalk`
 
 [maybe] use the named clause during debug -- only print named clause
+
+- How to design a good debugger for logic programming language?
+
+  - To understand this, we first need to write a lot of logic programs.
