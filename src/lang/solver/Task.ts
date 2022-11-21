@@ -1,7 +1,8 @@
 import * as Exps from "../exp"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
-import { Solution, unify } from "../solution"
+import type { Solution } from "../solution"
+import { unify } from "../unify"
 
 /**
 

@@ -1,3 +1,8 @@
+rename reifySolution to solutionReify
+rename walk to solutionWalk
+rename deepWalk to solutionDeepWalk
+rename lookupSolution to solutionLookup
+
 # datatype
 
 `Exps.Data` -- `formatExp`

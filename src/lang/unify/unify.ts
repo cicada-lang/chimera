@@ -1,5 +1,6 @@
 import type { Exp } from "../exp"
-import { occur, Solution, SolutionCons, walk } from "../solution"
+import { Solution, SolutionCons, walk } from "../solution"
+import { occur } from "../unify"
 
 export function unify(
   solution: Solution,
