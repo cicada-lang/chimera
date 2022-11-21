@@ -1,6 +1,6 @@
-import * as Exps from "../exp"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
+import { refreshClause } from "../refresh"
 import type { Solution } from "../solution"
 import { unify } from "../unify"
 
@@ -39,7 +39,7 @@ function pursue(mod: Mod, solution: Solution, goal: Goal): Array<Task> {
   switch (goal["@kind"]) {
     case "Apply": {
       return goal.relation.clauses.flatMap((clause) => {
-        const { exp, goals } = Exps.freshenClause(mod, clause)
+        const { exp, goals } = refreshClause(mod, clause)
         const newSolution = unify(solution, exp, goal.arg)
         return newSolution ? [new Task(newSolution, goals)] : []
       })

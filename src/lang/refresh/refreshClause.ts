@@ -9,19 +9,19 @@ import { Clause } from "../relation"
    Side-effects.
 **/
 
-export function freshenClause(
+export function refreshClause(
   mod: Mod,
   clause: Clause,
   varMap: Map<string, Exps.PatternVar> = new Map(),
 ): Clause {
   return Clause(
     clause.name,
-    freshenExp(mod, clause.exp, varMap),
-    clause.goals.map((goal) => freshenGoal(mod, goal, varMap)),
+    refreshExp(mod, clause.exp, varMap),
+    clause.goals.map((goal) => refreshGoal(mod, goal, varMap)),
   )
 }
 
-function freshenGoal(
+function refreshGoal(
   mod: Mod,
   goal: Goal,
   varMap: Map<string, Exps.PatternVar>,
@@ -32,20 +32,20 @@ function freshenGoal(
       return Goals.Apply(
         goal.name,
         goal.relation,
-        freshenExp(mod, goal.arg, varMap),
+        refreshExp(mod, goal.arg, varMap),
       )
     }
 
     case "Unifiable": {
       return Goals.Unifiable(
-        freshenExp(mod, goal.left, varMap),
-        freshenExp(mod, goal.right, varMap),
+        refreshExp(mod, goal.left, varMap),
+        refreshExp(mod, goal.right, varMap),
       )
     }
   }
 }
 
-function freshenExp(
+function refreshExp(
   mod: Mod,
   exp: Exp,
   varMap: Map<string, Exps.PatternVar>,
@@ -86,8 +86,8 @@ function freshenExp(
 
     case "ListCons": {
       return Exps.ListCons(
-        freshenExp(mod, exp.car, varMap),
-        freshenExp(mod, exp.cdr, varMap),
+        refreshExp(mod, exp.car, varMap),
+        refreshExp(mod, exp.cdr, varMap),
         exp.span,
       )
     }
@@ -101,7 +101,7 @@ function freshenExp(
         Object.fromEntries(
           Object.entries(exp.properties).map(([name, property]) => [
             name,
-            freshenExp(mod, property, varMap),
+            refreshExp(mod, property, varMap),
           ]),
         ),
         exp.span,
@@ -112,7 +112,7 @@ function freshenExp(
       return Exps.Data(
         exp.type,
         exp.kind,
-        exp.args.map((arg) => freshenExp(mod, arg, varMap)),
+        exp.args.map((arg) => refreshExp(mod, arg, varMap)),
         exp.span,
       )
     }

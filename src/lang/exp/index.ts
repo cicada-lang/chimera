@@ -1,5 +1,4 @@
 export * from "./evaluateGoal"
 export * from "./Exp"
 export * from "./formatExp"
-export * from "./freshenClause"
 export * from "./Goal"
