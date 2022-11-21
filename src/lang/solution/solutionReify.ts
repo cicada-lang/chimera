@@ -2,7 +2,7 @@ import type { Exp } from "../exp"
 import * as Exps from "../exp"
 import { Solution, SolutionCons, solutionLength, walk } from "../solution"
 
-export function reifySolution(solution: Solution, exp: Exp): Solution {
+export function solutionReify(solution: Solution, exp: Exp): Solution {
   exp = walk(solution, exp)
 
   switch (exp["@kind"]) {
@@ -13,14 +13,14 @@ export function reifySolution(solution: Solution, exp: Exp): Solution {
     }
 
     case "ListCons": {
-      solution = reifySolution(solution, exp.car)
-      solution = reifySolution(solution, exp.cdr)
+      solution = solutionReify(solution, exp.car)
+      solution = solutionReify(solution, exp.cdr)
       return solution
     }
 
     case "Objekt": {
       for (const property of Object.values(exp.properties)) {
-        solution = reifySolution(solution, property)
+        solution = solutionReify(solution, property)
       }
 
       return solution
