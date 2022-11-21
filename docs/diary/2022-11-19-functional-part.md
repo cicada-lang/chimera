@@ -4,7 +4,7 @@ author: Xie Yuheng
 date: 2022-11-19
 ---
 
-# functional
+# Functional
 
 [maybe] We need a functional part to construct data with out record name
 
@@ -41,3 +41,10 @@ date: 2022-11-19
 
   - maybe `ref`
   - maybe `compute` -- if we have functional part
+
+# Look back
+
+We decided to not use closure in this language,
+thus not add a functional part to it.
+
+"No closure" is an interesting idea to explore.

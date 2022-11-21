@@ -1,3 +1,7 @@
+[diary] 2022-11-21-the-evolution-of-ideas-of-the-whereabouts-project.md
+
+[diary] 2022-11-21-adding-a-rewriting-system.md
+
 # datatype
 
 `Exps.Data` -- `type`, `kind` and `args`
@@ -11,8 +15,6 @@ read "a surprisingly competitive conditional operator"
 - minikanrenizing the inference rules of pie
 
 # programming by rewriting
-
-[note] about rewriting system
 
 Use rewrite rule based (dynamic) language
 to implement lambda calculus.
