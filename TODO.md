@@ -1,5 +1,3 @@
-[diary] 2022-11-21-the-evolution-of-ideas-of-the-whereabouts-project.md
-
 [diary] 2022-11-21-adding-a-rewriting-system.md
 
 # datatype
