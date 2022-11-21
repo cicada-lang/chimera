@@ -12,6 +12,7 @@ export type Exp =
   | ListCons
   | ListNull
   | Objekt
+  | Data
 
 export type PatternVar = {
   "@type": "Exp"
@@ -142,6 +143,30 @@ export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
     "@type": "Exp",
     "@kind": "Objekt",
     properties,
+    span,
+  }
+}
+
+export type Data = {
+  "@type": "Exp"
+  "@kind": "Data"
+  type: string
+  kind: string
+  args: Array<Exp>
+} & ExpMeta
+
+export function Data(
+  type: string,
+  kind: string,
+  args: Array<Exp>,
+  span?: Span,
+): Data {
+  return {
+    "@type": "Exp",
+    "@kind": "Data",
+    type,
+    kind,
+    args,
     span,
   }
 }

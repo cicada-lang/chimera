@@ -105,5 +105,14 @@ function freshenExp(
         ),
       )
     }
+
+    case "Data": {
+      return Exps.Data(
+        exp.type,
+        exp.kind,
+        exp.args.map((arg) => freshenExp(mod, arg, varMap)),
+        exp.span,
+      )
+    }
   }
 }

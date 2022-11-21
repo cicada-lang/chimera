@@ -49,6 +49,10 @@ export function formatExp(exp: Exp): string {
         .join(", ")
       return `{ ${properties} }`
     }
+
+    case "Data": {
+      return "TODO"
+    }
   }
 }
 

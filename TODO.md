@@ -1,15 +1,15 @@
-Use unified JSON ADT -- change `CamelCase` to `camelCase`
-
 # datatype
 
-`Exps.Data` -- `type`, `kind` and `args`
+`Exps.Data` -- `formatExp`
 
-- syntax
+`freshenExp` -- keep `exp.span`
 
-  ```
-  Type::cons(arg, ...)
-  Type::cons { ... }
-  ```
+`Exps.Data` -- syntax
+
+```
+Type::cons(arg, ...)
+Type::cons { ... }
+```
 
 `Exps.Data` unify by first converting to JSON
 
