@@ -2,6 +2,55 @@
 
 `Exps.Data` -- `type`, `kind` and `args`
 
+# langs
+
+implement langs/simple type checker in whereabout
+
+read "a surprisingly competitive conditional operator"
+
+- minikanrenizing the inference rules of pie
+
+# programming by rewriting
+
+Use rewrite rule based (dynamic) language
+to implement lambda calculus.
+
+- think about cellular automata
+
+  - can be implemented by directed change with side-effect (mutation in place)?
+
+- computation is directed change
+
+- what is the difference between rewrite and pattern match on ADT?
+
+  we do not have to write trivial matches?
+
+Syntax:
+
+```
+rewrite data rule
+
+rewrite data {
+  rule
+}
+
+rule name {
+  case pattern => pattern
+  case pattern => pattern
+}
+
+rule name {
+  combinators
+}
+```
+
+Learn:
+
+- https://en.wikipedia.org/wiki/Tree_traversal
+- https://github.com/pangloss/pattern
+- nanopass
+- sussman new book
+
 # optional output valid JSON
 
 > It is ok to use more elaborated format here,
@@ -20,14 +69,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 09-thin-ice.wa
 
 10-under-the-hood.wa
-
-# langs
-
-implement langs/simple type checker in whereabout
-
-read "a surprisingly competitive conditional operator"
-
-- minikanrenizing the inference rules of pie
 
 # clause-and-effect
 
