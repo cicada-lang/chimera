@@ -1,9 +1,9 @@
 import type { Exp } from "../exp"
 import * as Exps from "../exp"
-import { Solution, walk } from "../solution"
+import { Solution, solutionWalk } from "../solution"
 
 export function deepWalk(solution: Solution, exp: Exp): Exp {
-  exp = walk(solution, exp)
+  exp = solutionWalk(solution, exp)
 
   switch (exp["@kind"]) {
     case "ListCons": {

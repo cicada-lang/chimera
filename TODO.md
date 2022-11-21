@@ -1,8 +1,3 @@
-rename walk to solutionWalk
-
-mv ./lang/solution/walk.ts ./lang/solution/solutionWalk.ts
-ambr walk solutionWalk
-
 rename deepWalk to solutionDeepWalk
 
 mv ./lang/solution/deepWalk.ts ./lang/solution/solutionDeepWalk.ts

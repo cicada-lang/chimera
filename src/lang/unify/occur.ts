@@ -1,8 +1,8 @@
 import type { Exp } from "../exp"
-import { Solution, walk } from "../solution"
+import { Solution, solutionWalk } from "../solution"
 
 export function occur(solution: Solution, name: String, exp: Exp): boolean {
-  exp = walk(solution, exp)
+  exp = solutionWalk(solution, exp)
 
   switch (exp["@kind"]) {
     case "PatternVar": {

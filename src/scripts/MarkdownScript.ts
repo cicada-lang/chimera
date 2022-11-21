@@ -44,10 +44,10 @@ function collectBlocks(text: string): Array<Block> {
   const reader = new commonmark.Parser()
   const parsed: commonmark.Node = reader.parse(text)
   const blocks = []
-  const walker = parsed.walker()
+  const solutionWalker = parsed.solutionWalker()
   let counter = 0
   let event, node
-  while ((event = walker.next())) {
+  while ((event = solutionWalker.next())) {
     node = event.node
     if (event.entering && node.type === "code_block") {
       const [start_pos, _end_pos] = node.sourcepos

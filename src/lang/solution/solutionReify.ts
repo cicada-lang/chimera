@@ -1,9 +1,14 @@
 import type { Exp } from "../exp"
 import * as Exps from "../exp"
-import { Solution, SolutionCons, solutionLength, walk } from "../solution"
+import {
+  Solution,
+  SolutionCons,
+  solutionLength,
+  solutionWalk,
+} from "../solution"
 
 export function solutionReify(solution: Solution, exp: Exp): Solution {
-  exp = walk(solution, exp)
+  exp = solutionWalk(solution, exp)
 
   switch (exp["@kind"]) {
     case "PatternVar": {

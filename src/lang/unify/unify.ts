@@ -1,5 +1,5 @@
 import type { Exp } from "../exp"
-import { Solution, SolutionCons, walk } from "../solution"
+import { Solution, SolutionCons, solutionWalk } from "../solution"
 import { occur } from "../unify"
 
 export function unify(
@@ -7,8 +7,8 @@ export function unify(
   left: Exp,
   right: Exp,
 ): Solution | undefined {
-  left = walk(solution, left)
-  right = walk(solution, right)
+  left = solutionWalk(solution, left)
+  right = solutionWalk(solution, right)
 
   if (
     left["@kind"] === "PatternVar" &&
