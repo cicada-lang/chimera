@@ -1,16 +1,18 @@
 # langs
 
-[std/langs] `langs/nat-and-boolean` -- `Step`
+[later] `formatArg` -- `indent` for long `args`
 
-[std/langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
+[langs] `langs/nat-and-boolean-typed`
+
+[langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
 
 built-in globals -- `String` predicate
 
 built-in globals -- `Number` predicate
 
-[std/langs] `langs/simple` implement type checker of simple typed lambda calculus in whereabouts
+[langs] `langs/simple` implement type checker of simple typed lambda calculus in whereabouts
 
-[std/langs] `langs/pie` read "a surprisingly competitive conditional operator"
+[langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
 
@@ -79,8 +81,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 # later
 
 [maybe] [later] restrict the parser -- relation name must be in `CamelCase`
-
-[later] `formatArg` -- `indent` for long `args`
 
 # std
 

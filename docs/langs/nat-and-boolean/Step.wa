@@ -1,0 +1,16 @@
+import { Nat, Value } from "Exp.wa"
+
+Step [Exp::sub1(Nat::zero), Nat::zero]
+Step [Exp::sub1(Nat::add1(n)), n] -- { Nat n }
+Step [Exp::sub1(e), Exp::sub1(r)] -- { Step [e, r] }
+
+Step [Exp::add1(n), Nat::add1(n)] -- { Nat n }
+Step [Exp::add1(e), Exp::add1(r)] -- { Step [e, r] }
+
+Step [Exp::isZero(Nat::zero), true]
+Step [Exp::isZero(Nat::add1(n)), false] -- { Nat n }
+Step [Exp::isZero(e), Exp::isZero(r)] -- { Step [e, r] }
+
+Step [Exp::if(true, t, f), t]
+Step [Exp::if(false, t, f), f]
+Step [Exp::if(e, t, f), Exp::if(r, t, f)] -- { Step [e, r] }

@@ -1,0 +1,15 @@
+import { Value } from "Exp.wa"
+import { Step } from "Step.wa"
+
+Evaluate [v, v] -- { Value v }
+Evaluate [e, v] -- { Step [e, r] Evaluate [r, v] }
+
+find [e, v] {
+  e = Exp::if(
+    Exp::isZero(Exp::add1(Exp::add1(Nat::zero))),
+    Exp::add1(Nat::zero),
+    Exp::add1(Exp::add1(Nat::zero)),
+  )
+
+  Evaluate [e, v]
+}
