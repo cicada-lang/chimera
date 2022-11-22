@@ -1,8 +1,10 @@
 # langs
 
-implement `langs/simple` type checker in whereabouts
+[std/langs] `langs/lambda` implement lambda calculus in whereabouts
 
-read "a surprisingly competitive conditional operator"
+[std/langs] `langs/simple` implement type checker of simple typed lambda calculus in whereabouts
+
+[std/langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
 
@@ -63,6 +65,8 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 [later] `formatArg` -- `indent` for long `args`
 
 # std
+
+[std] update `std/nat`
 
 [std] Use logic programming to play with many-valued logic.
 
