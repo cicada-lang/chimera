@@ -1,6 +1,6 @@
-# langs
+improve `formatResults` for `formatSolutionForQueryPattern`
 
-[later] `formatArg` -- `indent` for long `args`
+# langs
 
 [langs] `langs/nat-and-boolean-typed`
 

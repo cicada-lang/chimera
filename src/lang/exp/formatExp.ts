@@ -1,3 +1,4 @@
+import { indent } from "../../utils/indent"
 import type { Exp } from "../exp"
 
 export function formatExp(exp: Exp): string {
@@ -27,12 +28,11 @@ export function formatExp(exp: Exp): string {
     }
 
     case "ListCons": {
-      // NOTE Always format valid JSON.
       const { elements, last } = foldListCons(exp.car, exp.cdr)
-
-      return last === undefined
-        ? `[${elements.map(formatExp).join(", ")}]`
-        : `[${elements.map(formatExp).join(", ")} | ${formatExp(last)} ]`
+      return formatElements(
+        elements.map(formatExp),
+        last === undefined ? undefined : formatExp(last),
+      )
     }
 
     case "ListNull": {
@@ -57,8 +57,46 @@ export function formatExp(exp: Exp): string {
   }
 }
 
+function isLargeArgs(args: Array<string>): boolean {
+  return args.some((arg) => arg.includes("\n")) || args.join(", ").length >= 60
+}
+
 function formatArgs(args: Array<string>): string {
-  return `(${args.join(", ")})`
+  if (isLargeArgs(args)) {
+    return `(\n${args.map((arg) => indent(arg) + ",").join("\n")}\n)`
+  } else {
+    return `(${args.join(", ")})`
+  }
+}
+
+function isLargeElements(elements: Array<string>): boolean {
+  return (
+    elements.some((element) => element.includes("\n")) ||
+    elements.join(", ").length >= 60
+  )
+}
+
+function formatElements(elements: Array<string>, last?: string): string {
+  if (last === undefined) {
+    if (isLargeElements(elements)) {
+      const body = elements
+        .map((element) => indent(element, "    ") + ",")
+        .join("\n")
+      return `[ \n${body}\n]`
+    } else {
+      return `[${elements.join(", ")}]`
+    }
+  } else {
+    if (isLargeElements(elements)) {
+      const body = elements
+        .map((element) => indent(element, "    ") + ",")
+        .join("\n")
+      const tail = indent(`| ${last}`)
+      return `[ \n${body}\n${tail}\n]`
+    } else {
+      return `[${elements.join(", ")} | ${last}]`
+    }
+  }
 }
 
 function foldListCons(
