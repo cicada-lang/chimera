@@ -1,8 +1,8 @@
 import { Value } from "Exp.wa"
 import { Step } from "Step.wa"
 
-Evaluate [v, v] -- { Value v }
-Evaluate [e, v] -- { Step [e, r] Evaluate [r, v] }
+Eval [v, v] -- { Value v }
+Eval [e, v] -- { Step [e, r] Eval [r, v] }
 
 find [e, v] {
   e = Exp::if(
@@ -11,5 +11,5 @@ find [e, v] {
     Exp::add1(Exp::add1(Nat::zero)),
   )
 
-  Evaluate [e, v]
+  Eval [e, v]
 }
