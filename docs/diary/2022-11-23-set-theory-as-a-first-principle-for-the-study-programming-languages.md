@@ -26,3 +26,9 @@ Set theory is a very good starting point to introduce concepts of programming la
 Set theory is very useful to understand logic programming languages like whereabouts,
 where there are only the set of data -- JSON and application of data constructors,
 and relations (predicates) over them -- [first order logic](https://en.wikipedia.org/wiki/First-order_logic).
+
+V.V. talked about manipulating expressions about proof
+as easy as manipulating expressions of polynomials
+(maybe we should say manipulating expressions in some context),
+when implementing languages we often loss this ease of manipulation,
+while thinking in terms of sets can help us restore some of this ease.
