@@ -1,5 +1,3 @@
-improve `formatResults` for `formatSolutionForQueryPattern`
-
 # langs
 
 [langs] `langs/nat-and-boolean-typed`

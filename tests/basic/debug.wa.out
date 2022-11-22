@@ -28,4 +28,6 @@ tasks:
 query_pattern: (x, y)
 solutions: []
 
-[ [true, false] ]
+[ 
+  [true, false]
+]

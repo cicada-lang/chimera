@@ -79,18 +79,14 @@ function isLargeElements(elements: Array<string>): boolean {
 function formatElements(elements: Array<string>, last?: string): string {
   if (last === undefined) {
     if (isLargeElements(elements)) {
-      const body = elements
-        .map((element) => indent(element, "    ") + ",")
-        .join("\n")
+      const body = elements.map((element) => indent(element)).join(",\n")
       return `[ \n${body}\n]`
     } else {
       return `[${elements.join(", ")}]`
     }
   } else {
     if (isLargeElements(elements)) {
-      const body = elements
-        .map((element) => indent(element, "    ") + ",")
-        .join("\n")
+      const body = elements.map((element) => indent(element)).join(",\n")
       const tail = indent(`| ${last}`)
       return `[ \n${body}\n${tail}\n]`
     } else {

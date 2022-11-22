@@ -1,3 +1,4 @@
+import { indent } from "../../../utils/indent"
 import * as Exps from "../../exp"
 import { Exp, formatExp } from "../../exp"
 import { reify, Solution } from "../../solution"
@@ -33,5 +34,7 @@ export function formatSolutionForQueryPattern(
 }
 
 function formatResults(results: Array<string>): string {
-  return results.length === 0 ? "[]" : `[ ${results.join(", \n  ")} ]`
+  if (results.length === 0) return "[]"
+  const body = results.map((result) => indent(result)).join(",\n")
+  return `[ \n${body}\n]`
 }

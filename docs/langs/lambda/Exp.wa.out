@@ -1,2 +1,6 @@
-[ Exp::var("x") ]
-[ Exp::ap(Exp::var("f"), Exp::var("x")) ]
+[ 
+  Exp::var("x")
+]
+[ 
+  Exp::ap(Exp::var("f"), Exp::var("x"))
+]
