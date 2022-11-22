@@ -1,8 +1,20 @@
-Zero []
-Add1 [n, [1 | n]]
+// There are many way to represent `Nat`.
 
-Nat n -- { Zero n }
-Nat n -- { Add1 [prev, n] Nat prev }
+// Using 1 and list:
+
+// Zero []
+// Add1 [n, [1 | n]]
+
+// Nat n -- { Zero n }
+// Nat n -- { Add1 [prev, n] Nat prev }
+
+// Using data constructor:
+
+Zero Nat::zero
+Add1 [prev, Nat::add1(prev)]
+
+Nat Nat::zero
+Nat Nat::add1(prev) -- { Nat prev }
 
 One n -- { Add1 [prev, n] Zero prev }
 Two n -- { Add1 [prev, n] One prev }

@@ -1,33 +1,33 @@
-[ [1, 1, 1, 1] ]
-[ [[1], [1, 1]], 
-  [[1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1]], 
-  [[1, 1], [1, 1]], 
-  [[1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1]], 
-  [[1, 1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1, 1]], 
-  [[1, 1], [1, 1, 1]], 
-  [[1, 1, 1], [1, 1]], 
-  [[1, 1, 1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1, 1, 1]], 
-  [[1, 1, 1, 1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1, 1, 1, 1]], 
-  [[1, 1], [1, 1, 1, 1]], 
-  [[1, 1, 1, 1], [1, 1]], 
-  [[1, 1, 1, 1, 1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1, 1, 1, 1, 1]], 
-  [[1, 1, 1], [1, 1, 1]], 
-  [[1, 1, 1, 1, 1, 1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], 
-  [[1, 1], [1, 1, 1, 1, 1]], 
-  [[1, 1, 1, 1, 1], [1, 1]], 
-  [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], 
-  [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1]] ]
-[ [[1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], 
-  [[1, 1], [1, 1, 1, 1, 1, 1]], 
-  [[1, 1, 1], [1, 1, 1, 1]], 
-  [[1, 1, 1, 1], [1, 1, 1]], 
-  [[1, 1, 1, 1, 1, 1], [1, 1]], 
-  [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1]] ]
+[ Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))) ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::zero()))], 
+  [Nat::add1(Nat::add1(Nat::zero())), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))], 
+  [Nat::add1(Nat::add1(Nat::zero())), Nat::add1(Nat::add1(Nat::zero()))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))], 
+  [Nat::add1(Nat::add1(Nat::zero())), Nat::add1(Nat::add1(Nat::add1(Nat::zero())))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::zero()))), Nat::add1(Nat::add1(Nat::zero()))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))))], 
+  [Nat::add1(Nat::add1(Nat::zero())), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))), Nat::add1(Nat::add1(Nat::zero()))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::zero()))), Nat::add1(Nat::add1(Nat::add1(Nat::zero())))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))))))], 
+  [Nat::add1(Nat::add1(Nat::zero())), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))), Nat::add1(Nat::add1(Nat::zero()))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))))))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))))))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))))))), Nat::add1(Nat::zero())] ]
+[ [Nat::add1(Nat::zero()), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))))))))], 
+  [Nat::add1(Nat::add1(Nat::zero())), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::zero()))), Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero()))))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))), Nat::add1(Nat::add1(Nat::add1(Nat::zero())))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))), Nat::add1(Nat::add1(Nat::zero()))], 
+  [Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))))))))), Nat::add1(Nat::zero())] ]

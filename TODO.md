@@ -66,9 +66,7 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 # std
 
-[std] update `std/nat`
-
-[std] Use logic programming to play with many-valued logic.
+[std] `std/trilean` -- use logic programming to play with many-valued logic.
 
 - Can `Trileans.mul` be defined by composition of other connectives (not, min, max)?
 - Search how to construct truth function by composition of given set of connectives.
