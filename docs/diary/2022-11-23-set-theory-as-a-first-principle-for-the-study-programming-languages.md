@@ -22,3 +22,7 @@ Set theory is a very good starting point to introduce concepts of programming la
 - Relation -- set of tuples.
 - Function -- univalent Relation.
 - Inference rule -- definition of judgment (relation) by clauses.
+
+Set theory is very useful to understand logic programming languages like whereabouts,
+where there are only the set of data -- JSON and application of data constructors,
+and relations (predicates) over them -- [first order logic](https://en.wikipedia.org/wiki/First-order_logic).

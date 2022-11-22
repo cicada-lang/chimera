@@ -1,20 +1,24 @@
+built-in globals -- `String` predicate
+
+built-in globals -- `Number` predicate
+
+[maybe] using predicate (relation) as type to do assertion
+
 # langs
 
 [langs] `langs/nat-and-boolean-typed`
 
 [langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
 
-built-in globals -- `String` predicate
+[langs] `langs/forth`
 
-built-in globals -- `Number` predicate
+- What are the small step and big step operational semantics of forth-like language?
 
 [langs] `langs/simple` implement type checker of simple typed lambda calculus in whereabouts
 
 [langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
-
-[maybe] using predicate (relation) as type to do assertion
 
 # deduction
 
