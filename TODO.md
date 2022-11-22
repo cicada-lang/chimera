@@ -1,6 +1,12 @@
 # langs
 
-[std/langs] `langs/lambda` implement lambda calculus in whereabouts
+[std/langs] `langs/nat-and-boolean` -- `Step`
+
+[std/langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
+
+built-in globals -- `String` predicate
+
+built-in globals -- `Number` predicate
 
 [std/langs] `langs/simple` implement type checker of simple typed lambda calculus in whereabouts
 
@@ -8,14 +14,26 @@
 
 - minikanrenizing the inference rules of pie
 
+[maybe] using predicate (relation) as type to do assertion
+
 # deduction
 
 design syntax for deduction
 
 # programming by rewriting
 
+Do we need a rewriting system in logic programming language at all?
+
+- maybe it is, because we want to avoid writing trivial pattern matches.
+
 `Stmts.RewriteRule`
 `Stmts.Rewrite`
+
+# quotient
+
+> How to implement quotient in logic programming language?
+
+https://en.wikipedia.org/wiki/Quotient_by_an_equivalence_relation
 
 # as a in memory database
 
@@ -60,7 +78,7 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 # later
 
-[later] restrict the parser -- relation name must be in `CamelCase`
+[maybe] [later] restrict the parser -- relation name must be in `CamelCase`
 
 [later] `formatArg` -- `indent` for long `args`
 

@@ -1,0 +1,22 @@
+Exp Exp::var(name)
+
+Exp Exp::fn(name, ret)
+----------------------- {
+  Exp ret
+}
+
+Exp Exp::ap(target, arg)
+------------------------- {
+  Exp target
+  Exp arg
+}
+
+find exp {
+  exp = Exp::var("x")
+  Exp exp
+}
+
+find exp {
+  exp = Exp::ap(Exp::var("f"), Exp::var("x"))
+  Exp exp
+}

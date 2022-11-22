@@ -1,0 +1,2 @@
+[ Nat::zero() ]
+[ Nat::add1(Nat::zero()) ]
