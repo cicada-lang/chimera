@@ -6,6 +6,10 @@ read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
 
+# deduction
+
+design syntax for deduction
+
 # programming by rewriting
 
 `Stmts.RewriteRule`
