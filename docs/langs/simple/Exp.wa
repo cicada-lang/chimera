@@ -1,0 +1,45 @@
+import { Nat } from "../../../std/nat/index.wa"
+
+Exp Exp::var(name)
+Exp Exp::fn(name, ret) -- { Exp ret }
+Exp Exp::ap(target, arg) -- { Exp target Exp arg }
+
+Type Type::atom(name)
+Type Type::arrow(argType, retType) -- { Type argType Type retType }
+
+Ctx Ctx::null
+Ctx Ctx::cons(name, type, rest) -- { Type type Ctx rest }
+
+CtxLookup [Ctx::cons(name, type, rest), name, type]
+CtxLookup [Ctx::cons(_name, _type, rest), name, type]
+------------------------------------------------------ {
+  CtxLookup [rest, name, type]
+}
+
+Check [ctx, Exp::var(name), type]
+---------------------------------- {
+  CtxLookup [ctx, name, type]
+}
+
+Check [ctx, Exp::fn(name, ret), Type::arrow(argType, retType)]
+---------------------------------------------------------------- {
+  Check [Ctx::cons(name, argType, ctx), ret, retType]
+}
+
+Check [ctx, Exp::ap(target, arg), retType]
+----------------------------------------- {
+  Check [ctx, target, Type::arrow(argType, retType)]
+  Check [ctx, arg, argType]
+}
+
+find type {
+  ctx = Ctx::null
+  exp = Exp::fn("x", Exp::var("x"))
+  Check [ctx, exp, type]
+}
+
+find exp limit 10 {
+  ctx = Ctx::null
+  type = Type::arrow("A", "A")
+  Check [ctx, exp, type]
+}

@@ -12,8 +12,6 @@ built-in globals -- `Number` predicate
 
 - What are the small step and big step operational semantics of forth-like language?
 
-[langs] `langs/simple` implement type checker of simple typed lambda calculus in whereabouts
-
 [langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
