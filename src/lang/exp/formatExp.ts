@@ -27,15 +27,15 @@ export function formatExp(exp: Exp): string {
       return "null"
     }
 
-    case "ListCons": {
-      const { elements, last } = foldListCons(exp.car, exp.cdr)
+    case "ArrayCons": {
+      const { elements, last } = foldArrayCons(exp.car, exp.cdr)
       return formatElements(
         elements.map(formatExp),
         last === undefined ? undefined : formatExp(last),
       )
     }
 
-    case "ListNull": {
+    case "ArrayNull": {
       return "[]"
     }
 
@@ -95,17 +95,17 @@ function formatElements(elements: Array<string>, last?: string): string {
   }
 }
 
-function foldListCons(
+function foldArrayCons(
   car: Exp,
   cdr: Exp,
 ): { elements: Array<Exp>; last?: Exp } {
   switch (cdr["@kind"]) {
-    case "ListNull": {
+    case "ArrayNull": {
       return { elements: [car] }
     }
 
-    case "ListCons": {
-      const { elements, last } = foldListCons(cdr.car, cdr.cdr)
+    case "ArrayCons": {
+      const { elements, last } = foldArrayCons(cdr.car, cdr.cdr)
       return { elements: [car, ...elements], last }
     }
 

@@ -17,7 +17,7 @@ export function solutionReify(solution: Solution, exp: Exp): Solution {
       return SolutionCons(exp.name, reifiedExp, solution)
     }
 
-    case "ListCons": {
+    case "ArrayCons": {
       solution = solutionReify(solution, exp.car)
       solution = solutionReify(solution, exp.cdr)
       return solution

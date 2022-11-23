@@ -9,7 +9,7 @@ export function occur(solution: Solution, name: String, exp: Exp): boolean {
       return exp.name === name
     }
 
-    case "ListCons": {
+    case "ArrayCons": {
       return occur(solution, name, exp.car) || occur(solution, name, exp.cdr)
     }
 

@@ -6,8 +6,8 @@ export function solutionDeepWalk(solution: Solution, exp: Exp): Exp {
   exp = solutionWalk(solution, exp)
 
   switch (exp["@kind"]) {
-    case "ListCons": {
-      return Exps.ListCons(
+    case "ArrayCons": {
+      return Exps.ArrayCons(
         solutionDeepWalk(solution, exp.car),
         solutionDeepWalk(solution, exp.cdr),
       )

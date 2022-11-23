@@ -47,14 +47,14 @@ export function unify(
     return solution
   }
 
-  if (left["@kind"] === "ListCons" && right["@kind"] === "ListCons") {
+  if (left["@kind"] === "ArrayCons" && right["@kind"] === "ArrayCons") {
     const carSolution = unify(solution, left.car, right.car)
     if (carSolution === undefined) return undefined
     const cdrSolution = unify(carSolution, left.cdr, right.cdr)
     return cdrSolution
   }
 
-  if (left["@kind"] === "ListNull" && right["@kind"] === "ListNull") {
+  if (left["@kind"] === "ArrayNull" && right["@kind"] === "ArrayNull") {
     return solution
   }
 

@@ -13,12 +13,12 @@ export function formatSolutionForQueryPattern(
       const variables: Array<Exp> = pattern.names.map((name) =>
         Exps.PatternVar(name),
       )
-      const list = variables.reduceRight(
-        (result, variable) => Exps.ListCons(variable, result),
-        Exps.ListNull(),
+      const exp = variables.reduceRight(
+        (result, variable) => Exps.ArrayCons(variable, result),
+        Exps.ArrayNull(),
       )
       const results = solutions.map((solution) =>
-        formatExp(reify(solution, list)),
+        formatExp(reify(solution, exp)),
       )
       return formatResults(results)
     }

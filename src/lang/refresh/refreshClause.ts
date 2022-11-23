@@ -84,15 +84,15 @@ function refreshExp(
       return exp
     }
 
-    case "ListCons": {
-      return Exps.ListCons(
+    case "ArrayCons": {
+      return Exps.ArrayCons(
         refreshExp(mod, exp.car, varMap),
         refreshExp(mod, exp.cdr, varMap),
         exp.span,
       )
     }
 
-    case "ListNull": {
+    case "ArrayNull": {
       return exp
     }
 

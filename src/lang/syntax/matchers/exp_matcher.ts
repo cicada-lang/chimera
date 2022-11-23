@@ -30,10 +30,10 @@ export function operand_matcher(tree: pt.Tree): Exp {
         .zero_or_more_matcher(elements)
         .map(matchers.exp_matcher)
         .reduceRight(
-          (result, element) => Exps.ListCons(element, result, span),
-          Exps.ListCons(
+          (result, element) => Exps.ArrayCons(element, result, span),
+          Exps.ArrayCons(
             matchers.exp_matcher(last_element),
-            Exps.ListNull(),
+            Exps.ArrayNull(),
             span,
           ),
         ),
@@ -42,14 +42,14 @@ export function operand_matcher(tree: pt.Tree): Exp {
         .zero_or_more_matcher(elements)
         .map(matchers.exp_matcher)
         .reduceRight(
-          (result, element) => Exps.ListCons(element, result, span),
-          Exps.ListCons(
+          (result, element) => Exps.ArrayCons(element, result, span),
+          Exps.ArrayCons(
             matchers.exp_matcher(last_element),
             matchers.exp_matcher(tail_element),
             span,
           ),
         ),
-    "operand:list_empty": ({}, { span }) => Exps.ListNull(span),
+    "operand:list_empty": ({}, { span }) => Exps.ArrayNull(span),
     "operand:objekt": ({ properties, last_property }, { span }) =>
       Exps.Objekt(
         Object.fromEntries([

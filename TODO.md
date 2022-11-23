@@ -1,11 +1,8 @@
-rename `ListCons` to `ArrayCons` -- for JSON
+error report on importing undefined relation
 built-in globals -- `String` predicate
 built-in globals -- `String` to `Array`
 built-in globals -- `Number` predicate
-
 [maybe] using predicate (relation) as type to do assertion
-
-error report on importing undefined relation
 
 # langs
 
@@ -20,6 +17,15 @@ error report on importing undefined relation
 [langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
+
+# learn
+
+[learn] logic programming's correspondence to first order logic
+
+- using whereabouts to implement languages to test FFI to js
+
+  - parsing
+  - formating
 
 # deduction
 
