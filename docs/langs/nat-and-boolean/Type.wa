@@ -1,0 +1,48 @@
+import { Exp, Boolean, Nat } from "Exp.wa"
+
+Type Type::Boolean
+Type Type::Nat
+
+Check [exp, Type::Boolean] -- { Boolean exp }
+Check [exp, Type::Nat] -- { Nat exp }
+
+Check [Exp::add1(x), Type::Nat]
+-------------------------------- {
+  Check [x, Type::Nat]
+}
+
+Check [Exp::sub1(x), Type::Nat]
+-------------------------------- {
+  Check [x, Type::Nat]
+}
+
+Check [Exp::isZero(x), Type::Boolean]
+-------------------------------------- {
+  Check [x, Type::Nat]
+}
+
+Check [Exp::if(p, t, f), type]
+------------------------------- {
+  Check [p, Type::Boolean]
+  Check [t, type]
+  Check [f, type]
+}
+
+find exp limit 30 {
+  Check [exp, Type::Nat]
+}
+
+find exp limit 30 {
+  Check [exp, Type::Boolean]
+}
+
+find type {
+  Check [
+    Exp::if(
+      Exp::isZero(Exp::add1(Exp::add1(Nat::zero))),
+      Exp::add1(Nat::zero),
+      Exp::add1(Exp::add1(Nat::zero)),
+    ),
+    type
+  ]
+}

@@ -1,12 +1,13 @@
+rename `ListCons` to `ArrayCons` -- for JSON
 built-in globals -- `String` predicate
-
+built-in globals -- `String` to `Array`
 built-in globals -- `Number` predicate
 
 [maybe] using predicate (relation) as type to do assertion
 
-# langs
+error report on importing undefined relation
 
-[langs] `langs/nat-and-boolean-typed`
+# langs
 
 [langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
 

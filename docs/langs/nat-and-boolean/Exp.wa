@@ -8,7 +8,7 @@ Value x -- { Boolean x }
 Value x -- { Nat x }
 
 Exp x -- { Value x }
-Exp Exp::if(p, t, f) -- { Exp p Exp t Exp f }
 Exp Exp::add1(x) -- { Exp x }
 Exp Exp::sub1(x) -- { Exp x }
 Exp Exp::isZero(x) -- { Exp x }
+Exp Exp::if(p, t, f) -- { Exp p Exp t Exp f }
