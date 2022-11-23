@@ -4,6 +4,8 @@ built-in globals -- `Number` predicate
 
 [maybe] using predicate (relation) as type to do assertion
 
+- type can be used as meta variable's constraint
+
 # langs
 
 [langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
