@@ -1,39 +1,39 @@
 import { Exp, Boolean, Nat } from "Exp.wa"
 
-Type Type::Boolean
-Type Type::Nat
+Type Type::boolean
+Type Type::nat
 
-Check [exp, Type::Boolean] -- { Boolean exp }
-Check [exp, Type::Nat] -- { Nat exp }
+Check [exp, Type::boolean] -- { Boolean exp }
+Check [exp, Type::nat] -- { Nat exp }
 
-Check [Exp::add1(x), Type::Nat]
+Check [Exp::add1(x), Type::nat]
 -------------------------------- {
-  Check [x, Type::Nat]
+  Check [x, Type::nat]
 }
 
-Check [Exp::sub1(x), Type::Nat]
+Check [Exp::sub1(x), Type::nat]
 -------------------------------- {
-  Check [x, Type::Nat]
+  Check [x, Type::nat]
 }
 
-Check [Exp::isZero(x), Type::Boolean]
+Check [Exp::isZero(x), Type::boolean]
 -------------------------------------- {
-  Check [x, Type::Nat]
+  Check [x, Type::nat]
 }
 
 Check [Exp::if(p, t, f), type]
 ------------------------------- {
-  Check [p, Type::Boolean]
+  Check [p, Type::boolean]
   Check [t, type]
   Check [f, type]
 }
 
 find exp limit 30 {
-  Check [exp, Type::Nat]
+  Check [exp, Type::nat]
 }
 
 find exp limit 30 {
-  Check [exp, Type::Boolean]
+  Check [exp, Type::boolean]
 }
 
 find type {

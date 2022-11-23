@@ -63,5 +63,5 @@
   Exp::isZero(Exp::add1(Nat::add1(Nat::add1(Nat::add1(Nat::zero())))))
 ]
 [ 
-  Type::Nat()
+  Type::nat()
 ]
