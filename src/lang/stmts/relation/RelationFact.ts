@@ -9,6 +9,11 @@ export class RelationFact extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
+    mod.findOrCreateRelation(this.name)
     mod.defineClause(this.name, undefined, this.exp)
+  }
+
+  prepare(mod: Mod): void {
+    mod.createRelation(this.name)
   }
 }

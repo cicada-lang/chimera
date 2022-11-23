@@ -1,4 +1,9 @@
-error report on importing undefined relation
+limit mutual recursive relations inside a `Mod`
+
+- `evaluateGoal` should error on not find
+
+use findRelationOrFail instead of findOrCreateRelation
+
 built-in globals -- `String` predicate
 built-in globals -- `String` to `Array`
 built-in globals -- `Number` predicate

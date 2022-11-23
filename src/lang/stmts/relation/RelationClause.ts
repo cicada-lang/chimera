@@ -20,4 +20,8 @@ export class RelationClause extends Stmt {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod, goal))
     mod.defineClause(this.name, this.clauseName, this.exp, goals)
   }
+
+  prepare(mod: Mod): void {
+    mod.createRelation(this.name)
+  }
 }

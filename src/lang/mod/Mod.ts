@@ -23,6 +23,10 @@ export class Mod {
   }
 
   async executeStmts(stmts: Array<Stmt>): Promise<void> {
+    for (const stmt of stmts.values()) {
+      stmt.prepare(this)
+    }
+
     const offset = this.stmts.length
     for (const [index, stmt] of stmts.entries()) {
       const output = await stmt.execute(this)
@@ -52,14 +56,17 @@ export class Mod {
     )
   }
 
-  findOrCreateRelation(name: string): Relation {
-    let relation = this.relations.get(name)
-    if (relation !== undefined) {
-      return relation
-    }
+  findRelation(name: string): Relation | undefined {
+    return this.relations.get(name)
+  }
 
-    relation = new Relation([])
+  createRelation(name: string): Relation {
+    const relation = new Relation([])
     this.relations.set(name, relation)
     return relation
+  }
+
+  findOrCreateRelation(name: string): Relation {
+    return this.findRelation(name) || this.createRelation(name)
   }
 }
