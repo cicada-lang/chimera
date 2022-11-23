@@ -268,7 +268,7 @@ find [x, y] {
 }
 ```
 
-Please see [docs/](docs/) for more examples.
+Please see [tests/](tests/), [std/](std/) and [docs/books/](docs/books/) for more examples.
 
 ## Development
 
