@@ -16,7 +16,7 @@ export class RelationClause extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    mod.findOrCreateRelation(this.name)
+    mod.findRelationOrFail(this.name)
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod, goal))
     mod.defineClause(this.name, this.clauseName, this.exp, goals)
   }

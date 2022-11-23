@@ -46,7 +46,7 @@ export class Mod {
     exp: Exp,
     goals?: Array<Goal>,
   ): void {
-    const relation = this.findOrCreateRelation(name)
+    const relation = this.findRelationOrFail(name)
     relation.clauses.push(
       Clause(
         clauseName || relation.clauses.length.toString(),
@@ -56,17 +56,24 @@ export class Mod {
     )
   }
 
-  findRelation(name: string): Relation | undefined {
-    return this.relations.get(name)
-  }
-
   createRelation(name: string): Relation {
     const relation = new Relation([])
     this.relations.set(name, relation)
     return relation
   }
 
-  findOrCreateRelation(name: string): Relation {
-    return this.findRelation(name) || this.createRelation(name)
+  findRelation(name: string): Relation | undefined {
+    return this.relations.get(name)
+  }
+
+  findRelationOrFail(name: string): Relation {
+    const relation = this.findRelation(name)
+    if (relation === undefined) {
+      throw new Error(
+        `[Mod.findRelationOrFail] undefined relation name: ${name}`,
+      )
+    }
+
+    return relation
   }
 }
