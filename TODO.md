@@ -1,6 +1,4 @@
-limit mutual recursive relations inside a `Mod`
-
-- `evaluateGoal` should error on not find
+use ElaborationError instead of EvaluationError -- for the span
 
 use findRelationOrFail instead of findOrCreateRelation
 

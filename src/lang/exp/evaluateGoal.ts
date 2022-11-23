@@ -1,3 +1,4 @@
+import * as Errors from "../errors"
 import type * as Exps from "../exp"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
@@ -6,8 +7,13 @@ import type { Mod } from "../mod"
 export function evaluateGoal(mod: Mod, goal: Exps.Goal): Goal {
   switch (goal["@kind"]) {
     case "GoalApply": {
-      /** NOTE Support mutual recursive relations. **/
-      const relation = mod.findOrCreateRelation(goal.name)
+      const relation = mod.findRelation(goal.name)
+      if (relation === undefined) {
+        throw new Errors.EvaluationError(
+          `[evaluateGoal] undefined relation name: ${goal.name}`,
+        )
+      }
+
       return Goals.Apply(goal.name, relation, goal.arg)
     }
 
