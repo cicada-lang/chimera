@@ -29,6 +29,10 @@ export class MarkdownScript extends Script {
       const stmts = parseStmts(text)
       await this.mod.executeStmts(stmts)
     } catch (error) {
+      if (error instanceof Errors.ElaborationError) {
+        throw new Errors.ErrorReport(error.report(text))
+      }
+
       if (error instanceof Errors.ParsingError) {
         throw new Errors.ErrorReport(error.report(text))
       }

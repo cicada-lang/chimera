@@ -13,6 +13,10 @@ export class DefaultScript extends Script {
       const stmts = parseStmts(this.text)
       await this.mod.executeStmts(stmts)
     } catch (error) {
+      if (error instanceof Errors.ElaborationError) {
+        throw new Errors.ErrorReport(error.report(this.text))
+      }
+
       if (error instanceof Errors.ParsingError) {
         throw new Errors.ErrorReport(error.report(this.text))
       }

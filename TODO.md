@@ -1,10 +1,9 @@
-use ElaborationError instead of EvaluationError -- for the span
-
 use findRelationOrFail instead of findOrCreateRelation
 
 built-in globals -- `String` predicate
 built-in globals -- `String` to `Array`
 built-in globals -- `Number` predicate
+
 [maybe] using predicate (relation) as type to do assertion
 
 # langs

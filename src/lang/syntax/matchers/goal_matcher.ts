@@ -5,11 +5,12 @@ import * as matchers from "../matchers"
 export function goal_matcher(tree: pt.Tree): Exps.Goal {
   return pt.matcher<Exps.Goal>({
     "goal:apply": ({ name, exp }, { span }) =>
-      Exps.GoalApply(pt.str(name), matchers.exp_matcher(exp)),
+      Exps.GoalApply(pt.str(name), matchers.exp_matcher(exp), span),
     "goal:unify": ({ left, right }, { span }) =>
       Exps.GoalUnifiable(
         matchers.exp_matcher(left),
         matchers.exp_matcher(right),
+        span,
       ),
   })(tree)
 }

@@ -50,7 +50,6 @@ find [left] limit 1 {
         [
           Exps.GoalApply(
             "Friendship",
-
             Exps.Objekt({
               left: Exps.PatternVar("left"),
               right: Exps.String("mary"),

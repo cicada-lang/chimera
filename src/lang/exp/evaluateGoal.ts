@@ -9,8 +9,9 @@ export function evaluateGoal(mod: Mod, goal: Exps.Goal): Goal {
     case "GoalApply": {
       const relation = mod.findRelation(goal.name)
       if (relation === undefined) {
-        throw new Errors.EvaluationError(
+        throw new Errors.ElaborationError(
           `[evaluateGoal] undefined relation name: ${goal.name}`,
+          { span: goal.span },
         )
       }
 
