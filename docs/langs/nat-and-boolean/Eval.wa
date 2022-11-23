@@ -1,8 +1,16 @@
 import { Value } from "Exp.wa"
 import { Step } from "Step.wa"
 
-Eval [v, v] -- { Value v }
-Eval [e, v] -- { Step [e, r] Eval [r, v] }
+Eval [v, v]
+------------ {
+  Value v
+}
+
+Eval [e, v]
+-------------- {
+  Step [e, r]
+  Eval [r, v]
+}
 
 find [e, v] {
   e = Exp::if(
