@@ -18,14 +18,14 @@ export const operand = {
     "operand:false": ['"false"'],
     "operand:string": [{ data: { $pattern: ["string"] } }],
     "operand:number": [{ data: { $pattern: ["number"] } }],
-    "operand:list": [
+    "operand:array": [
       '"["',
       { elements: { $ap: ["zero_or_more", "exp", '","'] } },
       { last_element: "exp" },
       { $ap: ["optional", '","'] },
       '"]"',
     ],
-    "operand:list_cons": [
+    "operand:array_cons": [
       '"["',
       { elements: { $ap: ["zero_or_more", "exp", '","'] } },
       { last_element: "exp" },
@@ -34,7 +34,7 @@ export const operand = {
       { tail_element: "exp" },
       '"]"',
     ],
-    "operand:list_empty": ['"["', '"]"'],
+    "operand:array_empty": ['"["', '"]"'],
     "operand:objekt": [
       '"{"',
       { properties: { $ap: ["zero_or_more", "property", '","'] } },
