@@ -1,0 +1,36 @@
+[ 
+  Type::arrow(_.0, _.0)
+]
+[ 
+  Exp::fn(_.0, Exp::var(_.0)),
+  Exp::fn(_.0, Exp::ap(Exp::fn(_.1, Exp::var(_.1)), Exp::var(_.0))),
+  Exp::ap(Exp::fn(_.0, Exp::var(_.0)), Exp::fn(_.1, Exp::var(_.1))),
+  Exp::fn(_.0, Exp::ap(Exp::fn(_.1, Exp::var(_.0)), Exp::var(_.0))),
+  Exp::ap(
+    Exp::fn(_.0, Exp::fn(_.1, Exp::var(_.1))),
+    Exp::fn(_.2, Exp::var(_.2)),
+  ),
+  Exp::fn(
+    _.0,
+    Exp::ap(Exp::fn(_.1, Exp::var(_.0)), Exp::fn(_.2, Exp::var(_.2))),
+  ),
+  Exp::ap(
+    Exp::fn(_.0, Exp::fn(_.1, Exp::var(_.1))),
+    Exp::fn(_.2, Exp::fn(_.3, Exp::var(_.3))),
+  ),
+  Exp::fn(
+    _.0,
+    Exp::ap(Exp::fn(_.1, Exp::var(_.0)), Exp::fn(_.2, Exp::var(_.0))),
+  ),
+  Exp::fn(
+    _.0,
+    Exp::ap(
+      Exp::fn(_.1, Exp::var(_.0)),
+      Exp::fn(_.2, Exp::fn(_.3, Exp::var(_.3))),
+    ),
+  ),
+  Exp::ap(
+    Exp::fn(_.0, Exp::fn(_.1, Exp::var(_.1))),
+    Exp::fn(_.2, Exp::fn(_.3, Exp::var(_.2))),
+  )
+]
