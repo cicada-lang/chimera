@@ -1,10 +1,29 @@
-built-in globals -- `String` predicate
-built-in globals -- `String` to `Array`
-built-in globals -- `Number` predicate
+# programming by rewriting
+
+Do we need a rewriting system in logic programming language at all?
+
+- maybe it is, because we want to avoid writing trivial pattern matches.
+
+`Stmts.RewriteRule`
+`Stmts.Rewrite`
+
+# type system
 
 [maybe] using predicate (relation) as type to do assertion
 
 - type can be used as meta variable's constraint
+
+built-in globals -- `String` predicate
+
+- need to generate all `String`
+
+built-in globals -- `Number` predicate
+
+- need to generate all `Number`
+
+# std
+
+built-in globals -- `String` to `Array`
 
 # langs
 
@@ -30,15 +49,6 @@ built-in globals -- `Number` predicate
 # deduction
 
 design syntax for deduction
-
-# programming by rewriting
-
-Do we need a rewriting system in logic programming language at all?
-
-- maybe it is, because we want to avoid writing trivial pattern matches.
-
-`Stmts.RewriteRule`
-`Stmts.Rewrite`
 
 # quotient
 
@@ -69,7 +79,7 @@ There are a lot of related semantic web ideas:
 
 `Exps.ReifiedVar` -- valid JSON -- `_.0` -> `{ @type: ..., @kind: ..., name: ... }`
 
-`Exps.ListCons` -- valid JSON -- `[_.0 | _.1]` -> `{ @type: ..., @kind: ..., head: ..., tail: ... }`
+`Exps.ArrayCons` -- valid JSON -- `[_.0 | _.1]` -> `{ @type: ..., @kind: ..., head: ..., tail: ... }`
 
 # the-reasoned-schemer
 
