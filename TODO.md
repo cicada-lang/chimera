@@ -5,6 +5,10 @@
 
 # constraint logic programming
 
+[question] how to understand constraint in first order logic?
+
+- a group of built-in predicates with some axioms?
+
 [read] ckanren-minikanren-with-constraints.pdf
 
 - The miniKanren Philosophy
