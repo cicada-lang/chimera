@@ -1,3 +1,9 @@
+> Be familiar with minikanren implementation again -- to read ckanren paper.
+
+[books/the-reasoned-schemer] 09-thin-ice.wa
+
+[books/the-reasoned-schemer] 10-under-the-hood.wa
+
 # programming by rewriting
 
 `Stmts.RewriteRule`
@@ -81,11 +87,7 @@ There are a lot of related semantic web ideas:
 
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
-08-just-a-bit-more.wa -- frame 35
-
-09-thin-ice.wa
-
-10-under-the-hood.wa
+[books/the-reasoned-schemer] 08-just-a-bit-more.wa -- frame 35
 
 # clause-and-effect
 
