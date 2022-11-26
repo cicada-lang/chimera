@@ -1,8 +1,14 @@
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 
 [books/the-reasoned-schemer] 09-thin-ice.wa
-
 [books/the-reasoned-schemer] 10-under-the-hood.wa
+
+# learn
+
+ckanren-minikanren-with-constraints.pdf
+a-framework-for-extending-microkanren-with-constraints.pdf
+pure-declarative-and-constructive-arithmetic-relations.pdf
+a-surprisingly-competitive-conditional-operator.pdf
 
 # programming by rewriting
 
