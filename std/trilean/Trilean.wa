@@ -1,0 +1,62 @@
+// Use logic programming to play with many-valued logic.
+
+Trilean 0
+Trilean 0.5
+Trilean 1
+
+// Name of the three values:
+
+TrileanFalse 0
+TrileanMiddle 0.5
+TrileanTrue 1
+
+TrileanMin [0, 0, 0]
+TrileanMin [0, 0.5, 0]
+TrileanMin [0, 1, 0]
+TrileanMin [0.5, 0, 0]
+TrileanMin [0.5, 0.5, 0.5]
+TrileanMin [0.5, 1, 0.5]
+TrileanMin [1, 0, 0]
+TrileanMin [1, 0.5, 0.5]
+TrileanMin [1, 1, 1]
+
+TrileanMax [0, 0, 0]
+TrileanMax [0, 0.5, 0.5]
+TrileanMax [0, 1, 1]
+TrileanMax [0.5, 0, 0.5]
+TrileanMax [0.5, 0.5, 0.5]
+TrileanMax [0.5, 1, 1]
+TrileanMax [1, 0, 1]
+TrileanMax [1, 0.5, 1]
+TrileanMax [1, 1, 1]
+
+TrileanPositive 0.5
+TrileanPositive 1
+
+// Use mutually exclusive cases.
+
+TrileanMul [0, y, 0] -- { Trilean y }
+TrileanMul [x, 0, 0] -- { TrileanPositive x }
+TrileanMul [x, y, z] -- {
+  TrileanPositive x
+  TrileanPositive y
+  TrileanMax [x, y, z]
+}
+
+// See how `TrileanMax` is different from `TrileanMul`:
+
+find [x, y, z] { TrileanMax [x, y, z] }
+find [x, y, z] { TrileanMul [x, y, z] }
+
+// What returns 0?
+find [x, y] { TrileanMul [x, y, 0] }
+
+// [question] Can `TrileansMul` be defined by
+// composition of other connectives (not, min, max)?
+// Does this means to use only one clause?
+
+// [question] How to search high-order things
+// like connective in logic programming?
+// We want to search how to construct truth function
+// by composition of given set of connectives.
+// Maybe we must define first order expressions first.

@@ -1,9 +1,5 @@
 # programming by rewriting
 
-Do we need a rewriting system in logic programming language at all?
-
-- maybe it is, because we want to avoid writing trivial pattern matches.
-
 `Stmts.RewriteRule`
 `Stmts.Rewrite`
 
@@ -100,14 +96,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 # later
 
 [maybe] [later] restrict the parser -- relation name must be in `CamelCase`
-
-# std
-
-[std] `std/trilean` -- use logic programming to play with many-valued logic.
-
-- Can `Trileans.mul` be defined by composition of other connectives (not, min, max)?
-- Search how to construct truth function by composition of given set of connectives.
-- How to search high-order things like connective in logic programming?
 
 # maybe
 
