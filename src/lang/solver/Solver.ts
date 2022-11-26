@@ -38,10 +38,10 @@ export type SolveOptions = {
 }
 
 export type SolverReport = {
-  step_count: number
+  stepCount: number
   tasks: Array<SolverReportTask>
   solutions: Array<Json>
-  query_pattern: string
+  queryPattern: string
 }
 
 export type SolverReportTask = {
@@ -50,7 +50,7 @@ export type SolverReportTask = {
 }
 
 export class Solver {
-  step_count = 0
+  stepCount = 0
   solutions: Array<Solution> = []
 
   constructor(public pattern: QueryPattern, public tasks: Array<Task>) {}
@@ -99,7 +99,7 @@ export class Solver {
   }
 
   private step(mod: Mod, options: SolveOptions): Solution | undefined {
-    this.step_count++
+    this.stepCount++
     // NOTE pop + push = depth-first search
     // const task = this.tasks.pop() as Task
     // NOTE shift + push = breadth-first search
@@ -115,9 +115,9 @@ export class Solver {
 
   report(): SolverReport {
     return {
-      step_count: this.step_count,
+      stepCount: this.stepCount,
       tasks: this.tasks.map(reportTask),
-      query_pattern: formatQueryPattern(this.pattern),
+      queryPattern: formatQueryPattern(this.pattern),
       solutions: JSON.parse(
         formatSolutionForQueryPattern(this.solutions, this.pattern),
       ),

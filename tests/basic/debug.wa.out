@@ -1,31 +1,31 @@
 ---
-step_count: 0
+stepCount: 0
 tasks:
   - solution: {}
     goals:
       - ?x = true
       - ?y = false
-query_pattern: (x, y)
+queryPattern: (x, y)
 solutions: []
 
 ---
-step_count: 1
+stepCount: 1
 tasks:
   - solution:
       x: true
     goals:
       - ?y = false
-query_pattern: (x, y)
+queryPattern: (x, y)
 solutions: []
 
 ---
-step_count: 2
+stepCount: 2
 tasks:
   - solution:
       y: false
       x: true
     goals: []
-query_pattern: (x, y)
+queryPattern: (x, y)
 solutions: []
 
 [ 
