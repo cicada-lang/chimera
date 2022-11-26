@@ -3,17 +3,34 @@
 [books/the-reasoned-schemer] 09-thin-ice.wa
 [books/the-reasoned-schemer] 10-under-the-hood.wa
 
-# learn
+# constraint logic programming
 
-ckanren-minikanren-with-constraints.pdf
-a-framework-for-extending-microkanren-with-constraints.pdf
-pure-declarative-and-constructive-arithmetic-relations.pdf
-a-surprisingly-competitive-conditional-operator.pdf
+[read] ckanren-minikanren-with-constraints.pdf
 
-# programming by rewriting
+- The miniKanren Philosophy
 
-`Stmts.RewriteRule`
-`Stmts.Rewrite`
+  in a purely declarative miniKanren relation, the order of goals is
+  unimportant. That is, swapping two conjuncts (or two disjuncts)
+  should not affect the semantics of the program. This is true only
+  to a point: a miniKanren query that has no answers may diverge
+  instead of failing in finite time. For a query that produces
+  answers, however, reordering subgoals should not affect the set of
+  possible answers returned
+
+  - See (Byrd 2009) for a detailed discussion of these issues and of
+    the miniKanren design philosophy.
+
+    - [read] relational-programming-in-minikanren-techniques-applications-and-implementations.pdf
+
+  - [diary] about this issues
+  - [read] read byrd's thesis
+
+[read] a-framework-for-extending-microkanren-with-constraints.pdf
+[read] pure-declarative-and-constructive-arithmetic-relations.pdf
+[read] a-surprisingly-competitive-conditional-operator.pdf
+
+[std] finite-domain
+[std] disequality
 
 # type system
 
@@ -29,9 +46,16 @@ built-in globals -- `Number` predicate
 
 - need to generate all `Number`
 
+# programming by rewriting
+
+`Stmts.RewriteRule`
+`Stmts.Rewrite`
+
 # std
 
 built-in globals -- `String` to `Array`
+
+- for string processing
 
 # langs
 
@@ -97,9 +121,9 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 # clause-and-effect
 
-08-maximum-of-a-list.wa -- need `<=`
+[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
-09-searching-a-cyclic-graph.wa -- need `!=`
+[books/clause-and-effect] 09-searching-a-cyclic-graph.wa -- need `!=`
 
 # later
 
