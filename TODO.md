@@ -1,5 +1,3 @@
-`Solution` has `inequalities` -- Array of `Substitution`
-
 # learn
 
 > Be familiar with minikanren implementation again -- to read ckanren paper.
