@@ -3,11 +3,18 @@
 [books/the-reasoned-schemer] 09-thin-ice.wa
 [books/the-reasoned-schemer] 10-under-the-hood.wa
 
+review old microkanren notes
+
 # constraint logic programming
 
 [question] how to understand constraint in first order logic?
 
 - a group of built-in predicates with some axioms?
+- take `Disequality` as an example
+- take finite domain as an example
+- can we use set theoretical rule based language to specify a constraint?
+
+`Solution` has `substitutions` and `constraints`
 
 [read] ckanren-minikanren-with-constraints.pdf
 
@@ -33,10 +40,17 @@
 [read] pure-declarative-and-constructive-arithmetic-relations.pdf
 [read] a-surprisingly-competitive-conditional-operator.pdf
 
-[std] finite-domain
-[std] disequality
+[constraint] finite-domain
+[constraint] disequality
+[constraint] type
 
 # type system
+
+datatype declaration -- we should not use dynamic type
+
+- because of we also want to use the `::` syntax for namespace,
+  this the prefix name of `::` can be used,
+  only when the name is imported.
 
 [maybe] using predicate (relation) as type to do assertion
 
