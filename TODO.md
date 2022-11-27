@@ -1,5 +1,5 @@
-`Solution` as a class
-`Solution` has `substitution`
+`Task` and `Solver` has `Solution` instead of `substitution`
+
 `Solution` has `notEqualConstraints`
 
 - maybe another name
