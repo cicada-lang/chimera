@@ -1,8 +1,8 @@
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
+import { Solution } from "../solution"
 import { Task } from "../solver"
 import type { QueryPattern } from "../stmts/find"
-import { Substitution, SubstitutionNull } from "../substitution"
 
 /**
 
@@ -22,32 +22,32 @@ export type SolveOptions = {
 }
 
 export class Solver {
-  substitutions: Array<Substitution> = []
+  solutions: Array<Solution> = []
 
   constructor(public pattern: QueryPattern, public tasks: Array<Task>) {}
 
   static start(pattern: QueryPattern, goals: Array<Goal>): Solver {
-    const task = new Task(SubstitutionNull(), goals)
+    const task = new Task(Solution.emptySolution(), goals)
     return new Solver(pattern, [task])
   }
 
-  solve(mod: Mod, options: SolveOptions): Array<Substitution> {
+  solve(mod: Mod, options: SolveOptions): Array<Solution> {
     const limit = options.limit || Infinity
 
-    while (this.substitutions.length < limit && this.tasks.length > 0) {
-      const substitution = this.step(mod, options)
-      if (substitution !== undefined) {
-        this.substitutions.push(substitution)
+    while (this.solutions.length < limit && this.tasks.length > 0) {
+      const solution = this.step(mod, options)
+      if (solution !== undefined) {
+        this.solutions.push(solution)
       }
     }
 
-    return this.substitutions
+    return this.solutions
   }
 
-  private step(mod: Mod, options: SolveOptions): Substitution | undefined {
+  private step(mod: Mod, options: SolveOptions): Solution | undefined {
     const task = this.tasks.shift() as Task
     const tasks = task.undertake(mod)
-    if (tasks === undefined) return task.substitution
+    if (tasks === undefined) return task.solution
 
     // Trying to be fair for all tasks,
     // we push the generated new tasks to the end of the queue.

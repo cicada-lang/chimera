@@ -3,10 +3,11 @@ import { indent } from "../../../utils/indent"
 import * as Exps from "../../exp"
 import { Exp, formatExp } from "../../exp"
 import type { Mod } from "../../mod"
+import type { Solution } from "../../solution"
 import { Solver } from "../../solver"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import { reify, Substitution } from "../../substitution"
+import { reify } from "../../substitution"
 
 export class Find extends Stmt {
   constructor(
@@ -21,13 +22,13 @@ export class Find extends Stmt {
   async execute(mod: Mod): Promise<string> {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod, goal))
     const solver = Solver.start(this.pattern, goals)
-    const substitutions = solver.solve(mod, buildSolveOptions(this.options))
-    return formatSubstitutionForQueryPattern(substitutions, this.pattern)
+    const solutions = solver.solve(mod, buildSolveOptions(this.options))
+    return formatSolutions(solutions, this.pattern)
   }
 }
 
-function formatSubstitutionForQueryPattern(
-  substitutions: Array<Substitution>,
+function formatSolutions(
+  solutions: Array<Solution>,
   pattern: QueryPattern,
 ): string {
   switch (pattern["@kind"]) {
@@ -39,16 +40,16 @@ function formatSubstitutionForQueryPattern(
         (result, variable) => Exps.ArrayCons(variable, result),
         Exps.ArrayNull(),
       )
-      const results = substitutions.map((substitution) =>
-        formatExp(reify(substitution, exp)),
+      const results = solutions.map((solution) =>
+        formatExp(reify(solution.substitution, exp)),
       )
       return formatResults(results)
     }
 
     case "QueryPatternName": {
       const variable = Exps.PatternVar(pattern.name)
-      const results = substitutions.map((substitution) =>
-        formatExp(reify(substitution, variable)),
+      const results = solutions.map((solution) =>
+        formatExp(reify(solution.substitution, variable)),
       )
       return formatResults(results)
     }
