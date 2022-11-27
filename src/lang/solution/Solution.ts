@@ -4,7 +4,7 @@ import { SubstitutionNull } from "../substitution"
 export class Solution {
   constructor(public substitution: Substitution) {}
 
-  static emptySolution(): Solution {
+  static initial(): Solution {
     return new Solution(SubstitutionNull())
   }
 

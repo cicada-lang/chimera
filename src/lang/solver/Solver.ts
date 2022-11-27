@@ -27,7 +27,7 @@ export class Solver {
   constructor(public pattern: QueryPattern, public tasks: Array<Task>) {}
 
   static start(pattern: QueryPattern, goals: Array<Goal>): Solver {
-    const task = new Task(Solution.emptySolution(), goals)
+    const task = new Task(Solution.initial(), goals)
     return new Solver(pattern, [task])
   }
 
