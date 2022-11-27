@@ -1,6 +1,6 @@
-import { Zero, Add1, Nat } from "Nat.wa"
-import { Add } from "Add.wa"
-import { Mul } from "Mul.wa"
+import { Zero, Add1, Nat } from "nat.wa"
+import { Add } from "add.wa"
+import { Mul } from "mul.wa"
 import {
   One,
   Two,

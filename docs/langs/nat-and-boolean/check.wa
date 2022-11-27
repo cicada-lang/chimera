@@ -1,4 +1,4 @@
-import { Exp, Boolean, Nat } from "Exp.wa"
+import { Exp, Boolean, Nat } from "exp.wa"
 
 Type Type::boolean
 Type Type::nat

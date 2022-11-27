@@ -1,4 +1,4 @@
-import { Nat, Value } from "Exp.wa"
+import { Nat, Value } from "exp.wa"
 
 Step [Exp::sub1(Nat::zero), Nat::zero]
 Step [Exp::sub1(Nat::add1(n)), n] -- { Nat n }

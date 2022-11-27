@@ -1,6 +1,6 @@
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 
-change file naming convention to `lisp-case` -- for it is unlikely to be one file one relation
+[diary] analysis the type of micro/minikanren implementation and our explicit search based implementation
 
 [books/the-reasoned-schemer] 09-thin-ice.wa
 [books/the-reasoned-schemer] 10-under-the-hood.wa
@@ -15,6 +15,7 @@ review old microkanren notes
 - take `Disequality` as an example
 - take finite domain as an example
 - can we use set theoretical rule based language to specify a constraint?
+- maybe we can learn more about this from Byrd's thesis
 
 `Solution` has `substitutions` and `constraints`
 

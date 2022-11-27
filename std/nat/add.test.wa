@@ -1,4 +1,4 @@
-import { Add } from "Add.wa"
+import { Add } from "add.wa"
 
 find x {
   Add [x, x, Nat::zero]

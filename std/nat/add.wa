@@ -1,4 +1,4 @@
-import { Zero, Add1, Nat } from "Nat.wa"
+import { Zero, Add1, Nat } from "nat.wa"
 
 Add [x, y, y]
 ------------- {

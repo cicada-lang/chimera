@@ -1,5 +1,5 @@
-import { Value } from "Exp.wa"
-import { Step } from "Step.wa"
+import { Value } from "exp.wa"
+import { Step } from "step.wa"
 
 Eval [v, v]
 ------------ {
