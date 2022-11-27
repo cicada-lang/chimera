@@ -20,7 +20,7 @@ export class Find extends Stmt {
 
   async execute(mod: Mod): Promise<string> {
     const goals = this.goals.map((goal) => Exps.evaluateGoal(mod, goal))
-    const solver = Solver.fromGoals(this.pattern, goals)
+    const solver = Solver.start(this.pattern, goals)
     const substitutions = solver.solve(mod, buildSolveOptions(this.options))
     return formatSubstitutionForQueryPattern(substitutions, this.pattern)
   }
