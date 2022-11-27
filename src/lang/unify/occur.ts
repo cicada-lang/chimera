@@ -1,8 +1,12 @@
 import type { Exp } from "../exp"
-import { Solution, solutionWalk } from "../solution"
+import { Substitution, substitutionWalk } from "../substitution"
 
-export function occur(solution: Solution, name: String, exp: Exp): boolean {
-  exp = solutionWalk(solution, exp)
+export function occur(
+  substitution: Substitution,
+  name: String,
+  exp: Exp,
+): boolean {
+  exp = substitutionWalk(substitution, exp)
 
   switch (exp["@kind"]) {
     case "PatternVar": {
@@ -10,17 +14,19 @@ export function occur(solution: Solution, name: String, exp: Exp): boolean {
     }
 
     case "ArrayCons": {
-      return occur(solution, name, exp.car) || occur(solution, name, exp.cdr)
+      return (
+        occur(substitution, name, exp.car) || occur(substitution, name, exp.cdr)
+      )
     }
 
     case "Objekt": {
       return Object.values(exp.properties).some((property) =>
-        occur(solution, name, property),
+        occur(substitution, name, property),
       )
     }
 
     case "Data": {
-      return exp.args.some((arg) => occur(solution, name, arg))
+      return exp.args.some((arg) => occur(substitution, name, arg))
     }
 
     default: {

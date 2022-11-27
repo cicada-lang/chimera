@@ -3,19 +3,19 @@ import type { Json } from "../../utils/Json"
 import { formatExp } from "../exp"
 import { formatGoal, Goal } from "../goal"
 import type { Mod } from "../mod"
-import {
-  Solution,
-  solutionDeepWalk,
-  solutionLookup,
-  solutionNames,
-  SolutionNull,
-} from "../solution"
 import { Debugger, Task } from "../solver"
 import {
   formatQueryPattern,
-  formatSolutionForQueryPattern,
+  formatSubstitutionForQueryPattern,
   QueryPattern,
 } from "../stmts/find"
+import {
+  Substitution,
+  substitutionDeepWalk,
+  substitutionLookup,
+  substitutionNames,
+  SubstitutionNull,
+} from "../substitution"
 
 /**
 
@@ -40,42 +40,42 @@ export type SolveOptions = {
 export type SolverReport = {
   stepCount: number
   tasks: Array<SolverReportTask>
-  solutions: Array<Json>
+  substitutions: Array<Json>
   queryPattern: string
 }
 
 export type SolverReportTask = {
-  solution: Record<string, Json>
+  substitution: Record<string, Json>
   goals: Array<string>
 }
 
 export class Solver {
   stepCount = 0
-  solutions: Array<Solution> = []
+  substitutions: Array<Substitution> = []
 
   constructor(public pattern: QueryPattern, public tasks: Array<Task>) {}
 
   static fromGoals(pattern: QueryPattern, goals: Array<Goal>): Solver {
-    const task = new Task(SolutionNull(), goals)
+    const task = new Task(SubstitutionNull(), goals)
     return new Solver(pattern, [task])
   }
 
-  solve(mod: Mod, options: SolveOptions): Array<Solution> {
+  solve(mod: Mod, options: SolveOptions): Array<Substitution> {
     const limit = options.limit || Infinity
     const debugOptions = { skipPrompt: options.debug?.skipPrompt || 0 }
 
-    while (this.solutions.length < limit && this.tasks.length > 0) {
+    while (this.substitutions.length < limit && this.tasks.length > 0) {
       if (options.debug && mod.options.loader.options.debugger) {
         this.debugStep(mod.options.loader.options.debugger, debugOptions)
       }
 
-      const solution = this.step(mod, options)
-      if (solution !== undefined) {
-        this.solutions.push(solution)
+      const substitution = this.step(mod, options)
+      if (substitution !== undefined) {
+        this.substitutions.push(substitution)
       }
     }
 
-    return this.solutions
+    return this.substitutions
   }
 
   private debugStep(
@@ -98,14 +98,14 @@ export class Solver {
     }
   }
 
-  private step(mod: Mod, options: SolveOptions): Solution | undefined {
+  private step(mod: Mod, options: SolveOptions): Substitution | undefined {
     this.stepCount++
     // NOTE pop + push = depth-first search
     // const task = this.tasks.pop() as Task
     // NOTE shift + push = breadth-first search
     const task = this.tasks.shift() as Task
     const tasks = task.undertake(mod)
-    if (tasks === undefined) return task.solution
+    if (tasks === undefined) return task.substitution
     this.tasks.push(...tasks)
   }
 
@@ -118,34 +118,37 @@ export class Solver {
       stepCount: this.stepCount,
       tasks: this.tasks.map(reportTask),
       queryPattern: formatQueryPattern(this.pattern),
-      solutions: JSON.parse(
-        formatSolutionForQueryPattern(this.solutions, this.pattern),
+      substitutions: JSON.parse(
+        formatSubstitutionForQueryPattern(this.substitutions, this.pattern),
       ),
     }
   }
 }
 
 function reportTask(task: Task): SolverReportTask {
-  const solution = Object.fromEntries(
-    solutionNames(task.solution).map((name) => [
+  const substitution = Object.fromEntries(
+    substitutionNames(task.substitution).map((name) => [
       name,
-      JSON.parse(formatVariableNoReify(task.solution, name)),
+      JSON.parse(formatVariableNoReify(task.substitution, name)),
     ]),
   )
 
   const goals = task.goals.map(formatGoal)
 
   return {
-    solution,
+    substitution,
     goals,
   }
 }
 
-function formatVariableNoReify(solution: Solution, name: string): string {
-  const exp = solutionLookup(solution, name)
+function formatVariableNoReify(
+  substitution: Substitution,
+  name: string,
+): string {
+  const exp = substitutionLookup(substitution, name)
   if (exp === undefined) {
     return `"?${name}"`
   } else {
-    return `${formatExp(solutionDeepWalk(solution, exp))}`
+    return `${formatExp(substitutionDeepWalk(substitution, exp))}`
   }
 }

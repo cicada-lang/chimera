@@ -1,11 +1,9 @@
 `Solution` as a class
-
-- `Solution` has `substitutions`
-- Substitution = SubstitutionNull | SubstitutionCons
-
+`Solution` has `substitution`
 `Solution` has `notEqualConstraints`
 
-`NotEqualConstraint`
+- maybe another name
+- `NotEqualConstraint`
 
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 

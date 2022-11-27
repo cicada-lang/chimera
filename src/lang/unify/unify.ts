@@ -1,61 +1,65 @@
 import type { Exp } from "../exp"
-import { Solution, SolutionCons, solutionWalk } from "../solution"
+import {
+  Substitution,
+  SubstitutionCons,
+  substitutionWalk,
+} from "../substitution"
 import { occur } from "../unify"
 
 export function unify(
-  solution: Solution,
+  substitution: Substitution,
   left: Exp,
   right: Exp,
-): Solution | undefined {
-  left = solutionWalk(solution, left)
-  right = solutionWalk(solution, right)
+): Substitution | undefined {
+  left = substitutionWalk(substitution, left)
+  right = substitutionWalk(substitution, right)
 
   if (
     left["@kind"] === "PatternVar" &&
     right["@kind"] === "PatternVar" &&
     left.name === right.name
   ) {
-    return solution
+    return substitution
   }
 
   if (left["@kind"] === "PatternVar") {
-    if (occur(solution, left.name, right)) return undefined
-    return SolutionCons(left.name, right, solution)
+    if (occur(substitution, left.name, right)) return undefined
+    return SubstitutionCons(left.name, right, substitution)
   }
 
   if (right["@kind"] === "PatternVar") {
-    if (occur(solution, right.name, left)) return undefined
-    return SolutionCons(right.name, left, solution)
+    if (occur(substitution, right.name, left)) return undefined
+    return SubstitutionCons(right.name, left, substitution)
   }
 
   if (left["@kind"] === "Null" && right["@kind"] === "Null") {
-    return solution
+    return substitution
   }
 
   if (left["@kind"] === "Boolean" && right["@kind"] === "Boolean") {
     if (left.data !== right.data) return undefined
-    return solution
+    return substitution
   }
 
   if (left["@kind"] === "String" && right["@kind"] === "String") {
     if (left.data !== right.data) return undefined
-    return solution
+    return substitution
   }
 
   if (left["@kind"] === "Number" && right["@kind"] === "Number") {
     if (left.data !== right.data) return undefined
-    return solution
+    return substitution
   }
 
   if (left["@kind"] === "ArrayCons" && right["@kind"] === "ArrayCons") {
-    const carSolution = unify(solution, left.car, right.car)
-    if (carSolution === undefined) return undefined
-    const cdrSolution = unify(carSolution, left.cdr, right.cdr)
-    return cdrSolution
+    const carSubstitution = unify(substitution, left.car, right.car)
+    if (carSubstitution === undefined) return undefined
+    const cdrSubstitution = unify(carSubstitution, left.cdr, right.cdr)
+    return cdrSubstitution
   }
 
   if (left["@kind"] === "ArrayNull" && right["@kind"] === "ArrayNull") {
-    return solution
+    return substitution
   }
 
   if (left["@kind"] === "Objekt" && right["@kind"] === "Objekt") {
@@ -63,12 +67,12 @@ export function unify(
       const rightProperty = right.properties[name]
       if (rightProperty === undefined) continue
 
-      const nextSolution = unify(solution, leftProperty, rightProperty)
-      if (nextSolution === undefined) return undefined
-      solution = nextSolution
+      const nextSubstitution = unify(substitution, leftProperty, rightProperty)
+      if (nextSubstitution === undefined) return undefined
+      substitution = nextSubstitution
     }
 
-    return solution
+    return substitution
   }
 
   if (left["@kind"] === "Data" && right["@kind"] === "Data") {
@@ -78,12 +82,12 @@ export function unify(
 
     for (const [i, leftArg] of left.args.entries()) {
       const rightArg = right.args[i]
-      const nextSolution = unify(solution, leftArg, rightArg)
-      if (nextSolution === undefined) return undefined
-      solution = nextSolution
+      const nextSubstitution = unify(substitution, leftArg, rightArg)
+      if (nextSubstitution === undefined) return undefined
+      substitution = nextSubstitution
     }
 
-    return solution
+    return substitution
   }
 
   return undefined

@@ -1,15 +1,18 @@
 import type { Exp } from "../exp"
 import * as Exps from "../exp"
-import { Solution, solutionWalk } from "../solution"
+import { Substitution, substitutionWalk } from "../substitution"
 
-export function solutionDeepWalk(solution: Solution, exp: Exp): Exp {
-  exp = solutionWalk(solution, exp)
+export function substitutionDeepWalk(
+  substitution: Substitution,
+  exp: Exp,
+): Exp {
+  exp = substitutionWalk(substitution, exp)
 
   switch (exp["@kind"]) {
     case "ArrayCons": {
       return Exps.ArrayCons(
-        solutionDeepWalk(solution, exp.car),
-        solutionDeepWalk(solution, exp.cdr),
+        substitutionDeepWalk(substitution, exp.car),
+        substitutionDeepWalk(substitution, exp.cdr),
       )
     }
 
@@ -18,7 +21,7 @@ export function solutionDeepWalk(solution: Solution, exp: Exp): Exp {
         Object.fromEntries(
           Object.entries(exp.properties).map(([name, property]) => [
             name,
-            solutionDeepWalk(solution, property),
+            substitutionDeepWalk(substitution, property),
           ]),
         ),
       )
@@ -28,7 +31,7 @@ export function solutionDeepWalk(solution: Solution, exp: Exp): Exp {
       return Exps.Data(
         exp.type,
         exp.kind,
-        exp.args.map((arg) => solutionDeepWalk(solution, arg)),
+        exp.args.map((arg) => substitutionDeepWalk(substitution, arg)),
       )
     }
 

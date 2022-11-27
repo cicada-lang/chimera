@@ -1,11 +1,11 @@
 import { indent } from "../../../utils/indent"
 import * as Exps from "../../exp"
 import { Exp, formatExp } from "../../exp"
-import { reify, Solution } from "../../solution"
+import { reify, Substitution } from "../../substitution"
 import type { QueryPattern } from "../find"
 
-export function formatSolutionForQueryPattern(
-  solutions: Array<Solution>,
+export function formatSubstitutionForQueryPattern(
+  substitutions: Array<Substitution>,
   pattern: QueryPattern,
 ): string {
   switch (pattern["@kind"]) {
@@ -17,16 +17,16 @@ export function formatSolutionForQueryPattern(
         (result, variable) => Exps.ArrayCons(variable, result),
         Exps.ArrayNull(),
       )
-      const results = solutions.map((solution) =>
-        formatExp(reify(solution, exp)),
+      const results = substitutions.map((substitution) =>
+        formatExp(reify(substitution, exp)),
       )
       return formatResults(results)
     }
 
     case "QueryPatternName": {
       const variable = Exps.PatternVar(pattern.name)
-      const results = solutions.map((solution) =>
-        formatExp(reify(solution, variable)),
+      const results = substitutions.map((substitution) =>
+        formatExp(reify(substitution, variable)),
       )
       return formatResults(results)
     }

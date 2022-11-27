@@ -1,32 +1,32 @@
 ---
 stepCount: 0
 tasks:
-  - solution: {}
+  - substitution: {}
     goals:
       - ?x = true
       - ?y = false
 queryPattern: (x, y)
-solutions: []
+substitutions: []
 
 ---
 stepCount: 1
 tasks:
-  - solution:
+  - substitution:
       x: true
     goals:
       - ?y = false
 queryPattern: (x, y)
-solutions: []
+substitutions: []
 
 ---
 stepCount: 2
 tasks:
-  - solution:
+  - substitution:
       y: false
       x: true
     goals: []
 queryPattern: (x, y)
-solutions: []
+substitutions: []
 
 [ 
   [true, false]
