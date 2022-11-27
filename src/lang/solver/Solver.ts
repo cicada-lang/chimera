@@ -24,8 +24,7 @@ import {
 
    A task has a queue of goals.
 
-   Undertaking a task will generate new tasks
-   by pursuing its first goal,
+   Pursuing a goal will generate new tasks,
    one task for each clause of a relation,
    representing a new branching path to search.
 
@@ -59,17 +58,6 @@ export class Solver {
   static fromGoals(pattern: QueryPattern, goals: Array<Goal>): Solver {
     const task = new Task(SolutionNull(), goals)
     return new Solver(pattern, [task])
-  }
-
-  private step(mod: Mod, options: SolveOptions): Solution | undefined {
-    this.stepCount++
-    // NOTE pop + push = depth-first search
-    // const task = this.tasks.pop() as Task
-    // NOTE shift + push = breadth-first search
-    const task = this.tasks.shift() as Task
-    const tasks = task.undertake(mod)
-    if (tasks === undefined) return task.solution
-    this.tasks.push(...tasks)
   }
 
   solve(mod: Mod, options: SolveOptions): Array<Solution> {
@@ -108,6 +96,17 @@ export class Solver {
         debugOptions.skipPrompt--
       }
     }
+  }
+
+  private step(mod: Mod, options: SolveOptions): Solution | undefined {
+    this.stepCount++
+    // NOTE pop + push = depth-first search
+    // const task = this.tasks.pop() as Task
+    // NOTE shift + push = breadth-first search
+    const task = this.tasks.shift() as Task
+    const tasks = task.undertake(mod)
+    if (tasks === undefined) return task.solution
+    this.tasks.push(...tasks)
   }
 
   reportFormatYAML(): string {
