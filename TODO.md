@@ -1,5 +1,7 @@
 # learn
 
+[maybe] rename Relation to Predicate
+
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 
 [diary] analysis the type of micro/minikanren implementation and our explicit search based implementation
