@@ -7,7 +7,7 @@ export function goal_matcher(tree: pt.Tree): Exps.Goal {
     "goal:apply": ({ name, exp }, { span }) =>
       Exps.GoalApply(pt.str(name), matchers.exp_matcher(exp), span),
     "goal:equal": ({ left, right }, { span }) =>
-      Exps.GoalUnifiable(
+      Exps.GoalEqual(
         matchers.exp_matcher(left),
         matchers.exp_matcher(right),
         span,

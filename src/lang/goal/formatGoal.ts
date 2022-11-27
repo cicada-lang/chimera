@@ -7,7 +7,7 @@ export function formatGoal(goal: Goal): string {
       return `${goal.name} ${formatExp(goal.arg)}`
     }
 
-    case "Unifiable": {
+    case "Equal": {
       return `${formatExp(goal.left)} = ${formatExp(goal.right)}`
     }
   }

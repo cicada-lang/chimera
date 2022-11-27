@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { Span } from "../span"
 
-export type Goal = GoalApply | GoalUnifiable
+export type Goal = GoalApply | GoalEqual
 
 export type GoalApply = {
   "@kind": "GoalApply"
@@ -19,20 +19,16 @@ export function GoalApply(name: string, arg: Exp, span?: Span): GoalApply {
   }
 }
 
-export type GoalUnifiable = {
-  "@kind": "GoalUnifiable"
+export type GoalEqual = {
+  "@kind": "GoalEqual"
   left: Exp
   right: Exp
   span?: Span
 }
 
-export function GoalUnifiable(
-  left: Exp,
-  right: Exp,
-  span?: Span,
-): GoalUnifiable {
+export function GoalEqual(left: Exp, right: Exp, span?: Span): GoalEqual {
   return {
-    "@kind": "GoalUnifiable",
+    "@kind": "GoalEqual",
     left,
     right,
     span,

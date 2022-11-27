@@ -35,7 +35,7 @@ function pursue(
       })
     }
 
-    case "Unifiable": {
+    case "Equal": {
       const substitution = unify(solution.substitution, goal.left, goal.right)
       if (substitution === undefined) return []
       return [[solution.update({ substitution }), []]]

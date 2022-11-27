@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { Relation } from "../relation"
 
-export type Goal = Apply | Unifiable
+export type Goal = Apply | Equal
 
 export type Apply = {
   "@type": "Goal"
@@ -21,17 +21,17 @@ export function Apply(name: string, relation: Relation, arg: Exp): Apply {
   }
 }
 
-export type Unifiable = {
+export type Equal = {
   "@type": "Goal"
-  "@kind": "Unifiable"
+  "@kind": "Equal"
   left: Exp
   right: Exp
 }
 
-export function Unifiable(left: Exp, right: Exp): Unifiable {
+export function Equal(left: Exp, right: Exp): Equal {
   return {
     "@type": "Goal",
-    "@kind": "Unifiable",
+    "@kind": "Equal",
     left,
     right,
   }

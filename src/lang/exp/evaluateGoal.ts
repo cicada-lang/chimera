@@ -18,8 +18,8 @@ export function evaluateGoal(mod: Mod, goal: Exps.Goal): Goal {
       return Goals.Apply(goal.name, relation, goal.arg)
     }
 
-    case "GoalUnifiable": {
-      return Goals.Unifiable(goal.left, goal.right)
+    case "GoalEqual": {
+      return Goals.Equal(goal.left, goal.right)
     }
   }
 }

@@ -36,8 +36,8 @@ function refreshGoal(
       )
     }
 
-    case "Unifiable": {
-      return Goals.Unifiable(
+    case "Equal": {
+      return Goals.Equal(
         refreshExp(mod, goal.left, varMap),
         refreshExp(mod, goal.right, varMap),
       )
