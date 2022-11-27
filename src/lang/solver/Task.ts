@@ -14,29 +14,31 @@ export class Task {
     // We append the generated new goals
     // to the start of the queue,
     // to get depth-first search.
-    const results = pursue(mod, this.solution, goal)
-    return results.map((task) => {
-      const goals = task.goals.concat(this.goals)
-      return new Task(task.solution, goals)
-    })
+    return pursue(mod, this.solution, goal).map(
+      ([solution, goals]) => new Task(solution, goals.concat(this.goals)),
+    )
   }
 }
 
-function pursue(mod: Mod, solution: Solution, goal: Goal): Array<Task> {
+function pursue(
+  mod: Mod,
+  solution: Solution,
+  goal: Goal,
+): Array<[Solution, Array<Goal>]> {
   switch (goal["@kind"]) {
     case "Apply": {
       return goal.relation.clauses.flatMap((clause) => {
         const { exp, goals } = refreshClause(mod, clause)
         const substitution = unify(solution.substitution, exp, goal.arg)
         if (substitution === undefined) return []
-        return [new Task(solution.update({ substitution }), goals)]
+        return [[solution.update({ substitution }), goals]]
       })
     }
 
     case "Unifiable": {
       const substitution = unify(solution.substitution, goal.left, goal.right)
       if (substitution === undefined) return []
-      return [new Task(solution.update({ substitution }), [])]
+      return [[solution.update({ substitution }), []]]
     }
   }
 }
