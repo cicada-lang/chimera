@@ -1,5 +1,7 @@
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 
+change file naming convention to `lisp-case` -- for it is unlikely to be one file one relation
+
 [books/the-reasoned-schemer] 09-thin-ice.wa
 [books/the-reasoned-schemer] 10-under-the-hood.wa
 
