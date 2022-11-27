@@ -1,3 +1,7 @@
+`Solution` has `substitutions` and `constraints`
+
+`NotEqualConstraints`
+
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 
 [diary] analysis the type of micro/minikanren implementation and our explicit search based implementation
@@ -16,8 +20,6 @@ review old microkanren notes
 - take finite domain as an example
 - can we use set theoretical rule based language to specify a constraint?
 - maybe we can learn more about this from Byrd's thesis
-
-`Solution` has `substitutions` and `constraints`
 
 [read] ckanren-minikanren-with-constraints.pdf
 
