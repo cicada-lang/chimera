@@ -104,7 +104,7 @@ export class Solver {
     // const task = this.tasks.pop() as Task
     // NOTE shift + push = breadth-first search
     const task = this.tasks.shift() as Task
-    const tasks = task.step(mod)
+    const tasks = task.undertake(mod)
     if (tasks === undefined) return task.solution
     this.tasks.push(...tasks)
   }
