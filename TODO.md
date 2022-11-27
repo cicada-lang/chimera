@@ -154,10 +154,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 # maybe
 
-[maybe] `Exps.Data` -- syntax -- support named args
-
-- `Type::cons { ... }`
-
 [maybe] print `queues[].solution` with prune and `deepWalk`
 
 [maybe] use the named clause during debug -- only print named clause
