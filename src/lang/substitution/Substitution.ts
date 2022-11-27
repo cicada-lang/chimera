@@ -1,33 +1,16 @@
+import Immutable from "immutable"
 import type { Exp } from "../exp"
 
-export type Substitution = SubstitutionNull | SubstitutionCons
+export type Substitution = Immutable.Map<string, Exp>
 
-export type SubstitutionNull = {
-  "@kind": "SubstitutionNull"
+export function substitutionEmpty(): Substitution {
+  return Immutable.Map()
 }
 
-export function SubstitutionNull(): SubstitutionNull {
-  return {
-    "@kind": "SubstitutionNull",
-  }
-}
-
-export type SubstitutionCons = {
-  "@kind": "SubstitutionCons"
-  name: string
-  exp: Exp
-  rest: Substitution
-}
-
-export function SubstitutionCons(
+export function substitutionExtend(
+  substitution: Substitution,
   name: string,
   exp: Exp,
-  rest: Substitution,
-): SubstitutionCons {
-  return {
-    "@kind": "SubstitutionCons",
-    name,
-    exp,
-    rest,
-  }
+): Substitution {
+  return substitution.set(name, exp)
 }

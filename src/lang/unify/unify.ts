@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import {
   Substitution,
-  SubstitutionCons,
+  substitutionExtend,
   substitutionWalk,
 } from "../substitution"
 import { occur } from "../unify"
@@ -24,12 +24,12 @@ export function unify(
 
   if (left["@kind"] === "PatternVar") {
     if (occur(substitution, left.name, right)) return undefined
-    return SubstitutionCons(left.name, right, substitution)
+    return substitutionExtend(substitution, left.name, right)
   }
 
   if (right["@kind"] === "PatternVar") {
     if (occur(substitution, right.name, left)) return undefined
-    return SubstitutionCons(right.name, left, substitution)
+    return substitutionExtend(substitution, right.name, left)
   }
 
   if (left["@kind"] === "Null" && right["@kind"] === "Null") {

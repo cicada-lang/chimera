@@ -2,12 +2,12 @@ import type { Exp } from "../exp"
 import {
   Substitution,
   substitutionDeepWalk,
-  SubstitutionNull,
+  substitutionEmpty,
   substitutionReify,
 } from "../substitution"
 
 export function reify(substitution: Substitution, exp: Exp): Exp {
   exp = substitutionDeepWalk(substitution, exp)
-  substitution = substitutionReify(SubstitutionNull(), exp)
+  substitution = substitutionReify(substitutionEmpty(), exp)
   return substitutionDeepWalk(substitution, exp)
 }

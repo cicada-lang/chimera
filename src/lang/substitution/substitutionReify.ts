@@ -2,7 +2,7 @@ import type { Exp } from "../exp"
 import * as Exps from "../exp"
 import {
   Substitution,
-  SubstitutionCons,
+  substitutionExtend,
   substitutionLength,
   substitutionWalk,
 } from "../substitution"
@@ -17,7 +17,7 @@ export function substitutionReify(
     case "PatternVar": {
       const count = substitutionLength(substitution)
       const reifiedExp = Exps.ReifiedVar(count.toString())
-      return SubstitutionCons(exp.name, reifiedExp, substitution)
+      return substitutionExtend(substitution, exp.name, reifiedExp)
     }
 
     case "ArrayCons": {

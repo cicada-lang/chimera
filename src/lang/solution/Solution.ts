@@ -1,11 +1,11 @@
 import type { Substitution } from "../substitution"
-import { SubstitutionNull } from "../substitution"
+import { substitutionEmpty } from "../substitution"
 
 export class Solution {
   constructor(public substitution: Substitution) {}
 
   static initial(): Solution {
-    return new Solution(SubstitutionNull())
+    return new Solution(substitutionEmpty())
   }
 
   update(options: { substitution: Substitution }): Solution {

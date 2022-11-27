@@ -1,7 +1,4 @@
-`Solution` has `notEqualConstraints`
-
-- maybe another name
-- `NotEqualConstraint`
+`Solution` has `inequalities` -- Array of `Substitution`
 
 # learn
 
