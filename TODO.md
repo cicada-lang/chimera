@@ -1,5 +1,3 @@
-inline formatSubstitutionForQueryPattern to Find
-
 `Task` and `Solver` has `Solution` instead of `substitution`
 
 `Solution` has `notEqualConstraints`
