@@ -9,9 +9,9 @@ import { Substitution, SubstitutionNull } from "../substitution"
    A solver has a queue of tasks,
    one task represents a path we are searching.
 
-   A task has a queue of goals.
-
-   Pursuing a goal will generate new tasks,
+   A task has a queue of goals,
+   undertaking a task will generate new tasks
+   by pursuing it's first goal,
    one task for each clause of a relation,
    representing a new branching path to search.
 
@@ -22,7 +22,6 @@ export type SolveOptions = {
 }
 
 export class Solver {
-  stepCount = 0
   substitutions: Array<Substitution> = []
 
   constructor(public pattern: QueryPattern, public tasks: Array<Task>) {}
@@ -46,13 +45,12 @@ export class Solver {
   }
 
   private step(mod: Mod, options: SolveOptions): Substitution | undefined {
-    this.stepCount++
-    // NOTE pop + push = depth-first search
-    // const task = this.tasks.pop() as Task
-    // NOTE shift + push = breadth-first search
     const task = this.tasks.shift() as Task
     const tasks = task.undertake(mod)
     if (tasks === undefined) return task.substitution
+
+    // Trying to be fair for all tasks,
+    // we push the generated new tasks to the end of the queue.
     this.tasks.push(...tasks)
   }
 }

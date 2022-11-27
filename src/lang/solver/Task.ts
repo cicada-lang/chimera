@@ -11,11 +11,12 @@ export class Task {
     const goal = this.goals.shift()
     if (goal === undefined) return undefined
 
-    return pursue(mod, this.substitution, goal).map((task) => {
-      // NOTE shift + append = depth-first search
+    // We append the generated new goals
+    // to the start of the queue,
+    // to get depth-first search.
+    const results = pursue(mod, this.substitution, goal)
+    return results.map((task) => {
       const goals = task.goals.concat(this.goals)
-      // NOTE shift + prepend = breadth-first search
-      // const goals = this.goals.concat(task.goals)
       return new Task(task.substitution, goals)
     })
   }
