@@ -5,6 +5,8 @@
 - maybe another name
 - `NotEqualConstraint`
 
+# learn
+
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 
 [diary] analysis the type of micro/minikanren implementation and our explicit search based implementation
@@ -154,13 +156,3 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 # later
 
 [maybe] [later] restrict the parser -- relation name must be in `CamelCase`
-
-# maybe
-
-[maybe] print `queues[].solution` with prune and `deepWalk`
-
-[maybe] use the named clause during debug -- only print named clause
-
-- How to design a good debugger for logic programming language?
-
-  - To understand this, we first need to write a lot of logic programs.

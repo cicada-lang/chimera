@@ -1,4 +1,4 @@
-export type FindOption = FindOptionLimit | FindOptionDebug
+export type FindOption = FindOptionLimit
 
 export type FindOptionLimit = {
   "@kind": "FindOptionLimit"
@@ -9,17 +9,5 @@ export function FindOptionLimit(exp: number): FindOptionLimit {
   return {
     "@kind": "FindOptionLimit",
     exp,
-  }
-}
-
-export type FindOptionDebug = {
-  "@kind": "FindOptionDebug"
-  skipPrompt: number
-}
-
-export function FindOptionDebug(skipPrompt: number): FindOptionDebug {
-  return {
-    "@kind": "FindOptionDebug",
-    skipPrompt,
   }
 }

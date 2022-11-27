@@ -19,10 +19,5 @@ function collectFindOption(
       solveOptions.limit = option.exp
       return
     }
-
-    case "FindOptionDebug": {
-      solveOptions.debug = option
-      return
-    }
   }
 }

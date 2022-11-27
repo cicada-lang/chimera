@@ -1,4 +1,0 @@
-find [x, y] debug 3 {
-  x = true
-  y = false
-}

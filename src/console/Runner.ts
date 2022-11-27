@@ -1,22 +1,10 @@
 import fs from "fs"
 import watcher from "node-watch"
-import readlineSync from "readline-sync"
 import { Loader } from "../loader"
 
 export class Runner {
   loader = new Loader({
     onOutput: console.log,
-    debugger: {
-      report(solver) {
-        console.log("---")
-        console.log(solver.reportFormatYAML())
-      },
-      prompt(solver) {
-        const input = readlineSync.question("debugger> ")
-        if (input === "") return 0
-        return Number.parseInt(input)
-      },
-    },
   })
 
   constructor() {
