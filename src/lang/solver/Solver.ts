@@ -1,6 +1,6 @@
 import type { Goal } from "../goal"
-import { pursue } from "../goal"
 import type { Mod } from "../mod"
+import { pursue } from "../pursue"
 import { Solution } from "../solution"
 import type { QueryPattern } from "../stmts/find"
 

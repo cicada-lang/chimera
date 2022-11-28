@@ -1,5 +1,2 @@
 export * from "./formatGoal"
 export * from "./Goal"
-export * from "./pursue"
-export * from "./pursueEqual"
-export * from "./pursueNotEqual"

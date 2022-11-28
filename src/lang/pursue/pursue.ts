@@ -1,6 +1,6 @@
 import type { Goal } from "../goal"
-import { pursueEqual, pursueNotEqual } from "../goal"
 import type { Mod } from "../mod"
+import { pursueEqual, pursueNotEqual } from "../pursue"
 import { refreshClause } from "../refresh"
 import type { Solution } from "../solution"
 
