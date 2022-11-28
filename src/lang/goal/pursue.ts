@@ -6,7 +6,7 @@ import { refreshClause } from "../refresh"
 import type { Solution } from "../solution"
 import {
   Substitution,
-  substitutionLength,
+  substitutionEqual,
   substitutionPrefix,
 } from "../substitution"
 import { unify, unifyMany } from "../unify"
@@ -21,21 +21,18 @@ export function pursue(
       return goal.relation.clauses.flatMap((clause) => {
         const { exp, goals } = refreshClause(mod, clause)
         const newSolution = pursueEqual(mod, solution, exp, goal.arg)
-        if (newSolution === undefined) return []
-        return [[newSolution, goals]]
+        return newSolution === undefined ? [] : [[newSolution, goals]]
       })
     }
 
     case "Equal": {
       const newSolution = pursueEqual(mod, solution, goal.left, goal.right)
-      if (newSolution === undefined) return []
-      return [[newSolution, []]]
+      return newSolution === undefined ? [] : [[newSolution, []]]
     }
 
     case "NotEqual": {
       const newSolution = pursueNotEqual(mod, solution, goal.left, goal.right)
-      if (newSolution === undefined) return []
-      return [[newSolution, []]]
+      return newSolution === undefined ? [] : [[newSolution, []]]
     }
   }
 }
@@ -48,12 +45,11 @@ function pursueEqual(
 ): Solution | undefined {
   const substitution = unify(solution.substitution, left, right)
 
-  if (substitution === undefined) return undefined
+  if (substitution === undefined) {
+    return undefined
+  }
 
-  if (
-    substitutionLength(substitution) ===
-    substitutionLength(solution.substitution)
-  ) {
+  if (substitutionEqual(substitution, solution.substitution)) {
     return solution
   }
 
@@ -61,11 +57,11 @@ function pursueEqual(
   for (const inequality of solution.inequalities) {
     const newSubstitution = unifyInequality(substitution, inequality)
 
-    if (newSubstitution === undefined) continue
+    if (newSubstitution === undefined) {
+      continue
+    }
 
-    if (
-      substitutionLength(substitution) === substitutionLength(newSubstitution)
-    ) {
+    if (substitutionEqual(substitution, newSubstitution)) {
       return undefined
     }
 
@@ -93,12 +89,11 @@ function pursueNotEqual(
 ): Solution | undefined {
   const substitution = unify(solution.substitution, left, right)
 
-  if (substitution === undefined) return solution
+  if (substitution === undefined) {
+    return solution
+  }
 
-  if (
-    substitutionLength(substitution) ===
-    substitutionLength(solution.substitution)
-  ) {
+  if (substitutionEqual(substitution, solution.substitution)) {
     return undefined
   }
 

@@ -21,3 +21,10 @@ export function substitutionPrefix(
 ): Substitution {
   return long.deleteAll(short.keys())
 }
+
+export function substitutionEqual(
+  left: Substitution,
+  right: Substitution,
+): boolean {
+  return left === right
+}
