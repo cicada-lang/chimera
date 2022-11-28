@@ -16,11 +16,13 @@ export function formatGoal(goal: Goal): string {
     }
 
     case "Conj": {
-      throw new Error()
+      const goals = goal.goals.map(formatGoal).join(" ")
+      throw `conj { ${goals} }`
     }
 
     case "Disj": {
-      throw new Error()
+      const goals = goal.goals.map(formatGoal).join(" ")
+      throw `disj { ${goals} }`
     }
   }
 }
