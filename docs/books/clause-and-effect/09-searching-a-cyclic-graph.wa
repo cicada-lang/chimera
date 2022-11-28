@@ -14,34 +14,32 @@ Edge ["f", "c"]
 
 // We define `Legal` to rule out loop -- to avoid searching in a loop
 
-// Legal [z, null]
-// ---------------- {}
+Legal [z, []]
 
-// Legal [z, cons(head, tail)]
-// ---------------------------- {
-//   z != head
-//   Legal [z, tail]
-// }
+Legal [z, [head | tail]]
+---------------------------- {
+  z != head
+  Legal [z, tail]
+}
 
-// Path [x, x, occurs]
-// -------------------- {}
+Path [x, x, occurs]
 
-// Path [x, y, occurs]
-// ------------------------ {
-//   Edge [x, z]
-//   Legal [z, occurs]
-//   Path [z, y, cons(z, occurs)]
-// }
+Path [x, y, occurs]
+------------------------ {
+  Edge [x, z]
+  Legal [z, occurs]
+  Path [z, y, [z | occurs]]
+}
 
-// find [] { Path ["f", "f", null] }
-// find [] { Path ["a", "c", null] }
-// find [] { Path ["g", "e", null] }
+find q { Path ["f", "f", []] }
+find q { Path ["a", "c", []] }
+find q { Path ["g", "e", []] }
 
-// find [x] { Path ["g", x, null] }
-// find [x] { Path [x, "h", null] }
+find x { Path ["g", x, []] }
+find x { Path [x, "h", []] }
 
-// find [] { Path ["g", "c", null] }
-// find [] { Path ["g", "c", cons("f", null)] }
+find q { Path ["g", "c", []] }
+find q { Path ["g", "c", ["f"]] }
 
-// find [] { Path ["a", x, cons("f", cons("d", null))] }
-// find [] { Path ["a", x, null] }
+find q { Path ["a", x, ["f", "d"]] }
+find q { Path ["a", x, []] }

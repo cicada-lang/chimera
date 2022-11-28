@@ -1,15 +1,9 @@
+`formatReification` -- prune the inequality constraints
+`formatReification` -- order the inequality constraints
+
+> [constraint] using any predicate as type constraint
+
 # learn
-
-> Be familiar with minikanren implementation again -- to read ckanren paper.
-
-[diary] analysis the type of micro/minikanren implementation and our explicit search based implementation
-
-[books/the-reasoned-schemer] 09-thin-ice.wa
-[books/the-reasoned-schemer] 10-under-the-hood.wa
-
-review old microkanren notes
-
-# constraint logic programming
 
 [question] how to understand constraint in first order logic?
 
@@ -18,6 +12,18 @@ review old microkanren notes
 - take finite domain as an example
 - can we use set theoretical rule based language to specify a constraint?
 - maybe we can learn more about this from Byrd's thesis
+
+[diary] the use of stream in minikanren implementation
+
+[books/the-reasoned-schemer] 09-thin-ice.wa
+[books/the-reasoned-schemer] 10-under-the-hood.wa
+
+[read] relational-programming-in-minikanren-techniques-applications-and-implementations.pdf
+[read] a-framework-for-extending-microkanren-with-constraints.pdf
+[read] pure-declarative-and-constructive-arithmetic-relations.pdf
+[read] a-surprisingly-competitive-conditional-operator.pdf
+
+# finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf
 
@@ -33,18 +39,6 @@ review old microkanren notes
 
   - See (Byrd 2009) for a detailed discussion of these issues and of
     the miniKanren design philosophy.
-
-    - [read] relational-programming-in-minikanren-techniques-applications-and-implementations.pdf
-
-  - [diary] about this issues
-  - [read] read byrd's thesis
-
-[read] a-framework-for-extending-microkanren-with-constraints.pdf
-[read] pure-declarative-and-constructive-arithmetic-relations.pdf
-[read] a-surprisingly-competitive-conditional-operator.pdf
-
-[constraint] finite-domain
-[constraint] type
 
 # type system
 
@@ -142,8 +136,6 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 # clause-and-effect
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
-
-[books/clause-and-effect] 09-searching-a-cyclic-graph.wa -- need `!=`
 
 # later
 
