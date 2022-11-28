@@ -1,7 +1,5 @@
 > [constraint] disequality
 
-move `pursue` to `goal/`
-
 `NotEqual` as a goal
 `NotEqual` -- `pursue`
 
