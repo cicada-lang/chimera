@@ -1,10 +1,10 @@
 import type { Exp } from "../exp"
-import * as Exps from "../exp"
 import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import {
   Substitution,
   substitutionEqual,
+  substitutionPairs,
   substitutionPrefix,
 } from "../substitution"
 import { unify, unifyMany } from "../unify"
@@ -39,7 +39,10 @@ export function pursueEqual(
 
   const inequalities: Array<Substitution> = []
   for (const inequality of solution.inequalities) {
-    const newSubstitution = unifyInequality(substitution, inequality)
+    const newSubstitution = unifyMany(
+      substitution,
+      substitutionPairs(inequality),
+    )
 
     /**
 
@@ -90,14 +93,4 @@ export function pursueEqual(
   }
 
   return solution.update({ substitution, inequalities })
-}
-
-function unifyInequality(
-  substitution: Substitution,
-  inequality: Substitution,
-): Substitution | undefined {
-  return unifyMany(
-    substitution,
-    inequality.toArray().map(([name, exp]) => [Exps.PatternVar(name), exp]),
-  )
 }

@@ -24,8 +24,14 @@ export function reify(solution: Solution, exp: Exp): Reification {
   exp = substitutionDeepWalk(solution.substitution, exp)
   const substitutionWithReifiedVars = prepareSubstitution(exp)
   const constraints: Array<Goal> = []
-  return Reification(
-    substitutionDeepWalk(substitutionWithReifiedVars, exp),
-    constraints,
-  )
+  for (const inequality of solution.inequalities) {
+    // TODO
+  }
+
+  exp = substitutionDeepWalk(substitutionWithReifiedVars, exp)
+  return Reification(exp, constraints)
 }
+
+// export function reifyInequalities(s): Array<Goal> {
+
+// }
