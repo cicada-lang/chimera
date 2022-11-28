@@ -1,3 +1,11 @@
+`reify` return `Reification`
+
+- `formatReification`
+- the reification of an exp is the reified exp
+  with a list of constraints represented as goals
+
+`formatReification` -- format constraints using `with` syntax
+
 `reify` -- support constraint
 
 # learn
