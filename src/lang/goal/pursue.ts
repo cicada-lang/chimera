@@ -59,21 +59,20 @@ function pursueEqual(
 
   const inequalities: Array<Substitution> = []
   for (const inequality of solution.inequalities) {
-    const inequalitySubstitution = unifyMany(
+    const newSubstitution = unifyMany(
       substitution,
       inequality.toArray().map(([name, exp]) => [Exps.PatternVar(name), exp]),
     )
 
-    if (inequalitySubstitution === undefined) continue
+    if (newSubstitution === undefined) continue
 
     if (
-      substitutionLength(substitution) ===
-      substitutionLength(inequalitySubstitution)
+      substitutionLength(substitution) === substitutionLength(newSubstitution)
     ) {
       return undefined
     }
 
-    inequalities.push(substitutionPrefix(inequalitySubstitution, substitution))
+    inequalities.push(substitutionPrefix(newSubstitution, substitution))
   }
 
   return solution.update({ substitution, inequalities })
