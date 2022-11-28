@@ -13,7 +13,7 @@ import type { QueryPattern } from "../stmts/find"
    if this queue is not empty, the solution is partial,
    to work on a solution is to pursue it's first goal,
    working on a solution might generate new solutions to work on,
-   one task for each clause of a relation,
+   one solution for each clause of a relation,
    representing a new branching path to search.
 
 **/
