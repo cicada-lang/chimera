@@ -24,5 +24,9 @@ export function pursue(
       if (substitution === undefined) return []
       return [[solution.update({ substitution }), []]]
     }
+
+    case "NotEqual": {
+      throw new Error("TODO")
+    }
   }
 }

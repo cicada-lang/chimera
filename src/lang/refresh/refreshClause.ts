@@ -42,6 +42,13 @@ function refreshGoal(
         refreshExp(mod, goal.right, varMap),
       )
     }
+
+    case "NotEqual": {
+      return Goals.NotEqual(
+        refreshExp(mod, goal.left, varMap),
+        refreshExp(mod, goal.right, varMap),
+      )
+    }
   }
 }
 

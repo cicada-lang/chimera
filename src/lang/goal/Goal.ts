@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { Relation } from "../relation"
 
-export type Goal = Apply | Equal
+export type Goal = Apply | Equal | NotEqual
 
 export type Apply = {
   "@type": "Goal"
@@ -32,6 +32,22 @@ export function Equal(left: Exp, right: Exp): Equal {
   return {
     "@type": "Goal",
     "@kind": "Equal",
+    left,
+    right,
+  }
+}
+
+export type NotEqual = {
+  "@type": "Goal"
+  "@kind": "NotEqual"
+  left: Exp
+  right: Exp
+}
+
+export function NotEqual(left: Exp, right: Exp): NotEqual {
+  return {
+    "@type": "Goal",
+    "@kind": "NotEqual",
     left,
     right,
   }

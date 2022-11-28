@@ -10,5 +10,9 @@ export function formatGoal(goal: Goal): string {
     case "Equal": {
       return `${formatExp(goal.left)} = ${formatExp(goal.right)}`
     }
+
+    case "NotEqual": {
+      return `${formatExp(goal.left)} != ${formatExp(goal.right)}`
+    }
   }
 }

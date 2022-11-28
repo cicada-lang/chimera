@@ -23,8 +23,7 @@ export function evaluateGoalExp(mod: Mod, goal: GoalExp): Goal {
     }
 
     case "NotEqual": {
-      throw new Error()
-      // return Goals.NotEqual(goal.left, goal.right)
+      return Goals.NotEqual(goal.left, goal.right)
     }
   }
 }

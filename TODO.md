@@ -1,6 +1,5 @@
 `GoalExps.NotEqual` -- syntax
-`Goals.NotEqual`
-`GoalExps.NotEqual` -- `evaluateGoalExp`
+
 `Goals.NotEqual` -- `pursue`
 
 # learn
