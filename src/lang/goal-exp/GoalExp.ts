@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { Span } from "../span"
 
-export type GoalExp = Apply | Equal | NotEqual
+export type GoalExp = Apply | Equal | NotEqual | Conj
 
 export type Apply = {
   "@type": "GoalExp"
@@ -53,6 +53,22 @@ export function NotEqual(left: Exp, right: Exp, span?: Span): NotEqual {
     "@kind": "NotEqual",
     left,
     right,
+    span,
+  }
+}
+
+export type Conj = {
+  "@type": "GoalExp"
+  "@kind": "Conj"
+  goals: Array<GoalExp>
+  span?: Span
+}
+
+export function Conj(goals: Array<GoalExp>, span?: Span): Conj {
+  return {
+    "@type": "GoalExp",
+    "@kind": "Conj",
+    goals,
     span,
   }
 }

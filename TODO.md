@@ -1,7 +1,15 @@
-add `conj` -- to compose goals
-add `disj` -- to compose goals
+`GoalExps.Disj`
+
+`Goals.Conj`
+`GoalExps.Conj` -- `evaluateGoalExp`
+
+`Goals.Disj`
+`GoalExps.Disj` -- `evaluateGoalExp`
+
 `reify` -- support constraint
 `formatReification` -- format constraints using `with` syntax
+
+extract framework -- to avoid extra test
 
 # learn
 
