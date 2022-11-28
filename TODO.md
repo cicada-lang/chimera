@@ -1,5 +1,6 @@
-comment about `reify` and `substitutionReify`
-
+rename substitutionReify to prepareSubstitution
+move `prepareSubstitution` to `reify/`
+comment about `reify`
 `reify` -- support constraint
 
 # learn

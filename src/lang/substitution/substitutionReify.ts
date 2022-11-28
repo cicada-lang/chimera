@@ -7,6 +7,16 @@ import {
   substitutionWalk,
 } from "../substitution"
 
+/**
+   move prepareSubstitution
+   Prepare a substitution for the reification of an `exp`.
+
+   Given an `exp`, build a mapping from all variable names in the
+   `exp` to `ReifiedVar`.  A `ReifiedVar` has a `count` the occurrence
+   of variable names during depth-first traversal of the `exp`.
+
+**/
+
 export function substitutionReify(
   substitution: Substitution,
   exp: Exp,
@@ -16,8 +26,8 @@ export function substitutionReify(
   switch (exp["@kind"]) {
     case "PatternVar": {
       const count = substitutionLength(substitution)
-      const reifiedExp = Exps.ReifiedVar(count)
-      return substitutionExtend(substitution, exp.name, reifiedExp)
+      const reifiedVar = Exps.ReifiedVar(count)
+      return substitutionExtend(substitution, exp.name, reifiedVar)
     }
 
     case "ArrayCons": {
