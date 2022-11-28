@@ -53,17 +53,66 @@ function pursueEqual(
     return solution
   }
 
+  /**
+
+     Verifying Constraints' Validity.
+
+     Next, we have to deal with the interaction between `Equal` and
+     `NotEqual` constraints. Here, there are two possible cases:
+
+     1. an `Equal` constraint may violate an existing `NotEqual` constraint;
+     2. or, an `Equal` constraint may simplify an existing `NotEqual` constraint.
+
+   **/
+
   const inequalities: Array<Substitution> = []
   for (const inequality of solution.inequalities) {
     const newSubstitution = unifyInequality(substitution, inequality)
+
+    /**
+
+       If the unification of the key and the value all the pairs in
+       `inequality` constraint in `substitution` fails, this
+       `inequality` is already satisfied by current substitution.
+       Thus, this `inequality` constraint can safely be discarded.
+
+    **/
 
     if (newSubstitution === undefined) {
       continue
     }
 
+    /**
+
+       If the unification of the key and the value all the pairs in
+       `inequality` constraint in `substitution` succeeds without
+       extending it, `inequality` does not hold in `substitution`.
+
+    **/
+
     if (substitutionEqual(substitution, newSubstitution)) {
       return undefined
     }
+
+    /**
+
+       Other than violating an existing `inequality` constraint, new
+       `Equal` constraints may instead simplify some of the inequality
+       constraints in the solution.
+
+       A key-value pair in the `inequality` can be discarded,
+       if the key is already unified to a different value by `Equal`.
+
+       The extension of `newSubstitution` with respect to
+       `substitution` will be the reduced `inequality` constraint.
+       This is because whatever unifications have taken place because
+       of the `Equal` constraint will be in `substitution`, and thus
+       will not be in the extension. As a result, the extension will
+       contain only those pairs which are missing from `substitution`,
+       but whose unification will result in the violation of the
+       disequality constraint.
+
+    **/
 
     inequalities.push(substitutionPrefix(newSubstitution, substitution))
   }
@@ -90,11 +139,13 @@ function pursueNotEqual(
   const substitution = unify(solution.substitution, left, right)
 
   /**
+
      `unify` fails. In this case, there is no possible way of
      extending the current `solution.substitution` to make `left` not
      equal to `right` (if there was, `unify` would have returned this
      extended substitution).  Thus, this `NotEqual` constraint can
      safely be discarded.
+
   **/
 
   if (substitution === undefined) {
@@ -102,9 +153,11 @@ function pursueNotEqual(
   }
 
   /**
+
      `unify` succeeds without extending the current
      `solution.substitution`.  In this case, `left` and `right` are
      already equal, meaning the `NotEqual` constraint is violated.
+
   **/
 
   if (substitutionEqual(substitution, solution.substitution)) {
@@ -112,12 +165,14 @@ function pursueNotEqual(
   }
 
   /**
+
      `unify` succeeds and returns an extended `solution.substitution`.
      In this case, the extension of the substitution contains
      precisely all those pairs whose key and value must be equal for
      the unification to succeed.  In other words, for the `NotEqual`
      constraint to hold, this extension must not hold! Thus, we add
-     this extension to our disequality store.
+     this extension to `solution.inequalities`.
+
   **/
 
   const inequality = substitutionPrefix(substitution, solution.substitution)

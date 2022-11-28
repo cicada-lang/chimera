@@ -1,5 +1,3 @@
-add comment to `pursueEqual` from the tutorial
-
 [question] why we can not move `goals` to `Solution` and quit using `Task`?
 
 - `Task` is about explicit control flow?
