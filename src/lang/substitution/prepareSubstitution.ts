@@ -17,7 +17,7 @@ import {
 
 **/
 
-export function substitutionReify(
+export function prepareSubstitution(
   substitution: Substitution,
   exp: Exp,
 ): Substitution {
@@ -31,14 +31,14 @@ export function substitutionReify(
     }
 
     case "ArrayCons": {
-      substitution = substitutionReify(substitution, exp.car)
-      substitution = substitutionReify(substitution, exp.cdr)
+      substitution = prepareSubstitution(substitution, exp.car)
+      substitution = prepareSubstitution(substitution, exp.cdr)
       return substitution
     }
 
     case "Objekt": {
       for (const property of Object.values(exp.properties)) {
-        substitution = substitutionReify(substitution, property)
+        substitution = prepareSubstitution(substitution, property)
       }
 
       return substitution
@@ -46,7 +46,7 @@ export function substitutionReify(
 
     case "Data": {
       for (const arg of exp.args) {
-        substitution = substitutionReify(substitution, arg)
+        substitution = prepareSubstitution(substitution, arg)
       }
 
       return substitution

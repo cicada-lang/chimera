@@ -1,4 +1,3 @@
-rename substitutionReify to prepareSubstitution
 move `prepareSubstitution` to `reify/`
 comment about `reify`
 `reify` -- support constraint
