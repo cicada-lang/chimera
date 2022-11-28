@@ -27,11 +27,11 @@ export function evaluateGoalExp(mod: Mod, goal: GoalExp): Goal {
     }
 
     case "Conj": {
-      throw new Error()
+      return Goals.Conj(goal.goals.map((goal) => evaluateGoalExp(mod, goal)))
     }
 
     case "Disj": {
-      throw new Error()
+      return Goals.Disj(goal.goals.map((goal) => evaluateGoalExp(mod, goal)))
     }
   }
 }

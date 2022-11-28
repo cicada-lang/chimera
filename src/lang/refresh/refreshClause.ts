@@ -49,6 +49,18 @@ function refreshGoal(
         refreshExp(mod, goal.right, varMap),
       )
     }
+
+    case "Conj": {
+      return Goals.Conj(
+        goal.goals.map((goal) => refreshGoal(mod, goal, varMap)),
+      )
+    }
+
+    case "Disj": {
+      return Goals.Disj(
+        goal.goals.map((goal) => refreshGoal(mod, goal, varMap)),
+      )
+    }
   }
 }
 

@@ -14,5 +14,13 @@ export function formatGoal(goal: Goal): string {
     case "NotEqual": {
       return `${formatExp(goal.left)} != ${formatExp(goal.right)}`
     }
+
+    case "Conj": {
+      throw new Error()
+    }
+
+    case "Disj": {
+      throw new Error()
+    }
   }
 }

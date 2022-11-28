@@ -1,13 +1,6 @@
-`Goals.Conj`
-
-- `GoalExps.Conj` -- `evaluateGoalExp`
+`Goals.Conj` & `Goals.Disj` -- `formatGoal`
 
 `Goals.Conj` -- `pursue`
-
-`Goals.Disj`
-
-- `GoalExps.Disj` -- `evaluateGoalExp`
-
 `Goals.Disj` -- `pursue`
 
 `reify` -- support constraint

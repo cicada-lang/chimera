@@ -38,5 +38,13 @@ export function pursue(
       const newSolution = pursueNotEqual(mod, solution, goal.left, goal.right)
       return newSolution === undefined ? [] : [newSolution]
     }
+
+    case "Conj": {
+      throw new Error()
+    }
+
+    case "Disj": {
+      throw new Error()
+    }
   }
 }
