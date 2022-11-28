@@ -1,8 +1,13 @@
+import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import { refreshClause } from "../refresh"
 import type { Solution } from "../solution"
-import { substitutionLength, substitutionPrefix } from "../substitution"
+import {
+  Substitution,
+  substitutionLength,
+  substitutionPrefix,
+} from "../substitution"
 import { unify } from "../unify"
 
 export function pursue(
@@ -14,31 +19,69 @@ export function pursue(
     case "Apply": {
       return goal.relation.clauses.flatMap((clause) => {
         const { exp, goals } = refreshClause(mod, clause)
-        const substitution = unify(solution.substitution, exp, goal.arg)
-        if (substitution === undefined) return []
-        return [[solution.update({ substitution }), goals]]
+        const newSolution = pursueEqual(mod, solution, exp, goal.arg)
+        if (newSolution === undefined) return []
+        return [[newSolution, goals]]
       })
     }
 
     case "Equal": {
-      const substitution = unify(solution.substitution, goal.left, goal.right)
-      if (substitution === undefined) return []
-      return [[solution.update({ substitution }), []]]
+      const newSolution = pursueEqual(mod, solution, goal.left, goal.right)
+      if (newSolution === undefined) return []
+      return [[newSolution, []]]
     }
 
     case "NotEqual": {
-      const substitution = unify(solution.substitution, goal.left, goal.right)
-      if (substitution === undefined) return [[solution, []]]
-      if (
-        substitutionLength(substitution) ===
-        substitutionLength(solution.substitution)
-      ) {
-        return []
-      }
-
-      const inequality = substitutionPrefix(substitution, solution.substitution)
-      const inequalities = [...solution.inequalities, inequality]
-      return [[solution.update({ inequalities }), []]]
+      const newSolution = pursueNotEqual(mod, solution, goal.left, goal.right)
+      if (newSolution === undefined) return []
+      return [[newSolution, []]]
     }
   }
+}
+
+function pursueEqual(
+  mod: Mod,
+  solution: Solution,
+  left: Exp,
+  right: Exp,
+): Solution | undefined {
+  const substitution = unify(solution.substitution, left, right)
+
+  if (substitution === undefined) return undefined
+
+  if (
+    substitutionLength(substitution) ===
+    substitutionLength(solution.substitution)
+  ) {
+    return solution
+  }
+
+  const inequalities: Array<Substitution> = []
+  for (const inequality of solution.inequalities) {
+    // TODO verifying `NotEqual` constraints' validity
+  }
+
+  return solution.update({ substitution, inequalities })
+}
+
+function pursueNotEqual(
+  mod: Mod,
+  solution: Solution,
+  left: Exp,
+  right: Exp,
+): Solution | undefined {
+  const substitution = unify(solution.substitution, left, right)
+
+  if (substitution === undefined) return solution
+
+  if (
+    substitutionLength(substitution) ===
+    substitutionLength(solution.substitution)
+  ) {
+    return undefined
+  }
+
+  const inequality = substitutionPrefix(substitution, solution.substitution)
+  const inequalities = [...solution.inequalities, inequality]
+  return solution.update({ inequalities })
 }

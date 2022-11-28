@@ -1,5 +1,4 @@
-`Goals.Equal` -- `pursue` -- verifying constraints' validity
-`Goals.Apply` -- `pursue` -- verifying constraints' validity
+`pursueEqual` -- `pursue` -- verifying constraints' validity
 
 [question] why we can not move `goals` to `Solution` and quit using `Task`?
 
