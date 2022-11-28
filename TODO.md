@@ -1,3 +1,5 @@
+add `conj` -- to compose goals
+add `disj` -- to compose goals
 `reify` -- support constraint
 `formatReification` -- format constraints using `with` syntax
 
