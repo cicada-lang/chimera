@@ -8,24 +8,35 @@ export function pursue(
   mod: Mod,
   solution: Solution,
   goal: Goal,
-): Array<[Solution, Array<Goal>]> {
+): Array<Solution> {
   switch (goal["@kind"]) {
     case "Apply": {
       return goal.relation.clauses.flatMap((clause) => {
         const { exp, goals } = refreshClause(mod, clause)
+
+        /**
+
+           We append the generated new goals
+           to the start of the queue,
+           to get depth-first search.
+
+        **/
+
         const newSolution = pursueEqual(mod, solution, exp, goal.arg)
-        return newSolution === undefined ? [] : [[newSolution, goals]]
+        return newSolution === undefined
+          ? []
+          : [newSolution.update({ goals: [...goals, ...solution.goals] })]
       })
     }
 
     case "Equal": {
       const newSolution = pursueEqual(mod, solution, goal.left, goal.right)
-      return newSolution === undefined ? [] : [[newSolution, []]]
+      return newSolution === undefined ? [] : [newSolution]
     }
 
     case "NotEqual": {
       const newSolution = pursueNotEqual(mod, solution, goal.left, goal.right)
-      return newSolution === undefined ? [] : [[newSolution, []]]
+      return newSolution === undefined ? [] : [newSolution]
     }
   }
 }
