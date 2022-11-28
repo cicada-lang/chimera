@@ -1,5 +1,5 @@
+extract `substitutionEqual`
 add comment for according to the tutorial paper
-
 [maybe] `Substitution` should be a class
 
 [question] why we can not move `goals` to `Solution` and quit using `Task`?
