@@ -28,3 +28,18 @@ export function substitutionEqual(
 ): boolean {
   return left === right
 }
+
+export function substitutionLength(substitution: Substitution): number {
+  return substitution.size
+}
+
+export function substitutionNames(substitution: Substitution): Array<string> {
+  return Array.from(substitution.keys())
+}
+
+export function substitutionLookup(
+  substitution: Substitution,
+  name: string,
+): Exp | undefined {
+  return substitution.get(name)
+}
