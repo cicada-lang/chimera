@@ -5,3 +5,26 @@ find q {
 find q {
   1 != 2
 }
+
+find [x, y] {
+  y != "cat"
+  [x, 3] != [5, y]
+  [3, x] = [y, 5]
+}
+
+find [x, y] {
+  y != "cat"
+  [x, 3] != [5, y]
+  [x, "cat"] = [5, y]
+}
+
+find [x, y] {
+  y != "cat"
+  [x, 3] != [5, y]
+  [x, 5] = [3, y]
+}
+
+find [x, y] {
+  [x, 3] != ["cat", y]
+  x = "cat"
+}

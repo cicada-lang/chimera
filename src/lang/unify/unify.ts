@@ -6,6 +6,19 @@ import {
 } from "../substitution"
 import { occur } from "../unify"
 
+export function unifyMany(
+  substitution: Substitution,
+  pairs: Array<[Exp, Exp]>,
+): Substitution | undefined {
+  for (const [left, right] of pairs) {
+    const nextSubstitution = unify(substitution, left, right)
+    if (nextSubstitution === undefined) return undefined
+    substitution = nextSubstitution
+  }
+
+  return substitution
+}
+
 export function unify(
   substitution: Substitution,
   left: Exp,

@@ -1,4 +1,5 @@
 import type { Exp } from "../exp"
+import * as Exps from "../exp"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import { refreshClause } from "../refresh"
@@ -8,7 +9,7 @@ import {
   substitutionLength,
   substitutionPrefix,
 } from "../substitution"
-import { unify } from "../unify"
+import { unify, unifyMany } from "../unify"
 
 export function pursue(
   mod: Mod,
@@ -58,7 +59,21 @@ function pursueEqual(
 
   const inequalities: Array<Substitution> = []
   for (const inequality of solution.inequalities) {
-    // TODO verifying `NotEqual` constraints' validity
+    const inequalitySubstitution = unifyMany(
+      substitution,
+      inequality.toArray().map(([name, exp]) => [Exps.PatternVar(name), exp]),
+    )
+
+    if (inequalitySubstitution === undefined) continue
+
+    if (
+      substitutionLength(substitution) ===
+      substitutionLength(inequalitySubstitution)
+    ) {
+      return undefined
+    }
+
+    inequalities.push(substitutionPrefix(inequalitySubstitution, substitution))
   }
 
   return solution.update({ substitution, inequalities })
