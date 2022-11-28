@@ -1,4 +1,3 @@
-add docs/papers
 add comment for according to the tutorial paper
 [maybe] `Substitution` should be a class
 
