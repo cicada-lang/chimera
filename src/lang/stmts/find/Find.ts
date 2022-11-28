@@ -60,6 +60,16 @@ function formatSolutions(
 
 function formatResults(results: Array<string>): string {
   if (results.length === 0) return "[]"
-  const body = results.map((result) => indent(result)).join(",\n")
-  return `[ \n${body}\n]`
+  if (isLargeResults(results)) {
+    return `[ \n${results.map((result) => indent(result)).join(",\n")}\n]`
+  } else {
+    return `[ ${results.join(", ")} ]`
+  }
+}
+
+function isLargeResults(results: Array<string>): boolean {
+  return (
+    results.some((result) => result.includes("\n")) ||
+    results.join(", ").length >= 60
+  )
 }

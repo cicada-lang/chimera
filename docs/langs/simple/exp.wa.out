@@ -1,6 +1,4 @@
-[ 
-  Type::arrow(_.0, _.0)
-]
+[ Type::arrow(_.0, _.0) ]
 [ 
   Exp::fn(_.0, Exp::var(_.0)),
   Exp::fn(_.0, Exp::ap(Exp::fn(_.1, Exp::var(_.1)), Exp::var(_.0))),

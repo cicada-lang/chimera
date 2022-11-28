@@ -1,12 +1,6 @@
-[ 
-  _.0
-]
+[ _.0 ]
 []
-[ 
-  "marx",
-  "darwin",
-  "freud"
-]
+[ "marx", "darwin", "freud" ]
 [ 
   [["foo" | _.0]],
   [[_.0, "foo" | _.1]],
