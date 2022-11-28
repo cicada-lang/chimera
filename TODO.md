@@ -1,5 +1,4 @@
-add comment for according to the tutorial paper
-[maybe] `Substitution` should be a class
+add comment to `pursueEqual` from the tutorial
 
 [question] why we can not move `goals` to `Solution` and quit using `Task`?
 
