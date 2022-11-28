@@ -1,4 +1,9 @@
-`Goals.NotEqual` -- verifying constraints' validity
+remove `Task` -- `goals` should be in `Solution` (partial solution)
+
+`Goals.Equal` -- `pursue` -- verifying constraints' validity
+`Goals.Apply` -- `pursue` -- verifying constraints' validity
+
+add comment for according to the tutorial paper
 
 # learn
 
