@@ -2,6 +2,7 @@ import type { Exp } from "../exp"
 import * as Exps from "../exp"
 import {
   Substitution,
+  substitutionEmpty,
   substitutionExtend,
   substitutionLength,
   substitutionWalk,
@@ -18,8 +19,8 @@ import {
 **/
 
 export function prepareSubstitution(
-  substitution: Substitution,
   exp: Exp,
+  substitution: Substitution = substitutionEmpty(),
 ): Substitution {
   exp = substitutionWalk(substitution, exp)
 
@@ -31,14 +32,14 @@ export function prepareSubstitution(
     }
 
     case "ArrayCons": {
-      substitution = prepareSubstitution(substitution, exp.car)
-      substitution = prepareSubstitution(substitution, exp.cdr)
+      substitution = prepareSubstitution(exp.car, substitution)
+      substitution = prepareSubstitution(exp.cdr, substitution)
       return substitution
     }
 
     case "Objekt": {
       for (const property of Object.values(exp.properties)) {
-        substitution = prepareSubstitution(substitution, property)
+        substitution = prepareSubstitution(property, substitution)
       }
 
       return substitution
@@ -46,7 +47,7 @@ export function prepareSubstitution(
 
     case "Data": {
       for (const arg of exp.args) {
-        substitution = prepareSubstitution(substitution, arg)
+        substitution = prepareSubstitution(arg, substitution)
       }
 
       return substitution

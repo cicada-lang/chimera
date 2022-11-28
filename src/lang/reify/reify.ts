@@ -1,13 +1,9 @@
 import type { Exp } from "../exp"
 import { prepareSubstitution } from "../reify"
-import {
-  Substitution,
-  substitutionDeepWalk,
-  substitutionEmpty,
-} from "../substitution"
+import { Substitution, substitutionDeepWalk } from "../substitution"
 
 export function reify(substitution: Substitution, exp: Exp): Exp {
   exp = substitutionDeepWalk(substitution, exp)
-  substitution = prepareSubstitution(substitutionEmpty(), exp)
-  return substitutionDeepWalk(substitution, exp)
+  const substitutionWithReifiedVars = prepareSubstitution(exp)
+  return substitutionDeepWalk(substitutionWithReifiedVars, exp)
 }
