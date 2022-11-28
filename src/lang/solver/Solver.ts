@@ -6,7 +6,7 @@ import type { QueryPattern } from "../stmts/find"
 
 /**
 
-   A `Solver` has a queue of `solutions`,
+   A `Solver` has a queue of `partialSolutions`,
    one solution represents a path we are searching.
 
    A `Solution` has a queue of `goals`,
@@ -78,8 +78,9 @@ export class Solver {
 
     /**
 
-       Trying to be fair for all tasks,
-       we push the generated new tasks to the end of the queue.
+       We try to be fair by pushing the
+       newly generated `partialSolutions`
+       to the end of the queue.
 
     **/
 
