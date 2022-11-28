@@ -3,7 +3,8 @@
 Logic programming with [JSON](https://www.json.org).
 
 In the sense that the syntax is close to JavaScript,
-and the query outputs are [JSON lines](https://jsonlines.org).
+and user can choose to format the query outputs
+to canonical [JSON lines](https://jsonlines.org).
 
 > I asked the boy beneath the pines. <br/>
 > He said, "The master's gone alone <br/>
@@ -68,32 +69,6 @@ Run multiline text (bash and zsh):
 
 ```sh
 curl https://wa.cic.run --data-binary @-<< END
-
-Drink { person: "john", alcohol: "martini" }
-Drink { person: "mary", alcohol: "gin" }
-Drink { person: "susan", alcohol: "vodka" }
-Drink { person: "john", alcohol: "gin" }
-Drink { person: "fred", alcohol: "gin" }
-Drink { person: "fred", alcohol: "vodka" }
-
-Friendship { left, right, alcohol }
------------------------------------- {
-  Drink { person: left, alcohol }
-  Drink { person: right, alcohol }
-}
-
-find left {
-  Friendship { left, right: "mary", alcohol: "gin" }
-}
-
-END
-```
-
-The outputs are [JSON lines](https://jsonlines.org) -- one query one line,
-You can pipe them to [**jq**](https://stedolan.github.io/jq/) to format them:
-
-```sh
-curl -s https://wa.cic.run --data-binary @-<< END | jq
 
 Drink { person: "john", alcohol: "martini" }
 Drink { person: "mary", alcohol: "gin" }
