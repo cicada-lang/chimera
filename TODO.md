@@ -2,6 +2,8 @@
 
 - `Task` is about explicit control flow?
 
+`reify` -- support` constraint
+
 # learn
 
 > Be familiar with minikanren implementation again -- to read ckanren paper.

@@ -14,7 +14,7 @@ export class Task {
     // to the start of the queue,
     // to get depth-first search.
     return pursue(mod, this.solution, goal).map(
-      ([solution, goals]) => new Task(solution, goals.concat(this.goals)),
+      ([solution, goals]) => new Task(solution, [...goals, ...this.goals]),
     )
   }
 }
