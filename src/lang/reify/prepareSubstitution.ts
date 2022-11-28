@@ -8,7 +8,7 @@ import {
 } from "../substitution"
 
 /**
-   move prepareSubstitution
+
    Prepare a substitution for the reification of an `exp`.
 
    Given an `exp`, build a mapping from all variable names in the

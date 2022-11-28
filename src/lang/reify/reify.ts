@@ -1,6 +1,6 @@
 import type { Exp } from "../exp"
+import { prepareSubstitution } from "../reify"
 import {
-  prepareSubstitution,
   Substitution,
   substitutionDeepWalk,
   substitutionEmpty,
