@@ -14,3 +14,10 @@ export function substitutionExtend(
 ): Substitution {
   return substitution.set(name, exp)
 }
+
+export function substitutionPrefix(
+  long: Substitution,
+  short: Substitution,
+): Substitution {
+  return long.deleteAll(short.keys())
+}

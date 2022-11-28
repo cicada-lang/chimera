@@ -2,6 +2,7 @@ import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import { refreshClause } from "../refresh"
 import type { Solution } from "../solution"
+import { substitutionLength, substitutionPrefix } from "../substitution"
 import { unify } from "../unify"
 
 export function pursue(
@@ -26,7 +27,18 @@ export function pursue(
     }
 
     case "NotEqual": {
-      throw new Error("TODO")
+      const substitution = unify(solution.substitution, goal.left, goal.right)
+      if (substitution === undefined) return [[solution, []]]
+      if (
+        substitutionLength(substitution) ===
+        substitutionLength(solution.substitution)
+      ) {
+        return []
+      }
+
+      const inequality = substitutionPrefix(substitution, solution.substitution)
+      const inequalities = [...solution.inequalities, inequality]
+      return [[solution.update({ inequalities }), []]]
     }
   }
 }

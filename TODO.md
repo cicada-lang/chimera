@@ -1,4 +1,4 @@
-`Goals.NotEqual` -- `pursue`
+`Goals.NotEqual` -- verifying constraints' validity
 
 # learn
 
