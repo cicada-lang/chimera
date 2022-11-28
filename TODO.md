@@ -1,7 +1,8 @@
-> [constraint] disequality
-
-`NotEqual` as a goal
-`NotEqual` -- `pursue`
+`GoalExps.NotEqual`
+`GoalExps.NotEqual` -- syntax
+`Goals.NotEqual`
+`GoalExps.NotEqual` -- `evaluateGoalExp`
+`Goals.NotEqual` -- `pursue`
 
 # learn
 
