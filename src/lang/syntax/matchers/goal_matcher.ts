@@ -13,6 +13,12 @@ export function goal_matcher(tree: pt.Tree): GoalExp {
         matchers.exp_matcher(right),
         span,
       ),
+    "goal:not_equal": ({ left, right }, { span }) =>
+      GoalExps.NotEqual(
+        matchers.exp_matcher(left),
+        matchers.exp_matcher(right),
+        span,
+      ),
   })(tree)
 }
 
