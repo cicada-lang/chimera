@@ -1,5 +1,3 @@
-`GoalExps.Conj` & `GoalExps.Disj` -- syntax
-
 `Goals.Conj` -- `pursue`
 `Goals.Disj` -- `pursue`
 

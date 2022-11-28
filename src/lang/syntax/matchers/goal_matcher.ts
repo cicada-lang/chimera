@@ -19,6 +19,16 @@ export function goal_matcher(tree: pt.Tree): GoalExp {
         matchers.exp_matcher(right),
         span,
       ),
+    "goal:conj": ({ goals }, { span }) =>
+      GoalExps.Conj(
+        pt.matchers.zero_or_more_matcher(goals).map(goal_matcher),
+        span,
+      ),
+    "goal:disj": ({ goals }, { span }) =>
+      GoalExps.Disj(
+        pt.matchers.zero_or_more_matcher(goals).map(goal_matcher),
+        span,
+      ),
   })(tree)
 }
 
