@@ -17,12 +17,12 @@ export function formatGoal(goal: Goal): string {
 
     case "Conj": {
       const goals = goal.goals.map(formatGoal).join(" ")
-      throw `conj { ${goals} }`
+      return `conj { ${goals} }`
     }
 
     case "Disj": {
       const goals = goal.goals.map(formatGoal).join(" ")
-      throw `disj { ${goals} }`
+      return `disj { ${goals} }`
     }
   }
 }

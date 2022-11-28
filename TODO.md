@@ -1,7 +1,3 @@
-`reify` -- support constraint
-
-`formatReification` -- format constraints using `with` syntax
-
 extract framework -- to avoid extra test
 
 # learn
