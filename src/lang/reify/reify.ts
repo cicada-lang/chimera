@@ -1,17 +1,31 @@
 import type { Exp } from "../exp"
+import type { Goal } from "../goal"
 import { prepareSubstitution } from "../reify"
-import { Substitution, substitutionDeepWalk } from "../substitution"
+import type { Solution } from "../solution"
+import { substitutionDeepWalk } from "../substitution"
+
+/**
+
+   The `Reification` of an `exp` is the reified exp,
+   with a list of constraints represented as goals.
+
+ **/
 
 export type Reification = {
   exp: Exp
+  constraints: Array<Goal>
 }
 
-export function Reification(exp: Exp): Reification {
-  return { exp }
+export function Reification(exp: Exp, constraints: Array<Goal>): Reification {
+  return { exp, constraints }
 }
 
-export function reify(substitution: Substitution, exp: Exp): Reification {
-  exp = substitutionDeepWalk(substitution, exp)
+export function reify(solution: Solution, exp: Exp): Reification {
+  exp = substitutionDeepWalk(solution.substitution, exp)
   const substitutionWithReifiedVars = prepareSubstitution(exp)
-  return Reification(substitutionDeepWalk(substitutionWithReifiedVars, exp))
+  const constraints: Array<Goal> = []
+  return Reification(
+    substitutionDeepWalk(substitutionWithReifiedVars, exp),
+    constraints,
+  )
 }

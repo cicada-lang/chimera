@@ -43,7 +43,7 @@ function formatSolutions(
         Exps.ArrayNull(),
       )
       const results = solutions.map((solution) =>
-        formatReification(reify(solution.substitution, exp)),
+        formatReification(reify(solution, exp)),
       )
       return formatResults(results)
     }
@@ -51,7 +51,7 @@ function formatSolutions(
     case "QueryPatternName": {
       const variable = Exps.PatternVar(pattern.name)
       const results = solutions.map((solution) =>
-        formatReification(reify(solution.substitution, variable)),
+        formatReification(reify(solution, variable)),
       )
       return formatResults(results)
     }
