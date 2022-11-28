@@ -1,11 +1,11 @@
 import { buildSolveOptions, FindOption, QueryPattern } from "."
 import { indent } from "../../../utils/indent"
+import type { Exp } from "../../exp"
 import * as Exps from "../../exp"
-import { Exp, formatExp } from "../../exp"
 import type { GoalExp } from "../../goal-exp"
 import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
-import { reify } from "../../reify"
+import { formatReification, reify } from "../../reify"
 import type { Solution } from "../../solution"
 import { Solver } from "../../solver"
 import type { Span } from "../../span"
@@ -43,7 +43,7 @@ function formatSolutions(
         Exps.ArrayNull(),
       )
       const results = solutions.map((solution) =>
-        formatExp(reify(solution.substitution, exp)),
+        formatReification(reify(solution.substitution, exp)),
       )
       return formatResults(results)
     }
@@ -51,7 +51,7 @@ function formatSolutions(
     case "QueryPatternName": {
       const variable = Exps.PatternVar(pattern.name)
       const results = solutions.map((solution) =>
-        formatExp(reify(solution.substitution, variable)),
+        formatReification(reify(solution.substitution, variable)),
       )
       return formatResults(results)
     }
