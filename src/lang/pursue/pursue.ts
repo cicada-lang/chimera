@@ -40,11 +40,13 @@ export function pursue(
     }
 
     case "Conj": {
-      throw new Error()
+      return [solution.update({ goals: [...goal.goals, ...solution.goals] })]
     }
 
     case "Disj": {
-      throw new Error()
+      return goal.goals.map((goal) =>
+        solution.update({ goals: [goal, ...solution.goals] }),
+      )
     }
   }
 }

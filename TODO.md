@@ -1,7 +1,5 @@
-`Goals.Conj` -- `pursue`
-`Goals.Disj` -- `pursue`
-
 `reify` -- support constraint
+
 `formatReification` -- format constraints using `with` syntax
 
 extract framework -- to avoid extra test
