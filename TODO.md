@@ -1,10 +1,14 @@
-`GoalExps.Disj`
-
 `Goals.Conj`
-`GoalExps.Conj` -- `evaluateGoalExp`
+
+- `GoalExps.Conj` -- `evaluateGoalExp`
+
+`Goals.Conj` -- `pursue`
 
 `Goals.Disj`
-`GoalExps.Disj` -- `evaluateGoalExp`
+
+- `GoalExps.Disj` -- `evaluateGoalExp`
+
+`Goals.Disj` -- `pursue`
 
 `reify` -- support constraint
 `formatReification` -- format constraints using `with` syntax

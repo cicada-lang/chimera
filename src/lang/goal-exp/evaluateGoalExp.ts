@@ -29,5 +29,9 @@ export function evaluateGoalExp(mod: Mod, goal: GoalExp): Goal {
     case "Conj": {
       throw new Error()
     }
+
+    case "Disj": {
+      throw new Error()
+    }
   }
 }
