@@ -32,14 +32,14 @@ export function PatternVar(name: string, span?: Span): PatternVar {
 export type ReifiedVar = {
   "@type": "Exp"
   "@kind": "ReifiedVar"
-  name: string
+  count: number
 } & ExpMeta
 
-export function ReifiedVar(name: string, span?: Span): ReifiedVar {
+export function ReifiedVar(count: number, span?: Span): ReifiedVar {
   return {
     "@type": "Exp",
     "@kind": "ReifiedVar",
-    name,
+    count,
     span,
   }
 }

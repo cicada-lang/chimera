@@ -16,7 +16,7 @@ export function substitutionReify(
   switch (exp["@kind"]) {
     case "PatternVar": {
       const count = substitutionLength(substitution)
-      const reifiedExp = Exps.ReifiedVar(count.toString())
+      const reifiedExp = Exps.ReifiedVar(count)
       return substitutionExtend(substitution, exp.name, reifiedExp)
     }
 

@@ -8,7 +8,7 @@ export function formatExp(exp: Exp): string {
     }
 
     case "ReifiedVar": {
-      return `_.${exp.name}`
+      return `_.${exp.count}`
     }
 
     case "String": {
