@@ -1,5 +1,3 @@
-extract framework -- to avoid extra test
-
 # learn
 
 > Be familiar with minikanren implementation again -- to read ckanren paper.
