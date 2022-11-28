@@ -1,6 +1,11 @@
-# learn
+> [constraint] disequality
 
-[maybe] rename Relation to Predicate
+move `pursue` to `goal/`
+
+`NotEqual` as a goal
+`NotEqual` -- `pursue`
+
+# learn
 
 > Be familiar with minikanren implementation again -- to read ckanren paper.
 
@@ -46,7 +51,6 @@ review old microkanren notes
 [read] a-surprisingly-competitive-conditional-operator.pdf
 
 [constraint] finite-domain
-[constraint] disequality
 [constraint] type
 
 # type system

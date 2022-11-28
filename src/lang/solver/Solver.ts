@@ -35,7 +35,7 @@ export class Solver {
     const limit = options.limit || Infinity
 
     while (this.solutions.length < limit && this.tasks.length > 0) {
-      const solution = this.step(mod, options)
+      const solution = this.solveStep(mod, options)
       if (solution !== undefined) {
         this.solutions.push(solution)
       }
@@ -44,7 +44,7 @@ export class Solver {
     return this.solutions
   }
 
-  private step(mod: Mod, options: SolveOptions): Solution | undefined {
+  private solveStep(mod: Mod, options: SolveOptions): Solution | undefined {
     const task = this.tasks.shift() as Task
     const tasks = task.undertake(mod)
     if (tasks === undefined) return task.solution

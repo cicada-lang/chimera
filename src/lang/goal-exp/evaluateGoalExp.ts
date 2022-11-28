@@ -1,12 +1,12 @@
+import type { GoalExp } from "."
 import * as Errors from "../errors"
-import type * as Exps from "../exp"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
 import type { Mod } from "../mod"
 
-export function evaluateGoal(mod: Mod, goal: Exps.Goal): Goal {
+export function evaluateGoalExp(mod: Mod, goal: GoalExp): Goal {
   switch (goal["@kind"]) {
-    case "GoalApply": {
+    case "Apply": {
       const relation = mod.findRelation(goal.name)
       if (relation === undefined) {
         throw new Errors.ElaborationError(
@@ -18,7 +18,7 @@ export function evaluateGoal(mod: Mod, goal: Exps.Goal): Goal {
       return Goals.Apply(goal.name, relation, goal.arg)
     }
 
-    case "GoalEqual": {
+    case "Equal": {
       return Goals.Equal(goal.left, goal.right)
     }
   }

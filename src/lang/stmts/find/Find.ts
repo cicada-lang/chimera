@@ -2,6 +2,8 @@ import { buildSolveOptions, FindOption, QueryPattern } from "."
 import { indent } from "../../../utils/indent"
 import * as Exps from "../../exp"
 import { Exp, formatExp } from "../../exp"
+import type { GoalExp } from "../../goal-exp"
+import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
 import type { Solution } from "../../solution"
 import { Solver } from "../../solver"
@@ -13,14 +15,14 @@ export class Find extends Stmt {
   constructor(
     public pattern: QueryPattern,
     public options: Array<FindOption>,
-    public goals: Array<Exps.Goal>,
+    public goals: Array<GoalExp>,
     public span?: Span,
   ) {
     super()
   }
 
   async execute(mod: Mod): Promise<string> {
-    const goals = this.goals.map((goal) => Exps.evaluateGoal(mod, goal))
+    const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     const solver = Solver.start(this.pattern, goals)
     const solutions = solver.solve(mod, buildSolveOptions(this.options))
     return formatSolutions(solutions, this.pattern)

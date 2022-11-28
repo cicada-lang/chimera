@@ -1,5 +1,6 @@
 import { expect, test } from "vitest"
 import * as Exps from "../../../exp"
+import * as GoalExps from "../../../goal-exp"
 import * as Stmts from "../../../stmts"
 import { parseStmts } from "../../index"
 import { deleteUndefined } from "../utils"
@@ -19,7 +20,7 @@ find [left] {
         Stmts.QueryPatternNames(["left"]),
         [],
         [
-          Exps.GoalApply(
+          GoalExps.Apply(
             "Friendship",
             Exps.Objekt({
               left: Exps.PatternVar("left"),
@@ -48,7 +49,7 @@ find [left] limit 1 {
         Stmts.QueryPatternNames(["left"]),
         [Stmts.FindOptionLimit(1)],
         [
-          Exps.GoalApply(
+          GoalExps.Apply(
             "Friendship",
             Exps.Objekt({
               left: Exps.PatternVar("left"),

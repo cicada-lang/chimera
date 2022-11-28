@@ -1,5 +1,6 @@
 import { expect, test } from "vitest"
 import * as Exps from "../../../exp"
+import * as GoalExps from "../../../goal-exp"
 import * as Stmts from "../../../stmts"
 import { parseStmts } from "../../index"
 import { deleteUndefined } from "../utils"
@@ -26,14 +27,14 @@ Friendship { left, right, alcohol }
           alcohol: Exps.PatternVar("alcohol"),
         }),
         [
-          Exps.GoalApply(
+          GoalExps.Apply(
             "Drink",
             Exps.Objekt({
               person: Exps.PatternVar("left"),
               alcohol: Exps.PatternVar("alcohol"),
             }),
           ),
-          Exps.GoalApply(
+          GoalExps.Apply(
             "Drink",
             Exps.Objekt({
               person: Exps.PatternVar("right"),
