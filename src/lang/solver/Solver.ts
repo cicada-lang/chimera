@@ -1,19 +1,18 @@
 import type { Goal } from "../goal"
-import { pursue } from "../goal"
 import type { Mod } from "../mod"
 import { Solution } from "../solution"
+import { Task } from "../solver"
 import type { QueryPattern } from "../stmts/find"
 
 /**
 
-   A solver has a queue of solutions,
-   one solution represents a path we are searching.
+   A solver has a queue of tasks,
+   one task represents a path we are searching.
 
-   A solution has a queue of goals,
-   if this queue is not empty, the solution is partial,
-   to work on a solution is to pursue it's first goal,
-   working on a solution might generate new solutions to work on,
-   one solution for each clause of a relation,
+   A task has a queue of goals,
+   undertaking a task will generate new tasks
+   by pursuing it's first goal,
+   one task for each clause of a relation,
    representing a new branching path to search.
 
 **/
@@ -47,27 +46,11 @@ export class Solver {
 
   private solveStep(mod: Mod, options: SolveOptions): Solution | undefined {
     const task = this.tasks.shift() as Task
-    const tasks = workOn(mod, task)
+    const tasks = task.undertake(mod)
     if (tasks === undefined) return task.solution
 
     // Trying to be fair for all tasks,
     // we push the generated new tasks to the end of the queue.
     this.tasks.push(...tasks)
   }
-}
-
-function workOn(mod: Mod, task: Task): Array<Task> | undefined {
-  const goal = task.goals.shift()
-  if (goal === undefined) return undefined
-
-  // We append the generated new goals
-  // to the start of the queue,
-  // to get depth-first search.
-  return pursue(mod, task.solution, goal).map(
-    ([solution, goals]) => new Task(solution, goals.concat(task.goals)),
-  )
-}
-
-class Task {
-  constructor(public solution: Solution, public goals: Array<Goal>) {}
 }
