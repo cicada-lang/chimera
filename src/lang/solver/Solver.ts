@@ -1,7 +1,7 @@
 import type { Goal } from "../goal"
+import { pursue } from "../goal"
 import type { Mod } from "../mod"
 import { Solution } from "../solution"
-import { Task } from "../solver"
 import type { QueryPattern } from "../stmts/find"
 
 /**
@@ -46,11 +46,27 @@ export class Solver {
 
   private solveStep(mod: Mod, options: SolveOptions): Solution | undefined {
     const task = this.tasks.shift() as Task
-    const tasks = task.undertake(mod)
+    const tasks = undertake(mod, task)
     if (tasks === undefined) return task.solution
 
     // Trying to be fair for all tasks,
     // we push the generated new tasks to the end of the queue.
     this.tasks.push(...tasks)
   }
+}
+
+class Task {
+  constructor(public solution: Solution, public goals: Array<Goal>) {}
+}
+
+function undertake(mod: Mod, task: Task): Array<Task> | undefined {
+  const [goal, ...restGoals] = task.goals
+  if (goal === undefined) return undefined
+
+  // We append the generated new goals
+  // to the start of the queue,
+  // to get depth-first search.
+  return pursue(mod, task.solution, goal).map(
+    ([solution, goals]) => new Task(solution, [...goals, ...restGoals]),
+  )
 }

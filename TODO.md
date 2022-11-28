@@ -1,3 +1,6 @@
+extract `pursueEqual` module
+extract `pursueNotEqual` module
+
 [question] why we can not move `goals` to `Solution` and quit using `Task`?
 
 - `Task` is about explicit control flow?
