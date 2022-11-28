@@ -1,4 +1,11 @@
-`Goals.NotEqual` -- verifying constraints' validity
+`Goals.Equal` -- `pursue` -- verifying constraints' validity
+`Goals.Apply` -- `pursue` -- verifying constraints' validity
+
+[question] why we can not move `goals` to `Solution` and quit using `Task`?
+
+- `Task` is about explicit control flow?
+
+add comment for according to the tutorial paper
 
 # learn
 
