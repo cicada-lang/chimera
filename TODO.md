@@ -1,4 +1,3 @@
-move `reify` to top level
 comment about `reify` and `substitutionReify`
 `reify` -- support constraint
 
