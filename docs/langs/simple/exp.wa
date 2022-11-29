@@ -2,6 +2,12 @@ Exp Exp::var(name)
 Exp Exp::fn(name, ret) -- { Exp ret }
 Exp Exp::ap(target, arg) -- { Exp target Exp arg }
 
+// datatype Exp {
+//   var(name)
+//   fn(name, ret) -- { Exp ret }
+//   ap(target, arg) -- { Exp target Exp arg }
+// }
+
 Type Type::atom(name)
 Type Type::arrow(argType, retType) -- { Type argType Type retType }
 
@@ -14,7 +20,7 @@ CtxLookup [Ctx::cons(_name, _type, rest), name, type]
   CtxLookup [rest, name, type]
 }
 
-Check [ctx, Exp::var(name), type]
+Check [Ctx, Exp::var(name), type]
 ---------------------------------- {
   CtxLookup [ctx, name, type]
 }

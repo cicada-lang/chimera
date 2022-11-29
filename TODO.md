@@ -1,7 +1,30 @@
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints
 
-> [constraint] using any predicate as type constraint
+[type constraint] built-in global `String`
+[type constraint] built-in global `Number`
+
+datatype declaration -- we should not use the `::` syntax freely
+
+- Because of we also want to use the `::` syntax for namespace,
+  a namespace prefix can be used only when it is imported.
+
+  It should be the same for datatype prefix,
+  i.e. a datatype prefix can be used only when the datatype is define.
+
+a module system can be imported as a namespace prefix
+
+- syntax
+
+  ```cicada
+  import namespace Exp from "Exp.wa"
+  ```
+
+instead of
+
+```cicada
+import * as Exp from "Exp.wa"
+```
 
 # learn
 
@@ -39,26 +62,6 @@
 
   - See (Byrd 2009) for a detailed discussion of these issues and of
     the miniKanren design philosophy.
-
-# type system
-
-datatype declaration -- we should not use dynamic type
-
-- because of we also want to use the `::` syntax for namespace,
-  this the prefix name of `::` can be used,
-  only when the name is imported.
-
-[maybe] using predicate (relation) as type to do assertion
-
-- type can be used as meta variable's constraint
-
-built-in globals -- `String` predicate
-
-- need to generate all `String`
-
-built-in globals -- `Number` predicate
-
-- need to generate all `Number`
 
 # programming by rewriting
 
