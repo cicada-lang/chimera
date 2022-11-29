@@ -1,8 +1,8 @@
-import type { GoalExp } from "."
-import * as Errors from "../errors"
-import type { Goal } from "../goal"
-import * as Goals from "../goal"
-import type { Mod } from "../mod"
+import * as Errors from "../errors/index.ts"
+import type { Goal } from "../goal/index.ts"
+import * as Goals from "../goal/index.ts"
+import type { Mod } from "../mod/index.ts"
+import type { GoalExp } from "./index.ts"
 
 export function evaluateGoalExp(mod: Mod, goal: GoalExp): Goal {
   switch (goal["@kind"]) {

@@ -1,6 +1,10 @@
-import { Command, CommandRunner } from "@xieyuheng/command-line"
-import ty from "@xieyuheng/ty"
-import * as Commands from "../commands"
+import {
+  Command,
+  CommandRunner,
+  Commands as BuiltInCommands,
+} from "@xieyuheng/command-line"
+import { ty } from "@xieyuheng/ty"
+import * as Commands from "../commands/index.ts"
 
 type Args = { file?: string }
 type Opts = { help?: boolean; version?: boolean }
@@ -16,7 +20,7 @@ export class DefaultCommand extends Command<Args, Opts> {
 
   async execute(argv: Args & Opts, runner: CommandRunner): Promise<void> {
     if (argv["help"]) {
-      const command = new Commands.CommonHelpCommand()
+      const command = new BuiltInCommands.CommonHelpCommand()
       await command.execute({}, runner)
       return
     }
@@ -29,7 +33,7 @@ export class DefaultCommand extends Command<Args, Opts> {
     const file = argv["file"]
 
     if (file === undefined) {
-      const command = new Commands.CommonHelpCommand()
+      const command = new BuiltInCommands.CommonHelpCommand()
       await command.execute({}, runner)
     } else {
       const command = new Commands.RunCommand()

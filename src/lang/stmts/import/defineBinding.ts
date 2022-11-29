@@ -1,6 +1,6 @@
-import type { Mod } from "../../mod"
-import type { Relation } from "../../relation"
-import type { ImportBinding } from "../import"
+import type { Mod } from "../../mod/index.ts"
+import type { Relation } from "../../relation/index.ts"
+import type { ImportBinding } from "../import/index.ts"
 
 export function defineBinding(
   mod: Mod,

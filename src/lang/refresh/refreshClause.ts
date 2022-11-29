@@ -1,9 +1,9 @@
-import type { Exp } from "../exp"
-import * as Exps from "../exp"
-import type { Goal } from "../goal"
-import * as Goals from "../goal"
-import type { Mod } from "../mod"
-import { Clause } from "../relation"
+import type { Exp } from "../exp/index.ts"
+import * as Exps from "../exp/index.ts"
+import type { Goal } from "../goal/index.ts"
+import * as Goals from "../goal/index.ts"
+import type { Mod } from "../mod/index.ts"
+import { Clause } from "../relation/index.ts"
 
 /**
    Side-effects.

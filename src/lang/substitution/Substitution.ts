@@ -1,6 +1,6 @@
 import Immutable from "immutable"
-import type { Exp } from "../exp"
-import * as Exps from "../exp"
+import type { Exp } from "../exp/index.ts"
+import * as Exps from "../exp/index.ts"
 
 export type Substitution = Immutable.Map<string, Exp>
 

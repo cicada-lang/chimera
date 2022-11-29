@@ -1,2 +1,2 @@
-export * from "./occur"
-export * from "./unify"
+export * from "./occur.ts"
+export * from "./unify.ts"

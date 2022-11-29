@@ -1,6 +1,6 @@
 import fs from "fs"
-import watcher from "node-watch"
-import { Loader } from "../loader"
+// import { watch } from "node-watch"
+import { Loader } from "../loader/index.ts"
 
 export class Runner {
   loader = new Loader({
@@ -30,35 +30,35 @@ export class Runner {
     }
   }
 
-  async watch(main: URL): Promise<void> {
-    app.logger.info({
-      msg: `Watching for changes.`,
-      tracked: this.loader.loaded,
-    })
+  // async watch(main: URL): Promise<void> {
+  //   app.logger.info({
+  //     msg: `Watching for changes.`,
+  //     tracked: this.loader.loaded,
+  //   })
 
-    for (const url of this.loader.loaded) {
-      if (main.protocol !== "file:") continue
+  //   for (const url of this.loader.loaded) {
+  //     if (main.protocol !== "file:") continue
 
-      watcher(url.pathname, async (event) => {
-        if (event === "remove") {
-          this.loader.delete(url)
-          if (url.href === main.href) {
-            app.logger.info({ tag: event, msg: url.pathname })
-            app.logger.info({ msg: "The main file is removed." })
-          } else {
-            const { error } = await this.run(main)
-            if (error) app.logger.error({ tag: event, msg: url.pathname })
-            else app.logger.info({ tag: event, msg: url.pathname })
-          }
-        }
+  //     watch(url.pathname, async (event) => {
+  //       if (event === "remove") {
+  //         this.loader.delete(url)
+  //         if (url.href === main.href) {
+  //           app.logger.info({ tag: event, msg: url.pathname })
+  //           app.logger.info({ msg: "The main file is removed." })
+  //         } else {
+  //           const { error } = await this.run(main)
+  //           if (error) app.logger.error({ tag: event, msg: url.pathname })
+  //           else app.logger.info({ tag: event, msg: url.pathname })
+  //         }
+  //       }
 
-        if (event === "update") {
-          this.loader.delete(url)
-          const { error } = await this.run(main)
-          if (error) app.logger.error({ tag: event, msg: url.pathname })
-          else app.logger.info({ tag: event, msg: url.pathname })
-        }
-      })
-    }
-  }
+  //       if (event === "update") {
+  //         this.loader.delete(url)
+  //         const { error } = await this.run(main)
+  //         if (error) app.logger.error({ tag: event, msg: url.pathname })
+  //         else app.logger.info({ tag: event, msg: url.pathname })
+  //       }
+  //     })
+  //   }
+  // }
 }

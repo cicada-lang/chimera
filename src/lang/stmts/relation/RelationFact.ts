@@ -1,7 +1,7 @@
-import type { Exp } from "../../exp"
-import type { Mod } from "../../mod"
-import type { Span } from "../../span"
-import { Stmt } from "../../stmt"
+import type { Exp } from "../../exp/index.ts"
+import type { Mod } from "../../mod/index.ts"
+import type { Span } from "../../span/index.ts"
+import { Stmt } from "../../stmt/index.ts"
 
 export class RelationFact extends Stmt {
   constructor(public name: string, public exp: Exp, public span?: Span) {

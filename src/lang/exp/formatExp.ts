@@ -1,5 +1,5 @@
-import { indent } from "../../utils/indent"
-import type { Exp } from "../exp"
+import { indent } from "../../utils/indent.ts"
+import type { Exp } from "../exp/index.ts"
 
 export function formatExp(exp: Exp): string {
   switch (exp["@kind"]) {

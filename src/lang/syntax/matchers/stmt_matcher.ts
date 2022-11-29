@@ -1,7 +1,7 @@
 import * as pt from "@cicada-lang/partech"
-import type { Stmt } from "../../stmt"
-import * as Stmts from "../../stmts"
-import * as matchers from "../matchers"
+import type { Stmt } from "../../stmt/index.ts"
+import * as Stmts from "../../stmts/index.ts"
+import * as matchers from "../matchers/index.ts"
 
 export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({

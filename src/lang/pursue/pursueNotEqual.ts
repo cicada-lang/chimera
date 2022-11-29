@@ -1,8 +1,8 @@
-import type { Exp } from "../exp"
-import type { Mod } from "../mod"
-import type { Solution } from "../solution"
-import { substitutionEqual, substitutionPrefix } from "../substitution"
-import { unify } from "../unify"
+import type { Exp } from "../exp/index.ts"
+import type { Mod } from "../mod/index.ts"
+import type { Solution } from "../solution/index.ts"
+import { substitutionEqual, substitutionPrefix } from "../substitution/index.ts"
+import { unify } from "../unify/index.ts"
 
 export function pursueNotEqual(
   mod: Mod,

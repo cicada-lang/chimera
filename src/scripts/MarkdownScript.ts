@@ -1,8 +1,8 @@
 import * as commonmark from "commonmark"
-import * as Errors from "../lang/errors"
-import type { Mod } from "../lang/mod"
-import { parseStmts } from "../lang/syntax"
-import { Script } from "../script"
+import * as Errors from "../lang/errors/index.ts"
+import type { Mod } from "../lang/mod/index.ts"
+import { parseStmts } from "../lang/syntax/index.ts"
+import { Script } from "../script/index.ts"
 
 export class MarkdownScript extends Script {
   constructor(public mod: Mod, public text: string) {
@@ -45,7 +45,7 @@ export class MarkdownScript extends Script {
 type Block = { index: number; info: string; code: string }
 
 function collectBlocks(text: string): Array<Block> {
-  const reader = new commonmark.Parser()
+  const reader = new (commonmark.Parser as any)()
   const parsed: commonmark.Node = reader.parse(text)
   const blocks = []
   const walker = parsed.walker()

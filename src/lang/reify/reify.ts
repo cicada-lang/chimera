@@ -1,13 +1,13 @@
-import type { Exp } from "../exp"
-import type { Goal } from "../goal"
-import * as Goals from "../goal"
-import { prepareSubstitution } from "../reify"
-import type { Solution } from "../solution"
+import type { Exp } from "../exp/index.ts"
+import type { Goal } from "../goal/index.ts"
+import * as Goals from "../goal/index.ts"
+import { prepareSubstitution } from "../reify/index.ts"
+import type { Solution } from "../solution/index.ts"
 import {
   Substitution,
   substitutionDeepWalk,
   substitutionPairs,
-} from "../substitution"
+} from "../substitution/index.ts"
 
 /**
 

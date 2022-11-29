@@ -1,6 +1,6 @@
-import type { Exp } from "../exp"
-import * as Exps from "../exp"
-import { Substitution, substitutionWalk } from "../substitution"
+import type { Exp } from "../exp/index.ts"
+import * as Exps from "../exp/index.ts"
+import { Substitution, substitutionWalk } from "../substitution/index.ts"
 
 export function substitutionDeepWalk(
   substitution: Substitution,

@@ -1,8 +1,9 @@
 import { Command, CommandRunner } from "@xieyuheng/command-line"
-import ty from "@xieyuheng/ty"
+import { ty } from "@xieyuheng/ty"
 import fs from "fs"
 import Path from "path"
-import { Runner } from "../Runner"
+import process from "process"
+import { Runner } from "../Runner.ts"
 
 type Args = { file: string }
 type Opts = { watch?: boolean }
@@ -49,7 +50,7 @@ export class RunCommand extends Command<Args, Opts> {
 
     if (argv["watch"]) {
       await this.runner.run(url)
-      await this.runner.watch(url)
+      // await this.runner.watch(url)
     } else {
       const { error } = await this.runner.run(url)
       if (error) {

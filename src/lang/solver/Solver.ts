@@ -1,8 +1,8 @@
-import type { Goal } from "../goal"
-import type { Mod } from "../mod"
-import { pursue } from "../pursue"
-import { Solution } from "../solution"
-import type { QueryPattern } from "../stmts/find"
+import type { Goal } from "../goal/index.ts"
+import type { Mod } from "../mod/index.ts"
+import { pursue } from "../pursue/index.ts"
+import { Solution } from "../solution/index.ts"
+import type { QueryPattern } from "../stmts/find/index.ts"
 
 /**
 

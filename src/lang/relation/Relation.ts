@@ -1,5 +1,5 @@
-import type { Exp } from "../exp"
-import type { Goal } from "../goal"
+import type { Exp } from "../exp/index.ts"
+import type { Goal } from "../goal/index.ts"
 
 export class Relation {
   constructor(public clauses: Array<Clause>) {}

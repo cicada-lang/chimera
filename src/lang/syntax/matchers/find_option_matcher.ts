@@ -1,5 +1,5 @@
 import * as pt from "@cicada-lang/partech"
-import * as Stmts from "../../stmts"
+import * as Stmts from "../../stmts/index.ts"
 
 export function find_option_matcher(tree: pt.Tree): Stmts.FindOption {
   return pt.matcher<Stmts.FindOption>({

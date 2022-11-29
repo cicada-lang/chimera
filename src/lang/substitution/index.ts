@@ -1,3 +1,3 @@
-export * from "./Substitution"
-export * from "./substitutionDeepWalk"
-export * from "./substitutionWalk"
+export * from "./Substitution.ts"
+export * from "./substitutionDeepWalk.ts"
+export * from "./substitutionWalk.ts"

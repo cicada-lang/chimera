@@ -1,10 +1,10 @@
-import type { Exp } from "../exp"
+import type { Exp } from "../exp/index.ts"
 import {
   Substitution,
   substitutionExtend,
   substitutionWalk,
-} from "../substitution"
-import { occur } from "../unify"
+} from "../substitution/index.ts"
+import { occur } from "../unify/index.ts"
 
 export function unifyMany(
   substitution: Substitution,
