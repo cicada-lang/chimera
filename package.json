@@ -28,10 +28,10 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@cicada-lang/framework": "^0.1.0",
+    "@cicada-lang/framework": "^0.1.1",
     "@cicada-lang/partech": "^0.2.3",
-    "@xieyuheng/command-line": "^0.0.7",
-    "@xieyuheng/ty": "^0.1.17",
+    "@xieyuheng/command-line": "^0.0.10",
+    "@xieyuheng/ty": "^0.1.20",
     "commonmark": "^0.30.0",
     "fast-deep-equal": "^3.1.3",
     "immutable": "^4.1.0",
