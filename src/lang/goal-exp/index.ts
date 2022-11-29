@@ -1,2 +1,2 @@
-export * from "./evaluateGoalExp.ts"
-export * from "./GoalExp.ts"
+export * from "./evaluateGoalExp"
+export * from "./GoalExp"

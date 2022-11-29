@@ -1,5 +1,0 @@
-#!/usr/bin/env -S deno run --allow-all
-
-import { createCommandRunner } from "../src/console/index.ts"
-
-createCommandRunner().run()

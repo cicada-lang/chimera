@@ -1,8 +1,8 @@
-import type { Goal } from "../goal/index.ts"
-import type { Mod } from "../mod/index.ts"
-import { pursueEqual, pursueNotEqual } from "../pursue/index.ts"
-import { refreshClause } from "../refresh/index.ts"
-import type { Solution } from "../solution/index.ts"
+import type { Goal } from "../goal"
+import type { Mod } from "../mod"
+import { pursueEqual, pursueNotEqual } from "../pursue"
+import { refreshClause } from "../refresh"
+import type { Solution } from "../solution"
 
 export function pursue(
   mod: Mod,

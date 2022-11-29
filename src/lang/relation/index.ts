@@ -1,1 +1,1 @@
-export * from "./Relation.ts"
+export * from "./Relation"

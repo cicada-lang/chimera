@@ -1,5 +1,5 @@
-import type { Exp } from "../exp/index.ts"
-import type { Relation } from "../relation/index.ts"
+import type { Exp } from "../exp"
+import type { Relation } from "../relation"
 
 export type Goal = Apply | Equal | NotEqual | Conj | Disj
 

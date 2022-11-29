@@ -1,4 +1,4 @@
-import { LangError } from "./LangError.ts"
+import { LangError } from "./LangError"
 
 export class ErrorReport extends LangError {
   constructor(public message: string) {

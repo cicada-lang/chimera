@@ -1,13 +1,13 @@
-import type { Exp } from "../exp/index.ts"
-import type { Mod } from "../mod/index.ts"
-import type { Solution } from "../solution/index.ts"
+import type { Exp } from "../exp"
+import type { Mod } from "../mod"
+import type { Solution } from "../solution"
 import {
   Substitution,
   substitutionEqual,
   substitutionPairs,
   substitutionPrefix,
-} from "../substitution/index.ts"
-import { unify, unifyMany } from "../unify/index.ts"
+} from "../substitution"
+import { unify, unifyMany } from "../unify"
 
 export function pursueEqual(
   mod: Mod,

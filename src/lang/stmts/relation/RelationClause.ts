@@ -1,9 +1,9 @@
-import type { Exp } from "../../exp/index.ts"
-import type { GoalExp } from "../../goal-exp/index.ts"
-import * as GoalExps from "../../goal-exp/index.ts"
-import type { Mod } from "../../mod/index.ts"
-import type { Span } from "../../span/index.ts"
-import { Stmt } from "../../stmt/index.ts"
+import type { Exp } from "../../exp"
+import type { GoalExp } from "../../goal-exp"
+import * as GoalExps from "../../goal-exp"
+import type { Mod } from "../../mod"
+import type { Span } from "../../span"
+import { Stmt } from "../../stmt"
 
 export class RelationClause extends Stmt {
   constructor(

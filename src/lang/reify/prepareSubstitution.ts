@@ -1,12 +1,12 @@
-import type { Exp } from "../exp/index.ts"
-import * as Exps from "../exp/index.ts"
+import type { Exp } from "../exp"
+import * as Exps from "../exp"
 import {
   Substitution,
   substitutionEmpty,
   substitutionExtend,
   substitutionLength,
   substitutionWalk,
-} from "../substitution/index.ts"
+} from "../substitution"
 
 /**
 

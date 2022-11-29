@@ -1,8 +1,8 @@
-import type { Loader } from "../../loader/index.ts"
-import type { Exp } from "../exp/index.ts"
-import type { Goal } from "../goal/index.ts"
-import { Clause, Relation } from "../relation/index.ts"
-import type { Stmt } from "../stmt/index.ts"
+import type { Loader } from "../../loader"
+import type { Exp } from "../exp"
+import type { Goal } from "../goal"
+import { Clause, Relation } from "../relation"
+import type { Stmt } from "../stmt"
 
 export interface ModOptions {
   url: URL

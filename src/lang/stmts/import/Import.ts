@@ -1,8 +1,8 @@
-import * as Errors from "../../errors/index.ts"
-import type { Mod } from "../../mod/index.ts"
-import type { Span } from "../../span/index.ts"
-import { Stmt } from "../../stmt/index.ts"
-import { defineBinding, ImportBinding } from "../import/index.ts"
+import * as Errors from "../../errors"
+import type { Mod } from "../../mod"
+import type { Span } from "../../span"
+import { Stmt } from "../../stmt"
+import { defineBinding, ImportBinding } from "../import"
 
 export class Import extends Stmt {
   constructor(

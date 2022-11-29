@@ -1,1 +1,1 @@
-export * from "./Solver.ts"
+export * from "./Solver"

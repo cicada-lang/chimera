@@ -1,7 +1,7 @@
-import { indent } from "../../utils/indent.ts"
-import { formatExp } from "../exp/index.ts"
-import { formatGoal } from "../goal/index.ts"
-import type { Reification } from "../reify/index.ts"
+import { indent } from "../../utils/indent"
+import { formatExp } from "../exp"
+import { formatGoal } from "../goal"
+import type { Reification } from "../reify"
 
 export function formatReification(reification: Reification): string {
   if (reification.constraints.length === 0) {

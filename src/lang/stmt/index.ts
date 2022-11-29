@@ -1,1 +1,1 @@
-export * from "./Stmt.ts"
+export * from "./Stmt"

@@ -1,6 +1,6 @@
 import * as pt from "@cicada-lang/partech"
-import type { Span } from "../span/index.ts"
-import { LangError } from "./LangError.ts"
+import type { Span } from "../span"
+import { LangError } from "./LangError"
 
 export class ElaborationError extends LangError {
   constructor(public message: string, public options: { span?: Span }) {

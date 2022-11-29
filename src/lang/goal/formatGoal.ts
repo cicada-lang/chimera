@@ -1,5 +1,5 @@
-import { formatExp } from "../exp/index.ts"
-import type { Goal } from "../goal/index.ts"
+import { formatExp } from "../exp"
+import type { Goal } from "../goal"
 
 export function formatGoal(goal: Goal): string {
   switch (goal["@kind"]) {

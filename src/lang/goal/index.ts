@@ -1,2 +1,2 @@
-export * from "./formatGoal.ts"
-export * from "./Goal.ts"
+export * from "./formatGoal"
+export * from "./Goal"

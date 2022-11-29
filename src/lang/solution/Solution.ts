@@ -1,6 +1,6 @@
-import type { Goal } from "../goal/index.ts"
-import type { Substitution } from "../substitution/index.ts"
-import { substitutionEmpty } from "../substitution/index.ts"
+import type { Goal } from "../goal"
+import type { Substitution } from "../substitution"
+import { substitutionEmpty } from "../substitution"
 
 export class Solution {
   constructor(

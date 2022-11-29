@@ -1,7 +1,7 @@
-import { Fetcher } from "@cicada-lang/framework"
-import { Mod } from "../lang/mod/index.ts"
-import type { Script } from "../script/index.ts"
-import * as Scripts from "../scripts/index.ts"
+import { Fetcher } from "@cicada-lang/framework/lib/fetcher"
+import { Mod } from "../lang/mod"
+import type { Script } from "../script"
+import * as Scripts from "../scripts"
 
 export interface LoaderOptions {
   onOutput?: (output: string) => void

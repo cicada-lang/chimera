@@ -1,5 +1,5 @@
 import * as pt from "@cicada-lang/partech"
-import * as Stmts from "../../stmts/index.ts"
+import * as Stmts from "../../stmts"
 
 export function import_binding_matcher(tree: pt.Tree): Stmts.ImportBinding {
   return pt.matcher<Stmts.ImportBinding>({

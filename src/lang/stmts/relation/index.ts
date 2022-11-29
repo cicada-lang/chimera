@@ -1,2 +1,2 @@
-export * from "./RelationClause.ts"
-export * from "./RelationFact.ts"
+export * from "./RelationClause"
+export * from "./RelationFact"

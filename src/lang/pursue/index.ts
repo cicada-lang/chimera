@@ -1,3 +1,3 @@
-export * from "./pursue.ts"
-export * from "./pursueEqual.ts"
-export * from "./pursueNotEqual.ts"
+export * from "./pursue"
+export * from "./pursueEqual"
+export * from "./pursueNotEqual"

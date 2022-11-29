@@ -1,5 +1,5 @@
-import { Loggers } from "@cicada-lang/framework"
-import { AppConfig } from "./AppConfig.ts"
+import * as Loggers from "@cicada-lang/framework/lib/loggers"
+import { AppConfig } from "./AppConfig"
 
 export class App {
   logger = new Loggers.PrettyLogger()
