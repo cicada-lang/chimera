@@ -3,6 +3,8 @@
 
 [diary] fair-search-strategy.md
 
+[question] why we do not need `key != name` in `Lookup`?
+
 [type constraint] built-in global `String`
 [type constraint] built-in global `Number`
 
