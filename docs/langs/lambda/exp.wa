@@ -7,7 +7,7 @@ Value Value::closure(name, ret, env) -- { Exp ret Env env }
 Env []
 Env [[name, value] | rest] -- { Value value Env rest }
 
-Lookup [[[key, value] | rest], name, value]
+Lookup [[[key, value] | rest], key, value]
 
 Lookup [[[key, value] | rest], name, found]
 ------------------------------------------------------ {

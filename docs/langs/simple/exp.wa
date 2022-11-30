@@ -14,7 +14,7 @@ Type Type::arrow(argType, retType) -- { Type argType Type retType }
 Ctx []
 Ctx [[name, type] | rest] -- { Type type Ctx rest }
 
-Lookup [[[key, value] | rest], name, value]
+Lookup [[[key, value] | rest], key, value]
 
 Lookup [[[key, value] | rest], name, found]
 ------------------------------------------------------ {
