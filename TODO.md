@@ -1,13 +1,22 @@
-`formatReification` -- prune the inequality constraints
-`formatReification` -- order the inequality constraints
+`Stmts.Datatype`
 
 datatype declaration -- we should not use the `::` syntax freely
+
+- `evaluateGoalExp` -- during `Equal` and `NotEqual` -- use `elaborateExp` to get constraints from `Exps.Data`
+
+  - since we are generating `conj` we need to be sure about our search strategy
+
+- `elaborateExp` -- trans `Exp` to `Exp` with `constraints`
 
 - Because of we also want to use the `::` syntax for module,
   a module prefix can be used only when it is imported.
 
   It should be the same for datatype prefix,
   i.e. a datatype prefix can be used only when the datatype is define.
+
+`formatReification` -- prune the inequality constraints
+
+`formatReification` -- order the inequality constraints
 
 a module system can be imported as a module prefix
 
