@@ -2,12 +2,12 @@ export type FindOption = FindOptionLimit
 
 export type FindOptionLimit = {
   "@kind": "FindOptionLimit"
-  exp: number
+  value: number
 }
 
-export function FindOptionLimit(exp: number): FindOptionLimit {
+export function FindOptionLimit(value: number): FindOptionLimit {
   return {
     "@kind": "FindOptionLimit",
-    exp,
+    value,
   }
 }

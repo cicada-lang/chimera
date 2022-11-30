@@ -1,4 +1,3 @@
-import { buildSolveOptions, FindOption, QueryPattern } from "."
 import { indent } from "../../../utils/indent"
 import type { Exp } from "../../exp"
 import * as Exps from "../../exp"
@@ -10,6 +9,7 @@ import type { Solution } from "../../solution"
 import { Solver } from "../../solver"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
+import { buildSolveOptions, FindOption, QueryPattern } from "../find"
 
 export class Find extends Stmt {
   constructor(

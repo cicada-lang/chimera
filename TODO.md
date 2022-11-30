@@ -1,3 +1,4 @@
+extract `find` function
 `Stmts.AssertFind`
 `Stmts.AssertNotFind`
 `Stmts.Test` -- `execute` catch `AssertionError`
