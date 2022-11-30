@@ -1,5 +1,5 @@
-[ "foo", "bar" with { disj { ?name2_9 != "x" } } ]
-[ "foo", "bar" with { disj { ?name2_39 != "x" } } ]
+[ "foo", "bar" ]
+[ "foo", "bar" ]
 [ 
   Exp::ap(
     Exp::fn("x", Exp::fn("y", Exp::var("x"))),

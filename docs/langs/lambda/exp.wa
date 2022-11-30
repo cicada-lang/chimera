@@ -11,7 +11,7 @@ Lookup [[[key, value] | rest], name, value]
 
 Lookup [[[key, value] | rest], name, found]
 ------------------------------------------------------ {
-  key != name2
+  key != name
   Lookup [rest, name, found]
 }
 
