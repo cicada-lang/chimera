@@ -1,4 +1,3 @@
-`Stmts.AssertFind` & `Stmts.AssertNotFind` -- syntax
 `Stmts.Test` -- `execute` catch `AssertionError`
 
 `formatReification` -- prune the inequality constraints

@@ -32,6 +32,24 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
+    "stmt:assert_find": ({ query_pattern, options, goals }, { span }) =>
+      new Stmts.AssertFind(
+        matchers.query_pattern_matcher(query_pattern),
+        pt.matchers
+          .zero_or_more_matcher(options)
+          .map(matchers.find_option_matcher),
+        matchers.goals_matcher(goals),
+        span,
+      ),
+    "stmt:assert_not_find": ({ query_pattern, options, goals }, { span }) =>
+      new Stmts.AssertNotFind(
+        matchers.query_pattern_matcher(query_pattern),
+        pt.matchers
+          .zero_or_more_matcher(options)
+          .map(matchers.find_option_matcher),
+        matchers.goals_matcher(goals),
+        span,
+      ),
     "stmt:import": ({ bindings, path }, { span }) =>
       new Stmts.Import(
         pt.matchers
