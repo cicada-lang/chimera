@@ -21,6 +21,21 @@ import Exp from "exp.wa"
 import Exp from "exp-extra.wa"
 ```
 
+Datatype can be used as a namespace,
+to reference it's data constructors.
+
+```cicada
+datatype Exp {
+  var(name)
+  fn(name, ret) -- { Exp ret }
+  ap(target, arg) -- { Exp target Exp arg }
+}
+
+Exp::var(name)
+Exp::fn(name, ret)
+Exp::ap(target, arg)
+```
+
 When using `import <name>`,
 a namespace will be imported,
 the name in the module will also be imported,
