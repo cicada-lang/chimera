@@ -1,4 +1,7 @@
-extract `find` function
+move `QueryPattern` to `find/`
+[maybe] `find` take `QueryPattern`
+[maybe] `find` return `FindResult` take `QueryPattern`
+
 `Stmts.AssertFind`
 `Stmts.AssertNotFind`
 `Stmts.Test` -- `execute` catch `AssertionError`

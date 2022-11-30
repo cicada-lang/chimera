@@ -1,5 +1,5 @@
-import type { SolveOptions } from "../../solver"
 import type { FindOption } from "../find"
+import type { SolveOptions } from "../solver"
 
 export function buildSolveOptions(options: Array<FindOption>): SolveOptions {
   const solveOptions: SolveOptions = {}

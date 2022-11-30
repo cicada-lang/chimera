@@ -1,5 +1,6 @@
 import { expect, test } from "vitest"
 import * as Exps from "../../../exp"
+import * as FindOptions from "../../../find/FindOption"
 import * as GoalExps from "../../../goal-exp"
 import * as Stmts from "../../../stmts"
 import { parseStmts } from "../../index"
@@ -47,7 +48,7 @@ find [left] limit 1 {
     deleteUndefined([
       new Stmts.Find(
         Stmts.QueryPatternNames(["left"]),
-        [Stmts.FindOptionLimit(1)],
+        [FindOptions.FindOptionLimit(1)],
         [
           GoalExps.Apply(
             "Friendship",
