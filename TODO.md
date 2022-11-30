@@ -18,19 +18,7 @@ datatype declaration -- we should not use the `::` syntax freely
 
 `formatReification` -- order the inequality constraints
 
-a module system can be imported as a module prefix
-
-- syntax
-
-  ```cicada
-  import module Exp from "Exp.wa"
-  ```
-
-  instead of
-
-  ```cicada
-  import * as Exp from "Exp.wa"
-  ```
+[namespace] support namespace
 
 [type constraint] built-in global `String`
 [type constraint] built-in global `Number`
@@ -91,6 +79,10 @@ maybe I can understand Gentzen and Goedel's works.
 
 `Stmts.RewriteRule`
 `Stmts.Rewrite`
+
+[rewrite] support xml
+
+- xml templating = rewrite system for xml
 
 # std
 
