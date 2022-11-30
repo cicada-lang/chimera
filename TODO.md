@@ -1,29 +1,20 @@
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints
 
-[diary] fair-search-strategy.md
-
-[lang] langs/array-and-object
-
-[question] why we do not need `key != name` in `Lookup`?
-
-[type constraint] built-in global `String`
-[type constraint] built-in global `Number`
-
 datatype declaration -- we should not use the `::` syntax freely
 
-- Because of we also want to use the `::` syntax for namespace,
-  a namespace prefix can be used only when it is imported.
+- Because of we also want to use the `::` syntax for module,
+  a module prefix can be used only when it is imported.
 
   It should be the same for datatype prefix,
   i.e. a datatype prefix can be used only when the datatype is define.
 
-a module system can be imported as a namespace prefix
+a module system can be imported as a module prefix
 
 - syntax
 
   ```cicada
-  import namespace Exp from "Exp.wa"
+  import module Exp from "Exp.wa"
   ```
 
   instead of
@@ -35,6 +26,9 @@ a module system can be imported as a namespace prefix
 `Stmts.Test` -- `test { ... }` and `test <description> { ... }`
 
 - `find` in test must succeed
+
+[type constraint] built-in global `String`
+[type constraint] built-in global `Number`
 
 restrict the parser -- relation name must be in `CamelCase`
 
@@ -49,6 +43,12 @@ restrict the parser -- `PatternVar` name must be in `camelCase`
 - take finite domain as an example
 - can we use set theoretical rule based language to specify a constraint?
 - maybe we can learn more about this from Byrd's thesis
+
+[diary] fair-search-strategy.md
+
+[lang] langs/array-and-object
+
+[question] why we do not need `key != name` in `Lookup`?
 
 [diary] the use of stream in minikanren implementation
 
