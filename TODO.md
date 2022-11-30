@@ -1,5 +1,3 @@
-rename langs/simple to langs/lambda-simple-type
-
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints
 
