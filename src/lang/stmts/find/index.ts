@@ -1,5 +1,5 @@
 export * from "./buildSolveOptions"
 export * from "./Find"
 export * from "./FindOption"
-export * from "./formatQueryPattern"
+export * from "./formatSolutions"
 export * from "./QueryPattern"
