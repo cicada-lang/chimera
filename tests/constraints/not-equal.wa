@@ -44,7 +44,7 @@ find [x, y] {
   y = 2
 }
 
-// test "disj of not equal" {
+test "disj of not equal" {
   assert find [x, y] {
     [x, y] != [1, 2]
   }
@@ -59,4 +59,4 @@ find [x, y] {
     x = 1
     y = 2
   }
-// }
+}

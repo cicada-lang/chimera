@@ -33,6 +33,10 @@ export class MarkdownScript extends Script {
         throw new Errors.ErrorReport(error.report(text))
       }
 
+      if (error instanceof Errors.TestingError) {
+        throw new Errors.ErrorReport(error.report(this.text))
+      }
+
       if (error instanceof Errors.ParsingError) {
         throw new Errors.ErrorReport(error.report(text))
       }

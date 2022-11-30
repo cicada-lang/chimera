@@ -1,5 +1,3 @@
-`Stmts.Test` -- `execute` catch `AssertionError`
-
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints
 
