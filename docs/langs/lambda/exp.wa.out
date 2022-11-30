@@ -1,0 +1,2 @@
+[ "foo", "bar" with { disj { ?name2_9 != "x" } } ]
+[ "foo", "bar" with { disj { ?name2_39 != "x" } } ]

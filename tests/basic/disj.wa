@@ -4,3 +4,10 @@ find [x] {
     x = 2
   }
 }
+
+find [x, y] {
+  disj {
+    conj { x = 1 y = 1 }
+    conj { x = 2 y = 2 }
+  }
+}

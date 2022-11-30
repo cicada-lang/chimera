@@ -26,6 +26,10 @@ a module system can be imported as a namespace prefix
   import * as Exp from "Exp.wa"
   ```
 
+`Stmts.Test` -- `test { ... }` and `test <description> { ... }`
+
+- find in test must succeed
+
 restrict the parser -- relation name must be in `CamelCase`
 
 restrict the parser -- `PatternVar` name must be in `camelCase`

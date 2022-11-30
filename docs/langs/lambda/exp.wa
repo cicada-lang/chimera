@@ -7,10 +7,26 @@ Value Value::closure(name, ret, env) -- { Exp ret Env env }
 Env []
 Env [[name, value] | rest] -- { Value value Env rest }
 
-Lookup [[[name, value] | rest], name, value]
+Lookup [[[key, value] | rest], name, value]
 
-Lookup [[[name2, _value] | rest], name, value]
+Lookup [[[key, value] | rest], name, found]
 ------------------------------------------------------ {
-  name != name2
-  Lookup [rest, name, value]
+  key != name2
+  Lookup [rest, name, found]
+}
+
+// Lookup [[[key, value] | rest], name, found]
+// -------------------------------------------- {
+//   disj {
+//     conj { key = name found = value }
+//     conj { key != name Lookup [rest, name, found] }
+//   }
+// }
+
+find q {
+  Lookup [[["x", "foo"], ["y", "bar"]], "y", q]
+}
+
+find q {
+  Lookup [[["x", "foo"], ["y", "bar"]], "w", q]
 }

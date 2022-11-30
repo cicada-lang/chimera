@@ -14,13 +14,24 @@ Type Type::arrow(argType, retType) -- { Type argType Type retType }
 Ctx []
 Ctx [[name, type] | rest] -- { Type type Ctx rest }
 
-Lookup [[[name, type] | rest], name, type]
+Lookup [[[key, value] | rest], name, value]
 
-Lookup [[[name2, _type] | rest], name, type]
+Lookup [[[key, value] | rest], name, found]
 ------------------------------------------------------ {
-  name2 != name
-  Lookup [rest, name, type]
+  key != name2
+  Lookup [rest, name, found]
 }
+
+// TODO We need to understand and improve our search strategy
+// to make the following perform the same as the above.
+
+// Lookup [[[key, value] | rest], name, found]
+// -------------------------------------------- {
+//   disj {
+//     conj { key = name found = value }
+//     conj { key != name Lookup [rest, name, found] }
+//   }
+// }
 
 Check [ctx, Exp::var(name), type]
 ---------------------------------- {
