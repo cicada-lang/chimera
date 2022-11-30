@@ -2,7 +2,6 @@ import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import { pursue } from "../pursue"
 import { Solution } from "../solution"
-import type { QueryPattern } from "../stmts/find"
 
 /**
 
@@ -27,13 +26,10 @@ export type SolveOptions = {
 export class Solver {
   solutions: Array<Solution> = []
 
-  constructor(
-    public pattern: QueryPattern,
-    public partialSolutions: Array<Solution>,
-  ) {}
+  constructor(public partialSolutions: Array<Solution>) {}
 
-  static start(pattern: QueryPattern, goals: Array<Goal>): Solver {
-    return new Solver(pattern, [Solution.initial(goals)])
+  static start(goals: Array<Goal>): Solver {
+    return new Solver([Solution.initial(goals)])
   }
 
   solve(mod: Mod, options: SolveOptions): Array<Solution> {

@@ -1,3 +1,7 @@
+`Stmts.Test` -- `test { ... }` and `test <description> { ... }`
+
+- `find` in test must succeed
+
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints
 
@@ -22,10 +26,6 @@ a module system can be imported as a module prefix
   ```cicada
   import * as Exp from "Exp.wa"
   ```
-
-`Stmts.Test` -- `test { ... }` and `test <description> { ... }`
-
-- `find` in test must succeed
 
 [type constraint] built-in global `String`
 [type constraint] built-in global `Number`
