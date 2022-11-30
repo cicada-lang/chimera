@@ -121,7 +121,9 @@ design syntax for deduction
 
 https://en.wikipedia.org/wiki/Quotient_by_an_equivalence_relation
 
-# as a in memory database
+# as a database
+
+[maybe] as an in-memory database first
 
 To use this language as web app backend.
 
@@ -136,6 +138,10 @@ Learn:
 There are a lot of related semantic web ideas:
 
 - https://en.wikipedia.org/wiki/JSON-LD
+
+[question] minikanren uses stream to implement search.
+
+- is stream also useful when we want to use relational programming language as a datatype?
 
 # optional output valid JSON
 
