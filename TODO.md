@@ -32,6 +32,9 @@ restrict the parser -- `PatternVar` name must be in `camelCase`
 
 # learn
 
+Since I understand the use of untyped bound variables now,
+maybe I can understand Gentzen and Goedel's works.
+
 [question] how to understand constraint in first order logic?
 
 - a group of built-in predicates with some axioms?
