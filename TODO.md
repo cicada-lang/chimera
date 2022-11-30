@@ -1,4 +1,3 @@
-extract `query_pattern` syntax
 `Stmts.AssertFind` & `Stmts.AssertNotFind` -- syntax
 `Stmts.Test` -- `execute` catch `AssertionError`
 

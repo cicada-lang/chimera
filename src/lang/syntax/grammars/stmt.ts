@@ -20,17 +20,7 @@ export const stmt = {
     ],
     "stmt:find": [
       '"find"',
-      '"["',
-      { names: "names" },
-      '"]"',
-      { options: { $ap: ["zero_or_more", "find_option"] } },
-      '"{"',
-      { goals: "goals" },
-      '"}"',
-    ],
-    "stmt:find_single": [
-      '"find"',
-      { name: "name" },
+      { query_pattern: "query_pattern" },
       { options: { $ap: ["zero_or_more", "find_option"] } },
       '"{"',
       { goals: "goals" },

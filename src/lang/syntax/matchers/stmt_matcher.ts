@@ -23,18 +23,9 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
-    "stmt:find": ({ names, options, goals }, { span }) =>
+    "stmt:find": ({ query_pattern, options, goals }, { span }) =>
       new Stmts.Find(
-        Stmts.QueryPatternNames(matchers.names_matcher(names)),
-        pt.matchers
-          .zero_or_more_matcher(options)
-          .map(matchers.find_option_matcher),
-        matchers.goals_matcher(goals),
-        span,
-      ),
-    "stmt:find_single": ({ name, options, goals }, { span }) =>
-      new Stmts.Find(
-        Stmts.QueryPatternName(pt.str(name)),
+        matchers.query_pattern_matcher(query_pattern),
         pt.matchers
           .zero_or_more_matcher(options)
           .map(matchers.find_option_matcher),
