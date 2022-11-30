@@ -1,6 +1,6 @@
-Never []
+Never x
 --------- {
-  Never []
+  Never x
 }
 
 OneTwoThreeThenNever 1
