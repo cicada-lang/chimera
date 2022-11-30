@@ -20,11 +20,15 @@ a module system can be imported as a namespace prefix
   import namespace Exp from "Exp.wa"
   ```
 
-instead of
+  instead of
 
-```cicada
-import * as Exp from "Exp.wa"
-```
+  ```cicada
+  import * as Exp from "Exp.wa"
+  ```
+
+restrict the parser -- relation name must be in `CamelCase`
+
+restrict the parser -- `PatternVar` name must be in `camelCase`
 
 # learn
 
@@ -62,6 +66,8 @@ import * as Exp from "Exp.wa"
 
   - See (Byrd 2009) for a detailed discussion of these issues and of
     the miniKanren design philosophy.
+
+[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 # programming by rewriting
 
@@ -135,11 +141,3 @@ There are a lot of related semantic web ideas:
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 [books/the-reasoned-schemer] 08-just-a-bit-more.wa -- frame 35
-
-# clause-and-effect
-
-[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
-
-# later
-
-[maybe] [later] restrict the parser -- relation name must be in `CamelCase`

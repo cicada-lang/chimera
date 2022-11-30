@@ -11,24 +11,25 @@ Exp Exp::ap(target, arg) -- { Exp target Exp arg }
 Type Type::atom(name)
 Type Type::arrow(argType, retType) -- { Type argType Type retType }
 
-Ctx Ctx::null
-Ctx Ctx::cons(name, type, rest) -- { Type type Ctx rest }
+Ctx []
+Ctx [[name, type] | rest] -- { Type type Ctx rest }
 
-CtxLookup [Ctx::cons(name, type, rest), name, type]
-CtxLookup [Ctx::cons(name2, _type, rest), name, type]
+Lookup [[[name, type] | rest], name, type]
+
+Lookup [[[name2, _type] | rest], name, type]
 ------------------------------------------------------ {
   name2 != name
-  CtxLookup [rest, name, type]
+  Lookup [rest, name, type]
 }
 
 Check [ctx, Exp::var(name), type]
 ---------------------------------- {
-  CtxLookup [ctx, name, type]
+  Lookup [ctx, name, type]
 }
 
 Check [ctx, Exp::fn(name, ret), Type::arrow(argType, retType)]
 ---------------------------------------------------------------- {
-  Check [Ctx::cons(name, argType, ctx), ret, retType]
+  Check [[[name, argType] | ctx], ret, retType]
 }
 
 Check [ctx, Exp::ap(target, arg), retType]
@@ -38,13 +39,13 @@ Check [ctx, Exp::ap(target, arg), retType]
 }
 
 find type {
-  ctx = Ctx::null
+  ctx = []
   exp = Exp::fn("x", Exp::var("x"))
   Check [ctx, exp, type]
 }
 
 find exp limit 10 {
-  ctx = Ctx::null
+  ctx = []
   type = Type::arrow("A", "A")
   Check [ctx, exp, type]
 }
