@@ -1,0 +1,16 @@
+Exp Exp::var(name)
+Exp Exp::fn(name, ret) -- { Exp ret }
+Exp Exp::ap(target, arg) -- { Exp target Exp arg }
+
+Value Value::closure(name, ret, env) -- { Exp ret Env env }
+
+Env Env::null
+Env Env::cons(name, value, rest) -- { Value value Env rest }
+
+Lookup [Env::cons(name, value, rest), name, value]
+
+Lookup [Env::cons(name2, _value, rest), name, value]
+------------------------------------------------------ {
+  name != name2
+  Lookup [rest, name, value]
+}

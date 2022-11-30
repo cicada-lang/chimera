@@ -15,12 +15,13 @@ Ctx Ctx::null
 Ctx Ctx::cons(name, type, rest) -- { Type type Ctx rest }
 
 CtxLookup [Ctx::cons(name, type, rest), name, type]
-CtxLookup [Ctx::cons(_name, _type, rest), name, type]
+CtxLookup [Ctx::cons(name2, _type, rest), name, type]
 ------------------------------------------------------ {
+  name2 != name
   CtxLookup [rest, name, type]
 }
 
-Check [Ctx, Exp::var(name), type]
+Check [ctx, Exp::var(name), type]
 ---------------------------------- {
   CtxLookup [ctx, name, type]
 }
