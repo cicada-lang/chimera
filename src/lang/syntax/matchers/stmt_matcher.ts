@@ -49,6 +49,18 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         pt.trim_boundary(pt.str(path), 1),
         span,
       ),
+    "stmt:test": ({ description, stmts }, { span }) =>
+      new Stmts.Test(
+        pt.trim_boundary(pt.str(description), 1),
+        pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
+        span,
+      ),
+    "stmt:test_no_description": ({ stmts }, { span }) =>
+      new Stmts.Test(
+        undefined,
+        pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
+        span,
+      ),
   })(tree)
 }
 

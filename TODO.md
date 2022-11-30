@@ -1,6 +1,6 @@
-`Stmts.Test` -- `test { ... }` and `test <description> { ... }`
-
-- `find` in test must succeed
+`Stmts.AssertFind`
+`Stmts.AssertNotFind`
+`Stmts.Test` -- `execute` catch `AssertionError`
 
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints

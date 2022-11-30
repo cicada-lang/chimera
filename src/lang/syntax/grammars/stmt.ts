@@ -44,6 +44,19 @@ export const stmt = {
       '"from"',
       { path: { $pattern: ["string"] } },
     ],
+    "stmt:test": [
+      '"test"',
+      { description: { $pattern: ["string"] } },
+      '"{"',
+      { stmts: { $ap: ["zero_or_more", "stmt"] } },
+      '"}"',
+    ],
+    "stmt:test_no_description": [
+      '"test"',
+      '"{"',
+      { stmts: { $ap: ["zero_or_more", "stmt"] } },
+      '"}"',
+    ],
   },
 }
 
