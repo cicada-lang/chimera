@@ -30,3 +30,27 @@ find q {
 find q {
   Lookup [[["x", "foo"], ["y", "bar"]], "w", q]
 }
+
+Eval [env, Exp::var(name), value]
+---------------------------------- var {
+  Lookup [env, name, value]
+}
+
+Eval [env, Exp::fn(name, ret), value]
+---------------------------------------- fn {
+  value = Value::closure(name, ret, env)
+}
+
+Eval [env, Exp::ap(target, arg), value]
+---------------------------------------- ap {
+  Eval [env, target, Value::closure(name, ret, env2)]
+  Eval [env, arg, argValue]
+  Eval [[[name, argValue] | env2], ret, value]
+}
+
+find exp limit 5 {
+  value = Value::closure("y", Exp::var("x"), [
+    ["x", Value::closure("z", Exp::var("z"), [])]
+  ])
+  Eval [[], exp, value]
+}

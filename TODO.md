@@ -1,6 +1,8 @@
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints
 
+[diary] fair-search-strategy.md
+
 [type constraint] built-in global `String`
 [type constraint] built-in global `Number`
 
@@ -28,7 +30,7 @@ a module system can be imported as a namespace prefix
 
 `Stmts.Test` -- `test { ... }` and `test <description> { ... }`
 
-- find in test must succeed
+- `find` in test must succeed
 
 restrict the parser -- relation name must be in `CamelCase`
 
@@ -145,3 +147,10 @@ There are a lot of related semantic web ideas:
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 [books/the-reasoned-schemer] 08-just-a-bit-more.wa -- frame 35
+
+# macro system
+
+We can use `Cexp` -- like https://kdl.dev
+to support the `quote <exp>` keyword.
+
+- [maybe] support macro -- `unquote <exp>`
