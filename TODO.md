@@ -1,7 +1,11 @@
+rename langs/simple to langs/lambda-simple-type
+
 `formatReification` -- prune the inequality constraints
 `formatReification` -- order the inequality constraints
 
 [diary] fair-search-strategy.md
+
+[lang] langs/array-and-object
 
 [question] why we do not need `key != name` in `Lookup`?
 
