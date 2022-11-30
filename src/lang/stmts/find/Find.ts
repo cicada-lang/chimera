@@ -1,16 +1,15 @@
 import { indent } from "../../../utils/indent"
 import type { Exp } from "../../exp"
 import * as Exps from "../../exp"
-import type { FindOption } from "../../find"
-import { find } from "../../find"
 import type { GoalExp } from "../../goal-exp"
 import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
 import { formatReification, reify } from "../../reify"
 import type { Solution } from "../../solution"
+import { Solver } from "../../solver"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import type { QueryPattern } from "../find"
+import { buildSolveOptions, FindOption, QueryPattern } from "../find"
 
 export class Find extends Stmt {
   constructor(
@@ -24,7 +23,8 @@ export class Find extends Stmt {
 
   async execute(mod: Mod): Promise<string> {
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
-    const solutions = find(mod, this.options, goals)
+    const solver = Solver.start(goals)
+    const solutions = solver.solve(mod, buildSolveOptions(this.options))
     return formatSolutions(solutions, this.pattern)
   }
 }

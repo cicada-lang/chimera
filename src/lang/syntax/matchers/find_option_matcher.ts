@@ -1,10 +1,9 @@
 import * as pt from "@cicada-lang/partech"
-import type { FindOption } from "../../find/FindOption"
-import * as FindOptions from "../../find/FindOption"
+import * as Stmts from "../../stmts"
 
-export function find_option_matcher(tree: pt.Tree): FindOption {
-  return pt.matcher<FindOption>({
+export function find_option_matcher(tree: pt.Tree): Stmts.FindOption {
+  return pt.matcher<Stmts.FindOption>({
     "find_option:limit": ({ exp }, { span }) =>
-      FindOptions.FindOptionLimit(Number.parseFloat(pt.str(exp))),
+      Stmts.FindOptionLimit(Number.parseFloat(pt.str(exp))),
   })(tree)
 }
