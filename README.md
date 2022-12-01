@@ -66,10 +66,6 @@ curl -s https://wa.cic.run --data-binary @-
 ```
 
 Run multiline text (bash and zsh):
-<< END
-abc
-abc
-END
 
 ```sh
 curl https://wa.cic.run --data-binary @-<< END

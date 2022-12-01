@@ -42,4 +42,9 @@ The above sugars are ok.
 
 But the above general form is far from including all existing syntax.
 
-Seems hopeless.
+The top-level `<tag>`s must be given,
+and each `<tag>` might specify it's own sub `<tag>`s.
+
+Comparing with the simple sexp.
+
+It seems hopeless.
