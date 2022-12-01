@@ -1,0 +1,37 @@
+Append [[], t, t]
+
+Append [[a | d], t, out]
+------------------------- {
+  Append [d, t, res]
+  out = [a | res]
+}
+
+find [x, y] limit 6 {
+  Append [x, y, [1, 2, 3, 4, 5]]
+}
+
+// Unfortunately, replacing try to find the 7th result will diverge,
+// TODO Why?
+
+// find [x, y] limit 7 {
+//   Append [x, y, [1, 2, 3, 4, 5]]
+// }
+
+// We can avoid this problem if we swap the last two lines of `Append`.
+// "FF" means finite failure.
+
+AppendFF [[], t, t]
+
+AppendFF [[a | d], t, out]
+-------------------------------------- {
+  out = [a | res]
+  AppendFF [d, t, res]
+}
+
+find [x, y] {
+  AppendFF [x, y, [1, 2, 3, 4, 5]]
+}
+
+// This `AppendFF` illustrates an important principle:
+// unifications should always come before recursive calls,
+// or calls to other "serious" relations.
