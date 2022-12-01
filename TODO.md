@@ -1,3 +1,5 @@
+[syntax] support writing steps of a `Solver`.
+
 `Stmts.Datatype`
 
 datatype declaration -- we should not use the `::` syntax freely
@@ -157,19 +159,6 @@ There are a lot of related semantic web ideas:
 learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 [books/the-reasoned-schemer] 08-just-a-bit-more.wa -- frame 35
-
-# macro system
-
-We can use `Cexp` -- like https://kdl.dev
-to support the `quote <exp>` keyword.
-
-- Even if we do not support macro,
-  we can use this to implement structural comments,
-  which can be further used to prototype new syntax.
-
-  - write comments about stepping a `Solver`.
-
-[maybe] support macro -- `unquote <exp>`
 
 # higher order relation and dependent type
 
