@@ -1,6 +1,3 @@
-control how pursue can return some extra information
-about how schedule the result solutions.
-
 [syntax] support writing steps of a `Solver`.
 
 `Stmts.Datatype`
@@ -31,6 +28,13 @@ datatype declaration -- we should not use the `::` syntax freely
 restrict the parser -- relation name must be in `CamelCase`
 
 restrict the parser -- `PatternVar` name must be in `camelCase`
+
+[schedule control] control how pursue can return some extra information
+about how schedule the result solutions.
+
+[complexity] analyze time complexity of our search strategy
+
+[question] [complexity] how to analyze time complexity of relation automatically?
 
 # learn
 
