@@ -1,3 +1,6 @@
+control how pursue can return some extra information
+about how schedule the result solutions.
+
 [syntax] support writing steps of a `Solver`.
 
 `Stmts.Datatype`
