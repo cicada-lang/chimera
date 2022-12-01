@@ -163,4 +163,23 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 We can use `Cexp` -- like https://kdl.dev
 to support the `quote <exp>` keyword.
 
-- [maybe] support macro -- `unquote <exp>`
+- Even if we do not support macro,
+  we can use this to implement structural comments,
+  which can be further used to prototype new syntax.
+
+  - write comments about stepping a `Solver`.
+
+[maybe] support macro -- `unquote <exp>`
+
+# higher order relation and dependent type
+
+[higher order relation] We can support higher order relation
+by allowing a relation to take relations as arguments.
+
+[dependent type] What happen if we support dependent type?
+(by allowing a relation to take data as arguments.)
+
+- Dependent type in functional language is described as
+  "any computation can happens during type checking".
+  in relational programming, all computation are un-nested,
+  what would happen here?

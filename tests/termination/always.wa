@@ -1,0 +1,75 @@
+Always x
+------------ base {}
+
+Always x
+---------- loop {
+  Always x
+}
+
+find q limit 3 {
+  Always []
+}
+
+// This code diverges,
+// because `Always` succeeds
+// an unbounded number of times,
+// and because `x = false` fails each of those times.
+
+// find x limit 1 {
+//   x = true
+//   Always []
+//   x = false
+// }
+
+// Termination is relative to implementation,
+// we can step our solver,
+// to see why the above code diverges.
+
+// step {
+//   solver {
+//     solution {
+//       substitution {}
+//       goals { x = true Always [] x = false }
+//     }
+//   }
+
+//   solver {
+//     solution {
+//       substitution { x = true }
+//       goals { Always [] x = false }
+//     }
+//   }
+
+//   solver {
+//     solution {
+//       substitution { x = true }
+//       goals { x = false }
+//     }
+
+//     solution {
+//       substitution { x = true }
+//       goals { Always [] x = false }
+//     }
+//   }
+
+//   solver {
+//     solution {
+//       substitution { x = true }
+//       goals { Always [] x = false }
+//     }
+//   }
+
+//   // The same as previous solver state,
+//   // thus infinite loop here.
+// }
+
+// We can simply reorder the goals in the conjunction
+// to make the search not diverge,
+// but we can not do this for performance reason
+// (depth-first v.s. breadth-first).
+
+find x {
+  x = true
+  x = false
+  Always []
+}
