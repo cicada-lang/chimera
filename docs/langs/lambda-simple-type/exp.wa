@@ -60,3 +60,15 @@ find exp limit 10 {
   type = Type::arrow("A", "A")
   Check [ctx, exp, type]
 }
+
+// (lambda (f) (f f)) can not type check,
+// but empty list is the error message.
+// see "miniKanren 2021 - Prolog-Style Meta-Programming miniKanren"
+// - https://www.youtube.com/watch?v=09OyKjX4Sik
+// for more about this.
+
+find type {
+  ctx = []
+  exp = Exp::fn("f", Exp::ap(Exp::var("f"), Exp::var("f")))
+  Check [ctx, exp, type]
+}

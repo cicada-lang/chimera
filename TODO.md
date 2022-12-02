@@ -1,3 +1,8 @@
+configure limit by built-in special goal `limit <n>`
+that do side-effects to the solver.
+
+- instead of configuring limit by optional
+
 [syntax] support writing steps of a `Solver`.
 
 `Stmts.Datatype`
@@ -31,6 +36,9 @@ restrict the parser -- `PatternVar` name must be in `camelCase`
 
 [schedule control] control how pursue can return some extra information
 about how schedule the result solutions.
+
+- only put generated solutions to the back of the queue,
+  when the goals are generated from disj (more then one solutions).
 
 [complexity] analyze time complexity of our search strategy
 
@@ -151,6 +159,8 @@ There are a lot of related semantic web ideas:
 [question] minikanren uses stream to implement search.
 
 - is stream also useful when we want to use relational programming language as a datatype?
+
+[problem] how to not load all facts (which might be very large) as goals?
 
 # optional output valid JSON
 
