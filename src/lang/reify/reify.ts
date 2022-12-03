@@ -61,6 +61,17 @@ export function reifyInequalities(
     )
 }
 
+/**
+
+   If a disequality constraint contains a pair
+   where the car (resp., cdr) is a fresh variable,
+   then we may discard this disequality constraint.
+   This is because when the car (resp., cdr) is a fresh variable,
+   we can always pick something for this fresh variable that is
+   not equal to the cdr (resp., car) and satisfy the disequality constraint.
+
+**/
+
 function somePairContainsVar(
   pairs: Array<[Exp, Exp]>,
   substitutionForRenaming: Substitution,
