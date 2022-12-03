@@ -1,6 +1,8 @@
-fix code for `varCollectionValidate` in `Stmts.Find`
+quit testing syntax and remove vitest
 
-- `QueryPattern` has `span`
+span in exp should not be optional -- optional is for testing
+
+fix code for `varCollectionValidate` in `Stmts.Find`
 
 error report with file name -- relative to current path -- for snapshot testing
 
