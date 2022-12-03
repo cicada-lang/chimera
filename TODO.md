@@ -1,6 +1,3 @@
-configure limit by built-in special goal `limit <n>`
-that do side-effects to the solver.
-
 - instead of configuring limit by optional
 
 [syntax] support writing steps of a `Solver`.
@@ -189,3 +186,8 @@ by allowing a relation to take relations as arguments.
   "any computation can happens during type checking".
   in relational programming, all computation are un-nested,
   what would happen here?
+
+# maybe
+
+[maybe] configure limit by built-in special goal `limit <n>`
+that do side-effects to the solver.
