@@ -15,7 +15,7 @@ export function formatReification(reification: Reification): string {
       .map((constraint) => indent(constraint))
       .join("\n")}\n}`
   } else {
-    return `${exp} with { ${constraints.join("  ")} }`
+    return `${exp} with { ${constraints.join(" ")} }`
   }
 }
 

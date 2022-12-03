@@ -1,6 +1,4 @@
-`formatReification` -- prune the inequality constraints
-
-`formatReification` -- order the inequality constraints
+`reify` -- prune the inequality constraints
 
 `inferConstraints` -- get constraints from `Exps.Data`
 
