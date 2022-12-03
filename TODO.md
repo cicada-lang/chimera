@@ -1,8 +1,4 @@
-`elaborateExp` -- trans `Exp` to `Exp` with `constraints`
-
-`evaluateGoalExp` -- during `Equal` and `NotEqual` -- use `elaborateExp` to get constraints from `Exps.Data`
-
-- since we are generating `conj` we need to be careful about our search strategy
+`inferConstraints`
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
