@@ -1,5 +1,3 @@
-`varCollectionFromGoalExp`
-
 error on unused `PatternVar` -- variable without `_` prefix must be used
 
 - "Limitation about unused variable name is important for finding bugs caused by typo."
