@@ -48,7 +48,7 @@ export function reifyInequalities(
 ): Array<Goal> {
   return solution.inequalities
     .map(substitutionPairs)
-    .filter((pairs) => !anyPairContainsVar(pairs, substitutionForRenaming))
+    .filter((pairs) => !somePairContainsVar(pairs, substitutionForRenaming))
     .map((pairs) =>
       Goals.Disj(
         pairs.map(([left, right]) =>
@@ -61,7 +61,7 @@ export function reifyInequalities(
     )
 }
 
-function anyPairContainsVar(
+function somePairContainsVar(
   pairs: Array<[Exp, Exp]>,
   substitutionForRenaming: Substitution,
 ): boolean {
