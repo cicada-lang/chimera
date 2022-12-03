@@ -48,7 +48,6 @@ export class RunCommand extends Command<Args, Opts> {
     const url = createURL(argv["file"])
 
     if (argv["watch"]) {
-      await this.runner.run(url)
       await this.runner.watch(url)
     } else {
       const { error } = await this.runner.run(url)

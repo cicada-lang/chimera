@@ -31,12 +31,17 @@ export class Runner {
   }
 
   async watch(main: URL): Promise<void> {
+    const { error } = await this.run(main)
+    if (error) app.logger.error({ tag: "run", msg: main.pathname })
+    else app.logger.info({ tag: "run", msg: main.pathname })
+
     app.logger.info({
       msg: `Watching for changes.`,
-      tracked: this.loader.loaded,
+      main: main.pathname,
+      loaded: this.loader.loaded,
     })
 
-    for (const url of this.loader.loaded) {
+    for (const url of new Set([main, ...this.loader.loaded])) {
       if (main.protocol !== "file:") continue
 
       watcher(url.pathname, async (event) => {
