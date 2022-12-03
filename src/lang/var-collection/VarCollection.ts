@@ -4,7 +4,7 @@ import type * as Exps from "../exp"
 export type VarCollection = Immutable.Map<string, Array<Exps.PatternVar>>
 
 export function createVarCollection(
-  entries: Array<[string, Array<Exps.PatternVar>]>,
+  entries: Array<[string, Array<Exps.PatternVar>]> = [],
 ): VarCollection {
   return Immutable.Map(entries)
 }
