@@ -138,6 +138,20 @@ https://en.wikipedia.org/wiki/Quotient_by_an_equivalence_relation
 
 [maybe] as an in-memory database first
 
+- the main is not a database,
+  but to analyze data
+  to get useful information.
+
+we need to be able to analyze personal data
+
+- the data might be exported from somewhere,
+  thus readonly,
+  we do not need to worry about updating it.
+
+- the data is personal,
+  thus small amount,
+  we do not need to worry about scaling it.
+
 To use this language as web app backend.
 
 [problem] how to handle large data?
