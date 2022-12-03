@@ -2,9 +2,6 @@ error report with file name
 
 `wa run --watch` should not watch even first run meets error
 
-use `varCollectionValidate` in `Stmts.RelationFact`
-
-use `varCollectionValidate` in `Stmts.RelationClause`
 use `varCollectionValidate` in `Stmts.Find`
 
 `varCollectionAssertNoMisused`
