@@ -1,4 +1,4 @@
-`collectPatternVars`
+`varCollectionFromGoalExp`
 
 error on unused `PatternVar` -- variable without `_` prefix must be used
 
