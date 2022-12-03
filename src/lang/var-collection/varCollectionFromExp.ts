@@ -1,23 +1,22 @@
-import Immutable from "immutable"
 import type { Exp } from "../exp"
 import type { VarCollection } from "../var-collection"
-import { varCollectionMerge } from "../var-collection"
+import { createVarCollection, varCollectionMerge } from "../var-collection"
 
 export function varCollectionFromExp(exp: Exp): VarCollection {
   switch (exp["@kind"]) {
     case "PatternVar": {
-      return Immutable.Map([[exp.name, [exp]]])
+      return createVarCollection([[exp.name, [exp]]])
     }
 
     case "ReifiedVar": {
-      return Immutable.Map()
+      return createVarCollection()
     }
 
     case "String":
     case "Number":
     case "Boolean":
     case "Null": {
-      return Immutable.Map()
+      return createVarCollection()
     }
 
     case "ArrayCons": {
@@ -28,7 +27,7 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
     }
 
     case "ArrayNull": {
-      return Immutable.Map()
+      return createVarCollection()
     }
 
     case "Objekt": {
