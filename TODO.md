@@ -1,4 +1,6 @@
-`inferConstraints` -- get constraints from `Exps.Data`
+error on unused `PatternVar` -- variable without `_` prefix must be used
+
+error on misused `PatternVar` -- variable with `_` prefix must NOT be used
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
@@ -8,13 +10,11 @@
   It should be the same for datatype prefix,
   i.e. a datatype prefix can be used only when the datatype is define.
 
+`inferConstraints` -- get constraints from `Exps.Data`
+
 [type constraint] built-in global `String`
 
 [type constraint] built-in global `Number`
-
-[syntax] restrict the parser -- relation name must be in `CamelCase`
-
-[syntax] restrict the parser -- `PatternVar` name must be in `camelCase`
 
 [schedule control] control how pursue can return some extra information
 about how schedule the result solutions.
@@ -182,3 +182,7 @@ by allowing a relation to take relations as arguments.
 that do side-effects to the solver.
 
 - instead of configuring limit by optional
+
+[maybe] [syntax] restrict the parser -- relation name must be in `CamelCase`
+
+[maybe] [syntax] restrict the parser -- `PatternVar` name must be in `camelCase`
