@@ -46,9 +46,16 @@ test "disj of not equal" {
   }
 }
 
-// "no redundant constraints"
+// filter somePairContainsVar
 
 find x {
   x != 1
   y != 2
+}
+
+// removeSubsumed
+
+find [x, y] {
+  x != 3
+  [x, "cat"] != [3, y]
 }

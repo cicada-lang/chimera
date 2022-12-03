@@ -1,5 +1,3 @@
-`reify` -- prune the inequality constraints
-
 `inferConstraints` -- get constraints from `Exps.Data`
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
