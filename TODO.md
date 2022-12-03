@@ -1,6 +1,10 @@
+fix code for `varCollectionValidate` in `Stmts.Find`
+
+- `QueryPattern` has `span`
+
 error report with file name -- relative to current path -- for snapshot testing
 
-use `varCollectionValidate` in `Stmts.Find`
+add color to error message -- use a `highlighter` -- instead of call color during every throw
 
 `varCollectionAssertNoMisused`
 

@@ -1,8 +1,8 @@
-find q {
+find _ {
   1 != 1
 }
 
-find q {
+find _ {
   1 != 2
 }
 
@@ -50,7 +50,7 @@ test "disj of not equal" {
 
 find x {
   x != 1
-  y != 2
+  _y != 2
 }
 
 // removeSubsumed
