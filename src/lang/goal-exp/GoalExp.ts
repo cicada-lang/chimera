@@ -8,10 +8,10 @@ export type Apply = {
   "@kind": "Apply"
   name: string
   arg: Exp
-  span?: Span
+  span: Span
 }
 
-export function Apply(name: string, arg: Exp, span?: Span): Apply {
+export function Apply(name: string, arg: Exp, span: Span): Apply {
   return {
     "@type": "GoalExp",
     "@kind": "Apply",
@@ -26,10 +26,10 @@ export type Equal = {
   "@kind": "Equal"
   left: Exp
   right: Exp
-  span?: Span
+  span: Span
 }
 
-export function Equal(left: Exp, right: Exp, span?: Span): Equal {
+export function Equal(left: Exp, right: Exp, span: Span): Equal {
   return {
     "@type": "GoalExp",
     "@kind": "Equal",
@@ -44,10 +44,10 @@ export type NotEqual = {
   "@kind": "NotEqual"
   left: Exp
   right: Exp
-  span?: Span
+  span: Span
 }
 
-export function NotEqual(left: Exp, right: Exp, span?: Span): NotEqual {
+export function NotEqual(left: Exp, right: Exp, span: Span): NotEqual {
   return {
     "@type": "GoalExp",
     "@kind": "NotEqual",
@@ -61,10 +61,10 @@ export type Conj = {
   "@type": "GoalExp"
   "@kind": "Conj"
   goals: Array<GoalExp>
-  span?: Span
+  span: Span
 }
 
-export function Conj(goals: Array<GoalExp>, span?: Span): Conj {
+export function Conj(goals: Array<GoalExp>, span: Span): Conj {
   return {
     "@type": "GoalExp",
     "@kind": "Conj",
@@ -77,10 +77,10 @@ export type Disj = {
   "@type": "GoalExp"
   "@kind": "Disj"
   goals: Array<GoalExp>
-  span?: Span
+  span: Span
 }
 
-export function Disj(goals: Array<GoalExp>, span?: Span): Disj {
+export function Disj(goals: Array<GoalExp>, span: Span): Disj {
   return {
     "@type": "GoalExp",
     "@kind": "Disj",

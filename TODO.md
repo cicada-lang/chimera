@@ -1,5 +1,3 @@
-span in exp should not be optional -- optional is for testing
-
 fix code for `varCollectionValidate` in `Stmts.Find`
 
 error report with file name -- relative to current path -- for snapshot testing
