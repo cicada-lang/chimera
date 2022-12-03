@@ -1,5 +1,3 @@
-quit testing syntax and remove vitest
-
 span in exp should not be optional -- optional is for testing
 
 fix code for `varCollectionValidate` in `Stmts.Find`
