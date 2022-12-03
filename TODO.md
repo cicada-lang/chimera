@@ -1,14 +1,15 @@
-`varCollectionLookup`
+error report with file name
 
-`varCollectionAssertNoUnused`
+`wa run --watch` should not watch even first run meets error
 
-- error on unused `PatternVar` -- variable without `_` prefix must be used
-- error message "Limitation about unused variable name is important for finding bugs caused by typo."
+use `varCollectionValidate` in `Stmts.RelationFact`
+
+use `varCollectionValidate` in `Stmts.RelationClause`
+use `varCollectionValidate` in `Stmts.Find`
 
 `varCollectionAssertNoMisused`
 
 - error on misused `PatternVar` -- variable with `_` prefix must NOT be used
-- error message "Limitation about unused variable name is important for finding bugs caused by typo."
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 

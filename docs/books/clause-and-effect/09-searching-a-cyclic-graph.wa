@@ -14,7 +14,7 @@ Edge ["f", "c"]
 
 // We define `Legal` to rule out loop -- to avoid searching in a loop
 
-Legal [z, []]
+Legal [_, []]
 
 Legal [z, [head | tail]]
 ---------------------------- {
@@ -22,7 +22,7 @@ Legal [z, [head | tail]]
   Legal [z, tail]
 }
 
-Path [x, x, occurs]
+Path [x, x, _occurs]
 
 Path [x, y, occurs]
 ------------------------ {

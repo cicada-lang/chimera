@@ -3,6 +3,13 @@ import type * as Exps from "../exp"
 
 export type VarCollection = Immutable.Map<string, Array<Exps.PatternVar>>
 
+export function varCollectionLookup(
+  varCollection: VarCollection,
+  name: string,
+): Array<Exps.PatternVar> | undefined {
+  return varCollection.get(name)
+}
+
 export function createVarCollection(
   entries: Array<[string, Array<Exps.PatternVar>]> = [],
 ): VarCollection {

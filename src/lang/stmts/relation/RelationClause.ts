@@ -4,6 +4,12 @@ import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
+import {
+  varCollectionFromExp,
+  varCollectionFromGoalExp,
+  varCollectionMerge,
+  varCollectionValidate,
+} from "../../var-collection"
 
 export class RelationClause extends Stmt {
   constructor(
@@ -17,6 +23,13 @@ export class RelationClause extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
+    varCollectionValidate(
+      varCollectionMerge([
+        varCollectionFromExp(this.exp),
+        ...this.goals.map(varCollectionFromGoalExp),
+      ]),
+    )
+
     mod.findRelationOrFail(this.name)
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     mod.defineClause(this.name, this.clauseName, this.exp, goals)
