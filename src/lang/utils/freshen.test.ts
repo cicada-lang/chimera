@@ -1,8 +1,9 @@
-import { expect, test } from "vitest"
+import assert from "node:assert/strict"
+import test from "node:test"
 import { freshen } from "./freshen"
 
 test("freshen create new string not in set", () => {
-  expect(freshen(["x"], "x")).toBe("x1")
-  expect(freshen(["x", "x1"], "x")).toBe("x2")
-  expect(freshen(["x", "x1", "x2"], "x")).toBe("x3")
+  assert.strictEqual(freshen(["x"], "x"), "x1")
+  assert.strictEqual(freshen(["x", "x1"], "x"), "x2")
+  assert.strictEqual(freshen(["x", "x1", "x2"], "x"), "x3")
 })
