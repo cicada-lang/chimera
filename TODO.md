@@ -1,4 +1,4 @@
-error report with file name
+error report with file name -- relative to current path -- for snapshot testing
 
 use `varCollectionValidate` in `Stmts.Find`
 
@@ -15,6 +15,8 @@ use `varCollectionValidate` in `Stmts.Find`
   i.e. a datatype prefix can be used only when the datatype is define.
 
 `inferConstraints` -- get constraints from `Exps.Data`
+
+[DX] when adding new url to `Loader.tracked`, we should let the `watcher` watch it
 
 [type constraint] built-in global `String`
 

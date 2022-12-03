@@ -10,6 +10,7 @@ export interface LoaderOptions {
 export class Loader {
   private cache: Map<string, Script> = new Map()
   fetcher = new Fetcher()
+  tracked: Array<URL> = []
 
   constructor(public options: LoaderOptions) {}
 
@@ -17,6 +18,7 @@ export class Loader {
     const found = this.cache.get(url.href)
     if (found !== undefined) return found.mod
 
+    this.tracked.push(url)
     const text = options?.text || (await this.fetcher.fetch(url))
     const mod = new Mod({ url, loader: this })
     const script = Scripts.createScript(mod, text)
@@ -33,9 +35,5 @@ export class Loader {
         this.delete(script.mod.options.url)
       }
     }
-  }
-
-  get loaded(): Array<URL> {
-    return Array.from(this.cache.keys()).map((href) => new URL(href))
   }
 }

@@ -30,15 +30,30 @@ export class MarkdownScript extends Script {
       await this.mod.executeStmts(stmts)
     } catch (error) {
       if (error instanceof Errors.ElaborationError) {
-        throw new Errors.ErrorReport(error.report(text))
+        throw new Errors.ErrorReport(
+          [
+            `[MarkdownScript.run] ${this.mod.options.url.pathname}`,
+            error.report(text),
+          ].join("\n"),
+        )
       }
 
       if (error instanceof Errors.TestingError) {
-        throw new Errors.ErrorReport(error.report(this.text))
+        throw new Errors.ErrorReport(
+          [
+            `[MarkdownScript.run] ${this.mod.options.url.pathname}`,
+            error.report(text),
+          ].join("\n"),
+        )
       }
 
       if (error instanceof Errors.ParsingError) {
-        throw new Errors.ErrorReport(error.report(text))
+        throw new Errors.ErrorReport(
+          [
+            `[MarkdownScript.run] ${this.mod.options.url.pathname}`,
+            error.report(text),
+          ].join("\n"),
+        )
       }
 
       throw error

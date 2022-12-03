@@ -37,11 +37,10 @@ export class Runner {
 
     app.logger.info({
       msg: `Watching for changes.`,
-      main: main.pathname,
-      loaded: this.loader.loaded,
+      tracked: this.loader.tracked,
     })
 
-    for (const url of new Set([main, ...this.loader.loaded])) {
+    for (const url of this.loader.tracked) {
       if (main.protocol !== "file:") continue
 
       watcher(url.pathname, async (event) => {

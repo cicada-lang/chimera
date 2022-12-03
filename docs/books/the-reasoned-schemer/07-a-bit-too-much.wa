@@ -70,7 +70,7 @@ find [b, x, y, r, c] {
 
 Positive n
 ---------------- {
-  [a | d] = n
+  [_a | _d] = n
 }
 
 find q {
