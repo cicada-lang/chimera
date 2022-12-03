@@ -1,16 +1,10 @@
-- instead of configuring limit by optional
+`elaborateExp` -- trans `Exp` to `Exp` with `constraints`
 
-[syntax] support writing steps of a `Solver`.
+`evaluateGoalExp` -- during `Equal` and `NotEqual` -- use `elaborateExp` to get constraints from `Exps.Data`
 
-`Stmts.Datatype`
+- since we are generating `conj` we need to be careful about our search strategy
 
-datatype declaration -- we should not use the `::` syntax freely
-
-- `evaluateGoalExp` -- during `Equal` and `NotEqual` -- use `elaborateExp` to get constraints from `Exps.Data`
-
-  - since we are generating `conj` we need to be sure about our search strategy
-
-- `elaborateExp` -- trans `Exp` to `Exp` with `constraints`
+`Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
 - Because of we also want to use the `::` syntax for module,
   a module prefix can be used only when it is imported.
@@ -22,14 +16,12 @@ datatype declaration -- we should not use the `::` syntax freely
 
 `formatReification` -- order the inequality constraints
 
-[namespace] support namespace
-
 [type constraint] built-in global `String`
 [type constraint] built-in global `Number`
 
-restrict the parser -- relation name must be in `CamelCase`
+[syntax] restrict the parser -- relation name must be in `CamelCase`
 
-restrict the parser -- `PatternVar` name must be in `camelCase`
+[syntax] restrict the parser -- `PatternVar` name must be in `camelCase`
 
 [schedule control] control how pursue can return some extra information
 about how schedule the result solutions.
@@ -40,6 +32,10 @@ about how schedule the result solutions.
 [complexity] analyze time complexity of our search strategy
 
 [question] [complexity] how to analyze time complexity of relation automatically?
+
+[syntax] support writing steps of a `Solver`.
+
+[namespace] support namespace
 
 # learn
 
@@ -191,3 +187,5 @@ by allowing a relation to take relations as arguments.
 
 [maybe] configure limit by built-in special goal `limit <n>`
 that do side-effects to the solver.
+
+- instead of configuring limit by optional
