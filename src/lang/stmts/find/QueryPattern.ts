@@ -7,12 +7,12 @@ export type QueryPattern = QueryPatternNames | QueryPatternName
 export type QueryPatternNames = {
   "@kind": "QueryPatternNames"
   names: Array<string>
-  span?: Span
+  span: Span
 }
 
 export function QueryPatternNames(
   names: Array<string>,
-  span?: Span,
+  span: Span,
 ): QueryPatternNames {
   return {
     "@kind": "QueryPatternNames",
@@ -24,10 +24,10 @@ export function QueryPatternNames(
 export type QueryPatternName = {
   "@kind": "QueryPatternName"
   name: string
-  span?: Span
+  span: Span
 }
 
-export function QueryPatternName(name: string, span?: Span): QueryPatternName {
+export function QueryPatternName(name: string, span: Span): QueryPatternName {
   return {
     "@kind": "QueryPatternName",
     name,
