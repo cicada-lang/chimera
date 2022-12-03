@@ -11,6 +11,6 @@ Step [Exp::isZero(Nat::zero), true]
 Step [Exp::isZero(Nat::add1(n)), false] -- { Nat n }
 Step [Exp::isZero(e), Exp::isZero(r)] -- { Step [e, r] }
 
-Step [Exp::if(true, t, f), t]
-Step [Exp::if(false, t, f), f]
+Step [Exp::if(true, t, _f), t]
+Step [Exp::if(false, _t, f), f]
 Step [Exp::if(e, t, f), Exp::if(r, t, f)] -- { Step [e, r] }

@@ -405,8 +405,8 @@ find x {
 
 ComputerDeptSlave { slave }
 ---------------------------- {
-  Job { name: slave, dept: "computer", role }
-  Supervisor { slave, master: z }
+  Job { name: slave, dept: "computer" }
+  Supervisor { slave }
 }
 
 find slave {

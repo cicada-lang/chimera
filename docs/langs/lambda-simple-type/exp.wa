@@ -1,5 +1,5 @@
-Exp Exp::var(name)
-Exp Exp::fn(name, ret) -- { Exp ret }
+Exp Exp::var(_name)
+Exp Exp::fn(_name, ret) -- { Exp ret }
 Exp Exp::ap(target, arg) -- { Exp target Exp arg }
 
 // datatype Exp {
@@ -8,15 +8,15 @@ Exp Exp::ap(target, arg) -- { Exp target Exp arg }
 //   ap(target, arg) -- { Exp target Exp arg }
 // }
 
-Type Type::atom(name)
+Type Type::atom(_name)
 Type Type::arrow(argType, retType) -- { Type argType Type retType }
 
 Ctx []
-Ctx [[name, type] | rest] -- { Type type Ctx rest }
+Ctx [[_name, type] | rest] -- { Type type Ctx rest }
 
-Lookup [[[key, value] | rest], key, value]
+Lookup [[[key, value] | _rest], key, value]
 
-Lookup [[[key, value] | rest], name, found]
+Lookup [[[key, _value] | rest], name, found]
 ------------------------------------------------------ {
   key != name
   Lookup [rest, name, found]

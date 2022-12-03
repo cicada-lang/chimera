@@ -4,7 +4,7 @@ import {
   Add,
 } from "07-a-bit-too-much.wa"
 
-Mul [[], m, []]
+Mul [[], _m, []]
 Mul [n, [], []] -- { Positive n }
 Mul [[1], m, m] -- { Positive m }
 Mul [n, [1], n] -- { GreaterThanOne n }
@@ -23,9 +23,9 @@ MulOdd [x, n, m, p]
 
 // NOTE Limit the length of the q above.
 
-MulBound [[], p, n, m] -- { Positive p }
-MulBound [[a0 | x], [a1 | y], [], [a2 | z]] -- { MulBound [x, y, z, []] }
-MulBound [[a0 | x], [a1 | y], [a2 | z], m] -- { MulBound [x, y, z, m] }
+MulBound [[], p, _n, _m] -- { Positive p }
+MulBound [[_a0 | x], [_a1 | y], [], [_a2 | z]] -- { MulBound [x, y, z, []] }
+MulBound [[_a0 | x], [_a1 | y], [_a2 | z], m] -- { MulBound [x, y, z, m] }
 
 find [x, y, r] limit 10 {
   Mul [x, y, r]
@@ -76,7 +76,7 @@ find p {
 
 EqualLength [[], []]
 EqualLength [[1], [1]]
-EqualLength [[a | x], [b | y]]
+EqualLength [[_a | x], [_b | y]]
 ----------------------------------- {
   Positive x
   Positive y

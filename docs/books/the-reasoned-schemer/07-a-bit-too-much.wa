@@ -91,7 +91,7 @@ find r {
 
 GreaterThanOne n
 --------------------- {
-  [a, ad | dd] = n
+  [_a, _ad | _dd] = n
 }
 
 find q {
@@ -213,7 +213,7 @@ find q {
 // }
 
 Length [[], []]
-Length [[a | d], n] -- {
+Length [[_a | d], n] -- {
   Add [[1], res, n]
   Length [d, res]
 }

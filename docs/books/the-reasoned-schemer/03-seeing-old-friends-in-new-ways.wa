@@ -59,7 +59,7 @@ find x limit 5 {
 
 Singleton l
 ----------- {
-  l = [a]
+  l = [_]
 }
 
 ListOfSingletons l

@@ -1,7 +1,7 @@
-Member [element, [element | tail]]
+Member [element, [element | _tail]]
 ------------------------------------ here {}
 
-Member [element, [head | tail]]
+Member [element, [_head | tail]]
 --------------------------------- there {
   Member [element, tail]
 }

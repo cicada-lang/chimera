@@ -1,6 +1,6 @@
 Car [p, a]
 ---------- {
-  [a | d] = p
+  [a | _d] = p
 }
 
 find q {
@@ -24,7 +24,7 @@ find r {
 
 Cdr [p, d]
 ---------- {
-  [a | d] = p
+  [_a | d] = p
 }
 
 find r {
@@ -124,7 +124,7 @@ find r {
 
 Pair p
 ------ {
-  Cons [a, d, p]
+  Cons [_a, _d, p]
 }
 
 find q {
