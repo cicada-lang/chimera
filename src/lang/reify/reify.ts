@@ -27,22 +27,22 @@ export function Reification(exp: Exp, constraints: Array<Goal>): Reification {
 
 export function reify(solution: Solution, exp: Exp): Reification {
   exp = substitutionDeepWalk(solution.substitution, exp)
-  const substitutionWithReifiedVars = prepareSubstitution(exp)
-  const constraints = reifyInequalities(solution, substitutionWithReifiedVars)
-  exp = substitutionDeepWalk(substitutionWithReifiedVars, exp)
+  const substitutionForRenaming = prepareSubstitution(exp)
+  const constraints = reifyInequalities(solution, substitutionForRenaming)
+  exp = substitutionDeepWalk(substitutionForRenaming, exp)
   return Reification(exp, constraints)
 }
 
 export function reifyInequalities(
   solution: Solution,
-  substitution: Substitution,
+  substitutionForRenaming: Substitution,
 ): Array<Goal> {
   return solution.inequalities.map((inequality) =>
     Goals.Disj(
       substitutionPairs(inequality).map(([left, right]) =>
         Goals.NotEqual(
-          substitutionDeepWalk(substitution, left),
-          substitutionDeepWalk(substitution, right),
+          substitutionDeepWalk(substitutionForRenaming, left),
+          substitutionDeepWalk(substitutionForRenaming, right),
         ),
       ),
     ),

@@ -1,4 +1,8 @@
-`inferConstraints`
+`formatReification` -- prune the inequality constraints
+
+`formatReification` -- order the inequality constraints
+
+`inferConstraints` -- get constraints from `Exps.Data`
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
@@ -8,11 +12,8 @@
   It should be the same for datatype prefix,
   i.e. a datatype prefix can be used only when the datatype is define.
 
-`formatReification` -- prune the inequality constraints
-
-`formatReification` -- order the inequality constraints
-
 [type constraint] built-in global `String`
+
 [type constraint] built-in global `Number`
 
 [syntax] restrict the parser -- relation name must be in `CamelCase`
