@@ -1,6 +1,12 @@
+`collectPatternVars`
+
 error on unused `PatternVar` -- variable without `_` prefix must be used
 
+- "Limitation about unused variable name is important for finding bugs caused by typo."
+
 error on misused `PatternVar` -- variable with `_` prefix must NOT be used
+
+- "Limitation about unused variable name is important for finding bugs caused by typo."
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
