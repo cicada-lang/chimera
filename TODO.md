@@ -1,3 +1,7 @@
+`Stmts.Trace`
+`Stmts.Trace` -- syntax
+`Stmts.Trace` -- `execute`
+
 [syntax] support `trace [steps <n>] { ... }`
 
 - output `solver trace [steps <n>] { ... }`
