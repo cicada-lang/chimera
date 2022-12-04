@@ -4,10 +4,6 @@ error report with file name -- relative to current path -- for snapshot testing
 
 add color to error message -- use a `highlighter` -- instead of call color during every throw
 
-`varCollectionAssertNoMisused`
-
-- error on misused `PatternVar` -- variable with `_` prefix must NOT be used
-
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
 - Because of we also want to use the `::` syntax for module,
