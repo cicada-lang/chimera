@@ -1,2 +1,10 @@
-[ Nat::zero() ]
-[ Nat::add1(Nat::zero()) ]
+solver trace steps 2 {
+  step {
+    solution {
+      substitution { prev_0 = Nat::add1(Nat::zero()) _x = Nat::add1(prev_0) }
+      goals {}
+    }
+  }
+  
+  step {}
+}

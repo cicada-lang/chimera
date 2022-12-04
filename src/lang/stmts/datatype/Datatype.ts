@@ -48,8 +48,7 @@ export class Datatype extends Stmt {
           datactor.name,
           datactor.args.map((name) => Exps.PatternVar(name)),
         ),
-        // The `goals` will be inferred.
-        [],
+        datactor.goals.map((goal) => evaluateGoalExp(mod, goal)),
       )
     }
   }

@@ -1,4 +1,3 @@
-import { inferConstraints } from "../exp"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import { pursueEqual, pursueNotEqual } from "../pursue"
@@ -26,12 +25,7 @@ export function pursue(
         if (newSolution === undefined) return []
         return [
           newSolution.update({
-            goals: [
-              ...refreshed.goals,
-              ...inferConstraints(mod, refreshed.exp),
-              ...inferConstraints(mod, goal.arg),
-              ...solution.goals,
-            ],
+            goals: [...refreshed.goals, ...solution.goals],
           }),
         ]
       })
@@ -42,11 +36,7 @@ export function pursue(
       if (newSolution === undefined) return []
       return [
         newSolution.update({
-          goals: [
-            ...inferConstraints(mod, goal.left),
-            ...inferConstraints(mod, goal.right),
-            ...solution.goals,
-          ],
+          goals: [...solution.goals],
         }),
       ]
     }
@@ -56,11 +46,7 @@ export function pursue(
       if (newSolution === undefined) return []
       return [
         newSolution.update({
-          goals: [
-            ...inferConstraints(mod, goal.left),
-            ...inferConstraints(mod, goal.right),
-            ...solution.goals,
-          ],
+          goals: [...solution.goals],
         }),
       ]
     }

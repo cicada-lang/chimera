@@ -30,21 +30,25 @@ Check [Exp::if(p, t, f), type]
   Check [f, type]
 }
 
-find exp limit 30 {
+find exp limit 5 {
   Check [exp, Type::nat]
 }
 
-find exp limit 30 {
-  Check [exp, Type::boolean]
-}
+// find exp limit 30 {
+//   Check [exp, Type::nat]
+// }
 
-find type {
-  Check [
-    Exp::if(
-      Exp::isZero(Exp::add1(Exp::add1(Nat::zero))),
-      Exp::add1(Nat::zero),
-      Exp::add1(Exp::add1(Nat::zero)),
-    ),
-    type
-  ]
-}
+// find exp limit 30 {
+//   Check [exp, Type::boolean]
+// }
+
+// find type {
+//   Check [
+//     Exp::if(
+//       Exp::isZero(Exp::add1(Exp::add1(Nat::zero))),
+//       Exp::add1(Nat::zero),
+//       Exp::add1(Exp::add1(Nat::zero)),
+//     ),
+//     type
+//   ]
+// }

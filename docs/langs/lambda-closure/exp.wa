@@ -52,7 +52,7 @@ Eval [env, Exp::ap(target, arg), value]
   Eval [[[name, argValue] | env2], ret, value]
 }
 
-find exp limit 5 {
+find exp limit 1 {
   value = Value::closure("y", Exp::var("x"), [
     ["x", Value::closure("z", Exp::var("z"), [])]
   ])

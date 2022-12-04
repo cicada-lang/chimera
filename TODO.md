@@ -1,9 +1,3 @@
-# datatype
-
-`inferConstraints` -- get constraints from `Exps.Data`
-
-- be careful about refresh the goals
-
 # type constraint
 
 [type constraint] built-in global `String`

@@ -9,11 +9,8 @@ import { Clause } from "../relation"
    Side-effects.
 **/
 
-export function refreshClause(
-  mod: Mod,
-  clause: Clause,
-  varMap: Map<string, Exps.PatternVar> = new Map(),
-): Clause {
+export function refreshClause(mod: Mod, clause: Clause): Clause {
+  const varMap = new Map()
   return Clause(
     clause.name,
     refreshExp(mod, clause.exp, varMap),
@@ -21,7 +18,7 @@ export function refreshClause(
   )
 }
 
-function refreshGoal(
+export function refreshGoal(
   mod: Mod,
   goal: Goal,
   varMap: Map<string, Exps.PatternVar>,
@@ -64,7 +61,7 @@ function refreshGoal(
   }
 }
 
-function refreshExp(
+export function refreshExp(
   mod: Mod,
   exp: Exp,
   varMap: Map<string, Exps.PatternVar>,

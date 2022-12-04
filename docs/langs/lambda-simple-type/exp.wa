@@ -65,7 +65,7 @@ find exp limit 10 {
 // - https://www.youtube.com/watch?v=09OyKjX4Sik
 // for more about this.
 
-find type {
+assert not find type {
   ctx = []
   exp = Exp::fn("f", Exp::ap(Exp::var("f"), Exp::var("f")))
   Check [ctx, exp, type]
