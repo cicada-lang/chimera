@@ -21,55 +21,18 @@ find _ limit 3 {
 //   x = false
 // }
 
+// Termination is relative to implementation,
+// we can trace our solver,
+// to see why the above code diverges.
+
+// If the same solver state occurred,
+// thus infinite loop here.
+
 trace steps 5 {
   x = true
   Always []
   x = false
 }
-
-// Termination is relative to implementation,
-// we can step our solver,
-// to see why the above code diverges.
-
-// step {
-//   solver {
-//     solution {
-//       substitution {}
-//       goals { x = true Always [] x = false }
-//     }
-//   }
-
-//   solver {
-//     solution {
-//       substitution { x = true }
-//       goals { Always [] x = false }
-//     }
-//   }
-
-//   solver {
-//     solution {
-//       substitution { x = true }
-//       goals { x = false }
-//     }
-
-//     solution {
-//       substitution { x = true }
-//       goals { Always [] x = false }
-//     }
-//   }
-
-//   solver {
-//     solution {
-//       substitution { x = true }
-//       goals { Always [] x = false }
-//     }
-//   }
-
-//   // The same as previous solver state,
-//   // thus infinite loop here.
-
-//   ...
-// }
 
 // We can simply reorder the goals in the conjunction
 // to make the search not diverge,
@@ -97,57 +60,22 @@ find x limit 5 {
   x = false
 }
 
-// step {
-//   solver {
-//     solution {
-//       substitution {}
-//       goals { disj { x = true x = false } Always [] x = false }
-//     }
-//   }
+// Some solutions will diverge,
+// But we can also understand why
+// some solutions will not diverge,
+// and return as many `false`s as asked.
 
-//   solver {
-//     solution {
-//       substitution {}
-//       goals { x = true Always [] x = false }
-//     }
+trace steps 5 {
+  disj {
+    x = true
+    x = false
+  }
+  Always []
+  x = false
+}
 
-//     solution {
-//       substitution {}
-//       goals { x = false Always [] x = false }
-//     }
-//   }
-
-//   solver {
-//     solution {
-//       substitution {}
-//       goals { x = false Always [] x = false }
-//     }
-
-//     solution {
-//       substitution { x = true }
-//       goals { Always [] x = false }
-//     }
-//   }
-
-//   solver {
-//     solution {
-//       substitution { x = true }
-//       goals { Always [] x = false }
-//     }
-
-//     // The above solution will diverge,
-//     // But we can also understand why
-//     // the following solution will not diverge,
-//     // and return as many `false` as asked.
-
-//     solution {
-//       substitution { x = false }
-//       goals { Always [] x = false }
-//     }
-//   }
-
-//   ...
-// }
+// If we change the last line to `x = true`
+// we get as many `true`s as asked.
 
 find x limit 5 {
   disj {

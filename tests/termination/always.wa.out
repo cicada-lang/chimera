@@ -54,9 +54,83 @@ solver trace {
     }
   }
   
-  step {
-    
-  }
+  step {}
 }
 [ false, false, false, false, false ]
+solver trace steps 5 {
+  step {
+    solution {
+      substitution {}
+      goals { x = true Always [] x = false }
+    }
+    
+    solution {
+      substitution {}
+      goals { x = false Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution {}
+      goals { x = false Always [] x = false }
+    }
+    
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+    
+    solution {
+      substitution { x = false }
+      goals { Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = false }
+      goals { Always [] x = false }
+    }
+    
+    solution {
+      substitution { x = true }
+      goals { x = false }
+    }
+    
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = true }
+      goals { x = false }
+    }
+    
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+    
+    solution {
+      substitution { x = false }
+      goals { x = false }
+    }
+    
+    solution {
+      substitution { x = false }
+      goals { Always [] x = false }
+    }
+  }
+}
 [ true, true, true, true, true ]
