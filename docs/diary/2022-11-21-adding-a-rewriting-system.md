@@ -23,19 +23,14 @@ Think about cellular automata.
 # Syntax
 
 ```
-rewrite data rule
+<rule-name> <pattern> => <pattern>
+<rule-name> <pattern> => <pattern>
+...
 
-rewrite data {
-  rule
-}
+rewrite <rule-name> <data>
 
-rule name {
-  case pattern => pattern
-  case pattern => pattern
-}
-
-rule name {
-  combinators
+rewrite rule <name> {
+  // combinators
 }
 ```
 
