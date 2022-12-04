@@ -4,5 +4,16 @@
   Exp::ap(
     Exp::fn("x", Exp::fn("y", Exp::var("x"))),
     Exp::fn("z", Exp::var("z")),
+  ),
+  Exp::ap(
+    Exp::fn("x", Exp::ap(Exp::var("x"), Exp::fn("y", Exp::var("x")))),
+    Exp::fn("z", Exp::var("z")),
+  ),
+  Exp::ap(
+    Exp::fn(
+      "x",
+      Exp::ap(Exp::fn(_.0, Exp::var(_.0)), Exp::fn("y", Exp::var("x"))),
+    ),
+    Exp::fn("z", Exp::var("z")),
   )
 ]

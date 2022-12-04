@@ -1,68 +1,20 @@
+# syntax
+
+[syntax] restrict the parser -- relation name must be in `CamelCase`
+
+[syntax] restrict the parser -- `PatternVar` name must be in `camelCase`
+
 # type constraint
 
 [type constraint] built-in global `String`
 
 [type constraint] built-in global `Number`
 
-# as a database
-
-[maybe] as an in-memory database first
-
-- the main is not a database,
-  but to analyze data
-  to get useful information.
-
-we need to be able to analyze personal data
-
-- the data might be exported from somewhere,
-  thus readonly,
-  we do not need to worry about updating it.
-
-- the data is personal,
-  thus small amount,
-  we do not need to worry about scaling it.
-
-To use this language as web app backend.
-
-[problem] how to handle large data?
-
-Learn:
-
-- CMU course
-
-[feature] reference data by URL in JSON #3
-
-There are a lot of related semantic web ideas:
-
-- https://en.wikipedia.org/wiki/JSON-LD
-
-[question] minikanren uses stream to implement search.
-
-- is stream also useful when we want to use relational programming language as a datatype?
-
-[problem] how to not load all facts (which might be very large) as goals?
-
 # finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
-
-# programming by rewriting
-
-`Stmts.RewriteRule`
-`Stmts.Rewrite`
-
-[rewrite] support xml
-
-- xml templating = rewrite system for xml
-  rewrite rule
-
-# std
-
-built-in globals -- `String` to `Array`
-
-- for string processing
 
 # langs
 
@@ -76,6 +28,76 @@ built-in globals -- `String` to `Array`
 [langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
+
+# alphaKanren and alphaLean
+
+implement alphaKanren
+
+implement alphaLean
+
+# dataset
+
+[dataset] load dataset as fect to a relation
+
+- syntax
+
+  ```
+  dataset Edge {
+    load "<...>.jsonl"
+    load "<...>.json" // must be array
+    load "<...>.json" {
+      // postprocessing
+      path "graphs[2].edges"
+    }
+  }
+  ```
+
+[dataset] translate object with `@type`, `@kind` and `@args` to `Exps.Data`
+
+# as a database
+
+[learn] CMU database courses
+
+[maybe] as an in-memory database first
+
+- the main is not a database,
+  but to analyze data
+  to get useful information.
+
+[aim] we need to be able to analyze personal data
+
+- the data might be exported from somewhere,
+  thus readonly,
+  we do not need to worry about updating it.
+
+- the data is personal,
+  thus small amount,
+  we do not need to worry about scaling it.
+
+[aim] To use this language as web app backend.
+
+[problem] how to handle large data?
+
+- [problem] how to not load all facts (which might be very large) as goals?
+
+- [question] minikanren uses stream to implement search.
+
+  - is stream also useful when we want to use relational programming language as a database?
+
+# programming by rewriting
+
+`Stmts.RewriteRule`
+`Stmts.Rewrite`
+
+[rewrite] support xml
+
+- xml templating = rewrite system for xml
+
+# std
+
+built-in globals -- `String` to `Array`
+
+- for string processing
 
 # deduction
 
@@ -171,10 +193,6 @@ by allowing a relation to take relations as arguments.
 that do side-effects to the solver.
 
 - instead of configuring limit by optional
-
-[maybe] [syntax] restrict the parser -- relation name must be in `CamelCase`
-
-[maybe] [syntax] restrict the parser -- `PatternVar` name must be in `camelCase`
 
 [maybe] [schedule control] control how pursue can return some extra information
 about how schedule the result solutions.

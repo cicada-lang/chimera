@@ -7,10 +7,10 @@ Value Value::closure(_name, ret, env) -- { Exp ret Env env }
 Env []
 Env [[_name, value] | rest] -- { Value value Env rest }
 
-Lookup [[[key, value] | _rest], key, value]
+Lookup [[[key, value] | _rest], key, value] -- here
 
 Lookup [[[key, _value] | rest], name, found]
------------------------------------------------------- {
+--------------------------------------------- there {
   key != name
   Lookup [rest, name, found]
 }
@@ -48,7 +48,7 @@ Eval [env, Exp::ap(target, arg), value]
   Eval [[[name, argValue] | env2], ret, value]
 }
 
-find exp limit 1 {
+find exp limit 3 {
   value = Value::closure("y", Exp::var("x"), [
     ["x", Value::closure("z", Exp::var("z"), [])]
   ])
