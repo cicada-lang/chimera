@@ -1,7 +1,5 @@
 # datatype
 
-merge `RelationFact` and `RelationClause` into `Relation`
-
 `Stmts.Datatype`
 `Stmts.Datatype` -- syntax
 `Stmts.Datatype` -- `execute`
