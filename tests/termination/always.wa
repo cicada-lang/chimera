@@ -6,7 +6,7 @@ Always x
   Always x
 }
 
-find q limit 3 {
+find _ limit 3 {
   Always []
 }
 

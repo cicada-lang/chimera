@@ -31,15 +31,15 @@ Path [x, y, occurs]
   Path [z, y, [z | occurs]]
 }
 
-find q { Path ["f", "f", []] }
-find q { Path ["a", "c", []] }
-find q { Path ["g", "e", []] }
+find _ { Path ["f", "f", []] }
+find _ { Path ["a", "c", []] }
+find _ { Path ["g", "e", []] }
 
 find x { Path ["g", x, []] }
 find x { Path [x, "h", []] }
 
-find q { Path ["g", "c", []] }
-find q { Path ["g", "c", ["f"]] }
+find _ { Path ["g", "c", []] }
+find _ { Path ["g", "c", ["f"]] }
 
-find q { Path ["a", x, ["f", "d"]] }
-find q { Path ["a", x, []] }
+find _ { Path ["a", _x, ["f", "d"]] }
+find _ { Path ["a", _x, []] }

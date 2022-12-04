@@ -10,11 +10,11 @@ Pair { male, female }
   Female { name: female }
 }
 
-find q {
+find _ {
   Pair { male: "bertram", female: "lucinda" }
 }
 
-find q {
+find _ {
   Pair { male: "apollo", female: "daphne" }
 }
 
@@ -34,8 +34,8 @@ find x {
   Pair { male: x, female: x }
 }
 
-find x {
-  Pair { male, female: "fido" }
+find _ {
+  Pair { female: "fido" }
 }
 
 find [male, female] {

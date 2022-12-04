@@ -6,11 +6,11 @@ Member [element, [_head | tail]]
   Member [element, tail]
 }
 
-find q {
+find _ {
   Member ["john", ["paul", "john"]]
 }
 
-find q {
+find _ {
   Member ["joe", ["marx", "darwin", "freud" ]]
 }
 

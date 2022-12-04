@@ -73,15 +73,15 @@ Positive n
   [_a | _d] = n
 }
 
-find q {
+find _ {
   Positive [0, 1, 1]
 }
 
-find q {
+find _ {
   Positive [1]
 }
 
-find q {
+find _ {
   Positive []
 }
 
@@ -94,19 +94,19 @@ GreaterThanOne n
   [_a, _ad | _dd] = n
 }
 
-find q {
+find _ {
   GreaterThanOne [0, 1, 1]
 }
 
-find q {
+find _ {
   GreaterThanOne [0, 1]
 }
 
-find q {
+find _ {
   GreaterThanOne [1]
 }
 
-find q {
+find _ {
   GreaterThanOne []
 }
 

@@ -10,7 +10,7 @@ Always []
   Always []
 }
 
-find q limit 3 {
+find _ limit 3 {
   Always []
 }
 
@@ -50,7 +50,7 @@ Never []
   Never []
 }
 
-find q {
+find _ {
   Fail []
   Never []
 }

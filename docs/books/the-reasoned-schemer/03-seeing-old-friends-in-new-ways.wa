@@ -37,8 +37,8 @@ ListOfLists l
   ListOfLists d
 }
 
-find q {
-  ListOfLists [["a", "b"], [x, "c"], ["d", y]]
+find _ {
+  ListOfLists [["a", "b"], [_x, "c"], ["d", _y]]
 }
 
 find l limit 1 {
@@ -90,7 +90,7 @@ find r limit 5 {
 }
 
 find out limit 5 {
-  [["g"], ["e" | w], [x | y] | z] = out
+  [["g"], ["e" | _w], [_x | _y] | _z] = out
   ListOfSingletons out
 }
 
@@ -119,7 +119,7 @@ Member [x, l]
   Member [x, d]
 }
 
-find q {
+find _ {
   Member ["olive", ["virgin", "olive", "oil"]]
 }
 
@@ -152,7 +152,7 @@ find [x, y] {
 }
 
 find q {
-  ["pasta", x, "fagioli", y] = q
+  ["pasta", _x, "fagioli", _y] = q
   Member ["e", q]
 }
 

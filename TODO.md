@@ -1,4 +1,4 @@
-fix code for `varCollectionValidate` in `Stmts.Find`
+do not unify unused var
 
 error report with file name -- relative to current path -- for snapshot testing
 

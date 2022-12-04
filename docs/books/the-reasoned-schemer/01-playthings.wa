@@ -5,11 +5,11 @@ Fail []
   1 = 2
 }
 
-find q {
+find _ {
   Fail []
 }
 
-find q {
+find _ {
   "pea" = "pod"
 }
 
@@ -21,11 +21,11 @@ find q {
   "pea" = q
 }
 
-find q {
+find _ {
   Succeed []
 }
 
-find q {
+find _ {
   "pea" = "pea"
 }
 
@@ -34,19 +34,19 @@ find q {
 }
 
 find q {
-  q = x
+  q = _
 }
 
 find q {
-  q = [x]
+  q = [_]
 }
 
-find q {
+find _ {
   [[["pea"]], "pod"] = [[["pea"]], "pod"]
 }
 
 find q {
-  [[[q]], "pod"] = [[[x]], "pod"]
+  [[[q]], "pod"] = [[[_]], "pod"]
 }
 
 find q {
@@ -58,26 +58,26 @@ find q {
 }
 
 find q {
-  [x, y] = q
+  [_x, _y] = q
 }
 
 find s {
-  [t, u] = s
+  [_t, _u] = s
 }
 
 find q {
-  [x, y, x] = q
+  [x, _y, x] = q
 }
 
-find q {
+find _ {
   ["pea"] = "pea"
 }
 
-find q {
+find _ {
   [x] = x
 }
 
-find q {
+find _ {
   Succeed []
   Succeed []
 }
@@ -126,11 +126,11 @@ find [x, y] {
   Teacup [y]
 }
 
-find [x, y] {
+find [x, _y] {
   Teacup [x]
   Teacup [x]
 }
 
-find [x, y] {
+find [x, _y] {
   Teacup [x]
 }

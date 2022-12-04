@@ -28,7 +28,7 @@ find x {
   ]
 }
 
-find x {
+find _ {
   Mem ["fig", ["pea"], ["pea"]]
 }
 
@@ -61,7 +61,7 @@ find out {
 }
 
 find out {
-  Mem ["fig", ["a", x, "c", "fig", "e"], out]
+  Mem ["fig", ["a", _x, "c", "fig", "e"], out]
 }
 
 find [x, y] limit 5 {
@@ -105,7 +105,7 @@ find out {
 }
 
 find out {
-  Rember [y, ["a", "b", y, "d", z, "e"], out]
+  Rember [y, ["a", "b", y, "d", _z, "e"], out]
 }
 
 find [y, z] {
@@ -124,6 +124,6 @@ find [y, z, w, out] limit 5 {
 // We will need != to implementation a version
 // that does not succeed on the following query.
 
-find q {
+find _ {
   Rember [1, [1, 2, 3], [1, 2, 3]]
 }

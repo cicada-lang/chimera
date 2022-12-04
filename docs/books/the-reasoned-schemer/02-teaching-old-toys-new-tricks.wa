@@ -7,12 +7,12 @@ find q {
   Car [["a", "c", "o", "r", "n"], q]
 }
 
-find q {
+find _ {
   Car [["a", "c", "o", "r", "n"], "a"]
 }
 
 find r {
-  Car [[r | y], x]
+  Car [[r | _y], x]
   "pear" = x
 }
 
@@ -39,7 +39,7 @@ find r {
   [x | y] = r
 }
 
-find q {
+find _ {
   Cdr [["a", "c", "o", "r", "n"], ["c", "o", "r", "n"]]
 }
 
@@ -73,8 +73,8 @@ find x {
 }
 
 find r {
-  ["e", "a", "d", x] = r
-  Cons [y, ["a", z, "c"], r]
+  ["e", "a", "d", _x] = r
+  Cons [_y, ["a", _z, "c"], r]
 }
 
 find x {
@@ -92,7 +92,7 @@ find l {
 }
 
 find l {
-  Cons [w, ["n", "u", "s"], t]
+  Cons [_w, ["n", "u", "s"], t]
   Cdr [l, t]
   Car [l, x]
   "b" = x
@@ -106,11 +106,11 @@ Null x
   [] = x
 }
 
-find q {
+find _ {
   Null ["grape", "raisin", "pear"]
 }
 
-find q {
+find _ {
   Null []
 }
 
@@ -119,7 +119,7 @@ find x {
 }
 
 find r {
-  [x, y, "salad"] = r
+  [_x, _y, "salad"] = r
 }
 
 Pair p
@@ -131,11 +131,11 @@ find q {
   Pair [q | q]
 }
 
-find q {
+find _ {
   Pair []
 }
 
-find q {
+find _ {
   Pair "pair"
 }
 
@@ -160,26 +160,26 @@ Singleton l
   Null d
 }
 
-find r {
+find _ {
   Singleton ["tofu"]
 }
 
-find r {
+find _ {
   Singleton [["tofu"]]
 }
 
-find r {
+find _ {
   Singleton "tofu"
 }
 
-find r {
+find _ {
   Singleton ["e", "tofu"]
 }
 
-find r {
+find _ {
   Singleton []
 }
 
-find r {
+find _ {
   Singleton ["e" | "tofu"]
 }

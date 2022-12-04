@@ -31,7 +31,7 @@ find q {
 }
 
 find x limit 6 {
-  Append [x, y, z]
+  Append [x, _y, _z]
 }
 
 find [x, y, z] limit 6 {
@@ -48,7 +48,7 @@ find x {
 
 find x {
   Append [
-    ["cake", "&", "ice", y],
+    ["cake", "&", "ice", _y],
     ["tastes", "yummy"],
     x,
   ]
@@ -57,14 +57,14 @@ find x {
 find x {
   Append [
     ["cake", "&", "ice", "cream"],
-    y,
+    _y,
     x,
   ]
 }
 
 find x limit 1 {
   Append [
-    ["cake", "&", "ice" | y],
+    ["cake", "&", "ice" | _y],
     ["d", "t"],
     x,
   ]
@@ -72,7 +72,7 @@ find x limit 1 {
 
 find x limit 5 {
   Append [
-    ["cake", "&", "ice" | y],
+    ["cake", "&", "ice" | _y],
     ["d", "t"],
     x,
   ]
@@ -82,7 +82,7 @@ find y limit 5 {
   Append [
     ["cake", "&", "ice" | y],
     ["d", "t"],
-    x,
+    _x,
   ]
 }
 
@@ -97,7 +97,7 @@ find x limit 5 {
 find x {
   Append [
     ["cake", "&", "ice", "cream"],
-    ["d", "t" | z],
+    ["d", "t" | _z],
     x,
   ]
 }
