@@ -1,3 +1,7 @@
+[syntax] support `trace [steps <n>] { ... }`
+
+- output `solver trace [steps <n>] { ... }`
+
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
 - Because of we also want to use the `::` syntax for module,
@@ -8,23 +12,9 @@
 
 `inferConstraints` -- get constraints from `Exps.Data`
 
-[DX] when adding new url to `Loader.tracked`, we should let the `watcher` watch it
-
 [type constraint] built-in global `String`
 
 [type constraint] built-in global `Number`
-
-[schedule control] control how pursue can return some extra information
-about how schedule the result solutions.
-
-- only put generated solutions to the back of the queue,
-  when the goals are generated from disj (more then one solutions).
-
-[complexity] analyze time complexity of our search strategy
-
-[question] [complexity] how to analyze time complexity of relation automatically?
-
-[syntax] support writing steps of a `Solver`.
 
 [namespace] support namespace
 
@@ -56,6 +46,12 @@ maybe I can understand Gentzen and Goedel's works.
 [read] a-framework-for-extending-microkanren-with-constraints.pdf
 [read] pure-declarative-and-constructive-arithmetic-relations.pdf
 [read] a-surprisingly-competitive-conditional-operator.pdf
+
+# complexity
+
+[complexity] analyze time complexity of our search strategy
+
+[question] [complexity] how to analyze time complexity of relation automatically?
 
 # finite-domain constraint programming
 
@@ -188,6 +184,10 @@ by allowing a relation to take relations as arguments.
   in relational programming, all computation are un-nested,
   what would happen here?
 
+# later
+
+[later] [DX] when adding new url to `Loader.tracked`, we should let the `watcher` watch it
+
 # maybe
 
 [maybe] configure limit by built-in special goal `limit <n>`
@@ -198,3 +198,12 @@ that do side-effects to the solver.
 [maybe] [syntax] restrict the parser -- relation name must be in `CamelCase`
 
 [maybe] [syntax] restrict the parser -- `PatternVar` name must be in `camelCase`
+
+[maybe] [schedule control] control how pursue can return some extra information
+about how schedule the result solutions.
+
+- should only change schedule, but not remove goals.
+
+- maybe only put generated solutions to the back of the queue
+  when the goals are generated from disj
+  (or `goals.length > 1` (but not all disj are like this)).
