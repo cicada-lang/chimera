@@ -20,49 +20,43 @@
 
 [namespace] support namespace
 
-# first-order logic
+# as a database
 
-[learn] logic programming's correspondence to first-order logic
+[maybe] as an in-memory database first
 
-[plan] Since I understand the use of untyped bound variables now,
-maybe I can understand Gentzen and Goedel's works.
+- the main is not a database,
+  but to analyze data
+  to get useful information.
 
-[learn] I should read Ray's book about first-order logic
+we need to be able to analyze personal data
 
-[question] how to understand constraint in first-order logic?
+- the data might be exported from somewhere,
+  thus readonly,
+  we do not need to worry about updating it.
 
-- a group of built-in predicates with some axioms?
+- the data is personal,
+  thus small amount,
+  we do not need to worry about scaling it.
 
-  - take `Disequality` as an example
-  - take finite domain as an example
-  - if they are axioms, can we use set theoretical
-    rule based language to specify a constraint?
+To use this language as web app backend.
 
-- we can learn more about first-order logic by implementing alphaLean
+[problem] how to handle large data?
 
-# learn
+Learn:
 
-[diary] fair-search-strategy.md
+- CMU course
 
-[lang] langs/array-and-object
+[feature] reference data by URL in JSON #3
 
-[question] why we do not need `key != name` in `Lookup`?
+There are a lot of related semantic web ideas:
 
-[diary] the use of stream in minikanren implementation
+- https://en.wikipedia.org/wiki/JSON-LD
 
-[books/the-reasoned-schemer] 09-thin-ice.wa
-[books/the-reasoned-schemer] 10-under-the-hood.wa
+[question] minikanren uses stream to implement search.
 
-[read] relational-programming-in-minikanren-techniques-applications-and-implementations.pdf
-[read] a-framework-for-extending-microkanren-with-constraints.pdf
-[read] pure-declarative-and-constructive-arithmetic-relations.pdf
-[read] a-surprisingly-competitive-conditional-operator.pdf
+- is stream also useful when we want to use relational programming language as a datatype?
 
-# complexity
-
-[complexity] analyze time complexity of our search strategy
-
-[question] [complexity] how to analyze time complexity of relation automatically?
+[problem] how to not load all facts (which might be very large) as goals?
 
 # finite-domain constraint programming
 
@@ -108,43 +102,49 @@ design syntax for deduction
 
 https://en.wikipedia.org/wiki/Quotient_by_an_equivalence_relation
 
-# as a database
+# first-order logic
 
-[maybe] as an in-memory database first
+[learn] logic programming's correspondence to first-order logic
 
-- the main is not a database,
-  but to analyze data
-  to get useful information.
+[plan] Since I understand the use of untyped bound variables now,
+maybe I can understand Gentzen and Goedel's works.
 
-we need to be able to analyze personal data
+[learn] I should read Ray's book about first-order logic
 
-- the data might be exported from somewhere,
-  thus readonly,
-  we do not need to worry about updating it.
+[question] how to understand constraint in first-order logic?
 
-- the data is personal,
-  thus small amount,
-  we do not need to worry about scaling it.
+- a group of built-in predicates with some axioms?
 
-To use this language as web app backend.
+  - take `Disequality` as an example
+  - take finite domain as an example
+  - if they are axioms, can we use set theoretical
+    rule based language to specify a constraint?
 
-[problem] how to handle large data?
+- we can learn more about first-order logic by implementing alphaLean
 
-Learn:
+# learn
 
-- CMU course
+[diary] fair-search-strategy.md
 
-[feature] reference data by URL in JSON #3
+[lang] langs/array-and-object
 
-There are a lot of related semantic web ideas:
+[question] why we do not need `key != name` in `Lookup`?
 
-- https://en.wikipedia.org/wiki/JSON-LD
+[diary] the use of stream in minikanren implementation
 
-[question] minikanren uses stream to implement search.
+[books/the-reasoned-schemer] 09-thin-ice.wa
+[books/the-reasoned-schemer] 10-under-the-hood.wa
 
-- is stream also useful when we want to use relational programming language as a datatype?
+[read] relational-programming-in-minikanren-techniques-applications-and-implementations.pdf
+[read] a-framework-for-extending-microkanren-with-constraints.pdf
+[read] pure-declarative-and-constructive-arithmetic-relations.pdf
+[read] a-surprisingly-competitive-conditional-operator.pdf
 
-[problem] how to not load all facts (which might be very large) as goals?
+# complexity
+
+[complexity] analyze time complexity of our search strategy
+
+[question] [complexity] how to analyze time complexity of relation automatically?
 
 # optional output valid JSON
 
