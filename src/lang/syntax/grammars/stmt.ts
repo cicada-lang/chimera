@@ -28,11 +28,13 @@ export const stmt = {
     ],
     "stmt:trace": [
       '"trace"',
-      { options: { $ap: ["zero_or_more", "trace_option"] } },
+      '"steps"',
+      { steps: { $pattern: ["number"] } },
       '"{"',
       { goals: "goals" },
       '"}"',
     ],
+    "stmt:trace_steps_infinity": ['"trace"', '"{"', { goals: "goals" }, '"}"'],
     "stmt:assert_find": [
       '"assert"',
       '"find"',

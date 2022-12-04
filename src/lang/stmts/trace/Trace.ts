@@ -9,11 +9,10 @@ import {
   varCollectionMerge,
   varCollectionValidate,
 } from "../../var-collection"
-import type { TraceOption } from "../trace"
 
 export class Trace extends Stmt {
   constructor(
-    public options: Array<TraceOption>,
+    public steps: number,
     public goals: Array<GoalExp>,
     public span?: Span,
   ) {
@@ -27,9 +26,11 @@ export class Trace extends Stmt {
 
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     const solver = Solver.start(goals)
-    // while (solver.partialSolutions.length > 0) {
-    //   solver.solveStep(mod)
-    // }
+    let n = 0
+    while (n < this.steps && solver.partialSolutions.length > 0) {
+      solver.solveStep(mod)
+      n++
+    }
 
     // const solutions = solver.solve(mod, buildSolveOptions(this.options))
     // return formatSolutions(solutions, this.pattern)

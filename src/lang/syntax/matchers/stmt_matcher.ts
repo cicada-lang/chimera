@@ -32,14 +32,14 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
-    "stmt:trace": ({ options, goals }, { span }) =>
+    "stmt:trace": ({ steps, goals }, { span }) =>
       new Stmts.Trace(
-        pt.matchers
-          .zero_or_more_matcher(options)
-          .map(matchers.trace_option_matcher),
+        Number.parseFloat(pt.str(steps)),
         matchers.goals_matcher(goals),
         span,
       ),
+    "stmt:trace_steps_infinity": ({ goals }, { span }) =>
+      new Stmts.Trace(Infinity, matchers.goals_matcher(goals), span),
     "stmt:assert_find": ({ query_pattern, options, goals }, { span }) =>
       new Stmts.AssertFind(
         matchers.query_pattern_matcher(query_pattern),
