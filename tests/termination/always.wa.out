@@ -46,7 +46,7 @@ solver trace steps 5 {
   }
 }
 []
-solver trace {
+solver trace steps 2 {
   step {
     solution {
       substitution { x = true }

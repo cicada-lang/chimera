@@ -36,12 +36,6 @@ export class Trace extends Stmt {
       steps.push(formatSolver(solver))
     }
 
-    if (this.steps === Infinity) {
-      return `solver trace {\n${indent(steps.join("\n\n"))}\n}`
-    } else {
-      return `solver trace steps ${this.steps} {\n${indent(
-        steps.join("\n\n"),
-      )}\n}`
-    }
+    return `solver trace steps ${n} {\n${indent(steps.join("\n\n"))}\n}`
   }
 }
