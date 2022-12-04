@@ -1,6 +1,12 @@
 export const stmt = {
   $grammar: {
-    "stmt:fact": [{ name: "name" }, { exp: "exp" }],
+    "stmt:fact_nameless": [{ name: "name" }, { exp: "exp" }],
+    "stmt:fact": [
+      { name: "name" },
+      { exp: "exp" },
+      "dashline",
+      { clause_name: "name" },
+    ],
     "stmt:clause_nameless": [
       { name: "name" },
       { exp: "exp" },

@@ -1,10 +1,5 @@
-Always []
----------- base {}
-
-Always []
----------- loop {
-  Always []
-}
+Always [] -- base
+Always [] -- loop { Always [] }
 
 find _ limit 3 {
   Always []

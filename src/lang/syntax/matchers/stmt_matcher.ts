@@ -5,8 +5,20 @@ import * as matchers from "../matchers"
 
 export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
-    "stmt:fact": ({ name, exp }, { span }) =>
-      new Stmts.RelationFact(pt.str(name), matchers.exp_matcher(exp), span),
+    "stmt:fact_nameless": ({ name, exp }, { span }) =>
+      new Stmts.RelationFact(
+        pt.str(name),
+        undefined,
+        matchers.exp_matcher(exp),
+        span,
+      ),
+    "stmt:fact": ({ name, clause_name, exp }, { span }) =>
+      new Stmts.RelationFact(
+        pt.str(name),
+        pt.str(clause_name),
+        matchers.exp_matcher(exp),
+        span,
+      ),
     "stmt:clause_nameless": ({ name, exp, goals }, { span }) =>
       new Stmts.RelationClause(
         pt.str(name),

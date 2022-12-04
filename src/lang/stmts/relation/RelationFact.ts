@@ -8,7 +8,12 @@ import {
 } from "../../var-collection"
 
 export class RelationFact extends Stmt {
-  constructor(public name: string, public exp: Exp, public span?: Span) {
+  constructor(
+    public name: string,
+    public clauseName: string | undefined,
+    public exp: Exp,
+    public span?: Span,
+  ) {
     super()
   }
 
@@ -16,7 +21,7 @@ export class RelationFact extends Stmt {
     varCollectionValidate(varCollectionFromExp(this.exp))
 
     mod.findRelationOrFail(this.name)
-    mod.defineClause(this.name, undefined, this.exp)
+    mod.defineClause(this.name, this.clauseName, this.exp)
   }
 
   prepare(mod: Mod): void {
