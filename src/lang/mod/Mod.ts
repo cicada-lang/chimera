@@ -1,5 +1,5 @@
 import type { Loader } from "../../loader"
-import type { Datatype } from "../datatype"
+import { Datactor, Datatype } from "../datatype"
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 import { Clause, Relation } from "../relation"
@@ -42,6 +42,16 @@ export class Mod {
     }
   }
 
+  /**
+
+    About `Relation`.
+
+  **/
+
+  createRelation(name: string): void {
+    this.relations.set(name, Relation([]))
+  }
+
   defineClause(
     name: string,
     clauseName: string | undefined,
@@ -49,26 +59,15 @@ export class Mod {
     goals?: Array<Goal>,
   ): void {
     const relation = this.findRelationOrFail(name)
-    relation.clauses.push(
-      Clause(
-        clauseName || relation.clauses.length.toString(),
-        exp,
-        goals || [],
-      ),
-    )
-  }
-
-  createRelation(name: string): Relation {
-    const relation = Relation([])
-    this.relations.set(name, relation)
-    return relation
+    const realClauseName = clauseName || relation.clauses.length.toString()
+    relation.clauses.push(Clause(realClauseName, exp, goals || []))
   }
 
   findRelation(name: string): Relation | undefined {
     return this.relations.get(name)
   }
 
-  findRelationOrFail(name: string): Relation {
+  private findRelationOrFail(name: string): Relation {
     const relation = this.findRelation(name)
     if (relation === undefined) {
       throw new Error(
@@ -77,5 +76,40 @@ export class Mod {
     }
 
     return relation
+  }
+
+  /**
+   
+    About `Datatype`.
+
+  **/
+
+  createDatatype(name: string): void {
+    this.datatypes.set(name, Datatype([]))
+  }
+
+  defineDatactor(
+    name: string,
+    datactorName: string,
+    args: Array<string>,
+    goals?: Array<Goal>,
+  ): void {
+    const datatype = this.findDatatypeOrFail(name)
+    datatype.datactors.push(Datactor(datactorName, args, goals || []))
+  }
+
+  findDatatype(name: string): Datatype | undefined {
+    return this.datatypes.get(name)
+  }
+
+  private findDatatypeOrFail(name: string): Datatype {
+    const datatype = this.findDatatype(name)
+    if (datatype === undefined) {
+      throw new Error(
+        `[Mod.findDatatypeOrFail] undefined datatype name: ${name}`,
+      )
+    }
+
+    return datatype
   }
 }

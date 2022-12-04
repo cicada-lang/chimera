@@ -30,7 +30,6 @@ export class Relation extends Stmt {
       ]),
     )
 
-    mod.findRelationOrFail(this.name)
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     mod.defineClause(this.name, this.clauseName, this.exp, goals)
   }

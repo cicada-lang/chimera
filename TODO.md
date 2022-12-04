@@ -1,8 +1,6 @@
 # datatype
 
-`Stmts.Datatype`
 `Stmts.Datatype` -- syntax
-`Stmts.Datatype` -- `execute`
 
 - datatype declaration -- we should not use the `::` syntax freely
 
