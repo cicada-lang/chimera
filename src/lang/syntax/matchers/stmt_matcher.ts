@@ -37,12 +37,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
-    "stmt:datatype": ({ name, datactors }, { span }) =>
-      new Stmts.Datatype(
-        pt.str(name),
-        matchers.datactors_matcher(datactors),
-        span,
-      ),
     "stmt:find": ({ query_pattern, limit, goals }, { span }) => {
       const realLimit = pt.matchers.optional_matcher(limit)
       return new Stmts.Find(

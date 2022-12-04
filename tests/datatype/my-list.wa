@@ -1,11 +1,5 @@
-datatype List {
-  null
-  cons(head, tail) -- { List tail }
-}
-
-// assert not find _ {
-//   List List::cons(3, "no a List")
-// }
+List List::null
+List List::cons(_head, tail) -- { List tail }
 
 find _ {
   List List::null

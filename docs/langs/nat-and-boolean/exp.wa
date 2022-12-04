@@ -1,21 +1,14 @@
 Boolean true
 Boolean false
 
-datatype Nat {
-  zero
-  add1(prev) -- { Nat prev }
-}
+Nat Nat::zero
+Nat Nat::add1(prev) -- { Nat prev }
 
 Value x -- { Boolean x }
 Value x -- { Nat x }
 
-datatype Exp {
-  add1(x) -- { disj { Exp x Value x } }
-  sub1(x) -- { disj { Exp x Value x } }
-  isZero(x) -- { disj { Exp x Value x } }
-  if(p, t, f) -- {
-    disj { Exp p Value p }
-    disj { Exp t Value t }
-    disj { Exp f Value f }
-  }
-}
+Exp x -- { Value x }
+Exp Exp::add1(x) -- { Exp x }
+Exp Exp::sub1(x) -- { Exp x }
+Exp Exp::isZero(x) -- { Exp x }
+Exp Exp::if(p, t, f) -- { Exp p Exp t Exp f }

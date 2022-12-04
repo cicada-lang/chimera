@@ -4,10 +4,6 @@
 
 [type constraint] built-in global `Number`
 
-# namespace
-
-[namespace] support namespace
-
 # as a database
 
 [maybe] as an in-memory database first

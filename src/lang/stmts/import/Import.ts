@@ -32,17 +32,10 @@ export class Import extends Stmt {
 
     const importedMod = await mod.options.loader.load(url)
     for (const binding of this.bindings) {
-      const datatype = importedMod.datatypes.get(binding.name)
-      if (datatype !== undefined) {
-        mod.datatypes.set(binding.alias || binding.name, datatype)
-      }
-
       const relation = importedMod.relations.get(binding.name)
       if (relation !== undefined) {
         mod.relations.set(binding.alias || binding.name, relation)
-      }
-
-      if (relation === undefined) {
+      } else {
         throw new Errors.LangError(
           [
             `[Import.execute]`,

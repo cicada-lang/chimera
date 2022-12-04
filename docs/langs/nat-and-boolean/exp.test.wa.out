@@ -1,4 +1,8 @@
 [ 
+  true,
+  false,
+  Nat::zero(),
+  Nat::add1(Nat::zero()),
   Exp::add1(true),
   Exp::add1(false),
   Exp::add1(Nat::zero()),
@@ -8,9 +12,8 @@
   Exp::isZero(true),
   Exp::isZero(false),
   Exp::isZero(Nat::zero()),
+  Nat::add1(Nat::add1(Nat::zero())),
   Exp::add1(Nat::add1(Nat::zero())),
-  Exp::sub1(Nat::add1(Nat::zero())),
-  Exp::isZero(Nat::add1(Nat::zero())),
   Exp::add1(Exp::add1(true)),
   Exp::add1(Exp::add1(false)),
   Exp::add1(Exp::add1(Nat::zero())),
@@ -20,13 +23,10 @@
   Exp::add1(Exp::isZero(true)),
   Exp::add1(Exp::isZero(false)),
   Exp::add1(Exp::isZero(Nat::zero())),
-  Exp::add1(Nat::add1(Nat::add1(Nat::zero()))),
+  Exp::sub1(Nat::add1(Nat::zero())),
   Exp::sub1(Exp::add1(true)),
   Exp::sub1(Exp::add1(false)),
   Exp::sub1(Exp::add1(Nat::zero())),
   Exp::sub1(Exp::sub1(true)),
-  Exp::sub1(Exp::sub1(false)),
-  Exp::sub1(Exp::sub1(Nat::zero())),
-  Exp::sub1(Exp::isZero(true)),
-  Exp::sub1(Exp::isZero(false))
+  Exp::sub1(Exp::sub1(false))
 ]

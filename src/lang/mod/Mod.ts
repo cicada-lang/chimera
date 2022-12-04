@@ -1,5 +1,4 @@
 import type { Loader } from "../../loader"
-import { Datactor, Datatype } from "../datatype"
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 import { Clause, Relation } from "../relation"
@@ -13,7 +12,6 @@ export interface ModOptions {
 export class Mod {
   variableCount = 0
   relations: Map<string, Relation> = new Map()
-  datatypes: Map<string, Datatype> = new Map()
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
   imported: Array<URL> = []
@@ -76,40 +74,5 @@ export class Mod {
     }
 
     return relation
-  }
-
-  /**
-   
-    About `Datatype`.
-
-  **/
-
-  createDatatype(name: string): void {
-    this.datatypes.set(name, Datatype([]))
-  }
-
-  defineDatactor(
-    name: string,
-    datactorName: string,
-    args: Array<string>,
-    goals?: Array<Goal>,
-  ): void {
-    const datatype = this.findDatatypeOrFail(name)
-    datatype.datactors.push(Datactor(datactorName, args, goals || []))
-  }
-
-  findDatatype(name: string): Datatype | undefined {
-    return this.datatypes.get(name)
-  }
-
-  private findDatatypeOrFail(name: string): Datatype {
-    const datatype = this.findDatatype(name)
-    if (datatype === undefined) {
-      throw new Error(
-        `[Mod.findDatatypeOrFail] undefined datatype name: ${name}`,
-      )
-    }
-
-    return datatype
   }
 }

@@ -1,5 +1,4 @@
 export * from "./arg_matcher"
-export * from "./datactor_matcher"
 export * from "./exp_matcher"
 export * from "./goal_matcher"
 export * from "./import_binding_matcher"
