@@ -7,32 +7,6 @@
 
 // # A sample database
 
-// The personnel database contains assertions about company personnel.
-// We first prepare the tables:
-
-// interface Job {
-//   name: String
-//   dept: String
-//   role: String
-// }
-
-// interface Salary {
-//   name: String
-//   amount: Number
-// }
-
-// interface Address {
-//   name: String
-//   town: String
-//   road: String
-//   door: Number
-// }
-
-// interface Supervisor {
-//   slave: String
-//   master: String
-// }
-
 // Here is the information about Ben Bitdiddle,
 // the resident computer wizard:
 
@@ -264,17 +238,6 @@ Supervisor {
 // the jobs of both a computer programmer
 // and a computer technician:
 
-// interface Competence {
-//   can: {
-//     dept: String
-//     role: String
-//   }
-//   job: {
-//     dept: String
-//     role: String
-//   }
-// }
-
 Competence {
   can: {
     dept: "computer",
@@ -399,10 +362,6 @@ find x {
 
 // We can use the following syntax to create rules.
 
-// interface ComputerDeptSlave {
-//   slave: String
-// }
-
 ComputerDeptSlave { slave }
 ---------------------------- {
   Job { name: slave, dept: "computer" }
@@ -413,12 +372,7 @@ find slave {
   ComputerDeptSlave { slave }
 }
 
-// TODO We do not have not yet.
-
-// interface Bigshot {
-//   name: String
-//   dept: String
-// }
+// TODO We do not have `not` yet.
 
 // Bigshot { name, dept }
 // ------------------------ {
@@ -434,11 +388,6 @@ find slave {
 //     name,
 //     dept,
 //   }
-// }
-
-// interface NotSoPoor {
-//   name: String
-//   amount: Number
 // }
 
 // TODO `>=`

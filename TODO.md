@@ -6,6 +6,8 @@
 
 # as a database
 
+dataset {
+}
 [maybe] as an in-memory database first
 
 - the main is not a database,
