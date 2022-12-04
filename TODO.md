@@ -1,7 +1,3 @@
-`Stmts.Trace` -- `execute`
-
-- output `solver trace [steps <n>] { ... }`
-
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
 - Because of we also want to use the `::` syntax for module,

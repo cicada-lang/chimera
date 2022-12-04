@@ -1,9 +1,9 @@
-Always _x
+Always []
 ------------ base {}
 
-Always x
+Always []
 ---------- loop {
-  Always x
+  Always []
 }
 
 find _ limit 3 {

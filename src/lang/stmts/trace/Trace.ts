@@ -1,3 +1,4 @@
+import { indent } from "../../../utils/indent"
 import type { GoalExp } from "../../goal-exp"
 import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
@@ -9,6 +10,7 @@ import {
   varCollectionMerge,
   varCollectionValidate,
 } from "../../var-collection"
+import { formatSolver } from "../trace"
 
 export class Trace extends Stmt {
   constructor(
@@ -27,14 +29,19 @@ export class Trace extends Stmt {
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     const solver = Solver.start(goals)
     let n = 0
+    const steps: Array<string> = []
     while (n < this.steps && solver.partialSolutions.length > 0) {
       solver.solveStep(mod)
       n++
+      steps.push(formatSolver(solver))
     }
 
-    // const solutions = solver.solve(mod, buildSolveOptions(this.options))
-    // return formatSolutions(solutions, this.pattern)
-
-    return "TODO"
+    if (this.steps === Infinity) {
+      return `solver trace {\n${indent(steps.join("\n\n"))}\n}`
+    } else {
+      return `solver trace steps ${this.steps} {\n${indent(
+        steps.join("\n\n"),
+      )}\n}`
+    }
   }
 }

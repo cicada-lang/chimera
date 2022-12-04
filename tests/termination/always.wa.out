@@ -1,6 +1,62 @@
 [ _.0, _.0, _.0 ]
-TODO
+solver trace steps 5 {
+  step {
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = true }
+      goals { x = false }
+    }
+    
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = true }
+      goals { x = false }
+    }
+    
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = true }
+      goals { Always [] x = false }
+    }
+  }
+}
 []
-TODO
+solver trace {
+  step {
+    solution {
+      substitution { x = true }
+      goals { x = false Always [] }
+    }
+  }
+  
+  step {
+    
+  }
+}
 [ false, false, false, false, false ]
 [ true, true, true, true, true ]
