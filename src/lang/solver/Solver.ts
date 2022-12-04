@@ -35,16 +35,13 @@ export class Solver {
   solve(mod: Mod, options: SolveOptions): Array<Solution> {
     const limit = options.limit || Infinity
     while (this.solutions.length < limit && this.partialSolutions.length > 0) {
-      const solution = this.solveStep(mod, options)
-      if (solution !== undefined) {
-        this.solutions.push(solution)
-      }
+      this.solveStep(mod)
     }
 
     return this.solutions
   }
 
-  private solveStep(mod: Mod, options: SolveOptions): Solution | undefined {
+  solveStep(mod: Mod): void {
     /**
 
        Doing side-effect on `this.partialSolutions` is intended,
@@ -67,10 +64,16 @@ export class Solver {
     **/
 
     const goal = solution.goals.shift()
-    if (goal === undefined) return solution
+    if (goal === undefined) {
+      this.solutions.push(solution)
+      return
+    }
 
     const partialSolutions = pursue(mod, solution, goal)
-    if (partialSolutions === undefined) return solution
+    if (partialSolutions === undefined) {
+      this.solutions.push(solution)
+      return
+    }
 
     /**
 

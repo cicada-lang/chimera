@@ -27,6 +27,10 @@ export class Trace extends Stmt {
 
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     const solver = Solver.start(goals)
+    // while (solver.partialSolutions.length > 0) {
+    //   solver.solveStep(mod)
+    // }
+
     // const solutions = solver.solve(mod, buildSolveOptions(this.options))
     // return formatSolutions(solutions, this.pattern)
 

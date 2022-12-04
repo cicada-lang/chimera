@@ -1,7 +1,5 @@
 `Stmts.Trace` -- `execute`
 
-[syntax] support `trace [steps <n>] { ... }`
-
 - output `solver trace [steps <n>] { ... }`
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
