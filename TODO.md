@@ -1,5 +1,9 @@
 # datatype
 
+Relation as a type -- instead of a class
+
+`Mod` has `datatypes`
+
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
 - Because of we also want to use the `::` syntax for module,
