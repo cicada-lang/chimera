@@ -1,4 +1,4 @@
-import { Add } from "add.wa"
+import { Add, Nat } from "add.wa"
 
 find x {
   Add [x, x, Nat::zero]
@@ -7,4 +7,3 @@ find x {
 find x {
   Add [x, x, Nat::add1(Nat::add1(Nat::zero))]
 }
-

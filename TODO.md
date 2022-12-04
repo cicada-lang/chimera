@@ -1,14 +1,12 @@
 # datatype
 
+inline `ImportBinding`
+
+`Stmts.Import` -- also import datatype
+
 `inferConstraints` -- get constraints from `Exps.Data`
 
-- report error on undefined datactor -- we should not use the `::` syntax freely
-
-  Because of we also want to use the `::` syntax for module,
-  a module prefix can be used only when it is imported.
-
-  It should be the same for datatype prefix,
-  i.e. a datatype prefix can be used only when the datatype is define.
+- be careful about refresh the goals
 
 # type constraint
 
