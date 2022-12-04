@@ -57,7 +57,7 @@ export class Mod {
   }
 
   createRelation(name: string): Relation {
-    const relation = new Relation([])
+    const relation = Relation([])
     this.relations.set(name, relation)
     return relation
   }

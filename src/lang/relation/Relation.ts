@@ -1,8 +1,14 @@
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 
-export class Relation {
-  constructor(public clauses: Array<Clause>) {}
+export type Relation = {
+  clauses: Array<Clause>
+}
+
+export function Relation(clauses: Array<Clause>): Relation {
+  return {
+    clauses,
+  }
 }
 
 /**
