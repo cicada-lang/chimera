@@ -1,13 +1,13 @@
 export const stmt = {
   $grammar: {
-    "stmt:fact_nameless": [{ name: "name" }, { exp: "exp" }],
-    "stmt:fact": [
+    "stmt:relation_no_goals_no_clause_name": [{ name: "name" }, { exp: "exp" }],
+    "stmt:relation_no_goals": [
       { name: "name" },
       { exp: "exp" },
       "dashline",
       { clause_name: "name" },
     ],
-    "stmt:clause_nameless": [
+    "stmt:relation_no_clause_name": [
       { name: "name" },
       { exp: "exp" },
       "dashline",
@@ -15,7 +15,7 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:clause_named": [
+    "stmt:relation": [
       { name: "name" },
       { exp: "exp" },
       "dashline",
