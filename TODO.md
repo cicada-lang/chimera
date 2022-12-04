@@ -1,4 +1,3 @@
-`Stmts.Trace`
 `Stmts.Trace` -- syntax
 `Stmts.Trace` -- `execute`
 
