@@ -1,4 +1,3 @@
-`Stmts.Trace` -- syntax
 `Stmts.Trace` -- `execute`
 
 [syntax] support `trace [steps <n>] { ... }`

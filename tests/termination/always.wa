@@ -21,6 +21,12 @@ find _ limit 3 {
 //   x = false
 // }
 
+trace steps 5 {
+  x = true
+  Always []
+  x = false
+}
+
 // Termination is relative to implementation,
 // we can step our solver,
 // to see why the above code diverges.
@@ -71,6 +77,12 @@ find _ limit 3 {
 // (depth-first v.s. breadth-first).
 
 find x {
+  x = true
+  x = false
+  Always []
+}
+
+trace {
   x = true
   x = false
   Always []

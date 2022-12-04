@@ -26,6 +26,13 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
+    "stmt:trace": [
+      '"trace"',
+      { options: { $ap: ["zero_or_more", "trace_option"] } },
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
     "stmt:assert_find": [
       '"assert"',
       '"find"',
