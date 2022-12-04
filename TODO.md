@@ -1,18 +1,14 @@
 # datatype
 
-`Stmts.Datatype` -- syntax
+`inferConstraints` -- get constraints from `Exps.Data`
 
-- datatype declaration -- we should not use the `::` syntax freely
+- report error on undefined datactor -- we should not use the `::` syntax freely
 
-- Because of we also want to use the `::` syntax for module,
+  Because of we also want to use the `::` syntax for module,
   a module prefix can be used only when it is imported.
 
   It should be the same for datatype prefix,
   i.e. a datatype prefix can be used only when the datatype is define.
-
-`inferConstraints` -- get constraints from `Exps.Data`
-
-- report error on undefined datactor
 
 # type constraint
 

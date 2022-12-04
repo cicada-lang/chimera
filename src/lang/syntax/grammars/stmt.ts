@@ -24,6 +24,13 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
+    "stmt:datatype": [
+      '"datatype"',
+      { name: "name" },
+      '"{"',
+      { datactors: "datactors" },
+      '"}"',
+    ],
     "stmt:find": [
       '"find"',
       { query_pattern: "query_pattern" },
