@@ -1,4 +1,5 @@
 import type { Loader } from "../../loader"
+import type { Datatype } from "../datatype"
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 import { Clause, Relation } from "../relation"
@@ -12,6 +13,7 @@ export interface ModOptions {
 export class Mod {
   variableCount = 0
   relations: Map<string, Relation> = new Map()
+  datatypes: Map<string, Datatype> = new Map()
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
   imported: Array<URL> = []

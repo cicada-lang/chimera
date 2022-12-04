@@ -1,8 +1,10 @@
 # datatype
 
-`Mod` has `datatypes`
+`Stmts.Datatype`
+`Stmts.Datatype` -- syntax
+`Stmts.Datatype` -- `execute`
 
-`Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
+- datatype declaration -- we should not use the `::` syntax freely
 
 - Because of we also want to use the `::` syntax for module,
   a module prefix can be used only when it is imported.
@@ -11,6 +13,8 @@
   i.e. a datatype prefix can be used only when the datatype is define.
 
 `inferConstraints` -- get constraints from `Exps.Data`
+
+- report error on undefined datactor
 
 # type constraint
 
