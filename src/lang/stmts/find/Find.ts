@@ -10,18 +10,12 @@ import {
   varCollectionMerge,
   varCollectionValidate,
 } from "../../var-collection"
-import {
-  buildSolveOptions,
-  FindOption,
-  formatSolutions,
-  QueryPattern,
-  queryPatternToExp,
-} from "../find"
+import { formatSolutions, QueryPattern, queryPatternToExp } from "../find"
 
 export class Find extends Stmt {
   constructor(
     public pattern: QueryPattern,
-    public options: Array<FindOption>,
+    public limit: number,
     public goals: Array<GoalExp>,
     public span?: Span,
   ) {
@@ -38,7 +32,7 @@ export class Find extends Stmt {
 
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     const solver = Solver.start(goals)
-    const solutions = solver.solve(mod, buildSolveOptions(this.options))
+    const solutions = solver.solve(mod, { limit: this.limit })
     return formatSolutions(solutions, this.pattern)
   }
 }

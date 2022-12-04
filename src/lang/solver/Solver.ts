@@ -20,7 +20,7 @@ import { Solution } from "../solution"
 **/
 
 export type SolveOptions = {
-  limit?: number
+  limit: number
 }
 
 export class Solver {

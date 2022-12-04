@@ -1,5 +1,3 @@
-remove `FindOption` -- just use property
-
 `Stmts.Trace` -- `execute`
 
 - output `solver trace [steps <n>] { ... }`
