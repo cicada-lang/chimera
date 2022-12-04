@@ -1,7 +1,3 @@
-do not unify unused var
-
-error report with file name -- relative to current path -- for snapshot testing
-
 add color to error message -- use a `highlighter` -- instead of call color during every throw
 
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely

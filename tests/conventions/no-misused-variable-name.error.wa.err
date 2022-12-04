@@ -1,4 +1,4 @@
-[DefaultScript.run] /home/xyh/cicada-lang/whereabouts/tests/conventions/no-misused-variable-name.error.wa
+[Script.run] ./tests/conventions/no-misused-variable-name.error.wa
 [varCollectionAssertNoMisused] used (occurred more than only once) pattern variable must NOT starts with "_"
   pattern variable name: _a
 [note] This policy about unused pattern variable name is important for finding bugs caused by typo.
