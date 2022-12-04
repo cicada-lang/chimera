@@ -1,0 +1,15 @@
+[Script.run] ./tests/conventions/relation-name-must-starts-with-uppercase.error.wa
+I found syntax error in code:
+
+ 1 |border ["sussex", "kent"]
+ 2 |
+
+
+Found the identifier "border" in [0, 6], while expecting:
+ ["identifier"]:
+     stmt:relation_no_goals_no_clause_name@0 -> > (name: identifier) (exp: exp) 
+ ["identifier"]:
+     stmt:relation_no_goals@0 -> > (name: identifier) (exp: exp) dashline (clause_name: identifier) 
+ ["identifier"]:
+     stmt:relation_no_clause_name@0 -> > (name: identifier) (exp: exp) dashline "{" (goals: goals) "}" 
+ and so on ...

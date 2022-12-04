@@ -7,7 +7,7 @@ export const exp = {
 
 export const operator = {
   $grammar: {
-    "operator:var": [{ name: "name" }],
+    "operator:var": [{ name: "pattern_variable_name" }],
   },
 }
 
@@ -44,7 +44,7 @@ export const operand = {
     ],
     "operand:objekt_empty": ['"{"', '"}"'],
     "operand:data": [
-      { type: "name" },
+      { type: "datatype_name" },
       '":"',
       '":"',
       { kind: "name_no_preserved" },
@@ -55,7 +55,7 @@ export const operand = {
       '")"',
     ],
     "operand:data_empty": [
-      { type: "name" },
+      { type: "datatype_name" },
       '":"',
       '":"',
       { kind: "name_no_preserved" },

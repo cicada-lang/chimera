@@ -1,9 +1,3 @@
-# syntax
-
-[syntax] restrict the parser -- relation name must be in `CamelCase`
-
-[syntax] restrict the parser -- `PatternVar` name must be in `camelCase`
-
 # type constraint
 
 [type constraint] built-in global `String`
