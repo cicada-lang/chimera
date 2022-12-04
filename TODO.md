@@ -1,3 +1,5 @@
+# datatype
+
 `Stmts.Datatype` -- datatype declaration -- we should not use the `::` syntax freely
 
 - Because of we also want to use the `::` syntax for module,
@@ -8,24 +10,37 @@
 
 `inferConstraints` -- get constraints from `Exps.Data`
 
+# type constraint
+
 [type constraint] built-in global `String`
 
 [type constraint] built-in global `Number`
 
+# namespace
+
 [namespace] support namespace
 
-# learn
+# first-order logic
 
-Since I understand the use of untyped bound variables now,
+[learn] logic programming's correspondence to first-order logic
+
+[plan] Since I understand the use of untyped bound variables now,
 maybe I can understand Gentzen and Goedel's works.
 
-[question] how to understand constraint in first order logic?
+[learn] I should read Ray's book about first-order logic
+
+[question] how to understand constraint in first-order logic?
 
 - a group of built-in predicates with some axioms?
-- take `Disequality` as an example
-- take finite domain as an example
-- can we use set theoretical rule based language to specify a constraint?
-- maybe we can learn more about this from Byrd's thesis
+
+  - take `Disequality` as an example
+  - take finite domain as an example
+  - if they are axioms, can we use set theoretical
+    rule based language to specify a constraint?
+
+- we can learn more about first-order logic by implementing alphaLean
+
+# learn
 
 [diary] fair-search-strategy.md
 
@@ -53,19 +68,6 @@ maybe I can understand Gentzen and Goedel's works.
 
 [read] ckanren-minikanren-with-constraints.pdf
 
-- The miniKanren Philosophy
-
-  in a purely declarative miniKanren relation, the order of goals is
-  unimportant. That is, swapping two conjuncts (or two disjuncts)
-  should not affect the semantics of the program. This is true only
-  to a point: a miniKanren query that has no answers may diverge
-  instead of failing in finite time. For a query that produces
-  answers, however, reordering subgoals should not affect the set of
-  possible answers returned
-
-  - See (Byrd 2009) for a detailed discussion of these issues and of
-    the miniKanren design philosophy.
-
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 # programming by rewriting
@@ -90,19 +92,11 @@ built-in globals -- `String` to `Array`
 [langs] `langs/forth`
 
 - What are the small step and big step operational semantics of forth-like language?
+- use forth-like language to play with quine
 
 [langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
-
-# learn
-
-[learn] logic programming's correspondence to first order logic
-
-- using whereabouts to implement languages to test FFI to js
-
-  - parsing
-  - formating
 
 # deduction
 
@@ -185,6 +179,8 @@ by allowing a relation to take relations as arguments.
 [later] [DX] when adding new url to `Loader.tracked`, we should let the `watcher` watch it
 
 # maybe
+
+[maybe] [type assertion] because I heard (only heard) that relations fail silently is very bad for debugging,
 
 [maybe] configure limit by built-in special goal `limit <n>`
 that do side-effects to the solver.
