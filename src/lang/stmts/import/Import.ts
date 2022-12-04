@@ -2,7 +2,18 @@ import * as Errors from "../../errors"
 import type { Mod } from "../../mod"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import { defineBinding, ImportBinding } from "../import"
+
+export type ImportBinding = {
+  name: string
+  alias?: string
+}
+
+export function ImportBinding(name: string, alias?: string): ImportBinding {
+  return {
+    name,
+    alias,
+  }
+}
 
 export class Import extends Stmt {
   constructor(
@@ -21,14 +32,25 @@ export class Import extends Stmt {
 
     const importedMod = await mod.options.loader.load(url)
     for (const binding of this.bindings) {
-      const relation = importedMod.relations.get(binding.name)
-      if (relation === undefined) {
-        throw new Errors.LangError(
-          `I meet undefined name: ${binding.name}, when importing module: ${this.path}`,
-        )
+      const datatype = importedMod.datatypes.get(binding.name)
+      if (datatype !== undefined) {
+        mod.datatypes.set(binding.alias || binding.name, datatype)
       }
 
-      defineBinding(mod, binding, relation)
+      const relation = importedMod.relations.get(binding.name)
+      if (relation !== undefined) {
+        mod.relations.set(binding.alias || binding.name, relation)
+      }
+
+      if (relation === undefined) {
+        throw new Errors.LangError(
+          [
+            `[Import.execute]`,
+            `  undefined name: ${binding.name}`,
+            `  imported path: ${this.path}`,
+          ].join("\n"),
+        )
+      }
     }
 
     mod.imported.push(url)

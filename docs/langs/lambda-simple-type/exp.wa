@@ -1,15 +1,13 @@
-Exp Exp::var(_name)
-Exp Exp::fn(_name, ret) -- { Exp ret }
-Exp Exp::ap(target, arg) -- { Exp target Exp arg }
+datatype Exp {
+  var(name)
+  fn(name, ret) -- { Exp ret }
+  ap(target, arg) -- { Exp target Exp arg }
+}
 
-// datatype Exp {
-//   var(name)
-//   fn(name, ret) -- { Exp ret }
-//   ap(target, arg) -- { Exp target Exp arg }
-// }
-
-Type Type::atom(_name)
-Type Type::arrow(argType, retType) -- { Type argType Type retType }
+datatype Type {
+  atom(_name)
+  arrow(argType, retType) -- { Type argType Type retType }
+}
 
 Ctx []
 Ctx [[_name, type] | rest] -- { Type type Ctx rest }

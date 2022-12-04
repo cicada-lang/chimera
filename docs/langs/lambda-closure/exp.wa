@@ -1,8 +1,12 @@
-Exp Exp::var(_name)
-Exp Exp::fn(_name, ret) -- { Exp ret }
-Exp Exp::ap(target, arg) -- { Exp target Exp arg }
+datatype Exp {
+  var(_name)
+  fn(_name, ret) -- { Exp ret }
+  ap(target, arg) -- { Exp target Exp arg }
+}
 
-Value Value::closure(_name, ret, env) -- { Exp ret Env env }
+datatype Value {
+  closure(_name, ret, env) -- { Exp ret Env env }
+}
 
 Env []
 Env [[_name, value] | rest] -- { Value value Env rest }

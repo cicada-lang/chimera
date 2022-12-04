@@ -1,7 +1,9 @@
 import { Exp, Boolean, Nat } from "exp.wa"
 
-Type Type::boolean
-Type Type::nat
+datatype Type {
+  boolean
+  nat
+}
 
 Check [exp, Type::boolean] -- { Boolean exp }
 Check [exp, Type::nat] -- { Nat exp }

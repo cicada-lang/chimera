@@ -1,14 +1,7 @@
-// There are many way to represent `Nat`.
-
-// Using 1 and list:
-
-// Zero []
-// Add1 [n, [1 | n]]
-
-// Nat n -- { Zero n }
-// Nat n -- { Add1 [prev, n] Nat prev }
-
-// Using data constructor:
+datatype Nat {
+  zero
+  add1(prev) -- { Nat prev }
+}
 
 Zero Nat::zero
 Add1 [prev, Nat::add1(prev)]
