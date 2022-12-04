@@ -30,8 +30,12 @@ export class Relation extends Stmt {
       ]),
     )
 
-    const goals = this.goals.map((goal) => evaluateGoalExp(mod, goal))
-    mod.defineClause(this.name, this.clauseName, this.exp, goals)
+    mod.defineClause(
+      this.name,
+      this.clauseName,
+      this.exp,
+      this.goals.map((goal) => evaluateGoalExp(mod, goal)),
+    )
   }
 
   prepare(mod: Mod): void {

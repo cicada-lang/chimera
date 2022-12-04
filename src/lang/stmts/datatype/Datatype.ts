@@ -33,14 +33,24 @@ export class Datatype extends Stmt {
 
   async execute(mod: Mod): Promise<void> {
     for (const datactor of this.datactors) {
-      const goals = datactor.goals.map((goal) => evaluateGoalExp(mod, goal))
-      mod.defineDatactor(this.name, datactor.name, datactor.args, goals)
-      const data = Exps.Data(
+      mod.defineDatactor(
         this.name,
         datactor.name,
-        datactor.args.map((name) => Exps.PatternVar(name)),
+        datactor.args,
+        datactor.goals.map((goal) => evaluateGoalExp(mod, goal)),
       )
-      mod.defineClause(this.name, datactor.name, data, goals)
+
+      mod.defineClause(
+        this.name,
+        datactor.name,
+        Exps.Data(
+          this.name,
+          datactor.name,
+          datactor.args.map((name) => Exps.PatternVar(name)),
+        ),
+        // The `goals` will be inferred.
+        [],
+      )
     }
   }
 

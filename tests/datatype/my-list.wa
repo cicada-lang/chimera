@@ -3,6 +3,11 @@ datatype List {
   cons(head, tail) -- { List tail }
 }
 
+find _ {
+  List List::null
+  List List::cons(1, List::cons(2, List::cons(3, List::null)))
+}
+
 find [list, x, y, z] {
   list = List::cons(1, List::cons(2, List::cons(3, List::null)))
   list = List::cons(x, List::cons(y, List::cons(z, List::null)))
