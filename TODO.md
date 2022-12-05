@@ -10,8 +10,6 @@
   - `boolean`
   - `null`
 
-[learn] about propagator and constraints
-
 # finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf
@@ -29,6 +27,10 @@ implement alphaLean
 # docs
 
 [manual] use github and markdown to write the manual first
+
+# propagator
+
+[propagator] [learn] about propagator and constraints
 
 # langs
 
@@ -124,6 +126,13 @@ https://en.wikipedia.org/wiki/Quotient_by_an_equivalence_relation
 # first-order logic
 
 [learn] logic programming's correspondence to first-order logic
+
+- In a Horn clause all variables are universally quantified
+  and the scope is the whole clause.
+
+  This means Horn clause can only express a subset of first-order logic.
+
+  How should we understand this limitation?
 
 [plan] Since I understand the use of untyped bound variables now,
 maybe I can understand Gentzen and Goedel's works.

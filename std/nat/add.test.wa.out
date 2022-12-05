@@ -8,3 +8,51 @@ solver trace steps 2 {
   
   step {}
 }
+[ Nat::zero() ]
+[ Nat::add1(Nat::zero()) ]
+solver trace steps 3 {
+  step {
+    solution {
+      substitution { x = Nat::zero() y_17 = y y = z }
+      goals { Add [x, y, Nat::add1(z)] }
+    }
+    
+    solution {
+      substitution { x = Nat::add1(prev_18) y_19 = y z = Nat::add1(res_20) }
+      goals { Add [prev_18, y_19, res_20] Add [x, y, Nat::add1(z)] }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x = Nat::add1(prev_18) y_19 = y z = Nat::add1(res_20) }
+      goals { Add [prev_18, y_19, res_20] Add [x, y, Nat::add1(z)] }
+    }
+  }
+  
+  step {
+    solution {
+      substitution {
+        x = Nat::add1(prev_18)
+        y_19 = y
+        z = Nat::add1(res_20)
+        prev_18 = Nat::zero()
+        y_25 = y
+        y = res_20
+      }
+      goals { Add [x, y, Nat::add1(z)] }
+    }
+    
+    solution {
+      substitution {
+        x = Nat::add1(prev_18)
+        y_19 = y
+        z = Nat::add1(res_20)
+        prev_18 = Nat::add1(prev_26)
+        y_27 = y
+        res_20 = Nat::add1(res_28)
+      }
+      goals { Add [prev_26, y_27, res_28] Add [x, y, Nat::add1(z)] }
+    }
+  }
+}

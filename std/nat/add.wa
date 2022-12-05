@@ -1,13 +1,8 @@
 import { Zero, Add1, Nat } from "nat.wa"
 
-Add [x, y, y]
-------------- {
-  Zero x
-}
+Add [Nat::zero, y, y]
 
-Add [x, y, out]
--------------------- {
-  Add1 [prev, x]
-  Add1 [res, out]
+Add [Nat::add1(prev), y, Nat::add1(res)]
+--------------------------- {
   Add [prev, y, res]
 }

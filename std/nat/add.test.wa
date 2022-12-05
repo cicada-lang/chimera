@@ -4,10 +4,17 @@ trace steps 5 {
   Add1 [Nat::add1(Nat::zero), _x]
 }
 
-// find x {
-//   Add [x, x, Nat::zero]
-// }
+find x {
+  Add [x, x, Nat::zero]
+}
 
-// find x {
-//   Add [x, x, Nat::add1(Nat::add1(Nat::zero))]
-// }
+find x {
+  Add [x, x, Nat::add1(Nat::add1(Nat::zero))]
+}
+
+// The following query diverges.
+
+trace steps 3 {
+  Add [x, y, z]
+  Add [x, y, Nat::add1(z)]
+}
