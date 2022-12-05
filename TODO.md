@@ -1,3 +1,5 @@
+pass tests/datatype/merge-properties-to-object.wa
+
 # type constraint
 
 [type constraint] built-in type constraints for primitive types
