@@ -10,6 +10,8 @@
   - `boolean`
   - `null`
 
+[learn] about propagator and constraints
+
 # finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf
@@ -197,12 +199,16 @@ by allowing a relation to take relations as arguments.
 
 # maybe
 
-[maybe] [type assertion] because I heard (only heard) that relations fail silently is very bad for debugging,
+[maybe] [type assertion] because I heard (only heard) that relations fail silently is very bad for debugging.
 
 [maybe] configure limit by built-in special goal `limit <n>`
-that do side-effects to the solver.
 
-- instead of configuring limit by optional
+- which does side-effects to the solver
+- instead of configuring limit by options
+
+[maybe] configure limit by `find limit=<n>`
+
+- and view `key=value` as a generic syntax for options (like XML attributes)
 
 [maybe] [schedule control] control how pursue can return some extra information
 about how schedule the result solutions.
