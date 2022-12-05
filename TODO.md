@@ -1,8 +1,14 @@
 # type constraint
 
-[type constraint] built-in global `String`
+[type constraint] built-in type constraints for primitive types
 
-[type constraint] built-in global `Number`
+- maybe use lowercase (like typescript),
+  so that uppercase still can be user defined.
+
+  - `string`
+  - `number`
+  - `boolean`
+  - `null`
 
 # finite-domain constraint programming
 
@@ -10,9 +16,27 @@
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
+[finite-domain] solve some puzzles about finite-domain as example
+
+# alphaKanren and alphaLean
+
+implement alphaKanren
+
+implement alphaLean
+
+# docs
+
+[manual] use github and markdown to write the manual first
+
 # langs
 
+[wiki of rules] when writing a PL paper,
+use concrete syntax to write examples,
+and use abstract syntax to write rules
+
 [langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
+
+[langs] `langs/lambda-cps` implement CPS rules for lambda calculus
 
 [langs] `langs/forth`
 
@@ -22,12 +46,6 @@
 [langs] `langs/pie` read "a surprisingly competitive conditional operator"
 
 - minikanrenizing the inference rules of pie
-
-# alphaKanren and alphaLean
-
-implement alphaKanren
-
-implement alphaLean
 
 # dataset
 
@@ -89,9 +107,7 @@ implement alphaLean
 
 # std
 
-built-in globals -- `String` to `Array`
-
-- for string processing
+built-in globals -- translate string to array -- for string processing
 
 # deduction
 
