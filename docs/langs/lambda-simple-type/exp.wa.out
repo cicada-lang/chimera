@@ -7,7 +7,7 @@
     Exp::fn(_.0, Exp::fn(_.1, Exp::var(_.1))),
     Exp::fn(_.2, Exp::var(_.2)),
   ),
-  Exp::fn(_.0, Exp::ap(Exp::fn(_.1, Exp::var(_.0)), Exp::var(_.0))) with { disj { _.1 != _.0 } },
+  Exp::fn(_.0, Exp::ap(Exp::fn(_.1, Exp::var(_.0)), Exp::var(_.0))) with { _.1 != _.0 },
   Exp::ap(
     Exp::fn(_.0, Exp::fn(_.1, Exp::var(_.1))),
     Exp::fn(_.2, Exp::fn(_.3, Exp::var(_.3))),
@@ -15,7 +15,7 @@
   Exp::fn(
     _.0,
     Exp::ap(Exp::fn(_.1, Exp::var(_.0)), Exp::fn(_.2, Exp::var(_.2))),
-  ) with { disj { _.1 != _.0 } },
+  ) with { _.1 != _.0 },
   Exp::ap(
     Exp::fn(_.0, Exp::fn(_.1, Exp::var(_.1))),
     Exp::fn(_.2, Exp::fn(_.3, Exp::fn(_.4, Exp::var(_.4)))),
@@ -33,5 +33,5 @@
       Exp::fn(_.1, Exp::var(_.0)),
       Exp::fn(_.2, Exp::fn(_.3, Exp::var(_.3))),
     ),
-  ) with { disj { _.1 != _.0 } }
+  ) with { _.1 != _.0 }
 ]

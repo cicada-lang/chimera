@@ -92,14 +92,21 @@ export function reifyInequalities(
   return inequalities
     .map(substitutionPairs)
     .map((pairs) =>
-      Goals.Disj(
-        pairs.map(([left, right]) =>
-          Goals.NotEqual(
-            substitutionDeepWalk(substitutionForRenaming, left),
-            substitutionDeepWalk(substitutionForRenaming, right),
+      pairs.length === 1
+        ? pairs.map(([left, right]) =>
+            Goals.NotEqual(
+              substitutionDeepWalk(substitutionForRenaming, left),
+              substitutionDeepWalk(substitutionForRenaming, right),
+            ),
+          )[0]
+        : Goals.Disj(
+            pairs.map(([left, right]) =>
+              Goals.NotEqual(
+                substitutionDeepWalk(substitutionForRenaming, left),
+                substitutionDeepWalk(substitutionForRenaming, right),
+              ),
+            ),
           ),
-        ),
-      ),
     )
 }
 
