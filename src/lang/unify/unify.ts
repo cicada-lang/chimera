@@ -165,9 +165,7 @@ function objektAddEtc(
   objekt: Exps.Objekt,
   variable: Exps.PatternVar,
 ): Exps.Objekt {
-  const count = mod.variableCount++
-  const freshName = `${variable.name}#${count}`
-  const etc = Exps.PatternVar(freshName, variable.span)
+  const etc = Exps.PatternVar(mod.freshen(variable.name), variable.span)
   return { ...objekt, etc }
 }
 

@@ -18,13 +18,18 @@ export interface ModOptions {
 **/
 
 export class Mod {
-  variableCount = 0
+  private variableCount = 0
   relations: Map<string, Relation> = new Map()
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
   imported: Array<URL> = []
 
   constructor(public options: ModOptions) {}
+
+  freshen(name: string): string {
+    const [prefix, _count] = name.split("#")
+    return `${prefix}#${this.variableCount++}`
+  }
 
   resolve(href: string): URL {
     return new URL(href, this.options.url)

@@ -1,8 +1,12 @@
-[refactor] `refreshExp` not just refresh name but also add variable to etc of object
+`Relation` has `mod`
+
+call `evaluateGoalExp` only when `pursue`ing `Apply`
+
+`Value` v.s. `Exp` -- `evaluate` is `refresh`
+
+[refactor] `refreshExp` is refresh name and also add variable to `etc` of `Objekt`
 
 - only refreshed goal can be used in `Find`
-
-- `Value` v.s. `Exp` -- `evaluate` is `refresh`
 
 # type constraint
 
