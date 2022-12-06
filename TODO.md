@@ -2,6 +2,8 @@
 
 - only refreshed goal can be used in `Find`
 
+- `Value` v.s. `Exp` -- `evaluate` is `refresh`
+
 # type constraint
 
 [type constraint] built-in type constraints for primitive types
