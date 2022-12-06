@@ -1,6 +1,6 @@
 # merge-able objects
 
-`Objekt` has optional `etc`
+`reify` handle `Objekt`'s `etc`
 
 unify a `PatternVar` with a `Objekt` will push
 the unknownness of the `PatternVar` into the `etc` of the `Objekt`

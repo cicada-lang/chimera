@@ -67,6 +67,7 @@ export function refreshExp(
             refreshExp(mod, property, varMap),
           ]),
         ),
+        exp.etc && refreshExp(mod, exp.etc, varMap),
         exp.span,
       )
     }

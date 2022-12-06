@@ -136,13 +136,19 @@ export type Objekt = {
   "@type": "Exp"
   "@kind": "Objekt"
   properties: Record<string, Exp>
+  etc?: Exp
 } & ExpMeta
 
-export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
+export function Objekt(
+  properties: Record<string, Exp>,
+  etc?: Exp,
+  span?: Span,
+): Objekt {
   return {
     "@type": "Exp",
     "@kind": "Objekt",
     properties,
+    etc,
     span,
   }
 }
