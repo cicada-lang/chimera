@@ -1,3 +1,7 @@
+[refactor] `refreshExp` not just refresh name but also add variable to etc of object
+
+- only refreshed goal can be used in `Find`
+
 # type constraint
 
 [type constraint] built-in type constraints for primitive types
