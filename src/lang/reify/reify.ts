@@ -1,6 +1,7 @@
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
+import type { Mod } from "../mod"
 import { prepareSubstitution } from "../reify"
 import type { Solution } from "../solution"
 import {
@@ -28,10 +29,10 @@ export function Reification(exp: Exp, constraints: Array<Goal>): Reification {
   return { exp, constraints }
 }
 
-export function reify(solution: Solution, exp: Exp): Reification {
+export function reify(mod: Mod, solution: Solution, exp: Exp): Reification {
   exp = substitutionDeepWalk(solution.substitution, exp)
   const substitutionForRenaming = prepareSubstitution(exp)
-  const constraints = reifyInequalities(solution, substitutionForRenaming)
+  const constraints = reifyInequalities(mod, solution, substitutionForRenaming)
   exp = substitutionDeepWalk(substitutionForRenaming, exp)
   return Reification(exp, constraints)
 }
@@ -45,6 +46,7 @@ export function reify(solution: Solution, exp: Exp): Reification {
 **/
 
 export function reifyInequalities(
+  mod: Mod,
   solution: Solution,
   substitutionForRenaming: Substitution,
 ): Array<Goal> {
@@ -87,7 +89,7 @@ export function reifyInequalities(
 
   **/
 
-  inequalities = removeSubsumed(inequalities)
+  inequalities = removeSubsumed(mod, inequalities)
 
   return inequalities
     .map(substitutionPairs)
@@ -163,6 +165,7 @@ function containsVar(exp: Exp, substitutionForRenaming: Substitution): boolean {
 }
 
 function removeSubsumed(
+  mod: Mod,
   inequalities: Array<Substitution>,
   results: Array<Substitution> = [],
 ): Array<Substitution> {
@@ -170,12 +173,12 @@ function removeSubsumed(
 
   const [inequality, ...restInequalities] = inequalities
   if (
-    isSubsumed(inequality, restInequalities) ||
-    isSubsumed(inequality, results)
+    isSubsumed(mod, inequality, restInequalities) ||
+    isSubsumed(mod, inequality, results)
   ) {
-    return removeSubsumed(restInequalities, results)
+    return removeSubsumed(mod, restInequalities, results)
   } else {
-    return removeSubsumed(restInequalities, [inequality, ...results])
+    return removeSubsumed(mod, restInequalities, [inequality, ...results])
   }
 }
 
@@ -193,11 +196,13 @@ function removeSubsumed(
 **/
 
 function isSubsumed(
+  mod: Mod,
   substitution: Substitution,
   inequalities: Array<Substitution>,
 ): boolean {
   return inequalities.some((inequality) => {
     const newSubstitution = unifyMany(
+      mod,
       substitution,
       substitutionPairs(inequality),
     )

@@ -10,7 +10,7 @@ export function pursueNotEqual(
   left: Exp,
   right: Exp,
 ): Solution | undefined {
-  const substitution = unify(solution.substitution, left, right)
+  const substitution = unify(mod, solution.substitution, left, right)
 
   /**
 

@@ -15,7 +15,7 @@ export function pursueEqual(
   left: Exp,
   right: Exp,
 ): Solution | undefined {
-  const substitution = unify(solution.substitution, left, right)
+  const substitution = unify(mod, solution.substitution, left, right)
 
   if (substitution === undefined) {
     return undefined
@@ -40,6 +40,7 @@ export function pursueEqual(
   const inequalities: Array<Substitution> = []
   for (const inequality of solution.inequalities) {
     const newSubstitution = unifyMany(
+      mod,
       substitution,
       substitutionPairs(inequality),
     )

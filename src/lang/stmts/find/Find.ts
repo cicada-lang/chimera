@@ -33,6 +33,6 @@ export class Find extends Stmt {
     const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
     const solver = Solver.start(goals)
     const solutions = solver.solve(mod, { limit: this.limit })
-    return formatSolutions(solutions, this.pattern)
+    return formatSolutions(mod, solutions, this.pattern)
   }
 }

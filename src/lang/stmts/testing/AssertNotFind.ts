@@ -27,7 +27,7 @@ export class AssertNotFind extends Stmt {
         [
           `[AssertNotFind.execute] fail`,
           indent(
-            `found solutions: ${formatSolutions(solutions, this.pattern)}`,
+            `found solutions: ${formatSolutions(mod, solutions, this.pattern)}`,
           ),
         ].join("\n"),
         { span: this.span },

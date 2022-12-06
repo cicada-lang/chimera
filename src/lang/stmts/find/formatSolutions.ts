@@ -1,11 +1,13 @@
 import { indent } from "../../../utils/indent"
 import type { Exp } from "../../exp"
 import * as Exps from "../../exp"
+import type { Mod } from "../../mod"
 import { formatReification, reify } from "../../reify"
 import type { Solution } from "../../solution"
 import type { QueryPattern } from "../find"
 
 export function formatSolutions(
+  mod: Mod,
   solutions: Array<Solution>,
   pattern: QueryPattern,
 ): string {
@@ -19,7 +21,7 @@ export function formatSolutions(
         Exps.ArrayNull(),
       )
       const results = solutions.map((solution) =>
-        formatReification(reify(solution, exp)),
+        formatReification(reify(mod, solution, exp)),
       )
       return formatResults(results)
     }
@@ -27,7 +29,7 @@ export function formatSolutions(
     case "QueryPatternName": {
       const variable = Exps.PatternVar(pattern.name)
       const results = solutions.map((solution) =>
-        formatReification(reify(solution, variable)),
+        formatReification(reify(mod, solution, variable)),
       )
       return formatResults(results)
     }

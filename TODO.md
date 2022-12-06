@@ -1,7 +1,5 @@
 # merge-able objects
 
-`unify` and `reify` takes `mod` -- for using `variableCount`
-
 `reify` handle `Objekt`'s `etc`
 
 unify a `PatternVar` with a `Objekt` will push

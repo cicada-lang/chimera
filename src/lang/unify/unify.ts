@@ -1,4 +1,5 @@
 import type { Exp } from "../exp"
+import type { Mod } from "../mod"
 import {
   Substitution,
   substitutionExtend,
@@ -7,11 +8,12 @@ import {
 import { occur } from "../unify"
 
 export function unifyMany(
+  mod: Mod,
   substitution: Substitution,
   pairs: Array<[Exp, Exp]>,
 ): Substitution | undefined {
   for (const [left, right] of pairs) {
-    const nextSubstitution = unify(substitution, left, right)
+    const nextSubstitution = unify(mod, substitution, left, right)
     if (nextSubstitution === undefined) return undefined
     substitution = nextSubstitution
   }
@@ -20,6 +22,7 @@ export function unifyMany(
 }
 
 export function unify(
+  mod: Mod,
   substitution: Substitution,
   left: Exp,
   right: Exp,
@@ -69,9 +72,9 @@ export function unify(
   }
 
   if (left["@kind"] === "ArrayCons" && right["@kind"] === "ArrayCons") {
-    const carSubstitution = unify(substitution, left.car, right.car)
+    const carSubstitution = unify(mod, substitution, left.car, right.car)
     if (carSubstitution === undefined) return undefined
-    const cdrSubstitution = unify(carSubstitution, left.cdr, right.cdr)
+    const cdrSubstitution = unify(mod, carSubstitution, left.cdr, right.cdr)
     return cdrSubstitution
   }
 
@@ -84,7 +87,12 @@ export function unify(
       const rightProperty = right.properties[name]
       if (rightProperty === undefined) continue
 
-      const nextSubstitution = unify(substitution, leftProperty, rightProperty)
+      const nextSubstitution = unify(
+        mod,
+        substitution,
+        leftProperty,
+        rightProperty,
+      )
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
@@ -99,7 +107,7 @@ export function unify(
 
     for (const [i, leftArg] of left.args.entries()) {
       const rightArg = right.args[i]
-      const nextSubstitution = unify(substitution, leftArg, rightArg)
+      const nextSubstitution = unify(mod, substitution, leftArg, rightArg)
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
