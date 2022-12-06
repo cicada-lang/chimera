@@ -37,6 +37,10 @@ export function unify(
 
   if (left["@kind"] === "PatternVar") {
     if (occur(substitution, left.name, right)) return undefined
+    // if (right['@kind'] === "Objekt" && right.etc === undefined)  {
+    //   right = {...right, etc: }
+    // }
+
     return substitutionExtend(substitution, left.name, right)
   }
 

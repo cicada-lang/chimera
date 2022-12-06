@@ -21,7 +21,7 @@ export function refreshExp(
       const count = mod.variableCount
       mod.variableCount++
 
-      const freshName = `${exp.name}_${count}`
+      const freshName = `${exp.name}#${count}`
       const variable = Exps.PatternVar(freshName, exp.span)
       varMap.set(exp.name, variable)
       return variable
