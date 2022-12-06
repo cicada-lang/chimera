@@ -30,6 +30,18 @@ export class Relation extends Stmt {
       ]),
     )
 
+    /**
+
+       We do not need to call `refreshGoal` here,
+       because `pursue` will call `refreshClause` on `Apply`.
+
+       We should refactor this by:
+
+       - refresh `Value` instead of `Exp`.
+       - add `Values.Object` always has `etc`.
+
+    **/
+
     mod.defineClause(
       this.name,
       this.clauseName,

@@ -1,12 +1,12 @@
 import { indent } from "../../../utils/indent"
 import * as Errors from "../../errors"
 import type { GoalExp } from "../../goal-exp"
-import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
 import { Solver } from "../../solver"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import { formatSolutions, QueryPattern } from "../find"
+import { formatSolutions, QueryPattern, queryPatternNames } from "../find"
+import { prepareGoals } from "../utils/prepareGoals"
 
 export class AssertNotFind extends Stmt {
   constructor(
@@ -19,7 +19,7 @@ export class AssertNotFind extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
+    const goals = prepareGoals(mod, this.goals, queryPatternNames(this.pattern))
     const solver = Solver.start(goals)
     const solutions = solver.solve(mod, { limit: this.limit })
     if (solutions.length > 0) {

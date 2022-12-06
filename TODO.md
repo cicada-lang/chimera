@@ -1,5 +1,3 @@
-extract `prepareGoals`
-
 # type constraint
 
 [type constraint] built-in type constraints for primitive types

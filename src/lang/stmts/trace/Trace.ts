@@ -1,6 +1,5 @@
 import { indent } from "../../../utils/indent"
 import type { GoalExp } from "../../goal-exp"
-import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
 import { Solver } from "../../solver"
 import type { Span } from "../../span"
@@ -11,6 +10,7 @@ import {
   varCollectionValidate,
 } from "../../var-collection"
 import { formatSolver } from "../trace"
+import { prepareGoals } from "../utils/prepareGoals"
 
 export class Trace extends Stmt {
   constructor(
@@ -26,7 +26,7 @@ export class Trace extends Stmt {
       varCollectionMerge([...this.goals.map(varCollectionFromGoalExp)]),
     )
 
-    const goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
+    const goals = prepareGoals(mod, this.goals, [])
     const solver = Solver.start(goals)
     let n = 0
     const steps: Array<string> = []
