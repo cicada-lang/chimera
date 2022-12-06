@@ -1,28 +1,13 @@
 # merge-able objects
 
+`Objekt` has optional `etc`
+
+unify a `PatternVar` with a `Objekt` will push
+the unknownness of the `PatternVar` into the `etc` of the `Objekt`
+
 pass tests/datatype/merge-properties-to-object.wa
 
 - to handle this, we must implement `Objekt` by new constraint -- dot
-
-```
-Objekt {
-  properties,
-  etc,
-}
-
-
-find q {
-  q = { name: "Xie Yuheng" }
-  q = { country: "China" }
-}
-
-q = { name: "Xie Yuheng", ...etc1 }
-p = { name: "Xie Yuheng", ...etc2 }
-
-p = q
-
-q = { country: "China", ...etc2 }
-```
 
 # type constraint
 
@@ -232,8 +217,11 @@ by allowing a relation to take relations as arguments.
 
 # tabling
 
-lvars
-programming with fix points over lattices
+lvars -- programming with fix points over lattices
+
+If you implemented different things,
+and you find that you are using similar implementation techniques,
+maybe there are deep theoretical connections too.
 
 # later
 

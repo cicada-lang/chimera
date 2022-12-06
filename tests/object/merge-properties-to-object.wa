@@ -1,0 +1,11 @@
+find q {
+  q = { name: "Xie Yuheng" }
+  q = { country: "China" }
+}
+
+find q {
+  q = { name: "Xie Yuheng" }
+  p = { name: "Xie Yuheng" }
+  p = q
+  p = { country: "China" }
+}

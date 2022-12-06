@@ -9,6 +9,14 @@ export interface ModOptions {
   loader: Loader
 }
 
+/**
+
+   It is safe to put the `variableCount` in a `Mod`,
+   instead of using true global `variableCount`,
+   because refreshing is relative to a `Mod`.
+
+**/
+
 export class Mod {
   variableCount = 0
   relations: Map<string, Relation> = new Map()
