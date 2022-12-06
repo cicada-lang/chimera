@@ -1,14 +1,3 @@
-# merge-able objects
-
-`reify` handle `Objekt`'s `etc`
-
-unify a `PatternVar` with a `Objekt` will push
-the unknownness of the `PatternVar` into the `etc` of the `Objekt`
-
-pass tests/datatype/merge-properties-to-object.wa
-
-- to handle this, we must implement `Objekt` by new constraint -- dot
-
 # type constraint
 
 [type constraint] built-in type constraints for primitive types

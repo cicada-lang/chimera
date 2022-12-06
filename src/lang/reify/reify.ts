@@ -153,8 +153,10 @@ function containsVar(exp: Exp, substitutionForRenaming: Substitution): boolean {
     }
 
     case "Objekt": {
-      return Object.values(exp.properties).some((exp) =>
-        containsVar(exp, substitutionForRenaming),
+      return (
+        Object.values(exp.properties).some((exp) =>
+          containsVar(exp, substitutionForRenaming),
+        ) || Boolean(exp.etc && containsVar(exp.etc, substitutionForRenaming))
       )
     }
 

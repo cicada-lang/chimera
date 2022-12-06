@@ -42,6 +42,10 @@ export function prepareSubstitution(
         substitution = prepareSubstitution(property, substitution)
       }
 
+      if (exp.etc) {
+        substitution = prepareSubstitution(exp.etc, substitution)
+      }
+
       return substitution
     }
 

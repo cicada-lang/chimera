@@ -24,6 +24,7 @@ export function substitutionDeepWalk(
             substitutionDeepWalk(substitution, property),
           ]),
         ),
+        exp.etc && substitutionDeepWalk(substitution, exp.etc),
       )
     }
 

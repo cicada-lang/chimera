@@ -31,9 +31,10 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
     }
 
     case "Objekt": {
-      return varCollectionMerge(
-        Object.values(exp.properties).map(varCollectionFromExp),
-      )
+      return varCollectionMerge([
+        ...Object.values(exp.properties).map(varCollectionFromExp),
+        ...(exp.etc ? [varCollectionFromExp(exp.etc)] : []),
+      ])
     }
 
     case "Data": {

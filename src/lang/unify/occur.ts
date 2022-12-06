@@ -20,8 +20,10 @@ export function occur(
     }
 
     case "Objekt": {
-      return Object.values(exp.properties).some((property) =>
-        occur(substitution, name, property),
+      return (
+        Object.values(exp.properties).some((property) =>
+          occur(substitution, name, property),
+        ) || Boolean(exp.etc && occur(substitution, name, exp.etc))
       )
     }
 

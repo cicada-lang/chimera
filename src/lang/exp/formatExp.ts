@@ -40,20 +40,33 @@ export function formatExp(exp: Exp): string {
     }
 
     case "Objekt": {
-      if (Object.entries(exp.properties).length === 0) {
+      const properties = formatProperties(exp)
+
+      if (properties.length === 0) {
         return "{}"
       }
 
-      const properties = Object.entries(exp.properties)
-        .map(([name, property]) => `"${name}": ${formatExp(property)}`)
-        .join(", ")
-      return `{ ${properties} }`
+      return `{ ${properties.join(", ")} }`
     }
 
     case "Data": {
       const args = exp.args.map(formatExp)
       return `${exp.type}::${exp.kind}${formatArgs(args)}`
     }
+  }
+}
+
+function formatProperties(exp: Exp): Array<string> {
+  if (exp["@kind"] === "Objekt") {
+    let properties = Object.entries(exp.properties).map(
+      ([name, property]) => `"${name}": ${formatExp(property)}`,
+    )
+    if (exp.etc) {
+      properties = [...properties, ...formatProperties(exp.etc)]
+    }
+    return properties
+  } else {
+    return []
   }
 }
 
