@@ -83,6 +83,11 @@ find end {
   Eval [start, end]
 }
 
+assert not find end {
+  start = [[], ["hello", "world"]]
+  Eval [start, end]
+}
+
 find words limit 10 {
   start = [[], words]
   end = [["I", "love", "you"], []]
