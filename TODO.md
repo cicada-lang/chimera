@@ -36,6 +36,8 @@ implement alphaLean
 
 # langs
 
+[langs] `langs/joy` -- use `Absent` to solve some quine
+
 [wiki of rules] when writing a PL paper,
 use concrete syntax to write examples,
 and use abstract syntax to write rules
@@ -43,11 +45,6 @@ and use abstract syntax to write rules
 [langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
 
 [langs] `langs/lambda-cps` implement CPS rules for lambda calculus
-
-[langs] `langs/forth`
-
-- What are the small step and big step operational semantics of forth-like language?
-- use forth-like language to play with quine
 
 [langs] `langs/pie` read "a surprisingly competitive conditional operator"
 

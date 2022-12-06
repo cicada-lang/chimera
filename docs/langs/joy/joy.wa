@@ -1,0 +1,73 @@
+// Small step operational semantics of a Forth-like language.
+
+Append [[], t, t]
+
+Append [[a | d], t, out]
+------------------------- {
+  Append [d, t, res]
+  out = [a | res]
+}
+
+Step [
+  [stack, [[quoted], "apply" | rest]],
+  [stack, result],
+] -- {
+  Append [quoted, rest, result]
+}
+
+Step [
+  [[x | stack], ["dup" | rest]],
+  [[x, x | stack], rest],
+]
+
+Step [
+  [[_x | stack], ["drop" | rest]],
+  [stack, rest],
+]
+
+Step [
+  [[x, y | stack], ["swap" | rest]],
+  [[y, x | stack], rest],
+]
+
+// It seems we need to use `Absent` to limit `literal`,
+// so that the clauses are mutually exclusive.
+
+Step [
+  [stack, [literal | rest]],
+  [[literal | stack], rest],
+]
+
+Eval [start, end]
+-------------------- {
+  Step [start, end]
+}
+
+Eval [start, end]
+------------------ {
+  Step [start, next]
+  Eval [next, end]
+}
+
+find end {
+  start = [
+    [1, 2, 3],
+    ["swap", "drop", "swap", "drop"],
+  ]
+
+  Eval [start, end]
+}
+
+find words limit 10 {
+  start = [[], words]
+  end = [["I", "love", "you"], []]
+  Eval [start, end]
+}
+
+// Try to solve something like quine.
+
+// find words limit 1 {
+//   start = [[], [words, "apply"]]
+//   end = [words, []]
+//   Eval [start, end]
+// }
