@@ -58,6 +58,9 @@ export function refreshExp(
     }
 
     case "Objekt": {
+      const etc =
+        exp.etc || Exps.PatternVar(`etc#${mod.variableCount++}`, exp.span)
+
       return Exps.Objekt(
         Object.fromEntries(
           Object.entries(exp.properties).map(([name, property]) => [
@@ -65,7 +68,7 @@ export function refreshExp(
             refreshExp(mod, property, varMap),
           ]),
         ),
-        exp.etc && refreshExp(mod, exp.etc, varMap),
+        refreshExp(mod, etc, varMap),
         exp.span,
       )
     }

@@ -42,11 +42,15 @@ export function formatExp(exp: Exp): string {
     case "Objekt": {
       const properties = formatProperties(exp)
 
-      if (properties.length === 0) {
+      if (properties.size === 0) {
         return "{}"
       }
 
-      return `{ ${properties.join(", ")} }`
+      const entries = Array.from(properties.entries()).map(
+        ([name, property]) => `"${name}": ${property}`,
+      )
+
+      return `{ ${entries.join(", ")} }`
     }
 
     case "Data": {
@@ -56,18 +60,19 @@ export function formatExp(exp: Exp): string {
   }
 }
 
-function formatProperties(exp: Exp): Array<string> {
+function formatProperties(exp: Exp): Map<string, string> {
+  let properties = new Map()
   if (exp["@kind"] === "Objekt") {
-    let properties = Object.entries(exp.properties).map(
-      ([name, property]) => `"${name}": ${formatExp(property)}`,
-    )
-    if (exp.etc) {
-      properties = [...properties, ...formatProperties(exp.etc)]
+    for (const [name, property] of Object.entries(exp.properties)) {
+      properties.set(name, formatExp(property))
     }
-    return properties
-  } else {
-    return []
+
+    if (exp.etc !== undefined) {
+      properties = new Map([...properties, ...formatProperties(exp.etc)])
+    }
   }
+
+  return properties
 }
 
 function isLargeArgs(args: Array<string>): boolean {

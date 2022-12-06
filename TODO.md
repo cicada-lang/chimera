@@ -10,6 +10,8 @@
   - `boolean`
   - `null`
 
+[read] A Unified Approach to Solving Seven Programming Problems (Functional Pearl)
+
 # finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf

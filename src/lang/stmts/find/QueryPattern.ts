@@ -51,3 +51,15 @@ export function queryPatternToExp(pattern: QueryPattern): Exp {
     }
   }
 }
+
+export function queryPatternNames(pattern: QueryPattern): Array<string> {
+  switch (pattern["@kind"]) {
+    case "QueryPatternName": {
+      return [pattern.name]
+    }
+
+    case "QueryPatternNames": {
+      return pattern.names
+    }
+  }
+}
