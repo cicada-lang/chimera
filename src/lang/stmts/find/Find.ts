@@ -1,4 +1,5 @@
 import * as Exps from "../../exp"
+import type { Goal } from "../../goal"
 import type { GoalExp } from "../../goal-exp"
 import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
@@ -37,16 +38,30 @@ export class Find extends Stmt {
       ]),
     )
 
-    const varMap = new Map(
-      queryPatternNames(this.pattern).map((name) => [
-        name,
-        Exps.PatternVar(name),
-      ]),
-    )
-    let goals = this.goals.map((goal) => GoalExps.evaluateGoalExp(mod, goal))
-    goals = goals.map((goal) => refreshGoal(mod, goal, varMap))
+    const goals = prepareGoals(mod, this.goals, queryPatternNames(this.pattern))
     const solver = Solver.start(goals)
     const solutions = solver.solve(mod, { limit: this.limit })
     return formatSolutions(mod, solutions, this.pattern)
   }
+}
+
+function prepareGoals(
+  mod: Mod,
+  goals: Array<GoalExp>,
+  names: Array<string>,
+): Array<Goal> {
+  /**
+
+       Only refresh goal can be used,
+       because `refreshExp` also `etc` to `Objekt`.
+
+    **/
+
+  const varMap = new Map(names.map((name) => [name, Exps.PatternVar(name)]))
+
+  const freshGoals = goals
+    .map((goal) => GoalExps.evaluateGoalExp(mod, goal))
+    .map((goal) => refreshGoal(mod, goal, varMap))
+
+  return freshGoals
 }
