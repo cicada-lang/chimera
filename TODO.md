@@ -1,6 +1,28 @@
+# merge-able objects
+
 pass tests/datatype/merge-properties-to-object.wa
 
 - to handle this, we must implement `Objekt` by new constraint -- dot
+
+```
+Objekt {
+  properties,
+  etc,
+}
+
+
+find q {
+  q = { name: "Xie Yuheng" }
+  q = { country: "China" }
+}
+
+q = { name: "Xie Yuheng", ...etc1 }
+p = { name: "Xie Yuheng", ...etc2 }
+
+p = q
+
+q = { country: "China", ...etc2 }
+```
 
 # type constraint
 
@@ -172,11 +194,13 @@ maybe I can understand Gentzen and Goedel's works.
 [read] pure-declarative-and-constructive-arithmetic-relations.pdf
 [read] a-surprisingly-competitive-conditional-operator.pdf
 
-# complexity
+# search strategy
 
 [complexity] analyze time complexity of our search strategy
 
 [question] [complexity] how to analyze time complexity of relation automatically?
+
+conflict directed clause learning
 
 # optional output valid JSON
 
@@ -205,6 +229,11 @@ by allowing a relation to take relations as arguments.
   "any computation can happens during type checking".
   in relational programming, all computation are un-nested,
   what would happen here?
+
+# tabling
+
+lvars
+programming with fix points over lattices
 
 # later
 
