@@ -1,5 +1,7 @@
 pass tests/datatype/merge-properties-to-object.wa
 
+- to handle this, we must implement `Objekt` by new constraint -- dot
+
 # type constraint
 
 [type constraint] built-in type constraints for primitive types
