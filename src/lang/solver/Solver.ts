@@ -5,16 +5,25 @@ import { Solution } from "../solution"
 
 /**
 
+   Constraint logic programming seems to me
+   much like how a person solve a problem
+   by working on partial solutions until some of them are complete.
+
    A `Solver` has a queue of `partialSolutions`,
    one solution represents a path we are searching.
 
    A `Solution` has a queue of `goals`,
    if this queue is not empty, the solution is partial.
 
+   Beside the `goals`, a `Solution` is composed by many kind of constraints,
+   among which the most important one is `substitution` of bindings,
+   `goals` can be viewed as special constraint.
+
    To work on a solution is to pursue it's first goal.
 
    Working on a solution might generate new solutions to work on,
-   one solution for each clause of a relation,
+   for examples, one new solution for each clause of a relation,
+   or one new solution for each subgoal of a disjunction,
    representing a new branching path to search.
 
 **/
