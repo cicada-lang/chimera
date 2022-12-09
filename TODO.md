@@ -1,5 +1,9 @@
 # type constraint
 
+`Exp` vs `Value` -- it is import that mod has a simple map from name to values -- the Env`
+
+avoid using refresh, by generate fresh at compile time
+
 [type constraint] built-in type constraints for primitive types
 
 - maybe use lowercase (like typescript),

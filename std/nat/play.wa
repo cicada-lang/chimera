@@ -1,0 +1,24 @@
+LtEqThree n
+-------------- {
+  n != Nat::add1(Nat::add1(Nat::add1(Nat::zero)))
+}
+
+find n {
+  LtEqThree n
+}
+
+find _ {
+  LtEqThree Nat::zero
+}
+
+find _ {
+  LtEqThree Nat::add1(Nat::zero)
+}
+
+find _ {
+  LtEqThree Nat::add1(Nat::add1(Nat::zero))
+}
+
+find _ {
+  LtEqThree Nat::add1(Nat::add1(Nat::add1(Nat::zero)))
+}
