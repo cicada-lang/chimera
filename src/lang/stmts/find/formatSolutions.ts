@@ -4,36 +4,23 @@ import { formatReification, reify } from "../../reify"
 import type { Solution } from "../../solution"
 import type { Value } from "../../value"
 import * as Values from "../../value"
-import type { QueryPattern } from "../find"
 
 export function formatSolutions(
   mod: Mod,
   solutions: Array<Solution>,
-  pattern: QueryPattern,
+  variables: Array<Values.PatternVar>,
 ): string {
-  switch (pattern["@kind"]) {
-    case "QueryPatternNames": {
-      const variables: Array<Value> = pattern.names.map((name) =>
-        Values.PatternVar(name),
-      )
-      const value = variables.reduceRight(
-        (result, variable) => Values.ArrayCons(variable, result),
-        Values.ArrayNull(),
-      )
-      const results = solutions.map((solution) =>
-        formatReification(reify(mod, solution, value)),
-      )
-      return formatResults(results)
-    }
+  const value =
+    variables.length === 1
+      ? variables[0]
+      : variables.reduceRight<Value>(
+          (result, variable) => Values.ArrayCons(variable, result),
+          Values.ArrayNull(),
+        )
 
-    case "QueryPatternName": {
-      const variable = Values.PatternVar(pattern.name)
-      const results = solutions.map((solution) =>
-        formatReification(reify(mod, solution, variable)),
-      )
-      return formatResults(results)
-    }
-  }
+  return formatResults(
+    solutions.map((solution) => formatReification(reify(mod, solution, value))),
+  )
 }
 
 function formatResults(results: Array<string>): string {

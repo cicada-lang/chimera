@@ -1,4 +1,5 @@
-import type { Env } from "../env"
+import { Env, envLookupValue } from "../env"
+import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
@@ -7,7 +8,16 @@ import * as Values from "../value"
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
     case "PatternVar": {
-      return Values.PatternVar(exp.name)
+      const local = envLookupValue(env, exp.name)
+      if (local !== undefined) return local
+
+      const value = envLookupValue(mod.env, exp.name)
+      if (value !== undefined) return value
+
+      throw new Errors.ElaborationError(
+        `[evaluate] undefined name: ${exp.name}`,
+        { span: exp.span },
+      )
     }
 
     case "ReifiedVar": {

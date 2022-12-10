@@ -35,9 +35,13 @@ export class Find extends Stmt {
       ]),
     )
 
-    const goals = prepareGoals(mod, this.goals, queryPatternNames(this.pattern))
+    const { goals, variables } = prepareGoals(
+      mod,
+      this.goals,
+      queryPatternNames(this.pattern),
+    )
     const solver = Solver.start(goals)
     const solutions = solver.solve(mod, { limit: this.limit })
-    return formatSolutions(mod, solutions, this.pattern)
+    return formatSolutions(mod, solutions, variables)
   }
 }

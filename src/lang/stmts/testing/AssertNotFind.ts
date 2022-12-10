@@ -19,7 +19,11 @@ export class AssertNotFind extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
-    const goals = prepareGoals(mod, this.goals, queryPatternNames(this.pattern))
+    const { goals, variables } = prepareGoals(
+      mod,
+      this.goals,
+      queryPatternNames(this.pattern),
+    )
     const solver = Solver.start(goals)
     const solutions = solver.solve(mod, { limit: this.limit })
     if (solutions.length > 0) {
@@ -27,7 +31,7 @@ export class AssertNotFind extends Stmt {
         [
           `[AssertNotFind.execute] fail`,
           indent(
-            `found solutions: ${formatSolutions(mod, solutions, this.pattern)}`,
+            `found solutions: ${formatSolutions(mod, solutions, variables)}`,
           ),
         ].join("\n"),
         { span: this.span },

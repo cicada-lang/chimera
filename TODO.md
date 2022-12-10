@@ -1,15 +1,15 @@
 # type constraint
 
-`Clause` has `GoalExp` instead of `Goal`
+[refactor] `prepareGoals`
 
-- `Clause` has `bindings: Set<string>` -- generated at compile time
+[maybe] disallow `QueryPatternNames` of length 1
 
-avoid using `refreshGoal` in lang/pursue/pursue.ts
-
-avoid using `refreshGoal` in lang/stmts/utils/prepareGoals.ts
+[maybe] quit using `QueryPattern` just use `Array<string>`
 
 `Values.Objekt` -- always has `etc`
+
 rename `Exps.Var` to `Exps.PatternVar`
+
 remove `Exps.ReifiedVar`
 
 [type constraint] built-in type constraints for primitive types

@@ -1,9 +1,10 @@
+import { envExtend } from "../../env"
 import type { Goal } from "../../goal"
 import type { GoalExp } from "../../goal-exp"
 import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
-import { refreshGoal } from "../../refresh"
 import * as Values from "../../value"
+import { collectBindingsFromGoalExps } from "../../value"
 
 /**
 
@@ -24,12 +25,24 @@ export function prepareGoals(
   mod: Mod,
   goals: Array<GoalExp>,
   names: Array<string>,
-): Array<Goal> {
-  const varMap = new Map(names.map((name) => [name, Values.PatternVar(name)]))
+): { goals: Array<Goal>; variables: Array<Values.PatternVar> } {
+  const variables: Array<Values.PatternVar> = []
+  let env = mod.env
+  for (const name of names) {
+    const variable = Values.PatternVar(mod.freshen(name))
+    variables.push(variable)
+    env = envExtend(env, name, variable)
+  }
 
-  const freshGoals = goals
-    .map((goal) => GoalExps.evaluateGoalExp(mod, mod.env, goal))
-    .map((goal) => refreshGoal(mod, goal, varMap))
+  const bindings = collectBindingsFromGoalExps(goals)
+  for (const name of bindings) {
+    if (!names.includes(name)) {
+      env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))
+    }
+  }
 
-  return freshGoals
+  return {
+    goals: goals.map((goal) => GoalExps.evaluateGoalExp(mod, env, goal)),
+    variables,
+  }
 }

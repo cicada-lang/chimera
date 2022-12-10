@@ -3,10 +3,15 @@ import type { Env } from "../env"
 import { envEmpty, envExtend, envLookupValue } from "../env"
 import * as Errors from "../errors"
 import type { Exp } from "../exp"
-import type { Goal } from "../goal"
+import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
-import type { Value } from "../value"
-import { Clause, Relation } from "../value"
+import {
+  Clause,
+  collectBindingsFromExp,
+  collectBindingsFromGoalExps,
+  Relation,
+  Value,
+} from "../value"
 
 export interface ModOptions {
   url: URL
@@ -81,16 +86,21 @@ export class Mod {
     name: string,
     clauseName: string | undefined,
     exp: Exp,
-    goals?: Array<Goal>,
+    goals: Array<GoalExp> = [],
   ): void {
     const relation = this.findRelationOrFail(name)
+    const bindings = new Set([
+      ...collectBindingsFromExp(exp),
+      ...collectBindingsFromGoalExps(goals),
+    ])
     relation.clauses.push(
       Clause(
         this,
         this.env,
+        bindings,
         clauseName || relation.clauses.length.toString(),
         exp,
-        goals || [],
+        goals,
       ),
     )
   }

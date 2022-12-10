@@ -1,6 +1,5 @@
 import type { Exp } from "../../exp"
 import type { GoalExp } from "../../goal-exp"
-import { evaluateGoalExp } from "../../goal-exp"
 import type { Mod } from "../../mod"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
@@ -42,12 +41,7 @@ export class Relation extends Stmt {
 
     **/
 
-    mod.defineClause(
-      this.name,
-      this.clauseName,
-      this.exp,
-      this.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
-    )
+    mod.defineClause(this.name, this.clauseName, this.exp, this.goals)
   }
 
   prepare(mod: Mod): void {

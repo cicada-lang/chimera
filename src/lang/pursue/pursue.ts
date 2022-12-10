@@ -1,10 +1,11 @@
-import type { Env } from "../env"
+import { Env, envExtend } from "../env"
 import { evaluate } from "../evaluate"
 import type { Goal } from "../goal"
+import { evaluateGoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 import { pursueEqual, pursueNotEqual } from "../pursue"
-import { refreshGoal, refreshValue } from "../refresh"
 import type { Solution } from "../solution"
+import * as Values from "../value"
 
 /**
 
@@ -22,11 +23,16 @@ export function pursue(
 ): Array<Solution> {
   switch (goal["@kind"]) {
     case "Apply": {
-      const relation = goal.relation
-      return relation.clauses.flatMap((clause) => {
-        const varMap = new Map()
-        const value = refreshValue(mod, evaluate(mod, env, clause.exp), varMap)
-        const goals = clause.goals.map((goal) => refreshGoal(mod, goal, varMap))
+      return goal.relation.clauses.flatMap((clause) => {
+        env = clause.env
+        for (const name of clause.bindings) {
+          env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))
+        }
+
+        const value = evaluate(clause.mod, env, clause.exp)
+        const goals = clause.goals.map((goal) =>
+          evaluateGoalExp(clause.mod, env, goal),
+        )
 
         const newSolution = pursueEqual(mod, solution, value, goal.arg)
         if (newSolution === undefined) return []

@@ -2,46 +2,46 @@
 solver trace steps 5 {
   step {
     solution {
-      substitution { x#0 = true }
-      goals { Always [] x#0 = false }
+      substitution { x#1 = true }
+      goals { Always [] x#1 = false }
     }
   }
   
   step {
     solution {
-      substitution { x#0 = true }
-      goals { x#0 = false }
+      substitution { x#1 = true }
+      goals { x#1 = false }
     }
     
     solution {
-      substitution { x#0 = true }
-      goals { Always [] x#0 = false }
+      substitution { x#1 = true }
+      goals { Always [] x#1 = false }
     }
   }
   
   step {
     solution {
-      substitution { x#0 = true }
-      goals { Always [] x#0 = false }
+      substitution { x#1 = true }
+      goals { Always [] x#1 = false }
     }
   }
   
   step {
     solution {
-      substitution { x#0 = true }
-      goals { x#0 = false }
+      substitution { x#1 = true }
+      goals { x#1 = false }
     }
     
     solution {
-      substitution { x#0 = true }
-      goals { Always [] x#0 = false }
+      substitution { x#1 = true }
+      goals { Always [] x#1 = false }
     }
   }
   
   step {
     solution {
-      substitution { x#0 = true }
-      goals { Always [] x#0 = false }
+      substitution { x#1 = true }
+      goals { Always [] x#1 = false }
     }
   }
 }
@@ -49,8 +49,8 @@ solver trace steps 5 {
 solver trace steps 2 {
   step {
     solution {
-      substitution { x#1 = true }
-      goals { x#1 = false Always [] }
+      substitution { x#3 = true }
+      goals { x#3 = false Always [] }
     }
   }
   
@@ -61,75 +61,75 @@ solver trace steps 5 {
   step {
     solution {
       substitution {}
-      goals { x#2 = true Always [] x#2 = false }
+      goals { x#5 = true Always [] x#5 = false }
     }
     
     solution {
       substitution {}
-      goals { x#2 = false Always [] x#2 = false }
+      goals { x#5 = false Always [] x#5 = false }
     }
   }
   
   step {
     solution {
       substitution {}
-      goals { x#2 = false Always [] x#2 = false }
+      goals { x#5 = false Always [] x#5 = false }
     }
     
     solution {
-      substitution { x#2 = true }
-      goals { Always [] x#2 = false }
+      substitution { x#5 = true }
+      goals { Always [] x#5 = false }
     }
   }
   
   step {
     solution {
-      substitution { x#2 = true }
-      goals { Always [] x#2 = false }
+      substitution { x#5 = true }
+      goals { Always [] x#5 = false }
     }
     
     solution {
-      substitution { x#2 = false }
-      goals { Always [] x#2 = false }
+      substitution { x#5 = false }
+      goals { Always [] x#5 = false }
     }
   }
   
   step {
     solution {
-      substitution { x#2 = false }
-      goals { Always [] x#2 = false }
+      substitution { x#5 = false }
+      goals { Always [] x#5 = false }
     }
     
     solution {
-      substitution { x#2 = true }
-      goals { x#2 = false }
+      substitution { x#5 = true }
+      goals { x#5 = false }
     }
     
     solution {
-      substitution { x#2 = true }
-      goals { Always [] x#2 = false }
+      substitution { x#5 = true }
+      goals { Always [] x#5 = false }
     }
   }
   
   step {
     solution {
-      substitution { x#2 = true }
-      goals { x#2 = false }
+      substitution { x#5 = true }
+      goals { x#5 = false }
     }
     
     solution {
-      substitution { x#2 = true }
-      goals { Always [] x#2 = false }
+      substitution { x#5 = true }
+      goals { Always [] x#5 = false }
     }
     
     solution {
-      substitution { x#2 = false }
-      goals { x#2 = false }
+      substitution { x#5 = false }
+      goals { x#5 = false }
     }
     
     solution {
-      substitution { x#2 = false }
-      goals { Always [] x#2 = false }
+      substitution { x#5 = false }
+      goals { Always [] x#5 = false }
     }
   }
 }

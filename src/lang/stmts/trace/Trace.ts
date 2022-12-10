@@ -26,7 +26,7 @@ export class Trace extends Stmt {
       varCollectionMerge([...this.goals.map(varCollectionFromGoalExp)]),
     )
 
-    const goals = prepareGoals(mod, this.goals, [])
+    const { goals, variables } = prepareGoals(mod, this.goals, [])
     const solver = Solver.start(goals)
     let n = 0
     const steps: Array<string> = []

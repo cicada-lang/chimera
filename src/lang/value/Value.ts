@@ -1,6 +1,6 @@
 import type { Env } from "../env"
 import type { Exp } from "../exp"
-import type { Goal } from "../goal"
+import type { GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 
 export type Value =
@@ -179,21 +179,26 @@ export function Relation(name: string, clauses: Array<Clause>): Relation {
 export type Clause = {
   mod: Mod
   env: Env
+  bindings: Set<string>
   name: string
+
   exp: Exp
-  goals: Array<Goal>
+  goals: Array<GoalExp>
 }
 
 export function Clause(
   mod: Mod,
   env: Env,
+  bindings: Set<string>,
   name: string,
+
   exp: Exp,
-  goals: Array<Goal>,
+  goals: Array<GoalExp>,
 ): Clause {
   return {
     mod,
     env,
+    bindings,
     name,
     exp,
     goals,
