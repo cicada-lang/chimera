@@ -1,8 +1,18 @@
 # type constraint
 
-`Exp` vs `Value` -- it is import that mod has a simple map from name to values -- the Env`
+`Env`
 
-avoid using refresh, by generate fresh at compile time
+`evaluate` take `mod` and `env`
+
+`mod` has a simple map from name to values -- the `Env`
+
+- instead of using a special namespace for `solutions`
+
+avoid using `refreshClause` in lang/pursue/pursue.ts
+
+- by generate `fresh` at compile time
+
+avoid using `refreshGoal` in lang/stmts/utils/prepareGoals.ts
 
 [type constraint] built-in type constraints for primitive types
 
