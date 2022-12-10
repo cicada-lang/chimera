@@ -38,13 +38,13 @@ export function QueryPatternName(name: string, span: Span): QueryPatternName {
 export function queryPatternToExp(pattern: QueryPattern): Exp {
   switch (pattern["@kind"]) {
     case "QueryPatternName": {
-      return Exps.PatternVar(pattern.name, pattern.span)
+      return Exps.Var(pattern.name, pattern.span)
     }
 
     case "QueryPatternNames": {
       let exp: Exp = Exps.ArrayNull()
       for (const name of [...pattern.names].reverse()) {
-        exp = Exps.ArrayCons(Exps.PatternVar(name, pattern.span), exp)
+        exp = Exps.ArrayCons(Exps.Var(name, pattern.span), exp)
       }
 
       return exp

@@ -7,7 +7,7 @@ export function property_matcher(tree: pt.Tree): [string, Exp] {
   return pt.matcher<[string, Exp]>({
     "property:field_shorthand": ({ key }, { span }) => [
       matchers.key_matcher(key),
-      Exps.PatternVar(matchers.key_matcher(key), span),
+      Exps.Var(matchers.key_matcher(key), span),
     ],
     "property:field": ({ key, exp }) => [
       matchers.key_matcher(key),

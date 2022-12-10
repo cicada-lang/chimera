@@ -1,7 +1,5 @@
 # type constraint
 
-[refactor] rename `Exps.Var` to `Exps.PatternVar`
-
 [refactor] `prepareGoals`
 
 [maybe] disallow `QueryPatternNames` of length 1

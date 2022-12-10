@@ -3,7 +3,7 @@ import type { Exp } from "../exp"
 
 export function formatExp(exp: Exp): string {
   switch (exp["@kind"]) {
-    case "PatternVar": {
+    case "Var": {
       return exp.name
     }
 

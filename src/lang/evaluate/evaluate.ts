@@ -7,7 +7,7 @@ import * as Values from "../value"
 
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
-    case "PatternVar": {
+    case "Var": {
       const local = envLookupValue(env, exp.name)
       if (local !== undefined) return local
 

@@ -4,7 +4,7 @@ import { createVarCollection, varCollectionMerge } from "../var-collection"
 
 export function varCollectionFromExp(exp: Exp): VarCollection {
   switch (exp["@kind"]) {
-    case "PatternVar": {
+    case "Var": {
       return createVarCollection([[exp.name, [exp]]])
     }
 

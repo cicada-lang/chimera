@@ -3,7 +3,7 @@ import type { GoalExp } from "../goal-exp"
 
 export function collectBindingsFromExp(exp: Exp): Set<string> {
   switch (exp["@kind"]) {
-    case "PatternVar": {
+    case "Var": {
       return new Set([exp.name])
     }
 
