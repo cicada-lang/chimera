@@ -1,5 +1,5 @@
 import type { Exp } from "../exp"
-import type { Relation } from "../relation"
+import type { Relation } from "../value"
 
 export type Goal = Apply | Equal | NotEqual | Conj | Disj
 

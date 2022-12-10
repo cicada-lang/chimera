@@ -1,10 +1,10 @@
 # type constraint
 
-`Relation` as `Value`
-
 `mod` has a simple map from name to values -- the `Env`
 
 - instead of using a special namespace for `solutions`
+
+`unify` over `Value` instead of `Exp`
 
 avoid using `refreshClause` in lang/pursue/pursue.ts
 

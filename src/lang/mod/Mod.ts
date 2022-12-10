@@ -1,8 +1,8 @@
 import type { Loader } from "../../loader"
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
-import { Clause, Relation } from "../relation"
 import type { Stmt } from "../stmt"
+import { Clause, Relation } from "../value"
 
 export interface ModOptions {
   url: URL

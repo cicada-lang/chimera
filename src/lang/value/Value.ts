@@ -1,3 +1,6 @@
+import type { Exp } from "../exp"
+import type { Goal } from "../goal"
+
 export type Value =
   | PatternVar
   | ReifiedVar
@@ -9,6 +12,7 @@ export type Value =
   | ArrayNull
   | Objekt
   | Data
+  | Relation
 
 export type PatternVar = {
   "@type": "Value"
@@ -151,5 +155,33 @@ export function Data(type: string, kind: string, args: Array<Value>): Data {
     type,
     kind,
     args,
+  }
+}
+
+export type Relation = {
+  "@type": "Value"
+  "@kind": "Relation"
+  clauses: Array<Clause>
+}
+
+export function Relation(clauses: Array<Clause>): Relation {
+  return {
+    "@type": "Value",
+    "@kind": "Relation",
+    clauses,
+  }
+}
+
+export type Clause = {
+  name: string
+  exp: Exp
+  goals: Array<Goal>
+}
+
+export function Clause(name: string, exp: Exp, goals: Array<Goal>): Clause {
+  return {
+    name,
+    exp,
+    goals,
   }
 }

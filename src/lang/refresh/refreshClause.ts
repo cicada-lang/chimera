@@ -1,6 +1,6 @@
 import type { Mod } from "../mod"
 import { refreshExp, refreshGoal } from "../refresh"
-import { Clause } from "../relation"
+import { Clause } from "../value"
 
 export function refreshClause(mod: Mod, clause: Clause): Clause {
   const varMap = new Map()
