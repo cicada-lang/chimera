@@ -26,17 +26,13 @@ implement alphaKanren
 
 implement alphaLean
 
-# docs
-
-[manual] use github and markdown to write the manual first
-
-# propagator
-
-[propagator] [learn] about propagator and constraints
-
 # langs
 
-[langs] `langs/joy` -- use `Absent` to solve some quine
+[langs] `langs/pie` read "a surprisingly competitive conditional operator"
+
+- minikanrenizing the inference rules of pie
+
+[langs] `langs/joy` -- how to generate quine?
 
 [wiki of rules] when writing a PL paper,
 use concrete syntax to write examples,
@@ -44,11 +40,9 @@ and use abstract syntax to write rules
 
 [langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
 
+[lang] `langs/array-and-object`
+
 [langs] `langs/lambda-cps` implement CPS rules for lambda calculus
-
-[langs] `langs/pie` read "a surprisingly competitive conditional operator"
-
-- minikanrenizing the inference rules of pie
 
 # dataset
 
@@ -151,13 +145,7 @@ maybe I can understand Gentzen and Goedel's works.
 
 # learn
 
-[diary] fair-search-strategy.md
-
-[lang] langs/array-and-object
-
 [question] why we do not need `key != name` in `Lookup`?
-
-[diary] the use of stream in minikanren implementation
 
 [books/the-reasoned-schemer] 09-thin-ice.wa
 [books/the-reasoned-schemer] 10-under-the-hood.wa
@@ -175,6 +163,15 @@ maybe I can understand Gentzen and Goedel's works.
 
 conflict directed clause learning
 
+[maybe] [schedule control] control how pursue can return some extra information
+about how schedule the result solutions.
+
+- should only change schedule, but not remove goals.
+
+# propagator
+
+[propagator] [learn] about propagator and constraints
+
 # optional output valid JSON
 
 > It is ok to use more elaborated format here,
@@ -190,18 +187,10 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 [books/the-reasoned-schemer] 08-just-a-bit-more.wa -- frame 35
 
-# higher order relation and dependent type
+# higher order relation
 
 [higher order relation] We can support higher order relation
 by allowing a relation to take relations as arguments.
-
-[dependent type] What happen if we support dependent type?
-(by allowing a relation to take data as arguments.)
-
-- Dependent type in functional language is described as
-  "any computation can happens during type checking".
-  in relational programming, all computation are un-nested,
-  what would happen here?
 
 # tabling
 
@@ -215,24 +204,9 @@ maybe there are deep theoretical connections too.
 
 [later] [DX] when adding new url to `Loader.tracked`, we should let the `watcher` watch it
 
-# maybe
+# type assertion
 
-[maybe] [type assertion] because I heard (only heard) that relations fail silently is very bad for debugging.
+[maybe] support type assertion
 
-[maybe] configure limit by built-in special goal `limit <n>`
-
-- which does side-effects to the solver
-- instead of configuring limit by options
-
-[maybe] configure limit by `find limit=<n>`
-
-- and view `key=value` as a generic syntax for options (like XML attributes)
-
-[maybe] [schedule control] control how pursue can return some extra information
-about how schedule the result solutions.
-
-- should only change schedule, but not remove goals.
-
-- maybe only put generated solutions to the back of the queue
-  when the goals are generated from disj
-  (or `goals.length > 1` (but not all disj are like this)).
+- because I heard (only heard) that
+  relations fail silently is very bad for debugging.
