@@ -62,10 +62,6 @@ function formatProperties(exp: Exp): Map<string, string> {
     for (const [name, property] of Object.entries(exp.properties)) {
       properties.set(name, formatExp(property))
     }
-
-    if (exp.etc !== undefined) {
-      properties = new Map([...properties, ...formatProperties(exp.etc)])
-    }
   }
 
   return properties

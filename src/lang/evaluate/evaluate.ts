@@ -55,7 +55,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
             evaluate(mod, env, property),
           ]),
         ),
-        exp.etc ? evaluate(mod, env, exp.etc) : undefined,
+        Values.PatternVar(mod.freshen("...etc")),
       )
     }
 

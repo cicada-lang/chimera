@@ -61,10 +61,9 @@ export function operand_matcher(tree: pt.Tree): Exp {
             .map(matchers.property_matcher),
           matchers.property_matcher(last_property),
         ]),
-        undefined,
         span,
       ),
-    "operand:objekt_empty": ({}, { span }) => Exps.Objekt({}, undefined, span),
+    "operand:objekt_empty": ({}, { span }) => Exps.Objekt({}, span),
     "operand:data": ({ type, kind, args, last_arg }, { span }) =>
       Exps.Data(
         pt.str(type),
