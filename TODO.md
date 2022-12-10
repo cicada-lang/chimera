@@ -1,8 +1,8 @@
 # type constraint
 
-`Clause` has `mod` and `env` -- just like a closure
 `Clause` has `GoalExp` instead of `Goal`
-`Clause` has `bindings` -- generated at compile time
+
+- `Clause` has `bindings: Set<string>` -- generated at compile time
 
 avoid using `refreshGoal` in lang/pursue/pursue.ts
 

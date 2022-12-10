@@ -1,5 +1,7 @@
+import type { Env } from "../env"
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
+import type { Mod } from "../mod"
 
 export type Value =
   | PatternVar
@@ -175,13 +177,23 @@ export function Relation(name: string, clauses: Array<Clause>): Relation {
 }
 
 export type Clause = {
+  mod: Mod
+  env: Env
   name: string
   exp: Exp
   goals: Array<Goal>
 }
 
-export function Clause(name: string, exp: Exp, goals: Array<Goal>): Clause {
+export function Clause(
+  mod: Mod,
+  env: Env,
+  name: string,
+  exp: Exp,
+  goals: Array<Goal>,
+): Clause {
   return {
+    mod,
+    env,
     name,
     exp,
     goals,

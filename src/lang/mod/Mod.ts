@@ -84,8 +84,15 @@ export class Mod {
     goals?: Array<Goal>,
   ): void {
     const relation = this.findRelationOrFail(name)
-    const realClauseName = clauseName || relation.clauses.length.toString()
-    relation.clauses.push(Clause(realClauseName, exp, goals || []))
+    relation.clauses.push(
+      Clause(
+        this,
+        this.env,
+        clauseName || relation.clauses.length.toString(),
+        exp,
+        goals || [],
+      ),
+    )
   }
 
   findRelation(name: string): Relation | undefined {
