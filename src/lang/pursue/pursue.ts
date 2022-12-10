@@ -22,7 +22,8 @@ export function pursue(
 ): Array<Solution> {
   switch (goal["@kind"]) {
     case "Apply": {
-      return goal.relation.clauses.flatMap((clause) => {
+      const relation = goal.relation
+      return relation.clauses.flatMap((clause) => {
         const varMap = new Map()
         const value = refreshValue(mod, evaluate(mod, env, clause.exp), varMap)
         const goals = clause.goals.map((goal) => refreshGoal(mod, goal, varMap))
