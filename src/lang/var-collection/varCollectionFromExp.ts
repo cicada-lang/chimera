@@ -8,10 +8,6 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       return createVarCollection([[exp.name, [exp]]])
     }
 
-    case "ReifiedVar": {
-      return createVarCollection()
-    }
-
     case "String":
     case "Number":
     case "Boolean":

@@ -7,10 +7,6 @@ export function collectBindingsFromExp(exp: Exp): Set<string> {
       return new Set([exp.name])
     }
 
-    case "ReifiedVar": {
-      return new Set()
-    }
-
     case "String": {
       return new Set()
     }

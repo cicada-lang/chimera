@@ -1,5 +1,7 @@
 # type constraint
 
+[refactor] rename `Exps.Var` to `Exps.PatternVar`
+
 [refactor] `prepareGoals`
 
 [maybe] disallow `QueryPatternNames` of length 1
@@ -7,10 +9,6 @@
 [maybe] quit using `QueryPattern` just use `Array<string>`
 
 `Values.Objekt` -- always has `etc`
-
-rename `Exps.Var` to `Exps.PatternVar`
-
-remove `Exps.ReifiedVar`
 
 [type constraint] built-in type constraints for primitive types
 

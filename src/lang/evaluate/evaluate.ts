@@ -20,10 +20,6 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
-    case "ReifiedVar": {
-      return Values.ReifiedVar(exp.count)
-    }
-
     case "String": {
       return Values.String(exp.data)
     }
