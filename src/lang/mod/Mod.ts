@@ -68,7 +68,7 @@ export class Mod {
   **/
 
   createRelation(name: string): void {
-    this.env = envExtend(this.env, name, Relation([]))
+    this.env = envExtend(this.env, name, Relation(name, []))
   }
 
   /**

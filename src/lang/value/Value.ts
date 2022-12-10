@@ -161,13 +161,15 @@ export function Data(type: string, kind: string, args: Array<Value>): Data {
 export type Relation = {
   "@type": "Value"
   "@kind": "Relation"
+  name: string
   clauses: Array<Clause>
 }
 
-export function Relation(clauses: Array<Clause>): Relation {
+export function Relation(name: string, clauses: Array<Clause>): Relation {
   return {
     "@type": "Value",
     "@kind": "Relation",
+    name,
     clauses,
   }
 }

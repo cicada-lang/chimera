@@ -20,6 +20,8 @@ avoid using `refreshGoal` in lang/stmts/utils/prepareGoals.ts
 
 [read] A Unified Approach to Solving Seven Programming Problems (Functional Pearl)
 
+[how-to] avoid using `GoalExp`
+
 # finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf
