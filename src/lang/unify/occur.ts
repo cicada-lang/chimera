@@ -1,34 +1,35 @@
-import type { Exp } from "../exp"
 import { Substitution, substitutionWalk } from "../substitution"
+import type { Value } from "../value"
 
 export function occur(
   substitution: Substitution,
   name: String,
-  exp: Exp,
+  value: Value,
 ): boolean {
-  exp = substitutionWalk(substitution, exp)
+  value = substitutionWalk(substitution, value)
 
-  switch (exp["@kind"]) {
+  switch (value["@kind"]) {
     case "PatternVar": {
-      return exp.name === name
+      return value.name === name
     }
 
     case "ArrayCons": {
       return (
-        occur(substitution, name, exp.car) || occur(substitution, name, exp.cdr)
+        occur(substitution, name, value.car) ||
+        occur(substitution, name, value.cdr)
       )
     }
 
     case "Objekt": {
       return (
-        Object.values(exp.properties).some((property) =>
+        Object.values(value.properties).some((property) =>
           occur(substitution, name, property),
-        ) || Boolean(exp.etc && occur(substitution, name, exp.etc))
+        ) || Boolean(value.etc && occur(substitution, name, value.etc))
       )
     }
 
     case "Data": {
-      return exp.args.some((arg) => occur(substitution, name, arg))
+      return value.args.some((arg) => occur(substitution, name, arg))
     }
 
     default: {

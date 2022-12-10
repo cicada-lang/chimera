@@ -1,7 +1,9 @@
+import type { Env } from "../env"
+import { evaluate } from "../evaluate"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import { pursueEqual, pursueNotEqual } from "../pursue"
-import { refreshClause } from "../refresh"
+import { refreshGoal, refreshValue } from "../refresh"
 import type { Solution } from "../solution"
 
 /**
@@ -14,18 +16,22 @@ import type { Solution } from "../solution"
 
 export function pursue(
   mod: Mod,
+  env: Env,
   solution: Solution,
   goal: Goal,
 ): Array<Solution> {
   switch (goal["@kind"]) {
     case "Apply": {
       return goal.relation.clauses.flatMap((clause) => {
-        const refreshed = refreshClause(mod, clause)
-        const newSolution = pursueEqual(mod, solution, refreshed.exp, goal.arg)
+        const varMap = new Map()
+        const value = refreshValue(mod, evaluate(mod, env, clause.exp), varMap)
+        const goals = clause.goals.map((goal) => refreshGoal(mod, goal, varMap))
+
+        const newSolution = pursueEqual(mod, solution, value, goal.arg)
         if (newSolution === undefined) return []
         return [
           newSolution.update({
-            goals: [...refreshed.goals, ...solution.goals],
+            goals: [...goals, ...solution.goals],
           }),
         ]
       })

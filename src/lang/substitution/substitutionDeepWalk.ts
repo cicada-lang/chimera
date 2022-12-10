@@ -1,43 +1,43 @@
-import type { Exp } from "../exp"
-import * as Exps from "../exp"
 import { Substitution, substitutionWalk } from "../substitution"
+import type { Value } from "../value"
+import * as Values from "../value"
 
 export function substitutionDeepWalk(
   substitution: Substitution,
-  exp: Exp,
-): Exp {
-  exp = substitutionWalk(substitution, exp)
+  value: Value,
+): Value {
+  value = substitutionWalk(substitution, value)
 
-  switch (exp["@kind"]) {
+  switch (value["@kind"]) {
     case "ArrayCons": {
-      return Exps.ArrayCons(
-        substitutionDeepWalk(substitution, exp.car),
-        substitutionDeepWalk(substitution, exp.cdr),
+      return Values.ArrayCons(
+        substitutionDeepWalk(substitution, value.car),
+        substitutionDeepWalk(substitution, value.cdr),
       )
     }
 
     case "Objekt": {
-      return Exps.Objekt(
+      return Values.Objekt(
         Object.fromEntries(
-          Object.entries(exp.properties).map(([name, property]) => [
+          Object.entries(value.properties).map(([name, property]) => [
             name,
             substitutionDeepWalk(substitution, property),
           ]),
         ),
-        exp.etc && substitutionDeepWalk(substitution, exp.etc),
+        value.etc && substitutionDeepWalk(substitution, value.etc),
       )
     }
 
     case "Data": {
-      return Exps.Data(
-        exp.type,
-        exp.kind,
-        exp.args.map((arg) => substitutionDeepWalk(substitution, arg)),
+      return Values.Data(
+        value.type,
+        value.kind,
+        value.args.map((arg) => substitutionDeepWalk(substitution, arg)),
       )
     }
 
     default: {
-      return exp
+      return value
     }
   }
 }

@@ -1,5 +1,3 @@
-import type { Exp } from "../exp"
-import * as Exps from "../exp"
 import {
   Substitution,
   substitutionEmpty,
@@ -7,50 +5,52 @@ import {
   substitutionLength,
   substitutionWalk,
 } from "../substitution"
+import type { Value } from "../value"
+import * as Values from "../value"
 
 /**
 
-   Prepare a substitution for the reification of an `exp`.
+   Prepare a substitution for the reification of an `value`.
 
-   Given an `exp`, build a mapping from all variable names in the
-   `exp` to `ReifiedVar`.  A `ReifiedVar` has a `count` the occurrence
-   of variable names during depth-first traversal of the `exp`.
+   Given an `value`, build a mapping from all variable names in the
+   `value` to `ReifiedVar`.  A `ReifiedVar` has a `count` the occurrence
+   of variable names during depth-first traversal of the `value`.
 
 **/
 
 export function prepareSubstitution(
-  exp: Exp,
+  value: Value,
   substitution: Substitution = substitutionEmpty(),
 ): Substitution {
-  exp = substitutionWalk(substitution, exp)
+  value = substitutionWalk(substitution, value)
 
-  switch (exp["@kind"]) {
+  switch (value["@kind"]) {
     case "PatternVar": {
       const count = substitutionLength(substitution)
-      const reifiedVar = Exps.ReifiedVar(count)
-      return substitutionExtend(substitution, exp.name, reifiedVar)
+      const reifiedVar = Values.ReifiedVar(count)
+      return substitutionExtend(substitution, value.name, reifiedVar)
     }
 
     case "ArrayCons": {
-      substitution = prepareSubstitution(exp.car, substitution)
-      substitution = prepareSubstitution(exp.cdr, substitution)
+      substitution = prepareSubstitution(value.car, substitution)
+      substitution = prepareSubstitution(value.cdr, substitution)
       return substitution
     }
 
     case "Objekt": {
-      for (const property of Object.values(exp.properties)) {
+      for (const property of Object.values(value.properties)) {
         substitution = prepareSubstitution(property, substitution)
       }
 
-      if (exp.etc) {
-        substitution = prepareSubstitution(exp.etc, substitution)
+      if (value.etc) {
+        substitution = prepareSubstitution(value.etc, substitution)
       }
 
       return substitution
     }
 
     case "Data": {
-      for (const arg of exp.args) {
+      for (const arg of value.args) {
         substitution = prepareSubstitution(arg, substitution)
       }
 

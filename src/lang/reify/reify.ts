@@ -1,4 +1,3 @@
-import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
 import type { Mod } from "../mod"
@@ -12,29 +11,33 @@ import {
   substitutionWalk,
 } from "../substitution"
 import { unifyMany } from "../unify"
+import type { Value } from "../value"
 
 /**
 
-   The `Reification` of an `exp` is the reified exp,
+   The `Reification` of an `value` is the reified value,
    with a list of constraints represented as goals.
 
  **/
 
 export type Reification = {
-  exp: Exp
+  value: Value
   constraints: Array<Goal>
 }
 
-export function Reification(exp: Exp, constraints: Array<Goal>): Reification {
-  return { exp, constraints }
+export function Reification(
+  value: Value,
+  constraints: Array<Goal>,
+): Reification {
+  return { value, constraints }
 }
 
-export function reify(mod: Mod, solution: Solution, exp: Exp): Reification {
-  exp = substitutionDeepWalk(solution.substitution, exp)
-  const substitutionForRenaming = prepareSubstitution(exp)
+export function reify(mod: Mod, solution: Solution, value: Value): Reification {
+  value = substitutionDeepWalk(solution.substitution, value)
+  const substitutionForRenaming = prepareSubstitution(value)
   const constraints = reifyInequalities(mod, solution, substitutionForRenaming)
-  exp = substitutionDeepWalk(substitutionForRenaming, exp)
-  return Reification(exp, constraints)
+  value = substitutionDeepWalk(substitutionForRenaming, value)
+  return Reification(value, constraints)
 }
 
 /**
@@ -113,7 +116,7 @@ export function reifyInequalities(
 }
 
 function somePairContainsVar(
-  pairs: Array<[Exp, Exp]>,
+  pairs: Array<[Value, Value]>,
   substitutionForRenaming: Substitution,
 ): boolean {
   return pairs.some(
@@ -123,11 +126,14 @@ function somePairContainsVar(
   )
 }
 
-function containsVar(exp: Exp, substitutionForRenaming: Substitution): boolean {
-  switch (exp["@kind"]) {
+function containsVar(
+  value: Value,
+  substitutionForRenaming: Substitution,
+): boolean {
+  switch (value["@kind"]) {
     case "PatternVar": {
-      exp = substitutionWalk(substitutionForRenaming, exp)
-      return exp["@kind"] === "PatternVar"
+      value = substitutionWalk(substitutionForRenaming, value)
+      return value["@kind"] === "PatternVar"
     }
 
     case "ReifiedVar": {
@@ -143,8 +149,8 @@ function containsVar(exp: Exp, substitutionForRenaming: Substitution): boolean {
 
     case "ArrayCons": {
       return (
-        containsVar(exp.car, substitutionForRenaming) ||
-        containsVar(exp.cdr, substitutionForRenaming)
+        containsVar(value.car, substitutionForRenaming) ||
+        containsVar(value.cdr, substitutionForRenaming)
       )
     }
 
@@ -154,14 +160,21 @@ function containsVar(exp: Exp, substitutionForRenaming: Substitution): boolean {
 
     case "Objekt": {
       return (
-        Object.values(exp.properties).some((exp) =>
-          containsVar(exp, substitutionForRenaming),
-        ) || Boolean(exp.etc && containsVar(exp.etc, substitutionForRenaming))
+        Object.values(value.properties).some((value) =>
+          containsVar(value, substitutionForRenaming),
+        ) ||
+        Boolean(value.etc && containsVar(value.etc, substitutionForRenaming))
       )
     }
 
     case "Data": {
-      return exp.args.some((exp) => containsVar(exp, substitutionForRenaming))
+      return value.args.some((value) =>
+        containsVar(value, substitutionForRenaming),
+      )
+    }
+
+    case "Relation": {
+      return false
     }
   }
 }

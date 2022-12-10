@@ -1,18 +1,18 @@
-import { formatExp } from "../exp"
 import type { Goal } from "../goal"
+import { formatValue } from "../value"
 
 export function formatGoal(goal: Goal): string {
   switch (goal["@kind"]) {
     case "Apply": {
-      return `${goal.name} ${formatExp(goal.arg)}`
+      return `${goal.name} ${formatValue(goal.arg)}`
     }
 
     case "Equal": {
-      return `${formatExp(goal.left)} = ${formatExp(goal.right)}`
+      return `${formatValue(goal.left)} = ${formatValue(goal.right)}`
     }
 
     case "NotEqual": {
-      return `${formatExp(goal.left)} != ${formatExp(goal.right)}`
+      return `${formatValue(goal.left)} != ${formatValue(goal.right)}`
     }
 
     case "Conj": {

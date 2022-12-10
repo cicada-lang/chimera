@@ -1,18 +1,14 @@
 # type constraint
 
-`unify` over `Value` instead of `Exp`
+`Clause` has `bindings` by generate `fresh` at compile time
 
-remove `formatExp`
+avoid using `refreshGoal` in lang/pursue/pursue.ts
 
-`Exps.Var` -- remove `Exps.PatternVar` and `Exps.ReifiedVar`
+avoid using `refreshGoal` in lang/stmts/utils/prepareGoals.ts
 
-`Clause` has `bindings`
-
-avoid using `refreshClause` in lang/pursue/pursue.ts
-
-- by generate `fresh` at compile time
-
-- also avoid using `refreshGoal` in lang/stmts/utils/prepareGoals.ts
+`Values.Objekt` -- always has `etc`
+rename `Exps.Var` to `Exps.PatternVar`
+remove `Exps.ReifiedVar`
 
 [type constraint] built-in type constraints for primitive types
 

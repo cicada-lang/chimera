@@ -1,9 +1,9 @@
 import { indent } from "../../../utils/indent"
-import type { Exp } from "../../exp"
-import * as Exps from "../../exp"
 import type { Mod } from "../../mod"
 import { formatReification, reify } from "../../reify"
 import type { Solution } from "../../solution"
+import type { Value } from "../../value"
+import * as Values from "../../value"
 import type { QueryPattern } from "../find"
 
 export function formatSolutions(
@@ -13,21 +13,21 @@ export function formatSolutions(
 ): string {
   switch (pattern["@kind"]) {
     case "QueryPatternNames": {
-      const variables: Array<Exp> = pattern.names.map((name) =>
-        Exps.PatternVar(name),
+      const variables: Array<Value> = pattern.names.map((name) =>
+        Values.PatternVar(name),
       )
-      const exp = variables.reduceRight(
-        (result, variable) => Exps.ArrayCons(variable, result),
-        Exps.ArrayNull(),
+      const value = variables.reduceRight(
+        (result, variable) => Values.ArrayCons(variable, result),
+        Values.ArrayNull(),
       )
       const results = solutions.map((solution) =>
-        formatReification(reify(mod, solution, exp)),
+        formatReification(reify(mod, solution, value)),
       )
       return formatResults(results)
     }
 
     case "QueryPatternName": {
-      const variable = Exps.PatternVar(pattern.name)
+      const variable = Values.PatternVar(pattern.name)
       const results = solutions.map((solution) =>
         formatReification(reify(mod, solution, variable)),
       )

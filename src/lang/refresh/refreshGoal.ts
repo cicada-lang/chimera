@@ -1,8 +1,8 @@
-import type * as Exps from "../exp"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
 import type { Mod } from "../mod"
-import { refreshExp } from "../refresh"
+import { refreshValue } from "../refresh"
+import type * as Values from "../value"
 
 /**
 
@@ -13,7 +13,7 @@ import { refreshExp } from "../refresh"
 export function refreshGoal(
   mod: Mod,
   goal: Goal,
-  varMap: Map<string, Exps.PatternVar>,
+  varMap: Map<string, Values.PatternVar>,
 ): Goal {
   switch (goal["@kind"]) {
     case "Apply": {
@@ -21,21 +21,21 @@ export function refreshGoal(
       return Goals.Apply(
         goal.name,
         goal.relation,
-        refreshExp(mod, goal.arg, varMap),
+        refreshValue(mod, goal.arg, varMap),
       )
     }
 
     case "Equal": {
       return Goals.Equal(
-        refreshExp(mod, goal.left, varMap),
-        refreshExp(mod, goal.right, varMap),
+        refreshValue(mod, goal.left, varMap),
+        refreshValue(mod, goal.right, varMap),
       )
     }
 
     case "NotEqual": {
       return Goals.NotEqual(
-        refreshExp(mod, goal.left, varMap),
-        refreshExp(mod, goal.right, varMap),
+        refreshValue(mod, goal.left, varMap),
+        refreshValue(mod, goal.right, varMap),
       )
     }
 

@@ -46,7 +46,7 @@ export class Relation extends Stmt {
       this.name,
       this.clauseName,
       this.exp,
-      this.goals.map((goal) => evaluateGoalExp(mod, goal)),
+      this.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
     )
   }
 

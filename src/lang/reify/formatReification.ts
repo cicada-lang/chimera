@@ -1,21 +1,21 @@
 import { indent } from "../../utils/indent"
-import { formatExp } from "../exp"
 import { formatGoal } from "../goal"
 import type { Reification } from "../reify"
+import { formatValue } from "../value"
 
 export function formatReification(reification: Reification): string {
   if (reification.constraints.length === 0) {
-    return formatExp(reification.exp)
+    return formatValue(reification.value)
   }
 
-  const exp = formatExp(reification.exp)
+  const value = formatValue(reification.value)
   const constraints = reification.constraints.map(formatGoal)
   if (isLargeConstraints(constraints)) {
-    return `${exp} with {\n${constraints
+    return `${value} with {\n${constraints
       .map((constraint) => indent(constraint))
       .join("\n")}\n}`
   } else {
-    return `${exp} with { ${constraints.join(" ")} }`
+    return `${value} with { ${constraints.join(" ")} }`
   }
 }
 

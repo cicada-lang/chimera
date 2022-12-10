@@ -1,4 +1,3 @@
-import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import {
@@ -8,12 +7,13 @@ import {
   substitutionPrefix,
 } from "../substitution"
 import { unify, unifyMany } from "../unify"
+import type { Value } from "../value"
 
 export function pursueEqual(
   mod: Mod,
   solution: Solution,
-  left: Exp,
-  right: Exp,
+  left: Value,
+  right: Value,
 ): Solution | undefined {
   const substitution = unify(mod, solution.substitution, left, right)
 

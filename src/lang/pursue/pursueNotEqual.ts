@@ -1,14 +1,14 @@
-import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import { substitutionEqual, substitutionPrefix } from "../substitution"
 import { unify } from "../unify"
+import type { Value } from "../value"
 
 export function pursueNotEqual(
   mod: Mod,
   solution: Solution,
-  left: Exp,
-  right: Exp,
+  left: Value,
+  right: Value,
 ): Solution | undefined {
   const substitution = unify(mod, solution.substitution, left, right)
 

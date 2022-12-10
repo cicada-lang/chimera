@@ -1,10 +1,10 @@
 import { indent } from "../../../utils/indent"
-import { formatExp } from "../../exp"
 import type { Goal } from "../../goal"
 import { formatGoal } from "../../goal"
 import type { Solution } from "../../solution"
 import type { Solver } from "../../solver"
 import { substitutionPairs } from "../../substitution"
+import { formatValue } from "../../value"
 
 export function formatSolver(solver: Solver): string {
   const solutions = solver.partialSolutions.map(formatSolution)
@@ -19,7 +19,7 @@ function formatSolution(solution: Solution): string {
   const body = [
     formatSubstitutionPairs(
       substitutionPairs(solution.substitution).map(
-        ([left, right]) => `${formatExp(left)} = ${formatExp(right)}`,
+        ([left, right]) => `${formatValue(left)} = ${formatValue(right)}`,
       ),
     ),
     formatGoals(solution.goals),

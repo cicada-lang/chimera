@@ -1,5 +1,3 @@
-import type { Exp } from "../exp"
-import * as Exps from "../exp"
 import type { Mod } from "../mod"
 import {
   Substitution,
@@ -7,11 +5,13 @@ import {
   substitutionWalk,
 } from "../substitution"
 import { occur } from "../unify"
+import type { Value } from "../value"
+import * as Values from "../value"
 
 export function unifyMany(
   mod: Mod,
   substitution: Substitution,
-  pairs: Array<[Exp, Exp]>,
+  pairs: Array<[Value, Value]>,
 ): Substitution | undefined {
   for (const [left, right] of pairs) {
     const nextSubstitution = unify(mod, substitution, left, right)
@@ -25,8 +25,8 @@ export function unifyMany(
 export function unify(
   mod: Mod,
   substitution: Substitution,
-  left: Exp,
-  right: Exp,
+  left: Value,
+  right: Value,
 ): Substitution | undefined {
   left = substitutionWalk(substitution, left)
   right = substitutionWalk(substitution, right)
@@ -121,7 +121,7 @@ export function unify(
         mod,
         substitution,
         left.etc,
-        Exps.Objekt(properties),
+        Values.Objekt(properties),
       )
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
@@ -133,7 +133,7 @@ export function unify(
         mod,
         substitution,
         right.etc,
-        Exps.Objekt(properties),
+        Values.Objekt(properties),
       )
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
@@ -162,18 +162,18 @@ export function unify(
 
 function objektAddEtc(
   mod: Mod,
-  objekt: Exps.Objekt,
-  variable: Exps.PatternVar,
-): Exps.Objekt {
-  const etc = Exps.PatternVar(mod.freshen(variable.name), variable.span)
+  objekt: Values.Objekt,
+  variable: Values.PatternVar,
+): Values.Objekt {
+  const etc = Values.PatternVar(mod.freshen(variable.name))
   return { ...objekt, etc }
 }
 
 function diffProperties(
-  leftProperties: Record<string, Exp>,
-  rightProperties: Record<string, Exp>,
-): Record<string, Exp> {
-  const properties: Record<string, Exp> = {}
+  leftProperties: Record<string, Value>,
+  rightProperties: Record<string, Value>,
+): Record<string, Value> {
+  const properties: Record<string, Value> = {}
   for (const [name, leftProperty] of Object.entries(leftProperties)) {
     const rightProperty = rightProperties[name]
     if (rightProperty === undefined) {

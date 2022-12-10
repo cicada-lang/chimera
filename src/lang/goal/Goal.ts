@@ -1,5 +1,4 @@
-import type { Exp } from "../exp"
-import type { Relation } from "../value"
+import type { Relation, Value } from "../value"
 
 export type Goal = Apply | Equal | NotEqual | Conj | Disj
 
@@ -8,10 +7,10 @@ export type Apply = {
   "@kind": "Apply"
   name: string
   relation: Relation
-  arg: Exp
+  arg: Value
 }
 
-export function Apply(name: string, relation: Relation, arg: Exp): Apply {
+export function Apply(name: string, relation: Relation, arg: Value): Apply {
   return {
     "@type": "Goal",
     "@kind": "Apply",
@@ -24,11 +23,11 @@ export function Apply(name: string, relation: Relation, arg: Exp): Apply {
 export type Equal = {
   "@type": "Goal"
   "@kind": "Equal"
-  left: Exp
-  right: Exp
+  left: Value
+  right: Value
 }
 
-export function Equal(left: Exp, right: Exp): Equal {
+export function Equal(left: Value, right: Value): Equal {
   return {
     "@type": "Goal",
     "@kind": "Equal",
@@ -40,11 +39,11 @@ export function Equal(left: Exp, right: Exp): Equal {
 export type NotEqual = {
   "@type": "Goal"
   "@kind": "NotEqual"
-  left: Exp
-  right: Exp
+  left: Value
+  right: Value
 }
 
-export function NotEqual(left: Exp, right: Exp): NotEqual {
+export function NotEqual(left: Value, right: Value): NotEqual {
   return {
     "@type": "Goal",
     "@kind": "NotEqual",
