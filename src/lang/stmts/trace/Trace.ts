@@ -9,7 +9,7 @@ import {
   varCollectionMerge,
   varCollectionValidate,
 } from "../../var-collection"
-import { formatSolver } from "../trace"
+import { formatSolver } from "../utils/formatSolver"
 import { prepareGoals } from "../utils/prepareGoals"
 
 export class Trace extends Stmt {

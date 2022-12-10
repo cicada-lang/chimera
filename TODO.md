@@ -1,11 +1,5 @@
 # type constraint
 
-[refactor] `prepareGoals`
-
-[maybe] disallow `QueryPatternNames` of length 1
-
-[maybe] quit using `QueryPattern` just use `Array<string>`
-
 `Values.Objekt` -- always has `etc`
 
 [type constraint] built-in type constraints for primitive types

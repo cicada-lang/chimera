@@ -5,18 +5,27 @@ import type { Solution } from "../../solution"
 import type { Value } from "../../value"
 import * as Values from "../../value"
 
-export function formatSolutions(
+export function formatFoundVariable(
+  mod: Mod,
+  solutions: Array<Solution>,
+  variable: Values.PatternVar,
+): string {
+  return formatResults(
+    solutions.map((solution) =>
+      formatReification(reify(mod, solution, variable)),
+    ),
+  )
+}
+
+export function formatFoundVariables(
   mod: Mod,
   solutions: Array<Solution>,
   variables: Array<Values.PatternVar>,
 ): string {
-  const value =
-    variables.length === 1
-      ? variables[0]
-      : variables.reduceRight<Value>(
-          (result, variable) => Values.ArrayCons(variable, result),
-          Values.ArrayNull(),
-        )
+  const value = variables.reduceRight<Value>(
+    (result, variable) => Values.ArrayCons(variable, result),
+    Values.ArrayNull(),
+  )
 
   return formatResults(
     solutions.map((solution) => formatReification(reify(mod, solution, value))),

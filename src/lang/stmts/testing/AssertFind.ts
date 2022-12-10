@@ -4,9 +4,9 @@ import type { Mod } from "../../mod"
 import { Solver } from "../../solver"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import type { QueryPattern } from "../find"
-import { queryPatternNames } from "../find"
 import { prepareGoals } from "../utils/prepareGoals"
+import type { QueryPattern } from "../utils/QueryPattern"
+import { queryPatternNames } from "../utils/QueryPattern"
 
 export class AssertFind extends Stmt {
   constructor(

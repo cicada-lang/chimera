@@ -10,12 +10,15 @@ import {
   varCollectionValidate,
 } from "../../var-collection"
 import {
-  formatSolutions,
+  formatFoundVariable,
+  formatFoundVariables,
+} from "../utils/formatFoundVariables"
+import { prepareGoals } from "../utils/prepareGoals"
+import {
   QueryPattern,
   queryPatternNames,
   queryPatternToExp,
-} from "../find"
-import { prepareGoals } from "../utils/prepareGoals"
+} from "../utils/QueryPattern"
 
 export class Find extends Stmt {
   constructor(
@@ -42,6 +45,15 @@ export class Find extends Stmt {
     )
     const solver = Solver.start(goals)
     const solutions = solver.solve(mod, { limit: this.limit })
-    return formatSolutions(mod, solutions, variables)
+
+    switch (this.pattern["@kind"]) {
+      case "QueryPatternNames": {
+        return formatFoundVariables(mod, solutions, variables)
+      }
+
+      case "QueryPatternName": {
+        return formatFoundVariable(mod, solutions, variables[0])
+      }
+    }
   }
 }

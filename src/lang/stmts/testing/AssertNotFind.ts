@@ -5,8 +5,12 @@ import type { Mod } from "../../mod"
 import { Solver } from "../../solver"
 import type { Span } from "../../span"
 import { Stmt } from "../../stmt"
-import { formatSolutions, QueryPattern, queryPatternNames } from "../find"
+import {
+  formatFoundVariable,
+  formatFoundVariables,
+} from "../utils/formatFoundVariables"
 import { prepareGoals } from "../utils/prepareGoals"
+import { QueryPattern, queryPatternNames } from "../utils/QueryPattern"
 
 export class AssertNotFind extends Stmt {
   constructor(
@@ -27,15 +31,27 @@ export class AssertNotFind extends Stmt {
     const solver = Solver.start(goals)
     const solutions = solver.solve(mod, { limit: this.limit })
     if (solutions.length > 0) {
-      throw new Errors.AssertionError(
-        [
-          `[AssertNotFind.execute] fail`,
-          indent(
-            `found solutions: ${formatSolutions(mod, solutions, variables)}`,
-          ),
-        ].join("\n"),
-        { span: this.span },
-      )
+      switch (this.pattern["@kind"]) {
+        case "QueryPatternNames": {
+          const found = formatFoundVariables(mod, solutions, variables)
+          throw new Errors.AssertionError(
+            [`[AssertNotFind.execute] fail`, indent(`found: ${found}`)].join(
+              "\n",
+            ),
+            { span: this.span },
+          )
+        }
+
+        case "QueryPatternName": {
+          const found = formatFoundVariable(mod, solutions, variables[0])
+          throw new Errors.AssertionError(
+            [`[AssertNotFind.execute] fail`, indent(`found: ${found}`)].join(
+              "\n",
+            ),
+            { span: this.span },
+          )
+        }
+      }
     }
   }
 }
