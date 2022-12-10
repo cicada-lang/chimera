@@ -1,7 +1,11 @@
 import type { Loader } from "../../loader"
+import type { Env } from "../env"
+import { envEmpty, envExtend, envLookupValue } from "../env"
+import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import type { Goal } from "../goal"
 import type { Stmt } from "../stmt"
+import type { Value } from "../value"
 import { Clause, Relation } from "../value"
 
 export interface ModOptions {
@@ -19,7 +23,7 @@ export interface ModOptions {
 
 export class Mod {
   private variableCount = 0
-  relations: Map<string, Relation> = new Map()
+  env: Env = envEmpty()
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
   imported: Array<URL> = []
@@ -53,6 +57,10 @@ export class Mod {
     }
   }
 
+  define(name: string, value: Value): void {
+    this.env = envExtend(this.env, name, value)
+  }
+
   /**
 
     About `Relation`.
@@ -60,8 +68,14 @@ export class Mod {
   **/
 
   createRelation(name: string): void {
-    this.relations.set(name, Relation([]))
+    this.env = envExtend(this.env, name, Relation([]))
   }
+
+  /**
+
+     Side-effect on `relation` in `env`.
+
+  **/
 
   defineClause(
     name: string,
@@ -75,7 +89,20 @@ export class Mod {
   }
 
   findRelation(name: string): Relation | undefined {
-    return this.relations.get(name)
+    const value = envLookupValue(this.env, name)
+    if (value === undefined) return undefined
+
+    if (value["@kind"] !== "Relation") {
+      throw new Errors.LangError(
+        [
+          `[Mod.findRelation] expect value to be Relation`,
+          `  name: ${name}`,
+          `  value["@kind"]: ${value["@kind"]}`,
+        ].join("\n"),
+      )
+    }
+
+    return value
   }
 
   private findRelationOrFail(name: string): Relation {
