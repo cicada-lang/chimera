@@ -1,7 +1,5 @@
 # type constraint
 
-`Env`
-
 `evaluate` take `mod` and `env`
 
 `mod` has a simple map from name to values -- the `Env`
