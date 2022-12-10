@@ -1,7 +1,7 @@
 import { envExtend } from "../../env"
+import { evaluateGoalExp } from "../../evaluate"
 import type { Goal } from "../../goal"
 import type { GoalExp } from "../../goal-exp"
-import * as GoalExps from "../../goal-exp"
 import type { Mod } from "../../mod"
 import * as Values from "../../value"
 import { collectBindingsFromGoalExps } from "../../value"
@@ -42,7 +42,7 @@ export function prepareGoals(
   }
 
   return {
-    goals: goals.map((goal) => GoalExps.evaluateGoalExp(mod, env, goal)),
+    goals: goals.map((goal) => evaluateGoalExp(mod, env, goal)),
     variables,
   }
 }

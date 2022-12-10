@@ -1,9 +1,9 @@
-import type { GoalExp } from "."
 import type { Env } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
+import type { GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 
 export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {

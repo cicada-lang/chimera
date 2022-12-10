@@ -1,7 +1,6 @@
 import { Env, envExtend } from "../env"
-import { evaluate } from "../evaluate"
+import { evaluate, evaluateGoalExp } from "../evaluate"
 import type { Goal } from "../goal"
-import { evaluateGoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 import { pursueEqual, pursueNotEqual } from "../pursue"
 import type { Solution } from "../solution"

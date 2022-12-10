@@ -1,7 +1,5 @@
 # type constraint
 
-`Values.Objekt` -- always has `etc`
-
 [type constraint] built-in type constraints for primitive types
 
 - maybe use lowercase (like typescript),
@@ -13,8 +11,6 @@
   - `null`
 
 [read] A Unified Approach to Solving Seven Programming Problems (Functional Pearl)
-
-[how-to] avoid using `GoalExp`
 
 # finite-domain constraint programming
 
