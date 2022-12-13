@@ -1,7 +1,5 @@
 # type constraint
 
-`Apply` -- has `value` instead of `relation`
-
 `Number` and `String` as globals type constraint value
 
 add test `constraints/primitive-types.wa`

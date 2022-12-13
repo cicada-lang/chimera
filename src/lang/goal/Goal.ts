@@ -1,4 +1,4 @@
-import type { Relation, Value } from "../value"
+import type { Value } from "../value"
 
 export type Goal = Apply | Equal | NotEqual | Conj | Disj
 
@@ -6,16 +6,16 @@ export type Apply = {
   "@type": "Goal"
   "@kind": "Apply"
   name: string
-  relation: Relation
+  target: Value
   arg: Value
 }
 
-export function Apply(name: string, relation: Relation, arg: Value): Apply {
+export function Apply(name: string, target: Value, arg: Value): Apply {
   return {
     "@type": "Goal",
     "@kind": "Apply",
     name,
-    relation,
+    target,
     arg,
   }
 }

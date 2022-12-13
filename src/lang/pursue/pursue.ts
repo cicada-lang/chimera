@@ -1,4 +1,5 @@
 import { Env, envExtend } from "../env"
+import * as Errors from "../errors"
 import { evaluate, evaluateGoalExp } from "../evaluate"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
@@ -22,25 +23,34 @@ export function pursue(
 ): Array<Solution> {
   switch (goal["@kind"]) {
     case "Apply": {
-      return goal.relation.clauses.flatMap((clause) => {
-        env = clause.env
-        for (const name of clause.bindings) {
-          env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))
-        }
+      if (goal.target["@kind"] === "Relation") {
+        return goal.target.clauses.flatMap((clause) => {
+          env = clause.env
+          for (const name of clause.bindings) {
+            env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))
+          }
 
-        const value = evaluate(clause.mod, env, clause.exp)
-        const goals = clause.goals.map((goal) =>
-          evaluateGoalExp(clause.mod, env, goal),
-        )
+          const value = evaluate(clause.mod, env, clause.exp)
+          const goals = clause.goals.map((goal) =>
+            evaluateGoalExp(clause.mod, env, goal),
+          )
 
-        const newSolution = pursueEqual(mod, solution, value, goal.arg)
-        if (newSolution === undefined) return []
-        return [
-          newSolution.update({
-            goals: [...goals, ...solution.goals],
-          }),
-        ]
-      })
+          const newSolution = pursueEqual(mod, solution, value, goal.arg)
+          if (newSolution === undefined) return []
+          return [
+            newSolution.update({
+              goals: [...goals, ...solution.goals],
+            }),
+          ]
+        })
+      }
+
+      throw new Errors.LangError(
+        [
+          `[pursue] can not apply goal.target`,
+          `  goal.target["@kind"]: ${goal.target["@kind"]}`,
+        ].join("\n"),
+      )
     }
 
     case "Equal": {
