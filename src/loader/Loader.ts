@@ -24,7 +24,7 @@ export class Loader {
     const script = Scripts.createScript(mod, text)
     await script.run()
     this.cache.set(url.href, script)
-    return script.mod
+    return mod
   }
 
   delete(url: URL): void {

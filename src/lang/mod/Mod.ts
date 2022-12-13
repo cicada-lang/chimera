@@ -1,6 +1,6 @@
 import type { Loader } from "../../loader"
 import type { Env } from "../env"
-import { envEmpty, envExtend, envLookupValue } from "../env"
+import { envEmpty, envExtend, envLookupValue, envNames } from "../env"
 import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import type { GoalExp } from "../goal-exp"
@@ -35,6 +35,10 @@ export class Mod {
 
   constructor(public options: ModOptions) {}
 
+  get names(): Array<string> {
+    return envNames(this.env)
+  }
+
   freshen(name: string): string {
     const [prefix, _count] = name.split("#")
     return `${prefix}#${this.variableCount++}`
@@ -66,21 +70,9 @@ export class Mod {
     this.env = envExtend(this.env, name, value)
   }
 
-  /**
-
-    About `Relation`.
-
-  **/
-
-  createRelation(name: string): void {
-    this.env = envExtend(this.env, name, Relation(name, []))
+  defineRelation(name: string): void {
+    this.define(name, Relation(name, []))
   }
-
-  /**
-
-     Side-effect on `relation` in `env`.
-
-  **/
 
   defineClause(
     name: string,
@@ -93,6 +85,8 @@ export class Mod {
       ...collectBindingsFromExp(exp),
       ...collectBindingsFromGoalExps(goals),
     ])
+
+    // Side-effect on `relation` in `env`.
     relation.clauses.push(
       Clause(
         this,

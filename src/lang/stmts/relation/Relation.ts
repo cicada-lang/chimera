@@ -45,6 +45,6 @@ export class Relation extends Stmt {
   }
 
   prepare(mod: Mod): void {
-    mod.createRelation(this.name)
+    mod.defineRelation(this.name)
   }
 }

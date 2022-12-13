@@ -18,3 +18,7 @@ export function envLookupValue(env: Env, name: string): Value | undefined {
 export function envNames(env: Env): Array<string> {
   return Array.from(env.keys())
 }
+
+export function envEntries(env: Env): Array<[string, Value]> {
+  return Array.from(env.entries())
+}

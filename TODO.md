@@ -1,14 +1,18 @@
 # type constraint
 
+`useGlobals`
+
+`globals` -- `Null` and `Boolean` as built-in relation
+
 [type constraint] built-in type constraints for primitive types
 
 - use `globals` -- `Number` and `String` can be shadowed
 
 [type constraint] implementing subsumption between disequality constraints
 
-[type constraint] verifying constraints’ validity.
+[type constraint] verifying constraints' validity
 
-[type constraint] Reification.
+[type constraint] reification
 
 # finite-domain constraint programming
 
