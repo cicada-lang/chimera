@@ -47,7 +47,7 @@ export function substitutionLookup(
 
 export function substitutionPairs(
   substitution: Substitution,
-): Array<[Value, Value]> {
+): Array<[Values.PatternVar, Value]> {
   return substitution
     .toArray()
     .map(([name, value]) => [Values.PatternVar(name), value])

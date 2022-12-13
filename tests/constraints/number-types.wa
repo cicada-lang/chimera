@@ -20,3 +20,15 @@ assert not find x {
   Number x
   String x
 }
+
+// The inequality is subsumed by type constraint:
+
+find x {
+  x != "cat"
+  Number x
+}
+
+find [x, y] {
+  [x, y] != ["cat", 1]
+  Number x
+}

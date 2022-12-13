@@ -1,7 +1,11 @@
 import type { Env } from "../env"
 import type { Mod } from "../mod"
 import type { Solution } from "../solution"
-import { substitutionWalk } from "../substitution"
+import {
+  Substitution,
+  substitutionPairs,
+  substitutionWalk,
+} from "../substitution"
 import type * as Values from "../value"
 import type { Value } from "../value"
 
@@ -37,6 +41,35 @@ export function applyTypeConstraint(
   return [
     solution.update({
       typeConstraints: [[arg, target], ...solution.typeConstraints],
+      inequalities: removeSubsumedInequalities(solution, arg.name, target),
     }),
   ]
+}
+
+function removeSubsumedInequalities(
+  solution: Solution,
+  name: string,
+  typeConstraint: Values.TypeConstraint,
+): Array<Substitution> {
+  return solution.inequalities.filter((inequality) =>
+    substitutionPairs(inequality).every(
+      (pair) =>
+        !pairSubsumedByTypeConstraint(solution, pair, name, typeConstraint),
+    ),
+  )
+}
+
+function pairSubsumedByTypeConstraint(
+  solution: Solution,
+  pair: [Values.PatternVar, Value],
+  name: string,
+  typeConstraint: Values.TypeConstraint,
+): boolean {
+  let [variable, value] = pair
+  if (variable.name !== name) return false
+
+  value = substitutionWalk(solution.substitution, value)
+  if (value["@kind"] === "PatternVar") return false
+
+  return !typeConstraint.predicate(value)
 }
