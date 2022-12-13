@@ -1,8 +1,12 @@
 # type constraint
 
-[type constraint] built-in type constraints for primitive types
+`Apply` -- has `value` instead of `relation`
 
-- use `globals` -- `Number` and `String`
+`Number` and `String` as globals type constraint value
+
+add test `constraints/primitive-types.wa`
+
+`Apply` -- support `TypeConstraint` -- extending `solution`
 
 [type constraint] implementing subsumption between disequality constraints
 
