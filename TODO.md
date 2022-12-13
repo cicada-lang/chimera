@@ -1,7 +1,5 @@
 # type constraint
 
-add test `constraints/primitive-types.wa`
-
 `Apply` -- support `TypeConstraint` -- extending `solution`
 
 [type constraint] implementing subsumption between disequality constraints

@@ -1,0 +1,7 @@
+find x {
+  String x
+}
+
+find x {
+  Number x
+}
