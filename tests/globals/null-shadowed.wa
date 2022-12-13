@@ -1,0 +1,5 @@
+Null x -- { x = "null" }
+
+find x {
+  Null x
+}

@@ -2,7 +2,7 @@
 
 [type constraint] built-in type constraints for primitive types
 
-- use `globals` -- `Number` and `String` can be shadowed
+- use `globals` -- `Number` and `String`
 
 [type constraint] implementing subsumption between disequality constraints
 
