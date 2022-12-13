@@ -1,0 +1,58 @@
+Boolean x -- { x = 0 }
+Boolean x -- { x = 1 }
+
+Not [0, 1]
+Not [1, 0]
+
+Or [0, 0, 0]
+Or [0, 1, 1]
+Or [1, 0, 1]
+Or [1, 1, 1]
+
+And [0, 0, 0]
+And [0, 1, 0]
+And [1, 0, 0]
+And [1, 1, 1]
+
+BooleanList []
+BooleanList [car | cdr] -- {
+  Boolean car
+  BooleanList cdr
+}
+
+ListNot [[], []]
+ListNot [[x | xs], [y | ys]] -- {
+  Not [x, y]
+  ListNot [xs, ys]
+}
+
+SatClause [conclusions, premises]
+------------------------------- {
+  BooleanList conclusions
+  BooleanList premises
+  ListNot [premises, negPremises]
+  Append [conclusions, negPremises, disjunction]
+  SatDisjunction disjunction
+}
+
+Append [[], t, t]
+Append [[a | d], t, out] -- {
+  out = [a | res]
+  Append [d, t, res]
+}
+
+SatDisjunction [1 | _rest]
+SatDisjunction [0 | rest] -- {
+  SatDisjunction rest
+}
+
+find [x1, x2, x3] {
+  SatClause [[x1], [x2]]
+  SatClause [[x2, x3], [x1]]
+  SatClause [[], [x1]]
+}
+
+find [x1] {
+  SatClause [[x1], []]
+  SatClause [[], [x1]]
+}

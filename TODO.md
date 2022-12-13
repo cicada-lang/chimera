@@ -1,3 +1,5 @@
+use constraint to implement higher-order logic.
+
 # type constraint
 
 [type constraint] verifying constraints' validity
