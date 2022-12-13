@@ -32,3 +32,13 @@ find [x, y] {
   [x, y] != ["cat", 1]
   Number x
 }
+
+find x {
+  Number x
+  x != "cat"
+}
+
+find [x, y] {
+  Number x
+  [x, y] != ["cat", 1]
+}

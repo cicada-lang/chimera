@@ -1,4 +1,5 @@
 import type { Mod } from "../mod"
+import { removeInequalitiesSubsumedByTypeConstraints } from "../pursue"
 import type { Solution } from "../solution"
 import { substitutionEqual, substitutionPrefix } from "../substitution"
 import { unify } from "../unify"
@@ -50,6 +51,15 @@ export function pursueNotEqual(
   **/
 
   const inequality = substitutionPrefix(substitution, solution.substitution)
-  const inequalities = [...solution.inequalities, inequality]
-  return solution.update({ inequalities })
+
+  return solution.update({
+    inequalities: [
+      ...solution.inequalities,
+      ...removeInequalitiesSubsumedByTypeConstraints(
+        solution,
+        [inequality],
+        solution.typeConstraints,
+      ),
+    ],
+  })
 }
