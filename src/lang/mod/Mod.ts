@@ -61,7 +61,7 @@ export class Mod {
     await this.initialize()
 
     for (const stmt of stmts.values()) {
-      stmt.prepare(this)
+      await stmt.prepare(this)
     }
 
     const offset = this.stmts.length

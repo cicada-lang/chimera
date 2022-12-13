@@ -25,6 +25,10 @@ export class Import extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
+    return
+  }
+
+  async prepare(mod: Mod): Promise<void> {
     const url = mod.resolve(this.path)
     if (url.href === mod.options.url.href) {
       throw new Errors.LangError(`I can not circular import: ${this.path}`)

@@ -1,0 +1,11 @@
+import { A } from "./A.wa"
+
+find [x] {
+  A [x]
+}
+
+A [x] -- { x = "b" }
+
+find [x] {
+  A [x]
+}
