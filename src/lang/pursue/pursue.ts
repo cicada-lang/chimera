@@ -1,20 +1,10 @@
-import { Env, envExtend } from "../env"
+import type { Env } from "../env"
 import * as Errors from "../errors"
-import { evaluate, evaluateGoalExp } from "../evaluate"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
-import { pursueEqual, pursueNotEqual } from "../pursue"
+import { applyRelation, pursueEqual, pursueNotEqual } from "../pursue"
 import type { Solution } from "../solution"
 import { substitutionWalk } from "../substitution"
-import * as Values from "../value"
-
-/**
-
-   We append the generated new goals
-   to the start of the queue,
-   to get depth-first search.
-
-**/
 
 export function pursue(
   mod: Mod,
@@ -25,26 +15,7 @@ export function pursue(
   switch (goal["@kind"]) {
     case "Apply": {
       if (goal.target["@kind"] === "Relation") {
-        return goal.target.clauses.flatMap((clause) => {
-          env = clause.env
-          for (const name of clause.bindings) {
-            env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))
-          }
-
-          const value = evaluate(clause.mod, env, clause.exp)
-          const goals = clause.goals.map((goal) =>
-            evaluateGoalExp(clause.mod, env, goal),
-          )
-
-          const newSolution = pursueEqual(mod, solution, value, goal.arg)
-          if (newSolution === undefined) return []
-
-          return [
-            newSolution.update({
-              goals: [...goals, ...solution.goals],
-            }),
-          ]
-        })
+        return applyRelation(mod, env, solution, goal.target, goal.arg)
       }
 
       if (goal.target["@kind"] === "TypeConstraint") {
