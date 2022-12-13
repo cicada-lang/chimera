@@ -1,5 +1,5 @@
-Boolean x -- { x = 0 }
-Boolean x -- { x = 1 }
+Bit x -- { x = 0 }
+Bit x -- { x = 1 }
 
 Not [0, 1]
 Not [1, 0]
@@ -14,10 +14,10 @@ And [0, 1, 0]
 And [1, 0, 0]
 And [1, 1, 1]
 
-BooleanList []
-BooleanList [car | cdr] -- {
-  Boolean car
-  BooleanList cdr
+BitList []
+BitList [car | cdr] -- {
+  Bit car
+  BitList cdr
 }
 
 ListNot [[], []]
@@ -26,13 +26,23 @@ ListNot [[x | xs], [y | ys]] -- {
   ListNot [xs, ys]
 }
 
-SatClause [conclusions, premises]
-------------------------------- {
-  BooleanList conclusions
-  BooleanList premises
+// A clause represent
+//   c1 ∨ c2 ∨ ... <- p1 ∧ p2 ∧ ...
+// which is equivalent to disjunction from
+//   c1 ∨ c2 ∨ ... ¬p1 ∨ ¬p2 ∨ ...
+Clause [conclusions, premises] -- {
+  BitList conclusions
+  BitList premises
   ListNot [premises, negPremises]
   Append [conclusions, negPremises, disjunction]
-  SatDisjunction disjunction
+  // To satisfy a disjunction, its element must contains a true,
+  // specially empty list can not be satisfied.
+  HasOne disjunction
+}
+
+HasOne [1 | _rest]
+HasOne [0 | rest] -- {
+  HasOne rest
 }
 
 Append [[], t, t]
@@ -41,18 +51,13 @@ Append [[a | d], t, out] -- {
   Append [d, t, res]
 }
 
-SatDisjunction [1 | _rest]
-SatDisjunction [0 | rest] -- {
-  SatDisjunction rest
-}
-
 find [x1, x2, x3] {
-  SatClause [[x1], [x2]]
-  SatClause [[x2, x3], [x1]]
-  SatClause [[], [x1]]
+  Clause [[x1], [x2]]
+  Clause [[x2, x3], [x1]]
+  Clause [[], [x1]]
 }
 
 find [x1] {
-  SatClause [[x1], []]
-  SatClause [[], [x1]]
+  Clause [[x1], []]
+  Clause [[], [x1]]
 }
