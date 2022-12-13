@@ -3,6 +3,7 @@ import type { Env } from "../env"
 import { envEmpty, envExtend, envLookupValue, envNames } from "../env"
 import * as Errors from "../errors"
 import type { Exp } from "../exp"
+import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
 import {
@@ -27,6 +28,7 @@ export interface ModOptions {
 **/
 
 export class Mod {
+  private initialized = false
   private variableCount = 0
   env: Env = envEmpty()
   outputs: Map<number, string> = new Map()
@@ -34,6 +36,13 @@ export class Mod {
   imported: Array<URL> = []
 
   constructor(public options: ModOptions) {}
+
+  async initialize(): Promise<void> {
+    if (this.initialized) return
+    const globals = useGlobals()
+    await globals.mount(this)
+    this.initialized = true
+  }
 
   get names(): Array<string> {
     return envNames(this.env)
@@ -49,6 +58,8 @@ export class Mod {
   }
 
   async executeStmts(stmts: Array<Stmt>): Promise<void> {
+    await this.initialize()
+
     for (const stmt of stmts.values()) {
       stmt.prepare(this)
     }
