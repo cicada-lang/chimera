@@ -1,7 +1,5 @@
 # type constraint
 
-[type constraint] solution has `typeConstraints: Map<string, TypeConstraint>`
-
 [type constraint] built-in type constraints for primitive types
 
 - use `globals` -- `Number` and `String` can be shadowed
