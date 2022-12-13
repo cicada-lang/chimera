@@ -55,7 +55,7 @@ export function removeInequalitiesSubsumedByTypeConstraints(
   inequalities: Array<Substitution>,
   typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]>,
 ): Array<Substitution> {
-  return solution.inequalities.filter((inequality) =>
+  return inequalities.filter((inequality) =>
     substitutionPairs(inequality).every(
       (pair) => !pairSubsumedByTypeConstraints(solution, pair, typeConstraints),
     ),
@@ -67,9 +67,16 @@ function pairSubsumedByTypeConstraints(
   pair: [Values.PatternVar, Value],
   typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]>,
 ): boolean {
-  return typeConstraints.some(([arg, typeConstraint]) => {
+  return typeConstraints.some(([keyPatternVar, typeConstraint]) => {
+    const walkedKeyPatternVar = substitutionWalk(
+      solution.substitution,
+      keyPatternVar,
+    )
+
+    if (walkedKeyPatternVar["@kind"] !== "PatternVar") return false
+
     let [variable, value] = pair
-    if (variable.name !== arg.name) return false
+    if (variable.name !== walkedKeyPatternVar.name) return false
 
     value = substitutionWalk(solution.substitution, value)
     if (value["@kind"] === "PatternVar") return false

@@ -1,9 +1,5 @@
 # type constraint
 
-`pairSubsumedByTypeConstraints`
-
-- `arg` of entry of `typeConstraints` should be walked just like the beginning of `applyTypeConstraint`
-
 [type constraint] verifying constraints' validity
 [type constraint] reification
 
