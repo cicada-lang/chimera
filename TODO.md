@@ -1,6 +1,5 @@
 # type constraint
 
-`pursue` -- `Apply` `TypeConstraint` -- extending `solution` -- on `PatternVar`
 [type constraint] implementing subsumption between disequality constraints
 [type constraint] verifying constraints' validity
 [type constraint] reification
