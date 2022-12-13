@@ -44,6 +44,7 @@ find [x, y] {
 }
 
 find x {
+  // indirect type constraint on `x`
   Number z
   z = x
   x != "cat"
