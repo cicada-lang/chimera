@@ -2,9 +2,13 @@ import type { Env } from "../env"
 import * as Errors from "../errors"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
-import { applyRelation, pursueEqual, pursueNotEqual } from "../pursue"
+import {
+  applyRelation,
+  applyTypeConstraint,
+  pursueEqual,
+  pursueNotEqual,
+} from "../pursue"
 import type { Solution } from "../solution"
-import { substitutionWalk } from "../substitution"
 
 export function pursue(
   mod: Mod,
@@ -19,16 +23,7 @@ export function pursue(
       }
 
       if (goal.target["@kind"] === "TypeConstraint") {
-        const arg = substitutionWalk(solution.substitution, goal.arg)
-        if (arg["@kind"] === "PatternVar") {
-          //
-        }
-
-        if (goal.target.predicate(arg)) {
-          return [solution]
-        } else {
-          return []
-        }
+        return applyTypeConstraint(mod, env, solution, goal.target, goal.arg)
       }
 
       throw new Errors.LangError(

@@ -10,10 +10,10 @@ export function applyRelation(
   mod: Mod,
   env: Env,
   solution: Solution,
-  relation: Values.Relation,
+  target: Values.Relation,
   arg: Value,
 ): Array<Solution> {
-  return relation.clauses.flatMap((clause) => {
+  return target.clauses.flatMap((clause) => {
     env = clause.env
     for (const name of clause.bindings) {
       env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))

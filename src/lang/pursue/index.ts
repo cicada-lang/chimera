@@ -1,4 +1,5 @@
 export * from "./applyRelation"
+export * from "./applyTypeConstraint"
 export * from "./pursue"
 export * from "./pursueEqual"
 export * from "./pursueNotEqual"
