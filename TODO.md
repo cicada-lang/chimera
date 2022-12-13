@@ -1,16 +1,16 @@
 # type constraint
 
+[type constraint] solution has `typeConstraints: Map<string, TypeConstraint>`
+
 [type constraint] built-in type constraints for primitive types
 
-- maybe use lowercase (like typescript),
-  so that uppercase still can be user defined.
+- use `globals` -- `Number` and `String` can be shadowed
 
-  - `string`
-  - `number`
-  - `boolean`
-  - `null`
+[type constraint] implementing subsumption between disequality constraints
 
-[read] A Unified Approach to Solving Seven Programming Problems (Functional Pearl)
+[type constraint] verifying constraints’ validity.
+
+[type constraint] Reification.
 
 # finite-domain constraint programming
 
@@ -43,6 +43,8 @@ and use abstract syntax to write rules
 [lang] `langs/array-and-object`
 
 [langs] `langs/lambda-cps` implement CPS rules for lambda calculus
+
+[read] A Unified Approach to Solving Seven Programming Problems (Functional Pearl)
 
 # dataset
 

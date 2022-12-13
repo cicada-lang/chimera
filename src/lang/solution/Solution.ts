@@ -7,7 +7,8 @@ export class Solution {
     public goals: Array<Goal>,
     public substitution: Substitution,
     public inequalities: Array<Substitution>,
-  ) {}
+  ) // public typeConstraints: Map<string, TypeConstraint>,
+  {}
 
   static initial(goals: Array<Goal>): Solution {
     return new Solution(goals, substitutionEmpty(), [])

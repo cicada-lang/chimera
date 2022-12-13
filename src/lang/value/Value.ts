@@ -15,6 +15,7 @@ export type Value =
   | Objekt
   | Data
   | Relation
+  | TypeConstraint
 
 export type PatternVar = {
   "@type": "Value"
@@ -181,7 +182,6 @@ export type Clause = {
   env: Env
   bindings: Set<string>
   name: string
-
   exp: Exp
   goals: Array<GoalExp>
 }
@@ -191,7 +191,6 @@ export function Clause(
   env: Env,
   bindings: Set<string>,
   name: string,
-
   exp: Exp,
   goals: Array<GoalExp>,
 ): Clause {
@@ -202,5 +201,24 @@ export function Clause(
     name,
     exp,
     goals,
+  }
+}
+
+export type TypeConstraint = {
+  "@type": "Value"
+  "@kind": "TypeConstraint"
+  name: string
+  predicate: (x: any) => boolean
+}
+
+export function TypeConstraint(
+  name: string,
+  predicate: (x: any) => boolean,
+): TypeConstraint {
+  return {
+    "@type": "Value",
+    "@kind": "TypeConstraint",
+    name,
+    predicate,
   }
 }

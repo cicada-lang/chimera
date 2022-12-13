@@ -61,6 +61,10 @@ export function formatValue(value: Value): string {
     case "Relation": {
       return value.name
     }
+
+    case "TypeConstraint": {
+      return value.name
+    }
   }
 }
 

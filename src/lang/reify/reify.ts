@@ -176,6 +176,10 @@ function containsVar(
     case "Relation": {
       return false
     }
+
+    case "TypeConstraint": {
+      return false
+    }
   }
 }
 
