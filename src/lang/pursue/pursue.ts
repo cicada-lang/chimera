@@ -5,6 +5,7 @@ import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import { pursueEqual, pursueNotEqual } from "../pursue"
 import type { Solution } from "../solution"
+import { substitutionWalk } from "../substitution"
 import * as Values from "../value"
 
 /**
@@ -37,12 +38,26 @@ export function pursue(
 
           const newSolution = pursueEqual(mod, solution, value, goal.arg)
           if (newSolution === undefined) return []
+
           return [
             newSolution.update({
               goals: [...goals, ...solution.goals],
             }),
           ]
         })
+      }
+
+      if (goal.target["@kind"] === "TypeConstraint") {
+        const arg = substitutionWalk(solution.substitution, goal.arg)
+        if (arg["@kind"] === "PatternVar") {
+          //
+        }
+
+        if (goal.target.predicate(arg)) {
+          return [solution]
+        } else {
+          return []
+        }
       }
 
       throw new Errors.LangError(
@@ -56,6 +71,7 @@ export function pursue(
     case "Equal": {
       const newSolution = pursueEqual(mod, solution, goal.left, goal.right)
       if (newSolution === undefined) return []
+
       return [
         newSolution.update({
           goals: [...solution.goals],
@@ -66,6 +82,7 @@ export function pursue(
     case "NotEqual": {
       const newSolution = pursueNotEqual(mod, solution, goal.left, goal.right)
       if (newSolution === undefined) return []
+
       return [
         newSolution.update({
           goals: [...solution.goals],

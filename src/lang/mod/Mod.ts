@@ -110,6 +110,10 @@ export class Mod {
     )
   }
 
+  find(name: string): Value | undefined {
+    return envLookupValue(this.env, name)
+  }
+
   findRelation(name: string): Relation | undefined {
     const value = envLookupValue(this.env, name)
     if (value === undefined) return undefined

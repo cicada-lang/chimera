@@ -1,6 +1,6 @@
 # type constraint
 
-`Apply` -- support `TypeConstraint` -- extending `solution`
+`pursue` -- `Apply` `TypeConstraint` -- extending `solution` -- on `PatternVar`
 
 [type constraint] implementing subsumption between disequality constraints
 

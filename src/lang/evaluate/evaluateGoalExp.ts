@@ -9,15 +9,15 @@ import type { Mod } from "../mod"
 export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
   switch (goal["@kind"]) {
     case "Apply": {
-      const relation = mod.findRelation(goal.name)
-      if (relation === undefined) {
+      const target = mod.find(goal.name)
+      if (target === undefined) {
         throw new Errors.ElaborationError(
-          `[evaluateGoal] undefined relation name: ${goal.name}`,
+          `[evaluateGoal] Apply fail, undefined target name: ${goal.name}`,
           { span: goal.span },
         )
       }
 
-      return Goals.Apply(goal.name, relation, evaluate(mod, env, goal.arg))
+      return Goals.Apply(goal.name, target, evaluate(mod, env, goal.arg))
     }
 
     case "Equal": {

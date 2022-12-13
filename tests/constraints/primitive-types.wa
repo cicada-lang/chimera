@@ -1,3 +1,19 @@
+find _ {
+  String "A"
+}
+
+find _ {
+  String 1
+}
+
+find _ {
+  Number 1
+}
+
+find _ {
+  Number "A"
+}
+
 find x {
   String x
 }
