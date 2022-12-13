@@ -1,7 +1,5 @@
 # type constraint
 
-`useGlobals` -- `Null` and `Boolean` as built-in relation
-
 [type constraint] built-in type constraints for primitive types
 
 - use `globals` -- `Number` and `String` can be shadowed
