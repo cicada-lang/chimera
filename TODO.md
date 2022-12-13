@@ -1,7 +1,5 @@
 # type constraint
 
-`Number` and `String` as globals type constraint value
-
 add test `constraints/primitive-types.wa`
 
 `Apply` -- support `TypeConstraint` -- extending `solution`

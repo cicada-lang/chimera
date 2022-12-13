@@ -208,12 +208,12 @@ export type TypeConstraint = {
   "@type": "Value"
   "@kind": "TypeConstraint"
   name: string
-  predicate: (x: any) => boolean
+  predicate: (value: Value) => boolean
 }
 
 export function TypeConstraint(
   name: string,
-  predicate: (x: any) => boolean,
+  predicate: (value: Value) => boolean,
 ): TypeConstraint {
   return {
     "@type": "Value",

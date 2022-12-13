@@ -1,3 +1,4 @@
+import * as Values from "../value"
 import { GlobalStore } from "./GlobalStore"
 
 let globals: GlobalStore | undefined = undefined
@@ -19,6 +20,16 @@ Boolean x -- { x = false }
 Boolean x -- { x = true }
 
 `)
+
+  globals.define(
+    "Number",
+    Values.TypeConstraint("Number", (value) => value["@kind"] === "Number"),
+  )
+
+  globals.define(
+    "String",
+    Values.TypeConstraint("String", (value) => value["@kind"] === "String"),
+  )
 
   return globals
 }
