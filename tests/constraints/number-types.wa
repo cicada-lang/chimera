@@ -1,0 +1,22 @@
+assert find _ {
+  Number 1
+}
+
+assert not find _ {
+  Number "A"
+}
+
+assert not find x {
+  x = "cat"
+  Number x
+}
+
+assert find x {
+  x = 1
+  Number x
+}
+
+assert not find x {
+  Number x
+  String x
+}

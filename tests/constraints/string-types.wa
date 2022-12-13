@@ -1,0 +1,12 @@
+assert find _ {
+  String "A"
+}
+
+assert not find _ {
+  String 1
+}
+
+assert find x {
+  x = "cat"
+  String x
+}
