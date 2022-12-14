@@ -28,6 +28,20 @@ export function pursueEqual(
     return solution
   }
 
+  let newSolution: Solution | undefined = solution.update({ substitution })
+
+  newSolution = maintainInequalities(mod, newSolution)
+  newSolution = maintaintypeConstraints(mod, newSolution)
+
+  return newSolution
+}
+
+function maintainInequalities(
+  mod: Mod,
+  solution: Solution | undefined,
+): Solution | undefined {
+  if (solution === undefined) return undefined
+
   /**
 
      Verify `inequalities` validity.
@@ -44,7 +58,7 @@ export function pursueEqual(
   for (const inequality of solution.inequalities) {
     const newSubstitution = unifyMany(
       mod,
-      substitution,
+      solution.substitution,
       substitutionPairs(inequality),
     )
 
@@ -69,7 +83,7 @@ export function pursueEqual(
 
     **/
 
-    if (substitutionEqual(substitution, newSubstitution)) {
+    if (substitutionEqual(solution.substitution, newSubstitution)) {
       return undefined
     }
 
@@ -93,18 +107,20 @@ export function pursueEqual(
 
     **/
 
-    inequalities.push(substitutionPrefix(newSubstitution, substitution))
+    inequalities.push(
+      substitutionPrefix(newSubstitution, solution.substitution),
+    )
   }
 
-  solution = solution.update({ substitution, inequalities })
-
-  return maintaintypeConstraints(mod, solution)
+  return solution.update({ inequalities })
 }
 
 function maintaintypeConstraints(
   mod: Mod,
-  solution: Solution,
+  solution: Solution | undefined,
 ): Solution | undefined {
+  if (solution === undefined) return undefined
+
   const typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]> = []
   for (const [variable, typeConstraint] of solution.typeConstraints) {
     const value = substitutionWalk(solution.substitution, variable)

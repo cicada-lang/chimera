@@ -1,4 +1,6 @@
-extract function `maintainInequalities`
+extract module `removeInequalitiesSubsumedByTypeConstraints`
+extract module `maintainInequalities`
+extract module `maintaintypeConstraints`
 
 # higher-order logic
 
