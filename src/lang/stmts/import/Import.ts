@@ -34,22 +34,31 @@ export class Import extends Stmt {
       throw new Errors.LangError(`I can not circular import: ${this.path}`)
     }
 
-    const importedMod = await mod.options.loader.load(url)
-    for (const binding of this.bindings) {
-      const value = importedMod.findRelation(binding.name)
-      if (value !== undefined) {
-        mod.define(binding.alias || binding.name, value)
-      } else {
-        throw new Errors.LangError(
-          [
-            `[Import.execute]`,
-            `  undefined name: ${binding.name}`,
-            `  imported path: ${this.path}`,
-          ].join("\n"),
-        )
+    try {
+      const importedMod = await mod.options.loader.load(url)
+      for (const binding of this.bindings) {
+        const value = importedMod.findRelation(binding.name)
+        if (value !== undefined) {
+          mod.define(binding.alias || binding.name, value)
+        } else {
+          throw new Errors.LangError(
+            [
+              `[Import.execute]`,
+              `  undefined name: ${binding.name}`,
+              `  imported path: ${this.path}`,
+            ].join("\n"),
+          )
+        }
       }
-    }
 
-    mod.imported.push(url)
+      mod.imported.push(url)
+    } catch (error) {
+      if (error instanceof Error) {
+        error.message =
+          `[Import.execute] fail to import ${this.path}\n` + error.message
+      }
+
+      throw error
+    }
   }
 }

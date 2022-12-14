@@ -1,6 +1,7 @@
 import fs from "fs"
 import watcher from "node-watch"
 import { Loader } from "../loader"
+import { colors } from "../utils/colors"
 
 export class Runner {
   loader = new Loader({
@@ -22,7 +23,8 @@ export class Runner {
       return { error: undefined }
     } catch (error) {
       if (!opts?.silent) {
-        if (error instanceof Error) console.error(error.message)
+        if (error instanceof Error)
+          console.error(highlightErrorMessage(error.message))
         else console.error(error)
       }
 
@@ -31,10 +33,8 @@ export class Runner {
   }
 
   async watch(main: URL): Promise<void> {
-    const { error } = await this.run(main)
-    if (error) app.logger.error({ tag: "run", msg: main.pathname })
-    else app.logger.info({ tag: "run", msg: main.pathname })
-
+    await this.run(main)
+    app.logger.info({ tag: "run", msg: main.pathname })
     app.logger.info({
       msg: `Watching for changes.`,
       tracked: this.loader.tracked,
@@ -50,19 +50,30 @@ export class Runner {
             app.logger.info({ tag: event, msg: url.pathname })
             app.logger.info({ msg: "The main file is removed." })
           } else {
-            const { error } = await this.run(main)
-            if (error) app.logger.error({ tag: event, msg: url.pathname })
-            else app.logger.info({ tag: event, msg: url.pathname })
+            await this.run(main)
+            app.logger.info({ tag: event, msg: url.pathname })
           }
         }
 
         if (event === "update") {
           this.loader.delete(url)
-          const { error } = await this.run(main)
-          if (error) app.logger.error({ tag: event, msg: url.pathname })
-          else app.logger.info({ tag: event, msg: url.pathname })
+          await this.run(main)
+          app.logger.info({ tag: event, msg: url.pathname })
         }
       })
     }
   }
+}
+
+function highlightErrorMessage(report: string): string {
+  return report.split("\n").map(highlightLine).join("\n")
+}
+
+function highlightLine(line: string): string {
+  if (!line.startsWith("[")) return line
+  const i = line.indexOf("]")
+  if (i === -1) return line
+  const head = line.slice(0, i + 1)
+  const rest = line.slice(i + 1)
+  return colors.red(colors.bold(head)) + rest
 }
