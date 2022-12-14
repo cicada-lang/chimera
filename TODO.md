@@ -1,8 +1,5 @@
 # type constraint
 
-extract module `reifyInequalities`
-extract module `reifyTypeConstraints`
-
 [type constraint] [maybe] use walked `value` in `pursueEqual`
 
 # higher-order logic
