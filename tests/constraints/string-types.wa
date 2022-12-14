@@ -10,3 +10,17 @@ assert find x {
   x = "cat"
   String x
 }
+
+// An unification breaks a type constraint.
+
+assert not find x {
+  String x
+  x = 1
+}
+
+// An unification subsums a type constraint.
+
+assert find x {
+  Number x
+  x = 1
+}

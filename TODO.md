@@ -1,7 +1,8 @@
 # type constraint
 
-[type constraint] verifying constraints' validity
 [type constraint] reification
+
+[type constraint] [maybe] use walked `value` in `pursueEqual`
 
 # higher-order logic
 

@@ -5,8 +5,10 @@ import {
   substitutionEqual,
   substitutionPairs,
   substitutionPrefix,
+  substitutionWalk,
 } from "../substitution"
 import { unify, unifyMany } from "../unify"
+import type * as Values from "../value"
 import type { Value } from "../value"
 
 export function pursueEqual(
@@ -27,7 +29,7 @@ export function pursueEqual(
 
   /**
 
-     Verifying Constraints' Validity.
+     Verify `inequalities` validity.
 
      Next, we have to deal with the interaction between `Equal` and
      `NotEqual` constraints. Here, there are two possible cases:
@@ -93,5 +95,22 @@ export function pursueEqual(
     inequalities.push(substitutionPrefix(newSubstitution, substitution))
   }
 
-  return solution.update({ substitution, inequalities })
+  /**
+
+     Verify `typeConstraints` validity.
+
+  **/
+
+  const typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]> = []
+  for (const [variable, typeConstraint] of solution.typeConstraints) {
+    const value = substitutionWalk(substitution, variable)
+    if (value["@kind"] === "PatternVar") {
+      // TODO Maybe use the walked `value`.
+      typeConstraints.push([variable, typeConstraint])
+    } else if (!typeConstraint.predicate(value)) {
+      return undefined
+    }
+  }
+
+  return solution.update({ substitution, inequalities, typeConstraints })
 }
