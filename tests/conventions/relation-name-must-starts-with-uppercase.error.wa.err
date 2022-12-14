@@ -1,4 +1,3 @@
-[Script.run] ./tests/conventions/relation-name-must-starts-with-uppercase.error.wa
 I found syntax error in code:
 
  1 |border ["sussex", "kent"]

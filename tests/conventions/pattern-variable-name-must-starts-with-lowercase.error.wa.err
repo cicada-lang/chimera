@@ -1,4 +1,3 @@
-[Script.run] ./tests/conventions/pattern-variable-name-must-starts-with-lowercase.error.wa
 I found syntax error in code:
 
  1 |find [X, Y] {

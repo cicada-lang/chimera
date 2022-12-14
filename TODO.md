@@ -1,9 +1,11 @@
-use constraint to implement higher-order logic.
-
 # type constraint
 
 [type constraint] verifying constraints' validity
 [type constraint] reification
+
+# higher-order logic
+
+use constraint to implement higher-order logic.
 
 # finite-domain constraint programming
 

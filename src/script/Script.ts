@@ -7,40 +7,20 @@ export abstract class Script {
   abstract text: string
   abstract run(): Promise<void>
 
-  get pathname(): string {
-    if (this.mod.options.url.pathname.startsWith(process.cwd())) {
-      return "." + this.mod.options.url.pathname.slice(process.cwd().length)
-    } else {
-      return this.mod.options.url.pathname
-    }
-  }
-
   createErrorReport(
     error: unknown,
     text: string,
   ): Errors.ErrorReport | unknown {
     if (error instanceof Errors.ElaborationError) {
-      return new Errors.ErrorReport(
-        highlightReport(
-          [`[Script.run] ${this.pathname}`, error.report(text)].join("\n"),
-        ),
-      )
+      return new Errors.ErrorReport(highlightReport(error.report(text)))
     }
 
     if (error instanceof Errors.TestingError) {
-      return new Errors.ErrorReport(
-        highlightReport(
-          [`[Script.run] ${this.pathname}`, error.report(text)].join("\n"),
-        ),
-      )
+      return new Errors.ErrorReport(highlightReport(error.report(text)))
     }
 
     if (error instanceof Errors.ParsingError) {
-      return new Errors.ErrorReport(
-        highlightReport(
-          [`[Script.run] ${this.pathname}`, error.report(text)].join("\n"),
-        ),
-      )
+      return new Errors.ErrorReport(highlightReport(error.report(text)))
     }
 
     return error
