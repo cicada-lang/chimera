@@ -1,7 +1,5 @@
 # type constraint
 
-extract function `typeConstraintAsGoal`
-
 [type constraint] [maybe] use walked `value` in `pursueEqual`
 
 # higher-order logic

@@ -40,49 +40,11 @@ export function reifyInequalities(
       ),
   )
 
-  /**
-
-     Secondly, we can discard disequality constraints that are
-     subsumed by other disequality constraints.
-
-     We say that a constraint d1 subsumes d2 (or d2 is subsumed by d1)
-     if whenever d1 holds, d2 also holds.
-
-     The important observation to make here is that
-     d1 subsumes d2 if every pair in d1 is also contained in d2
-     (with possibly more pairs not in d1).
-
-     (Having more goals in a disj weakens it.)
-
-  **/
-
   inequalities = removeSubsumed(mod, inequalities)
 
   return inequalities.map((inequality) =>
     inequalityAsGoal(inequality, substitutionForRenaming),
   )
-}
-
-function inequalityAsGoal(
-  inequality: Substitution,
-  substitutionForRenaming: Substitution,
-) {
-  const pairs = substitutionPairs(inequality)
-  return pairs.length === 1
-    ? pairs.map(([left, right]) =>
-        Goals.NotEqual(
-          substitutionDeepWalk(substitutionForRenaming, left),
-          substitutionDeepWalk(substitutionForRenaming, right),
-        ),
-      )[0]
-    : Goals.Disj(
-        pairs.map(([left, right]) =>
-          Goals.NotEqual(
-            substitutionDeepWalk(substitutionForRenaming, left),
-            substitutionDeepWalk(substitutionForRenaming, right),
-          ),
-        ),
-      )
 }
 
 function somePairContainsVar(
@@ -95,6 +57,22 @@ function somePairContainsVar(
       substitutionContainsPatternVar(right, substitutionForRenaming),
   )
 }
+
+/**
+
+   Secondly, we can discard disequality constraints that are
+   subsumed by other disequality constraints.
+
+   We say that a constraint d1 subsumes d2 (or d2 is subsumed by d1)
+   if whenever d1 holds, d2 also holds.
+
+   The important observation to make here is that
+   d1 subsumes d2 if every pair in d1 is also contained in d2
+   (with possibly more pairs not in d1).
+
+   (Having more goals in a disj weakens it.)
+
+**/
 
 function removeSubsumed(
   mod: Mod,
@@ -140,4 +118,26 @@ function isSubsumed(
     )
     return newSubstitution && substitutionEqual(newSubstitution, substitution)
   })
+}
+
+function inequalityAsGoal(
+  inequality: Substitution,
+  substitutionForRenaming: Substitution,
+) {
+  const pairs = substitutionPairs(inequality)
+  return pairs.length === 1
+    ? pairs.map(([left, right]) =>
+        Goals.NotEqual(
+          substitutionDeepWalk(substitutionForRenaming, left),
+          substitutionDeepWalk(substitutionForRenaming, right),
+        ),
+      )[0]
+    : Goals.Disj(
+        pairs.map(([left, right]) =>
+          Goals.NotEqual(
+            substitutionDeepWalk(substitutionForRenaming, left),
+            substitutionDeepWalk(substitutionForRenaming, right),
+          ),
+        ),
+      )
 }

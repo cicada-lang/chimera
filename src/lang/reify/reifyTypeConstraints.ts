@@ -7,6 +7,7 @@ import {
   substitutionContainsPatternVar,
   substitutionDeepWalk,
 } from "../substitution"
+import type * as Values from "../value"
 
 export function reifyTypeConstraints(
   mod: Mod,
@@ -32,10 +33,18 @@ export function reifyTypeConstraints(
   )
 
   return typeConstraints.map(([variable, typeConstraint]) =>
-    Goals.Apply(
-      typeConstraint.name,
-      typeConstraint,
-      substitutionDeepWalk(substitutionForRenaming, variable),
-    ),
+    typeConstraintAsGoal(variable, typeConstraint, substitutionForRenaming),
+  )
+}
+
+function typeConstraintAsGoal(
+  variable: Values.PatternVar,
+  typeConstraint: Values.TypeConstraint,
+  substitutionForRenaming: Substitution,
+): Goal {
+  return Goals.Apply(
+    typeConstraint.name,
+    typeConstraint,
+    substitutionDeepWalk(substitutionForRenaming, variable),
   )
 }
