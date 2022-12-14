@@ -21,30 +21,37 @@ assert not find x {
   String x
 }
 
-// The inequality is subsumed by type constraint:
+// An inequality is subsumed by a type constraint.
 
 find x {
   x != "cat"
   Number x
 }
 
+// An inequality (in a conjunction) is subsumed by a type constraint.
+
 find [x, y] {
   [x, y] != ["cat", 1]
   Number x
 }
+
+// An inequality (applied later) is subsumed by a type constraint.
 
 find x {
   Number x
   x != "cat"
 }
 
+// An inequality (in a conjunction and applied later) is subsumed by a type constraint.
+
 find [x, y] {
   Number x
   [x, y] != ["cat", 1]
 }
 
+// An inequality is subsumed by an indirect type constraint.
+
 find x {
-  // indirect type constraint on `x`
   Number z
   z = x
   x != "cat"

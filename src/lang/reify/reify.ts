@@ -35,9 +35,10 @@ export function Reification(
 export function reify(mod: Mod, solution: Solution, value: Value): Reification {
   value = substitutionDeepWalk(solution.substitution, value)
   const substitutionForRenaming = prepareSubstitution(value)
-  const constraints = reifyInequalities(mod, solution, substitutionForRenaming)
-  value = substitutionDeepWalk(substitutionForRenaming, value)
-  return Reification(value, constraints)
+  return Reification(substitutionDeepWalk(substitutionForRenaming, value), [
+    ...reifyInequalities(mod, solution, substitutionForRenaming),
+    ...reifyTypeConstraints(mod, solution, substitutionForRenaming),
+  ])
 }
 
 /**
@@ -47,6 +48,38 @@ export function reify(mod: Mod, solution: Solution, value: Value): Reification {
    just like the order of solutions (which is not sorted).
 
 **/
+
+export function reifyTypeConstraints(
+  mod: Mod,
+  solution: Solution,
+  substitutionForRenaming: Substitution,
+): Array<Goal> {
+  let typeConstraints = solution.typeConstraints
+
+  /**
+
+     If a `typeConstraint` contains a fresh variable,
+     then we may discard this constraint.
+
+     This is because for a fresh variable,
+     we can always pick something for this fresh variable that
+     satisfy this `typeConstraint`.
+
+  **/
+
+  typeConstraints = typeConstraints.filter(
+    ([variable, _typeConstraint]) =>
+      !containsVar(variable, substitutionForRenaming),
+  )
+
+  return typeConstraints.map(([variable, typeConstraint]) =>
+    Goals.Apply(
+      typeConstraint.name,
+      typeConstraint,
+      substitutionDeepWalk(substitutionForRenaming, variable),
+    ),
+  )
+}
 
 export function reifyInequalities(
   mod: Mod,

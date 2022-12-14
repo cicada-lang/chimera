@@ -1,6 +1,6 @@
 # type constraint
 
-[type constraint] reification
+[refactor] `reify`
 
 [type constraint] [maybe] use walked `value` in `pursueEqual`
 

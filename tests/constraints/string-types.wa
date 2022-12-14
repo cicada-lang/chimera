@@ -21,6 +21,12 @@ assert not find x {
 // An unification subsums a type constraint.
 
 assert find x {
-  Number x
-  x = 1
+  String x
+  x = "A"
+}
+
+// Reification.
+
+find x {
+  String x
 }
