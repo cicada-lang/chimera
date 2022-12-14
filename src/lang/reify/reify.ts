@@ -5,10 +5,10 @@ import { prepareSubstitution } from "../reify"
 import type { Solution } from "../solution"
 import {
   Substitution,
+  substitutionContainsPatternVar,
   substitutionDeepWalk,
   substitutionEqual,
   substitutionPairs,
-  substitutionWalk,
 } from "../substitution"
 import { unifyMany } from "../unify"
 import type { Value } from "../value"
@@ -69,7 +69,7 @@ export function reifyTypeConstraints(
 
   typeConstraints = typeConstraints.filter(
     ([variable, _typeConstraint]) =>
-      !containsVar(variable, substitutionForRenaming),
+      !substitutionContainsPatternVar(variable, substitutionForRenaming),
   )
 
   return typeConstraints.map(([variable, typeConstraint]) =>
@@ -154,66 +154,9 @@ function somePairContainsVar(
 ): boolean {
   return pairs.some(
     ([left, right]) =>
-      containsVar(left, substitutionForRenaming) ||
-      containsVar(right, substitutionForRenaming),
+      substitutionContainsPatternVar(left, substitutionForRenaming) ||
+      substitutionContainsPatternVar(right, substitutionForRenaming),
   )
-}
-
-function containsVar(
-  value: Value,
-  substitutionForRenaming: Substitution,
-): boolean {
-  switch (value["@kind"]) {
-    case "PatternVar": {
-      value = substitutionWalk(substitutionForRenaming, value)
-      return value["@kind"] === "PatternVar"
-    }
-
-    case "ReifiedVar": {
-      return false
-    }
-
-    case "String":
-    case "Number":
-    case "Boolean":
-    case "Null": {
-      return false
-    }
-
-    case "ArrayCons": {
-      return (
-        containsVar(value.car, substitutionForRenaming) ||
-        containsVar(value.cdr, substitutionForRenaming)
-      )
-    }
-
-    case "ArrayNull": {
-      return false
-    }
-
-    case "Objekt": {
-      return (
-        Object.values(value.properties).some((value) =>
-          containsVar(value, substitutionForRenaming),
-        ) ||
-        Boolean(value.etc && containsVar(value.etc, substitutionForRenaming))
-      )
-    }
-
-    case "Data": {
-      return value.args.some((value) =>
-        containsVar(value, substitutionForRenaming),
-      )
-    }
-
-    case "Relation": {
-      return false
-    }
-
-    case "TypeConstraint": {
-      return false
-    }
-  }
 }
 
 function removeSubsumed(

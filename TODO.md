@@ -1,6 +1,7 @@
 # type constraint
 
-[refactor] `reify`
+extract module `reifyInequalities`
+extract module `reifyTypeConstraints`
 
 [type constraint] [maybe] use walked `value` in `pursueEqual`
 
