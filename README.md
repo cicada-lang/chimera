@@ -259,10 +259,10 @@ npm run test:watch    # Watch the testing
 ## Thanks
 
 Thank you, Daniel P. Friedman, William E. Byrd, Oleg Kiselyov and Jason Hemann,
-for your book ["The Reasoned Schemer"](https://mitpress.mit.edu/9780262535519/the-reasoned-schemer/).
+for your book [**"The Reasoned Schemer"**](https://mitpress.mit.edu/9780262535519/the-reasoned-schemer/).
 
 Thank you, Bharathi Ramana Joshi and William E. Byrd,
-for writing a [good tutorial](docs/papers/an-annotated-implementation-of-minikanren-with-constraints.pdf) about implementing constraint logic programming.
+for writing [**a great tutorial**](docs/papers/an-annotated-implementation-of-minikanren-with-constraints.pdf) about implementing constraint logic programming.
 
 ## Contributions
 
