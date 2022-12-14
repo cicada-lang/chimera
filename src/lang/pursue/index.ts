@@ -1,5 +1,7 @@
 export * from "./applyRelation"
 export * from "./applyTypeConstraint"
+export * from "./maintainInequalities"
+export * from "./maintaintypeConstraints"
 export * from "./pursue"
 export * from "./pursueEqual"
 export * from "./pursueNotEqual"

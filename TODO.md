@@ -1,10 +1,3 @@
-extract module `maintainInequalities`
-extract module `maintaintypeConstraints`
-
-# higher-order logic
-
-use constraint to implement higher-order logic.
-
 # finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf
@@ -12,6 +5,10 @@ use constraint to implement higher-order logic.
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
+
+# higher-order logic
+
+use constraint to implement higher-order logic.
 
 # alphaKanren and alphaLean
 
