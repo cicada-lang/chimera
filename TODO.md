@@ -1,6 +1,5 @@
-# type constraint
-
-[type constraint] [maybe] use walked `value` in `pursueEqual`
+extract function `maintainInequalities`
+extract function `maintaintypeConstraints`
 
 # higher-order logic
 

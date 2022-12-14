@@ -11,11 +11,37 @@ assert find x {
   String x
 }
 
+// Reification.
+
+find x {
+  String x
+}
+
 // An unification breaks a type constraint.
 
 assert not find x {
   String x
   x = 1
+}
+
+// An indirect unification breaks a type constraint.
+
+assert not find x {
+  String x
+  x = z
+  z = 1
+}
+
+assert not find x {
+  x = z
+  z = 1
+  String x
+}
+
+assert not find x {
+  x = z
+  String x
+  z = 1
 }
 
 // An unification subsums a type constraint.
@@ -25,8 +51,22 @@ assert find x {
   x = "A"
 }
 
-// Reification.
+// An indirect unification subsums a type constraint.
 
-find x {
+assert find x {
   String x
+  x = z
+  z = "A"
+}
+
+assert find x {
+  x = z
+  z = "A"
+  String x
+}
+
+assert find x {
+  x = z
+  String x
+  z = "A"
 }

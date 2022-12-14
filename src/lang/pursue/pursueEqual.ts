@@ -1,4 +1,5 @@
 import type { Mod } from "../mod"
+import { removeInequalitiesSubsumedByTypeConstraints } from "../pursue"
 import type { Solution } from "../solution"
 import {
   Substitution,
@@ -105,12 +106,19 @@ export function pursueEqual(
   for (const [variable, typeConstraint] of solution.typeConstraints) {
     const value = substitutionWalk(substitution, variable)
     if (value["@kind"] === "PatternVar") {
-      // TODO Maybe use the walked `value`.
-      typeConstraints.push([variable, typeConstraint])
+      typeConstraints.push([value, typeConstraint])
     } else if (!typeConstraint.predicate(value)) {
       return undefined
     }
   }
 
-  return solution.update({ substitution, inequalities, typeConstraints })
+  return solution.update({
+    substitution,
+    typeConstraints,
+    inequalities: removeInequalitiesSubsumedByTypeConstraints(
+      solution,
+      inequalities,
+      typeConstraints,
+    ),
+  })
 }
