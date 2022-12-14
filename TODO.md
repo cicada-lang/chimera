@@ -1,4 +1,3 @@
-extract module `removeInequalitiesSubsumedByTypeConstraints`
 extract module `maintainInequalities`
 extract module `maintaintypeConstraints`
 
