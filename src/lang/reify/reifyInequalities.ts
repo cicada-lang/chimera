@@ -58,25 +58,31 @@ export function reifyInequalities(
 
   inequalities = removeSubsumed(mod, inequalities)
 
-  return inequalities
-    .map(substitutionPairs)
-    .map((pairs) =>
-      pairs.length === 1
-        ? pairs.map(([left, right]) =>
-            Goals.NotEqual(
-              substitutionDeepWalk(substitutionForRenaming, left),
-              substitutionDeepWalk(substitutionForRenaming, right),
-            ),
-          )[0]
-        : Goals.Disj(
-            pairs.map(([left, right]) =>
-              Goals.NotEqual(
-                substitutionDeepWalk(substitutionForRenaming, left),
-                substitutionDeepWalk(substitutionForRenaming, right),
-              ),
-            ),
+  return inequalities.map((inequality) =>
+    inequalityAsGoal(inequality, substitutionForRenaming),
+  )
+}
+
+function inequalityAsGoal(
+  inequality: Substitution,
+  substitutionForRenaming: Substitution,
+) {
+  const pairs = substitutionPairs(inequality)
+  return pairs.length === 1
+    ? pairs.map(([left, right]) =>
+        Goals.NotEqual(
+          substitutionDeepWalk(substitutionForRenaming, left),
+          substitutionDeepWalk(substitutionForRenaming, right),
+        ),
+      )[0]
+    : Goals.Disj(
+        pairs.map(([left, right]) =>
+          Goals.NotEqual(
+            substitutionDeepWalk(substitutionForRenaming, left),
+            substitutionDeepWalk(substitutionForRenaming, right),
           ),
-    )
+        ),
+      )
 }
 
 function somePairContainsVar(
