@@ -1,5 +1,4 @@
 extract function `maintainInequalities`
-extract function `maintaintypeConstraints`
 
 # higher-order logic
 

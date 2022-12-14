@@ -28,13 +28,6 @@ find x {
   Number x
 }
 
-// An inequality (in a conjunction) is subsumed by a type constraint.
-
-find [x, y] {
-  [x, y] != ["cat", 1]
-  Number x
-}
-
 // An inequality (applied later) is subsumed by a type constraint.
 
 find x {
@@ -42,17 +35,30 @@ find x {
   x != "cat"
 }
 
-// An inequality (in a conjunction and applied later) is subsumed by a type constraint.
-
-find [x, y] {
-  Number x
-  [x, y] != ["cat", 1]
-}
-
-// An inequality is subsumed by an indirect type constraint.
+// An inequality (applied later) is subsumed by an indirect type constraint.
 
 find x {
   Number z
   z = x
   x != "cat"
+}
+
+find x {
+  Number z
+  x != "cat"
+  z = x
+}
+
+// An inequality (in a conjunction) is subsumed by a type constraint.
+
+find [x, y] {
+  [x, y] != ["cat", 1]
+  Number x
+}
+
+// An inequality (in a conjunction and applied later) is subsumed by a type constraint.
+
+find [x, y] {
+  Number x
+  [x, y] != ["cat", 1]
 }
