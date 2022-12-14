@@ -52,14 +52,14 @@ export function pursueNotEqual(
 
   const inequality = substitutionPrefix(substitution, solution.substitution)
 
-  return solution.update({
-    inequalities: [
-      ...solution.inequalities,
-      ...removeInequalitiesSubsumedByTypeConstraints(
-        solution,
-        [inequality],
-        solution.typeConstraints,
-      ),
-    ],
-  })
+  const inequalities = [
+    ...solution.inequalities,
+    ...removeInequalitiesSubsumedByTypeConstraints(
+      solution,
+      [inequality],
+      solution.typeConstraints,
+    ),
+  ]
+
+  return solution.update({ inequalities })
 }
