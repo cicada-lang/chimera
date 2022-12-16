@@ -1,4 +1,30 @@
+# rewriting system
+
+[rewriting system] `Stmts.RewriteRule`
+
+[rewriting system] `Stmts.Rewrite`
+
+[rewriting system] If we implement rewriting, we will also need to implement
+primitive functions about primitive datatypes like number and string.
+
+[rewriting system] support xml
+
+- xml templating = rewrite system for xml
+
 # finite-domain constraint programming
+
+[note] The general idea about implementing constraint:
+
+- Reduce the set of constraints,
+  to some kind of normal form
+  by which we can build a model in the theory.
+
+- If this is true, we can use rewriting
+  to implement the "normal form" part of constraint.
+
+  A set of rewrite rules applied to the set of constraints.
+
+- constraint system = hypergraph rewriting?
 
 [read] ckanren-minikanren-with-constraints.pdf
 
@@ -57,6 +83,10 @@ and use abstract syntax to write rules
 
 # as a database
 
+[idea] If we use a database of constraints,
+we can let the database generates events when some query success or fail,
+and clients can subscribe to these events.
+
 [learn] CMU database courses
 
 [maybe] as an in-memory database first
@@ -84,15 +114,6 @@ and use abstract syntax to write rules
 - [question] minikanren uses stream to implement search.
 
   - is stream also useful when we want to use relational programming language as a database?
-
-# programming by rewriting
-
-`Stmts.RewriteRule`
-`Stmts.Rewrite`
-
-[rewrite] support xml
-
-- xml templating = rewrite system for xml
 
 # std
 
@@ -191,6 +212,15 @@ lvars -- programming with fix points over lattices
 If you implemented different things,
 and you find that you are using similar implementation techniques,
 maybe there are deep theoretical connections too.
+
+# forward chaining
+
+play with forward chaining where we accumulate facts in some kind of database.
+
+- dialogue planning, dixon 2009
+- voting protocols, DeYoung 2011
+- operational semantic of PL, simmons 2012
+- modular robotics, goldstein 2012
 
 # later
 
