@@ -1,3 +1,10 @@
+# read
+
+[read] some-issues-and-trends-in-the-semantics-of-logic-programming.pdf
+[read] predicate-logic-as-a-programming-language.pdf
+[read] constraint-logic-programming--a-survey.pdf
+[read] ckanren-minikanren-with-constraints.pdf
+
 # rewriting system
 
 [rewriting system] `Stmts.RewriteRule`
@@ -11,7 +18,7 @@ primitive functions about primitive datatypes like number and string.
 
 - xml templating = rewrite system for xml
 
-# finite-domain constraint programming
+# clp
 
 [note] The general idea about implementing constraint:
 
@@ -24,9 +31,19 @@ primitive functions about primitive datatypes like number and string.
 
   A set of rewrite rules applied to the set of constraints.
 
+  - Can we implement this kind of rewrite in the logic programming itself?
+
+    (and provide a syntax keyword for defining new constraint)
+
 - constraint system = hypergraph rewriting?
 
-[read] ckanren-minikanren-with-constraints.pdf
+- elements of a domain can be defined by ADT (or a relation).
+
+- predicates in a domain can be defined by relation with more than one conclusions?
+
+- how to solve linear equations by rewriting?
+
+# finite-domain constraint programming
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
