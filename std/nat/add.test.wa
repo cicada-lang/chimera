@@ -14,7 +14,7 @@ find x {
 
 // The following query diverges.
 
-trace steps 3 {
+trace steps 5 {
   Add [x, y, z]
   Add [x, y, Nat::add1(z)]
 }

@@ -31,9 +31,9 @@ export class Trace extends Stmt {
     let n = 0
     const steps: Array<string> = []
     while (n < this.steps && solver.partialSolutions.length > 0) {
+      steps.push(formatSolver(solver))
       solver.solveStep(mod)
       n++
-      steps.push(formatSolver(solver))
     }
 
     return `solver trace steps ${n} {\n${indent(steps.join("\n\n"))}\n}`

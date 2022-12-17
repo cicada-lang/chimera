@@ -1,1 +1,12 @@
-[ Exp::var(_.0) with { String _.0 } ]
+[ 
+  Exp::var(_.0) with { String _.0 },
+  Exp::fn(_.0, Exp::var(_.1)) with { String _.1 String _.0 },
+  Exp::ap(Exp::var(_.0), Exp::var(_.1)) with { String _.1 String _.0 },
+  Exp::fn(_.0, Exp::fn(_.1, Exp::var(_.2))) with { String _.2 String _.1 String _.0 },
+  Exp::fn(_.0, Exp::ap(Exp::var(_.1), Exp::var(_.2))) with { String _.2 String _.1 String _.0 },
+  Exp::ap(Exp::var(_.0), Exp::fn(_.1, Exp::var(_.2))) with { String _.2 String _.1 String _.0 },
+  Exp::ap(Exp::fn(_.0, Exp::var(_.1)), Exp::var(_.2)) with { String _.2 String _.1 String _.0 },
+  Exp::fn(_.0, Exp::fn(_.1, Exp::fn(_.2, Exp::var(_.3)))) with { String _.3 String _.2 String _.1 String _.0 },
+  Exp::ap(Exp::var(_.0), Exp::ap(Exp::var(_.1), Exp::var(_.2))) with { String _.2 String _.1 String _.0 },
+  Exp::ap(Exp::ap(Exp::var(_.0), Exp::var(_.1)), Exp::var(_.2)) with { String _.2 String _.1 String _.0 }
+]

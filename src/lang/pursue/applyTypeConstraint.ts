@@ -25,13 +25,18 @@ export function applyTypeConstraint(
 
   for (let [variable, typeConstraint] of solution.typeConstraints) {
     const value = substitutionWalk(solution.substitution, variable)
-    if (value["@kind"] !== "PatternVar") return []
-    if (value.name !== arg.name) return []
 
-    if (target.name === typeConstraint.name) {
-      return [solution]
-    } else {
-      return []
+    /**
+       If a `TypeConstraint` is about the `arg` variable,
+       it must be the same as the `target` `TypeConstraint`.
+    **/
+
+    if (value["@kind"] === "PatternVar" && value.name === arg.name) {
+      if (target.name === typeConstraint.name) {
+        return [solution]
+      } else {
+        return []
+      }
     }
   }
 

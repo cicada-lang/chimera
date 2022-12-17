@@ -79,10 +79,6 @@ export class Solver {
     }
 
     const partialSolutions = pursue(mod, mod.env, solution, goal)
-    if (partialSolutions === undefined) {
-      this.solutions.push(solution)
-      return
-    }
 
     /**
 
