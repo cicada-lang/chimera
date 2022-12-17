@@ -1,0 +1,44 @@
+// Example taken from Robert Kowalski's paper
+// "Predicate logic as a programming language"
+// Chapter "11. SEQUENCING OF PROCEDURE CALLS"
+
+// (S1)  Sort(x, y) <- Perm(x, y), Ord(y)
+// (S2)  Perm(nil, ni1) <-
+// (S3)  Perm(z, cons(x, y)) <- Perm(z', y), Del(x, z, z')
+// (S4)  Del(x, cons(x, y), y) <-
+// (S5)  Del(x, cons(y, z), cons(y, z')) <- Del(x, z, z')
+// (S6)  Ord(nil) <-
+// (S7)  Ord(cons(x, nil)) <-
+// (S8)  Ord(cons(x, cons(y, z))) <- LE(x, y) , Ord(cons(y, z))
+// (S9)  LE(1, 2) <-
+// (S10) LE(1, 3) <-
+// (S11) LE(2, 3) <-
+// (S12) LE(x, x) <-
+
+// The point is that doing `Ord` before `Perm`
+// is more efficient.
+
+// Sort [x, y] -- s1 { Perm [x, y] Ord [y] }
+Sort [x, y] -- s1 { Ord [y] Perm [x, y] }
+Perm [[], []] -- s2
+Perm [z, [x | y]] -- s3 { Perm [z2, y] Del [x, z, z2] }
+Del [x, [x | y], y] -- s4
+Del [x, [y | z], [y | z2]] -- s5 { Del [x, z, z2] }
+Ord [[]] -- s6
+Ord [[_x]] -- s7
+Ord [[x, y | z]] -- s8 { LE [x, y] Ord [[y | z]] }
+LE [1, 2] -- s9
+LE [1, 3] -- s10
+LE [2, 3] -- s11
+LE [x, x] -- s12
+
+find [x, y] limit 10 {
+  Sort [x, y]
+}
+
+// The difference between performance
+// become clear when we ask for 2000 answers.
+
+// find [x, y] limit 2000 {
+//   Sort [x, y]
+// }
