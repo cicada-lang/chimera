@@ -32,6 +32,10 @@ LE [1, 3] -- s10
 LE [2, 3] -- s11
 LE [x, x] -- s12
 
+find u limit 1 {
+  Sort [[2, 1, 3], u]
+}
+
 find [x, y] limit 10 {
   Sort [x, y]
 }
