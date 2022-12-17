@@ -1,0 +1,8 @@
+import { Eval } from "exp.wa"
+
+find exp limit 3 {
+  value = Value::closure("y", Exp::var("x"), [
+    ["x", Value::closure("z", Exp::var("z"), [])]
+  ])
+  Eval [[], exp, value]
+}

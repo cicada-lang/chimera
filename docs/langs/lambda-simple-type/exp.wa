@@ -1,12 +1,12 @@
-Exp Exp::var(_name)
-Exp Exp::fn(_name, ret) -- { Exp ret }
+Exp Exp::var(name) -- { String name }
+Exp Exp::fn(name, ret) -- { String name Exp ret }
 Exp Exp::ap(target, arg) -- { Exp target Exp arg }
 
-Type Type::atom(_name)
+Type Type::atom(name) -- { String name }
 Type Type::arrow(argType, retType) -- { Type argType Type retType }
 
 Ctx []
-Ctx [[_name, type] | rest] -- { Type type Ctx rest }
+Ctx [[name, type] | rest] -- { String name Type type Ctx rest }
 
 Lookup [[[key, value] | _rest], key, value]
 

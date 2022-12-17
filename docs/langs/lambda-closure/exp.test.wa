@@ -1,0 +1,5 @@
+import { Exp } from "exp.wa"
+
+find exp limit 1 {
+  Exp exp
+}

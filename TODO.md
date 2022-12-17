@@ -1,9 +1,9 @@
 # read
 
-[read] some-issues-and-trends-in-the-semantics-of-logic-programming.pdf
 [read] predicate-logic-as-a-programming-language.pdf
-[read] constraint-logic-programming--a-survey.pdf
+[read] logic-for-problem-solving.pdf
 [read] ckanren-minikanren-with-constraints.pdf
+[read] constraint-logic-programming--a-survey.pdf
 
 # rewriting system
 

@@ -1,5 +1,3 @@
-[ "bar" ]
-[]
 [ 
   Exp::ap(
     Exp::fn("x", Exp::fn("y", Exp::var("x"))),

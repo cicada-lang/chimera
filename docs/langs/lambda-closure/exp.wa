@@ -1,11 +1,11 @@
-Exp Exp::var(_name)
-Exp Exp::fn(_name, ret) -- { Exp ret }
+Exp Exp::var(name) -- { String name }
+Exp Exp::fn(name, ret) -- { String name Exp ret }
 Exp Exp::ap(target, arg) -- { Exp target Exp arg }
 
-Value Value::closure(_name, ret, env) -- { Exp ret Env env }
+Value Value::closure(name, ret, env) -- { String name Exp ret Env env }
 
 Env []
-Env [[_name, value] | rest] -- { Value value Env rest }
+Env [[name, value] | rest] -- { String name Value value Env rest }
 
 Lookup [[[key, value] | _rest], key, value] -- here
 
@@ -23,14 +23,6 @@ Lookup [[[key, _value] | rest], name, found]
 //   }
 // }
 
-find q {
-  Lookup [[["x", "foo"], ["y", "bar"]], "y", q]
-}
-
-find q {
-  Lookup [[["x", "foo"], ["y", "bar"]], "w", q]
-}
-
 Eval [env, Exp::var(name), value]
 ---------------------------------- var {
   Lookup [env, name, value]
@@ -46,11 +38,4 @@ Eval [env, Exp::ap(target, arg), value]
   Eval [env, target, Value::closure(name, ret, env2)]
   Eval [env, arg, argValue]
   Eval [[[name, argValue] | env2], ret, value]
-}
-
-find exp limit 3 {
-  value = Value::closure("y", Exp::var("x"), [
-    ["x", Value::closure("z", Exp::var("z"), [])]
-  ])
-  Eval [[], exp, value]
 }
