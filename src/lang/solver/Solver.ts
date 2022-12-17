@@ -47,7 +47,14 @@ export class Solver {
       this.solveStep(mod)
     }
 
-    return this.solutions
+    /**
+
+       `this.solveStep` might find more then one solutions in one step,
+       thus the length of `this.solutions` might be larger than the `limit`.
+
+     **/
+
+    return this.solutions.slice(0, limit)
   }
 
   solveStep(mod: Mod): void {
