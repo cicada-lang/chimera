@@ -84,10 +84,16 @@ export class Solver {
 
        We try to be fair by pushing the
        newly generated `partialSolutions`
-       to the end of the queue.
+       to the end of the queue -- `this.partialSolutions`.
 
     **/
 
-    this.partialSolutions.push(...partialSolutions)
+    for (const partialSolution of partialSolutions) {
+      if (partialSolution.goals.length === 0) {
+        this.solutions.push(partialSolution)
+      } else {
+        this.partialSolutions.push(partialSolution)
+      }
+    }
   }
 }

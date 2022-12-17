@@ -1,15 +1,8 @@
-solver trace steps 2 {
+solver trace steps 1 {
   step {
     solution {
       substitution {}
       goals { Add1 [Nat::add1(Nat::zero()), _x#0] }
-    }
-  }
-  
-  step {
-    solution {
-      substitution { prev#1 = Nat::add1(Nat::zero()) _x#0 = Nat::add1(prev#1) }
-      goals {}
     }
   }
 }
