@@ -1,5 +1,10 @@
 # read
 
+[diary] the goal is to satisfy constraint
+
+Maybe we should call goal "constraint",
+because they are actually constraint, and the goal is to satisfy them.
+
 [read] predicate-logic-as-a-programming-language.pdf
 [read] logic-for-problem-solving.pdf
 [read] ckanren-minikanren-with-constraints.pdf
@@ -99,6 +104,8 @@ and use abstract syntax to write rules
 [dataset] translate object with `@type`, `@kind` and `@args` to `Exps.Data`
 
 # as a database
+
+how to use protocol to separate the storage layer?
 
 [idea] If we use a database of constraints,
 we can let the database generates events when some query success or fail,
@@ -232,12 +239,21 @@ maybe there are deep theoretical connections too.
 
 # forward chaining
 
+a.k.a. bottom-up
+
+- Is Earley parser bottom-up?
+  Can we do Earley parser using datalog?
+
 play with forward chaining where we accumulate facts in some kind of database.
 
 - dialogue planning, dixon 2009
 - voting protocols, DeYoung 2011
 - operational semantic of PL, simmons 2012
 - modular robotics, goldstein 2012
+
+datalog can be implemented using forward chaining
+
+datalog stratification: https://en.wikipedia.org/wiki/Stratification_(mathematics)
 
 # later
 
