@@ -2,10 +2,9 @@
 
 [diary] the goal is to satisfy constraint
 
-Maybe we should call goal "constraint",
+Maybe we should call goals "constraints",
 because they are actually constraint, and the goal is to satisfy them.
 
-[read] predicate-logic-as-a-programming-language.pdf
 [read] logic-for-problem-solving.pdf
 [read] ckanren-minikanren-with-constraints.pdf
 [read] constraint-logic-programming--a-survey.pdf
@@ -40,13 +39,22 @@ primitive functions about primitive datatypes like number and string.
 
     (and provide a syntax keyword for defining new constraint)
 
-- constraint system = hypergraph rewriting?
-
 - elements of a domain can be defined by ADT (or a relation).
 
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
+
+# hypergraph
+
+logic programming = context free non-deterministic hypergraph rewriting
+
+constraint system = context sensitive non-deterministic hypergraph rewriting?
+
+What ideas from hypergraph rewriting can we use in logic programming?
+
+can we generalize the representation of hypergraphs (in topos theory)
+to represent cell-complex?
 
 # finite-domain constraint programming
 
