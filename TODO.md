@@ -1,8 +1,9 @@
 [module] be able to import all -- `import * from ...`
 
-[maybe] support namespace
+- Use `import * from ...` to import all names without namespace prefix,
+  this feature can be used to reexport names in many modules from one module.
 
-- we need to add back datatype and restrict the use of data constructors
+[maybe] support namespace
 
 [read] ckanren-minikanren-with-constraints.pdf
 
