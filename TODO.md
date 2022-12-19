@@ -1,5 +1,7 @@
 [maybe] support namespace
 
+[diary] support-namespace.md
+
 # finite-domain constraint programming
 
 [read] ckanren-minikanren-with-constraints.pdf
