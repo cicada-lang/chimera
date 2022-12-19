@@ -10,7 +10,7 @@ Use
 fn("f", ap(var("f"), var("f")))
 ```
 
-Instead of
+with less syntax noise, instead of
 
 ```
 Exp::fn("f", Exp::ap(Exp::var("f"), Exp::var("f")))
