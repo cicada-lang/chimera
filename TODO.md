@@ -6,6 +6,21 @@
 
 [read] ckanren-minikanren-with-constraints.pdf
 
+- A constraint itself encodes how to rewrite the set of constraints
+  (a little like the type of `pursue`).
+
+  - We need to rewrite the set of constraints,
+    because of a new constraint (or new constraints)
+    are added to the set of constraints.
+
+    We can maintain some invariants for the set of constraints.
+
+    Before adding the new constraints, the invariants holds,
+    adding the new constraints will break the invariants,
+    after rewriting, we should bring back the invariants.
+
+    Example invariant is "no more redex".
+
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
@@ -14,7 +29,7 @@
 
 logic programming = context free non-deterministic hypergraph rewriting
 
-constraint system = context sensitive non-deterministic hypergraph rewriting?
+constraint system = context sensitive deterministic hypergraph rewriting
 
 What ideas from hypergraph rewriting can we use in logic programming?
 
