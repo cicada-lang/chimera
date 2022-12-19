@@ -53,7 +53,7 @@ export function formatValue(value: Value): string {
       return `{ ${entries.join(", ")} }`
     }
 
-    case "Data": {
+    case "Term": {
       const args = value.args.map(formatValue)
       return `${value.kind}${formatArgs(args)}`
     }

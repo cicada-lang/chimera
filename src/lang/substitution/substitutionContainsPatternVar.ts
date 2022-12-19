@@ -44,7 +44,7 @@ export function substitutionContainsPatternVar(
       )
     }
 
-    case "Data": {
+    case "Term": {
       return value.args.some((value) =>
         substitutionContainsPatternVar(value, substitution),
       )

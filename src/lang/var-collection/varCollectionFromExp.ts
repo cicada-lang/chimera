@@ -32,7 +32,7 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       ])
     }
 
-    case "Data": {
+    case "Term": {
       return varCollectionMerge(exp.args.map(varCollectionFromExp))
     }
   }

@@ -1,5 +1,3 @@
-rename `Exps.Data` to `Exps.Term`
-
 [module] be able to import all -- `import * from ...`
 
 [maybe] support namespace

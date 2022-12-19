@@ -49,7 +49,7 @@ export function prepareSubstitution(
       return substitution
     }
 
-    case "Data": {
+    case "Term": {
       for (const arg of value.args) {
         substitution = prepareSubstitution(arg, substitution)
       }

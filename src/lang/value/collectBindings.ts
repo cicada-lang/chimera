@@ -42,7 +42,7 @@ export function collectBindingsFromExp(exp: Exp): Set<string> {
       )
     }
 
-    case "Data": {
+    case "Term": {
       return new Set(
         exp.args.flatMap((arg) => Array.from(collectBindingsFromExp(arg))),
       )

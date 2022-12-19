@@ -49,9 +49,9 @@ export function formatExp(exp: Exp): string {
       return `{ ${entries.join(", ")} }`
     }
 
-    case "Data": {
+    case "Term": {
       const args = exp.args.map(formatExp)
-      return `${exp.kind}${formatArgs(args)}`
+      return `${exp.name}${formatArgs(args)}`
     }
   }
 }

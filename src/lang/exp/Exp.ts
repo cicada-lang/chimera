@@ -11,7 +11,7 @@ export type Exp =
   | ArrayCons
   | ArrayNull
   | Objekt
-  | Data
+  | Term
 
 export type Var = {
   "@type": "Exp"
@@ -131,18 +131,18 @@ export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
   }
 }
 
-export type Data = {
+export type Term = {
   "@type": "Exp"
-  "@kind": "Data"
-  kind: string
+  "@kind": "Term"
+  name: string
   args: Array<Exp>
 } & ExpMeta
 
-export function Data(kind: string, args: Array<Exp>, span?: Span): Data {
+export function Term(name: string, args: Array<Exp>, span?: Span): Term {
   return {
     "@type": "Exp",
-    "@kind": "Data",
-    kind,
+    "@kind": "Term",
+    name,
     args,
     span,
   }

@@ -145,7 +145,7 @@ export function Objekt(properties: Record<string, Value>, etc?: Value): Objekt {
 
 export type Data = {
   "@type": "Value"
-  "@kind": "Data"
+  "@kind": "Term"
   kind: string
   args: Array<Value>
 }
@@ -153,7 +153,7 @@ export type Data = {
 export function Data(kind: string, args: Array<Value>): Data {
   return {
     "@type": "Value",
-    "@kind": "Data",
+    "@kind": "Term",
     kind,
     args,
   }

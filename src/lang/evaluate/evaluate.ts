@@ -59,9 +59,9 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
-    case "Data": {
+    case "Term": {
       return Values.Data(
-        exp.kind,
+        exp.name,
         exp.args.map((arg) => evaluate(mod, env, arg)),
       )
     }

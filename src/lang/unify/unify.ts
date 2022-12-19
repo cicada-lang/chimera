@@ -142,7 +142,7 @@ export function unify(
     return substitution
   }
 
-  if (left["@kind"] === "Data" && right["@kind"] === "Data") {
+  if (left["@kind"] === "Term" && right["@kind"] === "Term") {
     if (left.kind !== right.kind) return undefined
     if (left.args.length !== right.args.length) return undefined
 

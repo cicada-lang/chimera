@@ -28,7 +28,7 @@ export function occur(
       )
     }
 
-    case "Data": {
+    case "Term": {
       return value.args.some((arg) => occur(substitution, name, arg))
     }
 
