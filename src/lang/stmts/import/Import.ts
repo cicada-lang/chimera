@@ -37,7 +37,7 @@ export class Import extends Stmt {
     try {
       const importedMod = await mod.options.loader.load(url)
       for (const binding of this.bindings) {
-        const value = importedMod.findRelation(binding.name)
+        const value = importedMod.find(binding.name)
         if (value !== undefined) {
           mod.define(binding.alias || binding.name, value)
         } else {

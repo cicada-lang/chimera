@@ -48,6 +48,10 @@ export class Mod {
     return envEntries(this.env)
   }
 
+  find(name: string): Value | undefined {
+    return envLookupValue(this.env, name)
+  }
+
   freshen(name: string): string {
     const [prefix, _count] = name.split("#")
     return `${prefix}#${this.variableCount++}`
@@ -110,32 +114,22 @@ export class Mod {
     )
   }
 
-  find(name: string): Value | undefined {
-    return envLookupValue(this.env, name)
-  }
+  private findRelationOrFail(name: string): Relation {
+    const relation = this.find(name)
 
-  findRelation(name: string): Relation | undefined {
-    const value = envLookupValue(this.env, name)
-    if (value === undefined) return undefined
-
-    if (value["@kind"] !== "Relation") {
+    if (relation === undefined) {
       throw new Errors.LangError(
-        [
-          `[Mod.findRelation] expect value to be Relation`,
-          `  name: ${name}`,
-          `  value["@kind"]: ${value["@kind"]}`,
-        ].join("\n"),
+        `[Mod.findRelationOrFail] undefined relation name: ${name}`,
       )
     }
 
-    return value
-  }
-
-  private findRelationOrFail(name: string): Relation {
-    const relation = this.findRelation(name)
-    if (relation === undefined) {
-      throw new Error(
-        `[Mod.findRelationOrFail] undefined relation name: ${name}`,
+    if (relation["@kind"] !== "Relation") {
+      throw new Errors.LangError(
+        [
+          `[Mod.findRelationOrFail] expecting relation`,
+          `  name: ${name}`,
+          `  relation["@kind"]: ${relation["@kind"]}`,
+        ].join("\n"),
       )
     }
 

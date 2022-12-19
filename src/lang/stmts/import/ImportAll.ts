@@ -28,7 +28,7 @@ export class ImportAll extends Stmt {
     } catch (error) {
       if (error instanceof Error) {
         error.message =
-          `[Import.execute] fail to import ${this.path}\n` + error.message
+          `[ImportAll.execute] fail to import ${this.path}\n` + error.message
       }
 
       throw error
