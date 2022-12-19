@@ -1,17 +1,4 @@
-import { Zero, Add1, Nat } from "nat.wa"
-import { Add } from "add.wa"
-import { Mul } from "mul.wa"
-import {
-  One,
-  Two,
-  Three,
-  Four,
-  Five,
-  Six,
-  Seven,
-  Eight,
-  Nine,
-  Ten,
-  Eleven,
-  Twelve,
-} from "numbers.wa"
+import * from "nat.wa"
+import * from "add.wa"
+import * from "mul.wa"
+import * from "numbers.wa"
