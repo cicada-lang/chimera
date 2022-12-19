@@ -1,7 +1,0 @@
-[ 
-  Nat::zero(),
-  Nat::add1(Nat::zero()),
-  Exp::add1(Nat::zero()),
-  Exp::sub1(Nat::zero()),
-  Nat::add1(Nat::add1(Nat::zero()))
-]

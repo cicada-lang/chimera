@@ -1,5 +1,0 @@
-import { Exp } from "exp.wa"
-
-find exp limit 30 {
-  Exp exp
-}

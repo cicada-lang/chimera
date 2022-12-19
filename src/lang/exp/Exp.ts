@@ -134,21 +134,14 @@ export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
 export type Data = {
   "@type": "Exp"
   "@kind": "Data"
-  type: string
   kind: string
   args: Array<Exp>
 } & ExpMeta
 
-export function Data(
-  type: string,
-  kind: string,
-  args: Array<Exp>,
-  span?: Span,
-): Data {
+export function Data(kind: string, args: Array<Exp>, span?: Span): Data {
   return {
     "@type": "Exp",
     "@kind": "Data",
-    type,
     kind,
     args,
     span,

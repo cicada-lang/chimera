@@ -51,7 +51,7 @@ export function formatExp(exp: Exp): string {
 
     case "Data": {
       const args = exp.args.map(formatExp)
-      return `${exp.type}::${exp.kind}${formatArgs(args)}`
+      return `${exp.kind}${formatArgs(args)}`
     }
   }
 }

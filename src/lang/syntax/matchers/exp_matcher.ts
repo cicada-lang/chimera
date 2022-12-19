@@ -64,9 +64,8 @@ export function operand_matcher(tree: pt.Tree): Exp {
         span,
       ),
     "operand:objekt_empty": ({}, { span }) => Exps.Objekt({}, span),
-    "operand:data": ({ type, kind, args, last_arg }, { span }) =>
+    "operand:data": ({ kind, args, last_arg }, { span }) =>
       Exps.Data(
-        pt.str(type),
         pt.str(kind),
         [
           ...pt.matchers.zero_or_more_matcher(args).map(matchers.arg_matcher),
@@ -74,7 +73,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
         ],
         span,
       ),
-    "operand:data_empty": ({ type, kind }, { span }) =>
-      Exps.Data(pt.str(type), pt.str(kind), [], span),
+    "operand:data_empty": ({ kind }, { span }) =>
+      Exps.Data(pt.str(kind), [], span),
   })(tree)
 }

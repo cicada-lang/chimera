@@ -1,6 +1,6 @@
-use term instead of data -- remove `::` prefix for data
+rename `Exps.Data` to `Exps.Term`
 
-[module] be able to import all
+[module] be able to import all -- `import * from ...`
 
 [maybe] support namespace
 

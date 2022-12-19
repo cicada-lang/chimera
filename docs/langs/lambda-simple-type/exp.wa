@@ -1,9 +1,9 @@
-Exp Exp::var(name) -- { String name }
-Exp Exp::fn(name, ret) -- { String name Exp ret }
-Exp Exp::ap(target, arg) -- { Exp target Exp arg }
+Exp var(name) -- { String name }
+Exp fn(name, ret) -- { String name Exp ret }
+Exp ap(target, arg) -- { Exp target Exp arg }
 
-Type Type::atom(name) -- { String name }
-Type Type::arrow(argType, retType) -- { Type argType Type retType }
+Type atom(name) -- { String name }
+Type arrow(argType, retType) -- { Type argType Type retType }
 
 Ctx []
 Ctx [[name, type] | rest] -- { String name Type type Ctx rest }
@@ -16,31 +16,31 @@ Lookup [[[key, _value] | rest], name, found]
   Lookup [rest, name, found]
 }
 
-Check [ctx, Exp::var(name), type]
+Check [ctx, var(name), type]
 ---------------------------------- {
   Lookup [ctx, name, type]
 }
 
-Check [ctx, Exp::fn(name, ret), Type::arrow(argType, retType)]
+Check [ctx, fn(name, ret), arrow(argType, retType)]
 ---------------------------------------------------------------- {
   Check [[[name, argType] | ctx], ret, retType]
 }
 
-Check [ctx, Exp::ap(target, arg), retType]
+Check [ctx, ap(target, arg), retType]
 ----------------------------------------- {
-  Check [ctx, target, Type::arrow(argType, retType)]
+  Check [ctx, target, arrow(argType, retType)]
   Check [ctx, arg, argType]
 }
 
 find type {
   ctx = []
-  exp = Exp::fn("x", Exp::var("x"))
+  exp = fn("x", var("x"))
   Check [ctx, exp, type]
 }
 
 find exp limit 10 {
   ctx = []
-  type = Type::arrow("A", "A")
+  type = arrow("A", "A")
   Check [ctx, exp, type]
 }
 
@@ -52,6 +52,6 @@ find exp limit 10 {
 
 assert not find type {
   ctx = []
-  exp = Exp::fn("f", Exp::ap(Exp::var("f"), Exp::var("f")))
+  exp = fn("f", ap(var("f"), var("f")))
   Check [ctx, exp, type]
 }

@@ -1,8 +1,8 @@
-Exp Exp::var(name) -- { String name }
-Exp Exp::fn(name, ret) -- { String name Exp ret }
-Exp Exp::ap(target, arg) -- { Exp target Exp arg }
+Exp var(name) -- { String name }
+Exp fn(name, ret) -- { String name Exp ret }
+Exp ap(target, arg) -- { Exp target Exp arg }
 
-Value Value::closure(name, ret, env) -- { String name Exp ret Env env }
+Value closure(name, ret, env) -- { String name Exp ret Env env }
 
 Env []
 Env [[name, value] | rest] -- { String name Value value Env rest }
@@ -15,19 +15,19 @@ Lookup [[[key, _value] | rest], name, found]
   Lookup [rest, name, found]
 }
 
-Eval [env, Exp::var(name), value]
+Eval [env, var(name), value]
 ---------------------------------- var {
   Lookup [env, name, value]
 }
 
-Eval [env, Exp::fn(name, ret), value]
+Eval [env, fn(name, ret), value]
 ---------------------------------------- fn {
-  value = Value::closure(name, ret, env)
+  value = closure(name, ret, env)
 }
 
-Eval [env, Exp::ap(target, arg), value]
+Eval [env, ap(target, arg), value]
 ---------------------------------------- ap {
-  Eval [env, target, Value::closure(name, ret, env2)]
+  Eval [env, target, closure(name, ret, env2)]
   Eval [env, arg, argValue]
   Eval [[[name, argValue] | env2], ret, value]
 }

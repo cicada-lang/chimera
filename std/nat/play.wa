@@ -1,6 +1,6 @@
 LtEqThree n
 -------------- {
-  n != Nat::add1(Nat::add1(Nat::add1(Nat::zero)))
+  n != add1(add1(add1(zero())))
 }
 
 find n {
@@ -8,17 +8,17 @@ find n {
 }
 
 find _ {
-  LtEqThree Nat::zero
+  LtEqThree zero()
 }
 
 find _ {
-  LtEqThree Nat::add1(Nat::zero)
+  LtEqThree add1(zero())
 }
 
 find _ {
-  LtEqThree Nat::add1(Nat::add1(Nat::zero))
+  LtEqThree add1(add1(zero()))
 }
 
 find _ {
-  LtEqThree Nat::add1(Nat::add1(Nat::add1(Nat::zero)))
+  LtEqThree add1(add1(add1(zero())))
 }

@@ -143,7 +143,6 @@ export function unify(
   }
 
   if (left["@kind"] === "Data" && right["@kind"] === "Data") {
-    if (left.type !== right.type) return undefined
     if (left.kind !== right.kind) return undefined
     if (left.args.length !== right.args.length) return undefined
 

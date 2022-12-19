@@ -30,7 +30,6 @@ export function substitutionDeepWalk(
 
     case "Data": {
       return Values.Data(
-        value.type,
         value.kind,
         value.args.map((arg) => substitutionDeepWalk(substitution, arg)),
       )

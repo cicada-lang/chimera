@@ -1,11 +1,11 @@
-Nat Nat::zero
-Nat Nat::add1(prev) -- { Nat prev }
+Nat zero()
+Nat add1(prev) -- { Nat prev }
 
-Zero Nat::zero
-Add1 [prev, Nat::add1(prev)]
+Zero zero()
+Add1 [prev, add1(prev)]
 
-Nat Nat::zero
-Nat Nat::add1(prev) -- { Nat prev }
+Nat zero()
+Nat add1(prev) -- { Nat prev }
 
 One n -- { Add1 [prev, n] Zero prev }
 Two n -- { Add1 [prev, n] One prev }

@@ -2,109 +2,89 @@ solver trace steps 1 {
   step {
     solution {
       substitution {}
-      goals { Add1 [Nat::add1(Nat::zero()), _x#0] }
+      goals { Add1 [add1(zero()), _x#0] }
     }
   }
 }
-[ Nat::zero() ]
-[ Nat::add1(Nat::zero()) ]
+[ zero() ]
+[ add1(zero()) ]
 solver trace steps 5 {
   step {
     solution {
       substitution {}
-      goals { Add [x#20, y#21, z#22] Add [x#20, y#21, Nat::add1(z#22)] }
+      goals { Add [x#20, y#21, z#22] Add [x#20, y#21, add1(z#22)] }
     }
   }
   
   step {
     solution {
-      substitution { x#20 = Nat::zero() y#23 = y#21 y#21 = z#22 }
-      goals { Add [x#20, y#21, Nat::add1(z#22)] }
+      substitution { x#20 = zero() y#23 = y#21 y#21 = z#22 }
+      goals { Add [x#20, y#21, add1(z#22)] }
     }
     
     solution {
-      substitution {
-        x#20 = Nat::add1(prev#24)
-        y#25 = y#21
-        z#22 = Nat::add1(res#26)
-      }
-      goals {
-        Add [prev#24, y#25, res#26]
-        Add [x#20, y#21, Nat::add1(z#22)]
-      }
+      substitution { x#20 = add1(prev#24) y#25 = y#21 z#22 = add1(res#26) }
+      goals { Add [prev#24, y#25, res#26] Add [x#20, y#21, add1(z#22)] }
+    }
+  }
+  
+  step {
+    solution {
+      substitution { x#20 = add1(prev#24) y#25 = y#21 z#22 = add1(res#26) }
+      goals { Add [prev#24, y#25, res#26] Add [x#20, y#21, add1(z#22)] }
     }
   }
   
   step {
     solution {
       substitution {
-        x#20 = Nat::add1(prev#24)
+        x#20 = add1(prev#24)
         y#25 = y#21
-        z#22 = Nat::add1(res#26)
-      }
-      goals {
-        Add [prev#24, y#25, res#26]
-        Add [x#20, y#21, Nat::add1(z#22)]
-      }
-    }
-  }
-  
-  step {
-    solution {
-      substitution {
-        x#20 = Nat::add1(prev#24)
-        y#25 = y#21
-        z#22 = Nat::add1(res#26)
-        prev#24 = Nat::zero()
+        z#22 = add1(res#26)
+        prev#24 = zero()
         y#31 = y#21
         y#21 = res#26
       }
-      goals { Add [x#20, y#21, Nat::add1(z#22)] }
+      goals { Add [x#20, y#21, add1(z#22)] }
     }
     
     solution {
       substitution {
-        x#20 = Nat::add1(prev#24)
+        x#20 = add1(prev#24)
         y#25 = y#21
-        z#22 = Nat::add1(res#26)
-        prev#24 = Nat::add1(prev#32)
+        z#22 = add1(res#26)
+        prev#24 = add1(prev#32)
         y#33 = y#21
-        res#26 = Nat::add1(res#34)
+        res#26 = add1(res#34)
       }
-      goals {
-        Add [prev#32, y#33, res#34]
-        Add [x#20, y#21, Nat::add1(z#22)]
-      }
+      goals { Add [prev#32, y#33, res#34] Add [x#20, y#21, add1(z#22)] }
     }
   }
   
   step {
     solution {
       substitution {
-        x#20 = Nat::add1(prev#24)
+        x#20 = add1(prev#24)
         y#25 = y#21
-        z#22 = Nat::add1(res#26)
-        prev#24 = Nat::add1(prev#32)
+        z#22 = add1(res#26)
+        prev#24 = add1(prev#32)
         y#33 = y#21
-        res#26 = Nat::add1(res#34)
+        res#26 = add1(res#34)
       }
-      goals {
-        Add [prev#32, y#33, res#34]
-        Add [x#20, y#21, Nat::add1(z#22)]
-      }
+      goals { Add [prev#32, y#33, res#34] Add [x#20, y#21, add1(z#22)] }
     }
     
     solution {
       substitution {
-        res#38 = Nat::add1(res#26)
+        res#38 = add1(res#26)
         y#31 = y#21
-        x#20 = Nat::add1(prev#24)
+        x#20 = add1(prev#24)
         y#21 = res#26
-        z#22 = Nat::add1(res#26)
+        z#22 = add1(res#26)
         y#25 = y#21
         y#37 = res#26
-        prev#24 = Nat::zero()
-        prev#36 = Nat::zero()
+        prev#24 = zero()
+        prev#36 = zero()
       }
       goals { Add [prev#36, y#37, res#38] }
     }

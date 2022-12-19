@@ -44,9 +44,6 @@ export const operand = {
     ],
     "operand:objekt_empty": ['"{"', '"}"'],
     "operand:data": [
-      { type: "datatype_name" },
-      '":"',
-      '":"',
       { kind: "name_no_preserved" },
       '"("',
       { args: { $ap: ["zero_or_more", "arg", '","'] } },
@@ -54,11 +51,6 @@ export const operand = {
       { $ap: ["optional", '","'] },
       '")"',
     ],
-    "operand:data_empty": [
-      { type: "datatype_name" },
-      '":"',
-      '":"',
-      { kind: "name_no_preserved" },
-    ],
+    "operand:data_empty": [{ kind: "name_no_preserved" }, '"("', '")"'],
   },
 }

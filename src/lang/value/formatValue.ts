@@ -55,7 +55,7 @@ export function formatValue(value: Value): string {
 
     case "Data": {
       const args = value.args.map(formatValue)
-      return `${value.type}::${value.kind}${formatArgs(args)}`
+      return `${value.kind}${formatArgs(args)}`
     }
 
     case "Relation": {

@@ -1,16 +1,16 @@
-List List::null
-List List::cons(_head, tail) -- { List tail }
+List null()
+List cons(_head, tail) -- { List tail }
 
 find _ {
-  List List::null
-  List List::cons(1, List::cons(2, List::cons(3, List::null)))
+  List null()
+  List cons(1, cons(2, cons(3, null())))
 }
 
 find [list, x, y, z] {
-  list = List::cons(1, List::cons(2, List::cons(3, List::null)))
-  list = List::cons(x, List::cons(y, List::cons(z, List::null)))
+  list = cons(1, cons(2, cons(3, null())))
+  list = cons(x, cons(y, cons(z, null())))
 }
 
 find [list, x, y, z] {
-  list = List::cons(x, List::cons(y, List::cons(z, List::null)))
+  list = cons(x, cons(y, cons(z, null())))
 }
