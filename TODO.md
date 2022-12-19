@@ -15,8 +15,10 @@ to represent cell-complex?
 
 [diary] the goal is to satisfy constraint
 
-Maybe we should call goals "constraints",
-because they are actually constraint, and the goal is to satisfy them.
+- Maybe we should call goals "constraints",
+  because they are actually constraint, and the goal is to satisfy them.
+
+- Or we should say constraint applied to argument value is a goal?
 
 [read] logic-for-problem-solving.pdf
 [read] constraint-logic-programming--a-survey.pdf
