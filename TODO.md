@@ -1,5 +1,3 @@
-[diary] use-prolog-like-term-syntax.md
-
 use term instead of data -- remove `::` prefix for data
 
 [module] be able to import all
