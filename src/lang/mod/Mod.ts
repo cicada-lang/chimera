@@ -1,6 +1,6 @@
 import type { Loader } from "../../loader"
 import type { Env } from "../env"
-import { envEmpty, envExtend, envLookupValue, envNames } from "../env"
+import { envEmpty, envEntries, envExtend, envLookupValue } from "../env"
 import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import { useGlobals } from "../globals"
@@ -44,8 +44,8 @@ export class Mod {
     this.initialized = true
   }
 
-  get names(): Array<string> {
-    return envNames(this.env)
+  entries(): Array<[string, Value]> {
+    return envEntries(this.env)
   }
 
   freshen(name: string): string {

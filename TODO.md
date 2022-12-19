@@ -1,11 +1,14 @@
-[module] be able to import all -- `import * from ...`
-
-- Use `import * from ...` to import all names without namespace prefix,
-  this feature can be used to reexport names in many modules from one module.
+[module] support private bindings -- to be used with import all -- syntax `private {}`
 
 [maybe] support namespace
 
+# finite-domain constraint programming
+
 [read] ckanren-minikanren-with-constraints.pdf
+
+[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
+
+[finite-domain] solve some puzzles about finite-domain as example
 
 # hypergraph
 
@@ -65,12 +68,6 @@ primitive functions about primitive datatypes like number and string.
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
-
-# finite-domain constraint programming
-
-[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
-
-[finite-domain] solve some puzzles about finite-domain as example
 
 # higher-order logic
 

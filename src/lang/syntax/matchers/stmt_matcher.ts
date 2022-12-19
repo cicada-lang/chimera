@@ -80,6 +80,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         pt.trim_boundary(pt.str(path), 1),
         span,
       ),
+    "stmt:import_all": ({ path }, { span }) =>
+      new Stmts.ImportAll(pt.trim_boundary(pt.str(path), 1), span),
     "stmt:test": ({ description, stmts }, { span }) =>
       new Stmts.Test(
         pt.trim_boundary(pt.str(description), 1),

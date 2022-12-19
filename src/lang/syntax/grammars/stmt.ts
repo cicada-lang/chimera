@@ -69,6 +69,12 @@ export const stmt = {
       '"from"',
       { path: { $pattern: ["string"] } },
     ],
+    "stmt:import_all": [
+      '"import"',
+      '"*"',
+      '"from"',
+      { path: { $pattern: ["string"] } },
+    ],
     "stmt:test": [
       '"test"',
       { description: { $pattern: ["string"] } },
