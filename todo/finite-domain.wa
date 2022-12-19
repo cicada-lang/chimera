@@ -1,19 +1,19 @@
-// `Within` is a special relation which requires
+// `In` is a special relation which requires
 // its second argument to be a list of numbers
 // i.e. to be grounded.
 
 find q {
-  Within [q, [1, 2, 3]]
+  In [q, [1, 2, 3]]
   NotEq [q, 2]
 }
 
 // => [1, 3]
 
 find [x, y, z] {
-  Within [x, [1, 2, 3]]
-  Within [y, [3, 4, 5]]
-  Within [z, [5, 6, 9]]
-  Within [z, [1, 2, 3, 5, 6, 7, 8]]
+  In [x, [1, 2, 3]]
+  In [y, [3, 4, 5]]
+  In [z, [5, 6, 9]]
+  In [z, [1, 2, 3, 5, 6, 7, 8]]
   x = y
 }
 
@@ -45,9 +45,9 @@ find [x, y] {
 // still result in failure.
 
 find q {
-  Within [x, [1, 2, 3]]
-  Within [y, [1, 2, 3]]
-  Within [z, [1, 2, 3]]
+  In [x, [1, 2, 3]]
+  In [y, [1, 2, 3]]
+  In [z, [1, 2, 3]]
   AllDiff [x, y, z]
   q = 5
 }
@@ -55,9 +55,9 @@ find q {
 // => []
 
 find q {
-  Within [x, [1, 2, 3]]
-  Within [y, [1, 2, 3]]
-  Within [z, [1, 2, 3]]
+  In [x, [1, 2, 3]]
+  In [y, [1, 2, 3]]
+  In [z, [1, 2, 3]]
   AllDiff [x, y, z]
   q = x
 }
@@ -65,9 +65,9 @@ find q {
 // => [1, 2, 3]
 
 find q {
-  Within [x, [1, 2, 3]]
-  Within [y, [1, 2, 3]]
-  Within [z, [1, 2, 3]]
+  In [x, [1, 2, 3]]
+  In [y, [1, 2, 3]]
+  In [z, [1, 2, 3]]
   AllDiff [x, y, z]
   q = [x, z]
 }
@@ -75,18 +75,65 @@ find q {
 // => [[1, 2], [1, 3], [2, 1], [3, 1], [2, 3], [3, 2]]
 
 find q {
-  Within [q, [3, 4, 5, 6]]
+  In [q, [3, 4, 5, 6]]
   AllDiff [2, 3, q]
 }
 
 // => [4, 5, 6]
 
 find [x, y, z] {
-  Within [x, [1, 2, 3, 4, 5]]
-  Within [y, [1, 2, 3, 4, 5]]
-  Within [z, [1, 2, 3, 4, 5]]
+  In [x, [1, 2, 3, 4, 5]]
+  In [y, [1, 2, 3, 4, 5]]
+  In [z, [1, 2, 3, 4, 5]]
   Lt [z, x]
   Add [y, 2, z]
 }
 
 // => [[4, 1, 3], [5, 1, 3], [5, 2, 4]]
+
+// # 3.1.2 Watching cKanren Run
+
+// NOTE This is one of the essential techniques
+// of little book study, i.e. watch the interpreter run,
+// or say, designing formal language
+// to take about how the interpreter runs.
+
+// TODO solution changes (as in the paper) to the exmaples.
+
+find [y, z] {
+  Range [x, [3, 5]]
+  Range [z, [3, 5]]
+  Range [y, [1, 4]]
+  Lt [x, 5]
+  x = y
+}
+
+// => [[3, 3], [4, 3], [3, 4], [4, 4], [3, 5], [4, 5]]
+
+find [y, z] {
+  Range [x, [3, 5]]
+  Range [z, [3, 5]]
+  Range [y, [1, 4]]
+  x = y
+  Lt [x, 5]
+}
+
+find [y, z] {
+  x = y
+  Lt [x, 5]
+  Range [x, [3, 5]]
+  Range [z, [3, 5]]
+  Range [y, [1, 4]]
+}
+
+find q {
+  Range [w, [1, 5]]
+  Range [z, [1, 5]]
+  AllDiff [q]
+  q = [x, y, z]
+  [x, y] = [1, 2]
+  Add [x, y, w]
+  Add [w, y, z]
+}
+
+// => [[1, 2, 5]]
