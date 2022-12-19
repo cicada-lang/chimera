@@ -10,15 +10,15 @@ export function pursueEqual(
   solution: Solution,
   left: Value,
   right: Value,
-): Solution | undefined {
+): Array<Solution> {
   const substitution = unify(mod, solution.substitution, left, right)
 
   if (substitution === undefined) {
-    return undefined
+    return []
   }
 
   if (substitutionEqual(substitution, solution.substitution)) {
-    return solution
+    return [solution]
   }
 
   let newSolution: Solution | undefined = solution.update({ substitution })
@@ -26,5 +26,7 @@ export function pursueEqual(
   newSolution = maintainInequalities(mod, newSolution)
   newSolution = maintaintypeConstraints(mod, newSolution)
 
-  return newSolution
+  if (newSolution === undefined) return []
+
+  return [newSolution]
 }

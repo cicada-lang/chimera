@@ -24,8 +24,7 @@ export function applyRelation(
       evaluateGoalExp(clause.mod, env, goal),
     )
 
-    const newSolution = pursueEqual(mod, solution, value, arg)
-    if (newSolution === undefined) return []
+    const newSolutions = pursueEqual(mod, solution, value, arg)
 
     /**
 
@@ -35,10 +34,10 @@ export function applyRelation(
 
     **/
 
-    return [
+    return newSolutions.map((newSolution) =>
       newSolution.update({
         goals: [...goals, ...solution.goals],
       }),
-    ]
+    )
   })
 }

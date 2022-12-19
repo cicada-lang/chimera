@@ -35,25 +35,11 @@ export function pursue(
     }
 
     case "Equal": {
-      const newSolution = pursueEqual(mod, solution, goal.left, goal.right)
-      if (newSolution === undefined) return []
-
-      return [
-        newSolution.update({
-          goals: [...solution.goals],
-        }),
-      ]
+      return pursueEqual(mod, solution, goal.left, goal.right)
     }
 
     case "NotEqual": {
-      const newSolution = pursueNotEqual(mod, solution, goal.left, goal.right)
-      if (newSolution === undefined) return []
-
-      return [
-        newSolution.update({
-          goals: [...solution.goals],
-        }),
-      ]
+      return pursueNotEqual(mod, solution, goal.left, goal.right)
     }
 
     case "Conj": {
