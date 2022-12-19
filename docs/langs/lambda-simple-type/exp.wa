@@ -16,17 +16,6 @@ Lookup [[[key, _value] | rest], name, found]
   Lookup [rest, name, found]
 }
 
-// TODO We need to understand and improve our search strategy
-// to make the following perform the same as the above.
-
-// Lookup [[[key, value] | rest], name, found]
-// -------------------------------------------- {
-//   disj {
-//     conj { key = name found = value }
-//     conj { key != name Lookup [rest, name, found] }
-//   }
-// }
-
 Check [ctx, Exp::var(name), type]
 ---------------------------------- {
   Lookup [ctx, name, type]

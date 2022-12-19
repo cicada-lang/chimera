@@ -15,14 +15,6 @@ Lookup [[[key, _value] | rest], name, found]
   Lookup [rest, name, found]
 }
 
-// Lookup [[[key, value] | rest], name, found]
-// -------------------------------------------- {
-//   disj {
-//     conj { key = name found = value }
-//     conj { key != name Lookup [rest, name, found] }
-//   }
-// }
-
 Eval [env, Exp::var(name), value]
 ---------------------------------- var {
   Lookup [env, name, value]

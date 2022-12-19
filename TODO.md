@@ -1,3 +1,16 @@
+[read] ckanren-minikanren-with-constraints.pdf
+
+# hypergraph
+
+logic programming = context free non-deterministic hypergraph rewriting
+
+constraint system = context sensitive non-deterministic hypergraph rewriting?
+
+What ideas from hypergraph rewriting can we use in logic programming?
+
+can we generalize the representation of hypergraphs (in topos theory)
+to represent cell-complex?
+
 # read
 
 [diary] the goal is to satisfy constraint
@@ -6,7 +19,6 @@ Maybe we should call goals "constraints",
 because they are actually constraint, and the goal is to satisfy them.
 
 [read] logic-for-problem-solving.pdf
-[read] ckanren-minikanren-with-constraints.pdf
 [read] constraint-logic-programming--a-survey.pdf
 
 # rewriting system
@@ -44,17 +56,6 @@ primitive functions about primitive datatypes like number and string.
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
-
-# hypergraph
-
-logic programming = context free non-deterministic hypergraph rewriting
-
-constraint system = context sensitive non-deterministic hypergraph rewriting?
-
-What ideas from hypergraph rewriting can we use in logic programming?
-
-can we generalize the representation of hypergraphs (in topos theory)
-to represent cell-complex?
 
 # finite-domain constraint programming
 
