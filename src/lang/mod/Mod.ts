@@ -31,6 +31,7 @@ export class Mod {
   private initialized = false
   private variableCount = 0
   env: Env = envEmpty()
+  privateNames: Set<string> = new Set()
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
   imported: Array<URL> = []

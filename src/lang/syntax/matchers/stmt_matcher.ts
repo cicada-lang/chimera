@@ -94,6 +94,11 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
         span,
       ),
+    "stmt:private": ({ stmts }, { span }) =>
+      new Stmts.Private(
+        pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
+        span,
+      ),
   })(tree)
 }
 

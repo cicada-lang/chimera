@@ -1,5 +1,6 @@
 export * from "./find"
 export * from "./import"
+export * from "./private"
 export * from "./relation"
 export * from "./testing"
 export * from "./trace"

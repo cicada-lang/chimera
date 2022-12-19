@@ -1,5 +1,3 @@
-[module] support private bindings -- to be used with import all -- syntax `private {}`
-
 [maybe] support namespace
 
 # finite-domain constraint programming

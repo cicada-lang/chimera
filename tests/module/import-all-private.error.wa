@@ -1,0 +1,5 @@
+import * from "./example.wa"
+
+find q {
+  Hiya q
+}

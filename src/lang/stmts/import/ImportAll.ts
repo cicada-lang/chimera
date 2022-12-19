@@ -8,27 +8,41 @@ export class ImportAll extends Stmt {
     super()
   }
 
-  async execute(mod: Mod): Promise<void> {
-    return
+  async boundNames(mod: Mod): Promise<Array<string>> {
+    const importedMod = await this.import(mod)
+    const boundNames = []
+    for (const [name] of importedMod.entries()) {
+      if (importedMod.privateNames.has(name)) continue
+
+      boundNames.push(name)
+    }
+
+    return boundNames
   }
 
   async prepare(mod: Mod): Promise<void> {
+    const importedMod = await this.import(mod)
+    for (const [name, value] of importedMod.entries()) {
+      if (importedMod.privateNames.has(name)) continue
+
+      mod.define(name, value)
+    }
+
+    mod.imported.push(mod.resolve(this.path))
+  }
+
+  private async import(mod: Mod): Promise<Mod> {
     const url = mod.resolve(this.path)
     if (url.href === mod.options.url.href) {
       throw new Errors.LangError(`I can not circular import: ${this.path}`)
     }
 
     try {
-      const importedMod = await mod.options.loader.load(url)
-      for (const [name, value] of importedMod.entries()) {
-        mod.define(name, value)
-      }
-
-      mod.imported.push(url)
+      return await mod.options.loader.load(url)
     } catch (error) {
       if (error instanceof Error) {
         error.message =
-          `[ImportAll.execute] fail to import ${this.path}\n` + error.message
+          `[ImportAll.Import] fail to import ${this.path}\n` + error.message
       }
 
       throw error

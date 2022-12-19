@@ -21,6 +21,10 @@ export class Relation extends Stmt {
     super()
   }
 
+  async boundNames(): Promise<Array<string>> {
+    return [this.name]
+  }
+
   async execute(mod: Mod): Promise<void> {
     varCollectionValidate(
       varCollectionMerge([

@@ -1,2 +1,7 @@
 Hello "Hello, World!"
+
 Hi "Hi there!"
+
+private {
+  Hiya "Hiya!"
+}

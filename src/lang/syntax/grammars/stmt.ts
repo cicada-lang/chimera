@@ -88,6 +88,12 @@ export const stmt = {
       { stmts: { $ap: ["zero_or_more", "stmt"] } },
       '"}"',
     ],
+    "stmt:private": [
+      '"private"',
+      '"{"',
+      { stmts: { $ap: ["zero_or_more", "stmt"] } },
+      '"}"',
+    ],
   },
 }
 
