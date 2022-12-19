@@ -92,7 +92,7 @@ B1, ..., Bm  <- A1, ..., An
 
 An atomic formula has the form `P(t1, ..., tk)` where `Pi`s a k-ary
 predicate symbol and the `ti` are terms. A term is either a variable
-`x, y, z, ...` or an expression `f(ti, ..., tk)`, where `f` is a k-ary
+`x, y, z, ...` or an expression `f(t1, ..., tk)`, where `f` is a k-ary
 function symbol and the `ti` are terms. The sets of all predicate
 symbols, function symbols and variables are any three sets of mutually
 disjoint symbols. Constants are 0-ary function symbols.
@@ -476,16 +476,16 @@ The space contains two successful computations and one unsuccessfully
 terminating computation.
 
 ```
-Member(x, cons(a, cons(b, nil)))
---------------------------------- (M1) {
+Member(x, cons(a, cons(b, nil))) {
+  --------------------------------- case (M1)
   x = a
-}
---------------------------------- (M2) {
-  Member(x, cons(b, nil))
-  ------------------------ (M1) {
+
+  --------------------------------- case (M2)
+  Member(x, cons(b, nil)) {
+    ------------------------ case (M1)
     x = b
-  }
-  ------------------------ (M2) {
+
+    ------------------------ case (M2)
     Member(x, nil)
   }
 }
@@ -627,11 +627,11 @@ which computes a function into a non-deterministic program which
 computes the function's inverse.
 
 ```
-Fact(x, s(0))
--------------- (F1) {
+Fact(x, s(0)) {
+  -------------- case (F1)
   x = 0
-}
--------------- (F2) {
+
+  -------------- case (F2)
   x = s(x1)
   Fact(x', v)
   Times(s(x'), v, s(0))
@@ -641,7 +641,6 @@ Fact(x, s(0))
   Fact(0, s(0))
   --------------- (F1)
 }
-
 ```
 
 **Fig. 4. The transformation of a 'deterministic' program into a
