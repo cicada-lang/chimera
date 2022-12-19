@@ -1,3 +1,10 @@
+[module] be able to import all
+
+[maybe] support namespace
+
+- maybe use `/` for namespace instead of `::`
+- we need to add back datatype and restrict the use of data constructors
+
 [read] ckanren-minikanren-with-constraints.pdf
 
 # hypergraph

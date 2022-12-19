@@ -1,0 +1,140 @@
+// "A multiset approach to arithmetic"
+// https://www.youtube.com/watch?v=4xoF2SRp194
+
+Multiset []
+Multiset [car | cdr] -- { Multiset car Multiset cdr }
+
+// find x limit 10 {
+//   Multiset x
+// }
+
+Zero []
+
+Nat []
+Nat [car | cdr] -- { Zero car Nat cdr }
+
+// find x limit 10 {
+//   Nat x
+// }
+
+Poly []
+Poly [car | cdr] -- { Nat car Poly cdr }
+
+// find x limit 10 {
+//   Poly x
+// }
+
+Multi []
+Multi [car | cdr] -- { Poly car Multi cdr }
+
+// find x limit 10 {
+//   Multi x
+// }
+
+Append [[], t, t]
+Append [[a | d], t, out] -- {
+  out = [a | res]
+  Append [d, t, res]
+}
+
+Add [x, y, z] -- { Append [x, y, z] }
+
+AddMany [[], []]
+AddMany [[x], x]
+AddMany [[x, y | rest], out] -- {
+  Add [x, y, z]
+  AddMany [[z | rest], out]
+}
+
+// find [x, y, out] limit 10 {
+//   Nat x
+//   Nat y
+//   Add [x, y, out]
+// }
+
+// find [xs, out] limit 20 {
+//   Poly xs
+//   AddMany [xs, out]
+// }
+
+Product [[], _, []]
+Product [[_x | _xs], [], []]
+Product [[x | xs], [y | ys], out] -- {
+  Product [[x], ys, xSide]
+  Product [xs, [y], ySide]
+  Product [xs, ys, body]
+  Append [xSide, ySide, sides]
+  Append [sides, body, tmp]
+  out = [[x, y] | tmp]
+}
+
+find q {
+  Product [[1], ["a"], q]
+}
+
+find q {
+  Product [[1, 2], ["a", "b"], q]
+}
+
+find q {
+  Product [[1, 2, 3], ["a", "b", "c"], q]
+}
+
+AddPairs [[], []]
+AddPairs [[[x, y] | ps], [z | res]] -- {
+  Add [x, y, z]
+  AddPairs [ps, res]
+}
+
+Mul [x, y, z] -- {
+  Product [x, y, pairs]
+  AddPairs [pairs, z]
+}
+
+find z {
+  Mul [[[], []], [[], []], z]
+}
+
+find [x, y] limit 3 {
+  Mul [x, y, [[], [], [], []]]
+}
+
+find [x, y, z] limit 10 {
+  Nat x
+  Nat y
+  Mul [x, y, z]
+}
+
+MulMany [[], []]
+MulMany [[x], x]
+MulMany [[x, y | rest], out] -- {
+  Mul [x, y, z]
+  MulMany [[z | rest], out]
+}
+
+find z {
+  MulMany [[[[], []], [[], []], [[], []]], z]
+}
+
+find z {
+  MulMany [[[[], []], [[]]], z]
+}
+
+find z {
+  MulMany [[[[]], [[], []]], z]
+}
+
+find z {
+  MulMany [[[[], []]], z]
+}
+
+find [x, y] limit 2 {
+  Nat x
+  Nat y
+  Mul [x, y, [[], []]]
+}
+
+find [xs, z] limit 20 {
+  Poly xs
+  MulMany [xs, z]
+}
