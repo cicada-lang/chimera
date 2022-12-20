@@ -1,3 +1,11 @@
+std/array
+
+std/hypergraph
+
+- implement hypergraph rewriting in whereabouts
+- use hypergraph rewriting to implement lambda calculus
+- use hypergraph rewriting to implement inet
+
 [maybe] support namespace
 
 [diary] support-namespace.md
@@ -27,14 +35,56 @@
 
 # hypergraph
 
+[diary] how to make experiments of new ideas cheap?
+
+[diary] constraint logic programming as hypergraph rewriting
+
 logic programming = context free non-deterministic hypergraph rewriting
 
 constraint system = context sensitive deterministic hypergraph rewriting
 
 What ideas from hypergraph rewriting can we use in logic programming?
 
-can we generalize the representation of hypergraphs (in topos theory)
-to represent cell-complex?
+- https://en.wikipedia.org/wiki/Hypergraph
+- https://en.wikipedia.org/wiki/Term_algebra
+
+- for examples:
+
+  - vertex degree
+  - edge cover
+
+- use hypergraph's properties to guide searching.
+
+hypergraph theory = circuit diagram
+
+- https://en.wikipedia.org/wiki/Circuit_diagram
+
+A rewrite rule of hypergraph can be applied forward and backward.
+
+One way of viewing logic programming as hypergraph rewriting is the following:
+
+- The set of facts (without variables) forms a concrete hypergraph.
+
+  - A term (or data) is a vertex.
+
+  - A fact about a relation is an hyperedge of the relation
+    (i.e. each edge is labelled by relation name).
+
+- A clause (inference rule) is a hypergraph rewrite rule (which contains variables).
+
+- A set of facts and rules can be viewed as defining an infinite hypergraph
+  using finite expressions and functions on the expressions.
+
+- inference can be viewed in two ways:
+
+  - bottom-up (forward-chaining) -- extending facts -- generating the whole hypergraph
+  - top-down (backward-chaining) -- searching -- answer hypergraph query (without generating the whole hypergraph)
+
+Can we generalize the representation of hypergraphs (in topos theory) to represent cell-complex?
+
+~/topics/mathematics/category-theory/generic-figures-and-their-glueings--a-constructive-approach-to-functor-categories.djvu
+
+~/persons/william-lawvere/conceptual-mathematics.djvu
 
 # read
 
