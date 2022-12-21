@@ -1,5 +1,3 @@
-std/array
-
 std/hypergraph
 
 - implement hypergraph rewriting in whereabouts

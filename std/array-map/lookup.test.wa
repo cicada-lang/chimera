@@ -1,0 +1,10 @@
+import { Lookup } from "lookup.wa"
+
+find x {
+  map = [["a", 1], ["b", 2], ["c", 3]]
+  Lookup [map, "b", x]
+}
+
+find map limit 3 {
+  Lookup [map, "b", 2]
+}
