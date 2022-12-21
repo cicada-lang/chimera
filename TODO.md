@@ -1,5 +1,3 @@
-[diary] 2022-12-21-how-to-make-experiments-of-new-ideas-cheap
-
 std/array
 
 std/hypergraph
