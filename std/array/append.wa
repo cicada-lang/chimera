@@ -1,3 +1,5 @@
-Append [[], l, l]
+Append([], l, l)
 
-Append [[a | d], l, [a | r]] -- { Append [d, l, r] }
+Append([a | d], l, [a | r]) -- {
+  Append(d, l, r)
+}

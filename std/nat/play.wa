@@ -1,24 +1,24 @@
-LtEqThree n
+LtEqThree(n)
 -------------- {
   n != add1(add1(add1(zero())))
 }
 
 find n {
-  LtEqThree n
+  LtEqThree(n)
 }
 
 find _ {
-  LtEqThree zero()
+  LtEqThree(zero())
 }
 
 find _ {
-  LtEqThree add1(zero())
+  LtEqThree(add1(zero()))
 }
 
 find _ {
-  LtEqThree add1(add1(zero()))
+  LtEqThree(add1(add1(zero())))
 }
 
 find _ {
-  LtEqThree add1(add1(add1(zero())))
+  LtEqThree(add1(add1(add1(zero()))))
 }

@@ -1,13 +1,13 @@
-Lookup [map, name, found]
+Lookup(map, name, found)
 ------------------------- here {
   map = [[key, value] | _rest]
   key = name
   found = value
 }
 
-Lookup [map, name, found]
+Lookup(map, name, found)
 ------------------------------- there {
   map = [[key, _value] | rest]
   key != name
-  Lookup [rest, name, found]
+  Lookup(rest, name, found)
 }

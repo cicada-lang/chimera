@@ -1,21 +1,8 @@
-Nat zero()
-Nat add1(prev) -- { Nat prev }
+Nat(zero())
+Nat(add1(prev)) -- { Nat(prev) }
 
-Zero zero()
-Add1 [prev, add1(prev)]
+Zero(zero())
+Add1(prev, add1(prev))
 
-Nat zero()
-Nat add1(prev) -- { Nat prev }
-
-One n -- { Add1 [prev, n] Zero prev }
-Two n -- { Add1 [prev, n] One prev }
-Three n -- { Add1 [prev, n] Two prev }
-Four n -- { Add1 [prev, n] Three prev }
-Five n -- { Add1 [prev, n] Four prev }
-Six n -- { Add1 [prev, n] Five prev }
-Seven n -- { Add1 [prev, n] Six prev }
-Eight n -- { Add1 [prev, n] Seven prev }
-Nine n -- { Add1 [prev, n] Eight prev }
-Ten n -- { Add1 [prev, n] Nine prev }
-Eleven n -- { Add1 [prev, n] Ten prev }
-Twelve n -- { Add1 [prev, n] Eleven prev }
+Nat(zero())
+Nat(add1(prev)) -- { Nat(prev) }

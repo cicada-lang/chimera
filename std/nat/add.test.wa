@@ -1,20 +1,20 @@
 import { Add, Add1, Nat, Zero } from "add.wa"
 
 trace steps 5 {
-  Add1 [add1(zero()), _x]
+  Add1(add1(zero()), _x)
 }
 
 find x {
-  Add [x, x, zero()]
+  Add(x, x, zero())
 }
 
 find x {
-  Add [x, x, add1(add1(zero()))]
+  Add(x, x, add1(add1(zero())))
 }
 
 // The following query diverges.
 
 trace steps 5 {
-  Add [x, y, z]
-  Add [x, y, add1(z)]
+  Add(x, y, z)
+  Add(x, y, add1(z))
 }

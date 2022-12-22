@@ -1,23 +1,23 @@
 import { Zero, Add1, Nat } from "nat.wa"
 import { Add } from "add.wa"
 
-Mul [x, _y, z]
+Mul(x, _y, z)
 --------------- zero_left {
-  Zero x
-  Zero z
+  Zero(x)
+  Zero(z)
 }
 
-Mul [x, y, z]
+Mul(x, y, z)
 ----------------- add1_left_zero_right {
-  Zero y
-  Zero z
-  Add1 [_prev, x]
+  Zero(y)
+  Zero(z)
+  Add1(_prev, x)
 }
 
-Mul [x, y, out]
+Mul(x, y, out)
 ----------------- add1_left_add1_right {
-  Add1 [prev, x]
-  Add1 [_prev, y]
-  Add [y, z, out]
-  Mul [prev, y, z]
+  Add1(prev, x)
+  Add1(_prev, y)
+  Add(y, z, out)
+  Mul(prev, y, z)
 }

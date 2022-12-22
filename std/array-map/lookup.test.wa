@@ -2,9 +2,9 @@ import { Lookup } from "lookup.wa"
 
 find x {
   map = [["a", 1], ["b", 2], ["c", 3]]
-  Lookup [map, "b", x]
+  Lookup(map, "b", x)
 }
 
 find map limit 3 {
-  Lookup [map, "b", 2]
+  Lookup(map, "b", 2)
 }

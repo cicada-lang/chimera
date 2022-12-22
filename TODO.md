@@ -1,4 +1,3 @@
-update `std/` to new syntax
 update `docs/` to new syntax
 
 # term rewriting
