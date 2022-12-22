@@ -1,8 +1,6 @@
 update `std/` to new syntax
 update `docs/` to new syntax
 
-[diary] 2022-12-23-use-math-like-function-application-syntax-for-relation-application.md
-
 # term rewriting
 
 > Can rule fail? or just return the term untouched?
