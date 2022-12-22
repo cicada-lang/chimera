@@ -11,7 +11,7 @@ export type Value =
   | ArrayCons
   | ArrayNull
   | Objekt
-  | Data
+  | Term
   | Relation
   | TypeConstraint
   | RewriteRule
@@ -142,18 +142,18 @@ export function Objekt(properties: Record<string, Value>, etc?: Value): Objekt {
   }
 }
 
-export type Data = {
+export type Term = {
   "@type": "Value"
   "@kind": "Term"
-  kind: string
+  name: string
   args: Array<Value>
 }
 
-export function Data(kind: string, args: Array<Value>): Data {
+export function Term(name: string, args: Array<Value>): Term {
   return {
     "@type": "Value",
     "@kind": "Term",
-    kind,
+    name,
     args,
   }
 }

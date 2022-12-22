@@ -60,7 +60,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Term": {
-      return Values.Data(
+      return Values.Term(
         exp.name,
         exp.args.map((arg) => evaluate(mod, env, arg)),
       )

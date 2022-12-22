@@ -29,8 +29,8 @@ export function substitutionDeepWalk(
     }
 
     case "Term": {
-      return Values.Data(
-        value.kind,
+      return Values.Term(
+        value.name,
         value.args.map((arg) => substitutionDeepWalk(substitution, arg)),
       )
     }
