@@ -4,7 +4,7 @@ import type { Goal } from "../../goal"
 import type { GoalExp } from "../../goal-exp"
 import type { Mod } from "../../mod"
 import * as Values from "../../value"
-import { collectBindingsFromGoalExps } from "../../value"
+import { collectVarsFromGoalExps } from "../../value"
 
 /**
 
@@ -34,7 +34,7 @@ export function prepareGoals(
     env = envExtend(env, name, variable)
   }
 
-  const bindings = collectBindingsFromGoalExps(goals)
+  const bindings = collectVarsFromGoalExps(goals)
   for (const name of bindings) {
     if (!names.includes(name)) {
       env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))

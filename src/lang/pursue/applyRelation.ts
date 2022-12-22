@@ -14,7 +14,7 @@ export function applyRelation(
   arg: Value,
 ): Array<Solution> {
   return target.clauses.flatMap((clause) => {
-    env = envExtendFreshPatternVars(mod, clause.env, clause.bindings)
+    env = envExtendFreshPatternVars(mod, clause.env, clause.vars)
 
     const value = evaluate(clause.mod, env, clause.exp)
     const goals = clause.goals.map((goal) =>

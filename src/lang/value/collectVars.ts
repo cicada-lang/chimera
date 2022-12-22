@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { GoalExp } from "../goal-exp"
 
-export function collectBindingsFromExp(exp: Exp): Set<string> {
+export function collectVarsFromExp(exp: Exp): Set<string> {
   switch (exp["@kind"]) {
     case "Var": {
       return new Set([exp.name])
@@ -25,8 +25,8 @@ export function collectBindingsFromExp(exp: Exp): Set<string> {
 
     case "ArrayCons": {
       return new Set([
-        ...collectBindingsFromExp(exp.car),
-        ...collectBindingsFromExp(exp.cdr),
+        ...collectVarsFromExp(exp.car),
+        ...collectVarsFromExp(exp.cdr),
       ])
     }
 
@@ -37,61 +37,55 @@ export function collectBindingsFromExp(exp: Exp): Set<string> {
     case "Objekt": {
       return new Set(
         Object.values(exp.properties).flatMap((property) =>
-          Array.from(collectBindingsFromExp(property)),
+          Array.from(collectVarsFromExp(property)),
         ),
       )
     }
 
     case "Term": {
       return new Set(
-        exp.args.flatMap((arg) => Array.from(collectBindingsFromExp(arg))),
+        exp.args.flatMap((arg) => Array.from(collectVarsFromExp(arg))),
       )
     }
   }
 }
 
-function collectBindingsFromGoalExp(goal: GoalExp): Set<string> {
+function collectVarsFromGoalExp(goal: GoalExp): Set<string> {
   switch (goal["@kind"]) {
     case "Apply": {
-      return collectBindingsFromExp(goal.arg)
+      return collectVarsFromExp(goal.arg)
     }
 
     case "Equal": {
       return new Set([
-        ...collectBindingsFromExp(goal.left),
-        ...collectBindingsFromExp(goal.right),
+        ...collectVarsFromExp(goal.left),
+        ...collectVarsFromExp(goal.right),
       ])
     }
 
     case "NotEqual": {
       return new Set([
-        ...collectBindingsFromExp(goal.left),
-        ...collectBindingsFromExp(goal.right),
+        ...collectVarsFromExp(goal.left),
+        ...collectVarsFromExp(goal.right),
       ])
     }
 
     case "Conj": {
       return new Set(
-        goal.goals.flatMap((goal) =>
-          Array.from(collectBindingsFromGoalExp(goal)),
-        ),
+        goal.goals.flatMap((goal) => Array.from(collectVarsFromGoalExp(goal))),
       )
     }
 
     case "Disj": {
       return new Set(
-        goal.goals.flatMap((goal) =>
-          Array.from(collectBindingsFromGoalExp(goal)),
-        ),
+        goal.goals.flatMap((goal) => Array.from(collectVarsFromGoalExp(goal))),
       )
     }
   }
 }
 
-export function collectBindingsFromGoalExps(
-  goals: Array<GoalExp>,
-): Set<string> {
+export function collectVarsFromGoalExps(goals: Array<GoalExp>): Set<string> {
   return new Set(
-    goals.flatMap((goal) => Array.from(collectBindingsFromGoalExp(goal))),
+    goals.flatMap((goal) => Array.from(collectVarsFromGoalExp(goal))),
   )
 }

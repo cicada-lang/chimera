@@ -1,7 +1,3 @@
-rename `clause.bindings` to `vars`
-
-- ambr collectBindings collectVars
-
 # term rewriting
 
 > Can rule fail? or just return the term untouched?

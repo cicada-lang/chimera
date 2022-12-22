@@ -178,7 +178,7 @@ export function Relation(name: string, clauses: Array<Clause>): Relation {
 export type Clause = {
   mod: Mod
   env: Env
-  bindings: Set<string>
+  vars: Set<string>
   name: string
   exp: Exp
   goals: Array<GoalExp>
@@ -187,7 +187,7 @@ export type Clause = {
 export function Clause(
   mod: Mod,
   env: Env,
-  bindings: Set<string>,
+  vars: Set<string>,
   name: string,
   exp: Exp,
   goals: Array<GoalExp>,
@@ -195,7 +195,7 @@ export function Clause(
   return {
     mod,
     env,
-    bindings,
+    vars,
     name,
     exp,
     goals,

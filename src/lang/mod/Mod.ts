@@ -8,8 +8,8 @@ import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
 import {
   Clause,
-  collectBindingsFromExp,
-  collectBindingsFromGoalExps,
+  collectVarsFromExp,
+  collectVarsFromGoalExps,
   Relation,
   Value,
 } from "../value"
@@ -98,8 +98,8 @@ export class Mod {
   ): void {
     const relation = this.findRelationOrFail(name)
     const bindings = new Set([
-      ...collectBindingsFromExp(exp),
-      ...collectBindingsFromGoalExps(goals),
+      ...collectVarsFromExp(exp),
+      ...collectVarsFromGoalExps(goals),
     ])
 
     // Side-effect on `relation` in `env`.
