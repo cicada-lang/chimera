@@ -1,10 +1,10 @@
-import { Env, envExtend } from "../env"
+import { Env, envExtendFreshPatternVars } from "../env"
 import { evaluate, evaluateGoalExp } from "../evaluate"
 import type { Mod } from "../mod"
 import { pursueEqual } from "../pursue"
 import type { Solution } from "../solution"
+import type * as Values from "../value"
 import type { Value } from "../value"
-import * as Values from "../value"
 
 export function applyRelation(
   mod: Mod,
@@ -14,10 +14,7 @@ export function applyRelation(
   arg: Value,
 ): Array<Solution> {
   return target.clauses.flatMap((clause) => {
-    env = clause.env
-    for (const name of clause.bindings) {
-      env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))
-    }
+    env = envExtendFreshPatternVars(mod, clause.env, clause.bindings)
 
     const value = evaluate(clause.mod, env, clause.exp)
     const goals = clause.goals.map((goal) =>

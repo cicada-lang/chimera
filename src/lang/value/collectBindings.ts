@@ -50,7 +50,7 @@ export function collectBindingsFromExp(exp: Exp): Set<string> {
   }
 }
 
-export function collectBindingsFromGoalExp(goal: GoalExp): Set<string> {
+function collectBindingsFromGoalExp(goal: GoalExp): Set<string> {
   switch (goal["@kind"]) {
     case "Apply": {
       return collectBindingsFromExp(goal.arg)
