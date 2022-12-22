@@ -30,8 +30,8 @@ cons(1, cons(2, cons(3, cons(4, null))))
 
 **Relation:**
 
-```js
-Append(null, right, right)
+```whereabouts
+Append([], right, right)
 ---------------------------- {}
 
 Append(
@@ -40,7 +40,7 @@ Append(
   [head | result_tail],
 )
 ---------------- {
-  Append [left_tail, right, result_tail]
+  Append(left_tail, right, result_tail)
 }
 
 find [result] {
@@ -86,7 +86,7 @@ cons(1, cons(2, cons(3, cons(4, null))))
 
 **Relation:**
 
-```js
+```whereabouts todo
 Merge(null, right, right)
 ------------------------ {}
 

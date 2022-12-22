@@ -1,5 +1,3 @@
-test also run logic-as-programs.md
-
 # term rewriting
 
 > Can rule fail? or just return the term untouched?
