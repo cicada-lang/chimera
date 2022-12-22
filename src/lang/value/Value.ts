@@ -1,4 +1,5 @@
 import type { Clause } from "../clause"
+import type { RewriteRule as EmbeddedRewriteRule } from "../rewrite-rule"
 
 export type Value =
   | PatternVar
@@ -13,6 +14,7 @@ export type Value =
   | Data
   | Relation
   | TypeConstraint
+  | RewriteRule
 
 export type PatternVar = {
   "@type": "Value"
@@ -188,5 +190,24 @@ export function TypeConstraint(
     "@kind": "TypeConstraint",
     name,
     predicate,
+  }
+}
+
+export type RewriteRule = {
+  "@type": "Value"
+  "@kind": "RewriteRule"
+  name: string
+  rule: EmbeddedRewriteRule
+}
+
+export function RewriteRule(
+  name: string,
+  rule: EmbeddedRewriteRule,
+): RewriteRule {
+  return {
+    "@type": "Value",
+    "@kind": "RewriteRule",
+    name,
+    rule,
   }
 }

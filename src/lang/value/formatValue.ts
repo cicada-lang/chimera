@@ -65,6 +65,10 @@ export function formatValue(value: Value): string {
     case "TypeConstraint": {
       return value.name
     }
+
+    case "RewriteRule": {
+      return value.name
+    }
   }
 }
 

@@ -57,5 +57,9 @@ export function substitutionContainsPatternVar(
     case "TypeConstraint": {
       return false
     }
+
+    case "RewriteRule": {
+      return false
+    }
   }
 }

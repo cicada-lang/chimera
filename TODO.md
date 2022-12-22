@@ -2,7 +2,12 @@
 
 > Can rule fail? or just return the term untouched?
 
-[term rewriting] `Values.RewriteRule`
+`Stmts.RewriteRule`
+`Exps.RewriteRule` -- syntax
+`Stmts.RewriteRule` -- syntax
+
+`Stmts.Rewrite`
+`Stmts.Rewrite` -- syntax
 
 [term rewriting] rewrite rule combinator
 
@@ -34,10 +39,6 @@
 
   Run the given rule combinator repeatedly depth-first on all subexpressions
   until running the rule makes no further changes at each level.
-
-[term rewriting] `Stmts.RewriteRule`
-
-[term rewriting] `Stmts.Rewrite`
 
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
