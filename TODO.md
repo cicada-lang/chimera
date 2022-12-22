@@ -2,10 +2,6 @@
 
 > Can rule fail? or just return the term untouched?
 
-rewrite-rule/RewriteRule
-
-- `Case` as `vars` -- like `Clause`
-
 [term rewriting] `Values.RewriteRule`
 
 [term rewriting] rewrite rule combinator
