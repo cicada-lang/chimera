@@ -1,17 +1,48 @@
 # term rewriting
 
-> Important for writing compiler.
+Can rule fail? or just return the term untouched?
 
-[rewriting system] `Stmts.RewriteRule`
+RewriteRule
+RewriteRuleCase
+RewriteRuleList
+RewriteRuleCombinator
 
-[rewriting system] `Stmts.Rewrite`
+[term rewriting] `Values.RewriteRule`
 
-[rewriting system] If we implement rewriting, we will also need to implement
-primitive functions about primitive datatypes like number and string.
+[term rewriting] `RewriteRuleCombinator`
 
-[rewriting system] support xml
+- for different reduction strategy.
 
-- xml templating = rewrite system for xml
+  fix traverse
+  eager -- try to reduce the body as much as possible
+  lazy -- try to reduce the head as much as possible
+
+- once []
+
+  Search the rules from top to bottom. Stop once successfully matching.
+
+- chain []
+
+  Runs each of the rules in the list in a chain. If any rule succeeds, the
+  subsequent rules are run with the new value. If a rule fails, the current
+  value does not change and the next rule is run.
+
+- fix rule
+
+  Keep applying the rule until a fixed point is reached.
+
+- traverse rule
+
+  Run the given rule combinator on all subexpressions depth-first.
+
+- reduce rule
+
+  Run the given rule combinator repeatedly depth-first on all subexpressions
+  until running the rule makes no further changes at each level.
+
+[term rewriting] `Stmts.RewriteRule`
+
+[term rewriting] `Stmts.Rewrite`
 
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 

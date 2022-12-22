@@ -1,0 +1,11 @@
+rule conjunctiveNormalForm {
+  not(not(a)) -> a
+  not(and(a, b)) -> or(not(a), not(b))
+  not(or(a, b)) -> and(not(a), not(b))
+  or(and(a, b), c) -> and(or(a, c), or(b, c))
+  or(a, and(b, c)) -> and(or(a, b), or(a, c))
+}
+
+rewrite not(and(not(a), not(b))) {
+  conjunctiveNormalForm
+}
