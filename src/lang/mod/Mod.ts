@@ -1,4 +1,5 @@
 import type { Loader } from "../../loader"
+import { Clause } from "../clause"
 import type { Env } from "../env"
 import { envEmpty, envEntries, envExtend, envLookupValue } from "../env"
 import * as Errors from "../errors"
@@ -7,7 +8,6 @@ import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
 import {
-  Clause,
   collectVarsFromExp,
   collectVarsFromGoalExps,
   Relation,
