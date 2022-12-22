@@ -1,3 +1,7 @@
+// We use `0` and `1`
+// for `false` and `true`,
+// because the code looks tidier.
+
 Bit(x) -- { x = 0 }
 Bit(x) -- { x = 1 }
 
@@ -8,11 +12,6 @@ Or(0, 0, 0)
 Or(0, 1, 1)
 Or(1, 0, 1)
 Or(1, 1, 1)
-
-And(0, 0, 0)
-And(0, 1, 0)
-And(1, 0, 0)
-And(1, 1, 1)
 
 BitList([])
 BitList([car | cdr]) -- {
@@ -30,24 +29,25 @@ ListNot([x | xs], [y | ys]) -- {
 //   c1 ∨ c2 ∨ ... <- p1 ∧ p2 ∧ ...
 // which is equivalent to disjunction from
 //   c1 ∨ c2 ∨ ... ¬p1 ∨ ¬p2 ∨ ...
+
 Clause(conclusions, premises) -- {
   BitList(conclusions)
   BitList(premises)
   ListNot(premises, negPremises)
   Append(conclusions, negPremises, disjunction)
-  // To satisfy a disjunction, its element must contains a true,
+  // To satisfy a disjunction,
+  // its element must contains a true,
   // specially empty list can not be satisfied.
-  HasOne(disjunction)
+  ContainsOne(disjunction)
 }
 
-HasOne([1 | _rest])
-HasOne([0 | rest]) -- {
-  HasOne(rest)
+ContainsOne([1 | _rest])
+ContainsOne([0 | rest]) -- {
+  ContainsOne(rest)
 }
 
 Append([], t, t)
-Append([a | d], t, out) -- {
-  out = [a | res]
+Append([a | d], t, [a | res]) -- {
   Append(d, t, res)
 }
 
