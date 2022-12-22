@@ -1,14 +1,40 @@
-std/hypergraph
+# term rewriting
 
-- implement hypergraph rewriting in whereabouts
-- use hypergraph rewriting to implement lambda calculus
-- use hypergraph rewriting to implement inet
+> Important for writing compiler.
 
-[maybe] support namespace
+[rewriting system] `Stmts.RewriteRule`
 
-[diary] support-namespace.md
+[rewriting system] `Stmts.Rewrite`
+
+[rewriting system] If we implement rewriting, we will also need to implement
+primitive functions about primitive datatypes like number and string.
+
+[rewriting system] support xml
+
+- xml templating = rewrite system for xml
+
+[read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
+
+# hypergraph rewriting
+
+implement hypergraph rewriting directly -- based on terms
+
+use hypergraph rewriting to implement lambda calculus
+use hypergraph rewriting to implement inet
+
+# hypergraph presentation
+
+like higher inductive types
+
+# namespace
+
+support namespace
+
+[diary] supporting-namespace.md
 
 # finite-domain constraint programming
+
+[diary] reading-ckanren.md
 
 [read] ckanren-minikanren-with-constraints.pdf
 
@@ -42,19 +68,6 @@ std/hypergraph
 
 [read] logic-for-problem-solving.pdf
 [read] constraint-logic-programming--a-survey.pdf
-
-# rewriting system
-
-[rewriting system] `Stmts.RewriteRule`
-
-[rewriting system] `Stmts.Rewrite`
-
-[rewriting system] If we implement rewriting, we will also need to implement
-primitive functions about primitive datatypes like number and string.
-
-[rewriting system] support xml
-
-- xml templating = rewrite system for xml
 
 # clp
 
