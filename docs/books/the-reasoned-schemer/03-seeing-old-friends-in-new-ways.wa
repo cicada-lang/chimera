@@ -1,182 +1,182 @@
 import { Succeed, Fail } from "01-playthings.wa"
 import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
 
-List l
+List(l)
 ----------- {
-  Null l
+  Null(l)
 }
 
-List l
+List(l)
 ------------- {
-  Cdr [l, d]
-  List d
+  Cdr(l, d)
+  List(d)
 }
 
 find x {
-  List ["a", "b", x, "d"]
+  List(["a", "b", x, "d"])
 }
 
 find x limit 1 {
-  List ["a", "b" | x]
+  List(["a", "b" | x])
 }
 
 find x limit 5 {
-  List ["a", "b" | x]
+  List(["a", "b" | x])
 }
 
-ListOfLists l
+ListOfLists(l)
 ------------- {
-  Null l
+  Null(l)
 }
 
-ListOfLists l
+ListOfLists(l)
 ------------- {
-  Car [l, a]
-  List a
-  Cdr [l, d]
-  ListOfLists d
+  Car(l, a)
+  List(a)
+  Cdr(l, d)
+  ListOfLists(d)
 }
 
 find _ {
-  ListOfLists [["a", "b"], [_x, "c"], ["d", _y]]
+  ListOfLists([["a", "b"], [_x, "c"], ["d", _y]])
 }
 
 find l limit 1 {
-  ListOfLists l
+  ListOfLists(l)
 }
 
 find l limit 5 {
-  ListOfLists l
+  ListOfLists(l)
 }
 
 find x limit 5 {
-  ListOfLists [["a", "b"] | x]
+  ListOfLists([["a", "b"] | x])
 }
 
 find x limit 5 {
-  ListOfLists [["a", "b"], ["c", "d"] | x]
+  ListOfLists([["a", "b"], ["c", "d"] | x])
 }
 
-Singleton l
+Singleton(l)
 ----------- {
   l = [_]
 }
 
-ListOfSingletons l
+ListOfSingletons(l)
 ------------------- {
-  Null l
+  Null(l)
 }
 
-ListOfSingletons l
+ListOfSingletons(l)
 -------------------- {
-  Car [l, a]
-  Singleton a
-  Cdr [l, d]
-  ListOfSingletons d
+  Car(l, a)
+  Singleton(a)
+  Cdr(l, d)
+  ListOfSingletons(d)
 }
 
 
 find l limit 1 {
-  ListOfSingletons l
+  ListOfSingletons(l)
 }
 
 find l limit 5 {
-  ListOfSingletons l
+  ListOfSingletons(l)
 }
 
 find r limit 5 {
-  ListOfSingletons [["g"], ["e" | w], [x | y] | z]
+  ListOfSingletons([["g"], ["e" | w], [x | y] | z])
   r = [w, [x | y], z]
 }
 
 find out limit 5 {
   [["g"], ["e" | _w], [_x | _y] | _z] = out
-  ListOfSingletons out
+  ListOfSingletons(out)
 }
 
 // NOTE By "The Law of Fail", we can drop the following clause.
 
-// Member [x, l]
+// Member(x, l)
 // ------------- {
-//   Null l
-//   Fail []
+//   Null(l)
+//   Fail()
 // }
 
-// Member [x, l]
+// Member(x, l)
 // ------------- {
-//   Car [l, a]
+//   Car(l, a)
 //   x = a
 // }
 
-Member [x, l]
+Member(x, l)
 ------------- {
-  Car [l, x]
+  Car(l, x)
 }
 
-Member [x, l]
+Member(x, l)
 ------------- {
-  Cdr [l, d]
-  Member [x, d]
+  Cdr(l, d)
+  Member(x, d)
 }
 
 find _ {
-  Member ["olive", ["virgin", "olive", "oil"]]
+  Member("olive", ["virgin", "olive", "oil"])
 }
 
 find x {
-  Member [x, ["virgin", "olive", "oil"]]
+  Member(x, ["virgin", "olive", "oil"])
 }
 
 find x {
-  Member [x, ["hummus", "with", "pita"]]
+  Member(x, ["hummus", "with", "pita"])
 }
 
 find x {
-  Member [x, ["pear", "grape" | "peaches"]]
+  Member(x, ["pear", "grape" | "peaches"])
 }
 
 find x {
-  Member ["e", ["pasta", x, "fagioli"]]
+  Member("e", ["pasta", x, "fagioli"])
 }
 
 find x {
-  Member ["e", ["pasta", "e", x, "fagioli"]]
+  Member("e", ["pasta", "e", x, "fagioli"])
 }
 
 find x {
-  Member ["e", ["pasta", x, "e", "fagioli"]]
+  Member("e", ["pasta", x, "e", "fagioli"])
 }
 
 find [x, y] {
-  Member ["e", ["pasta", x, "fagioli", y]]
+  Member("e", ["pasta", x, "fagioli", y])
 }
 
 find q {
   ["pasta", _x, "fagioli", _y] = q
-  Member ["e", q]
+  Member("e", q)
 }
 
 find l limit 5 {
-  Member ["tofu", l]
+  Member("tofu", l)
 }
 
-ProperMember [x, l]
+ProperMember(x, l)
 ------------------- {
-  Car [l, x]
-  Cdr [l, d]
-  List d
+  Car(l, x)
+  Cdr(l, d)
+  List(d)
 }
 
-ProperMember [x, l]
+ProperMember(x, l)
 ------------------- {
-  Cdr [l, d]
-  ProperMember [x, d]
+  Cdr(l, d)
+  ProperMember(x, d)
 }
 
 find l limit 5 {
-  ProperMember ["tofu", l]
+  ProperMember("tofu", l)
 }
 
 find l limit 12 {
-  ProperMember ["tofu", l]
+  ProperMember("tofu", l)
 }

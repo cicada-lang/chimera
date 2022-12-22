@@ -2,7 +2,7 @@
 // Define Cons first,
 // then define both Car and Cdr using Cons.
 
-Cons [a, d, p]
+Cons(a, d, p)
 --------------- {
   [a | d] = p
 }

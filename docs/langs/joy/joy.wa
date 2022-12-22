@@ -1,70 +1,70 @@
 // Small step operational semantics of a Forth-like language.
 
-Append [[], t, t]
+Append([], t, t)
 
-Append [[a | d], t, out]
+Append([a | d], t, out)
 ------------------------- {
-  Append [d, t, res]
+  Append(d, t, res)
   out = [a | res]
 }
 
-Step [
+Step(
   [stack, [[quoted] | rest]],
   [[[quoted] | stack], rest],
-]
+)
 
-Step [
+Step(
   [[quoted | stack], ["apply" | rest]],
   [stack, result],
-] -- {
-  Append [quoted, rest, result]
+) -- {
+  Append(quoted, rest, result)
 }
 
 
-Step [
+Step(
   [[car, cdr | stack], ["cons" | rest]],
   [[[car | cdr] | stack], rest],
-]
+)
 
-Step [
+Step(
   [[x | stack], ["dup" | rest]],
   [[x, x | stack], rest],
-]
+)
 
-Step [
+Step(
   [[_x | stack], ["drop" | rest]],
   [stack, rest],
-]
+)
 
-Step [
+Step(
   [[x, y | stack], ["swap" | rest]],
   [[y, x | stack], rest],
-]
+)
 
-Step [
+Step(
   [[x, y | stack], ["over" | rest]],
   [[y, x, y | stack], rest],
-]
+)
 
-Step [
+Step(
   [[x, y, z | stack], ["rot" | rest]],
   [[z, y, x | stack], rest],
-]
+)
 
-Step [
+Step(
   [stack, ["lit", value | rest]],
   [[value | stack], rest],
-]
+)
 
-Eval [start, end]
+Eval(start, end)
 -------------------- {
-  Step [start, end]
+  Step(start, end)
 }
 
-Eval [start, end]
+Eval(start, end)
 ------------------ {
-  Step [start, next]
-  Eval [next, end]
+  Step(start, next)
+  Eval(next, end)
 }
 
 find end {
@@ -72,7 +72,7 @@ find end {
     [1, 2, 3],
     ["swap", "drop", "swap", "drop"],
   ]
-  Eval [start, end]
+  Eval(start, end)
 }
 
 find end {
@@ -80,18 +80,18 @@ find end {
     [[], 1, 2, 3],
     ["swap", "cons", "swap", "cons", "swap", "cons"],
   ]
-  Eval [start, end]
+  Eval(start, end)
 }
 
 assert not find end {
   start = [[], ["hello", "world"]]
-  Eval [start, end]
+  Eval(start, end)
 }
 
 find words limit 10 {
   start = [[], words]
   end = [["I", "love", "you"], []]
-  Eval [start, end]
+  Eval(start, end)
 }
 
 // Try to solve something like quine.
@@ -99,5 +99,5 @@ find words limit 10 {
 find words limit 1 {
   start = [[], [words, "apply"]]
   end = [words, []]
-  Eval [start, end]
+  Eval(start, end)
 }

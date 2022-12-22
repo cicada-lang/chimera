@@ -1,12 +1,12 @@
 [ 
-  var(_.0) with { String _.0 },
-  fn(_.0, var(_.1)) with { String _.1 String _.0 },
-  ap(var(_.0), var(_.1)) with { String _.1 String _.0 },
-  fn(_.0, fn(_.1, var(_.2))) with { String _.2 String _.1 String _.0 },
-  fn(_.0, ap(var(_.1), var(_.2))) with { String _.2 String _.1 String _.0 },
-  ap(var(_.0), fn(_.1, var(_.2))) with { String _.2 String _.1 String _.0 },
-  ap(fn(_.0, var(_.1)), var(_.2)) with { String _.2 String _.1 String _.0 },
-  fn(_.0, fn(_.1, fn(_.2, var(_.3)))) with { String _.3 String _.2 String _.1 String _.0 },
-  ap(var(_.0), ap(var(_.1), var(_.2))) with { String _.2 String _.1 String _.0 },
-  ap(ap(var(_.0), var(_.1)), var(_.2)) with { String _.2 String _.1 String _.0 }
+  var(_.0) with { String(_.0) },
+  fn(_.0, var(_.1)) with { String(_.1) String(_.0) },
+  ap(var(_.0), var(_.1)) with { String(_.1) String(_.0) },
+  fn(_.0, fn(_.1, var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  fn(_.0, ap(var(_.1), var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  ap(var(_.0), fn(_.1, var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  ap(fn(_.0, var(_.1)), var(_.2)) with { String(_.2) String(_.1) String(_.0) },
+  fn(_.0, fn(_.1, fn(_.2, var(_.3)))) with { String(_.3) String(_.2) String(_.1) String(_.0) },
+  ap(var(_.0), ap(var(_.1), var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  ap(ap(var(_.0), var(_.1)), var(_.2)) with { String(_.2) String(_.1) String(_.0) }
 ]

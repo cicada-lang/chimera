@@ -1,71 +1,71 @@
 import { Succeed, Fail } from "01-playthings.wa"
 
-Always []
+Always()
 --------- {
-  Succeed []
+  Succeed()
 }
 
-Always []
+Always()
 --------- {
-  Always []
+  Always()
 }
 
 find _ limit 3 {
-  Always []
+  Always()
 }
 
 find q limit 3 {
   q = "onion"
-  Always []
+  Always()
 }
 
 find q limit 3 {
-  Always []
+  Always()
   q = "onion"
 }
 
 // NOTE Infinite loop
 
 // find q {
-//   Always []
-//   Fail []
+//   Always()
+//   Fail()
 // }
 
 // NOTE Infinite loop
 
 // find q {
 //   q = "garlic"
-//   Always []
+//   Always()
 //   q = "onion"
 // }
 
 find q {
   q = "garlic"
   q = "onion"
-  Always []
+  Always()
 }
 
-Never []
+Never()
 --------- {
-  Never []
+  Never()
 }
 
 find _ {
-  Fail []
-  Never []
+  Fail()
+  Never()
 }
 
 // NOTE Infinite loop
 
 // find q {
-//   Never []
-//   Fail []
+//   Never()
+//   Fail()
 // }
 
 // NOTE Infinite loop
 
 // find q {
-//   Never []
-//   Fail []
-//   Never []
+//   Never()
+//   Fail()
+//   Never()
 // }

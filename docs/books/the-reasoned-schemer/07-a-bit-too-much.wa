@@ -1,127 +1,127 @@
-Bit 0
-Bit 1
+Bit(0)
+Bit(1)
 
 find x {
-  Bit x
+  Bit(x)
 }
 
-BitXor [0, 0, 0]
-BitXor [0, 1, 1]
-BitXor [1, 0, 1]
-BitXor [1, 1, 0]
+BitXor(0, 0, 0)
+BitXor(0, 1, 1)
+BitXor(1, 0, 1)
+BitXor(1, 1, 0)
 
 find [x, y] {
-  BitXor [x, y, 0]
+  BitXor(x, y, 0)
 }
 
 find [x, y] {
-  BitXor [x, y, 1]
+  BitXor(x, y, 1)
 }
 
 find [x, y, r] {
-  BitXor [x, y, r]
+  BitXor(x, y, r)
 }
 
-BitAnd [0, 0, 0]
-BitAnd [0, 1, 0]
-BitAnd [1, 0, 0]
-BitAnd [1, 1, 1]
+BitAnd(0, 0, 0)
+BitAnd(0, 1, 0)
+BitAnd(1, 0, 0)
+BitAnd(1, 1, 1)
 
 find [x, y] {
-  BitAnd [x, y, 1]
+  BitAnd(x, y, 1)
 }
 
 // x + y = r + 2 * c
 
-HalfAdder [x, y, r, c]
+HalfAdder(x, y, r, c)
 ---------------------- {
-  BitXor [x, y, r]
-  BitAnd [x, y, c]
+  BitXor(x, y, r)
+  BitAnd(x, y, c)
 }
 
 find r {
-  HalfAdder [1, 1, r, 1]
+  HalfAdder(1, 1, r, 1)
 }
 
 find [x, y, r, c] {
-  HalfAdder [x, y, r, c]
+  HalfAdder(x, y, r, c)
 }
 
 // b + x + y = r + 2 * c
 
-FullAdder [b, x, y, r, c]
+FullAdder(b, x, y, r, c)
 ------------------------- {
-  HalfAdder [x, y, w, xy]
-  HalfAdder [w, b, r, wz]
-  BitXor [xy, wz, c]
+  HalfAdder(x, y, w, xy)
+  HalfAdder(w, b, r, wz)
+  BitXor(xy, wz, c)
 }
 
 find [r, c] {
-  FullAdder [0, 1, 1, r, c]
+  FullAdder(0, 1, 1, r, c)
 }
 
 find [r, c] {
-  FullAdder [1, 1, 1, r, c]
+  FullAdder(1, 1, 1, r, c)
 }
 
 find [b, x, y, r, c] {
-  FullAdder [b, x, y, r, c]
+  FullAdder(b, x, y, r, c)
 }
 
-Positive n
+Positive(n)
 ---------------- {
   [_a | _d] = n
 }
 
 find _ {
-  Positive [0, 1, 1]
+  Positive([0, 1, 1])
 }
 
 find _ {
-  Positive [1]
+  Positive([1])
 }
 
 find _ {
-  Positive []
+  Positive([])
 }
 
 find r {
-  Positive r
+  Positive(r)
 }
 
-GreaterThanOne n
+GreaterThanOne(n)
 --------------------- {
   [_a, _ad | _dd] = n
 }
 
 find _ {
-  GreaterThanOne [0, 1, 1]
+  GreaterThanOne([0, 1, 1])
 }
 
 find _ {
-  GreaterThanOne [0, 1]
+  GreaterThanOne([0, 1])
 }
 
 find _ {
-  GreaterThanOne [1]
+  GreaterThanOne([1])
 }
 
 find _ {
-  GreaterThanOne []
+  GreaterThanOne([])
 }
 
 find r {
-  GreaterThanOne r
+  GreaterThanOne(r)
 }
 
-Adder [0, n, [], n]
-Adder [0, [], m, m] -- { Positive m }
-Adder [1, n, [], r] -- { Adder [0, n, [1], r] }
-Adder [1, [], m, r] -- { Positive m Adder [0, [1], m, r] }
-Adder [b, [1], [1], [a, c]] -- { FullAdder [b, 1, 1, a, c] }
-Adder [b, [1], m, r] -- { GenAdder [b, [1], m, r] }
-Adder [b, n, [1], r] -- { GreaterThanOne n GreaterThanOne r Adder [b, [1], n, r] }
-Adder [b, n, m, r] -- { GreaterThanOne n GenAdder [b, n, m, r] }
+Adder(0, n, [], n)
+Adder(0, [], m, m) -- { Positive(m) }
+Adder(1, n, [], r) -- { Adder(0, n, [1], r) }
+Adder(1, [], m, r) -- { Positive(m) Adder(0, [1], m, r) }
+Adder(b, [1], [1], [a, c]) -- { FullAdder(b, 1, 1, a, c) }
+Adder(b, [1], m, r) -- { GenAdder(b, [1], m, r) }
+Adder(b, n, [1], r) -- { GreaterThanOne(n) GreaterThanOne(r) Adder(b, [1], n, r) }
+Adder(b, n, m, r) -- { GreaterThanOne(n) GenAdder(b, n, m, r) }
 
 // Given the carry bit b,
 // and the numbers n, m, and r,
@@ -129,109 +129,109 @@ Adder [b, n, m, r] -- { GreaterThanOne n GenAdder [b, n, m, r] }
 // provided that n is positive
 // and m and r are greater than one.
 
-GenAdder [b, n, m, r]
+GenAdder(b, n, m, r)
 ------------------------- {
   [a | x] = n
-  [d | y] = m  Positive y
-  [c | z] = r  Positive z
-  FullAdder [b, a, d, c, e]
-  Adder [e, x, y, z]
+  [d | y] = m  Positive(y)
+  [c | z] = r  Positive(z)
+  FullAdder(b, a, d, c, e)
+  Adder(e, x, y, z)
 }
 
 find [x, y, r] limit 2 {
-  Adder [0, x, y, r]
+  Adder(0, x, y, r)
 }
 
 find [x, y, r] limit 3 {
-  Adder [0, x, y, r]
+  Adder(0, x, y, r)
 }
 
 find [x, y, r] limit 4 {
-  Adder [0, x, y, r]
+  Adder(0, x, y, r)
 }
 
 find [x, y, r] limit 5 {
-  Adder [0, x, y, r]
+  Adder(0, x, y, r)
 }
 
 find [x, y, r] limit 19 {
-  Adder [0, x, y, r]
+  Adder(0, x, y, r)
 }
 
 find [x, y] {
-  Adder [0, x, y, [1, 0, 1]]
+  Adder(0, x, y, [1, 0, 1])
 }
 
-Add [x, y, r]
+Add(x, y, r)
 --------------------- {
-  Adder [0, x, y, r]
+  Adder(0, x, y, r)
 }
 
 find [x, y] {
-  Add [x, y, [1]]
+  Add(x, y, [1])
 }
 
 find [x, y] {
-  Add [x, y, [0, 1]]
+  Add(x, y, [0, 1])
 }
 
 find [x, y] {
-  Add [x, y, [1, 1]]
+  Add(x, y, [1, 1])
 }
 
 find [x, y] {
-  Add [x, y, [1, 0, 1]]
+  Add(x, y, [1, 0, 1])
 }
 
-Sub [n, m, k]
+Sub(n, m, k)
 ---------------- {
-  Add [m, k, n]
+  Add(m, k, n)
 }
 
 find q {
-  Sub [[1], [1], q]
+  Sub([1], [1], q)
 }
 
 find q {
-  Sub [[], [1], q]
+  Sub([], [1], q)
 }
 
 find q {
-  Sub [[1, 1], [1], q]
+  Sub([1, 1], [1], q)
 }
 
 find q {
-  Sub [[0, 0, 0, 1], [1, 0, 1], q]
+  Sub([0, 0, 0, 1], [1, 0, 1], q)
 }
 
 find q {
-  Add [[1, 1], [1, 0, 1], q]
+  Add([1, 1], [1, 0, 1], q)
 }
 
 // find [x, y] {
-//   Add [x, y, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+//   Add(x, y, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
 // }
 
-Length [[], []]
-Length [[_a | d], n] -- {
-  Add [[1], res, n]
-  Length [d, res]
+Length([], [])
+Length([_a | d], n) -- {
+  Add([1], res, n)
+  Length(d, res)
 }
 
 find n limit 1 {
-  Length [["jicama", "rhubarb", "guava"], n]
+  Length(["jicama", "rhubarb", "guava"], n)
 }
 
 find l {
-  Length [l, [1]]
+  Length(l, [1])
 }
 
 find l {
-  Length [l, [0, 1]]
+  Length(l, [0, 1])
 }
 
 find q limit 3 {
-  Length [q, q]
+  Length(q, q)
 }
 
 // NOTE The following query has no value,
@@ -239,5 +239,5 @@ find q limit 3 {
 // but there is non.
 
 // find q limit 4 {
-//   Length [q, q]
+//   Length(q, q)
 // }

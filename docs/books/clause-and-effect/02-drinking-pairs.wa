@@ -1,28 +1,28 @@
-Drink { person: "john", alcohol: "martini" }
-Drink { person: "mary", alcohol: "gin" }
-Drink { person: "susan", alcohol: "vodka" }
-Drink { person: "john", alcohol: "gin" }
-Drink { person: "fred", alcohol: "gin" }
-Drink { person: "fred", alcohol: "vodka" }
+Drink({ person: "john", alcohol: "martini" })
+Drink({ person: "mary", alcohol: "gin" })
+Drink({ person: "susan", alcohol: "vodka" })
+Drink({ person: "john", alcohol: "gin" })
+Drink({ person: "fred", alcohol: "gin" })
+Drink({ person: "fred", alcohol: "vodka" })
 
-Friendship { left, right, alcohol }
+Friendship({ left, right, alcohol })
 ------------------------------------ {
-  Drink { person: left, alcohol }
-  Drink { person: right, alcohol }
+  Drink({ person: left, alcohol })
+  Drink({ person: right, alcohol })
 }
 
 find left {
-  Friendship { left, right: "mary", alcohol: "gin" }
+  Friendship({ left, right: "mary", alcohol: "gin" })
 }
 
 find left {
-  Friendship { left, alcohol: "gin" }
+  Friendship({ left, alcohol: "gin" })
 }
 
 find [left, right] {
-  Friendship { left, right, alcohol: "gin" }
+  Friendship({ left, right, alcohol: "gin" })
 }
 
 find [left, right, alcohol] {
-  Friendship { left, right, alcohol }
+  Friendship({ left, right, alcohol })
 }

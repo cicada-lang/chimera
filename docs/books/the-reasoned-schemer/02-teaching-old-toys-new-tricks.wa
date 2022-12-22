@@ -1,185 +1,185 @@
-Car [p, a]
+Car(p, a)
 ---------- {
   [a | _d] = p
 }
 
 find q {
-  Car [["a", "c", "o", "r", "n"], q]
+  Car(["a", "c", "o", "r", "n"], q)
 }
 
 find _ {
-  Car [["a", "c", "o", "r", "n"], "a"]
+  Car(["a", "c", "o", "r", "n"], "a")
 }
 
 find r {
-  Car [[r | _y], x]
+  Car([r | _y], x)
   "pear" = x
 }
 
 find r {
-  Car [["grape", "raisin", "pear"], x]
-  Car [[["a"], ["b"], ["c"]], y]
+  Car(["grape", "raisin", "pear"], x)
+  Car([["a"], ["b"], ["c"]], y)
   [x | y] = r
 }
 
-Cdr [p, d]
+Cdr(p, d)
 ---------- {
   [_a | d] = p
 }
 
 find r {
-  Cdr [["a", "c", "o", "r", "n"], v]
-  Cdr [v, w]
-  Car [w, r]
+  Cdr(["a", "c", "o", "r", "n"], v)
+  Cdr(v, w)
+  Car(w, r)
 }
 
 find r {
-  Cdr [["grape", "raisin", "pear"], x]
-  Car [[["a"], ["b"], ["c"]], y]
+  Cdr(["grape", "raisin", "pear"], x)
+  Car([["a"], ["b"], ["c"]], y)
   [x | y] = r
 }
 
 find _ {
-  Cdr [["a", "c", "o", "r", "n"], ["c", "o", "r", "n"]]
+  Cdr(["a", "c", "o", "r", "n"], ["c", "o", "r", "n"])
 }
 
 find x {
-  Cdr [["c", "o", "r", "n"], [x, "r", "n"]]
+  Cdr(["c", "o", "r", "n"], [x, "r", "n"])
 }
 
 find l {
-  Cdr [l, ["c", "o", "r", "n"]]
-  Car [l, x]
+  Cdr(l, ["c", "o", "r", "n"])
+  Car(l, x)
   x = "a"
 }
 
-// Cons [a, d, p]
+// Cons(a, d, p)
 // --------------- {
 //   [a | d] = p
 // }
 
-Cons [a, d, p]
+Cons(a, d, p)
 --------------- {
-  Car [p, a]
-  Cdr [p, d]
+  Car(p, a)
+  Cdr(p, d)
 }
 
 find l {
-  Cons [["a", "b", "c"], ["d", "e"], l]
+  Cons(["a", "b", "c"], ["d", "e"], l)
 }
 
 find x {
-  Cons [x, ["a", "b", "c"], ["d", "a", "b", "c"]]
+  Cons(x, ["a", "b", "c"], ["d", "a", "b", "c"])
 }
 
 find r {
   ["e", "a", "d", _x] = r
-  Cons [_y, ["a", _z, "c"], r]
+  Cons(_y, ["a", _z, "c"], r)
 }
 
 find x {
-  Cons [x, ["a", x, "c"], ["d", "a", x, "c"]]
+  Cons(x, ["a", x, "c"], ["d", "a", x, "c"])
 }
 
 find l {
   ["d", "a", x, "c"] = l
-  Cons [x, ["a", x, "c"], l]
+  Cons(x, ["a", x, "c"], l)
 }
 
 find l {
-  Cons [x, ["a", x, "c"], l]
+  Cons(x, ["a", x, "c"], l)
   ["d", "a", x, "c"] = l
 }
 
 find l {
-  Cons [_w, ["n", "u", "s"], t]
-  Cdr [l, t]
-  Car [l, x]
+  Cons(_w, ["n", "u", "s"], t)
+  Cdr(l, t)
+  Car(l, x)
   "b" = x
-  Cdr [l, d]
-  Car [d, y]
+  Cdr(l, d)
+  Car(d, y)
   "o" = y
 }
 
-Null x
+Null(x)
 ---------- {
   [] = x
 }
 
 find _ {
-  Null ["grape", "raisin", "pear"]
+  Null(["grape", "raisin", "pear"])
 }
 
 find _ {
-  Null []
+  Null([])
 }
 
 find x {
-  Null x
+  Null(x)
 }
 
 find r {
   [_x, _y, "salad"] = r
 }
 
-Pair p
+Pair(p)
 ------ {
-  Cons [_a, _d, p]
+  Cons(_a, _d, p)
 }
 
 find q {
-  Pair [q | q]
+  Pair([q | q])
 }
 
 find _ {
-  Pair []
+  Pair([])
 }
 
 find _ {
-  Pair "pair"
+  Pair("pair")
 }
 
 find x {
-  Pair x
+  Pair(x)
 }
 
 find r {
-  Pair [r]
+  Pair([r])
 }
 
-// Singleton l
+// Singleton(l)
 // ----------- {
-//   Pair l
-//   Cdr [l, d]
-//   Null d
+//   Pair(l)
+//   Cdr(l, d)
+//   Null(d)
 // }
 
-Singleton l
+Singleton(l)
 ----------- {
-  Cdr [l, d]
-  Null d
+  Cdr(l, d)
+  Null(d)
 }
 
 find _ {
-  Singleton ["tofu"]
+  Singleton(["tofu"])
 }
 
 find _ {
-  Singleton [["tofu"]]
+  Singleton([["tofu"]])
 }
 
 find _ {
-  Singleton "tofu"
+  Singleton("tofu")
 }
 
 find _ {
-  Singleton ["e", "tofu"]
+  Singleton(["e", "tofu"])
 }
 
 find _ {
-  Singleton []
+  Singleton([])
 }
 
 find _ {
-  Singleton ["e" | "tofu"]
+  Singleton(["e" | "tofu"])
 }

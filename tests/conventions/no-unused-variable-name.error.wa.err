@@ -2,7 +2,7 @@
   pattern variable name: d
 [note] This policy about unused pattern variable name is important for finding bugs caused by typo.
 
- 1 |Car [p, a]
+ 1 |Car(p, a)
  2 |---------- {
  3 |  [a | d] = p
  4 |}

@@ -1,143 +1,143 @@
 import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
 
-Append [l, t, out]
+Append(l, t, out)
 ------------------ {
-  Null l
+  Null(l)
   out = t
 }
 
-Append [l, t, out]
+Append(l, t, out)
 ------------------ {
-  Cdr [l, d]
-  Append [d, t, res]
-  Car [l, a]
-  Cons [a, res, out]
+  Cdr(l, d)
+  Append(d, t, res)
+  Car(l, a)
+  Cons(a, res, out)
 }
 
 find q {
-  Append [[1, 2, 3], [4, 5], q]
+  Append([1, 2, 3], [4, 5], q)
 }
 
 find q {
-  Append [[], [4, 5], q]
+  Append([], [4, 5], q)
 }
 
 find q {
-  Append [1, [4, 5], q]
+  Append(1, [4, 5], q)
 }
 
 find q {
-  Append [[4, 5], 1, q]
+  Append([4, 5], 1, q)
 }
 
 find x limit 6 {
-  Append [x, _y, _z]
+  Append(x, _y, _z)
 }
 
 find [x, y, z] limit 6 {
-  Append [x, y, z]
+  Append(x, y, z)
 }
 
 find x {
-  Append [
+  Append(
     ["cake"],
     ["tastes", "yummy"],
     x,
-  ]
+  )
 }
 
 find x {
-  Append [
+  Append(
     ["cake", "&", "ice", _y],
     ["tastes", "yummy"],
     x,
-  ]
+  )
 }
 
 find x {
-  Append [
+  Append(
     ["cake", "&", "ice", "cream"],
     _y,
     x,
-  ]
+  )
 }
 
 find x limit 1 {
-  Append [
+  Append(
     ["cake", "&", "ice" | _y],
     ["d", "t"],
     x,
-  ]
+  )
 }
 
 find x limit 5 {
-  Append [
+  Append(
     ["cake", "&", "ice" | _y],
     ["d", "t"],
     x,
-  ]
+  )
 }
 
 find y limit 5 {
-  Append [
+  Append(
     ["cake", "&", "ice" | y],
     ["d", "t"],
     _x,
-  ]
+  )
 }
 
 find x limit 5 {
-  Append [
+  Append(
     ["cake", "&", "ice" | y],
     ["d", "t" | y],
     x,
-  ]
+  )
 }
 
 find x {
-  Append [
+  Append(
     ["cake", "&", "ice", "cream"],
     ["d", "t" | _z],
     x,
-  ]
+  )
 }
 
 find [x, y] limit 6 {
-  Append [
+  Append(
     x,
     y,
     ["cake", "&", "ice", "d", "t"],
-  ]
+  )
 }
 
-Unwrap [x, out]
+Unwrap(x, out)
 --------------- {
-  Car [x, a]
-  Unwrap [a, out]
+  Car(x, a)
+  Unwrap(a, out)
 }
 
-Unwrap [x, out]
+Unwrap(x, out)
 --------------- {
   x = out
 }
 
 find x {
-  Unwrap [
+  Unwrap(
     [[["pizza"]]],
     x,
-  ]
+  )
 }
 
 find x limit 3 {
-  Unwrap [
+  Unwrap(
     x,
     "pizza",
-  ]
+  )
 }
 
 find x limit 3 {
-  Unwrap [
+  Unwrap(
     [[x]],
     "pizza",
-  ]
+  )
 }

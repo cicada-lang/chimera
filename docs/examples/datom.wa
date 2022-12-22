@@ -1,9 +1,9 @@
-Datom [1, "name", "A"]
-Datom [1, "age", 45]
-Datom [2, "name", "X"]
-Datom [2, "age", 2]
+Datom(1, "name", "A")
+Datom(1, "age", 45)
+Datom(2, "name", "X")
+Datom(2, "age", 2)
 
 find n {
-  Datom [e, "age", 2]
-  Datom [e, "name", n]
+  Datom(e, "age", 2)
+  Datom(e, "name", n)
 }

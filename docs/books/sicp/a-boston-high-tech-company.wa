@@ -10,23 +10,23 @@
 // Here is the information about Ben Bitdiddle,
 // the resident computer wizard:
 
-Job {
+Job({
   name: "Bitdiddle Ben",
   dept: "computer",
   role: "wizard",
-}
+})
 
-Salary {
+Salary({
   name: "Bitdiddle Ben",
   amount: 60000,
-}
+})
 
-Address {
+Address({
   name: "Bitdiddle Ben",
   town: "Slumerville",
   road: "Ridge Road",
   door: 10,
-}
+})
 
 // As resident wizard,
 // Ben is in charge of the company's computer division,
@@ -34,201 +34,201 @@ Address {
 
 // Here is the information about them:
 
-Address {
+Address({
   name: "Hacker Alyssa P",
   town: "Cambridge",
   road: "Mass Ave",
   door: 78,
-}
+})
 
-Job {
+Job({
   name: "Hacker Alyssa P",
   dept: "computer",
   role: "programmer",
-}
+})
 
-Salary {
+Salary({
   name: "Hacker Alyssa P",
   amount: 40000,
-}
+})
 
-Supervisor {
+Supervisor({
   slave: "Hacker Alyssa P",
   master: "Bitdiddle Ben",
-}
+})
 
-Address {
+Address({
   name: "Fect Cy D",
   town: "Cambridge",
   road: "Ames Street",
   door: 3,
-}
+})
 
-Job {
+Job({
   name: "Fect Cy D",
   dept: "computer",
   role: "programmer",
-}
+})
 
-Salary {
+Salary({
   name: "Fect Cy D",
   amount: 35000,
-}
+})
 
-Supervisor {
+Supervisor({
   slave: "Fect Cy D",
   master: "Bitdiddle Ben",
-}
+})
 
-Address {
+Address({
   name: "Tweakit Lem E",
   town: "Boston",
   road: "Bay State Road",
   door: 22,
-}
+})
 
-Job {
+Job({
   name: "Tweakit Lem E",
   dept: "computer",
   role: "technician",
-}
+})
 
-Salary {
+Salary({
   name: "Tweakit Lem E",
   amount: 25000,
-}
+})
 
-Supervisor {
+Supervisor({
   slave: "Tweakit Lem E",
   master: "Bitdiddle Ben",
-}
+})
 
 // There is also a programmer trainee,
 // who is supervised by Alyssa:
 
-Address {
+Address({
   name: "Reasoner Louis",
   town: "Slumerville",
   road: "Pine Tree Road",
   door: 80,
-}
+})
 
-Job {
+Job({
   name: "Reasoner Louis",
   dept: "computer",
   role: "programmer trainee",
-}
+})
 
-Salary {
+Salary({
   name: "Reasoner Louis",
   amount: 30000,
-}
+})
 
-Supervisor {
+Supervisor({
   slave: "Reasoner Louis",
   master: "Hacker Alyssa P",
-}
+})
 
 // Ben is a high-level employee.
 // His supervisor is the company's big wheel himself:
 
-Supervisor {
+Supervisor({
   slave: "Bitdiddle Ben",
   master: "Warbucks Oliver",
-}
+})
 
-Address {
+Address({
   name: "Warbucks Oliver",
   town: "Swellesley",
   road: "The Manor",
   door: 1,
-}
+})
 
-Job {
+Job({
   name: "Warbucks Oliver",
   dept: "administration",
   role: "big wheel",
-}
+})
 
-Salary {
+Salary({
   name: "Warbucks Oliver",
   amount: 150000,
-}
+})
 
 // Besides the computer division supervised by Ben,
 // the company has an accounting division,
 // consisting of a chief accountant and his assistant:
 
-Address {
+Address({
   name: "Scrooge Eben",
   town: "Weston",
   road: "Shady Lane",
   door: 10,
-}
+})
 
-Job {
+Job({
   name: "Scrooge Eben",
   dept: "accounting",
   role: "chief accountant",
-}
+})
 
-Salary {
+Salary({
   name: "Scrooge Eben",
   amount: 75000,
-}
+})
 
-Supervisor {
+Supervisor({
   slave: "Scrooge Eben",
   master: "Warbucks Oliver",
-}
+})
 
-Address {
+Address({
   name: "Cratchet Robert",
   town: "Allston",
   road: "N Harvard Street",
   door: 16,
-}
+})
 
-Job {
+Job({
   name: "Cratchet Robert",
   dept: "accounting",
   role: "scrivener",
-}
+})
 
-Salary {
+Salary({
   name: "Cratchet Robert",
   amount: 18000,
-}
+})
 
-Supervisor {
+Supervisor({
   slave: "Cratchet Robert",
   master: "Scrooge Eben",
-}
+})
 
 // There is also a secretary for the big wheel:
 
-Address {
+Address({
   name: "Aull DeWitt",
   town: "Slumerville",
   road: "Onion Square",
   door: 5,
-}
+})
 
-Job {
+Job({
   name: "Aull DeWitt",
   dept: "administration",
   role: "secretary",
-}
+})
 
-Salary {
+Salary({
   name: "Aull DeWitt",
   amount: 25000,
-}
+})
 
-Supervisor {
+Supervisor({
   slave: "Aull DeWitt",
   master: "Warbucks Oliver",
-}
+})
 
 // The database also contains assertions about
 // which kinds of jobs can be done
@@ -238,7 +238,7 @@ Supervisor {
 // the jobs of both a computer programmer
 // and a computer technician:
 
-Competence {
+Competence({
   can: {
     dept: "computer",
     role: "wizard",
@@ -247,9 +247,9 @@ Competence {
     dept: "computer",
     role: "programmer",
   },
-}
+})
 
-Competence {
+Competence({
   can: {
     dept: "computer",
     role: "wizard",
@@ -258,11 +258,11 @@ Competence {
     dept: "computer",
     role: "technician",
   },
-}
+})
 
 // A computer programmer could fill in for a trainee:
 
-Competence {
+Competence({
   can: {
     dept: "computer",
     role: "programmer",
@@ -271,11 +271,11 @@ Competence {
     dept: "computer",
     role: "programmer trainee",
   },
-}
+})
 
 // Also, as is well known,
 
-Competence {
+Competence({
   can: {
     dept: "administration",
     role: "secretary",
@@ -284,28 +284,28 @@ Competence {
     dept: "administration",
     role: "big wheel",
   },
-}
+})
 
 // # Simple queries
 
 // To find all computer programmers one can say
 
 find coder {
-  Job {
+  Job({
     name: coder,
     dept: "computer",
     role: "programmer",
-  }
+  })
 }
 
 // We also make assertion about the results.
 
 find coder {
-  Job {
+  Job({
     name: coder,
     dept: "computer",
     role: "programmer",
-  }
+  })
 }
 
 // assert [{ coder: "Hacker Alyssa P" }, { coder: "Fect Cy D" }],
@@ -325,82 +325,82 @@ find coder {
 // An employee's addresses
 
 find [town, road, door] {
-  Address {
+  Address({
     name: "Bitdiddle Ben",
     town,
     road,
     door,
-  }
+  })
 }
 
 // All employees at computer dept
 
 find [name, role] {
-  Job {
+  Job({
     name,
     dept: "computer",
     role,
-  }
+  })
 }
 
 find dept {
-  Job {
+  Job({
     name: "Hacker Alyssa P",
     role: "programmer",
     dept,
-  }
+  })
 }
 
 find x {
-  Supervisor {
+  Supervisor({
     slave: x,
     master: x,
-  }
+  })
 }
 
 // # Rules
 
 // We can use the following syntax to create rules.
 
-ComputerDeptSlave { slave }
+ComputerDeptSlave({ slave })
 ---------------------------- {
-  Job { name: slave, dept: "computer" }
-  Supervisor { slave }
+  Job({ name: slave, dept: "computer" })
+  Supervisor({ slave })
 }
 
 find slave {
-  ComputerDeptSlave { slave }
+  ComputerDeptSlave({ slave })
 }
 
 // TODO We do not have `not` yet.
 
-// Bigshot { name, dept }
+// Bigshot({ name, dept })
 // ------------------------ {
-//   Job { name, dept }
+//   Job({ name, dept })
 //   not {
-//     Supervisor { slave: name, master: z }
-//     Job { name: z, dept }
+//     Supervisor({ slave: name, master: z })
+//     Job({ name: z, dept })
 //   }
 // }
 
 // find [name, dept] {
-//   Bigshot {
+//   Bigshot({
 //     name,
 //     dept,
-//   }
+//   })
 // }
 
 // TODO `>=`
 
-// NotSoPoor { name, amount }
+// NotSoPoor({ name, amount })
 // ---------------------------- {
-//   Salary { name, amount }
-//   amount >= 40000
+//   Salary({ name, amount })
+//   FD::GtEq(amount, 40000)
 // })
 
 // find [name, amount] {
-//   NotSoPoor {
+//   NotSoPoor({
 //     name,
 //     amount,
-//   }
+//   })
 // }

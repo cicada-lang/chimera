@@ -31,34 +31,34 @@ cons(1, cons(2, cons(3, cons(4, null))))
 **Relation:**
 
 ```js
-Append [null, right, right]
+Append(null, right, right)
 ---------------------------- {}
 
-Append [
+Append(
   [head | left_tail],
   right,
   [head | result_tail],
-]
+)
 ---------------- {
   Append [left_tail, right, result_tail]
 }
 
 find [result] {
-  Append [
+  Append(
     [1, 2],
     [3, 4],
     result,
-  ]
+  )
 }
 
 // run it backward
 
 find [left, right] {
-  Append [
+  Append(
     left,
     right,
     [1, 2, 3, 4],
-  ]
+  )
 }
 ```
 
@@ -87,49 +87,49 @@ cons(1, cons(2, cons(3, cons(4, null))))
 **Relation:**
 
 ```js
-Merge [null, right, right]
+Merge(null, right, right)
 ------------------------ {}
 
-Merge [left, null, left]
+Merge(left, null, left)
 ------------------------ {}
 
-Merge [
+Merge(
   [left_head | left_tail],
   [head | right_tail],
   [head | result_tail],
-]
+)
 ---------------- {
-  Merge [left, right_tail, result_tail]
-  left_head > head
+  Merge(left, right_tail, result_tail)
+  FD::Gt(left_head, head)
 }
 
-Merge [
+Merge(
   [head | left_tail],
   [right_head | right_tail],
   [head | result_tail],
-]
+)
 ---------------- {
-  Merge [
+  Merge(
     left_tail,
     [right_head | right_tail],
     result_tail,
-  ]
-  right_head > head
+  )
+  FD::Gt(right_head, head)
 }
 
 find [result] {
-  Merge [
+  Merge(
     [1, 2],
     [3, 4],
     result
-  ]
+  )
 }
 
 find [left, right] {
-  Merge [
+  Merge(
     left,
     right,
     [1, 2, 3, 4]
-  ]
+  )
 }
 ```

@@ -1,123 +1,123 @@
 import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
 
-Mem [x, l, out]
+Mem(x, l, out)
 --------------- {
-  Car [l, x]
+  Car(l, x)
   out = l
 }
 
-Mem [x, l, out]
+Mem(x, l, out)
 --------------- {
-  Cdr [l, d]
-  Mem [x, d, out]
+  Cdr(l, d)
+  Mem(x, d, out)
 }
 
 find x {
-  Mem [
+  Mem(
     "fig",
     ["roll", "okra", "fig", "beet", "roll", "pea"],
     x,
-  ]
+  )
 }
 
 find x {
-  Mem [
+  Mem(
     "fig",
     ["roll", "okra", "beet", "beet", "roll", "pea"],
     x,
-  ]
+  )
 }
 
 find _ {
-  Mem ["fig", ["pea"], ["pea"]]
+  Mem("fig", ["pea"], ["pea"])
 }
 
 find out {
-  Mem ["fig", ["fig"], out]
+  Mem("fig", ["fig"], out)
 }
 
 find out {
-  Mem ["fig", ["fig", "pea"], out]
+  Mem("fig", ["fig", "pea"], out)
 }
 
 find x {
-  Mem [
+  Mem(
     x,
     ["roll", "okra", "fig", "beet", "roll", "pea"],
     ["fig", "beet", "roll", "pea"],
-  ]
+  )
 }
 
 find x {
-  Mem ["fig", ["fig", "pea"], ["pea", x]]
+  Mem("fig", ["fig", "pea"], ["pea", x])
 }
 
 find x {
-  Mem ["fig", ["fig", "pea"], [x, "pea"]]
+  Mem("fig", ["fig", "pea"], [x, "pea"])
 }
 
 find out {
-  Mem ["fig", ["fig", "fig", "pea"], out]
+  Mem("fig", ["fig", "fig", "pea"], out)
 }
 
 find out {
-  Mem ["fig", ["a", _x, "c", "fig", "e"], out]
+  Mem("fig", ["a", _x, "c", "fig", "e"], out)
 }
 
 find [x, y] limit 5 {
-  Mem ["fig", ["fig", "d", "fig", "e" | y], x]
+  Mem("fig", ["fig", "d", "fig", "e" | y], x)
 }
 
-Rember [_x, l, out]
+Rember(_x, l, out)
 ------------------ {
-  Null l
-  Null out
+  Null(l)
+  Null(out)
 }
 
-Rember [x, l, out]
+Rember(x, l, out)
 ------------------ {
-  Car [l, x]
-  Cdr [l, out]
+  Car(l, x)
+  Cdr(l, out)
 }
 
-Rember [x, l, out]
+Rember(x, l, out)
 ------------------ {
-  Cdr [l, d]
-  Rember [x, d, res]
-  Car [l, a]
-  Cons [a, res, out]
+  Cdr(l, d)
+  Rember(x, d, res)
+  Car(l, a)
+  Cons(a, res, out)
 }
 
 find out {
-  Rember ["pea", ["a", "b", "pea", "d", "pea", "e"], out]
+  Rember("pea", ["a", "b", "pea", "d", "pea", "e"], out)
 }
 
 find out {
-  Rember ["pea", ["pea"], out]
+  Rember("pea", ["pea"], out)
 }
 
 find out {
-  Rember ["pea", ["pea", "pea"], out]
+  Rember("pea", ["pea", "pea"], out)
 }
 
 find out {
-  Rember ["pea", ["pea", "pea", "pea"], out]
+  Rember("pea", ["pea", "pea", "pea"], out)
 }
 
 find out {
-  Rember [y, ["a", "b", y, "d", _z, "e"], out]
+  Rember(y, ["a", "b", y, "d", _z, "e"], out)
 }
 
 find [y, z] {
-  Rember [y, [y, "d", z, "e"], [y, "d", "e"]]
+  Rember(y, [y, "d", z, "e"], [y, "d", "e"])
 }
 
 find [y, z, w, out] limit 4 {
-  Rember [y, [z | w], out]
+  Rember(y, [z | w], out)
 }
 
 find [y, z, w, out] limit 5 {
-  Rember [y, [z | w], out]
+  Rember(y, [z | w], out)
 }
 
 // But should the following succeed?
@@ -125,5 +125,5 @@ find [y, z, w, out] limit 5 {
 // that does not succeed on the following query.
 
 find _ {
-  Rember [1, [1, 2, 3], [1, 2, 3]]
+  Rember(1, [1, 2, 3], [1, 2, 3])
 }

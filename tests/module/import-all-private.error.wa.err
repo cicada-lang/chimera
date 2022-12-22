@@ -3,6 +3,6 @@
  1 |import * from "./example.wa"
  2 |
  3 |find q {
- 4 |  Hiya q
+ 4 |  Hiya(q)
  5 |}
  6 |

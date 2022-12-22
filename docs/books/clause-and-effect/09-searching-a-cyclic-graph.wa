@@ -1,45 +1,45 @@
-Edge ["g", "h"]
-Edge ["d", "a"]
-Edge ["g", "d"]
-Edge ["e", "d"]
-Edge ["h", "f"]
-Edge ["e", "f"]
-Edge ["a", "e"]
-Edge ["a", "b"]
-Edge ["b", "f"]
-Edge ["b", "c"]
-Edge ["f", "c"]
+Edge("g", "h")
+Edge("d", "a")
+Edge("g", "d")
+Edge("e", "d")
+Edge("h", "f")
+Edge("e", "f")
+Edge("a", "e")
+Edge("a", "b")
+Edge("b", "f")
+Edge("b", "c")
+Edge("f", "c")
 
 // "a", "e", "d" -- in a loop
 
 // We define `Legal` to rule out loop -- to avoid searching in a loop
 
-Legal [_, []]
+Legal(_, [])
 
-Legal [z, [head | tail]]
+Legal(z, [head | tail])
 ---------------------------- {
   z != head
-  Legal [z, tail]
+  Legal(z, tail)
 }
 
-Path [x, x, _occurs]
+Path(x, x, _occurs)
 
-Path [x, y, occurs]
+Path(x, y, occurs)
 ------------------------ {
-  Edge [x, z]
-  Legal [z, occurs]
-  Path [z, y, [z | occurs]]
+  Edge(x, z)
+  Legal(z, occurs)
+  Path(z, y, [z | occurs])
 }
 
-find _ { Path ["f", "f", []] }
-find _ { Path ["a", "c", []] }
-find _ { Path ["g", "e", []] }
+find _ { Path("f", "f", []) }
+find _ { Path("a", "c", []) }
+find _ { Path("g", "e", []) }
 
-find x { Path ["g", x, []] }
-find x { Path [x, "h", []] }
+find x { Path("g", x, []) }
+find x { Path(x, "h", []) }
 
-find _ { Path ["g", "c", []] }
-find _ { Path ["g", "c", ["f"]] }
+find _ { Path("g", "c", []) }
+find _ { Path("g", "c", ["f"]) }
 
-find _ { Path ["a", _x, ["f", "d"]] }
-find _ { Path ["a", _x, []] }
+find _ { Path("a", _x, ["f", "d"]) }
+find _ { Path("a", _x, []) }

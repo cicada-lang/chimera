@@ -1,43 +1,43 @@
-Male { name: "bertram" }
-Male { name: "percival" }
+Male({ name: "bertram" })
+Male({ name: "percival" })
 
-Female { name: "lucinda" }
-Female { name: "camilla" }
+Female({ name: "lucinda" })
+Female({ name: "camilla" })
 
-Pair { male, female }
+Pair({ male, female })
 ------------------------ {
-  Male { name: male }
-  Female { name: female }
+  Male({ name: male })
+  Female({ name: female })
 }
 
 find _ {
-  Pair { male: "bertram", female: "lucinda" }
+  Pair({ male: "bertram", female: "lucinda" })
 }
 
 find _ {
-  Pair { male: "apollo", female: "daphne" }
+  Pair({ male: "apollo", female: "daphne" })
 }
 
 find female {
-  Pair { male: "percival", female }
+  Pair({ male: "percival", female })
 }
 
 find female {
-  Pair { male: "camilla", female }
+  Pair({ male: "camilla", female })
 }
 
 find male {
-  Pair { male, female: "lucinda" }
+  Pair({ male, female: "lucinda" })
 }
 
 find x {
-  Pair { male: x, female: x }
+  Pair({ male: x, female: x })
 }
 
 find _ {
-  Pair { female: "fido" }
+  Pair({ female: "fido" })
 }
 
 find [male, female] {
-  Pair { male, female }
+  Pair({ male, female })
 }

@@ -2,6 +2,6 @@
   pattern variable name: _a
 [note] This policy about unused pattern variable name is important for finding bugs caused by typo.
 
- 1 |Car [p, _a]
+ 1 |Car(p, _a)
  2 |---------- {
  3 |  [_a | _d] = p

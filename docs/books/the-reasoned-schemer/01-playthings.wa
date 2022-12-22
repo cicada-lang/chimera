@@ -1,12 +1,12 @@
-Succeed []
+Succeed()
 
-Fail []
+Fail()
 -------- {
   1 = 2
 }
 
 find _ {
-  Fail []
+  Fail()
 }
 
 find _ {
@@ -22,7 +22,7 @@ find q {
 }
 
 find _ {
-  Succeed []
+  Succeed()
 }
 
 find _ {
@@ -78,23 +78,23 @@ find _ {
 }
 
 find _ {
-  Succeed []
-  Succeed []
+  Succeed()
+  Succeed()
 }
 
 find q {
-  Succeed []
+  Succeed()
   "corn" = q
 }
 
 find q {
-  Fail []
+  Fail()
   "corn" = q
 }
 
 find q {
   "corn" = q
-  Fail []
+  Fail()
 }
 
 find q {
@@ -107,30 +107,30 @@ find q {
   "corn" = q
 }
 
-Teacup [t]
+Teacup(t)
 --------------- tea {
   t = "tea"
 }
 
-Teacup [t]
+Teacup(t)
 --------------- cup {
   t = "cup"
 }
 
 find q {
-  Teacup [q]
+  Teacup(q)
 }
 
 find [x, y] {
-  Teacup [x]
-  Teacup [y]
+  Teacup(x)
+  Teacup(y)
 }
 
 find [x, _y] {
-  Teacup [x]
-  Teacup [x]
+  Teacup(x)
+  Teacup(x)
 }
 
 find [x, _y] {
-  Teacup [x]
+  Teacup(x)
 }

@@ -1,23 +1,23 @@
-Member [element, [element | _tail]]
+Member(element, [element | _tail])
 ------------------------------------ here {}
 
-Member [element, [_head | tail]]
+Member(element, [_head | tail])
 --------------------------------- there {
-  Member [element, tail]
+  Member(element, tail)
 }
 
 find _ {
-  Member ["john", ["paul", "john"]]
+  Member("john", ["paul", "john"])
 }
 
 find _ {
-  Member ["joe", ["marx", "darwin", "freud" ]]
+  Member("joe", ["marx", "darwin", "freud" ])
 }
 
 find element {
-  Member [element, ["marx", "darwin", "freud"]]
+  Member(element, ["marx", "darwin", "freud"])
 }
 
 find [list] limit 3 {
-  Member ["foo", list]
+  Member("foo", list)
 }

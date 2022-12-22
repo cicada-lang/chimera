@@ -1,5 +1,5 @@
 import { Exp } from "exp.wa"
 
 find exp limit 10 {
-  Exp exp
+  Exp(exp)
 }

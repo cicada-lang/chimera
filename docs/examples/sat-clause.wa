@@ -1,63 +1,63 @@
-Bit x -- { x = 0 }
-Bit x -- { x = 1 }
+Bit(x) -- { x = 0 }
+Bit(x) -- { x = 1 }
 
-Not [0, 1]
-Not [1, 0]
+Not(0, 1)
+Not(1, 0)
 
-Or [0, 0, 0]
-Or [0, 1, 1]
-Or [1, 0, 1]
-Or [1, 1, 1]
+Or(0, 0, 0)
+Or(0, 1, 1)
+Or(1, 0, 1)
+Or(1, 1, 1)
 
-And [0, 0, 0]
-And [0, 1, 0]
-And [1, 0, 0]
-And [1, 1, 1]
+And(0, 0, 0)
+And(0, 1, 0)
+And(1, 0, 0)
+And(1, 1, 1)
 
-BitList []
-BitList [car | cdr] -- {
-  Bit car
-  BitList cdr
+BitList([])
+BitList([car | cdr]) -- {
+  Bit(car)
+  BitList(cdr)
 }
 
-ListNot [[], []]
-ListNot [[x | xs], [y | ys]] -- {
-  Not [x, y]
-  ListNot [xs, ys]
+ListNot([], [])
+ListNot([x | xs], [y | ys]) -- {
+  Not(x, y)
+  ListNot(xs, ys)
 }
 
 // A clause represent
 //   c1 ∨ c2 ∨ ... <- p1 ∧ p2 ∧ ...
 // which is equivalent to disjunction from
 //   c1 ∨ c2 ∨ ... ¬p1 ∨ ¬p2 ∨ ...
-Clause [conclusions, premises] -- {
-  BitList conclusions
-  BitList premises
-  ListNot [premises, negPremises]
-  Append [conclusions, negPremises, disjunction]
+Clause(conclusions, premises) -- {
+  BitList(conclusions)
+  BitList(premises)
+  ListNot(premises, negPremises)
+  Append(conclusions, negPremises, disjunction)
   // To satisfy a disjunction, its element must contains a true,
   // specially empty list can not be satisfied.
-  HasOne disjunction
+  HasOne(disjunction)
 }
 
-HasOne [1 | _rest]
-HasOne [0 | rest] -- {
-  HasOne rest
+HasOne([1 | _rest])
+HasOne([0 | rest]) -- {
+  HasOne(rest)
 }
 
-Append [[], t, t]
-Append [[a | d], t, out] -- {
+Append([], t, t)
+Append([a | d], t, out) -- {
   out = [a | res]
-  Append [d, t, res]
+  Append(d, t, res)
 }
 
 find [x1, x2, x3] {
-  Clause [[x1], [x2]]
-  Clause [[x2, x3], [x1]]
-  Clause [[], [x1]]
+  Clause([x1], [x2])
+  Clause([x2, x3], [x1])
+  Clause([], [x1])
 }
 
 find [x1] {
-  Clause [[x1], []]
-  Clause [[], [x1]]
+  Clause([x1], [])
+  Clause([], [x1])
 }

@@ -1,4 +1,4 @@
-update `docs/` to new syntax
+test also run logic-as-programs.md
 
 # term rewriting
 
