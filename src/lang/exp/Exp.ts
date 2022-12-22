@@ -1,7 +1,5 @@
 import type { Span } from "../span"
 
-type ExpMeta = { span?: Span }
-
 export type Exp =
   | Var
   | String
@@ -17,9 +15,10 @@ export type Var = {
   "@type": "Exp"
   "@kind": "Var"
   name: string
-} & ExpMeta
+  span: Span
+}
 
-export function Var(name: string, span?: Span): Var {
+export function Var(name: string, span: Span): Var {
   return {
     "@type": "Exp",
     "@kind": "Var",
@@ -32,9 +31,10 @@ export type String = {
   "@type": "Exp"
   "@kind": "String"
   data: string
-} & ExpMeta
+  span: Span
+}
 
-export function String(data: string, span?: Span): String {
+export function String(data: string, span: Span): String {
   return {
     "@type": "Exp",
     "@kind": "String",
@@ -47,9 +47,10 @@ export type Number = {
   "@type": "Exp"
   "@kind": "Number"
   data: number
-} & ExpMeta
+  span: Span
+}
 
-export function Number(data: number, span?: Span): Number {
+export function Number(data: number, span: Span): Number {
   return {
     "@type": "Exp",
     "@kind": "Number",
@@ -62,9 +63,10 @@ export type Boolean = {
   "@type": "Exp"
   "@kind": "Boolean"
   data: boolean
-} & ExpMeta
+  span: Span
+}
 
-export function Boolean(data: boolean, span?: Span): Boolean {
+export function Boolean(data: boolean, span: Span): Boolean {
   return {
     "@type": "Exp",
     "@kind": "Boolean",
@@ -76,9 +78,10 @@ export function Boolean(data: boolean, span?: Span): Boolean {
 export type Null = {
   "@type": "Exp"
   "@kind": "Null"
-} & ExpMeta
+  span: Span
+}
 
-export function Null(span?: Span): Null {
+export function Null(span: Span): Null {
   return {
     "@type": "Exp",
     "@kind": "Null",
@@ -91,9 +94,10 @@ export type ArrayCons = {
   "@kind": "ArrayCons"
   car: Exp
   cdr: Exp
-} & ExpMeta
+  span: Span
+}
 
-export function ArrayCons(car: Exp, cdr: Exp, span?: Span): ArrayCons {
+export function ArrayCons(car: Exp, cdr: Exp, span: Span): ArrayCons {
   return {
     "@type": "Exp",
     "@kind": "ArrayCons",
@@ -106,9 +110,10 @@ export function ArrayCons(car: Exp, cdr: Exp, span?: Span): ArrayCons {
 export type ArrayNull = {
   "@type": "Exp"
   "@kind": "ArrayNull"
-} & ExpMeta
+  span: Span
+}
 
-export function ArrayNull(span?: Span): ArrayNull {
+export function ArrayNull(span: Span): ArrayNull {
   return {
     "@type": "Exp",
     "@kind": "ArrayNull",
@@ -120,9 +125,10 @@ export type Objekt = {
   "@type": "Exp"
   "@kind": "Objekt"
   properties: Record<string, Exp>
-} & ExpMeta
+  span: Span
+}
 
-export function Objekt(properties: Record<string, Exp>, span?: Span): Objekt {
+export function Objekt(properties: Record<string, Exp>, span: Span): Objekt {
   return {
     "@type": "Exp",
     "@kind": "Objekt",
@@ -136,9 +142,10 @@ export type Term = {
   "@kind": "Term"
   name: string
   args: Array<Exp>
-} & ExpMeta
+  span: Span
+}
 
-export function Term(name: string, args: Array<Exp>, span?: Span): Term {
+export function Term(name: string, args: Array<Exp>, span: Span): Term {
   return {
     "@type": "Exp",
     "@kind": "Term",

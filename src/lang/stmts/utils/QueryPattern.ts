@@ -42,9 +42,9 @@ export function queryPatternToExp(pattern: QueryPattern): Exp {
     }
 
     case "QueryPatternNames": {
-      let exp: Exp = Exps.ArrayNull()
+      let exp: Exp = Exps.ArrayNull(pattern.span)
       for (const name of [...pattern.names].reverse()) {
-        exp = Exps.ArrayCons(Exps.Var(name, pattern.span), exp)
+        exp = Exps.ArrayCons(Exps.Var(name, pattern.span), exp, pattern.span)
       }
 
       return exp

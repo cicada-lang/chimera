@@ -33,7 +33,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
           (result, element) => Exps.ArrayCons(element, result, span),
           Exps.ArrayCons(
             matchers.exp_matcher(last_element),
-            Exps.ArrayNull(),
+            Exps.ArrayNull(span),
             span,
           ),
         ),
