@@ -1,8 +1,8 @@
-Always [] -- base
-Always [] -- loop { Always [] }
+Always() -- base
+Always() -- loop { Always() }
 
 find _ limit 3 {
-  Always []
+  Always()
 }
 
 // This code diverges,
@@ -12,7 +12,7 @@ find _ limit 3 {
 
 // find x limit 1 {
 //   x = true
-//   Always []
+//   Always()
 //   x = false
 // }
 
@@ -25,7 +25,7 @@ find _ limit 3 {
 
 trace steps 5 {
   x = true
-  Always []
+  Always()
   x = false
 }
 
@@ -37,13 +37,13 @@ trace steps 5 {
 find x {
   x = true
   x = false
-  Always []
+  Always()
 }
 
 trace {
   x = true
   x = false
-  Always []
+  Always()
 }
 
 find x limit 5 {
@@ -51,7 +51,7 @@ find x limit 5 {
     x = true
     x = false
   }
-  Always []
+  Always()
   x = false
 }
 
@@ -65,7 +65,7 @@ trace steps 5 {
     x = true
     x = false
   }
-  Always []
+  Always()
   x = false
 }
 
@@ -77,6 +77,6 @@ find x limit 5 {
     x = true
     x = false
   }
-  Always []
+  Always()
   x = true
 }

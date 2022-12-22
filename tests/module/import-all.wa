@@ -1,9 +1,9 @@
 import * from "./example.wa"
 
 find q {
-  Hi q
+  Hi(q)
 }
 
 find q {
-  Hello q
+  Hello(q)
 }

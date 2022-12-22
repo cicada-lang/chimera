@@ -1,23 +1,23 @@
-Never x
+Never(x)
 --------- {
-  Never x
+  Never(x)
 }
 
-OneTwoThreeThenNever 1
-OneTwoThreeThenNever x -- { Never x }
-OneTwoThreeThenNever 2
-OneTwoThreeThenNever x -- { Never x }
-OneTwoThreeThenNever 3
-OneTwoThreeThenNever x -- { Never x }
+OneTwoThreeThenNever(1)
+OneTwoThreeThenNever(x) -- { Never(x) }
+OneTwoThreeThenNever(2)
+OneTwoThreeThenNever(x) -- { Never(x) }
+OneTwoThreeThenNever(3)
+OneTwoThreeThenNever(x) -- { Never(x) }
 
 // Ok:
 
 find x limit 3 {
-  OneTwoThreeThenNever x
+  OneTwoThreeThenNever(x)
 }
 
 // Loop forever:
 
 // find x limit 4 {
-//   OneTwoThreeThenNever x
+//   OneTwoThreeThenNever(x)
 // }

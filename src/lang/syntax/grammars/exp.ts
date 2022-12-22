@@ -43,14 +43,6 @@ export const operand = {
       '"}"',
     ],
     "operand:objekt_empty": ['"{"', '"}"'],
-    "operand:data": [
-      { kind: "name_no_preserved" },
-      '"("',
-      { args: { $ap: ["zero_or_more", "arg", '","'] } },
-      { last_arg: "arg" },
-      { $ap: ["optional", '","'] },
-      '")"',
-    ],
-    "operand:data_empty": [{ kind: "name_no_preserved" }, '"("', '")"'],
+    "operand:data": [{ kind: "name_no_preserved" }, { args: "args" }],
   },
 }

@@ -10,7 +10,7 @@ export function pursueNotEqual(
   solution: Solution,
   left: Value,
   right: Value,
-): Array<Solution> {
+): Solution | undefined {
   const substitution = unify(mod, solution.substitution, left, right)
 
   /**
@@ -24,7 +24,7 @@ export function pursueNotEqual(
   **/
 
   if (substitution === undefined) {
-    return [solution]
+    return solution
   }
 
   /**
@@ -36,7 +36,7 @@ export function pursueNotEqual(
   **/
 
   if (substitutionEqual(substitution, solution.substitution)) {
-    return []
+    return undefined
   }
 
   /**
@@ -61,5 +61,5 @@ export function pursueNotEqual(
     ),
   ]
 
-  return [solution.update({ inequalities })]
+  return solution.update({ inequalities })
 }

@@ -1,6 +1,10 @@
 import type { Exp } from "../exp"
 import type { GoalExp } from "../goal-exp"
 
+export function collectVarsFromExps(exps: Array<Exp>): Set<string> {
+  return new Set(exps.flatMap((exp) => Array.from(collectVarsFromExp(exp))))
+}
+
 export function collectVarsFromExp(exp: Exp): Set<string> {
   switch (exp["@kind"]) {
     case "Var": {
@@ -50,10 +54,16 @@ export function collectVarsFromExp(exp: Exp): Set<string> {
   }
 }
 
+export function collectVarsFromGoalExps(goals: Array<GoalExp>): Set<string> {
+  return new Set(
+    goals.flatMap((goal) => Array.from(collectVarsFromGoalExp(goal))),
+  )
+}
+
 function collectVarsFromGoalExp(goal: GoalExp): Set<string> {
   switch (goal["@kind"]) {
     case "Apply": {
-      return collectVarsFromExp(goal.arg)
+      return collectVarsFromExps(goal.args)
     }
 
     case "Equal": {
@@ -82,10 +92,4 @@ function collectVarsFromGoalExp(goal: GoalExp): Set<string> {
       )
     }
   }
-}
-
-export function collectVarsFromGoalExps(goals: Array<GoalExp>): Set<string> {
-  return new Set(
-    goals.flatMap((goal) => Array.from(collectVarsFromGoalExp(goal))),
-  )
 }

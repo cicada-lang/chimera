@@ -14,7 +14,7 @@ export class Relation extends Stmt {
   constructor(
     public name: string,
     public clauseName: string | undefined,
-    public exp: Exp,
+    public exps: Array<Exp>,
     public goals: Array<GoalExp>,
     public span?: Span,
   ) {
@@ -28,12 +28,12 @@ export class Relation extends Stmt {
   async execute(mod: Mod): Promise<void> {
     varCollectionValidate(
       varCollectionMerge([
-        varCollectionFromExp(this.exp),
+        ...this.exps.map((exp) => varCollectionFromExp(exp)),
         ...this.goals.map(varCollectionFromGoalExp),
       ]),
     )
 
-    mod.defineClause(this.name, this.clauseName, this.exp, this.goals)
+    mod.defineClause(this.name, this.clauseName, this.exps, this.goals)
   }
 
   async prepare(mod: Mod): Promise<void> {

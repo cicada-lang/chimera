@@ -1,43 +1,43 @@
-Lookup [map, name, found]
+Lookup(map, name, found)
 ------------------------- here {
   map = [[key, value] | _rest]
   key = name
   found = value
 }
 
-Lookup [map, name, found]
+Lookup(map, name, found)
 ------------------------------- there {
   map = [[key, _value] | rest]
   key != name
-  Lookup [rest, name, found]
+  Lookup(rest, name, found)
 }
 
 find x {
   map = [["a", 1], ["b", 2], ["c", 3]]
-  Lookup [map, "b", x]
+  Lookup(map, "b", x)
 }
 
 find map limit 3 {
-  Lookup [map, "b", 2]
+  Lookup(map, "b", 2)
 }
 
 // TODO We need to improve our search strategy
 // to make the following perform the same as the above.
 
-LookupInlineDisj [map, name, found]
+LookupInlineDisj(map, name, found)
 ------------------------------------ {
   map = [[key, value] | rest]
   disj {
     conj { key = name found = value }
-    conj { key != name LookupInlineDisj [rest, name, found] }
+    conj { key != name LookupInlineDisj(rest, name, found) }
   }
 }
 
 find x {
   map = [["a", 1], ["b", 2], ["c", 3]]
-  LookupInlineDisj [map, "b", x]
+  LookupInlineDisj(map, "b", x)
 }
 
 find map limit 3 {
-  LookupInlineDisj [map, "b", 2]
+  LookupInlineDisj(map, "b", 2)
 }

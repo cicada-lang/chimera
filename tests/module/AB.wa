@@ -1,11 +1,11 @@
 import { A } from "./A.wa"
 
-AB [a, b]
+AB(a, b)
 ---------- {
-  A [a]
+  A(a)
   b = "b"
 }
 
 find [x, y] {
-  AB [x, y]
+  AB(x, y)
 }

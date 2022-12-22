@@ -1,50 +1,50 @@
 assert find _ {
-  Number 1
+  Number(1)
 }
 
 assert not find _ {
-  Number "A"
+  Number("A")
 }
 
 assert not find x {
   x = "cat"
-  Number x
+  Number(x)
 }
 
 assert find x {
   x = 1
-  Number x
+  Number(x)
 }
 
 assert not find x {
-  Number x
-  String x
+  Number(x)
+  String(x)
 }
 
 // An inequality is subsumed by a type constraint.
 
 find x {
   x != "cat"
-  Number x
+  Number(x)
 }
 
 // An inequality (applied later) is subsumed by a type constraint.
 
 find x {
-  Number x
+  Number(x)
   x != "cat"
 }
 
 // An inequality (applied later) is subsumed by an indirect type constraint.
 
 find x {
-  Number z
+  Number(z)
   z = x
   x != "cat"
 }
 
 find x {
-  Number z
+  Number(z)
   x != "cat"
   z = x
 }
@@ -53,12 +53,12 @@ find x {
 
 find [x, y] {
   [x, y] != ["cat", 1]
-  Number x
+  Number(x)
 }
 
 // An inequality (in a conjunction and applied later) is subsumed by a type constraint.
 
 find [x, y] {
-  Number x
+  Number(x)
   [x, y] != ["cat", 1]
 }

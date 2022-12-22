@@ -8,7 +8,7 @@ export type Clause = {
   env: Env
   vars: Set<string>
   name: string
-  exp: Exp
+  exps: Array<Exp>
   goals: Array<GoalExp>
 }
 
@@ -17,7 +17,7 @@ export function Clause(
   env: Env,
   vars: Set<string>,
   name: string,
-  exp: Exp,
+  exps: Array<Exp>,
   goals: Array<GoalExp>,
 ): Clause {
   return {
@@ -25,7 +25,7 @@ export function Clause(
     env,
     vars,
     name,
-    exp,
+    exps,
     goals,
   }
 }

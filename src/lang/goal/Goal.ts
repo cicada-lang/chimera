@@ -7,16 +7,16 @@ export type Apply = {
   "@kind": "Apply"
   name: string
   target: Value
-  arg: Value
+  args: Array<Value>
 }
 
-export function Apply(name: string, target: Value, arg: Value): Apply {
+export function Apply(name: string, target: Value, args: Array<Value>): Apply {
   return {
     "@type": "Goal",
     "@kind": "Apply",
     name,
     target,
-    arg,
+    args,
   }
 }
 

@@ -1,9 +1,9 @@
-List null()
-List cons(_head, tail) -- { List tail }
+List(null())
+List(cons(_head, tail)) -- { List(tail) }
 
 find _ {
-  List null()
-  List cons(1, cons(2, cons(3, null())))
+  List(null())
+  List(cons(1, cons(2, cons(3, null()))))
 }
 
 find [list, x, y, z] {

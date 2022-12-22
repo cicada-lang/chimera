@@ -7,16 +7,16 @@ export type Apply = {
   "@type": "GoalExp"
   "@kind": "Apply"
   name: string
-  arg: Exp
+  args: Array<Exp>
   span: Span
 }
 
-export function Apply(name: string, arg: Exp, span: Span): Apply {
+export function Apply(name: string, args: Array<Exp>, span: Span): Apply {
   return {
     "@type": "GoalExp",
     "@kind": "Apply",
     name,
-    arg,
+    args,
     span,
   }
 }

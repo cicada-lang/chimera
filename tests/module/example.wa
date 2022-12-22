@@ -1,7 +1,7 @@
-Hello "Hello, World!"
+Hello("Hello, World!")
 
-Hi "Hi there!"
+Hi("Hi there!")
 
 private {
-  Hiya "Hiya!"
+  Hiya("Hiya!")
 }

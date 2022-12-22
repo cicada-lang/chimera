@@ -1,33 +1,33 @@
 assert find _ {
-  String "A"
+  String("A")
 }
 
 assert not find _ {
-  String 1
+  String(1)
 }
 
 assert find x {
   x = "cat"
-  String x
+  String(x)
 }
 
 // Reification.
 
 find x {
-  String x
+  String(x)
 }
 
 // An unification breaks a type constraint.
 
 assert not find x {
-  String x
+  String(x)
   x = 1
 }
 
 // An indirect unification breaks a type constraint.
 
 assert not find x {
-  String x
+  String(x)
   x = z
   z = 1
 }
@@ -35,26 +35,26 @@ assert not find x {
 assert not find x {
   x = z
   z = 1
-  String x
+  String(x)
 }
 
 assert not find x {
   x = z
-  String x
+  String(x)
   z = 1
 }
 
 // An unification subsums a type constraint.
 
 assert find x {
-  String x
+  String(x)
   x = "A"
 }
 
 // An indirect unification subsums a type constraint.
 
 assert find x {
-  String x
+  String(x)
   x = z
   z = "A"
 }
@@ -62,11 +62,11 @@ assert find x {
 assert find x {
   x = z
   z = "A"
-  String x
+  String(x)
 }
 
 assert find x {
   x = z
-  String x
+  String(x)
   z = "A"
 }

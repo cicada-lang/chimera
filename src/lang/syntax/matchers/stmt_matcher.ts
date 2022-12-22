@@ -5,35 +5,35 @@ import * as matchers from "../matchers"
 
 export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
-    "stmt:relation_no_goals_no_clause_name": ({ name, exp }, { span }) =>
+    "stmt:relation_no_goals_no_clause_name": ({ name, args }, { span }) =>
       new Stmts.Relation(
         pt.str(name),
         undefined,
-        matchers.exp_matcher(exp),
+        matchers.args_matcher(args),
         [],
         span,
       ),
-    "stmt:relation_no_goals": ({ name, clause_name, exp }, { span }) =>
+    "stmt:relation_no_goals": ({ name, clause_name, args }, { span }) =>
       new Stmts.Relation(
         pt.str(name),
         pt.str(clause_name),
-        matchers.exp_matcher(exp),
+        matchers.args_matcher(args),
         [],
         span,
       ),
-    "stmt:relation_no_clause_name": ({ name, exp, goals }, { span }) =>
+    "stmt:relation_no_clause_name": ({ name, args, goals }, { span }) =>
       new Stmts.Relation(
         pt.str(name),
         undefined,
-        matchers.exp_matcher(exp),
+        matchers.args_matcher(args),
         matchers.goals_matcher(goals),
         span,
       ),
-    "stmt:relation": ({ name, clause_name, exp, goals }, { span }) =>
+    "stmt:relation": ({ name, clause_name, args, goals }, { span }) =>
       new Stmts.Relation(
         pt.str(name),
         pt.str(clause_name),
-        matchers.exp_matcher(exp),
+        matchers.args_matcher(args),
         matchers.goals_matcher(goals),
         span,
       ),

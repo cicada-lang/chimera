@@ -1,1 +1,1 @@
-[ _.0 with { String _.0 } ]
+[ _.0 with { String(_.0) } ]

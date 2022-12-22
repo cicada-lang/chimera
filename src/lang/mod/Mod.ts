@@ -8,7 +8,7 @@ import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
 import {
-  collectVarsFromExp,
+  collectVarsFromExps,
   collectVarsFromGoalExps,
   Relation,
   Value,
@@ -93,12 +93,12 @@ export class Mod {
   defineClause(
     name: string,
     clauseName: string | undefined,
-    exp: Exp,
+    exps: Array<Exp>,
     goals: Array<GoalExp> = [],
   ): void {
     const relation = this.findRelationOrFail(name)
     const bindings = new Set([
-      ...collectVarsFromExp(exp),
+      ...collectVarsFromExps(exps),
       ...collectVarsFromGoalExps(goals),
     ])
 
@@ -109,7 +109,7 @@ export class Mod {
         this.env,
         bindings,
         clauseName || relation.clauses.length.toString(),
-        exp,
+        exps,
         goals,
       ),
     )

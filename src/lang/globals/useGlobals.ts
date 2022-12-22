@@ -10,14 +10,14 @@ export async function useGlobals(): Promise<GlobalStore> {
 
   await globals.code(`
 
-Equal [x, y] -- { x = y }
+Equal(x, y) -- { x = y }
 
-NotEqual [x, y] -- { x != y }
+NotEqual(x, y) -- { x != y }
 
-Null x -- { x = null }
+Null(x) -- { x = null }
 
-Boolean x -- { x = false }
-Boolean x -- { x = true }
+Boolean(x) -- { x = false }
+Boolean(x) -- { x = true }
 
 `)
 

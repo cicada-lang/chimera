@@ -1,9 +1,9 @@
 find x {
-  Null x
+  Null(x)
 }
 
-Null x -- { x = "null" }
+Null(x) -- { x = "null" }
 
 find x {
-  Null x
+  Null(x)
 }

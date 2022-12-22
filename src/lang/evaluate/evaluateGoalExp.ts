@@ -17,7 +17,11 @@ export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
         )
       }
 
-      return Goals.Apply(goal.name, target, evaluate(mod, env, goal.arg))
+      return Goals.Apply(
+        goal.name,
+        target,
+        goal.args.map((arg) => evaluate(mod, env, arg)),
+      )
     }
 
     case "Equal": {

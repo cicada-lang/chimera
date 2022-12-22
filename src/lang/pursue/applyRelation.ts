@@ -11,17 +11,21 @@ export function applyRelation(
   env: Env,
   solution: Solution,
   target: Values.Relation,
-  arg: Value,
+  args: Array<Value>,
 ): Array<Solution> {
   return target.clauses.flatMap((clause) => {
+    /**
+
+       If the arity is not the same, do not use the clause.
+
+    **/
+
+    if (clause.exps.length !== args.length) return []
+
     env = envExtendFreshPatternVars(mod, clause.env, clause.vars)
 
-    const value = evaluate(clause.mod, env, clause.exp)
-    const goals = clause.goals.map((goal) =>
-      evaluateGoalExp(clause.mod, env, goal),
-    )
-
-    const newSolutions = pursueEqual(mod, solution, value, arg)
+    const values = clause.exps.map((exp) => evaluate(clause.mod, env, exp))
+    const newSolution = pursueManyEqual(mod, solution, values, args)
 
     /**
 
@@ -31,10 +35,30 @@ export function applyRelation(
 
     **/
 
-    return newSolutions.map((newSolution) =>
+    if (newSolution === undefined) return []
+
+    const goals = clause.goals.map((goal) =>
+      evaluateGoalExp(clause.mod, env, goal),
+    )
+
+    return [
       newSolution.update({
         goals: [...goals, ...solution.goals],
       }),
-    )
+    ]
   })
+}
+
+function pursueManyEqual(
+  mod: Mod,
+  solution: Solution | undefined,
+  values: Array<Value>,
+  args: Array<Value>,
+): Solution | undefined {
+  for (const [index, value] of values.entries()) {
+    if (solution === undefined) return undefined
+    solution = pursueEqual(mod, solution, value, args[index])
+  }
+
+  return solution
 }

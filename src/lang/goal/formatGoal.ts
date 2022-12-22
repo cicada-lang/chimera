@@ -4,7 +4,8 @@ import { formatValue } from "../value"
 export function formatGoal(goal: Goal): string {
   switch (goal["@kind"]) {
     case "Apply": {
-      return `${goal.name} ${formatValue(goal.arg)}`
+      const args = goal.args.map((arg) => formatValue(arg)).join(", ")
+      return `${goal.name}(${args})`
     }
 
     case "Equal": {
