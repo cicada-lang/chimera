@@ -1,3 +1,5 @@
+> Change the syntax so that `Relation` has fixed arity.
+
 # term rewriting
 
 > Can rule fail? or just return the term untouched?
@@ -45,11 +47,6 @@
 # hypergraph rewriting
 
 implement hypergraph rewriting directly -- based on terms
-
-- use relation or term?
-
-  if use relation, the arity can change,
-  which means each edge is a structured edge.
 
 use hypergraph rewriting to implement lambda calculus -- with explicit substitution
 use hypergraph rewriting to implement inet
