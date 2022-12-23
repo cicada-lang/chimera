@@ -1,7 +1,7 @@
-import * as Errors from "../../errors"
-import type { Mod } from "../../mod"
-import type { Span } from "../../span"
-import { Stmt } from "../../stmt"
+import * as Errors from "../errors"
+import type { Mod } from "../mod"
+import type { Span } from "../span"
+import { Stmt } from "../stmt"
 
 export class Test extends Stmt {
   constructor(

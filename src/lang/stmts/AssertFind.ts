@@ -1,12 +1,12 @@
-import * as Errors from "../../errors"
-import type { GoalExp } from "../../goal-exp"
-import type { Mod } from "../../mod"
-import { Solver } from "../../solver"
-import type { Span } from "../../span"
-import { Stmt } from "../../stmt"
-import { prepareGoals } from "../utils/prepareGoals"
-import type { QueryPattern } from "../utils/QueryPattern"
-import { queryPatternNames } from "../utils/QueryPattern"
+import * as Errors from "../errors"
+import type { GoalExp } from "../goal-exp"
+import type { Mod } from "../mod"
+import { Solver } from "../solver"
+import type { Span } from "../span"
+import { Stmt } from "../stmt"
+import { prepareGoals } from "./utils/prepareGoals"
+import type { QueryPattern } from "./utils/QueryPattern"
+import { queryPatternNames } from "./utils/QueryPattern"
 
 export class AssertFind extends Stmt {
   constructor(

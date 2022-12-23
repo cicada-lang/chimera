@@ -1,16 +1,16 @@
-import { indent } from "../../../utils/indent"
-import * as Errors from "../../errors"
-import type { GoalExp } from "../../goal-exp"
-import type { Mod } from "../../mod"
-import { Solver } from "../../solver"
-import type { Span } from "../../span"
-import { Stmt } from "../../stmt"
+import { indent } from "../../utils/indent"
+import * as Errors from "../errors"
+import type { GoalExp } from "../goal-exp"
+import type { Mod } from "../mod"
+import { Solver } from "../solver"
+import type { Span } from "../span"
+import { Stmt } from "../stmt"
 import {
   formatFoundVariable,
   formatFoundVariables,
-} from "../utils/formatFoundVariables"
-import { prepareGoals } from "../utils/prepareGoals"
-import { QueryPattern, queryPatternNames } from "../utils/QueryPattern"
+} from "./utils/formatFoundVariables"
+import { prepareGoals } from "./utils/prepareGoals"
+import { QueryPattern, queryPatternNames } from "./utils/QueryPattern"
 
 export class AssertNotFind extends Stmt {
   constructor(

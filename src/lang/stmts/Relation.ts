@@ -1,14 +1,14 @@
-import type { Exp } from "../../exp"
-import type { GoalExp } from "../../goal-exp"
-import type { Mod } from "../../mod"
-import type { Span } from "../../span"
-import { Stmt } from "../../stmt"
+import type { Exp } from "../exp"
+import type { GoalExp } from "../goal-exp"
+import type { Mod } from "../mod"
+import type { Span } from "../span"
+import { Stmt } from "../stmt"
 import {
   varCollectionFromExp,
   varCollectionFromGoalExp,
   varCollectionMerge,
   varCollectionValidate,
-} from "../../var-collection"
+} from "../var-collection"
 
 export class Relation extends Stmt {
   constructor(

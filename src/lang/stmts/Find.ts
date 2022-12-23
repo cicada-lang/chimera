@@ -1,24 +1,24 @@
-import type { GoalExp } from "../../goal-exp"
-import type { Mod } from "../../mod"
-import { Solver } from "../../solver"
-import type { Span } from "../../span"
-import { Stmt } from "../../stmt"
+import type { GoalExp } from "../goal-exp"
+import type { Mod } from "../mod"
+import { Solver } from "../solver"
+import type { Span } from "../span"
+import { Stmt } from "../stmt"
 import {
   varCollectionFromExp,
   varCollectionFromGoalExp,
   varCollectionMerge,
   varCollectionValidate,
-} from "../../var-collection"
+} from "../var-collection"
 import {
   formatFoundVariable,
   formatFoundVariables,
-} from "../utils/formatFoundVariables"
-import { prepareGoals } from "../utils/prepareGoals"
+} from "./utils/formatFoundVariables"
+import { prepareGoals } from "./utils/prepareGoals"
 import {
   QueryPattern,
   queryPatternNames,
   queryPatternToExp,
-} from "../utils/QueryPattern"
+} from "./utils/QueryPattern"
 
 export class Find extends Stmt {
   constructor(

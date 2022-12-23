@@ -1,16 +1,16 @@
-import { indent } from "../../../utils/indent"
-import type { GoalExp } from "../../goal-exp"
-import type { Mod } from "../../mod"
-import { Solver } from "../../solver"
-import type { Span } from "../../span"
-import { Stmt } from "../../stmt"
+import { indent } from "../../utils/indent"
+import type { GoalExp } from "../goal-exp"
+import type { Mod } from "../mod"
+import { Solver } from "../solver"
+import type { Span } from "../span"
+import { Stmt } from "../stmt"
 import {
   varCollectionFromGoalExp,
   varCollectionMerge,
   varCollectionValidate,
-} from "../../var-collection"
-import { formatSolver } from "../utils/formatSolver"
-import { prepareGoals } from "../utils/prepareGoals"
+} from "../var-collection"
+import { formatSolver } from "./utils/formatSolver"
+import { prepareGoals } from "./utils/prepareGoals"
 
 export class Trace extends Stmt {
   constructor(
