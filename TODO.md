@@ -2,10 +2,15 @@
 
 > Can rule fail? or just return the term untouched?
 
-`Stmts.Rewrite`
-`Stmts.Rewrite` -- syntax
+`Stmts.Reduce`
+`Stmts.Reduce` -- `execute`
+`Stmts.Reduce` -- syntax
 
 `rewrite`
+
+`reduce`
+
+[question] what is the wired syntax of `-->` in prolog? DCG?
 
 [term rewriting] rewrite rule combinator
 
@@ -39,6 +44,12 @@
   until running the rule makes no further changes at each level.
 
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
+
+[diary] homoiconicity
+
+- An expression with terms in it is data,
+  only with special keyword like `find` and `rewrite`,
+  the data is interpreted.
 
 # hypergraph rewriting
 
@@ -81,6 +92,10 @@ support namespace
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
+
+# DX for logic programming
+
+provide a tool for checking relation's disjoint-ness against examples.
 
 # read
 
