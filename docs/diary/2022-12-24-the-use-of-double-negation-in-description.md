@@ -17,3 +17,6 @@ Maybe because of the form of Horn clause.
 But we should always use the easier to understand way in description,
 the same as API design, for example, we use the syntax keyword `find`,
 the code reads natural.
+
+When we try to prove "there exists ... such that ...",
+it is a search.
