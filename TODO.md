@@ -4,12 +4,6 @@
 
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
-[diary] homoiconicity
-
-- An expression with terms in it is data,
-  only with special keyword like `find` and `rewrite`,
-  the data is interpreted.
-
 # hypergraph rewriting
 
 implement hypergraph rewriting directly -- based on terms
