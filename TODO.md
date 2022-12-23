@@ -2,8 +2,6 @@
 
 > Can rule fail? or just return the term untouched?
 
-`rewriteOnePlace`
-
 `Stmts.Reduce` -- `execute`
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
