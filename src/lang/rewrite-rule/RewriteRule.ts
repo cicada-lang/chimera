@@ -1,32 +1,18 @@
-import type { Env } from "../env"
-import type { Exp } from "../exp"
-import type { Mod } from "../mod"
+import type { Value } from "../value"
 
 export type RewriteRule = Case | List
 
 export type Case = {
   "@type": "RewriteRule"
   "@kind": "Case"
-  mod: Mod
-  env: Env
-  vars: Set<string>
-  from: Exp
-  to: Exp
+  from: Value
+  to: Value
 }
 
-export function Case(
-  mod: Mod,
-  env: Env,
-  vars: Set<string>,
-  from: Exp,
-  to: Exp,
-): Case {
+export function Case(from: Value, to: Value): Case {
   return {
     "@type": "RewriteRule",
     "@kind": "Case",
-    mod,
-    env,
-    vars,
     from,
     to,
   }

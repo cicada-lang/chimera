@@ -1,3 +1,4 @@
+import { evaluateRewriteRuleExp } from "../evaluate"
 import type { Mod } from "../mod"
 import * as RewriteRules from "../rewrite-rule"
 import type { RewriteRuleExp } from "../rewrite-rule-exp"
@@ -31,7 +32,15 @@ export class RewriteRule extends Stmt {
     //     ...this.goals.map(varCollectionFromGoalExp),
     //   ]),
     // )
-    // this.rules.map(rule => evaluateRewriteRuleExp(mod, mod.env, rule))
-    mod.define(this.name, Values.RewriteRule(this.name, RewriteRules.List([])))
+
+    mod.define(
+      this.name,
+      Values.RewriteRule(
+        this.name,
+        RewriteRules.List(
+          this.rules.map((rule) => evaluateRewriteRuleExp(mod, mod.env, rule)),
+        ),
+      ),
+    )
   }
 }
