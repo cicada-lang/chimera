@@ -5,12 +5,10 @@ import type { RewriteRuleExp } from "../rewrite-rule-exp"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
 import * as Values from "../value"
-// import {
-//   varCollectionFromExp,
-//   varCollectionFromGoalExp,
-//   varCollectionMerge,
-//   varCollectionValidate,
-// } from "../var-collection"
+import {
+  varCollectionFromRewriteRuleExp,
+  varCollectionValidate,
+} from "../var-collection"
 
 export class RewriteRule extends Stmt {
   constructor(
@@ -26,12 +24,9 @@ export class RewriteRule extends Stmt {
   }
 
   async validate(mod: Mod): Promise<void> {
-    // varCollectionValidate(
-    //   varCollectionMerge([
-    //     ...this.exps.map((exp) => varCollectionFromExp(exp)),
-    //     ...this.goals.map(varCollectionFromGoalExp),
-    //   ]),
-    // )
+    for (const rule of this.rules) {
+      varCollectionValidate(varCollectionFromRewriteRuleExp(rule))
+    }
   }
 
   async execute(mod: Mod): Promise<void> {

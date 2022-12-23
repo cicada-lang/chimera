@@ -2,8 +2,6 @@
 
 > Can rule fail? or just return the term untouched?
 
-`Stmts.RewriteRule` -- `validate`
-
 `Exps.RewriteRule` -- syntax
 `Stmts.RewriteRule` -- syntax
 
