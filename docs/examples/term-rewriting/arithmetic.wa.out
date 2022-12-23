@@ -1,0 +1,7 @@
+add1(add1(zero()))
+add1(zero())
+add1(add1(add(add1(add1(zero())), zero())))
+add(
+  add1(add1(zero())),
+  add(add1(add1(zero())), mul(add1(add1(zero())), zero())),
+)

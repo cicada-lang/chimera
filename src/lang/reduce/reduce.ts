@@ -7,12 +7,12 @@ import * as Values from "../value"
 
 export function reduce(mod: Mod, rule: RewriteRule, value: Value): Value {
   while (true) {
-    const next = rewriteOneStep(mod, rule, value)
-    if (next !== undefined) {
-      value = next
-    } else {
+    const result = rewriteOneStep(mod, rule, value)
+    if (result === undefined) {
       return value
     }
+
+    value = result
   }
 }
 
