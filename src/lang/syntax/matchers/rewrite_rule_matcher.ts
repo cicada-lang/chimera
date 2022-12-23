@@ -11,6 +11,8 @@ export function rewrite_rule_matcher(tree: pt.Tree): RewriteRuleExp {
         matchers.exp_matcher(to),
         span,
       ),
+    "rewrite_rule:call": ({ exp }, { span }) =>
+      RewriteRuleExps.Call(matchers.exp_matcher(exp), span),
   })(tree)
 }
 

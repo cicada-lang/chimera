@@ -2,7 +2,6 @@
 
 > Can rule fail? or just return the term untouched?
 
-`Stmts.Reduce` -- syntax
 `Stmts.Reduce` -- `execute`
 
 `rewrite`

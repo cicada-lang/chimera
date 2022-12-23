@@ -1,6 +1,7 @@
 export const rewrite_rule = {
   $grammar: {
     "rewrite_rule:case": [{ from: "exp" }, '"-"', '">"', { to: "exp" }],
+    "rewrite_rule:call": [{ exp: "exp" }],
   },
 }
 

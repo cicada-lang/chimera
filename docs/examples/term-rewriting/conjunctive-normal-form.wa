@@ -6,6 +6,6 @@ rule conjunctiveNormalForm {
   or(a, and(b, c)) -> and(or(a, b), or(a, c))
 }
 
-// rewrite not(and(not(a()), not(b()))) {
-//   conjunctiveNormalForm
-// }
+reduce not(and(not("A"), not("B"))) {
+  conjunctiveNormalForm
+}

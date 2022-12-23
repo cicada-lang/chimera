@@ -13,6 +13,11 @@ export function varCollectionFromRewriteRuleExp(
       ])
     }
 
+    case "Call": {
+      // NOTE Should not collect the `exp` of `RewriteRuleExp.Call`.
+      return varCollectionMerge([])
+    }
+
     case "List": {
       return varCollectionMerge(rule.rules.map(varCollectionFromRewriteRuleExp))
     }
