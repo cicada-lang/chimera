@@ -12,8 +12,8 @@ import {
 
 export class Clause extends Stmt {
   constructor(
-    public name: string,
-    public clauseName: string | undefined,
+    public relationName: string,
+    public name: string | undefined,
     public exps: Array<Exp>,
     public goals: Array<GoalExp>,
     public span?: Span,
@@ -22,7 +22,7 @@ export class Clause extends Stmt {
   }
 
   async boundNames(): Promise<Array<string>> {
-    return [this.name]
+    return [this.relationName]
   }
 
   async execute(mod: Mod): Promise<void> {
@@ -33,10 +33,10 @@ export class Clause extends Stmt {
       ]),
     )
 
-    mod.defineClause(this.name, this.clauseName, this.exps, this.goals)
+    mod.defineClause(this.relationName, this.name, this.exps, this.goals)
   }
 
   async prepare(mod: Mod): Promise<void> {
-    mod.defineRelation(this.name)
+    mod.defineRelation(this.relationName)
   }
 }

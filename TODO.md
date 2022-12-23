@@ -1,5 +1,3 @@
-`Stmts.Clause` swap `name` and `clauseName`
-
 # term rewriting
 
 > Can rule fail? or just return the term untouched?
