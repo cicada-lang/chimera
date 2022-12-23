@@ -1,7 +1,7 @@
 ---
 title: Use math-like syntax for relation application
 author: Xie Yuheng
-date: 2022-12-23
+date: 2022-12-22
 ---
 
 This is important, because we want to use

@@ -2,37 +2,6 @@
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
-[diary] rewrite rule combinators
-
-- for different reduction strategy.
-
-  fix traverse
-  eager -- try to reduce the body as much as possible
-  lazy -- try to reduce the head as much as possible
-
-- once []
-
-  Search the rules from top to bottom. Stop once successfully matching.
-
-- chain []
-
-  Runs each of the rules in the list in a chain. If any rule succeeds, the
-  subsequent rules are run with the new value. If a rule fails, the current
-  value does not change and the next rule is run.
-
-- fix rule
-
-  Keep applying the rule until a fixed point is reached.
-
-- traverse rule
-
-  Run the given rule combinator on all subexpressions depth-first.
-
-- reduce rule
-
-  Run the given rule combinator repeatedly depth-first on all subexpressions
-  until running the rule makes no further changes at each level.
-
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
 [diary] homoiconicity
