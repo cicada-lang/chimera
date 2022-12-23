@@ -10,7 +10,7 @@ import {
   varCollectionValidate,
 } from "../var-collection"
 
-export class Relation extends Stmt {
+export class Clause extends Stmt {
   constructor(
     public name: string,
     public clauseName: string | undefined,
