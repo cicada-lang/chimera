@@ -2,6 +2,8 @@
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
+- about list-processing?
+
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
 # hypergraph rewriting
