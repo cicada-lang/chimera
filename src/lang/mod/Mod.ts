@@ -69,6 +69,10 @@ export class Mod {
       await stmt.prepare(this)
     }
 
+    for (const stmt of stmts.values()) {
+      await stmt.validate(this)
+    }
+
     const offset = this.stmts.length
     for (const [index, stmt] of stmts.entries()) {
       const output = await stmt.execute(this)
@@ -97,7 +101,7 @@ export class Mod {
     goals: Array<GoalExp> = [],
   ): void {
     const relation = this.findRelationOrFail(name)
-    const bindings = new Set([
+    const vars = new Set([
       ...collectVarsFromExps(exps),
       ...collectVarsFromGoalExps(goals),
     ])
@@ -107,7 +111,7 @@ export class Mod {
       Clause(
         this,
         this.env,
-        bindings,
+        vars,
         clauseName || relation.clauses.length.toString(),
         exps,
         goals,

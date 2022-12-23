@@ -30,14 +30,16 @@ export class Find extends Stmt {
     super()
   }
 
-  async execute(mod: Mod): Promise<string> {
+  async validate(mod: Mod): Promise<void> {
     varCollectionValidate(
       varCollectionMerge([
         varCollectionFromExp(queryPatternToExp(this.pattern)),
         ...this.goals.map(varCollectionFromGoalExp),
       ]),
     )
+  }
 
+  async execute(mod: Mod): Promise<string> {
     const { goals, variables } = prepareGoals(
       mod,
       this.goals,

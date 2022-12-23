@@ -8,11 +8,15 @@ export type ExecuteOptions = {
 export abstract class Stmt {
   abstract span?: Span
 
-  async execute(mod: Mod, options?: ExecuteOptions): Promise<string | void> {
+  async prepare(mod: Mod): Promise<void> {
     return
   }
 
-  async prepare(mod: Mod): Promise<void> {
+  async validate(mod: Mod): Promise<void> {
+    return
+  }
+
+  async execute(mod: Mod, options?: ExecuteOptions): Promise<string | void> {
     return
   }
 

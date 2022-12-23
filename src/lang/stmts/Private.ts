@@ -7,6 +7,12 @@ export class Private extends Stmt {
     super()
   }
 
+  async prepare(mod: Mod): Promise<void> {
+    for (const stmt of this.stmts) {
+      await stmt.prepare(mod)
+    }
+  }
+
   async execute(mod: Mod): Promise<void> {
     for (const stmt of this.stmts) {
       await stmt.execute(mod)
@@ -14,12 +20,6 @@ export class Private extends Stmt {
       for (const name of await stmt.boundNames(mod)) {
         mod.privateNames.add(name)
       }
-    }
-  }
-
-  async prepare(mod: Mod): Promise<void> {
-    for (const stmt of this.stmts) {
-      await stmt.prepare(mod)
     }
   }
 }

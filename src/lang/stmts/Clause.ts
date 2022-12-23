@@ -25,18 +25,20 @@ export class Clause extends Stmt {
     return [this.relationName]
   }
 
-  async execute(mod: Mod): Promise<void> {
+  async prepare(mod: Mod): Promise<void> {
+    mod.defineRelation(this.relationName)
+  }
+
+  async validate(mod: Mod): Promise<void> {
     varCollectionValidate(
       varCollectionMerge([
         ...this.exps.map((exp) => varCollectionFromExp(exp)),
         ...this.goals.map(varCollectionFromGoalExp),
       ]),
     )
-
-    mod.defineClause(this.relationName, this.name, this.exps, this.goals)
   }
 
-  async prepare(mod: Mod): Promise<void> {
-    mod.defineRelation(this.relationName)
+  async execute(mod: Mod): Promise<void> {
+    mod.defineClause(this.relationName, this.name, this.exps, this.goals)
   }
 }

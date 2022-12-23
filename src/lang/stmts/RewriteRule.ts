@@ -25,14 +25,16 @@ export class RewriteRule extends Stmt {
     return [this.name]
   }
 
-  async execute(mod: Mod): Promise<void> {
+  async validate(mod: Mod): Promise<void> {
     // varCollectionValidate(
     //   varCollectionMerge([
     //     ...this.exps.map((exp) => varCollectionFromExp(exp)),
     //     ...this.goals.map(varCollectionFromGoalExp),
     //   ]),
     // )
+  }
 
+  async execute(mod: Mod): Promise<void> {
     mod.define(
       this.name,
       Values.RewriteRule(
