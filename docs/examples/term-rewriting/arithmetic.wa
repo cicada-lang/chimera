@@ -1,8 +1,8 @@
 rule arithmetic {
-  add(a, zero()) -> a
-  add(a, add1(b)) -> add1(add(a, b))
-  mul(_, zero()) -> zero()
-  mul(a, add1(b)) -> add(a, mul(a, b))
+  add(a, zero()) => a
+  add(a, add1(b)) => add1(add(a, b))
+  mul(_, zero()) => zero()
+  mul(a, add1(b)) => add(a, mul(a, b))
 }
 
 rewrite add(add1(zero()), add1(zero())) {

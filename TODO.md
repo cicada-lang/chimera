@@ -2,7 +2,7 @@
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
-[term rewriting] rewrite rule combinator
+[diary] rewrite rule combinators
 
 - for different reduction strategy.
 
