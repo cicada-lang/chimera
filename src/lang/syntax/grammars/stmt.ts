@@ -94,6 +94,13 @@ export const stmt = {
       { stmts: { $ap: ["zero_or_more", "stmt"] } },
       '"}"',
     ],
+    "stmt:rewrite_rule": [
+      '"rule"',
+      { name: "rewrite_rule_name" },
+      '"{"',
+      { rewrite_rules: "rewrite_rules" },
+      '"}"',
+    ],
   },
 }
 

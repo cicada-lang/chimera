@@ -22,6 +22,10 @@ export const datatype_name = {
   $pattern: ["identifier", "([A-Z][_\\p{Letter}0-9]*)"],
 }
 
+export const rewrite_rule_name = {
+  $pattern: ["identifier", "([a-z][_\\p{Letter}0-9]*)"],
+}
+
 export const clause_name = {
   $pattern: ["identifier", "([a-z][_\\p{Letter}0-9]*)"],
 }

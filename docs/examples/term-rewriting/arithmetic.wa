@@ -1,0 +1,22 @@
+rule arithmetic {
+  add(a, zero()) -> a
+  add(a, add1(b)) -> add1(add(a, b))
+  mul(a, zero()) -> zero()
+  mul(a, add1(b)) -> add(a, mul(a, b))
+}
+
+// rewrite add(add1(zero()), add1(zero())) {
+//   arithmetic
+// }
+
+// rewrite mul(add1(zero()), add1(zero())) {
+//   arithmetic
+// }
+
+// rewrite add(add1(add1(zero())), add1(add1(zero()))) {
+//   arithmetic
+// }
+
+// rewrite mul(add1(add1(zero())), add1(add1(zero()))) {
+//   arithmetic
+// }

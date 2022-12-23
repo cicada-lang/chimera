@@ -2,11 +2,10 @@
 
 > Can rule fail? or just return the term untouched?
 
-`Exps.RewriteRule` -- syntax
-`Stmts.RewriteRule` -- syntax
-
 `Stmts.Rewrite`
 `Stmts.Rewrite` -- syntax
+
+`rewrite`
 
 [term rewriting] rewrite rule combinator
 
