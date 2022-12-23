@@ -1,8 +1,6 @@
 # term rewriting
 
-> Can rule fail? or just return the term untouched?
-
-`Stmts.Reduce` -- `execute`
+fix `reduce` for the arithmetic example
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
