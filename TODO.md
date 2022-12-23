@@ -1,8 +1,15 @@
+`Stmts.Clause` swap `name` and `clauseName`
+
 # term rewriting
 
 > Can rule fail? or just return the term untouched?
 
-`Stmts.RewriteRule`
+`Stmts.RewriteRule` -- `execute`
+
+- `evaluateRewriteRuleExp`
+
+`Stmts.RewriteRule` -- `varCollectionValidate`
+
 `Exps.RewriteRule` -- syntax
 `Stmts.RewriteRule` -- syntax
 

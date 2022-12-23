@@ -16,6 +16,13 @@ export abstract class Stmt {
     return
   }
 
+  /**
+
+     The `boundNames` is used by `Stmts.Private`
+     to add `boundNames` of a sub-stmt to `mod.privateNames`.
+
+  **/
+
   async boundNames(mod: Mod): Promise<Array<string>> {
     return []
   }
