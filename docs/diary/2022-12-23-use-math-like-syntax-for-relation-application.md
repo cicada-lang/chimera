@@ -12,3 +12,6 @@ constraint application (relation application)
 can be represented by term.
 
 This is why Lisp and Prolog's syntax are powerful (or say convenient).
+
+- In Lisp code is data, but more like data (list).
+- In Prolog code is data, but more like code (term).
