@@ -37,12 +37,12 @@ export function rewriteOneStep(
     }
 
     case "ArrayCons": {
-      const car = rewriteOnePlace(mod, rule, value.car)
+      const car = rewriteOneStep(mod, rule, value.car)
       if (car !== undefined) {
         return Values.ArrayCons(car, value.cdr)
       }
 
-      const cdr = rewriteOnePlace(mod, rule, value.cdr)
+      const cdr = rewriteOneStep(mod, rule, value.cdr)
       if (cdr !== undefined) {
         return Values.ArrayCons(value.car, cdr)
       }
@@ -56,7 +56,7 @@ export function rewriteOneStep(
 
     case "Objekt": {
       for (const [name, property] of Object.entries(value.properties)) {
-        const result = rewriteOnePlace(mod, rule, property)
+        const result = rewriteOneStep(mod, rule, property)
         if (result !== undefined) {
           return Values.Objekt(
             { ...value.properties, [name]: result },
@@ -66,7 +66,7 @@ export function rewriteOneStep(
       }
 
       if (value.etc !== undefined) {
-        const etc = rewriteOnePlace(mod, rule, value.etc)
+        const etc = rewriteOneStep(mod, rule, value.etc)
         if (etc !== undefined) {
           return Values.Objekt(value.properties, etc)
         }
@@ -77,7 +77,7 @@ export function rewriteOneStep(
 
     case "Term": {
       for (const [index, arg] of value.args.entries()) {
-        const result = rewriteOnePlace(mod, rule, arg)
+        const result = rewriteOneStep(mod, rule, arg)
         if (result !== undefined) {
           return Values.Term(value.name, [
             ...value.args.slice(0, index),

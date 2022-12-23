@@ -1,6 +1,6 @@
 # term rewriting
 
-fix `reduce` for the arithmetic example
+rename reduce to rewrite
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
