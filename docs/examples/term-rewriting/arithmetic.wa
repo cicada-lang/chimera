@@ -5,18 +5,18 @@ rule arithmetic {
   mul(a, add1(b)) -> add(a, mul(a, b))
 }
 
-reduce add(add1(zero()), add1(zero())) {
+rewrite add(add1(zero()), add1(zero())) {
   arithmetic
 }
 
-reduce mul(add1(zero()), add1(zero())) {
+rewrite mul(add1(zero()), add1(zero())) {
   arithmetic
 }
 
-reduce add(add1(add1(zero())), add1(add1(zero()))) {
+rewrite add(add1(add1(zero())), add1(add1(zero()))) {
   arithmetic
 }
 
-reduce mul(add1(add1(zero())), add1(add1(zero()))) {
+rewrite mul(add1(add1(zero())), add1(add1(zero()))) {
   arithmetic
 }

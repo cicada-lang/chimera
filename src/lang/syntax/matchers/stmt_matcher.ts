@@ -105,8 +105,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.rewrite_rules_matcher(rewrite_rules),
         span,
       ),
-    "stmt:reduce": ({ exp, rewrite_rules }, { span }) =>
-      new Stmts.Reduce(
+    "stmt:rewrite": ({ exp, rewrite_rules }, { span }) =>
+      new Stmts.Rewrite(
         matchers.exp_matcher(exp),
         matchers.rewrite_rules_matcher(rewrite_rules),
         span,

@@ -5,7 +5,7 @@ import { unify } from "../unify"
 import type { Value } from "../value"
 import * as Values from "../value"
 
-export function reduce(mod: Mod, rule: RewriteRule, value: Value): Value {
+export function rewrite(mod: Mod, rule: RewriteRule, value: Value): Value {
   while (true) {
     const result = rewriteOneStep(mod, rule, value)
     if (result === undefined) {

@@ -101,8 +101,8 @@ export const stmt = {
       { rewrite_rules: "rewrite_rules" },
       '"}"',
     ],
-    "stmt:reduce": [
-      '"reduce"',
+    "stmt:rewrite": [
+      '"rewrite"',
       { exp: "exp" },
       '"{"',
       { rewrite_rules: "rewrite_rules" },

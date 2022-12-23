@@ -1,7 +1,7 @@
 import { evaluate, evaluateRewriteRuleExp } from "../evaluate"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
-import { reduce } from "../reduce"
+import { rewrite } from "../rewrite"
 import * as RewriteRules from "../rewrite-rule"
 import type { RewriteRuleExp } from "../rewrite-rule-exp"
 import type { Span } from "../span"
@@ -12,7 +12,7 @@ import {
   varCollectionValidate,
 } from "../var-collection"
 
-export class Reduce extends Stmt {
+export class Rewrite extends Stmt {
   constructor(
     public exp: Exp,
     public rules: Array<RewriteRuleExp>,
@@ -33,7 +33,7 @@ export class Reduce extends Stmt {
       evaluateRewriteRuleExp(mod, mod.env, rule),
     )
     const rule = RewriteRules.List(rules)
-    const result = reduce(mod, rule, value)
+    const result = rewrite(mod, rule, value)
     return formatValue(result)
   }
 }
