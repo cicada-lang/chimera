@@ -40,3 +40,15 @@ there are two queues, the solver has a queue of partial solutions,
 one solution as a queue of remaining goals,
 to guide choices can be implemented as
 reordering of these queues.
+
+The aim is different.
+
+In wolfram physics, the aim is to grow hypergraph
+and study properties during the growth
+(adding the time dimension).
+
+In logic programming, the aim is to solve problem
+by reducing the hypergraph to empty hypergraph,
+during which we might have to choose rules
+to temporarily grow the hypergraph,
+but infinite growth is exactly what we want to avoid.
