@@ -7,6 +7,9 @@ date: 2022-12-25
 Wolfram physics and logic programming are both hypergraph rewriting system,
 but there are many difference.
 
+(Note that, we are talking about the top-down view
+of logic programming as hypergraph rewriting.)
+
 (Note that, we are talking about logic programming,
 not constraint logic programming,
 which is also hypergraph rewriting system,
