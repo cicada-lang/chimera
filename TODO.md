@@ -1,11 +1,3 @@
-# term rewriting
-
-[question] what is the wired syntax of `-->` in prolog? DCG?
-
-- about list-processing?
-
-[read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
-
 # hypergraph rewriting
 
 implement hypergraph rewriting directly -- based on terms
@@ -16,12 +8,6 @@ use hypergraph rewriting to implement inet
 # hypergraph presentation
 
 like higher inductive types
-
-# namespace
-
-support namespace
-
-[diary] supporting-namespace.md
 
 # finite-domain constraint programming
 
@@ -48,22 +34,6 @@ support namespace
 
 [finite-domain] solve some puzzles about finite-domain as example
 
-# DX for logic programming
-
-provide a tool for checking relation's disjoint-ness against examples.
-
-# read
-
-[diary] the goal is to satisfy constraint
-
-- Maybe we should call goals "constraints",
-  because they are actually constraint, and the goal is to satisfy them.
-
-- Or we should say constraint applied to argument value is a goal?
-
-[read] logic-for-problem-solving.pdf
-[read] constraint-logic-programming--a-survey.pdf
-
 # clp
 
 [note] The general idea about implementing constraint:
@@ -86,6 +56,48 @@ provide a tool for checking relation's disjoint-ness against examples.
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
+
+# term rewriting
+
+[question] what is the wired syntax of `-->` in prolog? DCG?
+
+- about list-processing?
+
+[read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
+
+# namespace
+
+support namespace
+
+[diary] supporting-namespace.md
+
+# homoiconicity
+
+read source code file as list of terms
+
+# DX
+
+[repl] we still need a repl, we need to handle the use of `------` in repl.
+
+[logic programming] provide a tool for checking relation's disjoint-ness against examples.
+
+[free variable] learn from wolfram's design about free variable
+
+- If we support free variable,
+  we should update `RewriteRules.Case`
+  to generate `PatternVar`.
+
+# read
+
+[diary] the goal is to satisfy constraint
+
+- Maybe we should call goals "constraints",
+  because they are actually constraint, and the goal is to satisfy them.
+
+- Or we should say constraint applied to argument value is a goal?
+
+[read] logic-for-problem-solving.pdf
+[read] constraint-logic-programming--a-survey.pdf
 
 # higher-order logic
 
@@ -136,7 +148,7 @@ and use abstract syntax to write rules
 
 [dataset] translate object with `@type`, `@kind` and `@args` to `Exps.Data`
 
-# as a database
+# database
 
 how to use protocol to separate the storage layer?
 
