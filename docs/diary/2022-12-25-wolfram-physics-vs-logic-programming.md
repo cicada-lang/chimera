@@ -1,5 +1,5 @@
 ---
-title: Difference between wolfram physics and logic programming
+title: Wolfram physics v.s. logic programming
 author: Xie Yuheng
 date: 2022-12-25
 ---
