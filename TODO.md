@@ -65,6 +65,18 @@ like higher inductive types
 
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
+# functional
+
+Add functional part to the language.
+
+- Use json and term as datatypes.
+- A function has statement instead of expression as function body.
+- Use term rewrite rule as function.
+- Use relation as predicate.
+- Use predicate as runtime type assertion (active during test only).
+- Compile to wasm to run in the browser.
+- Compile to native code to run in linux.
+
 # namespace
 
 support namespace
