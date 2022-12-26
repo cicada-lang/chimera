@@ -1,4 +1,22 @@
+# functional
+
+> Add functional part to the language.
+
+Use json and term as datatypes.
+
+A function has statement instead of expression as function body.
+
+Use term rewrite rule as function.
+
+Use relation as predicate.
+
+Use predicate as runtime type assertion (active during test only).
+
 # hypergraph rewriting
+
+syntax `hyperrule`
+
+`compute` support apply hyperrule as function
 
 implement hypergraph rewriting directly -- based on terms
 
@@ -65,17 +83,11 @@ like higher inductive types
 
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
-# functional
+# compiler
 
-Add functional part to the language.
+Compile to wasm to run in the browser.
 
-- Use json and term as datatypes.
-- A function has statement instead of expression as function body.
-- Use term rewrite rule as function.
-- Use relation as predicate.
-- Use predicate as runtime type assertion (active during test only).
-- Compile to wasm to run in the browser.
-- Compile to native code to run in linux.
+Compile to native code to run in linux.
 
 # namespace
 
@@ -159,6 +171,25 @@ and use abstract syntax to write rules
   ```
 
 [dataset] translate object with `@type`, `@kind` and `@args` to `Exps.Data`
+
+# datalog
+
+Why we can use negation of `Equal` (still monotone),
+but can not use general negation of all relations?
+
+A named conjunctive query
+can be viewed as a new relation
+generated from its body,
+
+A named conjunctive query
+can also be viewed as a new relation with schema
+-- the constrains (the body of the query),
+that must be satisfied when we add new data to the relation,
+or update existing data in the relation.
+
+# docs
+
+[manual] compare with SQL
 
 # database
 

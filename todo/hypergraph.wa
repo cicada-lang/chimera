@@ -1,0 +1,6 @@
+hyperrule weather {
+  Rain()
+  --------
+  Wet()
+  Umbrella()
+}
