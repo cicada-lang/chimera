@@ -29,24 +29,20 @@ like higher inductive types
 
 # finite-domain constraint programming
 
-[diary] reading-ckanren.md
+A constraint itself encodes how to rewrite the set of constraints
+(a little like the type of `pursue`).
 
-[read] ckanren-minikanren-with-constraints.pdf
+- We need to rewrite the set of constraints,
+  because of a new constraint (or new constraints)
+  are added to the set of constraints.
 
-- A constraint itself encodes how to rewrite the set of constraints
-  (a little like the type of `pursue`).
+  We can maintain some invariants for the set of constraints.
 
-  - We need to rewrite the set of constraints,
-    because of a new constraint (or new constraints)
-    are added to the set of constraints.
+  Before adding the new constraints, the invariants holds,
+  adding the new constraints will break the invariants,
+  after rewriting, we should bring back the invariants.
 
-    We can maintain some invariants for the set of constraints.
-
-    Before adding the new constraints, the invariants holds,
-    adding the new constraints will break the invariants,
-    after rewriting, we should bring back the invariants.
-
-    Example invariant is "no more redex".
+  Example invariant is "no more redex".
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
