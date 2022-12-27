@@ -101,22 +101,30 @@ export class Mod {
     goals: Array<GoalExp> = [],
   ): void {
     const relation = this.findRelationOrFail(name)
+
     const vars = new Set([
       ...collectVarsFromExps(exps),
       ...collectVarsFromGoalExps(goals),
     ])
 
-    // Side-effect on `relation` in `env`.
-    relation.clauses.push(
-      Clause(
-        this,
-        this.env,
-        vars,
-        clauseName || relation.clauses.length.toString(),
-        exps,
-        goals,
-      ),
+    const clause = Clause(
+      this,
+      this.env,
+      vars,
+      clauseName || relation.clauses.length.toString(),
+      exps,
+      goals,
     )
+
+    /**
+
+       We should not do side-effect on `relation` in `env`,
+       because we need to copy `Mod` safely.
+
+     **/
+
+    const newRelation = Relation(relation.name, [...relation.clauses, clause])
+    this.env = envExtend(this.env, relation.name, newRelation)
   }
 
   private findRelationOrFail(name: string): Relation {
