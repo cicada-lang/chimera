@@ -1,5 +1,8 @@
 import type { Clause } from "../clause"
+import type { Env } from "../env"
+import type { Mod } from "../mod"
 import type { RewriteRule as EmbeddedRewriteRule } from "../rewrite-rule"
+import type { Stmt } from "../stmt"
 
 export type Value =
   | PatternVar
@@ -15,6 +18,7 @@ export type Value =
   | Relation
   | TypeConstraint
   | RewriteRule
+  | Fn
 
 export type PatternVar = {
   "@type": "Value"
@@ -209,5 +213,38 @@ export function RewriteRule(
     "@kind": "RewriteRule",
     name,
     rule,
+  }
+}
+
+/**
+
+   `Values.Fn` has both `env` and `mod`
+
+   - So that top-level bindings defined after the function
+     are also available in the function.
+
+   - To support mutual recursive definition in function body.
+
+   - We will shallow copy `Mod` at each function application.
+
+**/
+
+export type Fn = {
+  "@type": "Value"
+  "@kind": "Fn"
+  mod: Mod
+  env: Env
+  pattern: Value
+  stmts: Array<Stmt>
+}
+
+export function Fn(mod: Mod, env: Env, pattern: Value, stmts: Array<Stmt>): Fn {
+  return {
+    "@type": "Value",
+    "@kind": "Fn",
+    mod,
+    env,
+    pattern,
+    stmts,
   }
 }

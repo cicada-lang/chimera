@@ -1,15 +1,10 @@
 # functional
 
-`Values.Fn` has `mod`
-
-- to support mutual recursive definition in function body
-- `evaluate` `Exps.Fn` will create new `Mod`,
-  we can clone `Mod` at each function application.
-
 `Exps.Fn` -- `evaluate`
-
 `Exps.Fn` -- `formatExp`
 `Exps.Fn` -- syntax
+
+`Values.Fn` -- `formatValue`
 
 `actions/doAp`
 

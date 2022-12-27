@@ -69,6 +69,10 @@ export function formatValue(value: Value): string {
     case "RewriteRule": {
       return value.name
     }
+
+    case "Fn": {
+      return "TODO"
+    }
   }
 }
 

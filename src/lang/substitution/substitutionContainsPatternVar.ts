@@ -61,5 +61,9 @@ export function substitutionContainsPatternVar(
     case "RewriteRule": {
       return false
     }
+
+    case "Fn": {
+      return false
+    }
   }
 }
