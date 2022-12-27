@@ -1,8 +1,8 @@
 # functional
 
-> Add functional part to the language.
-
 Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
+
+- `assert` and `assert not` can also be used for any expression
 
 - [maybe] use something like `begin` to turn a list of stmts to an expression.
 
@@ -32,7 +32,9 @@ Use relation as predicate.
 
 Use predicate as runtime type assertion (active during test only).
 
-- use `declare` as keyword
+- Using `declare` as keyword.
+
+use `compute` in pattern
 
 # term rewriting
 

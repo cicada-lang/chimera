@@ -1,5 +1,5 @@
 ---
-title: Functional Part
+title: Functional part
 author: Xie Yuheng
 date: 2022-11-19
 ---
