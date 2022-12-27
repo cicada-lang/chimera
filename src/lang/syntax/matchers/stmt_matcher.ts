@@ -111,6 +111,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.rewrite_rules_matcher(rewrite_rules),
         span,
       ),
+    "stmt:let": ({ name, exp }, { span }) =>
+      new Stmts.Let(pt.str(name), matchers.exp_matcher(exp), span),
   })(tree)
 }
 

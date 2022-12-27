@@ -1,11 +1,15 @@
-`Stmts.Let` -- syntax
-
 `Stmts.Compute`
 `Stmts.Compute` -- syntax
+
+test `let` by `compute`
 
 # functional
 
 > Add functional part to the language.
+
+Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
+
+- [maybe] use something like `begin` to turn a list of stmts to an expression.
 
 `Exps.Fn` -- has `stmts: Array<Stmt>`
 
