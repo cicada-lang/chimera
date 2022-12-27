@@ -2,6 +2,14 @@ import type { Value } from "../value"
 
 export type RewriteRule = Case | List
 
+/**
+
+   A `RewriteRules.Case` will generates `PatternVar` from `vars`
+   during application, because a term rewrite rule maybe
+   applied to a term with `PatternVar` in it.
+
+**/
+
 export type Case = {
   "@type": "RewriteRule"
   "@kind": "Case"

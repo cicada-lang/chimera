@@ -1,10 +1,31 @@
+`Stmts.Let` -- syntax
+
+`Stmts.Compute`
+`Stmts.Compute` -- syntax
+
 # functional
 
 > Add functional part to the language.
 
-Use json and term as datatypes.
+`Exps.Fn` -- has `stmts: Array<Stmt>`
 
-A function has statement instead of expression as function body.
+- A function has statements instead of expression as function body.
+
+- we achieve this by letting a `Values.Fn` has `mod`
+
+  - to support mutual recursive definition in function body
+
+  - `evaluate` `Exps.Fn` will create new `Mod`
+
+`Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
+
+`Exps.Fn` -- syntax
+
+`Values.Fn`
+
+`Exps.Ap`
+
+`Exps.Ap` -- syntax
 
 Use term rewrite rule as function.
 
@@ -12,11 +33,38 @@ Use relation as predicate.
 
 Use predicate as runtime type assertion (active during test only).
 
+- use `declare` as keyword
+
+# term rewriting
+
+A `RewriteRules.Case` will generates `PatternVar` from `vars`
+
 # hypergraph rewriting
 
-syntax `hyperrule`
+[maybe] keyword syntax `hyperrule`
 
-`compute` support apply hyperrule as function
+- There are many ways to apply a rule
+
+  - consume input or not:
+
+    - consume input -- simplification rule in CHR
+    - not consume input -- propagation rule in CHR
+
+    Why not just express this by repeating the not consumed goal?
+
+    Maybe all we need is a syntax to repeating a goal.
+
+    - If we do so, a goal can not be used reversely,
+      unless "repeating" means repeating on the other side of the line.
+
+    - Or maybe we should make a `hyperrule` contains three parts.
+
+  - from left to right or from right to left:
+
+    - left to right: top-down logic programming
+    - right to left: bottom-up datalog generation
+
+[maybe] `compute` support apply hyperrule as function
 
 implement hypergraph rewriting directly -- based on terms
 
@@ -102,10 +150,6 @@ read source code file as list of terms
 [logic programming] provide a tool for checking relation's disjoint-ness against examples.
 
 [free variable] learn from wolfram's design about free variable
-
-- If we support free variable,
-  we should update `RewriteRules.Case`
-  to generate `PatternVar`.
 
 # read
 
