@@ -1,4 +1,5 @@
 import type { Span } from "../span"
+import type { Stmt } from "../stmt"
 
 export type Exp =
   | Var
@@ -10,6 +11,7 @@ export type Exp =
   | ArrayNull
   | Objekt
   | Term
+  | Fn
 
 export type Var = {
   "@type": "Exp"
@@ -151,6 +153,24 @@ export function Term(name: string, args: Array<Exp>, span: Span): Term {
     "@kind": "Term",
     name,
     args,
+    span,
+  }
+}
+
+export type Fn = {
+  "@type": "Exp"
+  "@kind": "Fn"
+  pattern: Exp
+  stmts: Array<Stmt>
+  span: Span
+}
+
+export function Fn(pattern: Exp, stmts: Array<Stmt>, span: Span): Fn {
+  return {
+    "@type": "Exp",
+    "@kind": "Fn",
+    pattern,
+    stmts,
     span,
   }
 }

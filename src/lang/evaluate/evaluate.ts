@@ -65,5 +65,9 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
         exp.args.map((arg) => evaluate(mod, env, arg)),
       )
     }
+
+    case "Fn": {
+      throw new Error()
+    }
   }
 }

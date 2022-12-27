@@ -51,6 +51,10 @@ export function collectVarsFromExp(exp: Exp): Set<string> {
         exp.args.flatMap((arg) => Array.from(collectVarsFromExp(arg))),
       )
     }
+
+    case "Fn": {
+      return new Set()
+    }
   }
 }
 

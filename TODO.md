@@ -1,23 +1,27 @@
 # functional
 
-`Exps.Fn` -- has `stmts: Array<Stmt>`
-
-- A function has statements instead of expression as function body.
+`Exps.Fn` -- `evaluate`
+`Exps.Fn` -- `formatExp`
+`Exps.Fn` -- syntax
+`Values.Fn`
 
 `Values.Fn` has `mod`
 
 - to support mutual recursive definition in function body
-
 - `evaluate` `Exps.Fn` will create new `Mod`,
   we can clone `Mod` at each function application.
 
-`Exps.Fn` -- `evaluate`
-`Exps.Fn` -- syntax
-`Values.Fn`
+`actions/doAp`
 
 `Exps.Ap`
 `Exps.Ap` -- syntax
 `Exps.Ap` -- `evaluate`
+
+`actions/doDot`
+
+`Exps.Dot`
+`Exps.Dot` -- syntax
+`Exps.Dot` -- `evaluate`
 
 [maybe] `Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
 

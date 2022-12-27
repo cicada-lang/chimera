@@ -53,6 +53,10 @@ export function formatExp(exp: Exp): string {
       const args = exp.args.map(formatExp)
       return `${exp.name}${formatArgs(args)}`
     }
+
+    case "Fn": {
+      return "TODO"
+    }
   }
 }
 
