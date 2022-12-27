@@ -1,30 +1,25 @@
 # functional
 
-Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
-
-- `assert` and `assert not` can also be used for any expression
-
-- [maybe] use something like `begin` to turn a list of stmts to an expression.
-
 `Exps.Fn` -- has `stmts: Array<Stmt>`
 
 - A function has statements instead of expression as function body.
 
-- we achieve this by letting a `Values.Fn` has `mod`
+`Values.Fn` has `mod`
 
-  - to support mutual recursive definition in function body
+- to support mutual recursive definition in function body
 
-  - `evaluate` `Exps.Fn` will create new `Mod`
+- `evaluate` `Exps.Fn` will create new `Mod`,
+  we can clone `Mod` at each function application.
 
-`Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
-
+`Exps.Fn` -- `evaluate`
 `Exps.Fn` -- syntax
-
 `Values.Fn`
 
 `Exps.Ap`
-
 `Exps.Ap` -- syntax
+`Exps.Ap` -- `evaluate`
+
+[maybe] `Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
 
 Use term rewrite rule as function.
 
@@ -35,6 +30,12 @@ Use predicate as runtime type assertion (active during test only).
 - Using `declare` as keyword.
 
 use `compute` in pattern
+
+Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
+
+- `assert` and `assert not` can also be used for any expression
+
+- [maybe] use something like `begin` to turn a list of stmts to an expression.
 
 # term rewriting
 
