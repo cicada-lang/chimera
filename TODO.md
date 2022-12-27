@@ -1,33 +1,48 @@
 # functional
 
-`Exps.Fn` -- `formatExp`
-`Exps.Fn` -- syntax
+`Exps.FnUnfolded`
+`Exps.FnUnfolded` -- syntax
+`Exps.FnUnfolded` -- `evaluate` -- with the help of `exp/foldFn`
 
-`Values.Fn` -- `formatValue`
+`Exps.Fn` -- `formatExp` -- with the help of `exp/unfoldFn`
 
-`actions/doAp`
+- Note that, we do not need `unfoldFormatFn` here,
+  because `FnUnfolded` and `Fn` are all `Exp` (no `Core`).
+
+`Values.Fn` -- `formatValue` -- with the help of `value/unfoldFormatFn`
+
+- function should be opaque value (like in scheme),
+  but we format it as expression any way (like in JavaScript).
 
 `Exps.Ap`
-`Exps.Ap` -- syntax
+`Exps.Ap` -- `formatExp`
 `Exps.Ap` -- `evaluate`
 
-`actions/doDot`
+- `actions/doAp`
+
+`Exps.ApUnfolded`
+`Exps.ApUnfolded` -- `formatExp`
+`Exps.ApUnfolded` -- syntax
+`Exps.ApUnfolded` -- `evaluate`
 
 `Exps.Dot`
+`Exps.Dot` -- `formatExp`
 `Exps.Dot` -- syntax
 `Exps.Dot` -- `evaluate`
 
+- `actions/doDot`
+
 [maybe] `Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
 
-Use term rewrite rule as function.
+`doAp` -- Use term rewrite rule as function.
 
-Use relation as predicate.
+`doAp` -- Use relation as predicate.
 
-Use predicate as runtime type assertion (active during test only).
+`Stmts.Declare` -- Use predicate as runtime type assertion (active during test only).
 
 - Using `declare` as keyword.
 
-use `compute` in pattern
+`Exps.Compute` -- support using `compute` in pattern -- like in inference rules and term rewrite rules
 
 Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
 
