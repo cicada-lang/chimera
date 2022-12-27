@@ -1,5 +1,4 @@
-`Stmts.Compute` -- syntax
-
+test `compute`
 test `let` by `compute`
 
 # functional
