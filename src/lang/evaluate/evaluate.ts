@@ -67,7 +67,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Fn": {
-      throw new Error()
+      return Values.Fn(mod, env, evaluate(mod, env, exp.pattern), exp.stmts)
     }
   }
 }

@@ -1,6 +1,5 @@
 # functional
 
-`Exps.Fn` -- `evaluate`
 `Exps.Fn` -- `formatExp`
 `Exps.Fn` -- syntax
 
