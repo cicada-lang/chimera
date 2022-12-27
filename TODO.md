@@ -1,4 +1,3 @@
-`Stmts.Compute`
 `Stmts.Compute` -- syntax
 
 test `let` by `compute`

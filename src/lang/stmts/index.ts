@@ -1,6 +1,7 @@
 export * from "./AssertFind"
 export * from "./AssertNotFind"
 export * from "./Clause"
+export * from "./Compute"
 export * from "./Find"
 export * from "./Import"
 export * from "./ImportAll"
