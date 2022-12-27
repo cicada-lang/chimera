@@ -1,0 +1,4 @@
+compute 1
+compute "a"
+compute ["a", "b", "c"]
+compute { a: 1, b: 2, c: 3 }

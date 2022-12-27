@@ -1,6 +1,3 @@
-test `compute`
-test `let` by `compute`
-
 # functional
 
 > Add functional part to the language.
