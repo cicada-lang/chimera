@@ -1,5 +1,3 @@
-extract module `createErrorReport` -- to be used in repl
-
 # functional
 
 `Exps.FnUnfolded`

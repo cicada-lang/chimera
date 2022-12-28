@@ -1,3 +1,4 @@
+import { createErrorReport } from "../lang/errors"
 import type { Mod } from "../lang/mod"
 import { parseStmts } from "../lang/syntax"
 import { Script } from "../script"
@@ -12,7 +13,7 @@ export class DefaultScript extends Script {
       const stmts = parseStmts(this.text)
       await this.mod.executeStmts(stmts)
     } catch (error) {
-      throw this.createErrorReport(error, this.text)
+      throw createErrorReport(error, this.text)
     }
   }
 }

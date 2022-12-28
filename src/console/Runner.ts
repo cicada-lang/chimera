@@ -1,7 +1,7 @@
 import fs from "fs"
 import watcher from "node-watch"
+import { highlightErrorMessage } from "../lang/errors"
 import { Loader } from "../loader"
-import { colors } from "../utils/colors"
 
 export class Runner {
   loader = new Loader({
@@ -63,17 +63,4 @@ export class Runner {
       })
     }
   }
-}
-
-function highlightErrorMessage(report: string): string {
-  return report.split("\n").map(highlightLine).join("\n")
-}
-
-function highlightLine(line: string): string {
-  if (!line.startsWith("[")) return line
-  const i = line.indexOf("]")
-  if (i === -1) return line
-  const head = line.slice(0, i + 1)
-  const rest = line.slice(i + 1)
-  return colors.red(colors.bold(head)) + rest
 }

@@ -1,7 +1,7 @@
 import { ReplEvent, ReplEventHandler } from "@cicada-lang/framework/lib/repl"
 import fs from "fs"
 import process from "process"
-import * as Errors from "../lang/errors"
+import { createErrorReport, highlightErrorMessage } from "../lang/errors"
 import { parseStmts } from "../lang/syntax"
 import { Loader } from "../loader"
 import { colors } from "../utils/colors"
@@ -29,9 +29,7 @@ export class AppReplEventHandler extends ReplEventHandler {
   }
 
   async handle(event: ReplEvent): Promise<void> {
-    let { text } = event
-
-    text = text.trim()
+    const { text } = event
 
     const url = new URL(`repl://${this.pathname}`)
     const mod = await this.loader.load(url, { text: "" })
@@ -40,14 +38,10 @@ export class AppReplEventHandler extends ReplEventHandler {
       const stmts = parseStmts(text)
       await mod.executeStmts(stmts)
     } catch (error) {
-      console.log(error)
-      if (!(error instanceof Error)) {
-        console.error(error)
-      } else if (error instanceof Errors.ElaborationError) {
-        console.error(error.report(text))
-      } else {
-        console.error(error.message)
-      }
+      error = createErrorReport(error, text)
+      if (error instanceof Error)
+        console.error(highlightErrorMessage(error.message))
+      else console.error(error)
     }
   }
 }
