@@ -1,4 +1,5 @@
 import { Env, envLookupValue } from "../env"
+import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
@@ -13,7 +14,12 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       const value = envLookupValue(mod.env, exp.name)
       if (value !== undefined) return value
 
-      return Values.PatternVar(exp.name)
+      // return Values.PatternVar(exp.name)
+
+      throw new Errors.ElaborationError(
+        `[evaluate] undefined name: ${exp.name}`,
+        { span: exp.span },
+      )
     }
 
     case "String": {

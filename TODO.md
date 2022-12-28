@@ -1,3 +1,7 @@
+`RewriteRules.Case` -- need to generate `PatternVar` from `vars`
+
+`Exps.Fn` -- need to generate `PatternVar` from `vars`
+
 # functional
 
 `Exps.Fn` -- `formatExp`
@@ -44,10 +48,6 @@ Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over t
 - `assert` and `assert not` can also be used for any expression
 
 - [maybe] use something like `begin` to turn a list of stmts to an expression.
-
-# term rewriting
-
-A `RewriteRules.Case` will generates `PatternVar` from `vars`
 
 # hypergraph rewriting
 
