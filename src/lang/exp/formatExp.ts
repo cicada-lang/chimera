@@ -55,7 +55,9 @@ export function formatExp(exp: Exp): string {
     }
 
     case "Fn": {
-      return "TODO"
+      const patterns = exp.patterns.map(formatExp).join(", ")
+      const stmts = exp.stmts.map((stmt) => stmt.format()).join("\n")
+      return `(${patterns}) => {\n${indent(stmts)}\n}`
     }
   }
 }

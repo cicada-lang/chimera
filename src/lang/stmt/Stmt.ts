@@ -12,6 +12,10 @@ export abstract class Stmt {
     return
   }
 
+  format(): string {
+    return "TODO"
+  }
+
   async validate(mod: Mod): Promise<void> {
     return
   }

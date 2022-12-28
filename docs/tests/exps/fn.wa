@@ -1,3 +1,5 @@
 compute () => {}
 
-// compute (x) => {}
+compute (x) => {
+  let y = x
+}

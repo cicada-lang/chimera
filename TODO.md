@@ -1,6 +1,5 @@
 # functional
 
-`Exps.Fn` -- `formatExp`
 `Values.Fn` -- `formatValue`
 
 - function should be opaque value (like in scheme),
