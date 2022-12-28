@@ -1,6 +1,5 @@
 # functional
 
-`evaluate` return `PatternVar` for undefined name
 `Exps.Fn` -- `formatExp`
 `Values.Fn` -- `formatValue`
 
