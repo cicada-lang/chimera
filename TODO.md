@@ -1,9 +1,8 @@
 # functional
 
-`Exps.Fn` -- syntax
+`evaluate` return `PatternVar` for undefined name
 `Exps.Fn` -- `formatExp`
-
-`Values.Fn` -- `formatValue` -- with the help of `value/unfoldFormatFn`
+`Values.Fn` -- `formatValue`
 
 - function should be opaque value (like in scheme),
   but we format it as expression any way (like in JavaScript).

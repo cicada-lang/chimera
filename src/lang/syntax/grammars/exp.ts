@@ -44,5 +44,13 @@ export const operand = {
     ],
     "operand:objekt_empty": ['"{"', '"}"'],
     "operand:term": [{ kind: "name_no_preserved" }, { args: "args" }],
+    "operand:fn": [
+      { patterns: "args" },
+      '"="',
+      '">"',
+      '"{"',
+      { stmts: "stmts" },
+      '"}"',
+    ],
   },
 }
