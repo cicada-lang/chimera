@@ -1,5 +1,3 @@
-apply a rewrite rule should use `match` instead of `unify`
-
 # functional
 
 `Exps.Fn` -- `formatExp`
@@ -161,12 +159,6 @@ read source code file as list of terms
 # DX
 
 [logic programming] provide a tool for checking relation's disjoint-ness against examples.
-
-[maybe] free variable as value
-
-- [maybe] this is important for term rewriting.
-- [maybe] it does not make sense to do this.
-- [maybe] learn from wolfram's design about free variable
 
 # grammar
 

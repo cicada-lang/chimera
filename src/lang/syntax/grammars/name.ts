@@ -35,7 +35,7 @@ const preserved = ["null", "true", "false"]
 export const pattern_variable_name = {
   $pattern: [
     "identifier",
-    `(^(?!(${preserved.join("|")})$)([_a-z][_\\p{Letter}0-9]*))`,
+    `(^(?!(${preserved.join("|")})$)([_A-Za-z][_\\p{Letter}0-9]*))`,
   ],
 }
 

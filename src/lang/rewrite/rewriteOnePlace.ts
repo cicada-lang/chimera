@@ -1,9 +1,9 @@
 import { envExtendFreshPatternVars } from "../env"
 import { evaluate } from "../evaluate"
+import { match } from "../match"
 import type { Mod } from "../mod"
 import type { RewriteRule } from "../rewrite-rule"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
-import { unify } from "../unify"
 import type { Value } from "../value"
 
 export function rewriteOnePlace(
@@ -15,7 +15,7 @@ export function rewriteOnePlace(
     case "Case": {
       const env = envExtendFreshPatternVars(rule.mod, rule.env, rule.vars)
       const from = evaluate(rule.mod, env, rule.from)
-      const substitution = unify(rule.mod, substitutionEmpty(), from, value)
+      const substitution = match(rule.mod, substitutionEmpty(), from, value)
 
       if (substitution !== undefined) {
         const to = evaluate(rule.mod, env, rule.to)
