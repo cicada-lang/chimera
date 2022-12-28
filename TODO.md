@@ -169,7 +169,11 @@ read source code file as list of terms
 
 # grammar
 
-add `grammar` keyword to define partech grammar
+Add `grammar` keyword to define partech grammar.
+
+# actor model
+
+Implement actor model to handle async programming.
 
 # read
 
