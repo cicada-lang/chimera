@@ -9,3 +9,7 @@ rule conjunctiveNormalForm {
 rewrite not(and(not("A"), not("B"))) {
   conjunctiveNormalForm
 }
+
+// rewrite not(and(not(a), not(b))) {
+//   conjunctiveNormalForm
+// }

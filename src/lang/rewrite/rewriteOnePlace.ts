@@ -15,10 +15,10 @@ export function rewriteOnePlace(
     case "Case": {
       const env = envExtendFreshPatternVars(rule.mod, rule.env, rule.vars)
       const from = evaluate(rule.mod, env, rule.from)
-      const to = evaluate(rule.mod, env, rule.to)
-
       const substitution = unify(rule.mod, substitutionEmpty(), from, value)
+
       if (substitution !== undefined) {
+        const to = evaluate(rule.mod, env, rule.to)
         return substitutionDeepWalk(substitution, to)
       }
 

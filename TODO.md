@@ -1,5 +1,7 @@
 `Exps.Fn` -- need to generate `PatternVar` from `vars`
 
+apply a rewrite rule should use `match` instead of `unify`
+
 # functional
 
 `Exps.Fn` -- `formatExp`
