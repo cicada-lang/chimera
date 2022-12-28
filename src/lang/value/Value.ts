@@ -165,14 +165,20 @@ export function Term(name: string, args: Array<Value>): Term {
 export type Relation = {
   "@type": "Value"
   "@kind": "Relation"
+  mod: Mod
   name: string
   clauses: Array<Clause>
 }
 
-export function Relation(name: string, clauses: Array<Clause>): Relation {
+export function Relation(
+  mod: Mod,
+  name: string,
+  clauses: Array<Clause>,
+): Relation {
   return {
     "@type": "Value",
     "@kind": "Relation",
+    mod,
     name,
     clauses,
   }

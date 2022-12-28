@@ -1,3 +1,5 @@
+extract module `createErrorReport` -- to be used in repl
+
 # functional
 
 `Exps.FnUnfolded`
@@ -163,11 +165,13 @@ read source code file as list of terms
 
 # DX
 
-[repl] we still need a repl, we need to handle the use of `------` in repl.
-
 [logic programming] provide a tool for checking relation's disjoint-ness against examples.
 
 [free variable] learn from wolfram's design about free variable
+
+# grammar
+
+add `grammar` keyword to define partech grammar
 
 # read
 

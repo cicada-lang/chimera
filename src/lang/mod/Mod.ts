@@ -90,8 +90,13 @@ export class Mod {
     this.env = envExtend(this.env, name, value)
   }
 
-  defineRelation(name: string): void {
-    this.define(name, Relation(name, []))
+  ensureRelationOfThisMod(name: string): void {
+    const relation = this.findRelation(name)
+    if (relation !== undefined && relation.mod === this) {
+      return
+    }
+
+    this.define(name, Relation(this, name, []))
   }
 
   defineClause(
@@ -123,26 +128,37 @@ export class Mod {
 
      **/
 
-    const newRelation = Relation(relation.name, [...relation.clauses, clause])
+    const newRelation = Relation(this, relation.name, [
+      ...relation.clauses,
+      clause,
+    ])
     this.env = envExtend(this.env, relation.name, newRelation)
   }
 
-  private findRelationOrFail(name: string): Relation {
+  private findRelation(name: string): Relation | undefined {
     const relation = this.find(name)
 
-    if (relation === undefined) {
-      throw new Errors.LangError(
-        `[Mod.findRelationOrFail] undefined relation name: ${name}`,
-      )
-    }
+    if (relation === undefined) return undefined
 
     if (relation["@kind"] !== "Relation") {
       throw new Errors.LangError(
         [
-          `[Mod.findRelationOrFail] expecting relation`,
+          `[Mod.findRelation] expecting relation`,
           `  name: ${name}`,
           `  relation["@kind"]: ${relation["@kind"]}`,
         ].join("\n"),
+      )
+    }
+
+    return relation
+  }
+
+  private findRelationOrFail(name: string): Relation {
+    const relation = this.findRelation(name)
+
+    if (relation === undefined) {
+      throw new Errors.LangError(
+        `[Mod.findRelationOrFail] undefined relation name: ${name}`,
       )
     }
 

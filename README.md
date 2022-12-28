@@ -64,6 +64,7 @@ sudo npm install -g @cicada-lang/whereabouts
 The command line program is called `wa`.
 
 ```sh
+wa repl                # Open an interactive REPL
 wa run <file>          # Run a file
 wa run <file> --watch  # Run and watch file change
 ```

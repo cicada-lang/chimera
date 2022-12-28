@@ -1,0 +1,53 @@
+import { ReplEvent, ReplEventHandler } from "@cicada-lang/framework/lib/repl"
+import fs from "fs"
+import process from "process"
+import * as Errors from "../lang/errors"
+import { parseStmts } from "../lang/syntax"
+import { Loader } from "../loader"
+import { colors } from "../utils/colors"
+
+export class AppReplEventHandler extends ReplEventHandler {
+  pathname = process.cwd() + "/repl"
+  loader = new Loader({
+    onOutput: (output) => console.log(colors.blue(output)),
+  })
+
+  constructor() {
+    super()
+    this.loader.fetcher.register("file", (url) =>
+      fs.promises.readFile(url.pathname, "utf8"),
+    )
+    this.loader.fetcher.register("repl", (url) => {
+      return url.pathname === this.pathname
+        ? ""
+        : fs.promises.readFile(url.pathname, "utf8")
+    })
+  }
+
+  greeting(): void {
+    console.log(`Welcome to whereabouts ${app.config.pkg.version}`)
+  }
+
+  async handle(event: ReplEvent): Promise<void> {
+    let { text } = event
+
+    text = text.trim()
+
+    const url = new URL(`repl://${this.pathname}`)
+    const mod = await this.loader.load(url, { text: "" })
+
+    try {
+      const stmts = parseStmts(text)
+      await mod.executeStmts(stmts)
+    } catch (error) {
+      console.log(error)
+      if (!(error instanceof Error)) {
+        console.error(error)
+      } else if (error instanceof Errors.ElaborationError) {
+        console.error(error.report(text))
+      } else {
+        console.error(error.message)
+      }
+    }
+  }
+}

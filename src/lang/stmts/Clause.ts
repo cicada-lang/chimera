@@ -26,7 +26,7 @@ export class Clause extends Stmt {
   }
 
   async prepare(mod: Mod): Promise<void> {
-    mod.defineRelation(this.relationName)
+    mod.ensureRelationOfThisMod(this.relationName)
   }
 
   async validate(mod: Mod): Promise<void> {
