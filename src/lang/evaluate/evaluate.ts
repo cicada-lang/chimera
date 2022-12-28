@@ -67,7 +67,12 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Fn": {
-      return Values.Fn(mod, env, evaluate(mod, env, exp.pattern), exp.stmts)
+      return Values.Fn(
+        mod,
+        env,
+        exp.patterns.map((pattern) => evaluate(mod, env, pattern)),
+        exp.stmts,
+      )
     }
   }
 }

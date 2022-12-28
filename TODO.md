@@ -1,13 +1,7 @@
 # functional
 
-`Exps.FnUnfolded`
-`Exps.FnUnfolded` -- syntax
-`Exps.FnUnfolded` -- `evaluate` -- with the help of `exp/foldFn`
-
-`Exps.Fn` -- `formatExp` -- with the help of `exp/unfoldFn`
-
-- Note that, we do not need `unfoldFormatFn` here,
-  because `FnUnfolded` and `Fn` are all `Exp` (no `Core`).
+`Exps.Fn` -- syntax
+`Exps.Fn` -- `formatExp`
 
 `Values.Fn` -- `formatValue` -- with the help of `value/unfoldFormatFn`
 

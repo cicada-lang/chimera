@@ -160,16 +160,16 @@ export function Term(name: string, args: Array<Exp>, span: Span): Term {
 export type Fn = {
   "@type": "Exp"
   "@kind": "Fn"
-  pattern: Exp
+  patterns: Array<Exp>
   stmts: Array<Stmt>
   span: Span
 }
 
-export function Fn(pattern: Exp, stmts: Array<Stmt>, span: Span): Fn {
+export function Fn(patterns: Array<Exp>, stmts: Array<Stmt>, span: Span): Fn {
   return {
     "@type": "Exp",
     "@kind": "Fn",
-    pattern,
+    patterns,
     stmts,
     span,
   }

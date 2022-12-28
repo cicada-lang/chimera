@@ -240,17 +240,22 @@ export type Fn = {
   "@kind": "Fn"
   mod: Mod
   env: Env
-  pattern: Value
+  patterns: Array<Value>
   stmts: Array<Stmt>
 }
 
-export function Fn(mod: Mod, env: Env, pattern: Value, stmts: Array<Stmt>): Fn {
+export function Fn(
+  mod: Mod,
+  env: Env,
+  patterns: Array<Value>,
+  stmts: Array<Stmt>,
+): Fn {
   return {
     "@type": "Value",
     "@kind": "Fn",
     mod,
     env,
-    pattern,
+    patterns,
     stmts,
   }
 }
