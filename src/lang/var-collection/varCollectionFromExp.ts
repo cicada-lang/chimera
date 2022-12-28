@@ -2,6 +2,10 @@ import type { Exp } from "../exp"
 import type { VarCollection } from "../var-collection"
 import { createVarCollection, varCollectionMerge } from "../var-collection"
 
+export function varCollectionFromExps(exps: Array<Exp>): VarCollection {
+  return varCollectionMerge(exps.map(varCollectionFromExp))
+}
+
 export function varCollectionFromExp(exp: Exp): VarCollection {
   switch (exp["@kind"]) {
     case "Var": {

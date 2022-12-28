@@ -1,5 +1,3 @@
-`Exps.Fn` -- need to generate `PatternVar` from `vars`
-
 apply a rewrite rule should use `match` instead of `unify`
 
 # functional
@@ -10,11 +8,18 @@ apply a rewrite rule should use `match` instead of `unify`
 - function should be opaque value (like in scheme),
   but we format it as expression any way (like in JavaScript).
 
+Add `Stmts.Return` top level early return
+
+- support we do every function must return something at the end first.
+- [maybe] we will let every function that does not return something returns a `null`.
+
 `Exps.Ap`
 `Exps.Ap` -- `formatExp`
 `Exps.Ap` -- `evaluate`
 
 - `actions/doAp`
+
+  - need to generate `PatternVar` from `vars`
 
 `Exps.ApUnfolded`
 `Exps.ApUnfolded` -- `formatExp`
@@ -157,7 +162,11 @@ read source code file as list of terms
 
 [logic programming] provide a tool for checking relation's disjoint-ness against examples.
 
-[free variable] learn from wolfram's design about free variable
+[maybe] free variable as value
+
+- [maybe] this is important for term rewriting.
+- [maybe] it does not make sense to do this.
+- [maybe] learn from wolfram's design about free variable
 
 # grammar
 

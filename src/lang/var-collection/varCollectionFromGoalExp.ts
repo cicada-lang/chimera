@@ -1,11 +1,15 @@
 import type { GoalExp } from "../goal-exp"
 import type { VarCollection } from "../var-collection"
-import { varCollectionFromExp, varCollectionMerge } from "../var-collection"
+import {
+  varCollectionFromExp,
+  varCollectionFromExps,
+  varCollectionMerge,
+} from "../var-collection"
 
 export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
   switch (goal["@kind"]) {
     case "Apply": {
-      return varCollectionMerge(goal.args.map(varCollectionFromExp))
+      return varCollectionFromExps(goal.args)
     }
 
     case "Equal": {

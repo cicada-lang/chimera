@@ -4,7 +4,7 @@ import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
 import {
-  varCollectionFromExp,
+  varCollectionFromExps,
   varCollectionFromGoalExp,
   varCollectionMerge,
   varCollectionValidate,
@@ -32,7 +32,7 @@ export class Clause extends Stmt {
   async validate(mod: Mod): Promise<void> {
     varCollectionValidate(
       varCollectionMerge([
-        ...this.exps.map((exp) => varCollectionFromExp(exp)),
+        varCollectionFromExps(this.exps),
         ...this.goals.map(varCollectionFromGoalExp),
       ]),
     )

@@ -2,8 +2,8 @@ import { Env, envLookupValue } from "../env"
 import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
-import type { Value } from "../value"
 import * as Values from "../value"
+import { collectVarsFromExps, Value } from "../value"
 
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
@@ -72,7 +72,8 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Fn(
         mod,
         env,
-        exp.patterns.map((pattern) => evaluate(mod, env, pattern)),
+        collectVarsFromExps(exp.patterns),
+        exp.patterns,
         exp.stmts,
       )
     }
