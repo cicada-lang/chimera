@@ -1,5 +1,4 @@
 import type { Env } from "../env"
-import { envExtendFreshPatternVars } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import type { Mod } from "../mod"
@@ -20,12 +19,7 @@ export function evaluateRewriteRuleExp(
         ...collectVarsFromExp(rule.to),
       ])
 
-      env = envExtendFreshPatternVars(mod, env, vars)
-
-      return RewriteRules.Case(
-        evaluate(mod, env, rule.from),
-        evaluate(mod, env, rule.to),
-      )
+      return RewriteRules.Case(mod, env, vars, rule.from, rule.to)
     }
 
     case "Call": {

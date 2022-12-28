@@ -6,21 +6,6 @@ import type { Mod } from "../../mod"
 import * as Values from "../../value"
 import { collectVarsFromGoalExps } from "../../value"
 
-/**
-
-   In a `mod`, `evaluateGoalExp` resolves `Relation`
-   from `name` of `GoalExps.Apply`.
-
-   Maybe `Goal` should have `mod`.
-
-   And only refresh goal can be used,
-   because `refreshExp` also `etc` to `Objekt`.
-
-   Maybe we should distinguish `Exp` from `Value`
-   (`Values.Objekt` always has `etc`).
-
-**/
-
 export function prepareGoals(
   mod: Mod,
   goals: Array<GoalExp>,
@@ -40,6 +25,13 @@ export function prepareGoals(
       env = envExtend(env, name, Values.PatternVar(mod.freshen(name)))
     }
   }
+
+  /**
+
+     In a `mod`, `evaluateGoalExp` finds a `Value`
+     from `name` of `GoalExps.Apply`.
+
+  **/
 
   return {
     goals: goals.map((goal) => evaluateGoalExp(mod, env, goal)),

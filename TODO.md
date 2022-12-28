@@ -1,5 +1,3 @@
-`RewriteRules.Case` -- need to generate `PatternVar` from `vars`
-
 `Exps.Fn` -- need to generate `PatternVar` from `vars`
 
 # functional

@@ -21,9 +21,8 @@ export interface ModOptions {
 
 /**
 
-   It is safe to put the `variableCount` in a `Mod`,
-   instead of using true global `variableCount`,
-   because refreshing is relative to a `Mod`.
+   TODO Is it safe to put the `variableCount` in a `Mod`
+   (instead of using a global `variableCount`)?
 
 **/
 

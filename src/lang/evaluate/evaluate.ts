@@ -14,7 +14,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       const value = envLookupValue(mod.env, exp.name)
       if (value !== undefined) return value
 
-      // return Values.PatternVar(exp.name)
+      // return Values.PatternVar((exp.name))
 
       throw new Errors.ElaborationError(
         `[evaluate] undefined name: ${exp.name}`,
