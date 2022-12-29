@@ -1,10 +1,11 @@
-# functional
+rename `evaluate` to `deref`
+rename `compute` keyword to `eval`
 
-`Stmt.format`
+# functional
 
 Add `Stmts.Return` top level early return
 
-- support we do every function must return something at the end first.
+- [maybe] support we require every function to return something at the end first.
 - [maybe] we will let every function that does not return something returns a `null`.
 
 `Exps.Ap`
@@ -19,6 +20,8 @@ Add `Stmts.Return` top level early return
 `Exps.ApUnfolded` -- `formatExp`
 `Exps.ApUnfolded` -- syntax
 `Exps.ApUnfolded` -- `evaluate`
+
+`Stmt.format`
 
 `Exps.Dot`
 `Exps.Dot` -- `formatExp`
