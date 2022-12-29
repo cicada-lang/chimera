@@ -1,4 +1,5 @@
 import { indent } from "../../utils/indent"
+import { formatExp } from "../exp"
 import type { Value } from "../value"
 
 export function formatValue(value: Value): string {
@@ -71,7 +72,18 @@ export function formatValue(value: Value): string {
     }
 
     case "Fn": {
-      return "TODO"
+      /**
+         A function should be opaque (like in scheme),
+         but we format it as expression any way (like in JavaScript).
+      **/
+
+      const patterns = value.patterns.map(formatExp).join(", ")
+      const stmts = value.stmts.map((stmt) => stmt.format()).join("\n")
+      if (stmts.length === 0) {
+        return `(${patterns}) => {}`
+      } else {
+        return `(${patterns}) => {\n${indent(stmts)}\n}`
+      }
     }
   }
 }

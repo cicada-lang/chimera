@@ -1,9 +1,6 @@
 # functional
 
-`Values.Fn` -- `formatValue`
-
-- function should be opaque value (like in scheme),
-  but we format it as expression any way (like in JavaScript).
+`Stmt.format`
 
 Add `Stmts.Return` top level early return
 
@@ -132,6 +129,8 @@ A constraint itself encodes how to rewrite the set of constraints
 - how to solve linear equations by rewriting?
 
 # term rewriting
+
+do we need guard?
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
