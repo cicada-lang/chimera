@@ -1,25 +1,19 @@
-rename `evaluate` to `deref`
-rename `compute` keyword to `eval`
-
 # functional
+
+use `refresh` (again) instead of `collectVars`
+
+- wherever term is not evaluated should be viewed as quoted value.
+
+`Exps.Quote` and `Exps.Unquote`
+
+`quote` handles `Exps.Unquote`
+
+`evaluate` -- `doAp` on `Exps.Term`
 
 Add `Stmts.Return` top level early return
 
 - [maybe] support we require every function to return something at the end first.
 - [maybe] we will let every function that does not return something returns a `null`.
-
-`Exps.Ap`
-`Exps.Ap` -- `formatExp`
-`Exps.Ap` -- `evaluate`
-
-- `actions/doAp`
-
-  - need to generate `PatternVar` from `vars`
-
-`Exps.ApUnfolded`
-`Exps.ApUnfolded` -- `formatExp`
-`Exps.ApUnfolded` -- syntax
-`Exps.ApUnfolded` -- `evaluate`
 
 `Stmt.format`
 
