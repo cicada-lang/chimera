@@ -1,7 +1,6 @@
-import { envExtendFreshPatternVars } from "../env"
-import { evaluate } from "../evaluate"
 import { match } from "../match"
 import type { Mod } from "../mod"
+import { refresh } from "../refresh"
 import type { RewriteRule } from "../rewrite-rule"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
@@ -13,12 +12,12 @@ export function rewriteOnePlace(
 ): Value | undefined {
   switch (rule["@kind"]) {
     case "Case": {
-      const env = envExtendFreshPatternVars(rule.mod, rule.env, rule.vars)
-      const from = evaluate(rule.mod, env, rule.from)
-      const substitution = match(rule.mod, substitutionEmpty(), from, value)
+      const renames = new Map()
+      const from = refresh(mod, renames, rule.from)
+      const substitution = match(mod, substitutionEmpty(), from, value)
 
       if (substitution !== undefined) {
-        const to = evaluate(rule.mod, env, rule.to)
+        const to = refresh(mod, renames, rule.to)
         return substitutionDeepWalk(substitution, to)
       }
 

@@ -1,31 +1,20 @@
-import type { Env } from "../env"
-import type { Exp } from "../exp"
-import type { GoalExp } from "../goal-exp"
-import type { Mod } from "../mod"
+import type { Goal } from "../goal"
+import type { Value } from "../value"
 
 export type Clause = {
-  mod: Mod
-  env: Env
-  vars: Set<string>
   name: string
-  exps: Array<Exp>
-  goals: Array<GoalExp>
+  values: Array<Value>
+  goals: Array<Goal>
 }
 
 export function Clause(
-  mod: Mod,
-  env: Env,
-  vars: Set<string>,
   name: string,
-  exps: Array<Exp>,
-  goals: Array<GoalExp>,
+  values: Array<Value>,
+  goals: Array<Goal>,
 ): Clause {
   return {
-    mod,
-    env,
-    vars,
     name,
-    exps,
+    values,
     goals,
   }
 }

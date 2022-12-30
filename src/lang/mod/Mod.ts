@@ -3,16 +3,12 @@ import { Clause } from "../clause"
 import type { Env } from "../env"
 import { envEmpty, envEntries, envExtend, envLookupValue } from "../env"
 import * as Errors from "../errors"
+import { evaluate, evaluateGoalExp } from "../evaluate"
 import type { Exp } from "../exp"
 import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
-import {
-  collectVarsFromExps,
-  collectVarsFromGoalExps,
-  Relation,
-  Value,
-} from "../value"
+import { Relation, Value } from "../value"
 
 export interface ModOptions {
   url: URL
@@ -106,32 +102,22 @@ export class Mod {
   ): void {
     const relation = this.findRelationOrFail(name)
 
-    const vars = new Set([
-      ...collectVarsFromExps(exps),
-      ...collectVarsFromGoalExps(goals),
-    ])
-
     const clause = Clause(
-      this,
-      this.env,
-      vars,
       clauseName || relation.clauses.length.toString(),
-      exps,
-      goals,
+      exps.map((exp) => evaluate(this, this.env, exp)),
+      goals.map((goal) => evaluateGoalExp(this, this.env, goal)),
     )
 
     /**
 
-       We should not do side-effect on `relation` in `env`,
-       because we need to copy `Mod` safely.
+       NOTE We do side-effect on `relation` in `env`,
+       TODO Can we still copy `Mod` safely -- need for `Fn`'s `Mod`.
 
      **/
 
-    const newRelation = Relation(this, relation.name, [
-      ...relation.clauses,
-      clause,
-    ])
-    this.env = envExtend(this.env, relation.name, newRelation)
+    relation.clauses.push(clause)
+
+    this.env = envExtend(this.env, relation.name, relation)
   }
 
   private findRelation(name: string): Relation | undefined {

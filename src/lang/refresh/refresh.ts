@@ -4,6 +4,14 @@ import * as Values from "../value"
 
 // NOTE Do side-effect on `renames`.
 
+export function refreshValues(
+  mod: Mod,
+  renames: Map<string, Values.PatternVar>,
+  values: Array<Value>,
+): Array<Value> {
+  return values.map((value) => refresh(mod, renames, value))
+}
+
 export function refresh(
   mod: Mod,
   renames: Map<string, Values.PatternVar>,
@@ -49,6 +57,7 @@ export function refresh(
             refresh(mod, renames, property),
           ]),
         ),
+        value.etc === undefined ? undefined : refresh(mod, renames, value.etc),
       )
     }
 

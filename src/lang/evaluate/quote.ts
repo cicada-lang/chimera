@@ -1,8 +1,8 @@
 import { Env, envLookupValue } from "../env"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
+import type { Value } from "../value"
 import * as Values from "../value"
-import { collectVarsFromExps, Value } from "../value"
 
 export function quote(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
@@ -66,8 +66,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Fn(
         mod,
         env,
-        collectVarsFromExps(exp.patterns),
-        exp.patterns,
+        exp.patterns.map((pattern) => quote(mod, env, pattern)),
         exp.stmts,
       )
     }

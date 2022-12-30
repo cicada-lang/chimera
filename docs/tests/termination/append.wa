@@ -11,7 +11,6 @@ find [x, y] limit 6 {
 }
 
 // Unfortunately, replacing try to find the 7th result will diverge,
-// TODO Why?
 
 // find [x, y] limit 7 {
 //   Append(x, y, [1, 2, 3, 4, 5])

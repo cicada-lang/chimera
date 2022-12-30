@@ -1,6 +1,5 @@
 import type { Clause } from "../clause"
 import type { Env } from "../env"
-import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { RewriteRule as EmbeddedRewriteRule } from "../rewrite-rule"
 import type { Stmt } from "../stmt"
@@ -241,16 +240,14 @@ export type Fn = {
   "@kind": "Fn"
   mod: Mod
   env: Env
-  vars: Set<string>
-  patterns: Array<Exp>
+  patterns: Array<Value>
   stmts: Array<Stmt>
 }
 
 export function Fn(
   mod: Mod,
   env: Env,
-  vars: Set<string>,
-  patterns: Array<Exp>,
+  patterns: Array<Value>,
   stmts: Array<Stmt>,
 ): Fn {
   return {
@@ -258,7 +255,6 @@ export function Fn(
     "@kind": "Fn",
     mod,
     env,
-    vars,
     patterns,
     stmts,
   }

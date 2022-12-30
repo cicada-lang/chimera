@@ -1,7 +1,7 @@
-import { Env, envExtendFreshPatternVars } from "../env"
-import { evaluate, evaluateGoalExp } from "../evaluate"
+import type { Env } from "../env"
 import type { Mod } from "../mod"
 import { pursueEqual } from "../pursue"
+import { refreshGoals, refreshValues } from "../refresh"
 import type { Solution } from "../solution"
 import type * as Values from "../value"
 import type { Value } from "../value"
@@ -20,11 +20,11 @@ export function applyRelation(
 
     **/
 
-    if (clause.exps.length !== args.length) return []
+    if (clause.values.length !== args.length) return []
 
-    env = envExtendFreshPatternVars(mod, clause.env, clause.vars)
+    const renames = new Map()
 
-    const values = clause.exps.map((exp) => evaluate(clause.mod, env, exp))
+    const values = refreshValues(mod, renames, clause.values)
     const newSolution = pursueManyEqual(mod, solution, values, args)
 
     /**
@@ -37,9 +37,7 @@ export function applyRelation(
 
     if (newSolution === undefined) return []
 
-    const goals = clause.goals.map((goal) =>
-      evaluateGoalExp(clause.mod, env, goal),
-    )
+    const goals = refreshGoals(mod, renames, clause.goals)
 
     return [
       newSolution.update({

@@ -1,9 +1,5 @@
 # functional
 
-use `refresh` (again) instead of `collectVars`
-
-- wherever term is not evaluated should be viewed as quoted value.
-
 `Exps.Quote` and `Exps.Unquote`
 
 `quote` handles `Exps.Unquote`
