@@ -3,7 +3,7 @@ import { Clause } from "../clause"
 import type { Env } from "../env"
 import { envEmpty, envEntries, envExtend, envLookupValue } from "../env"
 import * as Errors from "../errors"
-import { evaluate, evaluateGoalExp } from "../evaluate"
+import { evaluateGoalExp, quote } from "../evaluate"
 import type { Exp } from "../exp"
 import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
@@ -104,7 +104,7 @@ export class Mod {
 
     const clause = Clause(
       clauseName || relation.clauses.length.toString(),
-      exps.map((exp) => evaluate(this, this.env, exp)),
+      exps.map((exp) => quote(this, this.env, exp)),
       goals.map((goal) => evaluateGoalExp(this, this.env, goal)),
     )
 
