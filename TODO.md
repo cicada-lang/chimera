@@ -4,7 +4,15 @@
 
 `quote` handles `Exps.Unquote`
 
+`evaluate` -- call `quote` on `Exps.Quote`
+
+- report error on `Exps.Unquote`
+
 `evaluate` -- `doAp` on `Exps.Term`
+
+`doAp` -- Use term rewrite rule as function.
+
+- remove `Stmts.Rewrite`
 
 Add `Stmts.Return` top level early return
 
@@ -17,12 +25,11 @@ Add `Stmts.Return` top level early return
 `Exps.Dot` -- `formatExp`
 `Exps.Dot` -- syntax
 `Exps.Dot` -- `evaluate`
+`Exps.Dot` -- `quote` -- report error
 
 - `actions/doDot`
 
 [maybe] `Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
-
-`doAp` -- Use term rewrite rule as function.
 
 `doAp` -- Use relation as predicate.
 
