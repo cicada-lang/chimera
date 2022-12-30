@@ -1,6 +1,6 @@
 import type { Env } from "../env"
 import * as Errors from "../errors"
-import { evaluate } from "../evaluate"
+import { quote } from "../evaluate"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
 import type { GoalExp } from "../goal-exp"
@@ -20,21 +20,21 @@ export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
       return Goals.Apply(
         goal.name,
         target,
-        goal.args.map((arg) => evaluate(mod, env, arg)),
+        goal.args.map((arg) => quote(mod, env, arg)),
       )
     }
 
     case "Equal": {
       return Goals.Equal(
-        evaluate(mod, env, goal.left),
-        evaluate(mod, env, goal.right),
+        quote(mod, env, goal.left),
+        quote(mod, env, goal.right),
       )
     }
 
     case "NotEqual": {
       return Goals.NotEqual(
-        evaluate(mod, env, goal.left),
-        evaluate(mod, env, goal.right),
+        quote(mod, env, goal.left),
+        quote(mod, env, goal.right),
       )
     }
 
