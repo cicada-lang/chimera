@@ -4,3 +4,9 @@ hyperrule weather {
   Wet()
   Umbrella()
 }
+
+// Alternative syntax:
+
+hyperrule weather {
+  [Rain()] => [Wet(), Umbrella()]
+}
