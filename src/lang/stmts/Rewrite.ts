@@ -1,4 +1,4 @@
-import { evaluate, evaluateRewriteRuleExp } from "../evaluate"
+import { evaluateRewriteRuleExp, quote } from "../evaluate"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import { rewrite } from "../rewrite"
@@ -28,7 +28,7 @@ export class Rewrite extends Stmt {
   }
 
   async execute(mod: Mod): Promise<string> {
-    const value = evaluate(mod, mod.env, this.exp)
+    const value = quote(mod, mod.env, this.exp)
     const rules = this.rules.map((rule) =>
       evaluateRewriteRuleExp(mod, mod.env, rule),
     )

@@ -1,7 +1,5 @@
 # functional
 
-`stmts/` use `quote` instead of `evaluate`
-
 `Exps.Quote` and `Exps.Unquote`
 
 `quote` handles `Exps.Unquote`
