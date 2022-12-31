@@ -1,7 +1,5 @@
 # functional
 
-`Exps.Quote` and `Exps.Unquote` -- syntax
-
 `evaluate` -- `doAp` on `Exps.Term`
 
 `doAp` -- Use term rewrite rule as function.

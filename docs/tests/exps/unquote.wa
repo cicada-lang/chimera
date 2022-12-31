@@ -1,0 +1,3 @@
+let h = quote g(y)
+
+compute quote f(x, unquote h)

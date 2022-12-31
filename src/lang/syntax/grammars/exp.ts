@@ -52,5 +52,7 @@ export const operand = {
       { stmts: "stmts" },
       '"}"',
     ],
+    "operand:quote": ['"quote"', { exp: "exp" }],
+    "operand:unquote": ['"unquote"', { exp: "exp" }],
   },
 }

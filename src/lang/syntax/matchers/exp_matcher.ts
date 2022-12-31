@@ -72,5 +72,9 @@ export function operand_matcher(tree: pt.Tree): Exp {
         matchers.stmts_matcher(stmts),
         span,
       ),
+    "operand:quote": ({ exp }, { span }) =>
+      Exps.Quote(matchers.exp_matcher(exp), span),
+    "operand:unquote": ({ exp }, { span }) =>
+      Exps.Unquote(matchers.exp_matcher(exp), span),
   })(tree)
 }
