@@ -1,8 +1,10 @@
+import * as Actions from "../actions"
 import type { Env } from "../env"
 import { envLookupValue } from "../env"
 import * as Errors from "../errors"
 import { quote } from "../evaluate"
 import type { Exp } from "../exp"
+import * as Exps from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
@@ -62,8 +64,9 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Term": {
-      return Values.Term(
-        exp.name,
+      return Actions.doTerm(
+        mod,
+        evaluate(mod, env, Exps.Var(exp.name, exp.span)),
         exp.args.map((arg) => evaluate(mod, env, arg)),
       )
     }

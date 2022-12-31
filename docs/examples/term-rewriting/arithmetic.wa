@@ -5,9 +5,7 @@ rule arithmetic {
   mul(a, add1(b)) => add(a, mul(a, b))
 }
 
-rewrite add(add1(zero()), add1(zero())) {
-  arithmetic
-}
+compute arithmetic(quote add(add1(zero()), add1(zero())))
 
 rewrite mul(add1(zero()), add1(zero())) {
   arithmetic

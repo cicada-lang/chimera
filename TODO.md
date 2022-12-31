@@ -1,10 +1,6 @@
 # functional
 
-`evaluate` -- `doAp` on `Exps.Term`
-
-`doAp` -- Use term rewrite rule as function.
-
-- remove `Stmts.Rewrite`
+remove `Stmts.Rewrite`
 
 Add `Stmts.Return` top level early return
 
