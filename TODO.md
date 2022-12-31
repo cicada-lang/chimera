@@ -1,11 +1,11 @@
 # functional
 
-remove `Stmts.Rewrite`
-
 Add `Stmts.Return` top level early return
 
 - [maybe] support we require every function to return something at the end first.
 - [maybe] we will let every function that does not return something returns a `null`.
+
+`doTerm` -- handle `Fn`
 
 `Stmt.format`
 
@@ -19,7 +19,7 @@ Add `Stmts.Return` top level early return
 
 [maybe] `Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
 
-`doAp` -- Use relation as predicate.
+`doTerm` -- handle `Relation` -- use relation as predicate.
 
 `Stmts.Declare` -- Use predicate as runtime type assertion (active during test only).
 

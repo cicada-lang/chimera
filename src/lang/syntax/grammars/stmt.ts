@@ -101,13 +101,6 @@ export const stmt = {
       { rewrite_rules: "rewrite_rules" },
       '"}"',
     ],
-    "stmt:rewrite": [
-      '"rewrite"',
-      { exp: "exp" },
-      '"{"',
-      { rewrite_rules: "rewrite_rules" },
-      '"}"',
-    ],
     "stmt:let": ['"let"', { name: "name" }, '"="', { exp: "exp" }],
     "stmt:compute": ['"compute"', { exp: "exp" }],
   },
