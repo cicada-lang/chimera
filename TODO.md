@@ -1,8 +1,6 @@
 # functional
 
-`Exps.Quote` and `Exps.Unquote`
-
-`quote` handles `Exps.Unquote`
+`Exps.Quote` and `Exps.Unquote` -- syntax
 
 `evaluate` -- call `quote` on `Exps.Quote`
 

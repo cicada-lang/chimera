@@ -1,4 +1,6 @@
 import { Env, envLookupValue } from "../env"
+import * as Errors from "../errors"
+import { evaluate } from "../evaluate"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
@@ -69,6 +71,16 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
         exp.patterns.map((pattern) => quote(mod, env, pattern)),
         exp.stmts,
       )
+    }
+
+    case "Quote": {
+      throw new Errors.ElaborationError(`[quote] can not handle nested quote`, {
+        span: exp.span,
+      })
+    }
+
+    case "Unquote": {
+      return evaluate(mod, env, exp.exp)
     }
   }
 }

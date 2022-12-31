@@ -63,6 +63,14 @@ export function formatExp(exp: Exp): string {
         return `(${patterns}) => {\n${indent(stmts)}\n}`
       }
     }
+
+    case "Quote": {
+      return `quote ${formatExp(exp.exp)}`
+    }
+
+    case "Unquote": {
+      return `unquote ${formatExp(exp.exp)}`
+    }
   }
 }
 

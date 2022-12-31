@@ -12,6 +12,8 @@ export type Exp =
   | Objekt
   | Term
   | Fn
+  | Quote
+  | Unquote
 
 export type Var = {
   "@type": "Exp"
@@ -171,6 +173,38 @@ export function Fn(patterns: Array<Exp>, stmts: Array<Stmt>, span: Span): Fn {
     "@kind": "Fn",
     patterns,
     stmts,
+    span,
+  }
+}
+
+export type Quote = {
+  "@type": "Exp"
+  "@kind": "Quote"
+  exp: Exp
+  span: Span
+}
+
+export function Quote(exp: Exp, span: Span): Quote {
+  return {
+    "@type": "Exp",
+    "@kind": "Quote",
+    exp,
+    span,
+  }
+}
+
+export type Unquote = {
+  "@type": "Exp"
+  "@kind": "Unquote"
+  exp: Exp
+  span: Span
+}
+
+export function Unquote(exp: Exp, span: Span): Unquote {
+  return {
+    "@type": "Exp",
+    "@kind": "Unquote",
+    exp,
     span,
   }
 }
