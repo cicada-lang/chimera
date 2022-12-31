@@ -1,4 +1,4 @@
-import { Env, envLookupValue } from "../env"
+import type { Env } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import type { Exp } from "../exp"
@@ -9,11 +9,11 @@ import * as Values from "../value"
 export function quote(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
     case "Var": {
-      const local = envLookupValue(env, exp.name)
-      if (local !== undefined) return local
+      // const local = envLookupValue(env, exp.name)
+      // if (local !== undefined) return local
 
-      const value = envLookupValue(mod.env, exp.name)
-      if (value !== undefined) return value
+      // const value = envLookupValue(mod.env, exp.name)
+      // if (value !== undefined) return value
 
       return Values.PatternVar(exp.name)
     }

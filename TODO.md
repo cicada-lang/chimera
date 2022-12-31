@@ -2,10 +2,6 @@
 
 `Exps.Quote` and `Exps.Unquote` -- syntax
 
-`evaluate` -- call `quote` on `Exps.Quote`
-
-- report error on `Exps.Unquote`
-
 `evaluate` -- `doAp` on `Exps.Term`
 
 `doAp` -- Use term rewrite rule as function.
