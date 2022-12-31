@@ -85,9 +85,10 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Unquote": {
-      throw new Errors.ElaborationError(`[evaluate] can not handle unquote`, {
-        span: exp.span,
-      })
+      throw new Errors.ElaborationError(
+        `[evaluate] unquote can only be used inside quote`,
+        { span: exp.span },
+      )
     }
   }
 }

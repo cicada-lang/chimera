@@ -1,0 +1,5 @@
+[quote] can not handle nested quote
+
+ 1 |compute quote f(quote x)
+ 2 |
+

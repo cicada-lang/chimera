@@ -1,0 +1,7 @@
+[evaluate] can not handle unquote
+
+ 1 |let h = quote g(y)
+ 2 |
+ 3 |compute unquote h
+ 4 |
+
