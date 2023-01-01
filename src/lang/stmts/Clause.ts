@@ -25,11 +25,11 @@ export class Clause extends Stmt {
     return [this.relationName]
   }
 
-  async prepare(mod: Mod): Promise<void> {
+  prepareSync(mod: Mod): void {
     mod.ensureRelationOfThisMod(this.relationName)
   }
 
-  async validate(mod: Mod): Promise<void> {
+  validateSync(mod: Mod): void {
     varCollectionValidate(
       varCollectionMerge([
         varCollectionFromExps(this.exps),
@@ -38,7 +38,7 @@ export class Clause extends Stmt {
     )
   }
 
-  async execute(mod: Mod): Promise<void> {
+  executeSync(mod: Mod): void {
     mod.defineClause(this.relationName, this.name, this.exps, this.goals)
   }
 }

@@ -18,7 +18,7 @@ export class AssertFind extends Stmt {
     super()
   }
 
-  async execute(mod: Mod): Promise<void> {
+  executeSync(mod: Mod): void {
     const { goals, variables } = prepareGoals(
       mod,
       this.goals,

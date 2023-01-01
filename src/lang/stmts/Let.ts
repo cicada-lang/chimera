@@ -13,7 +13,7 @@ export class Let extends Stmt {
     return [this.name]
   }
 
-  async execute(mod: Mod): Promise<void> {
+  executeSync(mod: Mod): void {
     const value = evaluate(mod, mod.env, this.exp)
     mod.define(this.name, value)
   }

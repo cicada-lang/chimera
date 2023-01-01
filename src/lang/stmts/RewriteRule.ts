@@ -23,13 +23,13 @@ export class RewriteRule extends Stmt {
     return [this.name]
   }
 
-  async validate(mod: Mod): Promise<void> {
+  validateSync(mod: Mod): void {
     for (const rule of this.rules) {
       varCollectionValidate(varCollectionFromRewriteRuleExp(rule))
     }
   }
 
-  async execute(mod: Mod): Promise<void> {
+  executeSync(mod: Mod): void {
     mod.define(
       this.name,
       Values.RewriteRule(

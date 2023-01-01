@@ -10,7 +10,7 @@ export class Compute extends Stmt {
     super()
   }
 
-  async execute(mod: Mod): Promise<string> {
+  executeSync(mod: Mod): string {
     const value = evaluate(mod, mod.env, this.exp)
     return formatValue(value)
   }

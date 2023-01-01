@@ -21,13 +21,13 @@ export class Trace extends Stmt {
     super()
   }
 
-  async validate(mod: Mod): Promise<void> {
+  validateSync(mod: Mod): void {
     varCollectionValidate(
       varCollectionMerge([...this.goals.map(varCollectionFromGoalExp)]),
     )
   }
 
-  async execute(mod: Mod): Promise<string> {
+  executeSync(mod: Mod): string {
     const { goals, variables } = prepareGoals(mod, this.goals, [])
     const solver = Solver.start(goals)
     let n = 0

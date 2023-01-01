@@ -1,6 +1,8 @@
 # functional
 
-implement `Stmt.executeSync` & `Stmt.prepareSync` & `Stmt.validateSync` as much as possible
+`Test` `Private` -- implement \*Sync method
+
+`ImportAll` `Import` -- implement \*Sync method for error report
 
 `Mod.executeStmtsSync` -- without `initialize` (must already `initialized`)
 
