@@ -40,7 +40,7 @@ export class Import extends Stmt {
       if (importedMod.privateNames.has(name)) {
         throw new Errors.LangError(
           [
-            `[Import.execute]`,
+            `[Import.prepare]`,
             `  can not import provide name: ${name}`,
             `  imported path: ${this.path}`,
           ].join("\n"),
@@ -53,7 +53,7 @@ export class Import extends Stmt {
       } else {
         throw new Errors.LangError(
           [
-            `[Import.execute]`,
+            `[Import.prepare]`,
             `  undefined name: ${name}`,
             `  imported path: ${this.path}`,
           ].join("\n"),
@@ -75,7 +75,7 @@ export class Import extends Stmt {
     } catch (error) {
       if (error instanceof Error) {
         error.message =
-          `[Import.Import] fail to import ${this.path}\n` + error.message
+          `[Import.import] fail to import ${this.path}\n` + error.message
       }
 
       throw error
