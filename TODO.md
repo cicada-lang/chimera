@@ -1,8 +1,10 @@
 # functional
 
-`Test` `Private` -- implement \*Sync method
+`boundNamesSync`
 
-`ImportAll` `Import` -- implement \*Sync method for error report
+`Private` -- implement `*Sync` method
+
+`ImportAll` `Import` -- implement `*Sync` method for error report
 
 `Mod.executeStmtsSync` -- without `initialize` (must already `initialized`)
 

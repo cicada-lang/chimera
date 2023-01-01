@@ -37,4 +37,33 @@ export class Test extends Stmt {
       }
     }
   }
+
+  executeSync(mod: Mod): void {
+    for (const stmt of this.stmts) {
+      const assertionErrors = []
+      try {
+        stmt.executeSync(mod)
+      } catch (error) {
+        if (error instanceof Errors.AssertionError) {
+          assertionErrors.push(error)
+        } else {
+          throw error
+        }
+      }
+
+      if (assertionErrors.length > 0) {
+        if (this.description) {
+          throw new Errors.TestingError(
+            `[Test.executeSync] fail: ${JSON.stringify(this.description)}`,
+            assertionErrors,
+          )
+        } else {
+          throw new Errors.TestingError(
+            `[Test.executeSync] fail`,
+            assertionErrors,
+          )
+        }
+      }
+    }
+  }
 }
