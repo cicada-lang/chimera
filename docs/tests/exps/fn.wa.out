@@ -1,4 +1,7 @@
-() => {}
+() => {
+  return 1
+}
 (x) => {
   TODO
+  return y
 }
