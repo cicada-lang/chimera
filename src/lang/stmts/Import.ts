@@ -24,7 +24,7 @@ export class Import extends Stmt {
     super()
   }
 
-  async boundNames(): Promise<Array<string>> {
+  boundNamesSync(): Array<string> {
     return this.bindings.map(({ name, alias }) => alias || name)
   }
 

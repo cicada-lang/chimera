@@ -1,7 +1,5 @@
 # functional
 
-`boundNamesSync`
-
 `Private` -- implement `*Sync` method
 
 `ImportAll` `Import` -- implement `*Sync` method for error report

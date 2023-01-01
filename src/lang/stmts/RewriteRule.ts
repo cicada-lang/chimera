@@ -19,7 +19,7 @@ export class RewriteRule extends Stmt {
     super()
   }
 
-  async boundNames(): Promise<Array<string>> {
+  boundNamesSync(): Array<string> {
     return [this.name]
   }
 

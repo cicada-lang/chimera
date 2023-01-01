@@ -21,7 +21,7 @@ export class Clause extends Stmt {
     super()
   }
 
-  async boundNames(): Promise<Array<string>> {
+  boundNamesSync(): Array<string> {
     return [this.relationName]
   }
 

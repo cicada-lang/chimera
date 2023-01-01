@@ -27,8 +27,12 @@ export abstract class Stmt {
 
   **/
 
-  async boundNames(mod: Mod): Promise<Array<string>> {
+  boundNamesSync(mod: Mod): Array<string> {
     return []
+  }
+
+  async boundNames(mod: Mod): Promise<Array<string>> {
+    return this.boundNamesSync(mod)
   }
 
   format(): string {
