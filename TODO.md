@@ -1,7 +1,5 @@
 # functional
 
-`Mod.executeStmtsSync` -- without `initialize` (must already `initialized`)
-
 `doTerm` -- handle `Fn`
 
 `Stmt.format`
