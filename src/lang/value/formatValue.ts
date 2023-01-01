@@ -1,4 +1,5 @@
 import { indent } from "../../utils/indent"
+import { formatExp } from "../exp"
 import type { Value } from "../value"
 
 export function formatValue(value: Value): string {
@@ -77,12 +78,10 @@ export function formatValue(value: Value): string {
       **/
 
       const patterns = value.patterns.map(formatValue).join(", ")
-      const stmts = value.stmts.map((stmt) => stmt.format()).join("\n")
-      if (stmts.length === 0) {
-        return `(${patterns}) => {}`
-      } else {
-        return `(${patterns}) => {\n${indent(stmts)}\n}`
-      }
+      const stmts = value.stmts.map((stmt) => stmt.format())
+      const ret = `return ${formatExp(value.ret)}`
+      const body = [...stmts, ret].join("\n")
+      return `(${patterns}) => {\n${indent(body)}\n}`
     }
   }
 }

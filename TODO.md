@@ -1,10 +1,5 @@
 # functional
 
-Add `Stmts.Return` top level early return
-
-- [maybe] support we require every function to return something at the end first.
-- [maybe] we will let every function that does not return something returns a `null`.
-
 `doTerm` -- handle `Fn`
 
 `Stmt.format`
@@ -33,8 +28,6 @@ Add `Stmts.Return` top level early return
 Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
 
 - `assert` and `assert not` can also be used for any expression
-
-- [maybe] use something like `begin` to turn a list of stmts to an expression.
 
 # hypergraph rewriting
 

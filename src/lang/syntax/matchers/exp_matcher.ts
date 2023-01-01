@@ -66,10 +66,11 @@ export function operand_matcher(tree: pt.Tree): Exp {
     "operand:objekt_empty": ({}, { span }) => Exps.Objekt({}, span),
     "operand:term": ({ kind, args }, { span }) =>
       Exps.Term(pt.str(kind), matchers.args_matcher(args), span),
-    "operand:fn": ({ patterns, stmts }, { span }) =>
+    "operand:fn": ({ patterns, stmts, ret }, { span }) =>
       Exps.Fn(
         matchers.args_matcher(patterns),
         matchers.stmts_matcher(stmts),
+        matchers.exp_matcher(ret),
         span,
       ),
     "operand:quote": ({ exp }, { span }) =>

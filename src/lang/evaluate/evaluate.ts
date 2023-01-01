@@ -77,6 +77,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
         env,
         exp.patterns.map((pattern) => quote(mod, env, pattern)),
         exp.stmts,
+        exp.ret,
       )
     }
 

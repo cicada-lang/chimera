@@ -1,5 +1,8 @@
-compute () => {}
+compute () => {
+  return 1
+}
 
 compute (x) => {
   let y = x
+  return y
 }
