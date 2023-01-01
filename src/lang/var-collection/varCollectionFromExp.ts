@@ -49,7 +49,7 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
     }
 
     case "Unquote": {
-      return varCollectionFromExp(exp.exp)
+      return createVarCollection()
     }
   }
 }

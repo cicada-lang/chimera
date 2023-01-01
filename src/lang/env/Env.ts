@@ -11,6 +11,10 @@ export function envExtend(env: Env, name: string, value: Value): Env {
   return env.set(name, value)
 }
 
+export function envMerge(env: Env, env2: Env): Env {
+  return env.concat(env2)
+}
+
 export function envLookupValue(env: Env, name: string): Value | undefined {
   return env.get(name)
 }

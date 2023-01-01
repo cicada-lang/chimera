@@ -1,6 +1,8 @@
 # functional
 
-`doTerm` -- handle `Fn`
+Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
+
+- `assert` and `assert not` can also be used for any expression
 
 `Stmt.format`
 
@@ -20,14 +22,9 @@
 
 - Using `declare` as keyword.
 
-`Exps.Compute` -- support using `compute` in pattern -- like in inference rules and term rewrite rules
+[maybe] `compute` should not print to output
 
-- [maybe] `compute` should not print to output,
-  we should implement `print` and `println` as a primitive function.
-
-Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
-
-- `assert` and `assert not` can also be used for any expression
+- [maybe] we should implement `print` and `println` as a primitive function.
 
 # hypergraph rewriting
 

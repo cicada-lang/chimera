@@ -23,8 +23,8 @@ export interface ModOptions {
 **/
 
 export class Mod {
-  private initialized = false
-  private variableCount = 0
+  initialized = false
+  variableCount = 0
   env: Env = envEmpty()
   privateNames: Set<string> = new Set()
   outputs: Map<number, string> = new Map()
@@ -32,6 +32,18 @@ export class Mod {
   imported: Array<URL> = []
 
   constructor(public options: ModOptions) {}
+
+  copy(): Mod {
+    const mod = new Mod(this.options)
+    mod.initialized = this.initialized
+    mod.variableCount = this.variableCount
+    mod.env = this.env
+    mod.privateNames = new Set(this.privateNames)
+    mod.outputs = new Map(this.outputs)
+    mod.stmts = [...this.stmts]
+    mod.imported = [...this.imported]
+    return mod
+  }
 
   async initialize(): Promise<void> {
     if (this.initialized) return

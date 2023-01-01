@@ -52,3 +52,9 @@ export function substitutionPairs(
     .toArray()
     .map(([name, value]) => [Values.PatternVar(name), value])
 }
+
+export function substitutionEntries(
+  substitution: Substitution,
+): Array<[string, Value]> {
+  return substitution.toArray()
+}

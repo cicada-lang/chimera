@@ -6,3 +6,39 @@ compute (x) => {
   let y = x
   return y
 }
+
+// id
+
+let id = (x) => {
+  let y = x
+  return y
+}
+
+compute id(1)
+compute id(id(1))
+compute id(id(id(1)))
+
+// zero arity
+
+let one = () => {
+  return 1
+}
+
+compute one()
+
+// relation in function
+
+let greet = (x) => {
+  Hi("hi")
+
+  // The expressions in `find` are implicitly `quote`d.
+
+  find q {
+    Hi(p)
+    q = [p, unquote x]
+  }
+
+  return "ok"
+}
+
+compute greet("xieyuheng")
