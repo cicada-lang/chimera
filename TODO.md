@@ -1,7 +1,5 @@
 # functional
 
-`ImportAll` `Import` -- implement `*Sync` method for error report
-
 `Mod.executeStmtsSync` -- without `initialize` (must already `initialized`)
 
 `doTerm` -- handle `Fn`

@@ -20,6 +20,18 @@ export class ImportAll extends Stmt {
     return boundNames
   }
 
+  boundNamesSync(mod: Mod): Array<string> {
+    throw new Errors.LangError(
+      `[ImportAll.boundNamesSync] can not use import synchronously (for example, in function body)`,
+    )
+  }
+
+  prepareSync(mod: Mod): void {
+    throw new Errors.LangError(
+      `[ImportAll.prepareSync] can not use import synchronously (for example, in function body)`,
+    )
+  }
+
   async prepare(mod: Mod): Promise<void> {
     const importedMod = await this.import(mod)
     for (const [name, value] of importedMod.entries()) {

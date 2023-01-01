@@ -28,6 +28,12 @@ export class Import extends Stmt {
     return this.bindings.map(({ name, alias }) => alias || name)
   }
 
+  prepareSync(mod: Mod): void {
+    throw new Errors.LangError(
+      `[Import.prepareSync] can not use import synchronously (for example, in function body)`,
+    )
+  }
+
   async prepare(mod: Mod): Promise<void> {
     const importedMod = await this.import(mod)
     for (const { name, alias } of this.bindings) {
