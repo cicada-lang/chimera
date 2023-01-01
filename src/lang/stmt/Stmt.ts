@@ -1,27 +1,29 @@
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 
-export type ExecuteOptions = {
-  testing?: boolean
-}
-
 export abstract class Stmt {
   abstract span?: Span
 
-  async prepare(mod: Mod): Promise<void> {
-    return
-  }
+  prepareSync?: (mod: Mod) => Promise<void>
+  validateSync?: (mod: Mod) => Promise<void>
+  executeSync?: (mod: Mod) => Promise<string | void>
 
-  format(): string {
-    return "TODO"
+  async prepare(mod: Mod): Promise<void> {
+    if (this.prepareSync !== undefined) {
+      return this.prepareSync(mod)
+    }
   }
 
   async validate(mod: Mod): Promise<void> {
-    return
+    if (this.validateSync !== undefined) {
+      return this.validateSync(mod)
+    }
   }
 
-  async execute(mod: Mod, options?: ExecuteOptions): Promise<string | void> {
-    return
+  async execute(mod: Mod): Promise<string | void> {
+    if (this.executeSync !== undefined) {
+      return this.executeSync(mod)
+    }
   }
 
   /**
@@ -33,5 +35,9 @@ export abstract class Stmt {
 
   async boundNames(mod: Mod): Promise<Array<string>> {
     return []
+  }
+
+  format(): string {
+    return "TODO"
   }
 }

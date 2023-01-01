@@ -1,5 +1,9 @@
 # functional
 
+implement `Stmt.executeSync` & `Stmt.prepareSync` & `Stmt.validateSync` as much as possible
+
+`Mod.executeStmtsSync` -- without `initialize` (must already `initialized`)
+
 `doTerm` -- handle `Fn`
 
 `Stmt.format`
