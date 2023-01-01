@@ -4,26 +4,20 @@ import type { Span } from "../span"
 export abstract class Stmt {
   abstract span?: Span
 
-  prepareSync?: (mod: Mod) => Promise<void>
-  validateSync?: (mod: Mod) => Promise<void>
-  executeSync?: (mod: Mod) => Promise<string | void>
+  prepareSync(mod: Mod): void {}
+  validateSync(mod: Mod): void {}
+  executeSync(mod: Mod): string | void {}
 
   async prepare(mod: Mod): Promise<void> {
-    if (this.prepareSync !== undefined) {
-      return this.prepareSync(mod)
-    }
+    return this.prepareSync(mod)
   }
 
   async validate(mod: Mod): Promise<void> {
-    if (this.validateSync !== undefined) {
-      return this.validateSync(mod)
-    }
+    return this.validateSync(mod)
   }
 
   async execute(mod: Mod): Promise<string | void> {
-    if (this.executeSync !== undefined) {
-      return this.executeSync(mod)
-    }
+    return this.executeSync(mod)
   }
 
   /**
