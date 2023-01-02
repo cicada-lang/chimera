@@ -1,3 +1,21 @@
+# term rewriting
+
+[read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
+
+[read] to play with the term rewriting system.
+
+encode collatz rewrite in term rewrite
+
+use term rewriting to implement lambda calculus -- with explicit substitution
+
+`trace` should be represented by term and json
+
+support guard
+
+[question] what is the wired syntax of `-->` in prolog? DCG?
+
+- about list-processing?
+
 # hypergraph rewriting
 
 keyword syntax `hyperrule`
@@ -5,6 +23,10 @@ keyword syntax `hyperrule`
 - always consume input, repeat if needed
 
 `doTerm` -- support apply hyperrule as function
+
+encode collatz rewrite in hypergraph rewrite (to get a geometry)
+
+support guard
 
 use hypergraph rewriting to implement inet
 
@@ -60,18 +82,6 @@ use hypergraph rewriting to implement finite-domain constraint programming
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
-
-# term rewriting
-
-do we need guard?
-
-use term rewriting to implement lambda calculus -- with explicit substitution
-
-[question] what is the wired syntax of `-->` in prolog? DCG?
-
-- about list-processing?
-
-[read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
 # relation as predicate
 
