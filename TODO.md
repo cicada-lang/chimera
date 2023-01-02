@@ -6,18 +6,6 @@ Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over t
 
 - `assert` and `assert not` can also be used for any expression
 
-# relation as predicate
-
-`doTerm` -- handle `Relation` -- use relation as predicate.
-
-- we need `if else` to make this useful.
-
-# declare and runtime type assertion
-
-`Stmts.Declare` -- Use predicate as runtime type assertion (active during test only).
-
-- Using `declare` as keyword.
-
 # hypergraph rewriting
 
 [maybe] keyword syntax `hyperrule`
@@ -107,6 +95,18 @@ do we need guard?
 - about list-processing?
 
 [read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
+
+# relation as predicate
+
+`doTerm` -- handle `Relation` -- use relation as predicate.
+
+- we need `if else` to make this useful.
+
+# declare and runtime type assertion
+
+`Stmts.Declare` -- Use predicate as runtime type assertion (active during test only).
+
+- Using `declare` as keyword.
 
 # compiler
 
