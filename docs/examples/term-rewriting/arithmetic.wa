@@ -5,18 +5,18 @@ rule arithmetic {
   mul(a, add1(b)) => add(a, mul(a, b))
 }
 
-compute arithmetic(
+eval arithmetic(
   quote add(add1(zero()), add1(zero()))
 )
 
-compute arithmetic(
+eval arithmetic(
   quote mul(add1(zero()), add1(zero()))
 )
 
-compute arithmetic(
+eval arithmetic(
   quote add(add1(add1(zero())), add1(add1(zero())))
 )
 
-compute arithmetic(
+eval arithmetic(
   quote mul(add1(add1(zero())), add1(add1(zero())))
 )

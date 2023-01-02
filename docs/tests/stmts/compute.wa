@@ -1,4 +1,4 @@
-compute 1
-compute "a"
-compute ["a", "b", "c"]
-compute { a: 1, b: 2, c: 3 }
+eval 1
+eval "a"
+eval ["a", "b", "c"]
+eval { a: 1, b: 2, c: 3 }

@@ -107,8 +107,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       ),
     "stmt:let": ({ name, exp }, { span }) =>
       new Stmts.Let(pt.str(name), matchers.exp_matcher(exp), span),
-    "stmt:compute": ({ exp }, { span }) =>
-      new Stmts.Compute(matchers.exp_matcher(exp), span),
+    "stmt:eval": ({ exp }, { span }) =>
+      new Stmts.Eval(matchers.exp_matcher(exp), span),
   })(tree)
 }
 

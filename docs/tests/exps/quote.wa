@@ -1,1 +1,1 @@
-compute quote f(x)
+eval quote f(x)

@@ -1,8 +1,8 @@
-compute () => {
+eval () => {
   return 1
 }
 
-compute (x) => {
+eval (x) => {
   let y = x
   return y
 }
@@ -14,9 +14,9 @@ let id = (x) => {
   return y
 }
 
-compute id(1)
-compute id(id(1))
-compute id(id(id(1)))
+eval id(1)
+eval id(id(1))
+eval id(id(id(1)))
 
 // zero arity
 
@@ -24,7 +24,7 @@ let one = () => {
   return 1
 }
 
-compute one()
+eval one()
 
 // relation in function
 
@@ -41,4 +41,4 @@ let greet = (x) => {
   return "ok"
 }
 
-compute greet("xieyuheng")
+eval greet("xieyuheng")

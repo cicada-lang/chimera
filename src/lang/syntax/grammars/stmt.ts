@@ -102,7 +102,7 @@ export const stmt = {
       '"}"',
     ],
     "stmt:let": ['"let"', { name: "name" }, '"="', { exp: "exp" }],
-    "stmt:compute": ['"compute"', { exp: "exp" }],
+    "stmt:eval": ['"compute"', { exp: "exp" }],
   },
 }
 
