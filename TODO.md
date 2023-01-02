@@ -4,38 +4,14 @@
 
 Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
 
-- `assert` and `assert not` can also be used for any expression
-
 # hypergraph rewriting
 
-[maybe] keyword syntax `hyperrule`
+keyword syntax `hyperrule`
 
-- There are many ways to apply a rule
+- always consume input, repeat if needed
 
-  - consume input or not:
+`doTerm` -- support apply hyperrule as function
 
-    - consume input -- simplification rule in CHR
-    - not consume input -- propagation rule in CHR
-
-    Why not just express this by repeating the not consumed goal?
-
-    Maybe all we need is a syntax to repeating a goal.
-
-    - If we do so, a goal can not be used reversely,
-      unless "repeating" means repeating on the other side of the line.
-
-    - Or maybe we should make a `hyperrule` contains three parts.
-
-  - from left to right or from right to left:
-
-    - left to right: top-down logic programming
-    - right to left: bottom-up datalog generation
-
-[maybe] `compute` support apply hyperrule as function
-
-implement hypergraph rewriting directly -- based on terms
-
-use hypergraph rewriting to implement lambda calculus -- with explicit substitution
 use hypergraph rewriting to implement inet
 
 # hypergraph presentation
@@ -44,8 +20,7 @@ like higher inductive types
 
 # finite-domain constraint programming
 
-A constraint itself encodes how to rewrite the set of constraints
-(a little like the type of `pursue`).
+use hypergraph rewriting to implement finite-domain constraint programming
 
 - We need to rewrite the set of constraints,
   because of a new constraint (or new constraints)
@@ -89,6 +64,8 @@ A constraint itself encodes how to rewrite the set of constraints
 # term rewriting
 
 do we need guard?
+
+use term rewriting to implement lambda calculus -- with explicit substitution
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
