@@ -1,5 +1,5 @@
 [quote] can not handle nested quote
 
- 1 |compute quote f(quote x)
+ 1 |eval quote f(quote x)
  2 |
 

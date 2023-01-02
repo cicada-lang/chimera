@@ -1,10 +1,10 @@
 # functional
 
+`Stmt.format`
+
 Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
 
 - `assert` and `assert not` can also be used for any expression
-
-`Stmt.format`
 
 `Exps.Dot`
 `Exps.Dot` -- `formatExp`
@@ -14,17 +14,15 @@ Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over t
 
 - `actions/doDot`
 
-[maybe] `Stmt.execute` -- returns `Promise<Value | void>` instead of `Promise<string | void>`
+# relation as predicate
 
 `doTerm` -- handle `Relation` -- use relation as predicate.
+
+# declare and runtime type assertion
 
 `Stmts.Declare` -- Use predicate as runtime type assertion (active during test only).
 
 - Using `declare` as keyword.
-
-[maybe] `compute` should not print to output
-
-- [maybe] we should implement `print` and `println` as a primitive function.
 
 # hypergraph rewriting
 
