@@ -6,17 +6,11 @@ Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over t
 
 - `assert` and `assert not` can also be used for any expression
 
-`Exps.Dot`
-`Exps.Dot` -- `formatExp`
-`Exps.Dot` -- syntax
-`Exps.Dot` -- `evaluate`
-`Exps.Dot` -- `quote` -- report error
-
-- `actions/doDot`
-
 # relation as predicate
 
 `doTerm` -- handle `Relation` -- use relation as predicate.
+
+- we need `if else` to make this useful.
 
 # declare and runtime type assertion
 
