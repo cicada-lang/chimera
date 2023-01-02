@@ -99,12 +99,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
         span,
       ),
-    "stmt:rewrite_rule": ({ name, rewrite_rules }, { span }) =>
-      new Stmts.RewriteRule(
-        pt.str(name),
-        matchers.rewrite_rules_matcher(rewrite_rules),
-        span,
-      ),
+    "stmt:rule": ({ name, rules }, { span }) =>
+      new Stmts.Rule(pt.str(name), matchers.rules_matcher(rules), span),
     "stmt:let": ({ name, exp }, { span }) =>
       new Stmts.Let(pt.str(name), matchers.exp_matcher(exp), span),
     "stmt:eval": ({ exp }, { span }) =>

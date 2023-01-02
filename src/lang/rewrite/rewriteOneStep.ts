@@ -1,12 +1,12 @@
 import type { Mod } from "../mod"
 import { rewriteOnePlace } from "../rewrite"
-import type { RewriteRule } from "../rewrite-rule"
+import type { Rule } from "../rule"
 import type { Value } from "../value"
 import * as Values from "../value"
 
 export function rewriteOneStep(
   mod: Mod,
-  rule: RewriteRule,
+  rule: Rule,
   value: Value,
 ): Value | undefined {
   const result = rewriteOnePlace(mod, rule, value)
@@ -80,7 +80,7 @@ export function rewriteOneStep(
 
     case "Relation":
     case "TypeConstraint":
-    case "RewriteRule": {
+    case "Rule": {
       return undefined
     }
   }

@@ -70,7 +70,7 @@ export function refresh(
 
     case "Relation":
     case "TypeConstraint":
-    case "RewriteRule":
+    case "Rule":
     case "Fn": {
       return value
     }

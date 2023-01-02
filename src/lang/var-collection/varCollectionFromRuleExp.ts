@@ -1,10 +1,8 @@
-import type { RewriteRuleExp } from "../rewrite-rule-exp"
+import type { RuleExp } from "../rule-exp"
 import type { VarCollection } from "../var-collection"
 import { varCollectionFromExp, varCollectionMerge } from "../var-collection"
 
-export function varCollectionFromRewriteRuleExp(
-  rule: RewriteRuleExp,
-): VarCollection {
+export function varCollectionFromRuleExp(rule: RuleExp): VarCollection {
   switch (rule["@kind"]) {
     case "Case": {
       return varCollectionMerge([
@@ -14,12 +12,12 @@ export function varCollectionFromRewriteRuleExp(
     }
 
     case "Call": {
-      // NOTE Should not collect the `exp` of `RewriteRuleExp.Call`.
+      // NOTE Should not collect the `exp` of `RuleExp.Call`.
       return varCollectionMerge([])
     }
 
     case "List": {
-      return varCollectionMerge(rule.rules.map(varCollectionFromRewriteRuleExp))
+      return varCollectionMerge(rule.rules.map(varCollectionFromRuleExp))
     }
   }
 }

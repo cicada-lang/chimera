@@ -2,7 +2,7 @@ import type { Clause } from "../clause"
 import type { Env } from "../env"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
-import type { RewriteRule as EmbeddedRewriteRule } from "../rewrite-rule"
+import type { Rule as EmbeddedRule } from "../rule"
 import type { Stmt } from "../stmt"
 
 export type Value =
@@ -18,7 +18,7 @@ export type Value =
   | Term
   | Relation
   | TypeConstraint
-  | RewriteRule
+  | Rule
   | Fn
 
 export type PatternVar = {
@@ -204,20 +204,17 @@ export function TypeConstraint(
   }
 }
 
-export type RewriteRule = {
+export type Rule = {
   "@type": "Value"
-  "@kind": "RewriteRule"
+  "@kind": "Rule"
   name: string
-  rule: EmbeddedRewriteRule
+  rule: EmbeddedRule
 }
 
-export function RewriteRule(
-  name: string,
-  rule: EmbeddedRewriteRule,
-): RewriteRule {
+export function Rule(name: string, rule: EmbeddedRule): Rule {
   return {
     "@type": "Value",
-    "@kind": "RewriteRule",
+    "@kind": "Rule",
     name,
     rule,
   }

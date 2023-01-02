@@ -1,9 +1,3 @@
-# functional
-
-`Stmt.format`
-
-Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
-
 # hypergraph rewriting
 
 keyword syntax `hyperrule`
@@ -13,6 +7,12 @@ keyword syntax `hyperrule`
 `doTerm` -- support apply hyperrule as function
 
 use hypergraph rewriting to implement inet
+
+# functional
+
+`Stmt.format`
+
+Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
 
 # hypergraph presentation
 

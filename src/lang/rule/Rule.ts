@@ -1,9 +1,9 @@
 import type { Value } from "../value"
 
-export type RewriteRule = Case | List
+export type Rule = Case | List
 
 export type Case = {
-  "@type": "RewriteRule"
+  "@type": "Rule"
   "@kind": "Case"
   from: Value
   to: Value
@@ -11,7 +11,7 @@ export type Case = {
 
 export function Case(from: Value, to: Value): Case {
   return {
-    "@type": "RewriteRule",
+    "@type": "Rule",
     "@kind": "Case",
     from,
     to,
@@ -19,14 +19,14 @@ export function Case(from: Value, to: Value): Case {
 }
 
 export type List = {
-  "@type": "RewriteRule"
+  "@type": "Rule"
   "@kind": "List"
-  rules: Array<RewriteRule>
+  rules: Array<Rule>
 }
 
-export function List(rules: Array<RewriteRule>): List {
+export function List(rules: Array<Rule>): List {
   return {
-    "@type": "RewriteRule",
+    "@type": "Rule",
     "@kind": "List",
     rules,
   }

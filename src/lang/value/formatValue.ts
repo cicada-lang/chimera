@@ -67,7 +67,7 @@ export function formatValue(value: Value): string {
       return value.name
     }
 
-    case "RewriteRule": {
+    case "Rule": {
       return value.name
     }
 

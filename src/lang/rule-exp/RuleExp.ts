@@ -1,10 +1,10 @@
 import type { Exp } from "../exp"
 import type { Span } from "../span"
 
-export type RewriteRuleExp = Case | Call | List
+export type RuleExp = Case | Call | List
 
 export type Case = {
-  "@type": "RewriteRuleExp"
+  "@type": "RuleExp"
   "@kind": "Case"
   from: Exp
   to: Exp
@@ -13,7 +13,7 @@ export type Case = {
 
 export function Case(from: Exp, to: Exp, span: Span): Case {
   return {
-    "@type": "RewriteRuleExp",
+    "@type": "RuleExp",
     "@kind": "Case",
     from,
     to,
@@ -22,7 +22,7 @@ export function Case(from: Exp, to: Exp, span: Span): Case {
 }
 
 export type Call = {
-  "@type": "RewriteRuleExp"
+  "@type": "RuleExp"
   "@kind": "Call"
   exp: Exp
   span: Span
@@ -30,7 +30,7 @@ export type Call = {
 
 export function Call(exp: Exp, span: Span): Call {
   return {
-    "@type": "RewriteRuleExp",
+    "@type": "RuleExp",
     "@kind": "Call",
     exp,
     span,
@@ -38,15 +38,15 @@ export function Call(exp: Exp, span: Span): Call {
 }
 
 export type List = {
-  "@type": "RewriteRuleExp"
+  "@type": "RuleExp"
   "@kind": "List"
-  rules: Array<RewriteRuleExp>
+  rules: Array<RuleExp>
   span: Span
 }
 
-export function List(rules: Array<RewriteRuleExp>, span: Span): List {
+export function List(rules: Array<RuleExp>, span: Span): List {
   return {
-    "@type": "RewriteRuleExp",
+    "@type": "RuleExp",
     "@kind": "List",
     rules,
     span,

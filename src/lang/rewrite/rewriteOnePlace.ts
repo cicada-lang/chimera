@@ -1,13 +1,13 @@
 import { match } from "../match"
 import type { Mod } from "../mod"
 import { refresh } from "../refresh"
-import type { RewriteRule } from "../rewrite-rule"
+import type { Rule } from "../rule"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
 
 export function rewriteOnePlace(
   mod: Mod,
-  rule: RewriteRule,
+  rule: Rule,
   value: Value,
 ): Value | undefined {
   switch (rule["@kind"]) {

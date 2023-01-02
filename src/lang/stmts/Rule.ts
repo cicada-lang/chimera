@@ -1,19 +1,19 @@
-import { evaluateRewriteRuleExp } from "../evaluate"
+import { evaluateRuleExp } from "../evaluate"
 import type { Mod } from "../mod"
-import * as RewriteRules from "../rewrite-rule"
-import type { RewriteRuleExp } from "../rewrite-rule-exp"
+import * as Rules from "../rule"
+import type { RuleExp } from "../rule-exp"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
 import * as Values from "../value"
 import {
-  varCollectionFromRewriteRuleExp,
+  varCollectionFromRuleExp,
   varCollectionValidate,
 } from "../var-collection"
 
-export class RewriteRule extends Stmt {
+export class Rule extends Stmt {
   constructor(
     public name: string,
-    public rules: Array<RewriteRuleExp>,
+    public rules: Array<RuleExp>,
     public span?: Span,
   ) {
     super()
@@ -25,17 +25,17 @@ export class RewriteRule extends Stmt {
 
   validateSync(mod: Mod): void {
     for (const rule of this.rules) {
-      varCollectionValidate(varCollectionFromRewriteRuleExp(rule))
+      varCollectionValidate(varCollectionFromRuleExp(rule))
     }
   }
 
   executeSync(mod: Mod): void {
     mod.define(
       this.name,
-      Values.RewriteRule(
+      Values.Rule(
         this.name,
-        RewriteRules.List(
-          this.rules.map((rule) => evaluateRewriteRuleExp(mod, mod.env, rule)),
+        Rules.List(
+          this.rules.map((rule) => evaluateRuleExp(mod, mod.env, rule)),
         ),
       ),
     )

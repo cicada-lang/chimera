@@ -58,7 +58,7 @@ export function substitutionContainsPatternVar(
       return false
     }
 
-    case "RewriteRule": {
+    case "Rule": {
       return false
     }
 

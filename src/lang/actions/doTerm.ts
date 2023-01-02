@@ -13,11 +13,11 @@ import type { Value } from "../value"
 import { formatValue } from "../value"
 
 export function doTerm(mod: Mod, target: Value, args: Array<Value>): Value {
-  if (target["@kind"] === "RewriteRule") {
+  if (target["@kind"] === "Rule") {
     if (args.length !== 1) {
       throw new Errors.LangError(
         [
-          `[doTerm] the number of arguments of RewriteRule must be 1`,
+          `[doTerm] the number of arguments of Rule must be 1`,
           `  args.length: ${args.length}`,
         ].join("\n"),
       )
