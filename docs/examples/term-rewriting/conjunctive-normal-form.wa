@@ -1,9 +1,9 @@
 rule conjunctiveNormalForm {
-  not(not(a)) => a
-  not(and(a, b)) => or(not(a), not(b))
-  not(or(a, b)) => and(not(a), not(b))
-  or(and(a, b), c) => and(or(a, c), or(b, c))
-  or(a, and(b, c)) => and(or(a, b), or(a, c))
+  not(not(x)) => x
+  not(and(x, y)) => or(not(x), not(y))
+  not(or(x, y)) => and(not(x), not(y))
+  or(and(x, y), z) => and(or(x, z), or(y, z))
+  or(x, and(y, z)) => and(or(x, y), or(x, z))
 }
 
 eval conjunctiveNormalForm(

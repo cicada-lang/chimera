@@ -1,10 +1,10 @@
+import { equal } from "../match"
 import type { Mod } from "../mod"
 import {
   Substitution,
   substitutionExtend,
-  substitutionWalk,
+  substitutionLookup,
 } from "../substitution"
-import { occur } from "../unify"
 import type { Value } from "../value"
 import * as Values from "../value"
 
@@ -34,9 +34,6 @@ export function match(
   left: Value,
   right: Value,
 ): Substitution | undefined {
-  left = substitutionWalk(substitution, left)
-  right = substitutionWalk(substitution, right)
-
   if (
     left["@kind"] === "PatternVar" &&
     right["@kind"] === "PatternVar" &&
@@ -46,9 +43,16 @@ export function match(
   }
 
   if (left["@kind"] === "PatternVar") {
-    if (occur(substitution, left.name, right)) return undefined
+    const found = substitutionLookup(substitution, left.name)
+    if (found === undefined) {
+      return substitutionExtend(substitution, left.name, right)
+    }
 
-    return substitutionExtend(substitution, left.name, right)
+    if (!equal(found, right)) {
+      return undefined
+    }
+
+    return substitution
   }
 
   if (left["@kind"] === "Null" && right["@kind"] === "Null") {
@@ -144,15 +148,6 @@ export function match(
   }
 
   return undefined
-}
-
-function objektAddEtc(
-  mod: Mod,
-  objekt: Values.Objekt,
-  variable: Values.PatternVar,
-): Values.Objekt {
-  const etc = Values.PatternVar(mod.freshen(variable.name))
-  return { ...objekt, etc }
 }
 
 function diffProperties(

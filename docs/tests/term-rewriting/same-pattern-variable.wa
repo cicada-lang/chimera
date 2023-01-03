@@ -1,0 +1,9 @@
+rule r1 {
+  f(x, x) => x
+}
+
+eval r1(quote f(a, a))
+eval r1(quote f(a, b))
+
+eval r1(quote f(1, 1))
+eval r1(quote f(1, 2))

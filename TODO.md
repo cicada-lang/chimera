@@ -1,8 +1,9 @@
 # term rewriting
 
-[read] ~/topics/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
+To play with the term rewriting system.
 
-[read] to play with the term rewriting system.
+- [read] ~/topics/computer-science/term-rewriting/term-rewriting-systems--terese.djvu
+- [read] ~/topics/computer-science/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
 
 encode collatz rewrite in term rewrite
 

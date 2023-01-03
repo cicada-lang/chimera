@@ -1,9 +1,27 @@
 rule arithmetic {
-  add(a, zero()) => a
-  add(a, add1(b)) => add1(add(a, b))
+  add(x, zero()) => x
+  add(x, add1(y)) => add1(add(x, y))
+
   mul(_, zero()) => zero()
-  mul(a, add1(b)) => add(a, mul(a, b))
+  mul(x, add1(y)) => add(x, mul(x, y))
+
+  sub(x, zero()) => x
+  sub(add1(x), add1(y)) => sub(x, y)
+
+  div(zero(), add1(_)) => zero()
+  div(add1(x), add1(y)) => add1(div(sub(x, y), add1(y)))
 }
+
+let one = quote add1(zero())
+let two = quote add1(unquote one)
+let three = quote add1(unquote two)
+let four = quote add1(unquote three)
+let five = quote add1(unquote four)
+let six = quote add1(unquote five)
+let seven = quote add1(unquote six)
+let eight = quote add1(unquote seven)
+let nine = quote add1(unquote eight)
+let ten = quote add1(unquote nine)
 
 eval arithmetic(
   quote add(add1(zero()), add1(zero()))
@@ -19,4 +37,16 @@ eval arithmetic(
 
 eval arithmetic(
   quote mul(add1(add1(zero())), add1(add1(zero())))
+)
+
+eval arithmetic(
+  quote div(unquote four, unquote two)
+)
+
+eval arithmetic(
+  quote div(unquote six, unquote two)
+)
+
+eval arithmetic(
+  quote div(unquote eight, unquote two)
 )
