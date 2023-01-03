@@ -12,20 +12,20 @@ Edge("f", "c")
 Path(x, x)
 ------------ {}
 
-Path (x, y)
+Path(x, y)
 ------------ {
-  Edge (x, z)
-  Path (z, y)
+  Edge(x, z)
+  Path(z, y)
 }
 
 find x {
-  Path ("g", x)
+  Path("g", x)
 }
 
 find x {
-  Path (x, "h")
+  Path(x, "h")
 }
 
 find [x, y] {
-  Path (x, y)
+  Path(x, y)
 }
