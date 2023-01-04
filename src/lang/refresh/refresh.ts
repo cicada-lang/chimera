@@ -71,6 +71,7 @@ export function refresh(
     case "Relation":
     case "TypeConstraint":
     case "Rule":
+    case "Hyperrule":
     case "Fn": {
       return value
     }

@@ -1,6 +1,7 @@
 import type { Clause } from "../clause"
 import type { Env } from "../env"
 import type { Exp } from "../exp"
+import type { Hyperrule as EmbeddedHyperrule } from "../hyperrule"
 import type { Mod } from "../mod"
 import type { Rule as EmbeddedRule } from "../rule"
 import type { Stmt } from "../stmt"
@@ -19,6 +20,7 @@ export type Value =
   | Relation
   | TypeConstraint
   | Rule
+  | Hyperrule
   | Fn
 
 export type PatternVar = {
@@ -217,6 +219,25 @@ export function Rule(name: string, rule: EmbeddedRule): Rule {
     "@kind": "Rule",
     name,
     rule,
+  }
+}
+
+export type Hyperrule = {
+  "@type": "Value"
+  "@kind": "Hyperrule"
+  name: string
+  hyperrule: EmbeddedHyperrule
+}
+
+export function Hyperrule(
+  name: string,
+  hyperrule: EmbeddedHyperrule,
+): Hyperrule {
+  return {
+    "@type": "Value",
+    "@kind": "Hyperrule",
+    name,
+    hyperrule,
   }
 }
 

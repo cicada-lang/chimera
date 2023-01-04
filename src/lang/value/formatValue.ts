@@ -71,6 +71,10 @@ export function formatValue(value: Value): string {
       return value.name
     }
 
+    case "Hyperrule": {
+      return value.name
+    }
+
     case "Fn": {
       /**
          A function should be opaque (like in scheme),

@@ -62,6 +62,10 @@ export function substitutionContainsPatternVar(
       return false
     }
 
+    case "Hyperrule": {
+      return false
+    }
+
     case "Fn": {
       return false
     }

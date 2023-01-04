@@ -1,5 +1,3 @@
-`Hyperrule` as `Value`
-
 `hyperrule-exp/` -- syntax
 
 `hyperrewrite/`
