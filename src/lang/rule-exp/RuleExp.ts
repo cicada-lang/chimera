@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { Span } from "../span"
 
-export type RuleExp = Case | Call | List
+export type RuleExp = Case | List
 
 export type Case = {
   "@type": "RuleExp"
@@ -17,22 +17,6 @@ export function Case(from: Exp, to: Exp, span: Span): Case {
     "@kind": "Case",
     from,
     to,
-    span,
-  }
-}
-
-export type Call = {
-  "@type": "RuleExp"
-  "@kind": "Call"
-  exp: Exp
-  span: Span
-}
-
-export function Call(exp: Exp, span: Span): Call {
-  return {
-    "@type": "RuleExp",
-    "@kind": "Call",
-    exp,
     span,
   }
 }

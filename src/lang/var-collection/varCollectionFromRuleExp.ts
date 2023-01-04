@@ -11,11 +11,6 @@ export function varCollectionFromRuleExp(rule: RuleExp): VarCollection {
       ])
     }
 
-    case "Call": {
-      // NOTE Should not collect the `exp` of `RuleExp.Call`.
-      return varCollectionMerge([])
-    }
-
     case "List": {
       return varCollectionMerge(rule.rules.map(varCollectionFromRuleExp))
     }

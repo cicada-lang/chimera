@@ -1,7 +1,6 @@
 export const rule = {
   $grammar: {
     "rule:case": [{ from: "exp" }, '"="', '">"', { to: "exp" }],
-    "rule:call": [{ exp: "exp" }],
   },
 }
 
