@@ -1,10 +1,5 @@
 # term rewriting
 
-To play with the term rewriting system.
-
-- [read] ~/topics/computer-science/term-rewriting/term-rewriting-systems--terese.djvu
-- [read] ~/topics/computer-science/term-rewriting/term-rewriting-and-all-that--franz-baader.djvu
-
 encode collatz rewrite in term rewrite
 
 use term rewriting to implement lambda calculus -- with explicit substitution
@@ -148,10 +143,6 @@ implement alphaLean
 
 # langs
 
-[langs] `langs/pie` read "a surprisingly competitive conditional operator"
-
-- minikanrenizing the inference rules of pie
-
 [langs] `langs/joy` -- how to generate quine?
 
 [wiki of rules] when writing a PL paper,
@@ -159,8 +150,6 @@ use concrete syntax to write examples,
 and use abstract syntax to write rules
 
 [langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
-
-[lang] `langs/array-and-object`
 
 [langs] `langs/lambda-cps` implement CPS rules for lambda calculus
 

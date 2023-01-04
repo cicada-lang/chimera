@@ -3,17 +3,10 @@ Exp(fn(name, ret)) -- { String(name) Exp(ret) }
 Exp(ap(target, arg)) -- { Exp(target) Exp(arg) }
 
 Type(atom(name)) -- { String(name) }
-Type(arrow(argType, retType)) -- {
-  Type(argType)
-  Type(retType)
-}
+Type(arrow(argType, retType)) -- { Type(argType) Type(retType) }
 
 Ctx([])
-Ctx([[name, type] | rest]) -- {
-  String(name)
-  Type(type)
-  Ctx(rest)
-}
+Ctx([[name, type] | rest]) -- { String(name) Type(type) Ctx(rest) }
 
 Lookup([[key, value] | _rest], key, value)
 
