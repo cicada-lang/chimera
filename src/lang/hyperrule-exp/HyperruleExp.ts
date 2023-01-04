@@ -24,15 +24,15 @@ export function Case(from: Array<Exp>, to: Array<Exp>, span: Span): Case {
 export type List = {
   "@type": "HyperruleExp"
   "@kind": "List"
-  rules: Array<HyperruleExp>
+  hyperrules: Array<HyperruleExp>
   span: Span
 }
 
-export function List(rules: Array<HyperruleExp>, span: Span): List {
+export function List(hyperrules: Array<HyperruleExp>, span: Span): List {
   return {
     "@type": "HyperruleExp",
     "@kind": "List",
-    rules,
+    hyperrules,
     span,
   }
 }

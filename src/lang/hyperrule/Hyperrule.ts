@@ -21,13 +21,13 @@ export function Case(from: Array<Value>, to: Array<Value>): Case {
 export type List = {
   "@type": "Hyperrule"
   "@kind": "List"
-  rules: Array<Hyperrule>
+  hyperrules: Array<Hyperrule>
 }
 
-export function List(rules: Array<Hyperrule>): List {
+export function List(hyperrules: Array<Hyperrule>): List {
   return {
     "@type": "Hyperrule",
     "@kind": "List",
-    rules,
+    hyperrules,
   }
 }

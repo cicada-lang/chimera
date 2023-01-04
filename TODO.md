@@ -1,12 +1,15 @@
-`hyperrule-exp/` -- syntax
-
-`hyperrewrite/`
+`varCollectionFromHyperruleExp`
 
 `Stmts.Hyperrule`
 `Stmts.Hyperrule` -- `execute`
+
+`hyperrule-exp/` -- syntax
+
 `Stmts.Hyperrule` -- syntax
 
 - keyword syntax `hyperrule`
+
+`hyperrewrite/`
 
 `doTerm` -- support apply hyperrule as function
 
