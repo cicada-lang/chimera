@@ -1,5 +1,3 @@
-`varCollectionFromHyperruleExp`
-
 `Stmts.Hyperrule`
 `Stmts.Hyperrule` -- `execute`
 
