@@ -1,3 +1,26 @@
+`hyperrule-exp/`
+
+`Hyperrule` as `Value`
+
+`hyperrule-exp/` -- syntax
+
+`Stmts.Hyperrule`
+`Stmts.Hyperrule` -- `execute`
+`Stmts.Hyperrule` -- syntax
+
+- keyword syntax `hyperrule`
+
+`doTerm` -- support apply hyperrule as function
+
+`doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
+
+- we need `if else` to make this useful.
+- we need statement based function body to add `if else`
+
+[rule] support guard
+
+[hyperrule] support guard
+
 # term rewriting
 
 encode collatz rewrite in term rewrite
@@ -6,31 +29,32 @@ use term rewriting to implement lambda calculus -- with explicit substitution
 
 `trace` should be represented by term and json
 
-support guard
-
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
 - about list-processing?
 
 # hypergraph rewriting
 
-keyword syntax `hyperrule`
-
-- always consume input, repeat if needed
-
-`doTerm` -- support apply hyperrule as function
-
 encode collatz rewrite in hypergraph rewrite (to get a geometry)
 
-support guard
-
 use hypergraph rewriting to implement inet
+
+# hypergraph based physics engine for game development
+
+Physics has its beautiful application in physics engine of game development,
+is all about simulation.
+
+Can we design a hypergraph based physics engine,
+where space itself is implemented by hypergraph,
+and dynamic is implemented by rewrite rules?
 
 # functional
 
 `Stmt.format`
 
 Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
+
+[std] design the primitives for the functional part.
 
 # hypergraph presentation
 
@@ -78,12 +102,6 @@ use hypergraph rewriting to implement finite-domain constraint programming
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
-
-# relation as predicate
-
-`doTerm` -- handle `Relation` -- use relation as predicate.
-
-- we need `if else` to make this useful.
 
 # declare and runtime type assertion
 
@@ -142,6 +160,8 @@ implement alphaKanren
 implement alphaLean
 
 # langs
+
+[langs] `langs/pie` -- use pie as an example of non trivial logic program
 
 [langs] `langs/joy` -- how to generate quine?
 
@@ -228,10 +248,6 @@ and clients can subscribe to these events.
 - [question] minikanren uses stream to implement search.
 
   - is stream also useful when we want to use relational programming language as a database?
-
-# std
-
-built-in globals -- translate string to array -- for string processing
 
 # deduction
 
