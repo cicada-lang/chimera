@@ -1,8 +1,8 @@
-`hyperrule-exp/`
-
 `Hyperrule` as `Value`
 
 `hyperrule-exp/` -- syntax
+
+`hyperrewrite/`
 
 `Stmts.Hyperrule`
 `Stmts.Hyperrule` -- `execute`
