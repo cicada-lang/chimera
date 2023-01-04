@@ -1,6 +1,3 @@
-`Stmts.Hyperrule`
-`Stmts.Hyperrule` -- `execute`
-
 `hyperrule-exp/` -- syntax
 
 `Stmts.Hyperrule` -- syntax
