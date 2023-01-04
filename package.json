@@ -38,7 +38,7 @@
     "@types/node": "^18.11.18",
     "@types/readline-sync": "^1.4.4",
     "@xieyuheng/test-runner": "^0.2.7",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "prettier": "^2.8.1",
     "prettier-plugin-organize-imports": "^3.2.1",
     "pretty-quick": "^3.1.3",
