@@ -1,5 +1,3 @@
-`doTerm` -- support apply hyperrule as function
-
 `hyperrewriteOneStep`
 
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard

@@ -1,6 +1,7 @@
 import { envMerge } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
+import { hyperrewrite } from "../hyperrewrite"
 import { match } from "../match"
 import type { Mod } from "../mod"
 import { rewrite } from "../rewrite"
@@ -10,6 +11,7 @@ import {
   substitutionEntries,
 } from "../substitution"
 import type { Value } from "../value"
+import * as Values from "../value"
 import { formatValue } from "../value"
 
 export function doTerm(mod: Mod, target: Value, args: Array<Value>): Value {
@@ -24,6 +26,21 @@ export function doTerm(mod: Mod, target: Value, args: Array<Value>): Value {
     }
 
     return rewrite(mod, target.rule, args[0])
+  }
+
+  if (target["@kind"] === "Hyperrule") {
+    if (args.length !== 1) {
+      throw new Errors.LangError(
+        [
+          `[doTerm] the number of arguments of Hyperrule must be 1`,
+          `  args.length: ${args.length}`,
+        ].join("\n"),
+      )
+    }
+
+    return Values.fromArray(
+      hyperrewrite(mod, target.hyperrule, Values.toArray(args[0])),
+    )
   }
 
   if (target["@kind"] === "Fn") {
