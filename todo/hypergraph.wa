@@ -1,12 +1,3 @@
 hyperrule weather {
-  Rain()
-  --------
-  Wet()
-  Umbrella()
-}
-
-// Alternative syntax:
-
-hyperrule weather {
   [Rain()] => [Wet(), Umbrella()]
 }
