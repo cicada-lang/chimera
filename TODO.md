@@ -1,4 +1,4 @@
-`hyperrewriteOneStep`
+`hypermatch`
 
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
