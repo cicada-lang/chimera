@@ -1,7 +1,9 @@
 hyperrule weather {
   [SunRain()] => [Sun(), Rain()]
+  [Rain(), Car()] => [InCar()]
   [Rain()] => [WearUmbrella()]
-  [Sun()] => [WearSunGlasses()]
+  [Sun()] => [WearSunGlasses(), Cool()]
 }
 
 eval weather(quote [SunRain()])
+eval weather(quote [SunRain(), Car()])

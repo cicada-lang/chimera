@@ -1,0 +1,26 @@
+hyperrule abc {
+  ["a", "b"] => ["c"]
+  ["a", "c"] => ["b"]
+  ["b", "c"] => ["a"]
+}
+
+eval abc(quote ["a", "a", "a"])
+
+eval abc(quote [
+  "a", "b", "b", "a",
+])
+
+eval abc(quote [
+  "a", "b", "b", "a",
+  "a",
+])
+
+eval abc(quote [
+  "a", "b", "b", "a",
+  "a", "a",
+])
+
+eval abc(quote [
+  "a", "b", "b", "a",
+  "a", "a", "a",
+])

@@ -7,6 +7,12 @@
 
 [hyperrule] support guard
 
+[primitive] `findAll(query, goals): Array`
+[primitive] `find(n, query, goals): Array`
+
+[primitive] `rewrite(n, target, rules): Array`
+[primitive] `hyperrewrite(n, target, hyperrules): Array`
+
 # term rewriting
 
 encode collatz rewrite in term rewrite
