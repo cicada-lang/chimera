@@ -1,5 +1,3 @@
-`hypermatch`
-
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
 - we need `if else` to make this useful.

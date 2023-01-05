@@ -1,4 +1,5 @@
 import type { Hyperrule } from "../hyperrule"
+import { match } from "../match"
 import type { Mod } from "../mod"
 import { refresh } from "../refresh"
 import type { Substitution } from "../substitution"
@@ -49,5 +50,23 @@ function hypermatch(
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
+  if (patterns.length === 0)
+    return {
+      substitution,
+      values,
+    }
+
+  const [pattern, ...restPatterns] = patterns
+
+  for (const [index, value] of values.entries()) {
+    const newSubstitution = match(mod, substitution, pattern, value)
+    if (newSubstitution !== undefined) {
+      return hypermatch(mod, newSubstitution, restPatterns, [
+        ...values.slice(0, index),
+        ...values.slice(index + 1),
+      ])
+    }
+  }
+
   return undefined
 }
