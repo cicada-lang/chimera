@@ -27,6 +27,14 @@ use term rewriting to implement lambda calculus -- with explicit substitution
 
 # hypergraph rewriting
 
+draw labelled hypergraph by JavaScript.
+
+geometry of hypergraph.
+
+from hypergraph to cell-complex via category theory.
+
+implement constraint systems by hypergraph rewriting.
+
 encode collatz rewrite in hypergraph rewrite (to get a geometry)
 
 use hypergraph rewriting to implement inet
@@ -73,6 +81,8 @@ use hypergraph rewriting to implement finite-domain constraint programming
 [finite-domain] solve some puzzles about finite-domain as example
 
 # clp
+
+[read] essentials-of-constraint-programming.pdf
 
 [note] The general idea about implementing constraint:
 

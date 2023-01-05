@@ -1,0 +1,10 @@
+hyperrule walk {
+  ["left", "right"] => []
+  ["forward", "backward"] => []
+}
+
+eval walk(quote [
+  "left", "forward", "right",
+  "right", "forward", "forward",
+  "backward", "left", "left",
+])

@@ -1,6 +1,6 @@
 hyperrule weather {
   [SunRain()] => [Sun(), Rain()]
-  [Rain(), Car()] => [InCar()]
+  [Rain(), Car()] => [Rain(), InCar()]
   [Rain()] => [WearUmbrella()]
   [Sun()] => [WearSunGlasses(), Cool()]
 }

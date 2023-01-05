@@ -1,2 +1,2 @@
 [WearUmbrella(), WearSunGlasses(), Cool()]
-[InCar(), WearSunGlasses(), Cool()]
+[InCar(), WearUmbrella(), WearSunGlasses(), Cool()]
