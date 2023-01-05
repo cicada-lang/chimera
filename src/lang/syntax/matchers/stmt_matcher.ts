@@ -101,6 +101,12 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       ),
     "stmt:rule": ({ name, rules }, { span }) =>
       new Stmts.Rule(pt.str(name), matchers.rules_matcher(rules), span),
+    "stmt:hyperrule": ({ name, hyperrules }, { span }) =>
+      new Stmts.Hyperrule(
+        pt.str(name),
+        matchers.hyperrules_matcher(hyperrules),
+        span,
+      ),
     "stmt:let": ({ name, exp }, { span }) =>
       new Stmts.Let(pt.str(name), matchers.exp_matcher(exp), span),
     "stmt:eval": ({ exp }, { span }) =>

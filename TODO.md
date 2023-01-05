@@ -1,7 +1,3 @@
-`Stmts.Hyperrule` -- syntax
-
-- keyword syntax `hyperrule`
-
 `hyperrewrite/`
 
 `doTerm` -- support apply hyperrule as function

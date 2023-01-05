@@ -101,6 +101,13 @@ export const stmt = {
       { rules: "rules" },
       '"}"',
     ],
+    "stmt:hyperrule": [
+      '"hyperrule"',
+      { name: "rule_name" },
+      '"{"',
+      { hyperrules: "hyperrules" },
+      '"}"',
+    ],
     "stmt:let": ['"let"', { name: "name" }, '"="', { exp: "exp" }],
     "stmt:eval": ['"eval"', { exp: "exp" }],
   },
