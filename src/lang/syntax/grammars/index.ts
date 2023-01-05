@@ -6,8 +6,10 @@ export const optional = pt.grammars.optional
 export const dashline = pt.grammars.dashline
 
 export * from "./arg"
+export * from "./element"
 export * from "./exp"
 export * from "./goal"
+export * from "./hyperrule"
 export * from "./import_binding"
 export * from "./key"
 export * from "./name"

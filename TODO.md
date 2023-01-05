@@ -1,5 +1,3 @@
-`hyperrule-exp/` -- syntax
-
 `Stmts.Hyperrule` -- syntax
 
 - keyword syntax `hyperrule`
