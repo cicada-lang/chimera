@@ -11,6 +11,8 @@ A math like language:
 - the only thing the core top-level does is to evaluate expressions.
   - there can be sugar top-level.
 
+It will be as fun as lisp.
+
 Examples:
 
 ```
