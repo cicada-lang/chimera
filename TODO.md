@@ -1,3 +1,9 @@
+# draw
+
+draw labelled hypergraph by JavaScript.
+
+# functional
+
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
 - we need `if else` to make this useful.
@@ -26,8 +32,6 @@ use term rewriting to implement lambda calculus -- with explicit substitution
 - about list-processing?
 
 # hypergraph rewriting
-
-draw labelled hypergraph by JavaScript.
 
 geometry of hypergraph.
 
