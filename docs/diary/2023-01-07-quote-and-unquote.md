@@ -24,11 +24,11 @@ clause(quote ..., "rule-name", quote [
 ```
 let f = (x) => {}
 
-let("f", fn(quote [], quote [
+let("f", fn(quote [], quote sequence([
   let(),
   if(x, quote [], quote []),
   return(...),
   let(),
   return(...),
-]))
+])))
 ```
