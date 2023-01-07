@@ -1,4 +1,4 @@
-import { Add, Add1, Nat, Zero } from "add.wa"
+import { Add, Add1, Nat, Zero } from "Add.wa"
 
 trace steps 5 {
   Add1(add1(zero()), _x)

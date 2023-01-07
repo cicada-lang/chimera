@@ -1,4 +1,4 @@
-import * from "nat.wa"
-import * from "add.wa"
-import * from "mul.wa"
+import * from "Nat.wa"
+import * from "Add.wa"
+import * from "Mul.wa"
 import * from "numbers.wa"

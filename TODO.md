@@ -1,5 +1,3 @@
-fix `std/` file naming
-
 top-level expression are evaluated
 
 Extend this language with primitives to follow IU compiler course.

@@ -1,4 +1,4 @@
-import { Zero, Add1, Nat } from "nat.wa"
+import { Zero, Add1, Nat } from "Nat.wa"
 
 clause Add(zero(), y, y)
 
