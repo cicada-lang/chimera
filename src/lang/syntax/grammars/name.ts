@@ -12,6 +12,7 @@ export const name = pt.grammars.pattern_unless_preserved("identifier", [
   "null",
   "true",
   "false",
+  "clause",
 ])
 
 export const relation_name = {
@@ -32,7 +33,7 @@ export const clause_name = {
 
 const preserved = ["null", "true", "false"]
 
-export const pattern_variable_name = {
+export const variable_name = {
   $pattern: [
     "identifier",
     `(^(?!(${preserved.join("|")})$)([_A-Za-z][_\\p{Letter}0-9]*))`,
@@ -44,15 +45,15 @@ export const name_no_preserved = pt.grammars.pattern_unless_preserved(
   [],
 )
 
-export const pattern_variable_names = {
+export const variable_names = {
   $grammar: {
-    "pattern_variable_names:pattern_variable_names": [
+    "variable_names:variable_names": [
       {
-        pattern_variable_names: {
-          $ap: ["zero_or_more", "pattern_variable_name", '","'],
+        variable_names: {
+          $ap: ["zero_or_more", "variable_name", '","'],
         },
       },
-      { last_name: "pattern_variable_name" },
+      { last_name: "variable_name" },
       { $ap: ["optional", '","'] },
     ],
   },

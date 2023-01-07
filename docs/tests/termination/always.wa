@@ -1,5 +1,5 @@
-Always() -- base
-Always() -- loop { Always() }
+clause Always() -- base
+clause Always() -- loop { Always() }
 
 find _ limit 3 {
   Always()

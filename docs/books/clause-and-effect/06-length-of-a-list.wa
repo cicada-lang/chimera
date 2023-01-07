@@ -1,11 +1,11 @@
 import { Zero, Add1, One, Two } from "../../std/nat/index.wa"
 
-Length([], n)
+clause Length([], n)
 -------------------- {
   Zero(n)
 }
 
-Length([_head | tail], n)
+clause Length([_head | tail], n)
 -------------------------------- {
   Add1(prev, n)
   Length(tail, prev)

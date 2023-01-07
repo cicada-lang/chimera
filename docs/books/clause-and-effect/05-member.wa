@@ -1,7 +1,7 @@
-Member(element, [element | _tail])
+clause Member(element, [element | _tail])
 ------------------------------------ here {}
 
-Member(element, [_head | tail])
+clause Member(element, [_head | tail])
 --------------------------------- there {
   Member(element, tail)
 }

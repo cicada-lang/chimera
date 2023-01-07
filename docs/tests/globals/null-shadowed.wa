@@ -2,7 +2,7 @@ find x {
   Null(x)
 }
 
-Null(x) -- { x = "null" }
+clause Null(x) -- { x = "null" }
 
 find x {
   Null(x)

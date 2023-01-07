@@ -1,39 +1,39 @@
-Exp(var(name)) -- { String(name) }
-Exp(fn(name, ret)) -- { String(name) Exp(ret) }
-Exp(ap(target, arg)) -- { Exp(target) Exp(arg) }
+clause Exp(var(name)) -- { String(name) }
+clause Exp(fn(name, ret)) -- { String(name) Exp(ret) }
+clause Exp(ap(target, arg)) -- { Exp(target) Exp(arg) }
 
-Value(closure(name, ret, env)) -- {
+clause Value(closure(name, ret, env)) -- {
   String(name)
   Exp(ret)
   Env(env)
 }
 
-Env([])
-Env([[name, value] | rest]) -- {
+clause Env([])
+clause Env([[name, value] | rest]) -- {
   String(name)
   Value(value)
   Env(rest)
 }
 
-Lookup([[key, value] | _rest], key, value) -- here
+clause Lookup([[key, value] | _rest], key, value) -- here
 
-Lookup([[key, _value] | rest], name, found)
+clause Lookup([[key, _value] | rest], name, found)
 --------------------------------------------- there {
   key != name
   Lookup(rest, name, found)
 }
 
-Eval(env, var(name), value)
+clause Eval(env, var(name), value)
 ---------------------------- var {
   Lookup(env, name, value)
 }
 
-Eval(env, fn(name, ret), value)
+clause Eval(env, fn(name, ret), value)
 ---------------------------------- fn {
   value = closure(name, ret, env)
 }
 
-Eval(env, ap(target, arg), value)
+clause Eval(env, ap(target, arg), value)
 ---------------------------------------- ap {
   Eval(env, target, closure(name, ret, env2))
   Eval(env, arg, argValue)

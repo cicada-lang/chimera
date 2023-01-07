@@ -10,18 +10,18 @@
 // Here is the information about Ben Bitdiddle,
 // the resident computer wizard:
 
-Job({
+clause Job({
   name: "Bitdiddle Ben",
   dept: "computer",
   role: "wizard",
 })
 
-Salary({
+clause Salary({
   name: "Bitdiddle Ben",
   amount: 60000,
 })
 
-Address({
+clause Address({
   name: "Bitdiddle Ben",
   town: "Slumerville",
   road: "Ridge Road",
@@ -34,71 +34,71 @@ Address({
 
 // Here is the information about them:
 
-Address({
+clause Address({
   name: "Hacker Alyssa P",
   town: "Cambridge",
   road: "Mass Ave",
   door: 78,
 })
 
-Job({
+clause Job({
   name: "Hacker Alyssa P",
   dept: "computer",
   role: "programmer",
 })
 
-Salary({
+clause Salary({
   name: "Hacker Alyssa P",
   amount: 40000,
 })
 
-Supervisor({
+clause Supervisor({
   slave: "Hacker Alyssa P",
   master: "Bitdiddle Ben",
 })
 
-Address({
+clause Address({
   name: "Fect Cy D",
   town: "Cambridge",
   road: "Ames Street",
   door: 3,
 })
 
-Job({
+clause Job({
   name: "Fect Cy D",
   dept: "computer",
   role: "programmer",
 })
 
-Salary({
+clause Salary({
   name: "Fect Cy D",
   amount: 35000,
 })
 
-Supervisor({
+clause Supervisor({
   slave: "Fect Cy D",
   master: "Bitdiddle Ben",
 })
 
-Address({
+clause Address({
   name: "Tweakit Lem E",
   town: "Boston",
   road: "Bay State Road",
   door: 22,
 })
 
-Job({
+clause Job({
   name: "Tweakit Lem E",
   dept: "computer",
   role: "technician",
 })
 
-Salary({
+clause Salary({
   name: "Tweakit Lem E",
   amount: 25000,
 })
 
-Supervisor({
+clause Supervisor({
   slave: "Tweakit Lem E",
   master: "Bitdiddle Ben",
 })
@@ -106,25 +106,25 @@ Supervisor({
 // There is also a programmer trainee,
 // who is supervised by Alyssa:
 
-Address({
+clause Address({
   name: "Reasoner Louis",
   town: "Slumerville",
   road: "Pine Tree Road",
   door: 80,
 })
 
-Job({
+clause Job({
   name: "Reasoner Louis",
   dept: "computer",
   role: "programmer trainee",
 })
 
-Salary({
+clause Salary({
   name: "Reasoner Louis",
   amount: 30000,
 })
 
-Supervisor({
+clause Supervisor({
   slave: "Reasoner Louis",
   master: "Hacker Alyssa P",
 })
@@ -132,25 +132,25 @@ Supervisor({
 // Ben is a high-level employee.
 // His supervisor is the company's big wheel himself:
 
-Supervisor({
+clause Supervisor({
   slave: "Bitdiddle Ben",
   master: "Warbucks Oliver",
 })
 
-Address({
+clause Address({
   name: "Warbucks Oliver",
   town: "Swellesley",
   road: "The Manor",
   door: 1,
 })
 
-Job({
+clause Job({
   name: "Warbucks Oliver",
   dept: "administration",
   role: "big wheel",
 })
 
-Salary({
+clause Salary({
   name: "Warbucks Oliver",
   amount: 150000,
 })
@@ -159,73 +159,73 @@ Salary({
 // the company has an accounting division,
 // consisting of a chief accountant and his assistant:
 
-Address({
+clause Address({
   name: "Scrooge Eben",
   town: "Weston",
   road: "Shady Lane",
   door: 10,
 })
 
-Job({
+clause Job({
   name: "Scrooge Eben",
   dept: "accounting",
   role: "chief accountant",
 })
 
-Salary({
+clause Salary({
   name: "Scrooge Eben",
   amount: 75000,
 })
 
-Supervisor({
+clause Supervisor({
   slave: "Scrooge Eben",
   master: "Warbucks Oliver",
 })
 
-Address({
+clause Address({
   name: "Cratchet Robert",
   town: "Allston",
   road: "N Harvard Street",
   door: 16,
 })
 
-Job({
+clause Job({
   name: "Cratchet Robert",
   dept: "accounting",
   role: "scrivener",
 })
 
-Salary({
+clause Salary({
   name: "Cratchet Robert",
   amount: 18000,
 })
 
-Supervisor({
+clause Supervisor({
   slave: "Cratchet Robert",
   master: "Scrooge Eben",
 })
 
 // There is also a secretary for the big wheel:
 
-Address({
+clause Address({
   name: "Aull DeWitt",
   town: "Slumerville",
   road: "Onion Square",
   door: 5,
 })
 
-Job({
+clause Job({
   name: "Aull DeWitt",
   dept: "administration",
   role: "secretary",
 })
 
-Salary({
+clause Salary({
   name: "Aull DeWitt",
   amount: 25000,
 })
 
-Supervisor({
+clause Supervisor({
   slave: "Aull DeWitt",
   master: "Warbucks Oliver",
 })
@@ -238,7 +238,7 @@ Supervisor({
 // the jobs of both a computer programmer
 // and a computer technician:
 
-Competence({
+clause Competence({
   can: {
     dept: "computer",
     role: "wizard",
@@ -249,7 +249,7 @@ Competence({
   },
 })
 
-Competence({
+clause Competence({
   can: {
     dept: "computer",
     role: "wizard",
@@ -262,7 +262,7 @@ Competence({
 
 // A computer programmer could fill in for a trainee:
 
-Competence({
+clause Competence({
   can: {
     dept: "computer",
     role: "programmer",
@@ -275,7 +275,7 @@ Competence({
 
 // Also, as is well known,
 
-Competence({
+clause Competence({
   can: {
     dept: "administration",
     role: "secretary",
@@ -362,7 +362,7 @@ find x {
 
 // We can use the following syntax to create rules.
 
-ComputerDeptSlave({ slave })
+clause ComputerDeptSlave({ slave })
 ---------------------------- {
   Job({ name: slave, dept: "computer" })
   Supervisor({ slave })
@@ -374,7 +374,7 @@ find slave {
 
 // TODO We do not have `not` yet.
 
-// Bigshot({ name, dept })
+// clause Bigshot({ name, dept })
 // ------------------------ {
 //   Job({ name, dept })
 //   not {
@@ -392,7 +392,7 @@ find slave {
 
 // TODO `>=`
 
-// NotSoPoor({ name, amount })
+// clause NotSoPoor({ name, amount })
 // ---------------------------- {
 //   Salary({ name, amount })
 //   FD::GtEq(amount, 40000)

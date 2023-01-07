@@ -4,7 +4,7 @@ find [x] {
   A(x)
 }
 
-A(x) -- { x = "b" }
+clause A(x) -- { x = "b" }
 
 find [x] {
   A(x)

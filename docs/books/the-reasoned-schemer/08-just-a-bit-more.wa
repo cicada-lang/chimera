@@ -4,17 +4,17 @@ import {
   Add,
 } from "07-a-bit-too-much.wa"
 
-Mul([], _m, [])
-Mul(n, [], []) -- { Positive(n) }
-Mul([1], m, m) -- { Positive(m) }
-Mul(n, [1], n) -- { GreaterThanOne(n) }
-Mul([0 | x], m, [0 | z]) -- { Positive(x) Positive(z) GreaterThanOne(m) Mul(x, m, z) }
-Mul([1 | x], [0 | y], p) -- { Positive(x) Positive(y) Mul([0 | y], [1 | x], p) }
-Mul([1 | x], [1 | y], p) -- { Positive(x) Positive(y) MulOdd(x, [1 | x], [1 | y], p) }
+clause Mul([], _m, [])
+clause Mul(n, [], []) -- { Positive(n) }
+clause Mul([1], m, m) -- { Positive(m) }
+clause Mul(n, [1], n) -- { GreaterThanOne(n) }
+clause Mul([0 | x], m, [0 | z]) -- { Positive(x) Positive(z) GreaterThanOne(m) Mul(x, m, z) }
+clause Mul([1 | x], [0 | y], p) -- { Positive(x) Positive(y) Mul([0 | y], [1 | x], p) }
+clause Mul([1 | x], [1 | y], p) -- { Positive(x) Positive(y) MulOdd(x, [1 | x], [1 | y], p) }
 
 // x = (n - 1) / 2
 
-MulOdd(x, n, m, p)
+clause MulOdd(x, n, m, p)
 -------------------- {
   MulBound(q, p, n, m)
   Mul(x, m, q)
@@ -23,9 +23,9 @@ MulOdd(x, n, m, p)
 
 // NOTE Limit the length of the q above.
 
-MulBound([], p, _n, _m) -- { Positive(p) }
-MulBound([_a0 | x], [_a1 | y], [], [_a2 | z]) -- { MulBound(x, y, z, []) }
-MulBound([_a0 | x], [_a1 | y], [_a2 | z], m) -- { MulBound(x, y, z, m) }
+clause MulBound([], p, _n, _m) -- { Positive(p) }
+clause MulBound([_a0 | x], [_a1 | y], [], [_a2 | z]) -- { MulBound(x, y, z, []) }
+clause MulBound([_a0 | x], [_a1 | y], [_a2 | z], m) -- { MulBound(x, y, z, m) }
 
 find [x, y, r] limit 10 {
   Mul(x, y, r)
@@ -74,9 +74,9 @@ find p {
   Mul([1, 1, 1], [1, 1, 1, 1, 1, 1], p)
 }
 
-EqualLength([], [])
-EqualLength([1], [1])
-EqualLength([_a | x], [_b | y])
+clause EqualLength([], [])
+clause EqualLength([1], [1])
+clause EqualLength([_a | x], [_b | y])
 ----------------------------------- {
   Positive(x)
   Positive(y)

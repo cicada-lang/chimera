@@ -1,7 +1,7 @@
-Datom(1, "name", "A")
-Datom(1, "age", 45)
-Datom(2, "name", "X")
-Datom(2, "age", 2)
+clause Datom(1, "name", "A")
+clause Datom(1, "age", 45)
+clause Datom(2, "name", "X")
+clause Datom(2, "age", 2)
 
 find n {
   Datom(e, "age", 2)

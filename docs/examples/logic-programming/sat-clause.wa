@@ -2,25 +2,25 @@
 // for `false` and `true`,
 // because the code looks tidier.
 
-Bit(x) -- { x = 0 }
-Bit(x) -- { x = 1 }
+clause Bit(x) -- { x = 0 }
+clause Bit(x) -- { x = 1 }
 
-Not(0, 1)
-Not(1, 0)
+clause Not(0, 1)
+clause Not(1, 0)
 
-Or(0, 0, 0)
-Or(0, 1, 1)
-Or(1, 0, 1)
-Or(1, 1, 1)
+clause Or(0, 0, 0)
+clause Or(0, 1, 1)
+clause Or(1, 0, 1)
+clause Or(1, 1, 1)
 
-BitList([])
-BitList([car | cdr]) -- {
+clause BitList([])
+clause BitList([car | cdr]) -- {
   Bit(car)
   BitList(cdr)
 }
 
-ListNot([], [])
-ListNot([x | xs], [y | ys]) -- {
+clause ListNot([], [])
+clause ListNot([x | xs], [y | ys]) -- {
   Not(x, y)
   ListNot(xs, ys)
 }
@@ -30,7 +30,7 @@ ListNot([x | xs], [y | ys]) -- {
 // which is equivalent to disjunction from
 //   c1 ∨ c2 ∨ ... ¬p1 ∨ ¬p2 ∨ ...
 
-Clause(conclusions, premises) -- {
+clause Clause(conclusions, premises) -- {
   BitList(conclusions)
   BitList(premises)
   ListNot(premises, negPremises)
@@ -41,13 +41,13 @@ Clause(conclusions, premises) -- {
   ContainsOne(disjunction)
 }
 
-ContainsOne([1 | _rest])
-ContainsOne([0 | rest]) -- {
+clause ContainsOne([1 | _rest])
+clause ContainsOne([0 | rest]) -- {
   ContainsOne(rest)
 }
 
-Append([], t, t)
-Append([a | d], t, [a | res]) -- {
+clause Append([], t, t)
+clause Append([a | d], t, [a | res]) -- {
   Append(d, t, res)
 }
 

@@ -1,11 +1,11 @@
-Lookup(map, name, found)
+clause Lookup(map, name, found)
 ------------------------- here {
   map = [[key, value] | _rest]
   key = name
   found = value
 }
 
-Lookup(map, name, found)
+clause Lookup(map, name, found)
 ------------------------------- there {
   map = [[key, _value] | rest]
   key != name
@@ -24,7 +24,7 @@ find map limit 3 {
 // TODO We need to improve our search strategy
 // to make the following perform the same as the above.
 
-LookupInlineDisj(map, name, found)
+clause LookupInlineDisj(map, name, found)
 ------------------------------------ {
   map = [[key, value] | rest]
   disj {

@@ -1,11 +1,11 @@
 import { Succeed, Fail } from "01-playthings.wa"
 
-Always()
+clause Always()
 --------- {
   Succeed()
 }
 
-Always()
+clause Always()
 --------- {
   Always()
 }
@@ -45,7 +45,7 @@ find q {
   Always()
 }
 
-Never()
+clause Never()
 --------- {
   Never()
 }

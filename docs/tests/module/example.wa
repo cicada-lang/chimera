@@ -1,7 +1,7 @@
-Hello("Hello, World!")
+clause Hello("Hello, World!")
 
-Hi("Hi there!")
+clause Hi("Hi there!")
 
 private {
-  Hiya("Hiya!")
+  clause Hiya("Hiya!")
 }

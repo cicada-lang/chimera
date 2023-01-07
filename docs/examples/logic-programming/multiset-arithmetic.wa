@@ -1,47 +1,47 @@
 // "A multiset approach to arithmetic"
 // https://www.youtube.com/watch?v=4xoF2SRp194
 
-Multiset([])
-Multiset([car | cdr]) -- { Multiset(car) Multiset(cdr) }
+clause Multiset([])
+clause Multiset([car | cdr]) -- { Multiset(car) Multiset(cdr) }
 
 // find x limit 10 {
 //   Multiset(x)
 // }
 
-Zero([])
+clause Zero([])
 
-Nat([])
-Nat([car | cdr]) -- { Zero(car) Nat(cdr) }
+clause Nat([])
+clause Nat([car | cdr]) -- { Zero(car) Nat(cdr) }
 
 // find x limit 10 {
 //   Nat(x)
 // }
 
-Poly([])
-Poly([car | cdr]) -- { Nat(car) Poly(cdr) }
+clause Poly([])
+clause Poly([car | cdr]) -- { Nat(car) Poly(cdr) }
 
 // find x limit 10 {
 //   Poly(x)
 // }
 
-Multi([])
-Multi([car | cdr]) -- { Poly(car) Multi(cdr) }
+clause Multi([])
+clause Multi([car | cdr]) -- { Poly(car) Multi(cdr) }
 
 // find x limit 10 {
 //   Multi(x)
 // }
 
-Append([], t, t)
-Append([a | d], t, out) -- {
+clause Append([], t, t)
+clause Append([a | d], t, out) -- {
   out = [a | res]
   Append(d, t, res)
 }
 
-Add(x, y, z) -- { Append(x, y, z) }
+clause Add(x, y, z) -- { Append(x, y, z) }
 
-AddMany([], [])
-AddMany([x], x)
-AddMany([x, y | rest], out) -- {
+clause AddMany([], [])
+clause AddMany([x], x)
+clause AddMany([x, y | rest], out) -- {
   Add(x, y, z)
   AddMany([z | rest], out)
 }
@@ -57,9 +57,9 @@ AddMany([x, y | rest], out) -- {
 //   AddMany(xs, out)
 // }
 
-Product([], _, [])
-Product([_x | _xs], [], [])
-Product([x | xs], [y | ys], out) -- {
+clause Product([], _, [])
+clause Product([_x | _xs], [], [])
+clause Product([x | xs], [y | ys], out) -- {
   Product([x], ys, xSide)
   Product(xs, [y], ySide)
   Product(xs, ys, body)
@@ -80,13 +80,13 @@ find q {
   Product([1, 2, 3], ["a", "b", "c"], q)
 }
 
-AddPairs([], [])
-AddPairs([[x, y] | ps], [z | res]) -- {
+clause AddPairs([], [])
+clause AddPairs([[x, y] | ps], [z | res]) -- {
   Add(x, y, z)
   AddPairs(ps, res)
 }
 
-Mul(x, y, z) -- {
+clause Mul(x, y, z) -- {
   Product(x, y, pairs)
   AddPairs(pairs, z)
 }
@@ -105,9 +105,9 @@ find [x, y, z] limit 10 {
   Mul(x, y, z)
 }
 
-MulMany([], [])
-MulMany([x], x)
-MulMany([x, y | rest], out) -- {
+clause MulMany([], [])
+clause MulMany([x], x)
+clause MulMany([x, y | rest], out) -- {
   Mul(x, y, z)
   MulMany([z | rest], out)
 }

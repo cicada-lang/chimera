@@ -1,14 +1,14 @@
-Bit(0)
-Bit(1)
+clause Bit(0)
+clause Bit(1)
 
 find x {
   Bit(x)
 }
 
-BitXor(0, 0, 0)
-BitXor(0, 1, 1)
-BitXor(1, 0, 1)
-BitXor(1, 1, 0)
+clause BitXor(0, 0, 0)
+clause BitXor(0, 1, 1)
+clause BitXor(1, 0, 1)
+clause BitXor(1, 1, 0)
 
 find [x, y] {
   BitXor(x, y, 0)
@@ -22,10 +22,10 @@ find [x, y, r] {
   BitXor(x, y, r)
 }
 
-BitAnd(0, 0, 0)
-BitAnd(0, 1, 0)
-BitAnd(1, 0, 0)
-BitAnd(1, 1, 1)
+clause BitAnd(0, 0, 0)
+clause BitAnd(0, 1, 0)
+clause BitAnd(1, 0, 0)
+clause BitAnd(1, 1, 1)
 
 find [x, y] {
   BitAnd(x, y, 1)
@@ -33,7 +33,7 @@ find [x, y] {
 
 // x + y = r + 2 * c
 
-HalfAdder(x, y, r, c)
+clause HalfAdder(x, y, r, c)
 ---------------------- {
   BitXor(x, y, r)
   BitAnd(x, y, c)
@@ -49,7 +49,7 @@ find [x, y, r, c] {
 
 // b + x + y = r + 2 * c
 
-FullAdder(b, x, y, r, c)
+clause FullAdder(b, x, y, r, c)
 ------------------------- {
   HalfAdder(x, y, w, xy)
   HalfAdder(w, b, r, wz)
@@ -68,7 +68,7 @@ find [b, x, y, r, c] {
   FullAdder(b, x, y, r, c)
 }
 
-Positive(n)
+clause Positive(n)
 ---------------- {
   [_a | _d] = n
 }
@@ -89,7 +89,7 @@ find r {
   Positive(r)
 }
 
-GreaterThanOne(n)
+clause GreaterThanOne(n)
 --------------------- {
   [_a, _ad | _dd] = n
 }
@@ -114,14 +114,14 @@ find r {
   GreaterThanOne(r)
 }
 
-Adder(0, n, [], n)
-Adder(0, [], m, m) -- { Positive(m) }
-Adder(1, n, [], r) -- { Adder(0, n, [1], r) }
-Adder(1, [], m, r) -- { Positive(m) Adder(0, [1], m, r) }
-Adder(b, [1], [1], [a, c]) -- { FullAdder(b, 1, 1, a, c) }
-Adder(b, [1], m, r) -- { GenAdder(b, [1], m, r) }
-Adder(b, n, [1], r) -- { GreaterThanOne(n) GreaterThanOne(r) Adder(b, [1], n, r) }
-Adder(b, n, m, r) -- { GreaterThanOne(n) GenAdder(b, n, m, r) }
+clause Adder(0, n, [], n)
+clause Adder(0, [], m, m) -- { Positive(m) }
+clause Adder(1, n, [], r) -- { Adder(0, n, [1], r) }
+clause Adder(1, [], m, r) -- { Positive(m) Adder(0, [1], m, r) }
+clause Adder(b, [1], [1], [a, c]) -- { FullAdder(b, 1, 1, a, c) }
+clause Adder(b, [1], m, r) -- { GenAdder(b, [1], m, r) }
+clause Adder(b, n, [1], r) -- { GreaterThanOne(n) GreaterThanOne(r) Adder(b, [1], n, r) }
+clause Adder(b, n, m, r) -- { GreaterThanOne(n) GenAdder(b, n, m, r) }
 
 // Given the carry bit b,
 // and the numbers n, m, and r,
@@ -129,7 +129,7 @@ Adder(b, n, m, r) -- { GreaterThanOne(n) GenAdder(b, n, m, r) }
 // provided that n is positive
 // and m and r are greater than one.
 
-GenAdder(b, n, m, r)
+clause GenAdder(b, n, m, r)
 ------------------------- {
   [a | x] = n
   [d | y] = m  Positive(y)
@@ -162,7 +162,7 @@ find [x, y] {
   Adder(0, x, y, [1, 0, 1])
 }
 
-Add(x, y, r)
+clause Add(x, y, r)
 --------------------- {
   Adder(0, x, y, r)
 }
@@ -183,7 +183,7 @@ find [x, y] {
   Add(x, y, [1, 0, 1])
 }
 
-Sub(n, m, k)
+clause Sub(n, m, k)
 ---------------- {
   Add(m, k, n)
 }
@@ -212,8 +212,8 @@ find q {
 //   Add(x, y, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
 // }
 
-Length([], [])
-Length([_a | d], n) -- {
+clause Length([], [])
+clause Length([_a | d], n) -- {
   Add([1], res, n)
   Length(d, res)
 }

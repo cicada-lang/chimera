@@ -44,7 +44,7 @@ Run multiline text (bash and zsh):
 ```sh
 curl https://wa.cic.run --data-binary @-<< END
 
-Whereabouts("unknown")
+clause Whereabouts("unknown")
 
 find q {
   Whereabouts(q)

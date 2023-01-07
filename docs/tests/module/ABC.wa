@@ -1,6 +1,6 @@
 import { AB } from "./AB.wa"
 
-ABC(a, b, c)
+clause ABC(a, b, c)
 -------------- {
   AB(a, b)
   c = "c"

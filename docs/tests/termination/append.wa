@@ -1,6 +1,6 @@
-Append([], t, t)
+clause Append([], t, t)
 
-Append([a | d], t, out)
+clause Append([a | d], t, out)
 ------------------------- {
   Append(d, t, res)
   out = [a | res]
@@ -19,9 +19,9 @@ find [x, y] limit 6 {
 // We can avoid this problem if we swap the last two lines of `Append`.
 // "FF" means finite failure.
 
-AppendFF([], t, t)
+clause AppendFF([], t, t)
 
-AppendFF([a | d], t, out)
+clause AppendFF([a | d], t, out)
 -------------------------------------- {
   out = [a | res]
   AppendFF(d, t, res)

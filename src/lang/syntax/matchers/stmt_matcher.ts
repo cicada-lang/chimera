@@ -5,7 +5,7 @@ import * as matchers from "../matchers"
 
 export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
-    "stmt:relation_no_goals_no_clause_name": ({ name, args }, { span }) =>
+    "stmt:clause_no_goals_no_name": ({ name, args }, { span }) =>
       new Stmts.Clause(
         pt.str(name),
         undefined,
@@ -13,7 +13,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         [],
         span,
       ),
-    "stmt:relation_no_goals": ({ name, clause_name, args }, { span }) =>
+    "stmt:clause_no_goals": ({ name, clause_name, args }, { span }) =>
       new Stmts.Clause(
         pt.str(name),
         pt.str(clause_name),
@@ -21,7 +21,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         [],
         span,
       ),
-    "stmt:relation_no_clause_name": ({ name, args, goals }, { span }) =>
+    "stmt:clause_no_name": ({ name, args, goals }, { span }) =>
       new Stmts.Clause(
         pt.str(name),
         undefined,
@@ -29,7 +29,7 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
-    "stmt:relation": ({ name, clause_name, args, goals }, { span }) =>
+    "stmt:clause": ({ name, clause_name, args, goals }, { span }) =>
       new Stmts.Clause(
         pt.str(name),
         pt.str(clause_name),

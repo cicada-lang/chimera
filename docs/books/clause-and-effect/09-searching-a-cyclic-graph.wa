@@ -1,30 +1,30 @@
-Edge("g", "h")
-Edge("d", "a")
-Edge("g", "d")
-Edge("e", "d")
-Edge("h", "f")
-Edge("e", "f")
-Edge("a", "e")
-Edge("a", "b")
-Edge("b", "f")
-Edge("b", "c")
-Edge("f", "c")
+clause Edge("g", "h")
+clause Edge("d", "a")
+clause Edge("g", "d")
+clause Edge("e", "d")
+clause Edge("h", "f")
+clause Edge("e", "f")
+clause Edge("a", "e")
+clause Edge("a", "b")
+clause Edge("b", "f")
+clause Edge("b", "c")
+clause Edge("f", "c")
 
 // "a", "e", "d" -- in a loop
 
 // We define `Legal` to rule out loop -- to avoid searching in a loop
 
-Legal(_, [])
+clause Legal(_, [])
 
-Legal(z, [head | tail])
+clause Legal(z, [head | tail])
 ---------------------------- {
   z != head
   Legal(z, tail)
 }
 
-Path(x, x, _occurs)
+clause Path(x, x, _occurs)
 
-Path(x, y, occurs)
+clause Path(x, y, occurs)
 ------------------------ {
   Edge(x, z)
   Legal(z, occurs)

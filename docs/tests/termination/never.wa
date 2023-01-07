@@ -1,14 +1,14 @@
-Never(x)
+clause Never(x)
 --------- {
   Never(x)
 }
 
-OneTwoThreeThenNever(1)
-OneTwoThreeThenNever(x) -- { Never(x) }
-OneTwoThreeThenNever(2)
-OneTwoThreeThenNever(x) -- { Never(x) }
-OneTwoThreeThenNever(3)
-OneTwoThreeThenNever(x) -- { Never(x) }
+clause OneTwoThreeThenNever(1)
+clause OneTwoThreeThenNever(x) -- { Never(x) }
+clause OneTwoThreeThenNever(2)
+clause OneTwoThreeThenNever(x) -- { Never(x) }
+clause OneTwoThreeThenNever(3)
+clause OneTwoThreeThenNever(x) -- { Never(x) }
 
 // Ok:
 

@@ -1,12 +1,12 @@
 import { Succeed, Fail } from "01-playthings.wa"
 import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
 
-List(l)
+clause List(l)
 ----------- {
   Null(l)
 }
 
-List(l)
+clause List(l)
 ------------- {
   Cdr(l, d)
   List(d)
@@ -24,12 +24,12 @@ find x limit 5 {
   List(["a", "b" | x])
 }
 
-ListOfLists(l)
+clause ListOfLists(l)
 ------------- {
   Null(l)
 }
 
-ListOfLists(l)
+clause ListOfLists(l)
 ------------- {
   Car(l, a)
   List(a)
@@ -57,24 +57,23 @@ find x limit 5 {
   ListOfLists([["a", "b"], ["c", "d"] | x])
 }
 
-Singleton(l)
+clause Singleton(l)
 ----------- {
   l = [_]
 }
 
-ListOfSingletons(l)
+clause ListOfSingletons(l)
 ------------------- {
   Null(l)
 }
 
-ListOfSingletons(l)
+clause ListOfSingletons(l)
 -------------------- {
   Car(l, a)
   Singleton(a)
   Cdr(l, d)
   ListOfSingletons(d)
 }
-
 
 find l limit 1 {
   ListOfSingletons(l)
@@ -96,24 +95,24 @@ find out limit 5 {
 
 // NOTE By "The Law of Fail", we can drop the following clause.
 
-// Member(x, l)
+// clause Member(x, l)
 // ------------- {
 //   Null(l)
 //   Fail()
 // }
 
-// Member(x, l)
+// clause Member(x, l)
 // ------------- {
 //   Car(l, a)
 //   x = a
 // }
 
-Member(x, l)
+clause Member(x, l)
 ------------- {
   Car(l, x)
 }
 
-Member(x, l)
+clause Member(x, l)
 ------------- {
   Cdr(l, d)
   Member(x, d)
@@ -160,14 +159,14 @@ find l limit 5 {
   Member("tofu", l)
 }
 
-ProperMember(x, l)
+clause ProperMember(x, l)
 ------------------- {
   Car(l, x)
   Cdr(l, d)
   List(d)
 }
 
-ProperMember(x, l)
+clause ProperMember(x, l)
 ------------------- {
   Cdr(l, d)
   ProperMember(x, d)

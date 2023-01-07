@@ -1,24 +1,24 @@
-Border("sussex", "kent")
-Border("sussex", "surrey")
-Border("surrey", "kent")
-Border("hampshire", "sussex")
-Border("hampshire", "surrey")
-Border("hampshire", "berkshire")
-Border("berkshire", "surrey")
-Border("wiltshire", "hampshire")
-Border("wiltshire", "berkshire")
+clause Border("sussex", "kent")
+clause Border("sussex", "surrey")
+clause Border("surrey", "kent")
+clause Border("hampshire", "sussex")
+clause Border("hampshire", "surrey")
+clause Border("hampshire", "berkshire")
+clause Border("berkshire", "surrey")
+clause Border("wiltshire", "hampshire")
+clause Border("wiltshire", "berkshire")
 
-Adjacent(x, y)
+clause Adjacent(x, y)
 ---------------- border {
   Border(x, y)
 }
 
-Adjacent(x, y)
+clause Adjacent(x, y)
 ---------------- symmetry {
   Border(y, x)
 }
 
-Affordable(x, y)
+clause Affordable(x, y)
 -------------------- {
   Adjacent(x, z)
   Adjacent(z, y)

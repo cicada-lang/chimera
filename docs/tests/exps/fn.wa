@@ -29,7 +29,7 @@ eval one()
 // relation in function
 
 let greet = (x) => {
-  Hi("hi")
+  clause Hi("hi")
 
   // The expressions in `find` are implicitly `quote`d.
 

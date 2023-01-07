@@ -1,5 +1,5 @@
-Append([], l, l)
+clause Append([], l, l)
 
-Append([a | d], l, [a | r]) -- {
+clause Append([a | d], l, [a | r]) -- {
   Append(d, l, r)
 }

@@ -1,11 +1,11 @@
-Lookup(map, name, found)
+clause Lookup(map, name, found)
 ------------------------- here {
   map = [[key, value] | _rest]
   key = name
   found = value
 }
 
-Lookup(map, name, found)
+clause Lookup(map, name, found)
 ------------------------------- there {
   map = [[key, _value] | rest]
   key != name

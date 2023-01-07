@@ -1,4 +1,4 @@
-LtEqThree(n)
+clause LtEqThree(n)
 -------------- {
   n != add1(add1(add1(zero())))
 }

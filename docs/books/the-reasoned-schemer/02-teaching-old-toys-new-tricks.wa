@@ -1,4 +1,4 @@
-Car(p, a)
+clause Car(p, a)
 ---------- {
   [a | _d] = p
 }
@@ -22,7 +22,7 @@ find r {
   [x | y] = r
 }
 
-Cdr(p, d)
+clause Cdr(p, d)
 ---------- {
   [_a | d] = p
 }
@@ -53,12 +53,12 @@ find l {
   x = "a"
 }
 
-// Cons(a, d, p)
+// clause Cons(a, d, p)
 // --------------- {
 //   [a | d] = p
 // }
 
-Cons(a, d, p)
+clause Cons(a, d, p)
 --------------- {
   Car(p, a)
   Cdr(p, d)
@@ -101,7 +101,7 @@ find l {
   "o" = y
 }
 
-Null(x)
+clause Null(x)
 ---------- {
   [] = x
 }
@@ -122,7 +122,7 @@ find r {
   [_x, _y, "salad"] = r
 }
 
-Pair(p)
+clause Pair(p)
 ------ {
   Cons(_a, _d, p)
 }
@@ -147,14 +147,14 @@ find r {
   Pair([r])
 }
 
-// Singleton(l)
+// clause Singleton(l)
 // ----------- {
 //   Pair(l)
 //   Cdr(l, d)
 //   Null(d)
 // }
 
-Singleton(l)
+clause Singleton(l)
 ----------- {
   Cdr(l, d)
   Null(d)

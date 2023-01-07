@@ -31,10 +31,10 @@ cons(1, cons(2, cons(3, cons(4, null))))
 **Relation:**
 
 ```whereabouts
-Append([], right, right)
+clause Append([], right, right)
 ---------------------------- {}
 
-Append(
+clause Append(
   [head | left_tail],
   right,
   [head | result_tail],
@@ -87,13 +87,13 @@ cons(1, cons(2, cons(3, cons(4, null))))
 **Relation:**
 
 ```whereabouts todo
-Merge(null, right, right)
+clause Merge(null, right, right)
 ------------------------ {}
 
-Merge(left, null, left)
+clause Merge(left, null, left)
 ------------------------ {}
 
-Merge(
+clause Merge(
   [left_head | left_tail],
   [head | right_tail],
   [head | result_tail],
@@ -103,7 +103,7 @@ Merge(
   FD::Gt(left_head, head)
 }
 
-Merge(
+clause Merge(
   [head | left_tail],
   [right_head | right_tail],
   [head | result_tail],

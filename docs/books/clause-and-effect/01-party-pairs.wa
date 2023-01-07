@@ -1,11 +1,10 @@
-Male({ name: "bertram" })
-Male({ name: "percival" })
+clause Male({ name: "bertram" })
+clause Male({ name: "percival" })
 
-Female({ name: "lucinda" })
-Female({ name: "camilla" })
+clause Female({ name: "lucinda" })
+clause Female({ name: "camilla" })
 
-Pair({ male, female })
------------------------- {
+clause Pair({ male, female }) -- {
   Male({ name: male })
   Female({ name: female })
 }

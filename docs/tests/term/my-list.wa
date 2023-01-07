@@ -1,5 +1,5 @@
-List(null())
-List(cons(_head, tail)) -- { List(tail) }
+clause List(null())
+clause List(cons(_head, tail)) -- { List(tail) }
 
 find _ {
   List(null())

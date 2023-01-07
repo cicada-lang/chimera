@@ -1,11 +1,11 @@
-Drink({ person: "john", alcohol: "martini" })
-Drink({ person: "mary", alcohol: "gin" })
-Drink({ person: "susan", alcohol: "vodka" })
-Drink({ person: "john", alcohol: "gin" })
-Drink({ person: "fred", alcohol: "gin" })
-Drink({ person: "fred", alcohol: "vodka" })
+clause Drink({ person: "john", alcohol: "martini" })
+clause Drink({ person: "mary", alcohol: "gin" })
+clause Drink({ person: "susan", alcohol: "vodka" })
+clause Drink({ person: "john", alcohol: "gin" })
+clause Drink({ person: "fred", alcohol: "gin" })
+clause Drink({ person: "fred", alcohol: "vodka" })
 
-Friendship({ left, right, alcohol })
+clause Friendship({ left, right, alcohol })
 ------------------------------------ {
   Drink({ person: left, alcohol })
   Drink({ person: right, alcohol })

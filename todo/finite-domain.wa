@@ -19,7 +19,7 @@ find [x, y, z] {
 
 // => [[3, 3, 5], [3, 3, 6]]
 
-FD::Lt(x, y) -- { FD::LtEq(x, y) FD::NotEq(x, y) }
+clause FD::Lt(x, y) -- { FD::LtEq(x, y) FD::NotEq(x, y) }
 
 // `FD::Range` requires its second argument to be grounded.
 

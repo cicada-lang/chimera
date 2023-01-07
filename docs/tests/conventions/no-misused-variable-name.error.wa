@@ -1,4 +1,4 @@
-Car(p, _a)
+clause Car(p, _a)
 ---------- {
   [_a | _d] = p
 }

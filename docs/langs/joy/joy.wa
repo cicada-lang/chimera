@@ -1,67 +1,66 @@
 // Small step operational semantics of a Forth-like language.
 
-Append([], t, t)
+clause Append([], t, t)
 
-Append([a | d], t, out)
+clause Append([a | d], t, out)
 ------------------------- {
   Append(d, t, res)
   out = [a | res]
 }
 
-Step(
+clause Step(
   [stack, [[quoted] | rest]],
   [[[quoted] | stack], rest],
 )
 
-Step(
+clause Step(
   [[quoted | stack], ["apply" | rest]],
   [stack, result],
 ) -- {
   Append(quoted, rest, result)
 }
 
-
-Step(
+clause Step(
   [[car, cdr | stack], ["cons" | rest]],
   [[[car | cdr] | stack], rest],
 )
 
-Step(
+clause Step(
   [[x | stack], ["dup" | rest]],
   [[x, x | stack], rest],
 )
 
-Step(
+clause Step(
   [[_x | stack], ["drop" | rest]],
   [stack, rest],
 )
 
-Step(
+clause Step(
   [[x, y | stack], ["swap" | rest]],
   [[y, x | stack], rest],
 )
 
-Step(
+clause Step(
   [[x, y | stack], ["over" | rest]],
   [[y, x, y | stack], rest],
 )
 
-Step(
+clause Step(
   [[x, y, z | stack], ["rot" | rest]],
   [[z, y, x | stack], rest],
 )
 
-Step(
+clause Step(
   [stack, ["lit", value | rest]],
   [[value | stack], rest],
 )
 
-Eval(start, end)
+clause Eval(start, end)
 -------------------- {
   Step(start, end)
 }
 
-Eval(start, end)
+clause Eval(start, end)
 ------------------ {
   Step(start, next)
   Eval(next, end)

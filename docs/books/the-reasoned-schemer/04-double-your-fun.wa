@@ -1,12 +1,12 @@
 import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
 
-Append(l, t, out)
+clause Append(l, t, out)
 ------------------ {
   Null(l)
   out = t
 }
 
-Append(l, t, out)
+clause Append(l, t, out)
 ------------------ {
   Cdr(l, d)
   Append(d, t, res)
@@ -110,13 +110,13 @@ find [x, y] limit 6 {
   )
 }
 
-Unwrap(x, out)
+clause Unwrap(x, out)
 --------------- {
   Car(x, a)
   Unwrap(a, out)
 }
 
-Unwrap(x, out)
+clause Unwrap(x, out)
 --------------- {
   x = out
 }

@@ -7,12 +7,9 @@ export function query_pattern_matcher(tree: pt.Tree): QueryPattern {
   return pt.matcher<QueryPattern>({
     "query_pattern:name": ({ name }, { span }) =>
       QueryPatterns.QueryPatternName(pt.str(name), span),
-    "query_pattern:pattern_variable_names": (
-      { pattern_variable_names },
-      { span },
-    ) =>
+    "query_pattern:variable_names": ({ variable_names }, { span }) =>
       QueryPatterns.QueryPatternNames(
-        matchers.pattern_variable_names_matcher(pattern_variable_names),
+        matchers.variable_names_matcher(variable_names),
         span,
       ),
   })(tree)

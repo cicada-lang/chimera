@@ -1,8 +1,17 @@
-[evaluateGoal] Apply fail, undefined target name: Hiya
+I found syntax error in code:
 
  1 |import * from "./example.wa"
  2 |
  3 |find q {
- 4 |  Hiya(q)
+ 4 |  clause Hiya(q)
  5 |}
  6 |
+
+Found the identifier "Hiya" in [48, 52], while expecting:
+ "(":
+     args:args@8 -> > "(" (args: zero_or_more) (last_arg: arg) optional ")" 
+ "(":
+     args:args_empty@8 -> > "(" ")" 
+ "=":
+     goal:equal@7 -> (left: exp):operator@8 > "=" (right: exp) 
+ and so on ...

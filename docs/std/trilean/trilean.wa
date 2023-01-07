@@ -1,43 +1,43 @@
 // Use logic programming to play with many-valued logic.
 
-Trilean(0)
-Trilean(0.5)
-Trilean(1)
+clause Trilean(0)
+clause Trilean(0.5)
+clause Trilean(1)
 
 // Name of the three values:
 
-TrileanFalse(0)
-TrileanMiddle(0.5)
-TrileanTrue(1)
+clause TrileanFalse(0)
+clause TrileanMiddle(0.5)
+clause TrileanTrue(1)
 
-TrileanMin(0, 0, 0)
-TrileanMin(0, 0.5, 0)
-TrileanMin(0, 1, 0)
-TrileanMin(0.5, 0, 0)
-TrileanMin(0.5, 0.5, 0.5)
-TrileanMin(0.5, 1, 0.5)
-TrileanMin(1, 0, 0)
-TrileanMin(1, 0.5, 0.5)
-TrileanMin(1, 1, 1)
+clause TrileanMin(0, 0, 0)
+clause TrileanMin(0, 0.5, 0)
+clause TrileanMin(0, 1, 0)
+clause TrileanMin(0.5, 0, 0)
+clause TrileanMin(0.5, 0.5, 0.5)
+clause TrileanMin(0.5, 1, 0.5)
+clause TrileanMin(1, 0, 0)
+clause TrileanMin(1, 0.5, 0.5)
+clause TrileanMin(1, 1, 1)
 
-TrileanMax(0, 0, 0)
-TrileanMax(0, 0.5, 0.5)
-TrileanMax(0, 1, 1)
-TrileanMax(0.5, 0, 0.5)
-TrileanMax(0.5, 0.5, 0.5)
-TrileanMax(0.5, 1, 1)
-TrileanMax(1, 0, 1)
-TrileanMax(1, 0.5, 1)
-TrileanMax(1, 1, 1)
+clause TrileanMax(0, 0, 0)
+clause TrileanMax(0, 0.5, 0.5)
+clause TrileanMax(0, 1, 1)
+clause TrileanMax(0.5, 0, 0.5)
+clause TrileanMax(0.5, 0.5, 0.5)
+clause TrileanMax(0.5, 1, 1)
+clause TrileanMax(1, 0, 1)
+clause TrileanMax(1, 0.5, 1)
+clause TrileanMax(1, 1, 1)
 
-TrileanPositive(0.5)
-TrileanPositive(1)
+clause TrileanPositive(0.5)
+clause TrileanPositive(1)
 
 // Use mutually exclusive cases.
 
-TrileanMul(0, y, 0) -- { Trilean(y) }
-TrileanMul(x, 0, 0) -- { TrileanPositive(x) }
-TrileanMul(x, y, z) -- {
+clause TrileanMul(0, y, 0) -- { Trilean(y) }
+clause TrileanMul(x, 0, 0) -- { TrileanPositive(x) }
+clause TrileanMul(x, y, z) -- {
   TrileanPositive(x)
   TrileanPositive(y)
   TrileanMax(x, y, z)

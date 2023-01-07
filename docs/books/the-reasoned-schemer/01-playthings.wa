@@ -1,6 +1,6 @@
-Succeed()
+clause Succeed()
 
-Fail()
+clause Fail()
 -------- {
   1 = 2
 }
@@ -107,12 +107,12 @@ find q {
   "corn" = q
 }
 
-Teacup(t)
+clause Teacup(t)
 --------------- tea {
   t = "tea"
 }
 
-Teacup(t)
+clause Teacup(t)
 --------------- cup {
   t = "cup"
 }

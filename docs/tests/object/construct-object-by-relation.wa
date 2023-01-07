@@ -1,4 +1,4 @@
-Var(exp, name)
+clause Var(exp, name)
 --------------- {
   exp = { "@type": "Exp", "@kind": "Var", name }
 }

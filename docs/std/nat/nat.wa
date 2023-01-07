@@ -1,8 +1,8 @@
-Nat(zero())
-Nat(add1(prev)) -- { Nat(prev) }
+clause Nat(zero())
+clause Nat(add1(prev)) -- { Nat(prev) }
 
-Zero(zero())
-Add1(prev, add1(prev))
+clause Zero(zero())
+clause Add1(prev, add1(prev))
 
-Nat(zero())
-Nat(add1(prev)) -- { Nat(prev) }
+clause Nat(zero())
+clause Nat(add1(prev)) -- { Nat(prev) }

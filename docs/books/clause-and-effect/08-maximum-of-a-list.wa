@@ -1,13 +1,13 @@
-// Max(null, n, n)
+// clause Max(null, n, n)
 // ---------------- {}
 
-// Max(cons(x, rest), n, max)
+// clause Max(cons(x, rest), n, max)
 // ---------------------------- {
 //   Max(rest, x, max)
 //   x > n
 // }
 
-// Max(cons (x, rest), n, max)
+// clause Max(cons (x, rest), n, max)
 // ---------------------------- {
 //   Max(rest, n, max)
 //   x <= n

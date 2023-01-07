@@ -1,8 +1,8 @@
 import { Zero, Add1, Nat } from "nat.wa"
 
-Add(zero(), y, y)
+clause Add(zero(), y, y)
 
-Add(add1(prev), y, add1(res))
+clause Add(add1(prev), y, add1(res))
 --------------------------- {
   Add(prev, y, res)
 }

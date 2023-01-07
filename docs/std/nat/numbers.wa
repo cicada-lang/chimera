@@ -1,14 +1,14 @@
 import { Zero, Add1 } from "nat.wa"
 
-One(n) -- { Add1(prev, n) Zero(prev) }
-Two(n) -- { Add1(prev, n) One(prev) }
-Three(n) -- { Add1(prev, n) Two(prev) }
-Four(n) -- { Add1(prev, n) Three(prev) }
-Five(n) -- { Add1(prev, n) Four(prev) }
-Six(n) -- { Add1(prev, n) Five(prev) }
-Seven(n) -- { Add1(prev, n) Six(prev) }
-Eight(n) -- { Add1(prev, n) Seven(prev) }
-Nine(n) -- { Add1(prev, n) Eight(prev) }
-Ten(n) -- { Add1(prev, n) Nine(prev) }
-Eleven(n) -- { Add1(prev, n) Ten(prev) }
-Twelve(n) -- { Add1(prev, n) Eleven(prev) }
+clause One(n) -- { Add1(prev, n) Zero(prev) }
+clause Two(n) -- { Add1(prev, n) One(prev) }
+clause Three(n) -- { Add1(prev, n) Two(prev) }
+clause Four(n) -- { Add1(prev, n) Three(prev) }
+clause Five(n) -- { Add1(prev, n) Four(prev) }
+clause Six(n) -- { Add1(prev, n) Five(prev) }
+clause Seven(n) -- { Add1(prev, n) Six(prev) }
+clause Eight(n) -- { Add1(prev, n) Seven(prev) }
+clause Nine(n) -- { Add1(prev, n) Eight(prev) }
+clause Ten(n) -- { Add1(prev, n) Nine(prev) }
+clause Eleven(n) -- { Add1(prev, n) Ten(prev) }
+clause Twelve(n) -- { Add1(prev, n) Eleven(prev) }
