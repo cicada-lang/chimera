@@ -12,10 +12,15 @@ draw labelled hypergraph by JavaScript.
 
 # functional
 
-`doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
+`find` as an expression
 
-- we need `if else` to make this useful.
-- we need statement based function body to add `if else`
+`if` as an expression
+
+`return` as an expression
+
+- implement early return by throw
+
+`doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
 [rule] support guard
 
