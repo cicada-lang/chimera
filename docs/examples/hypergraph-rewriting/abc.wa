@@ -4,23 +4,23 @@ hyperrule abc {
   ["b", "c"] => ["a"]
 }
 
-eval abc(quote ["a", "a", "a"])
+abc(quote ["a", "a", "a"])
 
-eval abc(quote [
+abc(quote [
   "a", "b", "b", "a",
 ])
 
-eval abc(quote [
+abc(quote [
   "a", "b", "b", "a",
   "a",
 ])
 
-eval abc(quote [
+abc(quote [
   "a", "b", "b", "a",
   "a", "a",
 ])
 
-eval abc(quote [
+abc(quote [
   "a", "b", "b", "a",
   "a", "a", "a",
 ])

@@ -1,8 +1,8 @@
-eval () => {
+() => {
   return 1
 }
 
-eval (x) => {
+(x) => {
   let y = x
   return y
 }
@@ -14,9 +14,9 @@ let id = (x) => {
   return y
 }
 
-eval id(1)
-eval id(id(1))
-eval id(id(id(1)))
+id(1)
+id(id(1))
+id(id(id(1)))
 
 // zero arity
 
@@ -24,7 +24,7 @@ let one = () => {
   return 1
 }
 
-eval one()
+one()
 
 // relation in function
 
@@ -41,4 +41,4 @@ let greet = (x) => {
   return "ok"
 }
 
-eval greet("xieyuheng")
+greet("xieyuheng")

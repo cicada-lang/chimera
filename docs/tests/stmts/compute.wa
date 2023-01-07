@@ -1,4 +1,4 @@
-eval 1
-eval "a"
-eval ["a", "b", "c"]
-eval { a: 1, b: 2, c: 3 }
+1
+"a"
+["a", "b", "c"]
+{ a: 1, b: 2, c: 3 }

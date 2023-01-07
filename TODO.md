@@ -1,5 +1,3 @@
-top-level expression are evaluated
-
 Extend this language with primitives to follow IU compiler course.
 
 To have a lot of primitive functions (about string and number),

@@ -2,6 +2,6 @@
 
  1 |let h = quote g(y)
  2 |
- 3 |eval unquote h
+ 3 |unquote h
  4 |
 

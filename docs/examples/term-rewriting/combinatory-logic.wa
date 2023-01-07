@@ -8,8 +8,8 @@ rule ski {
   ap("I", x) => x
 }
 
-eval ski(quote ap(ap(ap("S", "K"), "I"), "I"))
-eval ski(quote ap(ap(ap("S", "I"), "K"), "K"))
+ski(quote ap(ap(ap("S", "K"), "I"), "I"))
+ski(quote ap(ap(ap("S", "I"), "K"), "K"))
 
 // Notes:
 // - use pair as application.
@@ -25,9 +25,9 @@ rule ski2 {
   ["D", x] => ["S", "I", "I", x]
 }
 
-eval ski2(quote ["S", "K", "I", "I"])
-eval ski2(quote ["S", "I", "K", "K"])
+ski2(quote ["S", "K", "I", "I"])
+ski2(quote ["S", "I", "K", "K"])
 
-eval ski2(quote ["D", x])
+ski2(quote ["D", x])
 
-eval ski2(quote ["S", "K", "S", "S", "S", "K", "S"])
+ski2(quote ["S", "K", "S", "S", "S", "K", "S"])

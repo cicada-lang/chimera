@@ -1,1 +1,1 @@
-eval quote f(quote x)
+quote f(quote x)
