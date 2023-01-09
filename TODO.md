@@ -182,6 +182,8 @@ implement alphaLean
 
 [langs] `langs/pie` -- use pie as an example of non trivial logic program
 
+- we should use nominal logic instead of `freshen`
+
 [langs] `langs/joy` -- how to generate quine?
 
 [wiki of rules] when writing a PL paper,
