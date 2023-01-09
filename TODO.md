@@ -1,26 +1,21 @@
-Extend this language with primitives to follow IU compiler course.
-
-To have a lot of primitive functions (about string and number),
-we need namespace -- `Str::` and `Num::`
-
-- learn from php and laravel.
-- should term has namespace?
-
-`assert` and `assertNot` as built-in functions.
-
-# draw
-
-draw labelled hypergraph by JavaScript.
-
 # functional
 
-`find` as an expression
+`void` as a value -- for function without `return`
 
-`if` as an expression
+- how should we handle this?
 
-`return` as an expression
+  - learn from ~/persons/douglas-crockford/how-javascript-works.pdf
+  - learn from sicp-js
+
+`return` as a stmt
 
 - implement early return by throw
+
+`if` as a stmt
+
+`ife` as an expression
+
+`find` as an expression
 
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
@@ -33,6 +28,28 @@ draw labelled hypergraph by JavaScript.
 
 [primitive] `rewrite(n, target, rules): Array`
 [primitive] `hyperrewrite(n, target, hyperrules): Array`
+
+`assert` and `assertNot` as built-in functions.
+
+# hyperrewrite
+
+[hyperrewrite] If a constraint already in the result, a hyperrule should fail.
+
+- For example: `X <= Y, Y <= Z => X <= Z`
+
+# compiler
+
+Extend this language with primitives to follow IU compiler course.
+
+To have a lot of primitive functions (about string and number),
+we need namespace -- `Str::` and `Num::`
+
+- learn from php and laravel.
+- should term has namespace?
+
+# draw
+
+draw labelled hypergraph by JavaScript.
 
 # term rewriting
 
@@ -102,6 +119,15 @@ use hypergraph rewriting to implement finite-domain constraint programming
 # clp
 
 [read] essentials-of-constraint-programming.pdf
+
+- [maybe] application of undefined relation should be viewed a term data.
+
+- [maybe] `Solution` should be extended with `customConstraints`
+  -- or just `constraints` -- which contains the constraints
+  accumulated and simplified so far (whereas in LP we had substitutions).
+
+- [maybe] we should handle all constraints in the goal first,
+  before unfolding an application of a relation.
 
 [note] The general idea about implementing constraint:
 
