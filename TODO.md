@@ -6,6 +6,8 @@ we need namespace -- `Str::` and `Num::`
 - learn from php and laravel.
 - should term has namespace?
 
+`assert` and `assertNot` as built-in functions.
+
 # draw
 
 draw labelled hypergraph by JavaScript.
@@ -139,6 +141,10 @@ Compile to native code to run in linux.
 support namespace
 
 [diary] supporting-namespace.md
+
+[maybe] `mod.freshen` should take into account of the `mod.options.url`
+
+- to keep the generated name unique -- like uuid.
 
 # homoiconicity
 
