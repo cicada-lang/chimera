@@ -12,3 +12,9 @@ Problem: "expression as statement" is ambiguous.
 
 - Solution 1: Use ';'.
 - Solution 2: Use `compute` as prefixing keyword.
+
+More important features are:
+
+Having no preserved keywords and being not ambiguous,
+are more important than the ease of
+not having to write `;` or `compute`.

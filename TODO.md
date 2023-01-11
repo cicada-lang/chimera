@@ -1,5 +1,13 @@
 # functional
 
+rename `Stmts.Compute` to `Stmts.Print`
+
+require `print` keyword
+
+`Stmts.Compute` -- without print
+
+`find` as an expression -- remove `Stmts.Find`
+
 function without `return`
 
 - choices:
@@ -9,6 +17,7 @@ function without `return`
   - return `null` -- `null` will not be printed in REPL
 
 - learn from
+
   - ~/persons/douglas-crockford/how-javascript-works.pdf
   - sicp-js
   - history of c: https://web.archive.org/web/19980220175804/http://cm.bell-labs.com/cm/cs/who/dmr/chist.html
@@ -20,8 +29,6 @@ function without `return`
 `if` as a stmt
 
 `ife` as an expression
-
-`find` as an expression
 
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
