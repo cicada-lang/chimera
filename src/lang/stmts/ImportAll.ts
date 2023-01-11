@@ -4,7 +4,7 @@ import type { Span } from "../span"
 import { Stmt } from "../stmt"
 
 export class ImportAll extends Stmt {
-  constructor(public path: string, public span?: Span) {
+  constructor(public path: string, public span: Span) {
     super()
   }
 

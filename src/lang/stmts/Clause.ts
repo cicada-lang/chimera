@@ -16,7 +16,7 @@ export class Clause extends Stmt {
     public name: string | undefined,
     public exps: Array<Exp>,
     public goals: Array<GoalExp>,
-    public span?: Span,
+    public span: Span,
   ) {
     super()
   }

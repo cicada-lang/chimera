@@ -14,7 +14,7 @@ export class Rule extends Stmt {
   constructor(
     public name: string,
     public rules: Array<RuleExp>,
-    public span?: Span,
+    public span: Span,
   ) {
     super()
   }

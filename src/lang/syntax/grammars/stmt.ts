@@ -83,6 +83,16 @@ export const stmt = {
     "stmt:let": ['"let"', { name: "variable_name" }, '"="', { exp: "exp" }],
     "stmt:print": ['"print"', { exp: "exp" }],
     "stmt:compute": ['"compute"', { exp: "exp" }],
+    "stmt:fn": [
+      '"function"',
+      { name: "variable_name" },
+      { patterns: "args" },
+      '"{"',
+      { stmts: "stmts" },
+      '"return"',
+      { ret: "exp" },
+      '"}"',
+    ],
   },
 }
 

@@ -25,7 +25,7 @@ export class Find extends Stmt {
     public pattern: QueryPattern,
     public limit: number,
     public goals: Array<GoalExp>,
-    public span?: Span,
+    public span: Span,
   ) {
     super()
   }

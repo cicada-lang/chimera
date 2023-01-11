@@ -14,7 +14,7 @@ export class Hyperrule extends Stmt {
   constructor(
     public name: string,
     public hyperrules: Array<HyperruleExp>,
-    public span?: Span,
+    public span: Span,
   ) {
     super()
   }

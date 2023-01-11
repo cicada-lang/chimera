@@ -3,7 +3,7 @@ import type { Span } from "../span"
 import { Stmt } from "../stmt"
 
 export class Private extends Stmt {
-  constructor(public stmts: Array<Stmt>, public span?: Span) {
+  constructor(public stmts: Array<Stmt>, public span: Span) {
     super()
   }
 

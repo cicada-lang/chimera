@@ -19,7 +19,7 @@ export class Import extends Stmt {
   constructor(
     public bindings: Array<ImportBinding>,
     public path: string,
-    public span?: Span,
+    public span: Span,
   ) {
     super()
   }

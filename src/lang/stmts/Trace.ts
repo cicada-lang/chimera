@@ -16,7 +16,7 @@ export class Trace extends Stmt {
   constructor(
     public steps: number,
     public goals: Array<GoalExp>,
-    public span?: Span,
+    public span: Span,
   ) {
     super()
   }

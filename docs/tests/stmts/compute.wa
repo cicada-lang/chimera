@@ -1,6 +1,6 @@
 compute "compute without print"
 
-let f = () => {
+function f() {
   print "print in function body"
   return null
 }

@@ -83,6 +83,14 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.Print(matchers.exp_matcher(exp), span),
     "stmt:compute": ({ exp }, { span }) =>
       new Stmts.Compute(matchers.exp_matcher(exp), span),
+    "stmt:fn": ({ name, patterns, stmts, ret }, { span }) =>
+      new Stmts.Fn(
+        pt.str(name),
+        matchers.args_matcher(patterns),
+        matchers.stmts_matcher(stmts),
+        matchers.exp_matcher(ret),
+        span,
+      ),
   })(tree)
 }
 
