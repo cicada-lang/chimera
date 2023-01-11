@@ -1,7 +1,5 @@
 # functional
 
-`formatExp` -- `Find`
-
 `return` as a stmt
 
 - implement early return by throw
@@ -84,6 +82,8 @@ where space itself is implemented by hypergraph,
 and dynamic is implemented by rewrite rules?
 
 # functional
+
+`formatExp` -- `Find`
 
 `Stmt.format`
 
