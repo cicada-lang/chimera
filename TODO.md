@@ -1,7 +1,5 @@
 # functional
 
-rename `Stmts.Compute` to `Stmts.Print`
-
 require `print` keyword
 
 `Stmts.Compute` -- without print
