@@ -1,11 +1,11 @@
 import { A } from "./A.wa"
 
-find [x] {
+print find [x] {
   A(x)
 }
 
 clause A(x) -- { x = "b" }
 
-find [x] {
+print find [x] {
   A(x)
 }

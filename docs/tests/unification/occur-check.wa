@@ -1,11 +1,11 @@
-find _ {
+print find _ {
   x = [x]
 }
 
-find _ {
+print find _ {
   x = { x }
 }
 
-find _ {
+print find _ {
   x = { y: x }
 }

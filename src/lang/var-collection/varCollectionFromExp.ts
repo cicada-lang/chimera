@@ -51,5 +51,9 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
     case "Unquote": {
       return createVarCollection()
     }
+
+    case "Find": {
+      return createVarCollection()
+    }
   }
 }

@@ -1,24 +1,24 @@
-find abc {
+print find abc {
   abc = ["a", "b", "c"]
 }
 
-find [a, b, c] {
+print find [a, b, c] {
   [a, b, c] = ["a", "b", "c"]
 }
 
-find empty {
+print find empty {
   empty = []
 }
 
-find [head, rest] {
+print find [head, rest] {
   [head | rest] = ["a", "b", "c"]
 }
 
-find [head, rest] {
+print find [head, rest] {
   [head | rest] = ["a" | "b"]
 }
 
-find [head, rest, result] {
+print find [head, rest, result] {
   [head | rest] = ["a" | "b"]
   result = [head | rest]
 }

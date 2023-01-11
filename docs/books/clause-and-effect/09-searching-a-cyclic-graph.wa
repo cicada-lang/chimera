@@ -31,15 +31,15 @@ clause Path(x, y, occurs)
   Path(z, y, [z | occurs])
 }
 
-find _ { Path("f", "f", []) }
-find _ { Path("a", "c", []) }
-find _ { Path("g", "e", []) }
+print find _ { Path("f", "f", []) }
+print find _ { Path("a", "c", []) }
+print find _ { Path("g", "e", []) }
 
-find x { Path("g", x, []) }
-find x { Path(x, "h", []) }
+print find x { Path("g", x, []) }
+print find x { Path(x, "h", []) }
 
-find _ { Path("g", "c", []) }
-find _ { Path("g", "c", ["f"]) }
+print find _ { Path("g", "c", []) }
+print find _ { Path("g", "c", ["f"]) }
 
-find _ { Path("a", _x, ["f", "d"]) }
-find _ { Path("a", _x, []) }
+print find _ { Path("a", _x, ["f", "d"]) }
+print find _ { Path("a", _x, []) }

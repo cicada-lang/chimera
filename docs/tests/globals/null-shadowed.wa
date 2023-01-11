@@ -1,9 +1,9 @@
-find x {
+print find x {
   Null(x)
 }
 
 clause Null(x) -- { x = "null" }
 
-find x {
+print find x {
   Null(x)
 }

@@ -69,6 +69,10 @@ export function formatExp(exp: Exp): string {
     case "Unquote": {
       return `unquote ${formatExp(exp.exp)}`
     }
+
+    case "Find": {
+      return `TODO`
+    }
   }
 }
 

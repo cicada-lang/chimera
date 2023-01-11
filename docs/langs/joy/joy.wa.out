@@ -25,4 +25,4 @@
   ["lit", "you", "lit", "love", [_.0], "drop", "lit", "I"],
   ["lit", "you", "lit", "love", "dup", "drop", "lit", "I"]
 ]
-[ [[_.0]] ]
+[[[_.0]]]

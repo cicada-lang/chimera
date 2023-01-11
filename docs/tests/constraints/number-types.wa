@@ -1,49 +1,49 @@
-find _ {
+print find _ {
   Number(1)
 }
 
-find _ {
+print find _ {
   Number("A")
 }
 
-find x {
+print find x {
   x = "cat"
   Number(x)
 }
 
-find x {
+print find x {
   x = 1
   Number(x)
 }
 
-find x {
+print find x {
   Number(x)
   String(x)
 }
 
 // An inequality is subsumed by a type constraint.
 
-find x {
+print find x {
   x != "cat"
   Number(x)
 }
 
 // An inequality (applied later) is subsumed by a type constraint.
 
-find x {
+print find x {
   Number(x)
   x != "cat"
 }
 
 // An inequality (applied later) is subsumed by an indirect type constraint.
 
-find x {
+print find x {
   Number(z)
   z = x
   x != "cat"
 }
 
-find x {
+print find x {
   Number(z)
   x != "cat"
   z = x
@@ -51,14 +51,14 @@ find x {
 
 // An inequality (in a conjunction) is subsumed by a type constraint.
 
-find [x, y] {
+print find [x, y] {
   [x, y] != ["cat", 1]
   Number(x)
 }
 
 // An inequality (in a conjunction and applied later) is subsumed by a type constraint.
 
-find [x, y] {
+print find [x, y] {
   Number(x)
   [x, y] != ["cat", 1]
 }

@@ -3,6 +3,6 @@ clause Var(exp, name)
   exp = { "@type": "Exp", "@kind": "Var", name }
 }
 
-find exp {
+print find exp {
   Var(exp, "x")
 }

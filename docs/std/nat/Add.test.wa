@@ -4,11 +4,11 @@ import { Add, Add1, Nat, Zero } from "Add.wa"
 //   Add1(add1(zero()), _x)
 // }
 
-find x {
+print find x {
   Add(x, x, zero())
 }
 
-find x {
+print find x {
   Add(x, x, add1(add1(zero())))
 }
 

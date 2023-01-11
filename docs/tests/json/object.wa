@@ -1,4 +1,4 @@
-find abc {
+print find abc {
   abc = {
     a: "a",
     b: "b",
@@ -6,7 +6,7 @@ find abc {
   }
 }
 
-find [a, b, c] {
+print find [a, b, c] {
   { a, b, c } = {
     a: "a",
     b: "b",
@@ -14,6 +14,6 @@ find [a, b, c] {
   }
 }
 
-find empty {
+print find empty {
   empty = {}
 }

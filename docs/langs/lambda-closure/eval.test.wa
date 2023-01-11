@@ -1,6 +1,6 @@
 import { Eval } from "exp.wa"
 
-find exp limit 3 {
+print find exp limit 3 {
   value = closure("y", var("x"), [
     ["x", closure("z", var("z"), [])]
   ])

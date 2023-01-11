@@ -1,7 +1,7 @@
 clause Bit(0)
 clause Bit(1)
 
-find x {
+print find x {
   Bit(x)
 }
 
@@ -10,15 +10,15 @@ clause BitXor(0, 1, 1)
 clause BitXor(1, 0, 1)
 clause BitXor(1, 1, 0)
 
-find [x, y] {
+print find [x, y] {
   BitXor(x, y, 0)
 }
 
-find [x, y] {
+print find [x, y] {
   BitXor(x, y, 1)
 }
 
-find [x, y, r] {
+print find [x, y, r] {
   BitXor(x, y, r)
 }
 
@@ -27,7 +27,7 @@ clause BitAnd(0, 1, 0)
 clause BitAnd(1, 0, 0)
 clause BitAnd(1, 1, 1)
 
-find [x, y] {
+print find [x, y] {
   BitAnd(x, y, 1)
 }
 
@@ -39,11 +39,11 @@ clause HalfAdder(x, y, r, c)
   BitAnd(x, y, c)
 }
 
-find r {
+print find r {
   HalfAdder(1, 1, r, 1)
 }
 
-find [x, y, r, c] {
+print find [x, y, r, c] {
   HalfAdder(x, y, r, c)
 }
 
@@ -56,15 +56,15 @@ clause FullAdder(b, x, y, r, c)
   BitXor(xy, wz, c)
 }
 
-find [r, c] {
+print find [r, c] {
   FullAdder(0, 1, 1, r, c)
 }
 
-find [r, c] {
+print find [r, c] {
   FullAdder(1, 1, 1, r, c)
 }
 
-find [b, x, y, r, c] {
+print find [b, x, y, r, c] {
   FullAdder(b, x, y, r, c)
 }
 
@@ -73,19 +73,19 @@ clause Positive(n)
   [_a | _d] = n
 }
 
-find _ {
+print find _ {
   Positive([0, 1, 1])
 }
 
-find _ {
+print find _ {
   Positive([1])
 }
 
-find _ {
+print find _ {
   Positive([])
 }
 
-find r {
+print find r {
   Positive(r)
 }
 
@@ -94,23 +94,23 @@ clause GreaterThanOne(n)
   [_a, _ad | _dd] = n
 }
 
-find _ {
+print find _ {
   GreaterThanOne([0, 1, 1])
 }
 
-find _ {
+print find _ {
   GreaterThanOne([0, 1])
 }
 
-find _ {
+print find _ {
   GreaterThanOne([1])
 }
 
-find _ {
+print find _ {
   GreaterThanOne([])
 }
 
-find r {
+print find r {
   GreaterThanOne(r)
 }
 
@@ -138,27 +138,27 @@ clause GenAdder(b, n, m, r)
   Adder(e, x, y, z)
 }
 
-find [x, y, r] limit 2 {
+print find [x, y, r] limit 2 {
   Adder(0, x, y, r)
 }
 
-find [x, y, r] limit 3 {
+print find [x, y, r] limit 3 {
   Adder(0, x, y, r)
 }
 
-find [x, y, r] limit 4 {
+print find [x, y, r] limit 4 {
   Adder(0, x, y, r)
 }
 
-find [x, y, r] limit 5 {
+print find [x, y, r] limit 5 {
   Adder(0, x, y, r)
 }
 
-find [x, y, r] limit 19 {
+print find [x, y, r] limit 19 {
   Adder(0, x, y, r)
 }
 
-find [x, y] {
+print find [x, y] {
   Adder(0, x, y, [1, 0, 1])
 }
 
@@ -167,19 +167,19 @@ clause Add(x, y, r)
   Adder(0, x, y, r)
 }
 
-find [x, y] {
+print find [x, y] {
   Add(x, y, [1])
 }
 
-find [x, y] {
+print find [x, y] {
   Add(x, y, [0, 1])
 }
 
-find [x, y] {
+print find [x, y] {
   Add(x, y, [1, 1])
 }
 
-find [x, y] {
+print find [x, y] {
   Add(x, y, [1, 0, 1])
 }
 
@@ -188,27 +188,27 @@ clause Sub(n, m, k)
   Add(m, k, n)
 }
 
-find q {
+print find q {
   Sub([1], [1], q)
 }
 
-find q {
+print find q {
   Sub([], [1], q)
 }
 
-find q {
+print find q {
   Sub([1, 1], [1], q)
 }
 
-find q {
+print find q {
   Sub([0, 0, 0, 1], [1, 0, 1], q)
 }
 
-find q {
+print find q {
   Add([1, 1], [1, 0, 1], q)
 }
 
-// find [x, y] {
+// print find [x, y] {
 //   Add(x, y, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
 // }
 
@@ -218,19 +218,19 @@ clause Length([_a | d], n) -- {
   Length(d, res)
 }
 
-find n limit 1 {
+print find n limit 1 {
   Length(["jicama", "rhubarb", "guava"], n)
 }
 
-find l {
+print find l {
   Length(l, [1])
 }
 
-find l {
+print find l {
   Length(l, [0, 1])
 }
 
-find q limit 3 {
+print find q limit 3 {
   Length(q, q)
 }
 
@@ -238,6 +238,6 @@ find q limit 3 {
 // since it is still looking for the fourth value,
 // but there is non.
 
-// find q limit 4 {
+// print find q limit 4 {
 //   Length(q, q)
 // }

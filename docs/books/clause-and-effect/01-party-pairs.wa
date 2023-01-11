@@ -9,34 +9,34 @@ clause Pair({ male, female }) -- {
   Female({ name: female })
 }
 
-find _ {
+print find _ {
   Pair({ male: "bertram", female: "lucinda" })
 }
 
-find _ {
+print find _ {
   Pair({ male: "apollo", female: "daphne" })
 }
 
-find female {
+print find female {
   Pair({ male: "percival", female })
 }
 
-find female {
+print find female {
   Pair({ male: "camilla", female })
 }
 
-find male {
+print find male {
   Pair({ male, female: "lucinda" })
 }
 
-find x {
+print find x {
   Pair({ male: x, female: x })
 }
 
-find _ {
+print find _ {
   Pair({ female: "fido" })
 }
 
-find [male, female] {
+print find [male, female] {
   Pair({ male, female })
 }

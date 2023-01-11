@@ -11,18 +11,18 @@ clause Friendship({ left, right, alcohol })
   Drink({ person: right, alcohol })
 }
 
-find left {
+print find left {
   Friendship({ left, right: "mary", alcohol: "gin" })
 }
 
-find left {
+print find left {
   Friendship({ left, alcohol: "gin" })
 }
 
-find [left, right] {
+print find [left, right] {
   Friendship({ left, right, alcohol: "gin" })
 }
 
-find [left, right, alcohol] {
+print find [left, right, alcohol] {
   Friendship({ left, right, alcohol })
 }

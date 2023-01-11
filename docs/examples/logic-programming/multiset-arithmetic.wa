@@ -4,7 +4,7 @@
 clause Multiset([])
 clause Multiset([car | cdr]) -- { Multiset(car) Multiset(cdr) }
 
-// find x limit 10 {
+// print find x limit 10 {
 //   Multiset(x)
 // }
 
@@ -13,21 +13,21 @@ clause Zero([])
 clause Nat([])
 clause Nat([car | cdr]) -- { Zero(car) Nat(cdr) }
 
-// find x limit 10 {
+// print find x limit 10 {
 //   Nat(x)
 // }
 
 clause Poly([])
 clause Poly([car | cdr]) -- { Nat(car) Poly(cdr) }
 
-// find x limit 10 {
+// print find x limit 10 {
 //   Poly(x)
 // }
 
 clause Multi([])
 clause Multi([car | cdr]) -- { Poly(car) Multi(cdr) }
 
-// find x limit 10 {
+// print find x limit 10 {
 //   Multi(x)
 // }
 
@@ -46,13 +46,13 @@ clause AddMany([x, y | rest], out) -- {
   AddMany([z | rest], out)
 }
 
-// find [x, y, out] limit 10 {
+// print find [x, y, out] limit 10 {
 //   Nat(x)
 //   Nat(y)
 //   Add(x, y, out)
 // }
 
-// find [xs, out] limit 20 {
+// print find [xs, out] limit 20 {
 //   Poly(xs)
 //   AddMany(xs, out)
 // }
@@ -68,15 +68,15 @@ clause Product([x | xs], [y | ys], out) -- {
   out = [[x, y] | tmp]
 }
 
-find q {
+print find q {
   Product([1], ["a"], q)
 }
 
-find q {
+print find q {
   Product([1, 2], ["a", "b"], q)
 }
 
-find q {
+print find q {
   Product([1, 2, 3], ["a", "b", "c"], q)
 }
 
@@ -91,15 +91,15 @@ clause Mul(x, y, z) -- {
   AddPairs(pairs, z)
 }
 
-find z {
+print find z {
   Mul([[], []], [[], []], z)
 }
 
-find [x, y] limit 3 {
+print find [x, y] limit 3 {
   Mul(x, y, [[], [], [], []])
 }
 
-find [x, y, z] limit 10 {
+print find [x, y, z] limit 10 {
   Nat(x)
   Nat(y)
   Mul(x, y, z)
@@ -112,29 +112,29 @@ clause MulMany([x, y | rest], out) -- {
   MulMany([z | rest], out)
 }
 
-find z {
+print find z {
   MulMany([[[], []], [[], []], [[], []]], z)
 }
 
-find z {
+print find z {
   MulMany([[[], []], [[]]], z)
 }
 
-find z {
+print find z {
   MulMany([[[]], [[], []]], z)
 }
 
-find z {
+print find z {
   MulMany([[[], []]], z)
 }
 
-find [x, y] limit 2 {
+print find [x, y] limit 2 {
   Nat(x)
   Nat(y)
   Mul(x, y, [[], []])
 }
 
-find [xs, z] limit 20 {
+print find [xs, z] limit 20 {
   Poly(xs)
   MulMany(xs, z)
 }

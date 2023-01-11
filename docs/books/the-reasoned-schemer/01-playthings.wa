@@ -5,104 +5,104 @@ clause Fail()
   1 = 2
 }
 
-find _ {
+print find _ {
   Fail()
 }
 
-find _ {
+print find _ {
   "pea" = "pod"
 }
 
-find q {
+print find q {
   q = "pea"
 }
 
-find q {
+print find q {
   "pea" = q
 }
 
-find _ {
+print find _ {
   Succeed()
 }
 
-find _ {
+print find _ {
   "pea" = "pea"
 }
 
-find q {
+print find q {
   q = q
 }
 
-find q {
+print find q {
   q = _
 }
 
-find q {
+print find q {
   q = [_]
 }
 
-find _ {
+print find _ {
   [[["pea"]], "pod"] = [[["pea"]], "pod"]
 }
 
-find q {
+print find q {
   [[[q]], "pod"] = [[[_]], "pod"]
 }
 
-find q {
+print find q {
   [[[q]], x] = [[[x]], "pod"]
 }
 
-find q {
+print find q {
   [x, x] = q
 }
 
-find q {
+print find q {
   [_x, _y] = q
 }
 
-find s {
+print find s {
   [_t, _u] = s
 }
 
-find q {
+print find q {
   [x, _y, x] = q
 }
 
-find _ {
+print find _ {
   ["pea"] = "pea"
 }
 
-find _ {
+print find _ {
   [x] = x
 }
 
-find _ {
+print find _ {
   Succeed()
   Succeed()
 }
 
-find q {
+print find q {
   Succeed()
   "corn" = q
 }
 
-find q {
+print find q {
   Fail()
   "corn" = q
 }
 
-find q {
+print find q {
   "corn" = q
   Fail()
 }
 
-find q {
+print find q {
   "corn" = q
   "meal" = q
 }
 
-find q {
+print find q {
   "corn" = q
   "corn" = q
 }
@@ -117,20 +117,20 @@ clause Teacup(t)
   t = "cup"
 }
 
-find q {
+print find q {
   Teacup(q)
 }
 
-find [x, y] {
+print find [x, y] {
   Teacup(x)
   Teacup(y)
 }
 
-find [x, _y] {
+print find [x, _y] {
   Teacup(x)
   Teacup(x)
 }
 
-find [x, _y] {
+print find [x, _y] {
   Teacup(x)
 }

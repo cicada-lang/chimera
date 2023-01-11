@@ -3,7 +3,7 @@ function greet(x) {
 
   // The expressions in `find` are implicitly `quote`d.
 
-  find q {
+  print find q {
     Hi(p)
     q = [p, unquote x]
   }

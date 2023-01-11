@@ -14,31 +14,31 @@ clause Append(l, t, out)
   Cons(a, res, out)
 }
 
-find q {
+print find q {
   Append([1, 2, 3], [4, 5], q)
 }
 
-find q {
+print find q {
   Append([], [4, 5], q)
 }
 
-find q {
+print find q {
   Append(1, [4, 5], q)
 }
 
-find q {
+print find q {
   Append([4, 5], 1, q)
 }
 
-find x limit 6 {
+print find x limit 6 {
   Append(x, _y, _z)
 }
 
-find [x, y, z] limit 6 {
+print find [x, y, z] limit 6 {
   Append(x, y, z)
 }
 
-find x {
+print find x {
   Append(
     ["cake"],
     ["tastes", "yummy"],
@@ -46,7 +46,7 @@ find x {
   )
 }
 
-find x {
+print find x {
   Append(
     ["cake", "&", "ice", _y],
     ["tastes", "yummy"],
@@ -54,7 +54,7 @@ find x {
   )
 }
 
-find x {
+print find x {
   Append(
     ["cake", "&", "ice", "cream"],
     _y,
@@ -62,7 +62,7 @@ find x {
   )
 }
 
-find x limit 1 {
+print find x limit 1 {
   Append(
     ["cake", "&", "ice" | _y],
     ["d", "t"],
@@ -70,7 +70,7 @@ find x limit 1 {
   )
 }
 
-find x limit 5 {
+print find x limit 5 {
   Append(
     ["cake", "&", "ice" | _y],
     ["d", "t"],
@@ -78,7 +78,7 @@ find x limit 5 {
   )
 }
 
-find y limit 5 {
+print find y limit 5 {
   Append(
     ["cake", "&", "ice" | y],
     ["d", "t"],
@@ -86,7 +86,7 @@ find y limit 5 {
   )
 }
 
-find x limit 5 {
+print find x limit 5 {
   Append(
     ["cake", "&", "ice" | y],
     ["d", "t" | y],
@@ -94,7 +94,7 @@ find x limit 5 {
   )
 }
 
-find x {
+print find x {
   Append(
     ["cake", "&", "ice", "cream"],
     ["d", "t" | _z],
@@ -102,7 +102,7 @@ find x {
   )
 }
 
-find [x, y] limit 6 {
+print find [x, y] limit 6 {
   Append(
     x,
     y,
@@ -121,21 +121,21 @@ clause Unwrap(x, out)
   x = out
 }
 
-find x {
+print find x {
   Unwrap(
     [[["pizza"]]],
     x,
   )
 }
 
-find x limit 3 {
+print find x limit 3 {
   Unwrap(
     x,
     "pizza",
   )
 }
 
-find x limit 3 {
+print find x limit 3 {
   Unwrap(
     [[x]],
     "pizza",

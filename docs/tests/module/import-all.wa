@@ -1,9 +1,9 @@
 import * from "./example.wa"
 
-find q {
+print find q {
   Hi(q)
 }
 
-find q {
+print find q {
   Hello(q)
 }

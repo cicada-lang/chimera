@@ -1,2 +1,2 @@
-[ zero() ]
-[ add1(zero()) ]
+[zero()]
+[add1(zero())]

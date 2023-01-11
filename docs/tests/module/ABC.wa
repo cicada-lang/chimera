@@ -6,6 +6,6 @@ clause ABC(a, b, c)
   c = "c"
 }
 
-find [x, y, z] {
+print find [x, y, z] {
   ABC(x, y, z)
 }

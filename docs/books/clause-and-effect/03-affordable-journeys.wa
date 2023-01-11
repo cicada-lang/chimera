@@ -24,14 +24,14 @@ clause Affordable(x, y)
   Adjacent(z, y)
 }
 
-find to_kent {
+print find to_kent {
   Affordable(to_kent, "kent")
 }
 
-find to_sussex {
+print find to_sussex {
   Affordable("sussex", to_sussex)
 }
 
-find [x, y] {
+print find [x, y] {
   Affordable(x, y)
 }

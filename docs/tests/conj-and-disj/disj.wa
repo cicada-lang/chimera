@@ -1,11 +1,11 @@
-find [x] {
+print find [x] {
   disj {
     x = 1
     x = 2
   }
 }
 
-find [x, y] {
+print find [x, y] {
   disj {
     conj { x = 1 y = 1 }
     conj { x = 2 y = 2 }

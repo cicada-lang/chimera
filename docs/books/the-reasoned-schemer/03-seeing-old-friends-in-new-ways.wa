@@ -12,15 +12,15 @@ clause List(l)
   List(d)
 }
 
-find x {
+print find x {
   List(["a", "b", x, "d"])
 }
 
-find x limit 1 {
+print find x limit 1 {
   List(["a", "b" | x])
 }
 
-find x limit 5 {
+print find x limit 5 {
   List(["a", "b" | x])
 }
 
@@ -37,23 +37,23 @@ clause ListOfLists(l)
   ListOfLists(d)
 }
 
-find _ {
+print find _ {
   ListOfLists([["a", "b"], [_x, "c"], ["d", _y]])
 }
 
-find l limit 1 {
+print find l limit 1 {
   ListOfLists(l)
 }
 
-find l limit 5 {
+print find l limit 5 {
   ListOfLists(l)
 }
 
-find x limit 5 {
+print find x limit 5 {
   ListOfLists([["a", "b"] | x])
 }
 
-find x limit 5 {
+print find x limit 5 {
   ListOfLists([["a", "b"], ["c", "d"] | x])
 }
 
@@ -75,20 +75,20 @@ clause ListOfSingletons(l)
   ListOfSingletons(d)
 }
 
-find l limit 1 {
+print find l limit 1 {
   ListOfSingletons(l)
 }
 
-find l limit 5 {
+print find l limit 5 {
   ListOfSingletons(l)
 }
 
-find r limit 5 {
+print find r limit 5 {
   ListOfSingletons([["g"], ["e" | w], [x | y] | z])
   r = [w, [x | y], z]
 }
 
-find out limit 5 {
+print find out limit 5 {
   [["g"], ["e" | _w], [_x | _y] | _z] = out
   ListOfSingletons(out)
 }
@@ -118,44 +118,44 @@ clause Member(x, l)
   Member(x, d)
 }
 
-find _ {
+print find _ {
   Member("olive", ["virgin", "olive", "oil"])
 }
 
-find x {
+print find x {
   Member(x, ["virgin", "olive", "oil"])
 }
 
-find x {
+print find x {
   Member(x, ["hummus", "with", "pita"])
 }
 
-find x {
+print find x {
   Member(x, ["pear", "grape" | "peaches"])
 }
 
-find x {
+print find x {
   Member("e", ["pasta", x, "fagioli"])
 }
 
-find x {
+print find x {
   Member("e", ["pasta", "e", x, "fagioli"])
 }
 
-find x {
+print find x {
   Member("e", ["pasta", x, "e", "fagioli"])
 }
 
-find [x, y] {
+print find [x, y] {
   Member("e", ["pasta", x, "fagioli", y])
 }
 
-find q {
+print find q {
   ["pasta", _x, "fagioli", _y] = q
   Member("e", q)
 }
 
-find l limit 5 {
+print find l limit 5 {
   Member("tofu", l)
 }
 
@@ -172,10 +172,10 @@ clause ProperMember(x, l)
   ProperMember(x, d)
 }
 
-find l limit 5 {
+print find l limit 5 {
   ProperMember("tofu", l)
 }
 
-find l limit 12 {
+print find l limit 12 {
   ProperMember("tofu", l)
 }

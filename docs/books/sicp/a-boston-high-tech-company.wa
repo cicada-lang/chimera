@@ -290,7 +290,7 @@ clause Competence({
 
 // To find all computer programmers one can say
 
-find coder {
+print find coder {
   Job({
     name: coder,
     dept: "computer",
@@ -298,7 +298,7 @@ find coder {
   })
 }
 
-// The input find specifies that
+// The input print find specifies that
 // we are looking for entries in the database
 // that match a certain pattern.
 
@@ -312,7 +312,7 @@ find coder {
 
 // An employee's addresses
 
-find [town, road, door] {
+print find [town, road, door] {
   Address({
     name: "Bitdiddle Ben",
     town,
@@ -323,7 +323,7 @@ find [town, road, door] {
 
 // All employees at computer dept
 
-find [name, role] {
+print find [name, role] {
   Job({
     name,
     dept: "computer",
@@ -331,7 +331,7 @@ find [name, role] {
   })
 }
 
-find dept {
+print find dept {
   Job({
     name: "Hacker Alyssa P",
     role: "programmer",
@@ -339,7 +339,7 @@ find dept {
   })
 }
 
-find x {
+print find x {
   Supervisor({
     slave: x,
     master: x,
@@ -356,7 +356,7 @@ clause ComputerDeptSlave({ slave })
   Supervisor({ slave })
 }
 
-find slave {
+print find slave {
   ComputerDeptSlave({ slave })
 }
 
@@ -371,7 +371,7 @@ find slave {
 //   }
 // }
 
-// find [name, dept] {
+// print find [name, dept] {
 //   Bigshot({
 //     name,
 //     dept,
@@ -386,7 +386,7 @@ find slave {
 //   FD::GtEq(amount, 40000)
 // })
 
-// find [name, amount] {
+// print find [name, amount] {
 //   NotSoPoor({
 //     name,
 //     amount,

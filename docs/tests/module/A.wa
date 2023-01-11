@@ -3,6 +3,6 @@ clause A(a)
   a = "a"
 }
 
-find [x] {
+print find [x] {
   A(x)
 }

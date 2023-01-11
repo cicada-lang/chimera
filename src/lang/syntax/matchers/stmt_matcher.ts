@@ -37,15 +37,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.goals_matcher(goals),
         span,
       ),
-    "stmt:find": ({ pattern, limit, goals }, { span }) => {
-      const realLimit = pt.matchers.optional_matcher(limit)
-      return new Stmts.Find(
-        matchers.exp_matcher(pattern),
-        realLimit ? Number.parseFloat(pt.str(realLimit)) : Infinity,
-        matchers.goals_matcher(goals),
-        span,
-      )
-    },
     "stmt:import": ({ bindings, path }, { span }) =>
       new Stmts.Import(
         pt.matchers

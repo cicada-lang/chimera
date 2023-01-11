@@ -3,22 +3,22 @@ clause LtEqThree(n)
   n != add1(add1(add1(zero())))
 }
 
-find n {
+print find n {
   LtEqThree(n)
 }
 
-find _ {
+print find _ {
   LtEqThree(zero())
 }
 
-find _ {
+print find _ {
   LtEqThree(add1(zero()))
 }
 
-find _ {
+print find _ {
   LtEqThree(add1(add1(zero())))
 }
 
-find _ {
+print find _ {
   LtEqThree(add1(add1(add1(zero()))))
 }

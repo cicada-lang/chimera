@@ -45,11 +45,11 @@ clause TrileanMul(x, y, z) -- {
 
 // See how `TrileanMax` is different from `TrileanMul`:
 
-find [x, y, z] { TrileanMax(x, y, z) }
-find [x, y, z] { TrileanMul(x, y, z) }
+print find [x, y, z] { TrileanMax(x, y, z) }
+print find [x, y, z] { TrileanMul(x, y, z) }
 
 // What returns 0?
-find [x, y] { TrileanMul(x, y, 0) }
+print find [x, y] { TrileanMul(x, y, 0) }
 
 // [question] Can `TrileansMul` be defined by
 // composition of other connectives (not, min, max)?

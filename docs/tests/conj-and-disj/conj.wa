@@ -1,4 +1,4 @@
-find [x, y] {
+print find [x, y] {
   conj {
     x = 1
     y = 2

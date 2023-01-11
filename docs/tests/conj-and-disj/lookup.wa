@@ -12,12 +12,12 @@ clause Lookup(map, name, found)
   Lookup(rest, name, found)
 }
 
-find x {
+print find x {
   map = [["a", 1], ["b", 2], ["c", 3]]
   Lookup(map, "b", x)
 }
 
-find map limit 3 {
+print find map limit 3 {
   Lookup(map, "b", 2)
 }
 
@@ -33,11 +33,11 @@ clause LookupInlineDisj(map, name, found)
   }
 }
 
-find x {
+print find x {
   map = [["a", 1], ["b", 2], ["c", 3]]
   LookupInlineDisj(map, "b", x)
 }
 
-find map limit 3 {
+print find map limit 3 {
   LookupInlineDisj(map, "b", 2)
 }

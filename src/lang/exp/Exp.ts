@@ -1,3 +1,4 @@
+import type { GoalExp } from "../goal-exp"
 import type { Span } from "../span"
 import type { Stmt } from "../stmt"
 
@@ -14,6 +15,7 @@ export type Exp =
   | Fn
   | Quote
   | Unquote
+  | Find
 
 export type Var = {
   "@type": "Exp"
@@ -212,6 +214,31 @@ export function Unquote(exp: Exp, span: Span): Unquote {
     "@type": "Exp",
     "@kind": "Unquote",
     exp,
+    span,
+  }
+}
+
+export type Find = {
+  "@type": "Exp"
+  "@kind": "Find"
+  pattern: Exp
+  limit: number
+  goals: Array<GoalExp>
+  span: Span
+}
+
+export function Find(
+  pattern: Exp,
+  limit: number,
+  goals: Array<GoalExp>,
+  span: Span,
+): Find {
+  return {
+    "@type": "Exp",
+    "@kind": "Find",
+    pattern,
+    limit,
+    goals,
     span,
   }
 }

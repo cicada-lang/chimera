@@ -1,6 +1,8 @@
 # functional
 
-`find` as an expression -- remove `Stmts.Find` -- use `print find ...`
+`formatExp` -- `Find`
+
+`Reification` as `Value`?
 
 `return` as a stmt
 

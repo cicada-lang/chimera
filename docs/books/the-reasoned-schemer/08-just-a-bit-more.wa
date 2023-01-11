@@ -27,26 +27,26 @@ clause MulBound([], p, _n, _m) -- { Positive(p) }
 clause MulBound([_a0 | x], [_a1 | y], [], [_a2 | z]) -- { MulBound(x, y, z, []) }
 clause MulBound([_a0 | x], [_a1 | y], [_a2 | z], m) -- { MulBound(x, y, z, m) }
 
-find [x, y, r] limit 10 {
+print find [x, y, r] limit 10 {
   Mul(x, y, r)
 }
 
-find p {
+print find p {
   Mul([0, 1], [0, 0, 1], p)
 }
 
-find [x, y, r] limit 1 {
+print find [x, y, r] limit 1 {
   x = [1, 1]
   y = [1, 1]
   r = [1, 0, 0, 1]
   Mul(x, y, r)
 }
 
-find [n, m] limit 1 {
+print find [n, m] limit 1 {
   Mul(n, m, [1])
 }
 
-find [n, m] limit 2 {
+print find [n, m] limit 2 {
   Mul(n, m, [1, 1])
 }
 
@@ -57,7 +57,7 @@ find [n, m] limit 2 {
 //   m = 2, 3, 4, ...
 // We need MulBound to make this query fail.
 
-find [n, m] limit 1 {
+print find [n, m] limit 1 {
   GreaterThanOne(n)
   GreaterThanOne(m)
   Mul(n, m, [1, 1])
@@ -66,11 +66,11 @@ find [n, m] limit 1 {
 // NOTE With MulBound we can also
 // safely do the following query:
 
-find [n, m] {
+print find [n, m] {
   Mul(n, m, [1])
 }
 
-find p {
+print find p {
   Mul([1, 1, 1], [1, 1, 1, 1, 1, 1], p)
 }
 
@@ -83,22 +83,22 @@ clause EqualLength([_a | x], [_b | y])
   EqualLength(x, y)
 }
 
-find [w, x, y] {
+print find [w, x, y] {
   EqualLength([1, w, x | y], [0, 1, 1, 0, 1])
 }
 
-find b {
+print find b {
   EqualLength([1], [b])
 }
 
-find n {
+print find n {
   EqualLength([1, 0, 1 | n], [0, 1, 1, 0, 1])
 }
 
-find [y, z] limit 5 {
+print find [y, z] limit 5 {
   EqualLength([1 | y], [1 | z])
 }
 
-find [y, z] limit 5 {
+print find [y, z] limit 5 {
   EqualLength([1 | y], [0 | z])
 }

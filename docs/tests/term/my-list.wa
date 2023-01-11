@@ -1,16 +1,16 @@
 clause List(null())
 clause List(cons(_head, tail)) -- { List(tail) }
 
-find _ {
+print find _ {
   List(null())
   List(cons(1, cons(2, cons(3, null()))))
 }
 
-find [list, x, y, z] {
+print find [list, x, y, z] {
   list = cons(1, cons(2, cons(3, null())))
   list = cons(x, cons(y, cons(z, null())))
 }
 
-find [list, x, y, z] {
+print find [list, x, y, z] {
   list = cons(x, cons(y, cons(z, null())))
 }

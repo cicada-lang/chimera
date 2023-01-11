@@ -6,18 +6,18 @@ clause Member(element, [_head | tail])
   Member(element, tail)
 }
 
-find _ {
+print find _ {
   Member("john", ["paul", "john"])
 }
 
-find _ {
+print find _ {
   Member("joe", ["marx", "darwin", "freud" ])
 }
 
-find element {
+print find element {
   Member(element, ["marx", "darwin", "freud"])
 }
 
-find [list] limit 3 {
+print find [list] limit 3 {
   Member("foo", list)
 }

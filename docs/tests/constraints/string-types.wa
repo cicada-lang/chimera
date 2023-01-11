@@ -1,44 +1,44 @@
-find _ {
+print find _ {
   String("A")
 }
 
-find _ {
+print find _ {
   String(1)
 }
 
-find x {
+print find x {
   x = "cat"
   String(x)
 }
 
 // Reification.
 
-find x {
+print find x {
   String(x)
 }
 
 // An unification breaks a type constraint.
 
-find x {
+print find x {
   String(x)
   x = 1
 }
 
 // An indirect unification breaks a type constraint.
 
-find x {
+print find x {
   String(x)
   x = z
   z = 1
 }
 
-find x {
+print find x {
   x = z
   z = 1
   String(x)
 }
 
-find x {
+print find x {
   x = z
   String(x)
   z = 1
@@ -46,26 +46,26 @@ find x {
 
 // An unification subsums a type constraint.
 
-find x {
+print find x {
   String(x)
   x = "A"
 }
 
 // An indirect unification subsums a type constraint.
 
-find x {
+print find x {
   String(x)
   x = z
   z = "A"
 }
 
-find x {
+print find x {
   x = z
   z = "A"
   String(x)
 }
 
-find x {
+print find x {
   x = z
   String(x)
   z = "A"

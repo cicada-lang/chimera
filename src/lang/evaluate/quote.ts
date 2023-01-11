@@ -77,5 +77,11 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     case "Unquote": {
       return evaluate(mod, env, exp.exp)
     }
+
+    case "Find": {
+      throw new Errors.ElaborationError(`[quote] can not handle Exps.Find`, {
+        span: exp.span,
+      })
+    }
   }
 }

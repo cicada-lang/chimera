@@ -1,5 +1,5 @@
 import { Exp } from "exp.wa"
 
-find exp limit 10 {
+print find exp limit 10 {
   Exp(exp)
 }

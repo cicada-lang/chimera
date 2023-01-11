@@ -1,46 +1,46 @@
-find _ {
+print find _ {
   1 != 1
 }
 
-find _ {
+print find _ {
   1 != 2
 }
 
-find [x, y] {
+print find [x, y] {
   y != "cat"
   [x, 3] != [5, y]
   [3, x] = [y, 5]
 }
 
-find [x, y] {
+print find [x, y] {
   y != "cat"
   [x, 3] != [5, y]
   [x, "cat"] = [5, y]
 }
 
-find [x, y] {
+print find [x, y] {
   y != "cat"
   [x, 3] != [5, y]
   [x, 5] = [3, y]
 }
 
-find [x, y] {
+print find [x, y] {
   [x, 3] != ["cat", y]
   x = "cat"
 }
 
 // disj of not equal
 
-find [x, y] {
+print find [x, y] {
   [x, y] != [1, 2]
 }
 
-find [x, y] {
+print find [x, y] {
   [x, y] != [1, 2]
   x = 1
 }
 
-find [x, y] {
+print find [x, y] {
   [x, y] != [1, 2]
   x = 1
   y = 2
@@ -48,14 +48,14 @@ find [x, y] {
 
 // filter somePairContainsVar
 
-find x {
+print find x {
   x != 1
   _y != 2
 }
 
 // removeSubsumed
 
-find [x, y] {
+print find [x, y] {
   x != 3
   [x, "cat"] != [3, y]
 }

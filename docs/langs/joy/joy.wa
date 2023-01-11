@@ -66,7 +66,7 @@ clause Eval(start, end)
   Eval(next, end)
 }
 
-find end {
+print find end {
   start = [
     [1, 2, 3],
     ["swap", "drop", "swap", "drop"],
@@ -74,7 +74,7 @@ find end {
   Eval(start, end)
 }
 
-find end {
+print find end {
   start = [
     [[], 1, 2, 3],
     ["swap", "cons", "swap", "cons", "swap", "cons"],
@@ -82,12 +82,12 @@ find end {
   Eval(start, end)
 }
 
-find end {
+print find end {
   start = [[], ["hello", "world"]]
   Eval(start, end)
 }
 
-find words limit 10 {
+print find words limit 10 {
   start = [[], words]
   end = [["I", "love", "you"], []]
   Eval(start, end)
@@ -95,7 +95,7 @@ find words limit 10 {
 
 // Try to solve something like quine.
 
-find words limit 1 {
+print find words limit 1 {
   start = [[], [words, "apply"]]
   end = [words, []]
   Eval(start, end)

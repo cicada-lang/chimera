@@ -43,7 +43,7 @@ clause Append(
   Append(left_tail, right, result_tail)
 }
 
-find [result] {
+print find [result] {
   Append(
     [1, 2],
     [3, 4],
@@ -53,7 +53,7 @@ find [result] {
 
 // run it backward
 
-find [left, right] {
+print find [left, right] {
   Append(
     left,
     right,
@@ -117,7 +117,7 @@ clause Merge(
   FD::Gt(right_head, head)
 }
 
-find [result] {
+print find [result] {
   Merge(
     [1, 2],
     [3, 4],
@@ -125,7 +125,7 @@ find [result] {
   )
 }
 
-find [left, right] {
+print find [left, right] {
   Merge(
     left,
     right,

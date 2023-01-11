@@ -1,7 +1,7 @@
 clause Always() -- base
 clause Always() -- loop { Always() }
 
-find _ limit 3 {
+print find _ limit 3 {
   Always()
 }
 
@@ -10,7 +10,7 @@ find _ limit 3 {
 // an unbounded number of times,
 // and because `x = false` fails each of those times.
 
-// find x limit 1 {
+// print find x limit 1 {
 //   x = true
 //   Always()
 //   x = false
@@ -34,7 +34,7 @@ find _ limit 3 {
 // but we can not do this for performance reason
 // (depth-first v.s. breadth-first).
 
-find x {
+print find x {
   x = true
   x = false
   Always()
@@ -46,7 +46,7 @@ find x {
 //   Always()
 // }
 
-find x limit 5 {
+print find x limit 5 {
   disj {
     x = true
     x = false
@@ -72,7 +72,7 @@ find x limit 5 {
 // If we change the last line to `x = true`
 // we get as many `true`s as asked.
 
-find x limit 5 {
+print find x limit 5 {
   disj {
     x = true
     x = false

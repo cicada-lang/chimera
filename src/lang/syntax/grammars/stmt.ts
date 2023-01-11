@@ -31,14 +31,6 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:find": [
-      '"find"',
-      { pattern: "exp" },
-      { limit: { $ap: ["optional", '"limit"', { $pattern: ["number"] }] } },
-      '"{"',
-      { goals: "goals" },
-      '"}"',
-    ],
     "stmt:import": [
       '"import"',
       '"{"',

@@ -1,5 +1,5 @@
 import * from "./example.wa"
 
-find q {
+print find q {
   clause Hiya(q)
 }

@@ -18,14 +18,14 @@ clause Path(x, y)
   Path(z, y)
 }
 
-find x {
+print find x {
   Path("g", x)
 }
 
-find x {
+print find x {
   Path(x, "h")
 }
 
-find [x, y] {
+print find [x, y] {
   Path(x, y)
 }

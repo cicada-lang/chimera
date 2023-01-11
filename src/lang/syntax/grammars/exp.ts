@@ -56,5 +56,13 @@ export const operand = {
     ],
     "operand:quote": ['"quote"', { exp: "exp" }],
     "operand:unquote": ['"unquote"', { exp: "exp" }],
+    "operand:find": [
+      '"find"',
+      { pattern: "exp" },
+      { limit: { $ap: ["optional", '"limit"', { $pattern: ["number"] }] } },
+      '"{"',
+      { goals: "goals" },
+      '"}"',
+    ],
   },
 }

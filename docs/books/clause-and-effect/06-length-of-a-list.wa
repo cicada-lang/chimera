@@ -11,10 +11,10 @@ clause Length([_head | tail], n)
   Length(tail, prev)
 }
 
-// find n {
+// print find n {
 //   Length(["apple", "pear"], n)
 // }
 
-// find list { Length(list, n) Zero(n) }
-// find list { Length(list, n) One(n) }
-// find list { Length(list, n) Two(n) }
+// print find list { Length(list, n) Zero(n) }
+// print find list { Length(list, n) One(n) }
+// print find list { Length(list, n) Two(n) }

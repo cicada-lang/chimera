@@ -10,36 +10,36 @@ clause Always()
   Always()
 }
 
-find _ limit 3 {
+print find _ limit 3 {
   Always()
 }
 
-find q limit 3 {
+print find q limit 3 {
   q = "onion"
   Always()
 }
 
-find q limit 3 {
+print find q limit 3 {
   Always()
   q = "onion"
 }
 
 // NOTE Infinite loop
 
-// find q {
+// print find q {
 //   Always()
 //   Fail()
 // }
 
 // NOTE Infinite loop
 
-// find q {
+// print find q {
 //   q = "garlic"
 //   Always()
 //   q = "onion"
 // }
 
-find q {
+print find q {
   q = "garlic"
   q = "onion"
   Always()
@@ -50,21 +50,21 @@ clause Never()
   Never()
 }
 
-find _ {
+print find _ {
   Fail()
   Never()
 }
 
 // NOTE Infinite loop
 
-// find q {
+// print find q {
 //   Never()
 //   Fail()
 // }
 
 // NOTE Infinite loop
 
-// find q {
+// print find q {
 //   Never()
 //   Fail()
 //   Never()

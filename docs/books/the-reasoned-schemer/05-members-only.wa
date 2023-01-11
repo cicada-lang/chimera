@@ -12,7 +12,7 @@ clause Mem(x, l, out)
   Mem(x, d, out)
 }
 
-find x {
+print find x {
   Mem(
     "fig",
     ["roll", "okra", "fig", "beet", "roll", "pea"],
@@ -20,7 +20,7 @@ find x {
   )
 }
 
-find x {
+print find x {
   Mem(
     "fig",
     ["roll", "okra", "beet", "beet", "roll", "pea"],
@@ -28,19 +28,19 @@ find x {
   )
 }
 
-find _ {
+print find _ {
   Mem("fig", ["pea"], ["pea"])
 }
 
-find out {
+print find out {
   Mem("fig", ["fig"], out)
 }
 
-find out {
+print find out {
   Mem("fig", ["fig", "pea"], out)
 }
 
-find x {
+print find x {
   Mem(
     x,
     ["roll", "okra", "fig", "beet", "roll", "pea"],
@@ -48,23 +48,23 @@ find x {
   )
 }
 
-find x {
+print find x {
   Mem("fig", ["fig", "pea"], ["pea", x])
 }
 
-find x {
+print find x {
   Mem("fig", ["fig", "pea"], [x, "pea"])
 }
 
-find out {
+print find out {
   Mem("fig", ["fig", "fig", "pea"], out)
 }
 
-find out {
+print find out {
   Mem("fig", ["a", _x, "c", "fig", "e"], out)
 }
 
-find [x, y] limit 5 {
+print find [x, y] limit 5 {
   Mem("fig", ["fig", "d", "fig", "e" | y], x)
 }
 
@@ -88,35 +88,35 @@ clause Rember(x, l, out)
   Cons(a, res, out)
 }
 
-find out {
+print find out {
   Rember("pea", ["a", "b", "pea", "d", "pea", "e"], out)
 }
 
-find out {
+print find out {
   Rember("pea", ["pea"], out)
 }
 
-find out {
+print find out {
   Rember("pea", ["pea", "pea"], out)
 }
 
-find out {
+print find out {
   Rember("pea", ["pea", "pea", "pea"], out)
 }
 
-find out {
+print find out {
   Rember(y, ["a", "b", y, "d", _z, "e"], out)
 }
 
-find [y, z] {
+print find [y, z] {
   Rember(y, [y, "d", z, "e"], [y, "d", "e"])
 }
 
-find [y, z, w, out] limit 4 {
+print find [y, z, w, out] limit 4 {
   Rember(y, [z | w], out)
 }
 
-find [y, z, w, out] limit 5 {
+print find [y, z, w, out] limit 5 {
   Rember(y, [z | w], out)
 }
 
@@ -124,6 +124,6 @@ find [y, z, w, out] limit 5 {
 // We will need != to implementation a version
 // that does not succeed on the following query.
 
-find _ {
+print find _ {
   Rember(1, [1, 2, 3], [1, 2, 3])
 }

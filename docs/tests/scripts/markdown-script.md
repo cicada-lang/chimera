@@ -3,7 +3,7 @@ title: Example Markdown Script
 ---
 
 ```whereabouts
-find q {
+print find q {
   q = "Hello, World!"
 }
 ```

@@ -2,16 +2,16 @@ I found syntax error in code:
 
  1 |import * from "./example.wa"
  2 |
- 3 |find q {
+ 3 |print find q {
  4 |  clause Hiya(q)
  5 |}
  6 |
 
-Found the identifier "Hiya" in [48, 52], while expecting:
+Found the identifier "Hiya" in [54, 58], while expecting:
  "(":
-     args:args@8 -> > "(" (args: zero_or_more) (last_arg: arg) optional ")" 
+     args:args@9 -> > "(" (args: zero_or_more) (last_arg: arg) optional ")" 
  "(":
-     args:args_empty@8 -> > "(" ")" 
+     args:args_empty@9 -> > "(" ")" 
  "=":
-     goal:equal@7 -> (left: exp):operator@8 > "=" (right: exp) 
+     goal:equal@8 -> (left: exp):operator@9 > "=" (right: exp) 
  and so on ...

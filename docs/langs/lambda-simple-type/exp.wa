@@ -32,13 +32,13 @@ clause Check(ctx, ap(target, arg), retType)
   Check(ctx, arg, argType)
 }
 
-find type {
+print find type {
   ctx = []
   exp = fn("x", var("x"))
   Check(ctx, exp, type)
 }
 
-find exp limit 10 {
+print find exp limit 10 {
   ctx = []
   type = arrow("A", "A")
   Check(ctx, exp, type)
@@ -50,7 +50,7 @@ find exp limit 10 {
 // - https://www.youtube.com/watch?v=09OyKjX4Sik
 // for more about this.
 
-find type {
+print find type {
   ctx = []
   exp = fn("f", ap(var("f"), var("f")))
   Check(ctx, exp, type)

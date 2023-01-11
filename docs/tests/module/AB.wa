@@ -6,6 +6,6 @@ clause AB(a, b)
   b = "b"
 }
 
-find [x, y] {
+print find [x, y] {
   AB(x, y)
 }

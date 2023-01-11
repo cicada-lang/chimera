@@ -2,12 +2,21 @@ import * as Actions from "../actions"
 import type { Env } from "../env"
 import { envLookupValue } from "../env"
 import * as Errors from "../errors"
-import { quote } from "../evaluate"
+import { evaluateGoalExp, quote } from "../evaluate"
 import type { Exp } from "../exp"
 import * as Exps from "../exp"
 import type { Mod } from "../mod"
+import { refresh, refreshGoals } from "../refresh"
+import { reify } from "../reify"
+import { Solver } from "../solver"
 import type { Value } from "../value"
 import * as Values from "../value"
+import {
+  varCollectionFromExp,
+  varCollectionFromGoalExp,
+  varCollectionMerge,
+  varCollectionValidate,
+} from "../var-collection"
 
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
@@ -89,6 +98,30 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       throw new Errors.ElaborationError(
         `[evaluate] unquote can only be used inside quote`,
         { span: exp.span },
+      )
+    }
+
+    case "Find": {
+      varCollectionValidate(
+        varCollectionMerge([
+          varCollectionFromExp(exp.pattern),
+          ...exp.goals.map(varCollectionFromGoalExp),
+        ]),
+      )
+
+      const renames = new Map()
+      const value = refresh(mod, renames, quote(mod, mod.env, exp.pattern))
+      const goals = refreshGoals(
+        mod,
+        renames,
+        exp.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
+      )
+
+      const solver = Solver.start(goals)
+      const solutions = solver.solve(mod, { limit: exp.limit })
+
+      return Values.fromArray(
+        solutions.map((solution) => reify(mod, solution, value).value),
       )
     }
   }
