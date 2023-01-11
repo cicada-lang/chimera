@@ -3,10 +3,12 @@ function greet(x) {
 
   // The expressions in `find` are implicitly `quote`d.
 
-  print find q {
+  let results = find q {
     Hi(p)
     q = [p, unquote x]
   }
+
+  print results
 
   return "ok"
 }
