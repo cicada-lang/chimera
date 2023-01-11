@@ -12,7 +12,9 @@ function without `return`
 
 `if` as a stmt
 
-`ife` as an expression
+`if` as a built-in function
+
+`assert` and `assertNot` as built-in functions.
 
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
@@ -25,8 +27,6 @@ function without `return`
 
 [primitive] `rewrite(n, target, rules): Array`
 [primitive] `hyperrewrite(n, target, hyperrules): Array`
-
-`assert` and `assertNot` as built-in functions.
 
 # hyperrewrite
 
