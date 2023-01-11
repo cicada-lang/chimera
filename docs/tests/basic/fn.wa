@@ -25,20 +25,3 @@ let one = () => {
 }
 
 print one()
-
-// relation in function
-
-let greet = (x) => {
-  clause Hi("hi")
-
-  // The expressions in `find` are implicitly `quote`d.
-
-  find q {
-    Hi(p)
-    q = [p, unquote x]
-  }
-
-  return "ok"
-}
-
-print greet("xieyuheng")
