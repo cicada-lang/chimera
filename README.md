@@ -8,51 +8,6 @@
 
 ## Usages
 
-### Online playground
-
-[**whereabouts-website:**](https://github.com/cicada-lang/whereabouts-website)
-A playground where people can share code snippet.
-
-Example playground code snippets:
-
-- [A little SAT solver](https://whereabouts.cicada-lang.org/playground/Ly8gV2UgdXNlIGAwYCBhbmQgYDFgCi8vIGZvciBgZmFsc2VgIGFuZCBgdHJ1ZWAsCi8vIGJlY2F1c2UgdGhlIGNvZGUgbG9va3MgdGlkaWVyLgoKY2xhdXNlIEJpdCh4KSAtLSB7IHggPSAwIH0KY2xhdXNlIEJpdCh4KSAtLSB7IHggPSAxIH0KCmNsYXVzZSBOb3QoMCwgMSkKY2xhdXNlIE5vdCgxLCAwKQoKY2xhdXNlIE9yKDAsIDAsIDApCmNsYXVzZSBPcigwLCAxLCAxKQpjbGF1c2UgT3IoMSwgMCwgMSkKY2xhdXNlIE9yKDEsIDEsIDEpCgpjbGF1c2UgQml0TGlzdChbXSkKY2xhdXNlIEJpdExpc3QoW2NhciB8IGNkcl0pIC0tIHsKICBCaXQoY2FyKQogIEJpdExpc3QoY2RyKQp9CgpjbGF1c2UgTGlzdE5vdChbXSwgW10pCmNsYXVzZSBMaXN0Tm90KFt4IHwgeHNdLCBbeSB8IHlzXSkgLS0gewogIE5vdCh4LCB5KQogIExpc3ROb3QoeHMsIHlzKQp9CgovLyBBIGNsYXVzZSByZXByZXNlbnQKLy8gICBjMSDiiKggYzIg4oioIC4uLiA8LSBwMSDiiKcgcDIg4oinIC4uLgovLyB3aGljaCBpcyBlcXVpdmFsZW50IHRvIGRpc2p1bmN0aW9uIGZyb20KLy8gICBjMSDiiKggYzIg4oioIC4uLiDCrHAxIOKIqCDCrHAyIOKIqCAuLi4KCmNsYXVzZSBDbGF1c2UoY29uY2x1c2lvbnMsIHByZW1pc2VzKSAtLSB7CiAgQml0TGlzdChjb25jbHVzaW9ucykKICBCaXRMaXN0KHByZW1pc2VzKQogIExpc3ROb3QocHJlbWlzZXMsIG5lZ1ByZW1pc2VzKQogIEFwcGVuZChjb25jbHVzaW9ucywgbmVnUHJlbWlzZXMsIGRpc2p1bmN0aW9uKQogIC8vIFRvIHNhdGlzZnkgYSBkaXNqdW5jdGlvbiwKICAvLyBpdHMgZWxlbWVudCBtdXN0IGNvbnRhaW5zIGEgdHJ1ZSwKICAvLyBzcGVjaWFsbHkgZW1wdHkgbGlzdCBjYW4gbm90IGJlIHNhdGlzZmllZC4KICBDb250YWluc09uZShkaXNqdW5jdGlvbikKfQoKY2xhdXNlIENvbnRhaW5zT25lKFsxIHwgX3Jlc3RdKQpjbGF1c2UgQ29udGFpbnNPbmUoWzAgfCByZXN0XSkgLS0gewogIENvbnRhaW5zT25lKHJlc3QpCn0KCmNsYXVzZSBBcHBlbmQoW10sIHQsIHQpCmNsYXVzZSBBcHBlbmQoW2EgfCBkXSwgdCwgW2EgfCByZXNdKSAtLSB7CiAgQXBwZW5kKGQsIHQsIHJlcykKfQoKZmluZCBbeDEsIHgyLCB4M10gewogIENsYXVzZShbeDFdLCBbeDJdKQogIENsYXVzZShbeDIsIHgzXSwgW3gxXSkKICBDbGF1c2UoW10sIFt4MV0pCn0KCmZpbmQgW3gxXSB7CiAgQ2xhdXNlKFt4MV0sIFtdKQogIENsYXVzZShbXSwgW3gxXSkKfQo)
-- [Conjunctive normal form](https://whereabouts.cicada-lang.org/playground/cnVsZSBjb25qdW5jdGl2ZU5vcm1hbEZvcm0gewogIG5vdChub3QoYSkpID0-IGEKICBub3QoYW5kKGEsIGIpKSA9PiBvcihub3QoYSksIG5vdChiKSkKICBub3Qob3IoYSwgYikpID0-IGFuZChub3QoYSksIG5vdChiKSkKICBvcihhbmQoYSwgYiksIGMpID0-IGFuZChvcihhLCBjKSwgb3IoYiwgYykpCiAgb3IoYSwgYW5kKGIsIGMpKSA9PiBhbmQob3IoYSwgYiksIG9yKGEsIGMpKQp9Cgpjb25qdW5jdGl2ZU5vcm1hbEZvcm0oCiAgcXVvdGUgbm90KGFuZChub3QoQSksIG5vdChCKSkpCikK)
-
-### Use our server
-
-[**whereabouts-server:**](https://github.com/cicada-lang/whereabouts-server)
-A server that can run whereabouts code.
-
-Post a file:
-
-```sh
-curl https://wa.cic.run --data-binary @<file>
-```
-
-You can fetch code from a URL, and run:
-
-- We use `curl -s` to disable curl's progress bar.
-- All files in this repo, can be fetched from: [`https://cdn.wa.cic.run/<path>`](https://cdn.wa.cic.run)
-
-```sh
-curl -s https://cdn.wa.cic.run/docs/books/clause-and-effect/01-party-pairs.wa |
-curl -s https://wa.cic.run --data-binary @-
-```
-
-Run multiline text (bash and zsh):
-
-```sh
-curl https://wa.cic.run --data-binary @-<< END
-
-clause Whereabouts("unknown")
-
-find q {
-  Whereabouts(q)
-}
-
-END
-```
-
 ### Command line tool
 
 Install it by the following command:
