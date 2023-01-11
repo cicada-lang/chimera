@@ -1,5 +1,12 @@
 # functional
 
+remove `Stmts.Trace` -- for now
+
+inline module `prepareGoals`
+inline module `formatFoundVariables`
+
+`Stmts.Find` -- use any expression as pattern.
+
 `find` as an expression -- remove `Stmts.Find` -- use `print find ...`
 
 `return` as a stmt
@@ -24,6 +31,10 @@ function without `return`
 
 [primitive] `findAll(query, goals): Array`
 [primitive] `find(n, query, goals): Array`
+
+[primitive] `trace` as a built-in function
+
+- result should be represented by term and json
 
 [primitive] `rewrite(n, target, rules): Array`
 [primitive] `hyperrewrite(n, target, hyperrules): Array`
@@ -53,8 +64,6 @@ draw labelled hypergraph by JavaScript.
 encode collatz rewrite in term rewrite
 
 use term rewriting to implement lambda calculus -- with explicit substitution
-
-`trace` should be represented by term and json
 
 [question] what is the wired syntax of `-->` in prolog? DCG?
 
