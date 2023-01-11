@@ -69,5 +69,9 @@ export function substitutionContainsPatternVar(
     case "Fn": {
       return false
     }
+
+    case "WithConstraints": {
+      return substitutionContainsPatternVar(value.value, substitution)
+    }
   }
 }

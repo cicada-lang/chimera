@@ -1,5 +1,6 @@
 import { indent } from "../../utils/indent"
 import { formatExp } from "../exp"
+import { formatGoal } from "../goal"
 import type { Value } from "../value"
 
 export function formatValue(value: Value): string {
@@ -87,6 +88,19 @@ export function formatValue(value: Value): string {
       const body = [...stmts, ret].join("\n")
       return `(${patterns}) => {\n${indent(body)}\n}`
     }
+
+    case "WithConstraints": {
+      if (value.constraints.length === 0) {
+        return formatValue(value.value)
+      }
+
+      const constraints = value.constraints.map(formatGoal)
+      return isLarge(constraints)
+        ? `${formatValue(value.value)} with {\n${constraints
+            .map((constraint) => indent(constraint))
+            .join("\n")}\n}`
+        : `${formatValue(value.value)} with { ${constraints.join(" ")} }`
+    }
   }
 }
 
@@ -105,19 +119,13 @@ function formatProperties(value: Value): Map<string, string> {
   return properties
 }
 
-function isLargeArgs(args: Array<string>): boolean {
-  return args.some((arg) => arg.includes("\n")) || args.join(", ").length >= 60
-}
-
 function formatArgs(args: Array<string>): string {
-  if (isLargeArgs(args)) {
-    return `(\n${args.map((arg) => indent(arg) + ",").join("\n")}\n)`
-  } else {
-    return `(${args.join(", ")})`
-  }
+  return isLarge(args)
+    ? `(\n${args.map((arg) => indent(arg) + ",").join("\n")}\n)`
+    : `(${args.join(", ")})`
 }
 
-function isLargeElements(elements: Array<string>): boolean {
+function isLarge(elements: Array<string>): boolean {
   return (
     elements.some((element) => element.includes("\n")) ||
     elements.join(", ").length >= 60
@@ -126,20 +134,15 @@ function isLargeElements(elements: Array<string>): boolean {
 
 function formatElements(elements: Array<string>, last?: string): string {
   if (last === undefined) {
-    if (isLargeElements(elements)) {
-      const body = elements.map((element) => indent(element)).join(",\n")
-      return `[ \n${body}\n]`
-    } else {
-      return `[${elements.join(", ")}]`
-    }
+    return isLarge(elements)
+      ? `[ \n${elements.map((element) => indent(element)).join(",\n")}\n]`
+      : `[${elements.join(", ")}]`
   } else {
-    if (isLargeElements(elements)) {
-      const body = elements.map((element) => indent(element)).join(",\n")
-      const tail = indent(`| ${last}`)
-      return `[ \n${body}\n${tail}\n]`
-    } else {
-      return `[${elements.join(", ")} | ${last}]`
-    }
+    return isLarge(elements)
+      ? `[ \n${elements
+          .map((element) => indent(element))
+          .join(",\n")}\n${indent(`| ${last}`)}\n]`
+      : `[${elements.join(", ")} | ${last}]`
   }
 }
 

@@ -121,7 +121,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       const solutions = solver.solve(mod, { limit: exp.limit })
 
       return Values.fromArray(
-        solutions.map((solution) => reify(mod, solution, value).value),
+        solutions.map((solution) => reify(mod, solution, value)),
       )
     }
   }

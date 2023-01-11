@@ -1,4 +1,3 @@
-import type { Goal } from "../goal"
 import type { Mod } from "../mod"
 import {
   prepareSubstitution,
@@ -8,25 +7,7 @@ import {
 import type { Solution } from "../solution"
 import { substitutionDeepWalk } from "../substitution"
 import type { Value } from "../value"
-
-/**
-
-   The `Reification` of an `value` is the reified value,
-   with a list of constraints represented as goals.
-
- **/
-
-export type Reification = {
-  value: Value
-  constraints: Array<Goal>
-}
-
-export function Reification(
-  value: Value,
-  constraints: Array<Goal>,
-): Reification {
-  return { value, constraints }
-}
+import * as Values from "../value"
 
 /**
 
@@ -36,11 +17,18 @@ export function Reification(
 
 **/
 
-export function reify(mod: Mod, solution: Solution, value: Value): Reification {
+export function reify(
+  mod: Mod,
+  solution: Solution,
+  value: Value,
+): Values.WithConstraints {
   value = substitutionDeepWalk(solution.substitution, value)
   const substitutionForRenaming = prepareSubstitution(value)
-  return Reification(substitutionDeepWalk(substitutionForRenaming, value), [
-    ...reifyInequalities(mod, solution, substitutionForRenaming),
-    ...reifyTypeConstraints(mod, solution, substitutionForRenaming),
-  ])
+  return Values.WithConstraints(
+    substitutionDeepWalk(substitutionForRenaming, value),
+    [
+      ...reifyInequalities(mod, solution, substitutionForRenaming),
+      ...reifyTypeConstraints(mod, solution, substitutionForRenaming),
+    ],
+  )
 }

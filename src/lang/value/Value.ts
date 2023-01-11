@@ -1,6 +1,7 @@
 import type { Clause } from "../clause"
 import type { Env } from "../env"
 import type { Exp } from "../exp"
+import type { Goal } from "../goal"
 import type { Hyperrule as EmbeddedHyperrule } from "../hyperrule"
 import type { Mod } from "../mod"
 import type { Rule as EmbeddedRule } from "../rule"
@@ -22,6 +23,7 @@ export type Value =
   | Rule
   | Hyperrule
   | Fn
+  | WithConstraints
 
 export type PatternVar = {
   "@type": "Value"
@@ -246,7 +248,7 @@ export function Hyperrule(
    `Values.Fn` has both `env` and `mod`
 
    - So that top-level bindings defined after the function
-     are also available in the function.
+   are also available in the function.
 
    - To support mutual recursive definition in function body.
 
@@ -279,5 +281,24 @@ export function Fn(
     patterns,
     stmts,
     ret,
+  }
+}
+
+export type WithConstraints = {
+  "@type": "Value"
+  "@kind": "WithConstraints"
+  value: Value
+  constraints: Array<Goal>
+}
+
+export function WithConstraints(
+  value: Value,
+  constraints: Array<Goal>,
+): WithConstraints {
+  return {
+    "@type": "Value",
+    "@kind": "WithConstraints",
+    value,
+    constraints,
   }
 }

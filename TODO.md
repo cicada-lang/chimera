@@ -2,8 +2,6 @@
 
 `formatExp` -- `Find`
 
-`Reification` as `Value`?
-
 `return` as a stmt
 
 - implement early return by throw
