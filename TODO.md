@@ -2,17 +2,17 @@
 
 require `print` keyword
 
+remove `assert find` and `assert not find` keywords
+
+remove `test` keyword
+
 `Stmts.Compute` -- without print
 
 `find` as an expression -- remove `Stmts.Find` -- use `print find ...`
 
 function without `return`
 
-- choices:
-
-  - `void` as a value -- we will have two unit types -- `Void` and `Null`
-
-  - return `null` -- `null` will not be printed in REPL
+- return `null` -- we should not introduce too many unit types
 
 - learn from
 
