@@ -1,11 +1,17 @@
 # functional
 
-`void` as a value -- for function without `return`
+function without `return`
 
-- how should we handle this?
+- choices:
 
-  - learn from ~/persons/douglas-crockford/how-javascript-works.pdf
-  - learn from sicp-js
+  - `void` as a value -- we will have two unit types -- `Void` and `Null`
+
+  - return `null` -- `null` will not be printed in REPL
+
+- learn from
+  - ~/persons/douglas-crockford/how-javascript-works.pdf
+  - sicp-js
+  - history of c: https://web.archive.org/web/19980220175804/http://cm.bell-labs.com/cm/cs/who/dmr/chist.html
 
 `return` as a stmt
 

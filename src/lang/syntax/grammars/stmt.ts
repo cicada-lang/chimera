@@ -112,7 +112,7 @@ export const stmt = {
       { hyperrules: "hyperrules" },
       '"}"',
     ],
-    "stmt:let": ['"let"', { name: "name" }, '"="', { exp: "exp" }],
+    "stmt:let": ['"let"', { name: "variable_name" }, '"="', { exp: "exp" }],
     "stmt:eval": [{ exp: "exp" }],
   },
 }

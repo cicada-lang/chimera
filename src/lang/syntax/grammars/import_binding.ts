@@ -1,10 +1,13 @@
 export const import_binding = {
   $grammar: {
-    "import_binding:name": [{ name: "name" }, { $ap: ["optional", '","'] }],
+    "import_binding:name": [
+      { name: "variable_name" },
+      { $ap: ["optional", '","'] },
+    ],
     "import_binding:alias": [
-      { name: "name" },
+      { name: "variable_name" },
       '"as"',
-      { alias: "name" },
+      { alias: "variable_name" },
       { $ap: ["optional", '","'] },
     ],
   },
