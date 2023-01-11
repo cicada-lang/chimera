@@ -5,7 +5,7 @@ date: 2022-12-26
 ---
 
 When reading the ckanren paper,
-I find the use of macro and scheme's parameters
+I found the use of macro and scheme's parameters
 make the code really hard to understand.
 
 More and more I thing user should not be allowed

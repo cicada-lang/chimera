@@ -1,7 +1,5 @@
 # functional
 
-`Stmts.Find` -- use any expression as pattern.
-
 `find` as an expression -- remove `Stmts.Find` -- use `print find ...`
 
 `return` as a stmt

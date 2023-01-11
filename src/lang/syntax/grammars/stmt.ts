@@ -33,7 +33,7 @@ export const stmt = {
     ],
     "stmt:find": [
       '"find"',
-      { query_pattern: "query_pattern" },
+      { pattern: "exp" },
       { limit: { $ap: ["optional", '"limit"', { $pattern: ["number"] }] } },
       '"{"',
       { goals: "goals" },
