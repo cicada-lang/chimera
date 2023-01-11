@@ -4,7 +4,7 @@ require `print` keyword
 
 `Stmts.Compute` -- without print
 
-`find` as an expression -- remove `Stmts.Find`
+`find` as an expression -- remove `Stmts.Find` -- use `print find ...`
 
 function without `return`
 
