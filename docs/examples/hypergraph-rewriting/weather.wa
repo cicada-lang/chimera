@@ -5,5 +5,5 @@ hyperrule weather {
   [Sun()] => [WearSunGlasses(), Cool()]
 }
 
-weather(quote [SunRain()])
-weather(quote [SunRain(), Car()])
+print weather(quote [SunRain()])
+print weather(quote [SunRain(), Car()])

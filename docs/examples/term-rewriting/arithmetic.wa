@@ -23,30 +23,11 @@ let eight = quote add1(unquote seven)
 let nine = quote add1(unquote eight)
 let ten = quote add1(unquote nine)
 
-arithmetic(
-  quote add(add1(zero()), add1(zero()))
-)
+print arithmetic(quote add(add1(zero()), add1(zero())))
+print arithmetic(quote mul(add1(zero()), add1(zero())))
+print arithmetic(quote add(add1(add1(zero())), add1(add1(zero()))))
+print arithmetic(quote mul(add1(add1(zero())), add1(add1(zero()))))
 
-arithmetic(
-  quote mul(add1(zero()), add1(zero()))
-)
-
-arithmetic(
-  quote add(add1(add1(zero())), add1(add1(zero())))
-)
-
-arithmetic(
-  quote mul(add1(add1(zero())), add1(add1(zero())))
-)
-
-arithmetic(
-  quote div(unquote four, unquote two)
-)
-
-arithmetic(
-  quote div(unquote six, unquote two)
-)
-
-arithmetic(
-  quote div(unquote eight, unquote two)
-)
+print arithmetic(quote div(unquote four, unquote two))
+print arithmetic(quote div(unquote six, unquote two))
+print arithmetic(quote div(unquote eight, unquote two))

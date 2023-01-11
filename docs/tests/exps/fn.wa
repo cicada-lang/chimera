@@ -1,8 +1,8 @@
-() => {
+print () => {
   return 1
 }
 
-(x) => {
+print (x) => {
   let y = x
   return y
 }
@@ -14,9 +14,9 @@ let id = (x) => {
   return y
 }
 
-id(1)
-id(id(1))
-id(id(id(1)))
+print id(1)
+print id(id(1))
+print id(id(id(1)))
 
 // zero arity
 
@@ -24,7 +24,7 @@ let one = () => {
   return 1
 }
 
-one()
+print one()
 
 // relation in function
 
@@ -41,4 +41,4 @@ let greet = (x) => {
   return "ok"
 }
 
-greet("xieyuheng")
+print greet("xieyuheng")

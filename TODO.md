@@ -1,7 +1,5 @@
 # functional
 
-require `print` keyword
-
 remove `assert find` and `assert not find` keywords
 
 remove `test` keyword
