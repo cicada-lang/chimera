@@ -1,8 +1,8 @@
 import { Add, Add1, Nat, Zero } from "Add.wa"
 
-trace steps 5 {
-  Add1(add1(zero()), _x)
-}
+// trace steps 5 {
+//   Add1(add1(zero()), _x)
+// }
 
 find x {
   Add(x, x, zero())
@@ -14,7 +14,7 @@ find x {
 
 // The following query diverges.
 
-trace steps 5 {
-  Add(x, y, z)
-  Add(x, y, add1(z))
-}
+// trace steps 5 {
+//   Add(x, y, z)
+//   Add(x, y, add1(z))
+// }

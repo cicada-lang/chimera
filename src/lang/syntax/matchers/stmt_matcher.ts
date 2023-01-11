@@ -46,14 +46,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       )
     },
-    "stmt:trace": ({ steps, goals }, { span }) => {
-      const realSteps = pt.matchers.optional_matcher(steps)
-      return new Stmts.Trace(
-        realSteps ? Number.parseFloat(pt.str(realSteps)) : Infinity,
-        matchers.goals_matcher(goals),
-        span,
-      )
-    },
     "stmt:import": ({ bindings, path }, { span }) =>
       new Stmts.Import(
         pt.matchers

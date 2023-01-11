@@ -1,8 +1,7 @@
 # functional
 
-remove `Stmts.Trace` -- for now
-
 inline module `prepareGoals`
+
 inline module `formatFoundVariables`
 
 `Stmts.Find` -- use any expression as pattern.

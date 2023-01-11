@@ -23,11 +23,11 @@ find _ limit 3 {
 // If the same solver state occurred,
 // thus infinite loop here.
 
-trace steps 5 {
-  x = true
-  Always()
-  x = false
-}
+// trace steps 5 {
+//   x = true
+//   Always()
+//   x = false
+// }
 
 // We can simply reorder the goals in the conjunction
 // to make the search not diverge,
@@ -40,11 +40,11 @@ find x {
   Always()
 }
 
-trace {
-  x = true
-  x = false
-  Always()
-}
+// trace {
+//   x = true
+//   x = false
+//   Always()
+// }
 
 find x limit 5 {
   disj {
@@ -60,14 +60,14 @@ find x limit 5 {
 // some solutions will not diverge,
 // and return as many `false`s as asked.
 
-trace steps 5 {
-  disj {
-    x = true
-    x = false
-  }
-  Always()
-  x = false
-}
+// trace steps 5 {
+//   disj {
+//     x = true
+//     x = false
+//   }
+//   Always()
+//   x = false
+// }
 
 // If we change the last line to `x = true`
 // we get as many `true`s as asked.

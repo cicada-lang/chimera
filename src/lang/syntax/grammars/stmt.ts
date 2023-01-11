@@ -39,13 +39,6 @@ export const stmt = {
       { goals: "goals" },
       '"}"',
     ],
-    "stmt:trace": [
-      '"trace"',
-      { steps: { $ap: ["optional", '"steps"', { $pattern: ["number"] }] } },
-      '"{"',
-      { goals: "goals" },
-      '"}"',
-    ],
     "stmt:import": [
       '"import"',
       '"{"',
