@@ -1,7 +1,5 @@
 # functional
 
-inline module `prepareGoals`
-
 inline module `formatFoundVariables`
 
 `Stmts.Find` -- use any expression as pattern.
