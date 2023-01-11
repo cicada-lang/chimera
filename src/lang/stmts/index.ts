@@ -1,4 +1,5 @@
 export * from "./Clause"
+export * from "./Compute"
 export * from "./Find"
 export * from "./Hyperrule"
 export * from "./Import"

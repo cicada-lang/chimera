@@ -1,6 +1,6 @@
 # functional
 
-`Stmts.Compute` -- without print
+`Stmts.Fn`
 
 `find` as an expression -- remove `Stmts.Find` -- use `print find ...`
 

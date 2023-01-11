@@ -1,0 +1,8 @@
+compute "compute without print"
+
+let f = () => {
+  print "print in function body"
+  return null
+}
+
+compute f()

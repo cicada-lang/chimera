@@ -81,6 +81,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.Let(pt.str(name), matchers.exp_matcher(exp), span),
     "stmt:print": ({ exp }, { span }) =>
       new Stmts.Print(matchers.exp_matcher(exp), span),
+    "stmt:compute": ({ exp }, { span }) =>
+      new Stmts.Compute(matchers.exp_matcher(exp), span),
   })(tree)
 }
 
