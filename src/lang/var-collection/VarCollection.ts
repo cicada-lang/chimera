@@ -10,6 +10,12 @@ export function varCollectionLookup(
   return varCollection.get(name)
 }
 
+export function varCollectionNames(
+  varCollection: VarCollection,
+): Array<string> {
+  return Array.from(varCollection.keys())
+}
+
 export function createVarCollection(
   entries: Array<[string, Array<Exps.Var>]> = [],
 ): VarCollection {
