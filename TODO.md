@@ -2,19 +2,13 @@
 
 `find` as an expression -- remove `Stmts.Find` -- use `print find ...`
 
-function without `return`
-
-- return `null` -- we should not introduce too many unit types
-
-- learn from
-
-  - ~/persons/douglas-crockford/how-javascript-works.pdf
-  - sicp-js
-  - history of c: https://web.archive.org/web/19980220175804/http://cm.bell-labs.com/cm/cs/who/dmr/chist.html
-
 `return` as a stmt
 
 - implement early return by throw
+
+function without `return`
+
+- return `null` -- we should not introduce too many unit types
 
 `if` as a stmt
 
