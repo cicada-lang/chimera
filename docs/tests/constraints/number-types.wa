@@ -1,22 +1,22 @@
-assert find _ {
+find _ {
   Number(1)
 }
 
-assert not find _ {
+find _ {
   Number("A")
 }
 
-assert not find x {
+find x {
   x = "cat"
   Number(x)
 }
 
-assert find x {
+find x {
   x = 1
   Number(x)
 }
 
-assert not find x {
+find x {
   Number(x)
   String(x)
 }

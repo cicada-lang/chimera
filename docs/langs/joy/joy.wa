@@ -82,7 +82,7 @@ find end {
   Eval(start, end)
 }
 
-assert not find end {
+find end {
   start = [[], ["hello", "world"]]
   Eval(start, end)
 }

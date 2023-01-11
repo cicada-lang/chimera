@@ -29,21 +29,21 @@ find [x, y] {
   x = "cat"
 }
 
-test "disj of not equal" {
-  assert find [x, y] {
-    [x, y] != [1, 2]
-  }
+// disj of not equal
 
-  assert find [x, y] {
-    [x, y] != [1, 2]
-    x = 1
-  }
+find [x, y] {
+  [x, y] != [1, 2]
+}
 
-  assert not find [x, y] {
-    [x, y] != [1, 2]
-    x = 1
-    y = 2
-  }
+find [x, y] {
+  [x, y] != [1, 2]
+  x = 1
+}
+
+find [x, y] {
+  [x, y] != [1, 2]
+  x = 1
+  y = 2
 }
 
 // filter somePairContainsVar

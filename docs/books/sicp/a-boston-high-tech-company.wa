@@ -298,18 +298,6 @@ find coder {
   })
 }
 
-// We also make assertion about the results.
-
-find coder {
-  Job({
-    name: coder,
-    dept: "computer",
-    role: "programmer",
-  })
-}
-
-// assert [{ coder: "Hacker Alyssa P" }, { coder: "Fect Cy D" }],
-
 // The input find specifies that
 // we are looking for entries in the database
 // that match a certain pattern.

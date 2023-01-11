@@ -1,9 +1,5 @@
 # functional
 
-remove `assert find` and `assert not find` keywords
-
-remove `test` keyword
-
 `Stmts.Compute` -- without print
 
 `find` as an expression -- remove `Stmts.Find` -- use `print find ...`

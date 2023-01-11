@@ -1,12 +1,12 @@
-assert find _ {
+find _ {
   String("A")
 }
 
-assert not find _ {
+find _ {
   String(1)
 }
 
-assert find x {
+find x {
   x = "cat"
   String(x)
 }
@@ -19,26 +19,26 @@ find x {
 
 // An unification breaks a type constraint.
 
-assert not find x {
+find x {
   String(x)
   x = 1
 }
 
 // An indirect unification breaks a type constraint.
 
-assert not find x {
+find x {
   String(x)
   x = z
   z = 1
 }
 
-assert not find x {
+find x {
   x = z
   z = 1
   String(x)
 }
 
-assert not find x {
+find x {
   x = z
   String(x)
   z = 1
@@ -46,26 +46,26 @@ assert not find x {
 
 // An unification subsums a type constraint.
 
-assert find x {
+find x {
   String(x)
   x = "A"
 }
 
 // An indirect unification subsums a type constraint.
 
-assert find x {
+find x {
   String(x)
   x = z
   z = "A"
 }
 
-assert find x {
+find x {
   x = z
   z = "A"
   String(x)
 }
 
-assert find x {
+find x {
   x = z
   String(x)
   z = "A"

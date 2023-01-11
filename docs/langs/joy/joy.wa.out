@@ -12,6 +12,7 @@
   [[3, [2, 1]], ["cons"]],
   [[[3, 2, 1]], []]
 ]
+[]
 [ 
   ["lit", "you", "lit", "love", "lit", "I"],
   ["lit", "love", "lit", "you", "swap", "lit", "I"],

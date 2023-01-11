@@ -54,24 +54,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         span,
       )
     },
-    "stmt:assert_find": ({ query_pattern, limit, goals }, { span }) => {
-      const realLimit = pt.matchers.optional_matcher(limit)
-      return new Stmts.AssertFind(
-        matchers.query_pattern_matcher(query_pattern),
-        realLimit ? Number.parseFloat(pt.str(realLimit)) : Infinity,
-        matchers.goals_matcher(goals),
-        span,
-      )
-    },
-    "stmt:assert_not_find": ({ query_pattern, limit, goals }, { span }) => {
-      const realLimit = pt.matchers.optional_matcher(limit)
-      return new Stmts.AssertNotFind(
-        matchers.query_pattern_matcher(query_pattern),
-        realLimit ? Number.parseFloat(pt.str(realLimit)) : Infinity,
-        matchers.goals_matcher(goals),
-        span,
-      )
-    },
     "stmt:import": ({ bindings, path }, { span }) =>
       new Stmts.Import(
         pt.matchers
@@ -82,18 +64,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       ),
     "stmt:import_all": ({ path }, { span }) =>
       new Stmts.ImportAll(pt.trim_boundary(pt.str(path), 1), span),
-    "stmt:test": ({ description, stmts }, { span }) =>
-      new Stmts.Test(
-        pt.trim_boundary(pt.str(description), 1),
-        pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
-        span,
-      ),
-    "stmt:test_no_description": ({ stmts }, { span }) =>
-      new Stmts.Test(
-        undefined,
-        pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
-        span,
-      ),
     "stmt:private": ({ stmts }, { span }) =>
       new Stmts.Private(
         pt.matchers.zero_or_more_matcher(stmts).map(matchers.stmt_matcher),
