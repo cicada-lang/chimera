@@ -5,7 +5,7 @@ import type { Span } from "../span"
 import { Stmt } from "../stmt"
 import { formatValue } from "../value"
 
-export class Eval extends Stmt {
+export class Compute extends Stmt {
   constructor(public exp: Exp, public span?: Span) {
     super()
   }
