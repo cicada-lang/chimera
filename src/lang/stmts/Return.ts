@@ -1,12 +1,21 @@
+import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
 import type { Value } from "../value"
+import { formatValue } from "../value"
 
-export class ReturnValue {
-  constructor(public value: Value) {}
+export class ReturnValue extends Errors.LangError {
+  constructor(public value: Value) {
+    super(
+      [
+        `[ReturnValue] can not use return at top-level`,
+        `  return value: ${formatValue(value)}`,
+      ].join("\n"),
+    )
+  }
 }
 
 export class Return extends Stmt {

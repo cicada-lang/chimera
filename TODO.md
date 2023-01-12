@@ -1,9 +1,5 @@
 # functional
 
-error on top-level `ReturnValue`
-
-[refactoring] `applyFn`
-
 `return` without expression
 
 function without `return`

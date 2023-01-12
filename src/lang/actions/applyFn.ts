@@ -50,24 +50,16 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
 
   try {
     mod.executeStmtsSync(target.stmts)
-
-    const result = evaluate(mod, mod.env, target.ret)
-
-    if (target.patterns.length < args.length) {
-      const restArgs = args.slice(0, target.patterns.length)
-      return doTerm(mod, result, restArgs)
-    } else {
-      return result
-    }
+    const value = evaluate(mod, mod.env, target.ret)
+    return target.patterns.length < args.length
+      ? doTerm(mod, value, args.slice(0, target.patterns.length))
+      : value
   } catch (error) {
     if (error instanceof ReturnValue) {
-      const result = error.value
-      if (target.patterns.length < args.length) {
-        const restArgs = args.slice(0, target.patterns.length)
-        return doTerm(mod, result, restArgs)
-      } else {
-        return result
-      }
+      const value = error.value
+      return target.patterns.length < args.length
+        ? doTerm(mod, value, args.slice(0, target.patterns.length))
+        : value
     }
 
     throw error
