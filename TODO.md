@@ -4,7 +4,7 @@
 
 - implement early return by throw
 
-`Stmts.ReturnNull` -- `return` without expression
+`return` without expression
 
 function without `return`
 
