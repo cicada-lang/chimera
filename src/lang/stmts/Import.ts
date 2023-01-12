@@ -24,10 +24,6 @@ export class Import extends Stmt {
     super()
   }
 
-  boundNamesSync(): Array<string> {
-    return this.bindings.map(({ name, alias }) => alias || name)
-  }
-
   prepareSync(mod: Mod): void {
     throw new Errors.LangError(
       `[Import.prepareSync] can not use import synchronously (for example, in function body)`,

@@ -9,10 +9,6 @@ export class Let extends Stmt {
     super()
   }
 
-  boundNamesSync(): Array<string> {
-    return [this.name]
-  }
-
   executeSync(mod: Mod): void {
     const value = evaluate(mod, mod.env, this.exp)
     mod.define(this.name, value)

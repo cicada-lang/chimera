@@ -20,21 +20,6 @@ export abstract class Stmt {
     return this.executeSync(mod)
   }
 
-  /**
-
-     The `boundNames` is used by `Stmts.Private`
-     to add `boundNames` of a sub-stmt to `mod.privateNames`.
-
-  **/
-
-  boundNamesSync(mod: Mod): Array<string> {
-    return []
-  }
-
-  async boundNames(mod: Mod): Promise<Array<string>> {
-    return this.boundNamesSync(mod)
-  }
-
   format(): string {
     return "TODO"
   }

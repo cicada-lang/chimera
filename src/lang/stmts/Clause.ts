@@ -21,10 +21,6 @@ export class Clause extends Stmt {
     super()
   }
 
-  boundNamesSync(): Array<string> {
-    return [this.relationName]
-  }
-
   prepareSync(mod: Mod): void {
     mod.ensureRelationOfThisMod(this.relationName)
   }

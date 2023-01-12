@@ -16,18 +16,14 @@ export class Private extends Stmt {
   }
 
   async execute(mod: Mod): Promise<void> {
+    mod.privateDepth++
     await this.stmt.execute(mod)
-
-    for (const name of await this.stmt.boundNames(mod)) {
-      mod.privateNames.add(name)
-    }
+    mod.privateDepth--
   }
 
   executeSync(mod: Mod): void {
+    mod.privateDepth++
     this.stmt.executeSync(mod)
-
-    for (const name of this.stmt.boundNamesSync(mod)) {
-      mod.privateNames.add(name)
-    }
+    mod.privateDepth--
   }
 }

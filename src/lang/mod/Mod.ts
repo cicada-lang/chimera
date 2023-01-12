@@ -27,6 +27,7 @@ export class Mod {
   variableCount = 0
   env: Env = envEmpty()
   privateNames: Set<string> = new Set()
+  privateDepth: number = 0
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
   imported: Array<URL> = []
@@ -120,6 +121,10 @@ export class Mod {
   }
 
   define(name: string, value: Value): void {
+    if (this.privateDepth > 0) {
+      this.privateNames.add(name)
+    }
+
     this.env = envExtend(this.env, name, value)
   }
 
@@ -155,7 +160,7 @@ export class Mod {
 
     relation.clauses.push(clause)
 
-    this.env = envExtend(this.env, relation.name, relation)
+    this.define(relation.name, relation)
   }
 
   private findRelation(name: string): Relation | undefined {

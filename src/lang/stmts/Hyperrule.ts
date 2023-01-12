@@ -19,10 +19,6 @@ export class Hyperrule extends Stmt {
     super()
   }
 
-  boundNamesSync(): Array<string> {
-    return [this.name]
-  }
-
   validateSync(mod: Mod): void {
     for (const hyperrule of this.hyperrules) {
       varCollectionValidate(varCollectionFromHyperruleExp(hyperrule))

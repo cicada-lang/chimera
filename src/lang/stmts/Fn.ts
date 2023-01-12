@@ -15,10 +15,6 @@ export class Fn extends Stmt {
     super()
   }
 
-  boundNamesSync(): Array<string> {
-    return [this.name]
-  }
-
   executeSync(mod: Mod): void {
     const exp = Exps.Fn(this.patterns, this.stmts, this.span)
     const value = evaluate(mod, mod.env, exp)

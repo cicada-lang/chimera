@@ -19,10 +19,6 @@ export class Rule extends Stmt {
     super()
   }
 
-  boundNamesSync(): Array<string> {
-    return [this.name]
-  }
-
   validateSync(mod: Mod): void {
     for (const rule of this.rules) {
       varCollectionValidate(varCollectionFromRuleExp(rule))

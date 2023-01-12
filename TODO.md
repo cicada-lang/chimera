@@ -1,7 +1,5 @@
 # functional
 
-quit using `Stmt.boundNames` -- `private` set flag on `Mod`
-
 `formatExp` -- `Find`
 
 `Stmt.format`
