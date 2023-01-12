@@ -1,6 +1,6 @@
 # functional
 
-[refactoring] `applyFn`
+[refactoring] `applyFn` -- extract `?`
 
 `if` as a stmt
 

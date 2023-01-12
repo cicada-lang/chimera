@@ -2,6 +2,7 @@ import { doTerm } from "../actions"
 import { envMerge } from "../env"
 import * as Errors from "../errors"
 import { match } from "../match"
+import type { Mod } from "../mod"
 import { ReturnValue } from "../stmts"
 import {
   substitutionDeepWalk,
@@ -14,11 +15,35 @@ import { formatValue } from "../value"
 
 export function applyFn(target: Values.Fn, args: Array<Value>): Value {
   const mod = target.mod.copy()
-
   mod.env = envMerge(mod.env, target.env)
+  matchPatterns(mod, target.patterns, args)
 
+  try {
+    mod.executeStmtsSync(target.stmts)
+    const value = Values.Null()
+    return target.patterns.length < args.length
+      ? doTerm(mod, value, args.slice(0, target.patterns.length))
+      : value
+  } catch (error) {
+    if (error instanceof ReturnValue) {
+      const value = error.value
+      return target.patterns.length < args.length
+        ? doTerm(mod, value, args.slice(0, target.patterns.length))
+        : value
+    }
+
+    throw error
+  }
+}
+
+function matchPatterns(
+  mod: Mod,
+  patterns: Array<Value>,
+  args: Array<Value>,
+): void {
   let substitution = substitutionEmpty()
-  for (const [index, pattern] of target.patterns.entries()) {
+
+  for (const [index, pattern] of patterns.entries()) {
     const arg = args[index]
     if (arg === undefined) {
       throw new Errors.LangError(
@@ -45,22 +70,5 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
 
   for (const [name, value] of substitutionEntries(substitution)) {
     mod.define(name, substitutionDeepWalk(substitution, value))
-  }
-
-  try {
-    mod.executeStmtsSync(target.stmts)
-    const value = Values.Null()
-    return target.patterns.length < args.length
-      ? doTerm(mod, value, args.slice(0, target.patterns.length))
-      : value
-  } catch (error) {
-    if (error instanceof ReturnValue) {
-      const value = error.value
-      return target.patterns.length < args.length
-        ? doTerm(mod, value, args.slice(0, target.patterns.length))
-        : value
-    }
-
-    throw error
   }
 }
