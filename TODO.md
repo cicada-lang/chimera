@@ -1,8 +1,10 @@
 # functional
 
-`return` as a stmt
+`applyFn` catch `ReturnValue`
 
 - implement early return by throw
+
+`Stmts.ReturnNull` -- `return` without expression
 
 function without `return`
 

@@ -74,6 +74,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.exp_matcher(ret),
         span,
       ),
+    "stmt:return": ({ exp }, { span }) =>
+      new Stmts.Return(matchers.exp_matcher(exp), span),
   })(tree)
 }
 

@@ -78,6 +78,7 @@ export const stmt = {
       { ret: "exp" },
       '"}"',
     ],
+    "stmt:return": ['"return"', { exp: "exp" }],
   },
 }
 
