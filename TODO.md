@@ -1,8 +1,19 @@
 # functional
 
-`formatExp` -- `Find`
+`Stmts.Clause` -- format
+`Stmts.Compute` -- format
+`Stmts.Fn` -- format
+`Stmts.Hyperrule` -- format
+`Stmts.If` -- format
+`Stmts.Import` -- format
+`Stmts.ImportAll` -- format
+`Stmts.Let` -- format
+`Stmts.Print` -- format
+`Stmts.Private` -- format
+`Stmts.Return` -- format
+`Stmts.Rule` -- format
 
-`Stmt.format`
+`formatExp` -- `Find`
 
 `Stmts.If` -- support zero or more `else if`s
 
@@ -12,9 +23,13 @@
 
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
+# guard
+
 [rule] support guard
 
 [hyperrule] support guard
+
+# primitive
 
 [primitive] `findAll(query, goals): Array`
 [primitive] `find(n, query, goals): Array`
