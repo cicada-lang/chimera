@@ -1,7 +1,5 @@
 # functional
 
-[refactoring] `applyFn` -- extract `?`
-
 `if` as a stmt
 
 `if` as a built-in function

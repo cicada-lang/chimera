@@ -3,6 +3,7 @@ import { envMerge } from "../env"
 import * as Errors from "../errors"
 import { match } from "../match"
 import type { Mod } from "../mod"
+import type { Stmt } from "../stmt"
 import { ReturnValue } from "../stmts"
 import {
   substitutionDeepWalk,
@@ -17,23 +18,10 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
   const mod = target.mod.copy()
   mod.env = envMerge(mod.env, target.env)
   matchPatterns(mod, target.patterns, args)
-
-  try {
-    mod.executeStmtsSync(target.stmts)
-    const value = Values.Null()
-    return target.patterns.length < args.length
-      ? doTerm(mod, value, args.slice(0, target.patterns.length))
-      : value
-  } catch (error) {
-    if (error instanceof ReturnValue) {
-      const value = error.value
-      return target.patterns.length < args.length
-        ? doTerm(mod, value, args.slice(0, target.patterns.length))
-        : value
-    }
-
-    throw error
-  }
+  const value = catchReturnValue(mod, target.stmts)
+  return target.patterns.length < args.length
+    ? doTerm(mod, value, args.slice(0, target.patterns.length))
+    : value
 }
 
 function matchPatterns(
@@ -70,5 +58,18 @@ function matchPatterns(
 
   for (const [name, value] of substitutionEntries(substitution)) {
     mod.define(name, substitutionDeepWalk(substitution, value))
+  }
+}
+
+function catchReturnValue(mod: Mod, stmts: Array<Stmt>): Value {
+  try {
+    mod.executeStmtsSync(stmts)
+    return Values.Null()
+  } catch (error) {
+    if (error instanceof ReturnValue) {
+      return error.value
+    }
+
+    throw error
   }
 }
