@@ -2,8 +2,6 @@
 
 quit using `Stmt.boundNames` -- `private` set flag on `Mod`
 
-`private` take only one stmt
-
 `formatExp` -- `Find`
 
 `Stmt.format`

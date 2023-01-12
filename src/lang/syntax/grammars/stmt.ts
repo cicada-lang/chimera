@@ -45,12 +45,7 @@ export const stmt = {
       '"from"',
       { path: { $pattern: ["string"] } },
     ],
-    "stmt:private": [
-      '"private"',
-      '"{"',
-      { stmts: { $ap: ["zero_or_more", "stmt"] } },
-      '"}"',
-    ],
+    "stmt:private": ['"private"', { stmt: "stmt" }],
     "stmt:rule": [
       '"rule"',
       { name: "rule_name" },
