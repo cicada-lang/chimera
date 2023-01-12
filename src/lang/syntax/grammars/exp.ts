@@ -52,6 +52,12 @@ export const operand = {
       { stmts: "stmts" },
       '"}"',
     ],
+    "operand:fn_with_ret_exp": [
+      { patterns: "args" },
+      '"="',
+      '">"',
+      { ret: "exp" },
+    ],
     "operand:quote": ['"quote"', { exp: "exp" }],
     "operand:unquote": ['"unquote"', { exp: "exp" }],
     "operand:find": [

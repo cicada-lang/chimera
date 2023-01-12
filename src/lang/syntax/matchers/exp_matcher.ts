@@ -1,6 +1,7 @@
 import * as pt from "@cicada-lang/partech"
 import type { Exp } from "../../exp"
 import * as Exps from "../../exp"
+import * as Stmts from "../../stmts"
 import * as matchers from "../matchers"
 
 export function exp_matcher(tree: pt.Tree): Exp {
@@ -70,6 +71,12 @@ export function operand_matcher(tree: pt.Tree): Exp {
       Exps.Fn(
         matchers.args_matcher(patterns),
         matchers.stmts_matcher(stmts),
+        span,
+      ),
+    "operand:fn_with_ret_exp": ({ patterns, ret }, { span }) =>
+      Exps.Fn(
+        matchers.args_matcher(patterns),
+        [new Stmts.Return(matchers.exp_matcher(ret), span)],
         span,
       ),
     "operand:quote": ({ exp }, { span }) =>

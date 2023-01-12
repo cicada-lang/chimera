@@ -1,8 +1,8 @@
 # functional
 
-`if` as a stmt
+`Stmts.If`
 
-`if` as a built-in function
+`if` as a built-in function -- for an expression version of `if`
 
 `assert` and `assertNot` as built-in functions.
 
