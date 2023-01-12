@@ -2,7 +2,15 @@
 
 `Stmts.If`
 
+extract `Closure` -- `ClosureSimple | ClosureNative` -- for built-in primitive functions
+
 `if` as a built-in function -- for an expression version of `if`
+
+- we do not need ternary operator, we can use `quote` to define syntax as function.
+
+`formatExp` -- `Find`
+
+`Stmt.format`
 
 `assert` and `assertNot` as built-in functions.
 
@@ -72,16 +80,6 @@ is all about simulation.
 Can we design a hypergraph based physics engine,
 where space itself is implemented by hypergraph,
 and dynamic is implemented by rewrite rules?
-
-# functional
-
-`formatExp` -- `Find`
-
-`Stmt.format`
-
-Some `Stmt`s should be implemented as `Exp`, to support using `Stmts.Let` over them.
-
-[std] design the primitives for the functional part.
 
 # hypergraph presentation
 
