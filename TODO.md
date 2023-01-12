@@ -1,7 +1,5 @@
 # functional
 
-`return` without expression
-
 function without `return`
 
 - return `null` -- we should not introduce too many unit types

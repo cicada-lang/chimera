@@ -1,4 +1,5 @@
 import * as pt from "@cicada-lang/partech"
+import * as Exps from "../../exp"
 import type { Stmt } from "../../stmt"
 import * as Stmts from "../../stmts"
 import * as matchers from "../matchers"
@@ -76,6 +77,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       ),
     "stmt:return": ({ exp }, { span }) =>
       new Stmts.Return(matchers.exp_matcher(exp), span),
+    "stmt:return_null": ({}, { span }) =>
+      new Stmts.Return(Exps.Null(span), span),
   })(tree)
 }
 

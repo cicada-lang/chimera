@@ -79,6 +79,7 @@ export const stmt = {
       '"}"',
     ],
     "stmt:return": ['"return"', { exp: "exp" }],
+    "stmt:return_null": ['"return"'],
   },
 }
 
