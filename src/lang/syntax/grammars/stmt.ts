@@ -74,8 +74,6 @@ export const stmt = {
       { patterns: "args" },
       '"{"',
       { stmts: "stmts" },
-      '"return"',
-      { ret: "exp" },
       '"}"',
     ],
     "stmt:return": ['"return"', { exp: "exp" }],

@@ -1,8 +1,6 @@
 # functional
 
-function without `return`
-
-- return `null` -- we should not introduce too many unit types
+[refactoring] `applyFn`
 
 `if` as a stmt
 

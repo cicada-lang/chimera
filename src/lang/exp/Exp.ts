@@ -166,22 +166,15 @@ export type Fn = {
   "@kind": "Fn"
   patterns: Array<Exp>
   stmts: Array<Stmt>
-  ret: Exp
   span: Span
 }
 
-export function Fn(
-  patterns: Array<Exp>,
-  stmts: Array<Stmt>,
-  ret: Exp,
-  span: Span,
-): Fn {
+export function Fn(patterns: Array<Exp>, stmts: Array<Stmt>, span: Span): Fn {
   return {
     "@type": "Exp",
     "@kind": "Fn",
     patterns,
     stmts,
-    ret,
     span,
   }
 }

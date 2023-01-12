@@ -9,8 +9,6 @@ function greet(x) {
   }
 
   print results
-
-  return "ok"
 }
 
-print greet("xieyuheng")
+compute greet("xieyuheng")

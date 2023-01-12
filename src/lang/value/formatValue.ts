@@ -1,5 +1,4 @@
 import { indent } from "../../utils/indent"
-import { formatExp } from "../exp"
 import { formatGoal } from "../goal"
 import type { Value } from "../value"
 
@@ -84,9 +83,7 @@ export function formatValue(value: Value): string {
 
       const patterns = value.patterns.map(formatValue).join(", ")
       const stmts = value.stmts.map((stmt) => stmt.format())
-      const ret = `return ${formatExp(value.ret)}`
-      const body = [...stmts, ret].join("\n")
-      return `(${patterns}) => {\n${indent(body)}\n}`
+      return `(${patterns}) => {\n${indent(stmts.join("\n"))}\n}`
     }
 
     case "WithConstraints": {

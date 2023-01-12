@@ -50,8 +50,6 @@ export const operand = {
       '">"',
       '"{"',
       { stmts: "stmts" },
-      '"return"',
-      { ret: "exp" },
       '"}"',
     ],
     "operand:quote": ['"quote"', { exp: "exp" }],

@@ -57,9 +57,7 @@ export function formatExp(exp: Exp): string {
     case "Fn": {
       const patterns = exp.patterns.map(formatExp).join(", ")
       const stmts = exp.stmts.map((stmt) => stmt.format())
-      const ret = `return ${formatExp(exp.ret)}`
-      const body = [...stmts, ret].join("\n")
-      return `(${patterns}) => {\n${indent(body)}\n}`
+      return `(${patterns}) => {\n${indent(stmts.join("\n"))}\n}`
     }
 
     case "Quote": {

@@ -1,7 +1,6 @@
 import { doTerm } from "../actions"
 import { envMerge } from "../env"
 import * as Errors from "../errors"
-import { evaluate } from "../evaluate"
 import { match } from "../match"
 import { ReturnValue } from "../stmts"
 import {
@@ -9,8 +8,8 @@ import {
   substitutionEmpty,
   substitutionEntries,
 } from "../substitution"
-import type * as Values from "../value"
 import type { Value } from "../value"
+import * as Values from "../value"
 import { formatValue } from "../value"
 
 export function applyFn(target: Values.Fn, args: Array<Value>): Value {
@@ -50,7 +49,7 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
 
   try {
     mod.executeStmtsSync(target.stmts)
-    const value = evaluate(mod, mod.env, target.ret)
+    const value = Values.Null()
     return target.patterns.length < args.length
       ? doTerm(mod, value, args.slice(0, target.patterns.length))
       : value

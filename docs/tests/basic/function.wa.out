@@ -1,9 +1,9 @@
 () => {
-  return 1
+  TODO
 }
 (x) => {
   TODO
-  return y
+  TODO
 }
 1
 1
