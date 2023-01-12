@@ -1,7 +1,5 @@
 # functional
 
-`if` as a built-in function that takes lambda -- for an expression version of `if`
-
 quit using `Stmt.boundNames` -- `private` set flag on `Mod`
 
 `private` take only one stmt

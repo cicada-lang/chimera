@@ -21,6 +21,18 @@ clause Boolean(x) -- { x = true }
 
 `)
 
+  await globals.code(`
+
+function if(target, thenFn, elseFn) {
+  if target {
+    return thenFn()
+  } else {
+    return elseFn()
+  }
+}
+
+`)
+
   globals.define(
     "Number",
     Values.TypeConstraint("Number", (value) => value["@kind"] === "Number"),
