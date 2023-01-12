@@ -78,6 +78,24 @@ export const stmt = {
     ],
     "stmt:return": ['"return"', { exp: "exp" }],
     "stmt:return_null": ['"return"'],
+    "stmt:if": [
+      '"if"',
+      { target: "exp" },
+      '"{"',
+      { then_stmts: "stmts" },
+      '"}"',
+    ],
+    "stmt:if_else": [
+      '"if"',
+      { target: "exp" },
+      '"{"',
+      { then_stmts: "stmts" },
+      '"}"',
+      '"else"',
+      '"{"',
+      { else_stmts: "stmts" },
+      '"}"',
+    ],
   },
 }
 

@@ -1,16 +1,16 @@
 # functional
 
-`Stmts.If`
+`if` as a built-in function that takes lambda -- for an expression version of `if`
 
-extract `Closure` -- `ClosureSimple | ClosureNative` -- for built-in primitive functions
+quit using `Stmt.boundNames` -- `private` set flag on `Mod`
 
-`if` as a built-in function -- for an expression version of `if`
-
-- we do not need ternary operator, we can use `quote` to define syntax as function.
+`private` take only one stmt
 
 `formatExp` -- `Find`
 
 `Stmt.format`
+
+`Stmts.If` -- support zero or more `else if`s
 
 `assert` and `assertNot` as built-in functions.
 
