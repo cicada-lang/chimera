@@ -14,6 +14,8 @@ extract `Closure` -- `ClosureSimple | ClosureNative` -- for built-in primitive f
 
 `assert` and `assertNot` as built-in functions.
 
+- to be used in tests
+
 `doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
 
 [rule] support guard
@@ -22,10 +24,6 @@ extract `Closure` -- `ClosureSimple | ClosureNative` -- for built-in primitive f
 
 [primitive] `findAll(query, goals): Array`
 [primitive] `find(n, query, goals): Array`
-
-[primitive] `trace` as a built-in function
-
-- result should be represented by term and json
 
 [primitive] `rewrite(n, target, rules): Array`
 [primitive] `hyperrewrite(n, target, hyperrules): Array`
@@ -168,6 +166,10 @@ read source code file as list of terms
 # DX
 
 [logic programming] provide a tool for checking relation's disjoint-ness against examples.
+
+[debug] [primitive] `trace` as a built-in function
+
+- result should be represented by term and json
 
 # grammar
 
