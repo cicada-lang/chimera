@@ -1,8 +1,8 @@
 # functional
 
-`applyFn` catch `ReturnValue`
+error on top-level `ReturnValue`
 
-- implement early return by throw
+[refactoring] `applyFn`
 
 `return` without expression
 

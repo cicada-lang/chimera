@@ -3,6 +3,7 @@ import { envMerge } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import { match } from "../match"
+import { ReturnValue } from "../stmts"
 import {
   substitutionDeepWalk,
   substitutionEmpty,
@@ -47,14 +48,28 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
     mod.define(name, substitutionDeepWalk(substitution, value))
   }
 
-  mod.executeStmtsSync(target.stmts)
+  try {
+    mod.executeStmtsSync(target.stmts)
 
-  const result = evaluate(mod, mod.env, target.ret)
+    const result = evaluate(mod, mod.env, target.ret)
 
-  if (target.patterns.length < args.length) {
-    const restArgs = args.slice(0, target.patterns.length)
-    return doTerm(mod, result, restArgs)
-  } else {
-    return result
+    if (target.patterns.length < args.length) {
+      const restArgs = args.slice(0, target.patterns.length)
+      return doTerm(mod, result, restArgs)
+    } else {
+      return result
+    }
+  } catch (error) {
+    if (error instanceof ReturnValue) {
+      const result = error.value
+      if (target.patterns.length < args.length) {
+        const restArgs = args.slice(0, target.patterns.length)
+        return doTerm(mod, result, restArgs)
+      } else {
+        return result
+      }
+    }
+
+    throw error
   }
 }
