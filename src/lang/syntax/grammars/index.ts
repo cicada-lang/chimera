@@ -7,6 +7,7 @@ export const dashline = pt.grammars.dashline
 
 export * from "./arg"
 export * from "./element"
+export * from "./else_if"
 export * from "./exp"
 export * from "./goal"
 export * from "./hyperrule"

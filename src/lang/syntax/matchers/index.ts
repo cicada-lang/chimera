@@ -1,5 +1,6 @@
 export * from "./arg_matcher"
 export * from "./element_matcher"
+export * from "./else_if_matcher"
 export * from "./exp_matcher"
 export * from "./goal_matcher"
 export * from "./hyperrule_matcher"

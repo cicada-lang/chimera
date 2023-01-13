@@ -75,19 +75,19 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.Return(matchers.exp_matcher(exp), span),
     "stmt:return_null": ({}, { span }) =>
       new Stmts.Return(Exps.Null(span), span),
-    "stmt:if": ({ target, then_stmts }, { span }) =>
+    "stmt:if": ({ target, stmts, else_ifs }, { span }) =>
       new Stmts.If(
         matchers.exp_matcher(target),
-        matchers.stmts_matcher(then_stmts),
-        [],
+        matchers.stmts_matcher(stmts),
+        matchers.else_ifs_matcher(else_ifs),
         [],
         span,
       ),
-    "stmt:if_else": ({ target, then_stmts, else_stmts }, { span }) =>
+    "stmt:if_else": ({ target, stmts, else_ifs, else_stmts }, { span }) =>
       new Stmts.If(
         matchers.exp_matcher(target),
-        matchers.stmts_matcher(then_stmts),
-        [],
+        matchers.stmts_matcher(stmts),
+        matchers.else_ifs_matcher(else_ifs),
         matchers.stmts_matcher(else_stmts),
         span,
       ),

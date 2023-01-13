@@ -9,8 +9,8 @@ import { formatValue } from "../value"
 export class If extends Stmt {
   constructor(
     public target: Exp,
-    public thenStmts: Array<Stmt>,
-    public elseIfs: Array<Array<Stmt>>,
+    public stmts: Array<Stmt>,
+    public elseIfs: Array<{ target: Exp; stmts: Array<Stmt> }>,
     public elseStmts: Array<Stmt>,
     public span: Span,
   ) {
@@ -22,16 +22,34 @@ export class If extends Stmt {
     if (target["@kind"] !== "Boolean") {
       throw new Errors.LangError(
         [
-          `[If.executeSync] target must be a Boolean`,
+          `[If.executeSync] target of if must be a Boolean`,
           `  target: ${formatValue(target)}`,
         ].join("\n"),
       )
     }
 
     if (target.data) {
-      mod.executeStmtsSync(this.thenStmts)
-    } else {
-      mod.executeStmtsSync(this.elseStmts)
+      mod.executeStmtsSync(this.stmts)
+      return
     }
+
+    for (const elseIf of this.elseIfs) {
+      const target = evaluate(mod, mod.env, elseIf.target)
+      if (target["@kind"] !== "Boolean") {
+        throw new Errors.LangError(
+          [
+            `[If.executeSync] target else if must be a Boolean`,
+            `  target: ${formatValue(target)}`,
+          ].join("\n"),
+        )
+      }
+
+      if (target.data) {
+        mod.executeStmtsSync(elseIf.stmts)
+        return
+      }
+    }
+
+    mod.executeStmtsSync(this.elseStmts)
   }
 }
