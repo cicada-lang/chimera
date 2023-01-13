@@ -1,3 +1,4 @@
+export * from "./Assert"
 export * from "./Clause"
 export * from "./Compute"
 export * from "./Fn"

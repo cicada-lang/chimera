@@ -73,6 +73,7 @@ export const stmt = {
     ],
     "stmt:return": ['"return"', { exp: "exp" }],
     "stmt:return_null": ['"return"'],
+    "stmt:assert": ['"assert"', { exp: "exp" }],
     "stmt:if": [
       '"if"',
       { target: "exp" },

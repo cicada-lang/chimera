@@ -1,0 +1,6 @@
+[Assert.executeSync] assertion fail, because the value is false instead of true
+  exp: false
+
+ 1 |assert false
+ 2 |
+

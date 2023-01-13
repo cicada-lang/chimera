@@ -9,10 +9,6 @@ export function createErrorReport(
     return new Errors.ErrorReport(error.report(text))
   }
 
-  if (error instanceof Errors.TestingError) {
-    return new Errors.ErrorReport(error.report(text))
-  }
-
   if (error instanceof Errors.ParsingError) {
     return new Errors.ErrorReport(error.report(text))
   }

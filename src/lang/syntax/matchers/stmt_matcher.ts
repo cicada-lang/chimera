@@ -75,6 +75,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.Return(matchers.exp_matcher(exp), span),
     "stmt:return_null": ({}, { span }) =>
       new Stmts.Return(Exps.Null(span), span),
+    "stmt:assert": ({ exp }, { span }) =>
+      new Stmts.Assert(matchers.exp_matcher(exp), span),
     "stmt:if": ({ target, stmts, else_ifs }, { span }) =>
       new Stmts.If(
         matchers.exp_matcher(target),

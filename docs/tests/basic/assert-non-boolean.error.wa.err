@@ -1,0 +1,7 @@
+[Assert.executeSync] assertion fail, because the value is not a Boolean
+  exp: 1
+  value: 1
+
+ 1 |assert 1
+ 2 |
+

@@ -1,3 +1,5 @@
+rename `ElaborationError` to `LangError`
+
 # primitive
 
 > Extend this language to follow IU compiler course.
@@ -7,8 +9,6 @@
 
 [primitive] [array] `arrayLength`
 [primitive] [array] `arrayAppend`
-
-`assert` should be a `Stmt` because we need `span`
 
 # primitive
 
