@@ -1,5 +1,6 @@
 import { indent } from "../../utils/indent"
 import type { Exp } from "../exp"
+import { formatGoalExp } from "../goal-exp"
 
 export function formatExp(exp: Exp): string {
   switch (exp["@kind"]) {
@@ -68,7 +69,17 @@ export function formatExp(exp: Exp): string {
     }
 
     case "Find": {
-      return `TODO`
+      const goals = exp.goals.map(formatGoalExp)
+
+      if (exp.limit === Infinity) {
+        return `find ${formatExp(exp.pattern)} {\n${indent(
+          goals.join("\n"),
+        )}\n}`
+      }
+
+      return `find ${formatExp(exp.pattern)} limit ${exp.limit} {\n${indent(
+        goals.join("\n"),
+      )}\n}`
     }
   }
 }

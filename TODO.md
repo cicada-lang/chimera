@@ -1,7 +1,5 @@
 # functional
 
-`formatExp` -- `Find`
-
 `Stmts.If` -- support zero or more `elseIfs: Array<Array<Stmt>>`
 
 `Stmts.If` -- `format`
