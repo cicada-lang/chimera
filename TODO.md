@@ -2,6 +2,22 @@
 
 > Extend this language to follow IU compiler course.
 
+rename `Exps.Term` to `Exps.Ap`
+
+rename `doTerm` to `doAp`
+
+support using `Exps.Ap` as operator
+
+- `quote` -- only support `Exps.Var` `target` for now -- reject currying
+
+`Values.FnCurried`
+
+- pass tests/basic/currying.wa
+
+`Values.Primitive`
+
+- and `PrimitiveCurried`
+
 [primitive] [string] `stringLength`
 [primitive] [string] `stringAppend`
 
