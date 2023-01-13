@@ -31,7 +31,7 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
   const value = catchReturnValue(mod, target.stmts)
 
   if (target.patterns.length < args.length) {
-    return doAp(mod, value, args.slice(0, target.patterns.length))
+    return doAp(mod, value, args.slice(target.patterns.length))
   }
 
   return value

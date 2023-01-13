@@ -304,22 +304,22 @@ export type Primitive = {
   "@kind": "Primitive"
   name: string
   arity: number
+  nativeFn: (args: Array<Value>) => Value
   curried: Array<Value>
-  native: (args: Array<Value>) => Value
 }
 
 export function Primitive(
   name: string,
   arity: number,
+  nativeFn: (args: Array<Value>) => Value,
   curried: Array<Value>,
-  native: (args: Array<Value>) => Value,
 ): Primitive {
   return {
     "@type": "Value",
     "@kind": "Primitive",
     name,
     arity,
+    nativeFn,
     curried,
-    native,
   }
 }

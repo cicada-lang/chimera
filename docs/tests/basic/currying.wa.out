@@ -1,6 +1,24 @@
 (x, y) => {
   return [x, y]
 }
+(x, y) => {
+  return [x, y]
+}
+(y) => {
+  return [x, y]
+}
+[1, 2]
+[1, 2]
+(x) => {
+  return (y) => {
+    return [x, y]
+  }
+}
+(x) => {
+  return (y) => {
+    return [x, y]
+  }
+}
 (y) => {
   return [x, y]
 }

@@ -2,7 +2,7 @@
 
 > Extend this language to follow IU compiler course.
 
-`doAp` -- `Values.Primitive`
+extract function `applyPrimitive`
 
 [primitive] [string] `stringLength`
 [primitive] [string] `stringAppend`

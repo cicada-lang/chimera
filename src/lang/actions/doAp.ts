@@ -42,6 +42,25 @@ export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
     return applyFn(target, args)
   }
 
+  if (target["@kind"] === "Primitive") {
+    if (target.arity > target.curried.length + args.length) {
+      return Values.Primitive(target.name, target.arity, target.nativeFn, [
+        ...target.curried,
+        ...args,
+      ])
+    }
+
+    if (target.arity < target.curried.length + args.length) {
+      return doAp(
+        mod,
+        target.nativeFn([...target.curried, ...args].slice(0, target.arity)),
+        args.slice(target.arity - target.curried.length),
+      )
+    }
+
+    return target.nativeFn([...target.curried, ...args])
+  }
+
   if (target["@kind"] === "Relation") {
     const goal = Goals.Apply(target.name, target, args)
     const solver = Solver.start([goal])
