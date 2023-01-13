@@ -1,7 +1,7 @@
 import { indent } from "../../utils/indent"
 import { evaluate } from "../evaluate"
 import * as Exps from "../exp"
-import { Exp, formatArgs, formatExp } from "../exp"
+import { Exp, formatArgs } from "../exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -23,9 +23,8 @@ export class Fn extends Stmt {
   }
 
   format(): string {
-    const patterns = this.patterns.map(formatExp)
     const stmts = this.stmts.map((stmt) => stmt.format())
-    return `function ${this.name}${formatArgs(patterns)} {\n${indent(
+    return `function ${this.name}${formatArgs(this.patterns)} {\n${indent(
       stmts.join("\n"),
     )}\n}`
   }

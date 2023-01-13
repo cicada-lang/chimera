@@ -50,8 +50,7 @@ export function formatExp(exp: Exp): string {
     }
 
     case "Term": {
-      const args = exp.args.map(formatExp)
-      return `${exp.name}${formatArgs(args)}`
+      return `${exp.name}${formatArgs(exp.args)}`
     }
 
     case "Fn": {
@@ -85,11 +84,12 @@ function formatProperties(exp: Exp): Map<string, string> {
   return properties
 }
 
-export function formatArgs(args: Array<string>): string {
-  if (isLarge(args)) {
-    return `(\n${args.map((arg) => indent(arg) + ",").join("\n")}\n)`
+export function formatArgs(args: Array<Exp>): string {
+  const parts = args.map(formatExp)
+  if (isLarge(parts)) {
+    return `(\n${parts.map((part) => indent(part) + ",").join("\n")}\n)`
   } else {
-    return `(${args.join(", ")})`
+    return `(${parts.join(", ")})`
   }
 }
 

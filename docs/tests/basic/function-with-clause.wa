@@ -11,4 +11,6 @@ function greet(x) {
   print results
 }
 
+print greet
+
 compute greet("xieyuheng")

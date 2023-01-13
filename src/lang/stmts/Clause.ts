@@ -1,5 +1,6 @@
-import type { Exp } from "../exp"
-import type { GoalExp } from "../goal-exp"
+import { indent } from "../../utils/indent"
+import { Exp, formatArgs } from "../exp"
+import { formatGoalExp, GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -36,5 +37,21 @@ export class Clause extends Stmt {
 
   executeSync(mod: Mod): void {
     mod.defineClause(this.relationName, this.name, this.exps, this.goals)
+  }
+
+  format(): string {
+    if (this.goals.length === 0 && this.name === undefined) {
+      return `${this.relationName}${formatArgs(this.exps)}`
+    }
+
+    if (this.goals.length === 0 && this.name !== undefined) {
+      return `${this.relationName}${formatArgs(this.exps)} -- ${this.name}`
+    }
+
+    const goals = this.goals.map(formatGoalExp)
+
+    return `${this.relationName}${formatArgs(this.exps)} -- ${
+      this.name
+    } {\n${indent(goals.join("\n"))}\n}`
   }
 }
