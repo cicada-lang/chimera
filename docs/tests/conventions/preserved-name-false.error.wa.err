@@ -1,0 +1,10 @@
+I found syntax error in code:
+
+ 1 |let false = 1
+ 2 |
+
+
+Found the identifier "false" in [4, 9], while expecting:
+ ["identifier"]:
+     stmt:let@0 -> "let"@1 > (name: identifier) "=" (exp: exp) 
+
