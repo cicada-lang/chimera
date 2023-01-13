@@ -2,12 +2,19 @@
 
 > Extend this language to follow IU compiler course.
 
-tests/primitives/stringLength.wa
+extract `aboutString`
 
 `GlobalStore.primitive`
 
-extract `aboutString`
 extract `aboutNumber`
+extract `aboutBasciRelation`
+extract `aboutControlFlow`
+
+[primitive] `equal`
+
+- fix tests/primitives/string.wa
+
+[primitive] `not`, `and`, `or`
 
 [primitive] [string] `stringAppend`
 
