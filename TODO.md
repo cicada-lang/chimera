@@ -8,7 +8,6 @@
 `Stmts.Import` -- `format`
 `Stmts.ImportAll` -- `format`
 `Stmts.Let` -- `format`
-`Stmts.Print` -- `format`
 `Stmts.Private` -- `format`
 `Stmts.Return` -- `format`
 `Stmts.Rule` -- `format`

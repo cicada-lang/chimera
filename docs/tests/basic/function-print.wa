@@ -1,0 +1,4 @@
+print (x) => {
+  print "hi"
+  return x
+}
