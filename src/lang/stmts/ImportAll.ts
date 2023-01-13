@@ -42,4 +42,8 @@ export class ImportAll extends Stmt {
       throw error
     }
   }
+
+  format(): string {
+    return `import * from "${this.path}"`
+  }
 }

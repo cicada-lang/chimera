@@ -3,8 +3,6 @@
 `Stmts.Clause` -- `format`
 `Stmts.Hyperrule` -- `format`
 `Stmts.If` -- `format`
-`Stmts.Import` -- `format`
-`Stmts.ImportAll` -- `format`
 `Stmts.Rule` -- `format`
 
 `formatExp` -- `Find`
