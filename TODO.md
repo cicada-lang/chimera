@@ -2,10 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-rename `Exps.Term` to `Exps.Ap`
-
-rename `doTerm` to `doAp`
-
 support using `Exps.Ap` as operator
 
 - `quote` -- only support `Exps.Var` `target` for now -- reject currying

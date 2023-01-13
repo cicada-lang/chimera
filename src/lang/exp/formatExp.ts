@@ -50,7 +50,7 @@ export function formatExp(exp: Exp): string {
       return `{ ${entries.join(", ")} }`
     }
 
-    case "Term": {
+    case "Ap": {
       return `${exp.name}${formatArgs(exp.args)}`
     }
 

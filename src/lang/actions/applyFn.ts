@@ -1,4 +1,4 @@
-import { doTerm } from "../actions"
+import { doAp } from "../actions"
 import { envMerge } from "../env"
 import * as Errors from "../errors"
 import { match } from "../match"
@@ -20,7 +20,7 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
   matchPatterns(mod, target.patterns, args)
   const value = catchReturnValue(mod, target.stmts)
   return target.patterns.length < args.length
-    ? doTerm(mod, value, args.slice(0, target.patterns.length))
+    ? doAp(mod, value, args.slice(0, target.patterns.length))
     : value
 }
 

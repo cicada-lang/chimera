@@ -1,4 +1,4 @@
-import { applyFn } from "../actions"
+import { applyFn } from "."
 import * as Errors from "../errors"
 import * as Goals from "../goal"
 import { hyperrewrite } from "../hyperrewrite"
@@ -8,12 +8,12 @@ import { Solver } from "../solver"
 import type { Value } from "../value"
 import * as Values from "../value"
 
-export function doTerm(mod: Mod, target: Value, args: Array<Value>): Value {
+export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   if (target["@kind"] === "Rule") {
     if (args.length !== 1) {
       throw new Errors.LangError(
         [
-          `[doTerm] the number of arguments of Rule must be 1`,
+          `[doAp] the number of arguments of Rule must be 1`,
           `  args.length: ${args.length}`,
         ].join("\n"),
       )
@@ -26,7 +26,7 @@ export function doTerm(mod: Mod, target: Value, args: Array<Value>): Value {
     if (args.length !== 1) {
       throw new Errors.LangError(
         [
-          `[doTerm] the number of arguments of Hyperrule must be 1`,
+          `[doAp] the number of arguments of Hyperrule must be 1`,
           `  args.length: ${args.length}`,
         ].join("\n"),
       )
@@ -54,7 +54,7 @@ export function doTerm(mod: Mod, target: Value, args: Array<Value>): Value {
 
   throw new Errors.LangError(
     [
-      `[doTerm] can not apply target`,
+      `[doAp] can not apply target`,
       `  target['@kind']: ${target["@kind"]}`,
     ].join("\n"),
   )

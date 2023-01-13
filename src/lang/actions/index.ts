@@ -1,2 +1,2 @@
 export * from "./applyFn"
-export * from "./doTerm"
+export * from "./doAp"

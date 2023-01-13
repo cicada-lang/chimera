@@ -11,7 +11,7 @@ export type Exp =
   | ArrayCons
   | ArrayNull
   | Objekt
-  | Term
+  | Ap
   | Fn
   | Quote
   | Unquote
@@ -143,18 +143,18 @@ export function Objekt(properties: Record<string, Exp>, span: Span): Objekt {
   }
 }
 
-export type Term = {
+export type Ap = {
   "@type": "Exp"
-  "@kind": "Term"
+  "@kind": "Ap"
   name: string
   args: Array<Exp>
   span: Span
 }
 
-export function Term(name: string, args: Array<Exp>, span: Span): Term {
+export function Ap(name: string, args: Array<Exp>, span: Span): Ap {
   return {
     "@type": "Exp",
-    "@kind": "Term",
+    "@kind": "Ap",
     name,
     args,
     span,

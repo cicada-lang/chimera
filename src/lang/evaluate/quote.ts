@@ -51,7 +51,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
-    case "Term": {
+    case "Ap": {
       return Values.Term(
         exp.name,
         exp.args.map((arg) => quote(mod, env, arg)),

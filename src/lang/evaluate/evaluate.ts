@@ -71,8 +71,8 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
-    case "Term": {
-      return Actions.doTerm(
+    case "Ap": {
+      return Actions.doAp(
         mod,
         evaluate(mod, env, Exps.Var(exp.name, exp.span)),
         exp.args.map((arg) => evaluate(mod, env, arg)),
