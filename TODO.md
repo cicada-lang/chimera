@@ -2,7 +2,13 @@
 
 > Extend this language to follow IU compiler course.
 
-[primitive] [string] `stringLength`
+tests/primitives/stringLength.wa
+
+`GlobalStore.primitive`
+
+extract `aboutString`
+extract `aboutNumber`
+
 [primitive] [string] `stringAppend`
 
 [primitive] [array] `arrayLength`

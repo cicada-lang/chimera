@@ -1,4 +1,6 @@
+import * as Errors from "../errors"
 import * as Values from "../value"
+import { formatValue } from "../value"
 import { GlobalStore } from "./GlobalStore"
 
 let globals: GlobalStore | undefined = undefined
@@ -41,6 +43,27 @@ function if(target, thenFn, elseFn) {
   globals.define(
     "String",
     Values.TypeConstraint("String", (value) => value["@kind"] === "String"),
+  )
+
+  globals.define(
+    "stringLength",
+    Values.Primitive(
+      "stringLength",
+      1,
+      ([value]) => {
+        if (value["@kind"] !== "String") {
+          throw new Errors.LangError(
+            [
+              `[stringLength] expect value to be String`,
+              `  value: ${formatValue(value)}`,
+            ].join("\n"),
+          )
+        }
+
+        return Values.Number(value.data.length)
+      },
+      [],
+    ),
   )
 
   return globals
