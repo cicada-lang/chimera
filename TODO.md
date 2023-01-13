@@ -2,13 +2,7 @@
 
 > Extend this language to follow IU compiler course.
 
-`Values.FnCurried`
-
-- pass tests/basic/currying.wa
-
-`Values.Primitive`
-
-- and `PrimitiveCurried`
+`Values.Primitive` -- support currying
 
 [primitive] [string] `stringLength`
 [primitive] [string] `stringAppend`

@@ -1,5 +1,5 @@
 import { doAp } from "../actions"
-import { envMerge } from "../env"
+import { envEmpty, envMerge } from "../env"
 import * as Errors from "../errors"
 import { match } from "../match"
 import type { Mod } from "../mod"
@@ -18,10 +18,23 @@ export function applyFn(target: Values.Fn, args: Array<Value>): Value {
   const mod = target.mod.copy()
   mod.env = envMerge(mod.env, target.env)
   matchPatterns(mod, target.patterns, args)
+
+  if (target.patterns.length > args.length) {
+    return Values.Fn(
+      mod,
+      envEmpty(),
+      target.patterns.slice(args.length),
+      target.stmts,
+    )
+  }
+
   const value = catchReturnValue(mod, target.stmts)
-  return target.patterns.length < args.length
-    ? doAp(mod, value, args.slice(0, target.patterns.length))
-    : value
+
+  if (target.patterns.length < args.length) {
+    return doAp(mod, value, args.slice(0, target.patterns.length))
+  }
+
+  return value
 }
 
 function matchPatterns(
@@ -34,12 +47,7 @@ function matchPatterns(
   for (const [index, pattern] of patterns.entries()) {
     const arg = args[index]
     if (arg === undefined) {
-      throw new Errors.LangError(
-        [
-          `[applyFn] not enough arguments`,
-          `  pattern: ${formatValue(pattern)}`,
-        ].join("\n"),
-      )
+      break
     }
 
     const newSubstitution = match(mod, substitution, pattern, arg)
