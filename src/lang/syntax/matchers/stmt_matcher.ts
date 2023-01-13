@@ -80,12 +80,14 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.exp_matcher(target),
         matchers.stmts_matcher(then_stmts),
         [],
+        [],
         span,
       ),
     "stmt:if_else": ({ target, then_stmts, else_stmts }, { span }) =>
       new Stmts.If(
         matchers.exp_matcher(target),
         matchers.stmts_matcher(then_stmts),
+        [],
         matchers.stmts_matcher(else_stmts),
         span,
       ),

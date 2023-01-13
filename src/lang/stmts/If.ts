@@ -10,6 +10,7 @@ export class If extends Stmt {
   constructor(
     public target: Exp,
     public thenStmts: Array<Stmt>,
+    public elseIfs: Array<Array<Stmt>>,
     public elseStmts: Array<Stmt>,
     public span: Span,
   ) {

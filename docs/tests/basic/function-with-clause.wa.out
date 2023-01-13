@@ -1,1 +1,9 @@
+(x) => {
+  Hi("hi")
+  let results = find q {
+    Hi(p)
+    q = [p, unquote x]
+  }
+  print results
+}
 [["hi", "xieyuheng"]]

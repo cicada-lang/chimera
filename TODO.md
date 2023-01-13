@@ -1,6 +1,6 @@
 # functional
 
-`Stmts.If` -- support zero or more `elseIfs: Array<Array<Stmt>>`
+`Stmts.If` -- support `else if`
 
 `Stmts.If` -- `format`
 
