@@ -20,7 +20,15 @@
     or(x, and(y, z)) => and(or(x, y), or(x, z))
   }
   print conjunctiveNormalForm(quote not(and(not(A), not(B))))
-  
+  if false {
+    print 0
+  } else if false {
+    print 1
+  } else if false {
+    print 2
+  } else {
+    print 3
+  }
   return null
 }
 "hi"

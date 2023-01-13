@@ -1,0 +1,13 @@
+clause Exp(var(name)) -- { String(name) }
+clause Exp(fn(name, ret)) -- { String(name) Exp(ret) }
+clause Exp(ap(target, arg)) -- { Exp(target) Exp(arg) }
+
+// true
+
+print Exp(quote var("x"))
+print Exp(quote fn("x", var("x")))
+
+// false
+
+print Exp(quote "x")
+print Exp(quote fn())

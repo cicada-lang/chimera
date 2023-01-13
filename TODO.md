@@ -1,11 +1,3 @@
-# functional
-
-`assert` and `assertNot` as built-in functions.
-
-- to be used in tests
-
-`doTerm` -- handle `Relation` -- use relation as predicate -- can be used in guard
-
 # guard
 
 [rule] support guard
@@ -19,6 +11,12 @@
 
 [primitive] `rewrite(n, target, rules): Array`
 [primitive] `hyperrewrite(n, target, hyperrules): Array`
+
+# testing
+
+`assert` and `assertNot` as built-in functions.
+
+- to be used in tests
 
 # hyperrewrite
 
