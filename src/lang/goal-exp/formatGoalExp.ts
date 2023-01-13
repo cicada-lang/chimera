@@ -1,5 +1,29 @@
+import { indent } from "../../utils/indent"
+import { formatArgs, formatExp } from "../exp"
 import type { GoalExp } from "../goal-exp"
 
 export function formatGoalExp(goal: GoalExp): string {
-  return "TODO"
+  switch (goal["@kind"]) {
+    case "Apply": {
+      return `${goal.name}${formatArgs(goal.args)}`
+    }
+
+    case "Equal": {
+      return `${formatExp(goal.left)} = ${formatExp(goal.right)}`
+    }
+
+    case "NotEqual": {
+      return `${formatExp(goal.left)} != ${formatExp(goal.right)}`
+    }
+
+    case "Conj": {
+      const goals = goal.goals.map(formatGoalExp)
+      return `conj {\n${indent(goals.join("\n"))}\n}`
+    }
+
+    case "Disj": {
+      const goals = goal.goals.map(formatGoalExp)
+      return `disj {\n${indent(goals.join("\n"))}\n}`
+    }
+  }
 }
