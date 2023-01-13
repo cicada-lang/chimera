@@ -1,4 +1,4 @@
-import { applyFn } from "."
+import { applyFn, applyPrimitive } from "."
 import * as Errors from "../errors"
 import * as Goals from "../goal"
 import { hyperrewrite } from "../hyperrewrite"
@@ -43,22 +43,7 @@ export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   }
 
   if (target["@kind"] === "Primitive") {
-    if (target.arity > target.curried.length + args.length) {
-      return Values.Primitive(target.name, target.arity, target.nativeFn, [
-        ...target.curried,
-        ...args,
-      ])
-    }
-
-    if (target.arity < target.curried.length + args.length) {
-      return doAp(
-        mod,
-        target.nativeFn([...target.curried, ...args].slice(0, target.arity)),
-        args.slice(target.arity - target.curried.length),
-      )
-    }
-
-    return target.nativeFn([...target.curried, ...args])
+    return applyPrimitive(mod, target, args)
   }
 
   if (target["@kind"] === "Relation") {
