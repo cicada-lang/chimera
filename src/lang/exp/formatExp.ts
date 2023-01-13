@@ -85,19 +85,15 @@ function formatProperties(exp: Exp): Map<string, string> {
   return properties
 }
 
-function isLargeArgs(args: Array<string>): boolean {
-  return args.some((arg) => arg.includes("\n")) || args.join(", ").length >= 60
-}
-
-function formatArgs(args: Array<string>): string {
-  if (isLargeArgs(args)) {
+export function formatArgs(args: Array<string>): string {
+  if (isLarge(args)) {
     return `(\n${args.map((arg) => indent(arg) + ",").join("\n")}\n)`
   } else {
     return `(${args.join(", ")})`
   }
 }
 
-function isLargeElements(elements: Array<string>): boolean {
+function isLarge(elements: Array<string>): boolean {
   return (
     elements.some((element) => element.includes("\n")) ||
     elements.join(", ").length >= 60
@@ -106,14 +102,14 @@ function isLargeElements(elements: Array<string>): boolean {
 
 function formatElements(elements: Array<string>, last?: string): string {
   if (last === undefined) {
-    if (isLargeElements(elements)) {
+    if (isLarge(elements)) {
       const body = elements.map((element) => indent(element)).join(",\n")
       return `[ \n${body}\n]`
     } else {
       return `[${elements.join(", ")}]`
     }
   } else {
-    if (isLargeElements(elements)) {
+    if (isLarge(elements)) {
       const body = elements.map((element) => indent(element)).join(",\n")
       const tail = indent(`| ${last}`)
       return `[ \n${body}\n${tail}\n]`

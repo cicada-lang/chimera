@@ -1,7 +1,6 @@
 # functional
 
 `Stmts.Clause` -- `format`
-`Stmts.Fn` -- `format`
 `Stmts.Hyperrule` -- `format`
 `Stmts.If` -- `format`
 `Stmts.Import` -- `format`
