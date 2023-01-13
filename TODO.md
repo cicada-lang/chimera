@@ -1,28 +1,68 @@
+# testing
+
+[primitive] `assert` -- for testing
+
+[primitive] `assertNot` -- for testing
+
+# primitive
+
+[primitive] `findAll(query, goals): Array`
+
+[primitive] `find(n, query, goals): Array`
+
+[primitive] `rewrite(n, target, rules): Array`
+
+- no need for a API to rewrite to the end, we can apply a `Rule`
+
+[primitive] `hyperrewrite(n, target, hyperrules): Array`
+
+- no need for a API to rewrite to the end, we can apply a `Hyperrule`
+
 # guard
 
 [rule] support guard
 
 [hyperrule] support guard
 
-# primitive
-
-[primitive] `findAll(query, goals): Array`
-[primitive] `find(n, query, goals): Array`
-
-[primitive] `rewrite(n, target, rules): Array`
-[primitive] `hyperrewrite(n, target, hyperrules): Array`
-
-# testing
-
-`assert` and `assertNot` as built-in functions.
-
-- to be used in tests
-
 # hyperrewrite
 
 [hyperrewrite] If a constraint already in the result, a hyperrule should fail.
 
 - For example: `X <= Y, Y <= Z => X <= Z`
+
+# clp
+
+[read] essentials-of-constraint-programming.pdf
+
+- [maybe] application of undefined relation should be viewed a term data.
+
+- [maybe] `Solution` should be extended with `customConstraints`
+  -- or just `constraints` -- which contains the constraints
+  accumulated and simplified so far (whereas in LP we had substitutions).
+
+- [maybe] we should handle all constraints in the goal first,
+  before unfolding an application of a relation.
+
+[note] The general idea about implementing constraint:
+
+- Reduce the set of constraints,
+  to some kind of normal form
+  by which we can build a model in the theory.
+
+- If this is true, we can use rewriting
+  to implement the "normal form" part of constraint.
+
+  A set of rewrite rules applied to the set of constraints.
+
+  - Can we implement this kind of rewrite in the logic programming itself?
+
+    (and provide a syntax keyword for defining new constraint)
+
+- elements of a domain can be defined by ADT (or a relation).
+
+- predicates in a domain can be defined by relation with more than one conclusions?
+
+- how to solve linear equations by rewriting?
 
 # compiler
 
@@ -92,40 +132,6 @@ use hypergraph rewriting to implement finite-domain constraint programming
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
-
-# clp
-
-[read] essentials-of-constraint-programming.pdf
-
-- [maybe] application of undefined relation should be viewed a term data.
-
-- [maybe] `Solution` should be extended with `customConstraints`
-  -- or just `constraints` -- which contains the constraints
-  accumulated and simplified so far (whereas in LP we had substitutions).
-
-- [maybe] we should handle all constraints in the goal first,
-  before unfolding an application of a relation.
-
-[note] The general idea about implementing constraint:
-
-- Reduce the set of constraints,
-  to some kind of normal form
-  by which we can build a model in the theory.
-
-- If this is true, we can use rewriting
-  to implement the "normal form" part of constraint.
-
-  A set of rewrite rules applied to the set of constraints.
-
-  - Can we implement this kind of rewrite in the logic programming itself?
-
-    (and provide a syntax keyword for defining new constraint)
-
-- elements of a domain can be defined by ADT (or a relation).
-
-- predicates in a domain can be defined by relation with more than one conclusions?
-
-- how to solve linear equations by rewriting?
 
 # declare and runtime type assertion
 
