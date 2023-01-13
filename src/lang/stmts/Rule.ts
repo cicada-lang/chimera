@@ -1,7 +1,8 @@
+import { indent } from "../../utils/indent"
 import { evaluateRuleExp } from "../evaluate"
 import type { Mod } from "../mod"
 import * as Rules from "../rule"
-import type { RuleExp } from "../rule-exp"
+import { formatRuleExp, RuleExp } from "../rule-exp"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
 import * as Values from "../value"
@@ -35,5 +36,10 @@ export class Rule extends Stmt {
         ),
       ),
     )
+  }
+
+  format(): string {
+    const rules = this.rules.map(formatRuleExp)
+    return `rule ${this.name} {\n${indent(rules.join("\n"))}\n}`
   }
 }

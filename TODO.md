@@ -1,6 +1,5 @@
 # functional
 
-`Stmts.Rule` -- `format`
 `Stmts.Clause` -- `format`
 `formatExp` -- `Find`
 
