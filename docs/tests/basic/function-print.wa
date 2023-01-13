@@ -3,8 +3,18 @@ print () => {
   let x = 1
   private let y = 2
   compute x
+
   function f(x, y) {
     return [x, y]
   }
+
+  hyperrule abc {
+    ["a", "b"] => ["c"]
+    ["a", "c"] => ["b"]
+    ["b", "c"] => ["a"]
+  }
+
+  print abc(quote ["a", "a", "a"])
+
   return
 }

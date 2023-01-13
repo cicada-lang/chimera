@@ -1,0 +1,10 @@
+() => {
+  print "hi"
+  let x = 1
+  private let y = 2
+  compute x
+  function f(x, y) {
+    return [x, y]
+  }
+  return null
+}

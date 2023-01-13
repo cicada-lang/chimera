@@ -1,13 +1,12 @@
 # functional
 
-`Stmts.Clause` -- `format`
-`Stmts.Hyperrule` -- `format`
-`Stmts.If` -- `format`
 `Stmts.Rule` -- `format`
-
+`Stmts.Clause` -- `format`
 `formatExp` -- `Find`
 
-`Stmts.If` -- support zero or more `else if`s
+`Stmts.If` -- support zero or more `elseIfs: Array<Array<Stmt>>`
+
+`Stmts.If` -- `format`
 
 `assert` and `assertNot` as built-in functions.
 

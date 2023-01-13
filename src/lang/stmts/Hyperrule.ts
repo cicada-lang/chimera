@@ -1,6 +1,8 @@
+import { indent } from "../../utils/indent"
 import { evaluateHyperruleExp } from "../evaluate"
 import * as Hyperrules from "../hyperrule"
 import type { HyperruleExp } from "../hyperrule-exp"
+import { formatHyperruleExp } from "../hyperrule-exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -37,5 +39,10 @@ export class Hyperrule extends Stmt {
         ),
       ),
     )
+  }
+
+  format(): string {
+    const hyperrules = this.hyperrules.map(formatHyperruleExp)
+    return `hyperrule ${this.name} {\n${indent(hyperrules.join("\n"))}\n}`
   }
 }
