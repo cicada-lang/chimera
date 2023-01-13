@@ -2,13 +2,11 @@
 
 > Extend this language to follow IU compiler course.
 
-extract `aboutString`
-
-`GlobalStore.primitive`
-
 extract `aboutNumber`
 extract `aboutBasciRelation`
 extract `aboutControlFlow`
+
+`GlobalStore.primitive`
 
 [primitive] `equal`
 
