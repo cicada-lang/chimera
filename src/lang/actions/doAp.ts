@@ -7,6 +7,7 @@ import { rewrite } from "../rewrite"
 import { Solver } from "../solver"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { formatValue } from "../value"
 
 export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   if (target["@kind"] === "Rule") {
@@ -56,6 +57,8 @@ export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
     [
       `[doAp] can not apply target`,
       `  target['@kind']: ${target["@kind"]}`,
+      `  target: ${formatValue(target)}`,
+      `  args: ${args.map(formatValue).join(", ")}`,
     ].join("\n"),
   )
 }

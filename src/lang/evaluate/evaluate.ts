@@ -4,7 +4,6 @@ import { envLookupValue } from "../env"
 import * as Errors from "../errors"
 import { evaluateGoalExp, quote } from "../evaluate"
 import type { Exp } from "../exp"
-import * as Exps from "../exp"
 import type { Mod } from "../mod"
 import { refresh, refreshGoals } from "../refresh"
 import { reify } from "../reify"
@@ -74,7 +73,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     case "Ap": {
       return Actions.doAp(
         mod,
-        evaluate(mod, env, Exps.Var(exp.name, exp.span)),
+        evaluate(mod, env, exp.target),
         exp.args.map((arg) => evaluate(mod, env, arg)),
       )
     }

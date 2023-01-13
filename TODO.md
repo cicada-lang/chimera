@@ -2,10 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-support using `Exps.Ap` as operator
-
-- `quote` -- only support `Exps.Var` `target` for now -- reject currying
-
 `Values.FnCurried`
 
 - pass tests/basic/currying.wa

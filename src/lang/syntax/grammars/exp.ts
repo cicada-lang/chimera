@@ -8,7 +8,7 @@ export const exp = {
 export const operator = {
   $grammar: {
     "operator:var": [{ name: "variable_name" }],
-    "operator:ap": [{ kind: "variable_name" }, { args: "args" }],
+    "operator:ap": [{ target: "operator" }, { args: "args" }],
   },
 }
 

@@ -14,8 +14,12 @@ export function exp_matcher(tree: pt.Tree): Exp {
 export function operator_matcher(tree: pt.Tree): Exp {
   return pt.matcher<Exp>({
     "operator:var": ({ name }, { span }) => Exps.Var(pt.str(name), span),
-    "operator:ap": ({ kind, args }, { span }) =>
-      Exps.Ap(pt.str(kind), matchers.args_matcher(args), span),
+    "operator:ap": ({ target, args }, { span }) =>
+      Exps.Ap(
+        matchers.operator_matcher(target),
+        matchers.args_matcher(args),
+        span,
+      ),
   })(tree)
 }
 

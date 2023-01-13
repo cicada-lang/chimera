@@ -52,8 +52,15 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Ap": {
+      if (exp.target["@kind"] !== "Var") {
+        throw new Errors.LangError(
+          `[quote] can not quote application whose target is not a variable`,
+          { span: exp.span },
+        )
+      }
+
       return Values.Term(
-        exp.name,
+        exp.target.name,
         exp.args.map((arg) => quote(mod, env, arg)),
       )
     }

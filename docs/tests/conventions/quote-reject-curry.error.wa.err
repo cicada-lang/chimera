@@ -1,0 +1,5 @@
+[quote] can not quote application whose target is not a variable
+
+ 1 |print quote f(x)(y)
+ 2 |
+

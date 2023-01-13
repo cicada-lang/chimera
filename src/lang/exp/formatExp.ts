@@ -51,7 +51,7 @@ export function formatExp(exp: Exp): string {
     }
 
     case "Ap": {
-      return `${exp.name}${formatArgs(exp.args)}`
+      return `${formatExp(exp.target)}${formatArgs(exp.args)}`
     }
 
     case "Fn": {
