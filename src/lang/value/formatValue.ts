@@ -60,19 +60,19 @@ export function formatValue(value: Value): string {
     }
 
     case "Relation": {
-      return value.name
+      return `$Relation(${value.name})`
     }
 
     case "TypeConstraint": {
-      return value.name
+      return `$TypeConstraint(${value.name})`
     }
 
     case "Rule": {
-      return value.name
+      return `$Rule(${value.name})`
     }
 
     case "Hyperrule": {
-      return value.name
+      return `$Hyperrule(${value.name})`
     }
 
     case "Fn": {
