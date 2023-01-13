@@ -1,6 +1,6 @@
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
-import type { Exp } from "../exp"
+import { Exp, formatExp } from "../exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -25,5 +25,9 @@ export class Return extends Stmt {
 
   executeSync(mod: Mod): void {
     throw new ReturnValue(evaluate(mod, mod.env, this.exp))
+  }
+
+  format(): string {
+    return `return ${formatExp(this.exp)}`
   }
 }
