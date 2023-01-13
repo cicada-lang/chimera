@@ -1,20 +1,12 @@
-# compiler
+# namespace
 
-Extend this language with primitives to follow IU compiler course.
+[primitive] [string] `stringLength`
+[primitive] [string] `stringAppend`
 
-To have a lot of primitive functions (about string and number),
-we need namespace -- `Str::` and `Num::`
+[primitive] [array] `arrayLength`
+[primitive] [array] `arrayAppend`
 
-- learn from php and laravel.
-- should term has namespace?
-
-# testing
-
-[primitive] about array `arrayLength` -- for testing
-
-[primitive] `assert` -- for testing
-
-[primitive] `assertNot` -- for testing
+[primitive] [number] `add`, `mul`, `div`
 
 # primitive
 
@@ -75,6 +67,20 @@ we need namespace -- `Str::` and `Num::`
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
+
+# compiler
+
+Extend this language with primitives to follow IU compiler course.
+
+# testing
+
+[primitive] about array `arrayLength` -- for testing
+
+[primitive] `assert` -- for testing
+
+- [maybe] `assert` need to be a stmt for span
+
+[primitive] `assertNot` -- for testing
 
 # draw
 
@@ -147,11 +153,7 @@ Compile to wasm to run in the browser.
 
 Compile to native code to run in linux.
 
-# namespace
-
-support namespace
-
-[diary] supporting-namespace.md
+# module
 
 [maybe] `mod.freshen` should take into account of the `mod.options.url`
 
