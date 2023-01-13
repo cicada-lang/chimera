@@ -1,17 +1,17 @@
 # functional
 
-`Stmts.Clause` -- format
-`Stmts.Compute` -- format
-`Stmts.Fn` -- format
-`Stmts.Hyperrule` -- format
-`Stmts.If` -- format
-`Stmts.Import` -- format
-`Stmts.ImportAll` -- format
-`Stmts.Let` -- format
-`Stmts.Print` -- format
-`Stmts.Private` -- format
-`Stmts.Return` -- format
-`Stmts.Rule` -- format
+`Stmts.Clause` -- `format`
+`Stmts.Compute` -- `format`
+`Stmts.Fn` -- `format`
+`Stmts.Hyperrule` -- `format`
+`Stmts.If` -- `format`
+`Stmts.Import` -- `format`
+`Stmts.ImportAll` -- `format`
+`Stmts.Let` -- `format`
+`Stmts.Print` -- `format`
+`Stmts.Private` -- `format`
+`Stmts.Return` -- `format`
+`Stmts.Rule` -- `format`
 
 `formatExp` -- `Find`
 
