@@ -7,7 +7,6 @@
 `Stmts.If` -- `format`
 `Stmts.Import` -- `format`
 `Stmts.ImportAll` -- `format`
-`Stmts.Let` -- `format`
 `Stmts.Rule` -- `format`
 
 `formatExp` -- `Find`

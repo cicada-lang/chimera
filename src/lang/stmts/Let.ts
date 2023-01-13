@@ -1,5 +1,5 @@
 import { evaluate } from "../evaluate"
-import type { Exp } from "../exp"
+import { Exp, formatExp } from "../exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -12,5 +12,9 @@ export class Let extends Stmt {
   executeSync(mod: Mod): void {
     const value = evaluate(mod, mod.env, this.exp)
     mod.define(this.name, value)
+  }
+
+  format(): string {
+    return `let ${this.name} = ${formatExp(this.exp)}`
   }
 }
