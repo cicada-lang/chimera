@@ -1,4 +1,6 @@
-# namespace
+# primitive
+
+> Extend this language to follow IU compiler course.
 
 [primitive] [string] `stringLength`
 [primitive] [string] `stringAppend`
@@ -6,7 +8,7 @@
 [primitive] [array] `arrayLength`
 [primitive] [array] `arrayAppend`
 
-[primitive] [number] `add`, `mul`, `div`
+`assert` should be a `Stmt` because we need `span`
 
 # primitive
 
@@ -68,19 +70,9 @@
 
 - how to solve linear equations by rewriting?
 
-# compiler
+# primitive
 
-Extend this language with primitives to follow IU compiler course.
-
-# testing
-
-[primitive] about array `arrayLength` -- for testing
-
-[primitive] `assert` -- for testing
-
-- [maybe] `assert` need to be a stmt for span
-
-[primitive] `assertNot` -- for testing
+[primitive] [number] `add`, `mul`, `div`
 
 # draw
 
