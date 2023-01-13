@@ -73,7 +73,8 @@ export function refresh(
     case "Rule":
     case "Hyperrule":
     case "Fn":
-    case "WithConstraints": {
+    case "WithConstraints":
+    case "Primitive": {
       return value
     }
   }

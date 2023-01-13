@@ -23,6 +23,7 @@ export type Value =
   | Hyperrule
   | Fn
   | WithConstraints
+  | Primitive
 
 export type PatternVar = {
   "@type": "Value"
@@ -246,8 +247,7 @@ export function Hyperrule(
 
    `Values.Fn` has both `env` and `mod`
 
-   - So that top-level bindings defined after the function
-   are also available in the function.
+   - So that top-level bindings defined after the function are also available in the function.
 
    - To support mutual recursive definition in function body.
 
@@ -296,5 +296,30 @@ export function WithConstraints(
     "@kind": "WithConstraints",
     value,
     constraints,
+  }
+}
+
+export type Primitive = {
+  "@type": "Value"
+  "@kind": "Primitive"
+  name: string
+  arity: number
+  curried: Array<Value>
+  native: (args: Array<Value>) => Value
+}
+
+export function Primitive(
+  name: string,
+  arity: number,
+  curried: Array<Value>,
+  native: (args: Array<Value>) => Value,
+): Primitive {
+  return {
+    "@type": "Value",
+    "@kind": "Primitive",
+    name,
+    arity,
+    curried,
+    native,
   }
 }

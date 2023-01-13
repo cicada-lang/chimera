@@ -2,7 +2,7 @@
 
 > Extend this language to follow IU compiler course.
 
-`Values.Primitive` -- support currying
+`doAp` -- `Values.Primitive`
 
 [primitive] [string] `stringLength`
 [primitive] [string] `stringAppend`

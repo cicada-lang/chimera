@@ -98,6 +98,13 @@ export function formatValue(value: Value): string {
             .join("\n")}\n}`
         : `${formatValue(value.value)} with { ${constraints.join(" ")} }`
     }
+
+    case "Primitive": {
+      const curried = value.curried
+        .map((value) => formatValue(value))
+        .join(", ")
+      return `$Primitive(${value.name}, ${value.arity}, [${curried}])`
+    }
   }
 }
 

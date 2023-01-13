@@ -73,5 +73,9 @@ export function substitutionContainsPatternVar(
     case "WithConstraints": {
       return substitutionContainsPatternVar(value.value, substitution)
     }
+
+    case "Primitive": {
+      return false
+    }
   }
 }
