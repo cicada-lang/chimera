@@ -1,6 +1,7 @@
+import { indent } from "../../utils/indent"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
-import type { Exp } from "../exp"
+import { Exp, formatExp } from "../exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
@@ -51,5 +52,32 @@ export class If extends Stmt {
     }
 
     mod.executeStmtsSync(this.elseStmts)
+  }
+
+  format(): string {
+    const stmts = this.stmts.map((stmt) => stmt.format())
+
+    if (this.elseIfs.length === 0 && this.elseStmts.length === 0) {
+      return `if ${formatExp(this.target)} {\n${indent(stmts.join("\n"))}\n}`
+    }
+
+    const elseStmts = this.elseStmts.map((stmt) => stmt.format())
+
+    if (this.elseIfs.length === 0) {
+      return `if ${formatExp(this.target)} {\n${indent(
+        stmts.join("\n"),
+      )}\n} else {\n${indent(elseStmts.join("\n"))}\n}`
+    }
+
+    const elseIfs = this.elseIfs.map(
+      ({ target, stmts }) =>
+        `else if ${formatExp(this.target)} {\n${indent(
+          stmts.map((stmt) => stmt.format()).join("\n"),
+        )}\n}`,
+    )
+
+    return `if ${formatExp(this.target)} {\n${indent(
+      stmts.join("\n"),
+    )}\n} ${elseIfs.join(" ")} else {\n${indent(elseStmts.join("\n"))}\n}`
   }
 }

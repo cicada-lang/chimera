@@ -1,7 +1,5 @@
 # functional
 
-`Stmts.If` -- `format`
-
 `assert` and `assertNot` as built-in functions.
 
 - to be used in tests

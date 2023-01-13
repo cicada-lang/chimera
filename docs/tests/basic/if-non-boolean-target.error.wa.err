@@ -1,2 +1,2 @@
-[If.executeSync] target must be a Boolean
+[If.executeSync] target of if must be a Boolean
   target: 0
