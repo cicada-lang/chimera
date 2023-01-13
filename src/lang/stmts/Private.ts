@@ -26,4 +26,8 @@ export class Private extends Stmt {
     this.stmt.executeSync(mod)
     mod.privateDepth--
   }
+
+  format(): string {
+    return `private ${this.stmt.format()}`
+  }
 }

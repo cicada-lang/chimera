@@ -1,4 +1,6 @@
-print (x) => {
+print () => {
   print "hi"
-  return x
+  let x = 1
+  private let y = 2
+  return
 }
