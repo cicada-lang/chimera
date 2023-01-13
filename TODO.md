@@ -1,4 +1,16 @@
+# compiler
+
+Extend this language with primitives to follow IU compiler course.
+
+To have a lot of primitive functions (about string and number),
+we need namespace -- `Str::` and `Num::`
+
+- learn from php and laravel.
+- should term has namespace?
+
 # testing
+
+[primitive] about array `arrayLength` -- for testing
 
 [primitive] `assert` -- for testing
 
@@ -63,16 +75,6 @@
 - predicates in a domain can be defined by relation with more than one conclusions?
 
 - how to solve linear equations by rewriting?
-
-# compiler
-
-Extend this language with primitives to follow IU compiler course.
-
-To have a lot of primitive functions (about string and number),
-we need namespace -- `Str::` and `Num::`
-
-- learn from php and laravel.
-- should term has namespace?
 
 # draw
 
