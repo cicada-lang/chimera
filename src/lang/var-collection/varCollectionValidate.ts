@@ -11,7 +11,7 @@ function varCollectionAssertNoUnused(varCollection: VarCollection): void {
     if (patternVars.length === 1) {
       const [patternVar] = patternVars
       if (!name.startsWith("_")) {
-        throw new Errors.ElaborationError(
+        throw new Errors.LangError(
           [
             `[varCollectionAssertNoUnused] unused (occurred only once) pattern variable must starts with "_"`,
 
@@ -30,7 +30,7 @@ function varCollectionAssertNoMisused(varCollection: VarCollection): void {
     if (patternVars.length > 1) {
       const [patternVar] = patternVars
       if (name.startsWith("_")) {
-        throw new Errors.ElaborationError(
+        throw new Errors.LangError(
           [
             `[varCollectionAssertNoMisused] used (occurred more than only once) pattern variable must NOT starts with "_"`,
 

@@ -68,7 +68,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Quote": {
-      throw new Errors.ElaborationError(`[quote] can not handle nested quote`, {
+      throw new Errors.LangError(`[quote] can not handle nested quote`, {
         span: exp.span,
       })
     }
@@ -78,7 +78,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Find": {
-      throw new Errors.ElaborationError(`[quote] can not handle Exps.Find`, {
+      throw new Errors.LangError(`[quote] can not handle Exps.Find`, {
         span: exp.span,
       })
     }

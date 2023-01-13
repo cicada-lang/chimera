@@ -1,5 +1,3 @@
-rename `ElaborationError` to `LangError`
-
 # primitive
 
 > Extend this language to follow IU compiler course.

@@ -15,7 +15,7 @@ export class Assert extends Stmt {
     const value = evaluate(mod, mod.env, this.exp)
 
     if (value["@kind"] !== "Boolean") {
-      throw new Errors.ElaborationError(
+      throw new Errors.LangError(
         [
           `[Assert.executeSync] assertion fail, because the value is not a Boolean`,
           `  exp: ${formatExp(this.exp)}`,
@@ -26,7 +26,7 @@ export class Assert extends Stmt {
     }
 
     if (value.data === false) {
-      throw new Errors.ElaborationError(
+      throw new Errors.LangError(
         [
           `[Assert.executeSync] assertion fail, because the value is false instead of true`,
           `  exp: ${formatExp(this.exp)}`,

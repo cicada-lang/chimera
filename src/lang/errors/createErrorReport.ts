@@ -5,7 +5,7 @@ export function createErrorReport(
   error: unknown,
   text: string,
 ): Errors.ErrorReport | unknown {
-  if (error instanceof Errors.ElaborationError) {
+  if (error instanceof Errors.LangError) {
     return new Errors.ErrorReport(error.report(text))
   }
 

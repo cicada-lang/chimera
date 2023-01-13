@@ -11,7 +11,7 @@ export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
     case "Apply": {
       const target = mod.find(goal.name)
       if (target === undefined) {
-        throw new Errors.ElaborationError(
+        throw new Errors.LangError(
           `[evaluateGoal] Apply fail, undefined target name: ${goal.name}`,
           { span: goal.span },
         )

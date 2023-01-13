@@ -27,10 +27,9 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       const value = envLookupValue(mod.env, exp.name)
       if (value !== undefined) return value
 
-      throw new Errors.ElaborationError(
-        `[evaluate] undefined name: ${exp.name}`,
-        { span: exp.span },
-      )
+      throw new Errors.LangError(`[evaluate] undefined name: ${exp.name}`, {
+        span: exp.span,
+      })
     }
 
     case "String": {
@@ -94,7 +93,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Unquote": {
-      throw new Errors.ElaborationError(
+      throw new Errors.LangError(
         `[evaluate] unquote can only be used inside quote`,
         { span: exp.span },
       )
