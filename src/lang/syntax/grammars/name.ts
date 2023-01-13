@@ -1,6 +1,7 @@
 import * as pt from "@cicada-lang/partech"
 
 // NOTE Preserve keywords for JSON.
+
 const preserved = ["null", "true", "false"]
 
 export const variable_name = {
