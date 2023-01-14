@@ -1,9 +1,5 @@
 # primitive
 
-[primitive] `hyperrewriteManySteps(limit, hyperrule, target): Array`
-
-- no need for a API to rewrite to the end, we can apply a `Hyperrule`
-
 applying `Relation` support currying
 
 - a relation must has a fixed arity

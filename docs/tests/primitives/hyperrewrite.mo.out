@@ -1,0 +1,27 @@
+["forward", "forward", "left"]
+[ 
+  [ 
+    "forward",
+    "right",
+    "forward",
+    "forward",
+    "backward",
+    "left",
+    "left"
+  ],
+  ["forward", "forward", "forward", "backward", "left"],
+  ["forward", "forward", "left"]
+]
+[ 
+  [ 
+    "forward",
+    "right",
+    "forward",
+    "forward",
+    "backward",
+    "left",
+    "left"
+  ],
+  ["forward", "forward", "forward", "backward", "left"],
+  ["forward", "forward", "left"]
+]
