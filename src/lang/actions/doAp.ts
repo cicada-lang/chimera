@@ -1,13 +1,13 @@
-import { applyFn, applyPrimitive } from "."
 import * as Errors from "../errors"
-import * as Goals from "../goal"
 import { hyperrewrite } from "../hyperrewrite"
 import type { Mod } from "../mod"
 import { rewrite } from "../rewrite"
-import { Solver } from "../solver"
 import type { Value } from "../value"
 import * as Values from "../value"
 import { formatValue } from "../value"
+import { applyFn } from "./applyFn"
+import { applyPrimitive } from "./applyPrimitive"
+import { applyRelation } from "./applyRelation"
 
 export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   if (target["@kind"] === "Rule") {
@@ -47,14 +47,7 @@ export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   }
 
   if (target["@kind"] === "Relation") {
-    const goal = Goals.Apply(target.name, target, args)
-    const solver = Solver.start([goal])
-    const solutions = solver.solve(mod, { limit: Infinity })
-    if (solutions.length === 0) {
-      return Values.Boolean(false)
-    } else {
-      return Values.Boolean(true)
-    }
+    return applyRelation(mod, target, args)
   }
 
   throw new Errors.LangError(
