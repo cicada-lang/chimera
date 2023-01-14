@@ -4,6 +4,8 @@
 
 - no need for a API to rewrite to the end, we can apply a `Rule`
 
+`hyperrewriteManySteps` -- for the same primitive
+
 [primitive] `hyperrewriteManySteps(limit, target, hyperrules): Array`
 
 - no need for a API to rewrite to the end, we can apply a `Hyperrule`
