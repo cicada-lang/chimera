@@ -1,14 +1,8 @@
 # primitive
 
-> Extend this language to follow IU compiler course.
-
 support using `TypeConstraint` as predicate
 
 - test type-constraint-as-predicate.wa
-
-fix `print find _ { NotEqual({ x: 1 }, { x: 1 }) }`
-
-- should be `[]`
 
 [maybe] applying `Relation` support currying
 
