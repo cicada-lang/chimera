@@ -1,6 +1,5 @@
 # primitive
 
-extract `find/goalFromValue`
 extract `evaluate/lookup`
 
 [primitive] `find(limit, pattern, goals): Array`
