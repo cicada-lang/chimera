@@ -1,6 +1,6 @@
-import { aboutBasciRelation } from "./aboutBasciRelation"
 import { aboutControlFlow } from "./aboutControlFlow"
 import { aboutNumber } from "./aboutNumber"
+import { aboutRelation } from "./aboutRelation"
 import { aboutString } from "./aboutString"
 import { GlobalStore } from "./GlobalStore"
 
@@ -10,7 +10,7 @@ export async function useGlobals(): Promise<GlobalStore> {
   if (globals) return globals
 
   globals = new GlobalStore()
-  await aboutBasciRelation(globals)
+  await aboutRelation(globals)
   await aboutControlFlow(globals)
   await aboutNumber(globals)
   await aboutString(globals)

@@ -1,6 +1,6 @@
 import type { GlobalStore } from "./GlobalStore"
 
-export async function aboutBasciRelation(globals: GlobalStore): Promise<void> {
+export async function aboutRelation(globals: GlobalStore): Promise<void> {
   await globals.code(`
 
 clause Equal(x, y) -- { x = y }
