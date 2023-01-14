@@ -7,8 +7,6 @@ clause Equal(x, y) -- { x = y }
 
 clause NotEqual(x, y) -- { x != y }
 
-clause Null(x) -- { x = null }
-
 clause Boolean(x) -- { x = false }
 clause Boolean(x) -- { x = true }
 
