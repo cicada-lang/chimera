@@ -1,1 +1,1 @@
-print stringLength("abc")
+assert Equal(stringLength("abc"), 3)

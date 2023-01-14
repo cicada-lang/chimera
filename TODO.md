@@ -2,8 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-fix tests/primitives/string.wa
-
 extract `aboutEqual`
 extract `aboutBoolean`
 
