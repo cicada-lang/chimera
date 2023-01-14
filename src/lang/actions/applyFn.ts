@@ -14,9 +14,15 @@ import type { Value } from "../value"
 import * as Values from "../value"
 import { formatValue } from "../value"
 
-export function applyFn(target: Values.Fn, args: Array<Value>): Value {
+export function applyFn(
+  _mod: Mod,
+  target: Values.Fn,
+  args: Array<Value>,
+): Value {
   const mod = target.mod.copy()
+
   mod.env = envMerge(mod.env, target.env)
+
   matchPatterns(mod, target.patterns, args)
 
   if (target.patterns.length > args.length) {

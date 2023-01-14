@@ -39,7 +39,7 @@ export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   }
 
   if (target["@kind"] === "Fn") {
-    return applyFn(target, args)
+    return applyFn(mod, target, args)
   }
 
   if (target["@kind"] === "Primitive") {
