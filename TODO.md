@@ -2,7 +2,10 @@
 
 > Extend this language to follow IU compiler course.
 
-improve test relation-as-predicate.wa -- by `assert not(...)`
+[primitive] [string] `stringAppend`
+
+[primitive] [array] `arrayLength`
+[primitive] [array] `arrayAppend`
 
 support using `TypeConstraint` as predicate
 
@@ -11,11 +14,6 @@ support using `TypeConstraint` as predicate
 fix `print find _ { NotEqual({ x: 1 }, { x: 1 }) }`
 
 - should be `[]`
-
-[primitive] [string] `stringAppend`
-
-[primitive] [array] `arrayLength`
-[primitive] [array] `arrayAppend`
 
 [maybe] applying `Relation` support currying
 

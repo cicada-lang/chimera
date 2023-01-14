@@ -2,32 +2,18 @@ clause Exp(var(name)) -- { String(name) }
 clause Exp(fn(name, ret)) -- { String(name) Exp(ret) }
 clause Exp(ap(target, arg)) -- { Exp(target) Exp(arg) }
 
-// true
+assert Exp(quote var("x"))
+assert Exp(quote fn("x", var("x")))
+assert not(Exp(quote "x"))
+assert not(Exp(quote fn()))
 
-print Exp(quote var("x"))
-print Exp(quote fn("x", var("x")))
+assert Equal({ x: 1 }, { x: 1 })
+assert not(Equal({ x: 1 }, { x: 2 }))
 
-// false
+assert Boolean(true)
+assert Boolean(false)
+assert Null(null)
 
-print Exp(quote "x")
-print Exp(quote fn())
-
-// true
-
-print Equal({ x: 1 }, { x: 1 })
-
-// false
-
-print NotEqual({ x: 1 }, { x: 1 })
-
-// true
-
-print Boolean(true)
-print Boolean(false)
-print Null(null)
-
-// false
-
-print Boolean(1)
-print Boolean(1)
-print Null(1)
+assert not(Boolean(1))
+assert not(Boolean(1))
+assert not(Null(1))
