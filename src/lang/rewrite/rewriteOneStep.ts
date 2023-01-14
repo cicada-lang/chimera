@@ -1,8 +1,8 @@
 import type { Mod } from "../mod"
-import { rewriteOnePlace } from "../rewrite"
 import type { Rule } from "../rule"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { rewriteOnePlace } from "./rewriteOnePlace"
 
 export function rewriteOneStep(
   mod: Mod,

@@ -1,7 +1,7 @@
 import type { Mod } from "../mod"
-import { rewriteOneStep } from "../rewrite"
 import type { Rule } from "../rule"
 import type { Value } from "../value"
+import { rewriteOneStep } from "./rewriteOneStep"
 
 export function rewriteManySteps(
   mod: Mod,
