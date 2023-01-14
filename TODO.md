@@ -2,8 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-[primitive] [string] `stringAppend`
-
 [primitive] [array] `arrayLength`
 [primitive] [array] `arrayAppend`
 

@@ -12,4 +12,10 @@ export async function aboutString(globals: GlobalStore): Promise<void> {
     assertValue(value, "String", { who: "stringLength" })
     return Values.Number(value.data.length)
   })
+
+  globals.primitive("stringAppend", 2, ([left, right]) => {
+    assertValue(left, "String", { who: "stringAppend" })
+    assertValue(right, "String", { who: "stringAppend" })
+    return Values.String(left.data.concat(right.data))
+  })
 }
