@@ -4,10 +4,9 @@ import { envLookupValue } from "../env"
 import * as Errors from "../errors"
 import { evaluateGoalExp, quote } from "../evaluate"
 import type { Exp } from "../exp"
+import { find } from "../find"
 import type { Mod } from "../mod"
 import { refresh, refreshGoals } from "../refresh"
-import { reify } from "../reify"
-import { Solver } from "../solver"
 import type { Value } from "../value"
 import * as Values from "../value"
 import {
@@ -108,19 +107,13 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       )
 
       const renames = new Map()
-      const value = refresh(mod, renames, quote(mod, mod.env, exp.pattern))
+      const pattern = refresh(mod, renames, quote(mod, mod.env, exp.pattern))
       const goals = refreshGoals(
         mod,
         renames,
         exp.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
       )
-
-      const solver = Solver.start(goals)
-      const solutions = solver.solve(mod, { limit: exp.limit })
-
-      return Values.fromArray(
-        solutions.map((solution) => reify(mod, solution, value)),
-      )
+      return Values.fromArray(find(mod, exp.limit, pattern, goals))
     }
   }
 }

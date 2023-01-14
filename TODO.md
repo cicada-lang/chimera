@@ -1,6 +1,5 @@
 # primitive
 
-extract `find`
 extract `find/goalFromValue`
 extract `evaluate/lookup`
 
@@ -8,10 +7,12 @@ extract `evaluate/lookup`
 
 [primitive] `rewrite(limit, target, rules): Array`
 
+- extract `rewriteManySteps`
 - no need for a API to rewrite to the end, we can apply a `Rule`
 
 [primitive] `hyperrewrite(limit, target, hyperrules): Array`
 
+- extract `hyperrewriteManySteps`
 - no need for a API to rewrite to the end, we can apply a `Hyperrule`
 
 applying `Relation` support currying
