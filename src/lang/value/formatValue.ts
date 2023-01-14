@@ -83,7 +83,9 @@ export function formatValue(value: Value): string {
 
       const patterns = value.patterns.map(formatValue).join(", ")
       const stmts = value.stmts.map((stmt) => stmt.format())
-      return `(${patterns}) => {\n${indent(stmts.join("\n"))}\n}`
+      return stmts.length === 0
+        ? `(${patterns}) => {}`
+        : `(${patterns}) => {\n${indent(stmts.join("\n"))}\n}`
     }
 
     case "WithConstraints": {
