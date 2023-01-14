@@ -17,18 +17,20 @@ import * as Values from "../value"
 
 **/
 
-export function reify(
-  mod: Mod,
-  solution: Solution,
-  value: Value,
-): Values.WithConstraints {
+export function reify(mod: Mod, solution: Solution, value: Value): Value {
   value = substitutionDeepWalk(solution.substitution, value)
   const substitutionForRenaming = prepareSubstitution(value)
-  return Values.WithConstraints(
-    substitutionDeepWalk(substitutionForRenaming, value),
-    [
-      ...reifyInequalities(mod, solution, substitutionForRenaming),
-      ...reifyTypeConstraints(mod, solution, substitutionForRenaming),
-    ],
-  )
+  const constraints = [
+    ...reifyInequalities(mod, solution, substitutionForRenaming),
+    ...reifyTypeConstraints(mod, solution, substitutionForRenaming),
+  ]
+
+  if (constraints.length > 0) {
+    return Values.WithConstraints(
+      substitutionDeepWalk(substitutionForRenaming, value),
+      constraints,
+    )
+  }
+
+  return substitutionDeepWalk(substitutionForRenaming, value)
 }

@@ -1,18 +1,20 @@
 # primitive
 
-applying `Relation` support currying
+`doAp` also take `env` -- for the primitive `findAll`
 
-[primitive] `findAll(query, goals): Array`
+[primitive] `find(limit, pattern, goals): Array`
 
-[primitive] `find(n, query, goals): Array`
-
-[primitive] `rewrite(n, target, rules): Array`
+[primitive] `rewrite(limit, target, rules): Array`
 
 - no need for a API to rewrite to the end, we can apply a `Rule`
 
-[primitive] `hyperrewrite(n, target, hyperrules): Array`
+[primitive] `hyperrewrite(limit, target, hyperrules): Array`
 
 - no need for a API to rewrite to the end, we can apply a `Hyperrule`
+
+applying `Relation` support currying
+
+- a relation must has a fixed arity
 
 # guard
 

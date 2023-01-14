@@ -299,19 +299,23 @@ export function WithConstraints(
   }
 }
 
+export type NativeFnOptions = { mod: Mod; env: Env }
+
+export type NativeFn = (args: Array<Value>, options: NativeFnOptions) => Value
+
 export type Primitive = {
   "@type": "Value"
   "@kind": "Primitive"
   name: string
   arity: number
-  nativeFn: (args: Array<Value>) => Value
+  nativeFn: NativeFn
   curried: Array<Value>
 }
 
 export function Primitive(
   name: string,
   arity: number,
-  nativeFn: (args: Array<Value>) => Value,
+  nativeFn: NativeFn,
   curried: Array<Value>,
 ): Primitive {
   return {

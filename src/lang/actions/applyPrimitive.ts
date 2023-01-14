@@ -18,10 +18,16 @@ export function applyPrimitive(
   if (target.arity < target.curried.length + args.length) {
     return doAp(
       mod,
-      target.nativeFn([...target.curried, ...args].slice(0, target.arity)),
+      target.nativeFn([...target.curried, ...args].slice(0, target.arity), {
+        mod,
+        env: mod.env,
+      }),
       args.slice(target.arity - target.curried.length),
     )
   }
 
-  return target.nativeFn([...target.curried, ...args])
+  return target.nativeFn([...target.curried, ...args], {
+    mod,
+    env: mod.env,
+  })
 }

@@ -23,11 +23,7 @@ export class GlobalStore {
     this.mod.define(name, value)
   }
 
-  primitive(
-    name: string,
-    arity: number,
-    nativeFn: (args: Array<Value>) => Value,
-  ): void {
+  primitive(name: string, arity: number, nativeFn: Values.NativeFn): void {
     this.define(name, Values.Primitive(name, arity, nativeFn, []))
   }
 }
