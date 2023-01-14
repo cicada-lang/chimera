@@ -1,6 +1,5 @@
 # primitive
 
-extract `applyRule`
 extract `applyHyperrule`
 
 `applyTypeConstraint` -- support using `TypeConstraint` as predicate
