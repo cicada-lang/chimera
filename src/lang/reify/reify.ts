@@ -1,13 +1,11 @@
 import type { Mod } from "../mod"
-import {
-  prepareSubstitution,
-  reifyInequalities,
-  reifyTypeConstraints,
-} from "../reify"
 import type { Solution } from "../solution"
 import { substitutionDeepWalk } from "../substitution"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { prepareSubstitution } from "./prepareSubstitution"
+import { reifyInequalities } from "./reifyInequalities"
+import { reifyTypeConstraints } from "./reifyTypeConstraints"
 
 /**
 
