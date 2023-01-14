@@ -1,3 +1,5 @@
+change project name to `mo`
+
 # primitive
 
 [primitive] `rewriteManySteps(limit, target, rules): Array`
