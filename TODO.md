@@ -2,8 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-[primitive] [boolean] `not`
-
 improve test relation-as-predicate.wa -- by `assert not(...)`
 
 support using `TypeConstraint` as predicate
