@@ -4,9 +4,9 @@ import {
   substitutionExtend,
   substitutionWalk,
 } from "../substitution"
-import { occur } from "../unify"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { occur } from "./occur"
 
 export function unifyMany(
   mod: Mod,
