@@ -12,7 +12,7 @@ export function applyHyperrule(
   if (args.length !== 1) {
     throw new Errors.LangError(
       [
-        `[doAp] the number of arguments of Hyperrule must be 1`,
+        `[applyHyperrule] the number of arguments of Hyperrule must be 1`,
         `  args.length: ${args.length}`,
       ].join("\n"),
     )

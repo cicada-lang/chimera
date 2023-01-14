@@ -1,10 +1,8 @@
 # primitive
 
-`applyTypeConstraint` -- support using `TypeConstraint` as predicate
+extract `assertArity`
 
-- test type-constraint-as-predicate.wa
-
-[maybe] applying `Relation` support currying
+applying `Relation` support currying
 
 # primitive
 

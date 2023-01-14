@@ -7,6 +7,7 @@ import { applyHyperrule } from "./applyHyperrule"
 import { applyPrimitive } from "./applyPrimitive"
 import { applyRelation } from "./applyRelation"
 import { applyRule } from "./applyRule"
+import { applyTypeConstraint } from "./applyTypeConstraint"
 
 export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   if (target["@kind"] === "Rule") {
@@ -27,6 +28,10 @@ export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
 
   if (target["@kind"] === "Relation") {
     return applyRelation(mod, target, args)
+  }
+
+  if (target["@kind"] === "TypeConstraint") {
+    return applyTypeConstraint(mod, target, args)
   }
 
   throw new Errors.LangError(

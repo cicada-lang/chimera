@@ -1,22 +1,21 @@
 import * as Errors from "../errors"
 import type { Mod } from "../mod"
-import { rewrite } from "../rewrite"
-import type * as Values from "../value"
 import type { Value } from "../value"
+import * as Values from "../value"
 
-export function applyRule(
+export function applyTypeConstraint(
   mod: Mod,
-  target: Values.Rule,
+  target: Values.TypeConstraint,
   args: Array<Value>,
 ): Value {
   if (args.length !== 1) {
     throw new Errors.LangError(
       [
-        `[applyRule] the number of arguments of Rule must be 1`,
+        `[applyTypeConstraint] the number of arguments of Rule must be 1`,
         `  args.length: ${args.length}`,
       ].join("\n"),
     )
   }
 
-  return rewrite(mod, target.rule, args[0])
+  return Values.Boolean(target.predicate(args[0]))
 }
