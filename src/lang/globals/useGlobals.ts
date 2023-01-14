@@ -1,3 +1,4 @@
+import { aboutArray } from "./aboutArray"
 import { aboutBoolean } from "./aboutBoolean"
 import { aboutControlFlow } from "./aboutControlFlow"
 import { aboutEqual } from "./aboutEqual"
@@ -19,6 +20,7 @@ export async function useGlobals(): Promise<GlobalStore> {
   await aboutControlFlow(globals)
   await aboutNumber(globals)
   await aboutString(globals)
+  await aboutArray(globals)
 
   return globals
 }

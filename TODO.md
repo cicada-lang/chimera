@@ -2,9 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-[primitive] [array] `arrayLength`
-[primitive] [array] `arrayAppend`
-
 support using `TypeConstraint` as predicate
 
 - test type-constraint-as-predicate.wa
