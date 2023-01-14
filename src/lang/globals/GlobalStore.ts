@@ -3,6 +3,7 @@ import * as Scripts from "../../scripts"
 import { envEntries, envExtend } from "../env"
 import { Mod } from "../mod"
 import type { Value } from "../value"
+import * as Values from "../value"
 
 export class GlobalStore {
   mod = new Mod({ loader: new Loader({}), url: new URL("globals://") })
@@ -13,12 +14,20 @@ export class GlobalStore {
     }
   }
 
+  async code(text: string): Promise<void> {
+    const script = Scripts.createScript(this.mod, text)
+    await script.run()
+  }
+
   define(name: string, value: Value): void {
     this.mod.define(name, value)
   }
 
-  async code(text: string): Promise<void> {
-    const script = Scripts.createScript(this.mod, text)
-    await script.run()
+  primitive(
+    name: string,
+    arity: number,
+    nativeFn: (args: Array<Value>) => Value,
+  ): void {
+    this.define(name, Values.Primitive(name, arity, nativeFn, []))
   }
 }

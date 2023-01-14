@@ -2,8 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-`GlobalStore.primitive`
-
 [primitive] `equal`
 
 - fix tests/primitives/string.wa
