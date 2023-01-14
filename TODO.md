@@ -1,7 +1,5 @@
 # primitive
 
-extract `evaluate/lookup`
-
 [primitive] `find(limit, pattern, goals): Array`
 
 [primitive] `rewrite(limit, target, rules): Array`

@@ -1,8 +1,7 @@
 import * as Actions from "../actions"
 import type { Env } from "../env"
-import { envLookupValue } from "../env"
 import * as Errors from "../errors"
-import { evaluateGoalExp, quote } from "../evaluate"
+import { evaluateGoalExp, lookup, quote } from "../evaluate"
 import type { Exp } from "../exp"
 import { find } from "../find"
 import type { Mod } from "../mod"
@@ -19,15 +18,14 @@ import {
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
     case "Var": {
-      const local = envLookupValue(env, exp.name)
-      if (local !== undefined) return local
+      const value = lookup(mod, env, exp.name)
+      if (value === undefined) {
+        throw new Errors.LangError(`[evaluate] undefined name: ${exp.name}`, {
+          span: exp.span,
+        })
+      }
 
-      const value = envLookupValue(mod.env, exp.name)
-      if (value !== undefined) return value
-
-      throw new Errors.LangError(`[evaluate] undefined name: ${exp.name}`, {
-        span: exp.span,
-      })
+      return value
     }
 
     case "String": {

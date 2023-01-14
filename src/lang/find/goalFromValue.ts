@@ -1,5 +1,6 @@
-import { Env, envLookupValue } from "../env"
+import type { Env } from "../env"
 import * as Errors from "../errors"
+import { lookup } from "../evaluate"
 import * as Goals from "../goal"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
@@ -15,19 +16,10 @@ export function goalFromValue(mod: Mod, env: Env, value: Value) {
     )
   }
 
-  {
-    const target = envLookupValue(env, value.name)
-    if (target !== undefined) {
-      return Goals.Apply(value.name, target, value.args)
-    }
+  const target = lookup(mod, env, value.name)
+  if (target === undefined) {
+    throw new Errors.LangError(`[goalFromValue] undefined name: ${value.name}`)
   }
 
-  {
-    const target = envLookupValue(mod.env, value.name)
-    if (target !== undefined) {
-      return Goals.Apply(value.name, target, value.args)
-    }
-  }
-
-  throw new Errors.LangError(`[goalFromValue] undefined name: ${value.name}`)
+  return Goals.Apply(value.name, target, value.args)
 }
