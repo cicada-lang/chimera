@@ -1,6 +1,5 @@
-import * as Errors from "../errors"
 import * as Values from "../value"
-import { assertValue, formatValue } from "../value"
+import { assertValue } from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export async function aboutString(globals: GlobalStore): Promise<void> {
@@ -8,19 +7,6 @@ export async function aboutString(globals: GlobalStore): Promise<void> {
     "String",
     Values.TypeConstraint("String", (value) => value["@kind"] === "String"),
   )
-
-  globals.primitive("stringLength", 1, ([value]) => {
-    if (value["@kind"] !== "String") {
-      throw new Errors.LangError(
-        [
-          `[stringLength] expect value to be String`,
-          `  value: ${formatValue(value)}`,
-        ].join("\n"),
-      )
-    }
-
-    return Values.Number(value.data.length)
-  })
 
   globals.primitive("stringLength", 1, ([value]) => {
     assertValue(value, "String", { who: "stringLength" })
