@@ -21,13 +21,11 @@ export class Hyperrule extends Stmt {
     super()
   }
 
-  validateSync(mod: Mod): void {
+  executeSync(mod: Mod): void {
     for (const hyperrule of this.hyperrules) {
       varCollectionValidate(varCollectionFromHyperruleExp(hyperrule))
     }
-  }
 
-  executeSync(mod: Mod): void {
     mod.define(
       this.name,
       Values.Hyperrule(

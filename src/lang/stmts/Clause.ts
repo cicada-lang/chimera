@@ -26,16 +26,14 @@ export class Clause extends Stmt {
     mod.ensureRelationOfThisMod(this.relationName)
   }
 
-  validateSync(mod: Mod): void {
+  executeSync(mod: Mod): void {
     varCollectionValidate(
       varCollectionMerge([
         varCollectionFromExps(this.exps),
         ...this.goals.map(varCollectionFromGoalExp),
       ]),
     )
-  }
 
-  executeSync(mod: Mod): void {
     mod.defineClause(this.relationName, this.name, this.exps, this.goals)
   }
 

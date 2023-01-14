@@ -20,13 +20,11 @@ export class Rule extends Stmt {
     super()
   }
 
-  validateSync(mod: Mod): void {
+  executeSync(mod: Mod): void {
     for (const rule of this.rules) {
       varCollectionValidate(varCollectionFromRuleExp(rule))
     }
-  }
 
-  executeSync(mod: Mod): void {
     mod.define(
       this.name,
       Values.Rule(

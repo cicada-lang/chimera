@@ -77,10 +77,6 @@ export class Mod {
       await stmt.prepare(this)
     }
 
-    for (const stmt of stmts.values()) {
-      await stmt.validate(this)
-    }
-
     const offset = this.stmts.length
     for (const [index, stmt] of stmts.entries()) {
       const output = await stmt.execute(this)
@@ -101,10 +97,6 @@ export class Mod {
 
     for (const stmt of stmts.values()) {
       stmt.prepareSync(this)
-    }
-
-    for (const stmt of stmts.values()) {
-      stmt.validateSync(this)
     }
 
     const offset = this.stmts.length
