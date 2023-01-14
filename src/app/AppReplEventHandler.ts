@@ -25,7 +25,7 @@ export class AppReplEventHandler extends ReplEventHandler {
   }
 
   greeting(): void {
-    console.log(`Welcome to whereabouts ${app.config.pkg.version}`)
+    console.log(`Welcome to mo ${app.config.pkg.version}`)
   }
 
   async handle(event: ReplEvent): Promise<void> {

@@ -2,7 +2,7 @@
 title: Example Markdown Script
 ---
 
-```whereabouts
+```mo
 print find q {
   q = "Hello, World!"
 }

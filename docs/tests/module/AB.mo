@@ -1,4 +1,4 @@
-import { A } from "./A.wa"
+import { A } from "./A.mo"
 
 clause AB(a, b)
 ---------- {

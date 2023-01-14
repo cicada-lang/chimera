@@ -1,4 +1,4 @@
-import { A } from "./A.wa"
+import { A } from "./A.mo"
 
 print find [x] {
   A(x)

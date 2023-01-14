@@ -1,10 +1,4 @@
-# Whereabouts
-
-> I asked the boy beneath the pines. <br/>
-> He said, "The master's gone alone <br/>
-> Herb-picking, somewhere on the mount, <br/>
-> Cloud-hidden, **whereabouts unknown**." <br/>
-> -- [Jia Dao](https://en.wikipedia.org/wiki/Jia_Dao)
+# Mo
 
 ## Usages
 
@@ -13,15 +7,15 @@
 Install it by the following command:
 
 ```sh
-sudo npm install -g @cicada-lang/whereabouts
+sudo npm install -g @cicada-lang/mo
 ```
 
-The command line program is called `wa`.
+The command line program is called `mo`.
 
 ```sh
-wa repl                # Open an interactive REPL
-wa run <file>          # Run a file
-wa run <file> --watch  # Run and watch file change
+mo repl                # Open an interactive REPL
+mo run <file>          # Run a file
+mo run <file> --watch  # Run and watch file change
 ```
 
 Type `wa help` to see what other commands are available.

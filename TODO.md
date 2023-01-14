@@ -1,5 +1,3 @@
-change project name to `mo`
-
 # primitive
 
 [primitive] `rewriteManySteps(limit, target, rules): Array`
@@ -195,7 +193,7 @@ implement alphaLean
 use concrete syntax to write examples,
 and use abstract syntax to write rules
 
-[langs] `langs/lambda` implement lambda calculus in whereabouts -- without closure
+[langs] `langs/lambda` implement lambda calculus -- without closure
 
 [langs] `langs/lambda-cps` implement CPS rules for lambda calculus
 

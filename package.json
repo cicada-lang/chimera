@@ -1,23 +1,23 @@
 {
-  "name": "@cicada-lang/whereabouts",
+  "name": "@cicada-lang/mo",
   "version": "0.3.9",
-  "repository": "github:cicada-lang/whereabouts",
+  "repository": "github:cicada-lang/mo",
   "main": "./lib/index.js",
   "files": [
     "lib"
   ],
   "bin": {
-    "wa": "bin/wa.js"
+    "mo": "bin/mo.js"
   },
   "scripts": {
     "prepare": "husky install",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "test:wa:docs": "test-runner snapshot './bin/wa.js run' 'docs/**/*.(wa|md)' --exclude 'docs/**/*.error.(wa|md)'",
-    "test:wa:docs-error": "test-runner snapshot-error './bin/wa.js run' 'docs/**/*.error.(wa|md)'",
-    "test:wa": "npm run test:wa:docs && npm run test:wa:docs-error",
+    "test:mo:docs": "test-runner snapshot './bin/mo.js run' 'docs/**/*.(mo|md)' --exclude 'docs/**/*.error.(mo|md)'",
+    "test:mo:docs-error": "test-runner snapshot-error './bin/mo.js run' 'docs/**/*.error.(mo|md)'",
+    "test:mo": "npm run test:mo:docs && npm run test:mo:docs-error",
     "test:node": "node --test",
-    "test": "npm run test:node && npm run test:wa",
+    "test": "npm run test:node && npm run test:mo",
     "format": "prettier src --write"
   },
   "dependencies": {

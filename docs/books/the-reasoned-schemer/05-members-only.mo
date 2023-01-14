@@ -1,4 +1,4 @@
-import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.wa"
+import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.mo"
 
 clause Mem(x, l, out)
 --------------- {

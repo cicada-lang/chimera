@@ -1,7 +1,7 @@
-import { Nat, Zero, Add1 } from "index.wa"
-import { Add, Mul } from "index.wa"
-import { One, Two, Three, Four, Five, Six } from "index.wa"
-import { Seven, Eight, Nine, Ten, Eleven, Twelve } from "index.wa"
+import { Nat, Zero, Add1 } from "index.mo"
+import { Add, Mul } from "index.mo"
+import { One, Two, Three, Four, Five, Six } from "index.mo"
+import { Seven, Eight, Nine, Ten, Eleven, Twelve } from "index.mo"
 
 print find z {
   Two(x)

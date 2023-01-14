@@ -1,4 +1,4 @@
-import { Succeed, Fail } from "01-playthings.wa"
+import { Succeed, Fail } from "01-playthings.mo"
 
 clause Always()
 --------- {

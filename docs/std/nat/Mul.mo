@@ -1,5 +1,5 @@
-import { Zero, Add1, Nat } from "Nat.wa"
-import { Add } from "Add.wa"
+import { Zero, Add1, Nat } from "Nat.mo"
+import { Add } from "Add.mo"
 
 clause Mul(x, _y, z)
 --------------- zero_left {

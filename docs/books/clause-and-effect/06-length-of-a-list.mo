@@ -1,4 +1,4 @@
-import { Zero, Add1, One, Two } from "../../std/nat/index.wa"
+import { Zero, Add1, One, Two } from "../../std/nat/index.mo"
 
 clause Length([], n)
 -------------------- {

@@ -10,15 +10,15 @@ can be used in `prefix::name` syntax to reference a value.
 A module can be imported as a namespace.
 
 ```cicada
-import Exp from "exp.wa"
+import Exp from "exp.mo"
 ```
 
 Importing two modules as the same namespace,
 the names in the the modules will be merged.
 
 ```cicada
-import Exp from "exp.wa"
-import Exp from "exp-extra.wa"
+import Exp from "exp.mo"
+import Exp from "exp-extra.mo"
 ```
 
 Datatype can be used as a namespace,
@@ -42,18 +42,18 @@ the name in the module will also be imported,
 if the name is bound to a namespace in the module,
 the namespace will be merged.
 
-Thus, to use the a datatype named `Exp` in the module "exp.wa",
+Thus, to use the a datatype named `Exp` in the module "exp.mo",
 we do not have to write:
 
 ```cicada
-import Exp from "exp.wa"
-import { Exp } from "exp.wa"
+import Exp from "exp.mo"
+import { Exp } from "exp.mo"
 ```
 
 We can simply write:
 
 ```cicada
-import Exp from "exp.wa"
+import Exp from "exp.mo"
 ```
 
 We can also provide a `namespace {}` keyword,
@@ -63,5 +63,5 @@ Use `import * from` to import all names without namespace prefix,
 this feature can be used to reexport names in many modules from one module.
 
 ```cicada
-import * from "exp.wa"
+import * from "exp.mo"
 ```

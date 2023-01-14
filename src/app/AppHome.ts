@@ -6,9 +6,7 @@ import process from "process"
 export class AppHome extends LocalFileStore {
   constructor() {
     super({
-      dir:
-        process.env["WHEREABOUTS_HOME"] ||
-        Path.resolve(os.homedir(), ".whereabouts"),
+      dir: process.env["MO_HOME"] || Path.resolve(os.homedir(), ".mo"),
     })
   }
 }

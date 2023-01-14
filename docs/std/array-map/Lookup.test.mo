@@ -1,4 +1,4 @@
-import { Lookup } from "Lookup.wa"
+import { Lookup } from "Lookup.mo"
 
 print find x {
   map = [["a", 1], ["b", 2], ["c", 3]]

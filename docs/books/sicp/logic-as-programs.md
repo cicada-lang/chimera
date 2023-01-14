@@ -30,7 +30,7 @@ cons(1, cons(2, cons(3, cons(4, null))))
 
 **Relation:**
 
-```whereabouts
+```mo
 clause Append([], right, right)
 ---------------------------- {}
 
@@ -86,7 +86,7 @@ cons(1, cons(2, cons(3, cons(4, null))))
 
 **Relation:**
 
-```whereabouts todo
+```mo todo
 clause Merge(null, right, right)
 ------------------------ {}
 

@@ -1,4 +1,0 @@
-import * from "Nat.wa"
-import * from "Add.wa"
-import * from "Mul.wa"
-import * from "numbers.wa"

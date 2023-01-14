@@ -1,6 +1,6 @@
 I found syntax error in code:
 
- 1 |import * from "./example.wa"
+ 1 |import * from "./example.mo"
  2 |
  3 |print find q {
  4 |  clause Hiya(q)
