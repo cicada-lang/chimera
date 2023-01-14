@@ -1,10 +1,9 @@
 import * as Errors from "../errors"
-import { hyperrewrite } from "../hyperrewrite"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
-import * as Values from "../value"
 import { formatValue } from "../value"
 import { applyFn } from "./applyFn"
+import { applyHyperrule } from "./applyHyperrule"
 import { applyPrimitive } from "./applyPrimitive"
 import { applyRelation } from "./applyRelation"
 import { applyRule } from "./applyRule"
@@ -15,18 +14,7 @@ export function doAp(mod: Mod, target: Value, args: Array<Value>): Value {
   }
 
   if (target["@kind"] === "Hyperrule") {
-    if (args.length !== 1) {
-      throw new Errors.LangError(
-        [
-          `[doAp] the number of arguments of Hyperrule must be 1`,
-          `  args.length: ${args.length}`,
-        ].join("\n"),
-      )
-    }
-
-    return Values.fromArray(
-      hyperrewrite(mod, target.hyperrule, Values.toArray(args[0])),
-    )
+    return applyHyperrule(mod, target, args)
   }
 
   if (target["@kind"] === "Fn") {

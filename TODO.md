@@ -1,7 +1,5 @@
 # primitive
 
-extract `applyHyperrule`
-
 `applyTypeConstraint` -- support using `TypeConstraint` as predicate
 
 - test type-constraint-as-predicate.wa
