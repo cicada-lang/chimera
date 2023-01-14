@@ -1,6 +1,6 @@
 import * as Errors from "../errors"
 import * as Values from "../value"
-import { formatValue } from "../value"
+import { assertValue, formatValue } from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export async function aboutString(globals: GlobalStore): Promise<void> {
@@ -19,6 +19,11 @@ export async function aboutString(globals: GlobalStore): Promise<void> {
       )
     }
 
+    return Values.Number(value.data.length)
+  })
+
+  globals.primitive("stringLength", 1, ([value]) => {
+    assertValue(value, "String", { who: "stringLength" })
     return Values.Number(value.data.length)
   })
 }

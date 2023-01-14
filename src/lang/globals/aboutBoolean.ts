@@ -1,6 +1,5 @@
-import * as Errors from "../errors"
 import * as Values from "../value"
-import { formatValue } from "../value"
+import { assertValue } from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export async function aboutBoolean(globals: GlobalStore): Promise<void> {
@@ -12,15 +11,7 @@ clause Boolean(x) -- { x = true }
 `)
 
   globals.primitive("not", 1, ([value]) => {
-    if (value["@kind"] !== "Boolean") {
-      throw new Errors.LangError(
-        [
-          `[not] expect value to be Boolean`,
-          `  value: ${formatValue(value)}`,
-        ].join("\n"),
-      )
-    }
-
+    assertValue(value, "Boolean", { who: "not" })
     return Values.Boolean(!value.data)
   })
 }
