@@ -1,7 +1,8 @@
+import { aboutBoolean } from "./aboutBoolean"
 import { aboutControlFlow } from "./aboutControlFlow"
+import { aboutEqual } from "./aboutEqual"
 import { aboutNull } from "./aboutNull"
 import { aboutNumber } from "./aboutNumber"
-import { aboutRelation } from "./aboutRelation"
 import { aboutString } from "./aboutString"
 import { GlobalStore } from "./GlobalStore"
 
@@ -13,7 +14,8 @@ export async function useGlobals(): Promise<GlobalStore> {
   globals = new GlobalStore()
 
   await aboutNull(globals)
-  await aboutRelation(globals)
+  await aboutBoolean(globals)
+  await aboutEqual(globals)
   await aboutControlFlow(globals)
   await aboutNumber(globals)
   await aboutString(globals)

@@ -2,9 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-extract `aboutEqual`
-extract `aboutBoolean`
-
 [primitive] [boolean] `not`
 
 improve test relation-as-predicate.wa -- by `assert not(...)`
