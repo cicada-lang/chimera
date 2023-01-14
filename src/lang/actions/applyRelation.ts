@@ -1,3 +1,4 @@
+import type { Env } from "../env"
 import * as Goals from "../goal"
 import type { Mod } from "../mod"
 import { Solver } from "../solver"
@@ -6,6 +7,7 @@ import * as Values from "../value"
 
 export function applyRelation(
   mod: Mod,
+  env: Env,
   target: Values.Relation,
   args: Array<Value>,
 ): Value {

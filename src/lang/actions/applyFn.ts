@@ -1,5 +1,5 @@
 import { doAp } from "../actions"
-import { envEmpty, envMerge } from "../env"
+import { Env, envEmpty, envMerge } from "../env"
 import * as Errors from "../errors"
 import { match } from "../match"
 import type { Mod } from "../mod"
@@ -16,6 +16,7 @@ import { formatValue } from "../value"
 
 export function applyFn(
   _mod: Mod,
+  env: Env,
   target: Values.Fn,
   args: Array<Value>,
 ): Value {
@@ -37,7 +38,7 @@ export function applyFn(
   const value = catchReturnValue(mod, target.stmts)
 
   if (target.patterns.length < args.length) {
-    return doAp(mod, value, args.slice(target.patterns.length))
+    return doAp(mod, env, value, args.slice(target.patterns.length))
   }
 
   return value
