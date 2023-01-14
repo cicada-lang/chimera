@@ -52,9 +52,19 @@ applying `Relation` support currying
 
 - how to solve linear equations by rewriting?
 
-# primitive
+# claim and runtime type assertion
+
+`Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
+
+- Using `claim` as keyword.
+
+# more primitives
 
 [primitive] [number] `add`, `mul`, `div`
+
+# 1.0.0
+
+mark as 1.0.0 and writie some docs
 
 # draw
 
@@ -114,12 +124,6 @@ use hypergraph rewriting to implement finite-domain constraint programming
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
-
-# declare and runtime type assertion
-
-`Stmts.Declare` -- Use predicate as runtime type assertion (active during test only).
-
-- Using `declare` as keyword.
 
 # compiler
 
@@ -192,25 +196,6 @@ and use abstract syntax to write rules
 [langs] `langs/lambda-cps` implement CPS rules for lambda calculus
 
 [read] A Unified Approach to Solving Seven Programming Problems (Functional Pearl)
-
-# dataset
-
-[dataset] load dataset as fect to a relation
-
-- syntax
-
-  ```
-  dataset Edge {
-    load "<...>.jsonl"
-    load "<...>.json" // must be array
-    load "<...>.json" {
-      // postprocessing
-      path "graphs[2].edges"
-    }
-  }
-  ```
-
-[dataset] translate object with `@type`, `@kind` and `@args` to `Exps.Data`
 
 # datalog
 
