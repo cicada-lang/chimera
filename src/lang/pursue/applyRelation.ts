@@ -1,10 +1,10 @@
 import type { Env } from "../env"
 import type { Mod } from "../mod"
-import { pursueEqual } from "../pursue"
 import { refreshGoals, refreshValues } from "../refresh"
 import type { Solution } from "../solution"
 import type * as Values from "../value"
 import type { Value } from "../value"
+import { pursueEqual } from "./pursueEqual"
 
 export function applyRelation(
   mod: Mod,

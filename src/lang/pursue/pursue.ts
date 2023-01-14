@@ -2,13 +2,11 @@ import type { Env } from "../env"
 import * as Errors from "../errors"
 import type { Goal } from "../goal"
 import type { Mod } from "../mod"
-import {
-  applyRelation,
-  applyTypeConstraint,
-  pursueEqual,
-  pursueNotEqual,
-} from "../pursue"
 import type { Solution } from "../solution"
+import { applyRelation } from "./applyRelation"
+import { applyTypeConstraint } from "./applyTypeConstraint"
+import { pursueEqual } from "./pursueEqual"
+import { pursueNotEqual } from "./pursueNotEqual"
 
 function unit(solution: Solution | undefined): Array<Solution> {
   if (solution === undefined) return []

@@ -1,8 +1,10 @@
 # primitive
 
-applying `Relation` support currying
+`Relation` has `arity`
 
-- a relation must has a fixed arity
+- which must be optional because there are empty `Relation`
+
+applying `Relation` support currying
 
 # guard
 

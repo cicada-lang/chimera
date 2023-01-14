@@ -1,9 +1,10 @@
 import type { Mod } from "../mod"
-import { maintainInequalities, maintaintypeConstraints } from "../pursue"
 import type { Solution } from "../solution"
 import { substitutionEqual } from "../substitution"
 import { unify } from "../unify"
 import type { Value } from "../value"
+import { maintainInequalities } from "./maintainInequalities"
+import { maintaintypeConstraints } from "./maintaintypeConstraints"
 
 export function pursueEqual(
   mod: Mod,

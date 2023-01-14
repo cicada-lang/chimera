@@ -1,10 +1,10 @@
 import type { Env } from "../env"
 import type { Mod } from "../mod"
-import { removeInequalitiesSubsumedByTypeConstraints } from "../pursue"
 import type { Solution } from "../solution"
 import { substitutionWalk } from "../substitution"
 import type * as Values from "../value"
 import type { Value } from "../value"
+import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
 
 export function applyTypeConstraint(
   mod: Mod,
