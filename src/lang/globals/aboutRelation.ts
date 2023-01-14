@@ -36,9 +36,7 @@ export async function aboutRelation(globals: GlobalStore): Promise<void> {
         }
       }
 
-      throw new Errors.LangError(
-        `[findAll] undefined relation name: ${value.name}`,
-      )
+      throw new Errors.LangError(`[findAll] undefined name: ${value.name}`)
     })
 
     const solver = Solver.start(goals)

@@ -2,3 +2,14 @@ assert Equal(
   findAll(quote x, quote [Equal(x, 1)]),
   [1],
 )
+
+// dynamic scope
+
+function f(R) {
+  // `R` in the `quote` will be dynamicly scoped.
+  return findAll(quote x, quote [R(x)])
+}
+
+clause Hi("hi")
+
+assert Equal(f(Hi), ["hi"])
