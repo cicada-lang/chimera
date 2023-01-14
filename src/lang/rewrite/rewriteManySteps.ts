@@ -17,6 +17,7 @@ export function rewriteManySteps(
     }
 
     results.push(result)
+    value = result
   }
 
   return results

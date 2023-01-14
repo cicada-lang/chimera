@@ -1,0 +1,3 @@
+or(A, B)
+[or(not(not(A)), not(not(B))), or(A, not(not(B))), or(A, B)]
+[or(not(not(A)), not(not(B))), or(A, not(not(B))), or(A, B)]
