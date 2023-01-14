@@ -1,7 +1,5 @@
 # primitive
 
-`hyperrewrite` module export less
-
 `Relation` has `arity`
 
 - which must be optional because there are empty `Relation`

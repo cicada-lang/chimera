@@ -1,7 +1,7 @@
-import { hyperrewriteOneStep } from "../hyperrewrite"
 import type { Hyperrule } from "../hyperrule"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
+import { hyperrewriteOneStep } from "./hyperrewriteOneStep"
 
 export function hyperrewriteManySteps(
   mod: Mod,
