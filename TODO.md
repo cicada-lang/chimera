@@ -1,10 +1,6 @@
 # primitive
 
-extract `assertArity`
-
 applying `Relation` support currying
-
-# primitive
 
 [primitive] `findAll(query, goals): Array`
 

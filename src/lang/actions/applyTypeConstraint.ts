@@ -1,21 +1,14 @@
-import * as Errors from "../errors"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { assertArity } from "./assertArity"
 
 export function applyTypeConstraint(
   mod: Mod,
   target: Values.TypeConstraint,
   args: Array<Value>,
 ): Value {
-  if (args.length !== 1) {
-    throw new Errors.LangError(
-      [
-        `[applyTypeConstraint] the number of arguments of Rule must be 1`,
-        `  args.length: ${args.length}`,
-      ].join("\n"),
-    )
-  }
+  assertArity(args, 1, { who: "applyTypeConstraint" })
 
   return Values.Boolean(target.predicate(args[0]))
 }
