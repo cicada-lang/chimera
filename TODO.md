@@ -2,8 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-extract `aboutBasciRelation`
-
 `GlobalStore.primitive`
 
 [primitive] `equal`
