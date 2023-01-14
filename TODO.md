@@ -1,15 +1,11 @@
 # primitive
 
-[primitive] `find(limit, pattern, goals): Array`
+[primitive] `rewriteManySteps(limit, target, rules): Array`
 
-[primitive] `rewrite(limit, target, rules): Array`
-
-- extract `rewriteManySteps`
 - no need for a API to rewrite to the end, we can apply a `Rule`
 
-[primitive] `hyperrewrite(limit, target, hyperrules): Array`
+[primitive] `hyperrewriteManySteps(limit, target, hyperrules): Array`
 
-- extract `hyperrewriteManySteps`
 - no need for a API to rewrite to the end, we can apply a `Hyperrule`
 
 applying `Relation` support currying
