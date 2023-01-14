@@ -1,3 +1,4 @@
+import { aboutControlFlow } from "./aboutControlFlow"
 import { aboutNumber } from "./aboutNumber"
 import { aboutString } from "./aboutString"
 import { GlobalStore } from "./GlobalStore"
@@ -22,18 +23,7 @@ clause Boolean(x) -- { x = true }
 
 `)
 
-  await globals.code(`
-
-function if(target, thenFn, elseFn) {
-  if target {
-    return thenFn()
-  } else {
-    return elseFn()
-  }
-}
-
-`)
-
+  await aboutControlFlow(globals)
   await aboutNumber(globals)
   await aboutString(globals)
   return globals

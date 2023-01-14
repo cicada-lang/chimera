@@ -3,7 +3,6 @@
 > Extend this language to follow IU compiler course.
 
 extract `aboutBasciRelation`
-extract `aboutControlFlow`
 
 `GlobalStore.primitive`
 
