@@ -1,4 +1,4 @@
-import * as Values from "../value"
+import { aboutNumber } from "./aboutNumber"
 import { aboutString } from "./aboutString"
 import { GlobalStore } from "./GlobalStore"
 
@@ -34,11 +34,7 @@ function if(target, thenFn, elseFn) {
 
 `)
 
-  globals.define(
-    "Number",
-    Values.TypeConstraint("Number", (value) => value["@kind"] === "Number"),
-  )
-
+  await aboutNumber(globals)
   await aboutString(globals)
   return globals
 }

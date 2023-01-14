@@ -2,7 +2,6 @@
 
 > Extend this language to follow IU compiler course.
 
-extract `aboutNumber`
 extract `aboutBasciRelation`
 extract `aboutControlFlow`
 
