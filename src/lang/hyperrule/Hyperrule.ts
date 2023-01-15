@@ -1,4 +1,5 @@
 import type { Env } from "../env"
+import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 
@@ -11,6 +12,7 @@ export type Case = {
   env: Env
   from: Array<Value>
   to: Array<Value>
+  guard: Exp | undefined
 }
 
 export function Case(
@@ -18,6 +20,7 @@ export function Case(
   env: Env,
   from: Array<Value>,
   to: Array<Value>,
+  guard: Exp | undefined,
 ): Case {
   return {
     "@type": "Hyperrule",
@@ -26,6 +29,7 @@ export function Case(
     env,
     from,
     to,
+    guard,
   }
 }
 

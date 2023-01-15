@@ -9,6 +9,7 @@ export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
       HyperruleExps.Case(
         matchers.elements_matcher(from),
         matchers.elements_matcher(to),
+        undefined,
         span,
       ),
   })(tree)

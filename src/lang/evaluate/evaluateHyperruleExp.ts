@@ -17,6 +17,7 @@ export function evaluateHyperruleExp(
         env,
         hyperrule.from.map((hyperrule) => quote(mod, env, hyperrule)),
         hyperrule.to.map((hyperrule) => quote(mod, env, hyperrule)),
+        hyperrule.guard,
       )
     }
 

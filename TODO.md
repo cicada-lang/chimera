@@ -5,7 +5,6 @@
 
 test `rewrite` -- rule-case-with-guard
 
-`Hyperrules.Case` -- has optional `guard`
 `Hyperrules.Case` -- parse `guard`
 `hyperrewriteOneStep` -- support `guard`
 

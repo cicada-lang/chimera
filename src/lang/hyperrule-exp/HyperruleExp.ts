@@ -8,15 +8,22 @@ export type Case = {
   "@kind": "Case"
   from: Array<Exp>
   to: Array<Exp>
+  guard: Exp | undefined
   span: Span
 }
 
-export function Case(from: Array<Exp>, to: Array<Exp>, span: Span): Case {
+export function Case(
+  from: Array<Exp>,
+  to: Array<Exp>,
+  guard: Exp | undefined,
+  span: Span,
+): Case {
   return {
     "@type": "HyperruleExp",
     "@kind": "Case",
     from,
     to,
+    guard,
     span,
   }
 }
