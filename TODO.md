@@ -2,8 +2,6 @@
 
 [hyperrewrite] If a constraint already in the result, a hyperrule should fail.
 
-- For example: `X <= Y, Y <= Z => X <= Z`
-
 # clp
 
 [read] essentials-of-constraint-programming.pdf

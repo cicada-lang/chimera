@@ -9,7 +9,7 @@ export function rewriteManySteps(
   value: Value,
   options: { limit: number },
 ): Array<Value> {
-  const results = []
+  const results = [value]
   while (results.length < options.limit) {
     const result = rewriteOneStep(mod, rule, value)
     if (result === undefined) {

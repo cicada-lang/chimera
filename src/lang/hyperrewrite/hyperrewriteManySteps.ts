@@ -9,7 +9,7 @@ export function hyperrewriteManySteps(
   values: Array<Value>,
   options: { limit: number },
 ): Array<Array<Value>> {
-  const results = []
+  const results = [values]
   while (results.length < options.limit) {
     const result = hyperrewriteOneStep(mod, hyperrule, values)
     if (result === undefined) {
