@@ -7,10 +7,16 @@ export function varCollectionFromHyperruleExp(
 ): VarCollection {
   switch (hyperrule["@kind"]) {
     case "Case": {
-      return varCollectionMerge([
-        ...hyperrule.from.map(varCollectionFromExp),
-        ...hyperrule.to.map(varCollectionFromExp),
-      ])
+      return hyperrule.guard !== undefined
+        ? varCollectionMerge([
+            ...hyperrule.from.map(varCollectionFromExp),
+            ...hyperrule.to.map(varCollectionFromExp),
+            varCollectionFromExp(hyperrule.guard),
+          ])
+        : varCollectionMerge([
+            ...hyperrule.from.map(varCollectionFromExp),
+            ...hyperrule.to.map(varCollectionFromExp),
+          ])
     }
 
     case "List": {

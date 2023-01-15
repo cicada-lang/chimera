@@ -12,6 +12,13 @@ export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
         undefined,
         span,
       ),
+    "hyperrule:case_guard": ({ from, to, guard }, { span }) =>
+      HyperruleExps.Case(
+        matchers.elements_matcher(from),
+        matchers.elements_matcher(to),
+        matchers.exp_matcher(guard),
+        span,
+      ),
   })(tree)
 }
 
