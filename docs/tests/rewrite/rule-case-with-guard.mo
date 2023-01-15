@@ -6,6 +6,5 @@ rule ruleCaseWithGuard {
 
 print ruleCaseWithGuard(quote add1(1))
 print ruleCaseWithGuard(quote add1(2))
-
-print r1(quote f(1, 1))
-print r1(quote f(1, 2))
+print ruleCaseWithGuard(quote add1(3))
+print ruleCaseWithGuard(quote add1(4))

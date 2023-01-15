@@ -61,6 +61,15 @@ function hypermatch(
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
+  return hypermatchOrdered(mod, substitution, patterns, values)
+}
+
+function hypermatchOrdered(
+  mod: Mod,
+  substitution: Substitution,
+  patterns: Array<Value>,
+  values: Array<Value>,
+): undefined | { substitution: Substitution; values: Array<Value> } {
   if (patterns.length === 0)
     return {
       substitution,
@@ -72,7 +81,7 @@ function hypermatch(
   for (const [index, value] of values.entries()) {
     const newSubstitution = match(mod, substitution, pattern, value)
     if (newSubstitution !== undefined) {
-      return hypermatch(mod, newSubstitution, restPatterns, [
+      return hypermatchOrdered(mod, newSubstitution, restPatterns, [
         ...values.slice(0, index),
         ...values.slice(index + 1),
       ])
