@@ -4,6 +4,8 @@
 { "a": 1, "b": 2, "c": 3 }
 $Primitive(stringAppend, 2)
 $Curried($Primitive(stringAppend, 2), 2, ["abc"])
+$Relation(Equal)
+$Curried($Relation(Equal), 2, ["abc"])
 () => {}
 (x) => {
   return x

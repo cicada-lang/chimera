@@ -1,5 +1,3 @@
-`applyRelation` -- use `Values.Curried`
-
 # guard
 
 [rule] support guard

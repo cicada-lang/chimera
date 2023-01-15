@@ -1,9 +1,11 @@
 import type { Env } from "../env"
+import * as Errors from "../errors"
 import * as Goals from "../goal"
 import type { Mod } from "../mod"
 import { Solver } from "../solver"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { formatValue } from "../value"
 
 export function applyRelation(
   mod: Mod,
@@ -11,6 +13,22 @@ export function applyRelation(
   target: Values.Relation,
   args: Array<Value>,
 ): Value {
+  if (target.arity !== undefined && target.arity > args.length) {
+    return Values.Curried(target, target.arity, args)
+  }
+
+  if (target.arity !== undefined && target.arity < args.length) {
+    throw new Errors.LangError(
+      [
+        `[applyRelation] too many arguments`,
+        `  target.name: ${target.name}`,
+        `  target.arity: ${target.arity}`,
+        `  args.length: ${args.length}`,
+        `  args: ${args.map(formatValue).join(", ")}`,
+      ].join("\n"),
+    )
+  }
+
   const goal = Goals.Apply(target.name, target, args)
   const solver = Solver.start([goal])
   const solutions = solver.solve(mod, { limit: Infinity })
