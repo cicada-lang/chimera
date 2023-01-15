@@ -1,14 +1,24 @@
 # hyperrewrite
 
-support `=>+` or `+>` syntax to keep all the values in pattern
+[learn] be clear about hyperrewrite semantic
 
-`equal` -- support all value types
+- linear logic? order logic? logic?
+
+`hyperrewrite` use `dedupValues`
+
+`Hyperrule.CaseAppend` -- to keep all the values in pattern
+
+`Hyperrule.CaseAppend` -- `=>+` as syntax
 
 [performance] `hypermatch` -- generating permutation group by group
 
 - extract `permutationOfPatterns`
 
 [performance] save `permutation` of (dedupped) `patterns` in `Rules.Case`
+
+# reorder this TODO.md file
+
+Most todo tasks should be act-able.
 
 # clp
 
@@ -357,6 +367,8 @@ datalog can be implemented using forward chaining
 datalog stratification: https://en.wikipedia.org/wiki/Stratification_(mathematics)
 
 # later
+
+[later] `equal` -- support all value types
 
 [later] [DX] when adding new url to `Loader.tracked`, we should let the `watcher` watch it
 

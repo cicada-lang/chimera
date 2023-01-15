@@ -40,9 +40,9 @@ export function hyperrewriteOneStep(
         substitutionDeepWalk(result.substitution, refresh(mod, renames, value)),
       )
 
-      if (valueArrayInclude(values, to)) {
-        return undefined
-      }
+      // if (valueArrayInclude(values, to)) {
+      //   return undefined
+      // }
 
       return [...result.values, ...to]
     }
@@ -96,11 +96,12 @@ function hypermatchOrdered(
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
-  if (patterns.length === 0)
+  if (patterns.length === 0) {
     return {
       substitution,
       values,
     }
+  }
 
   const [pattern, ...restPatterns] = patterns
 
@@ -123,6 +124,7 @@ function hypermatchOrdered(
 // - http://homepage.math.uiowa.edu/~goodman/algebrabook.dir/algebrabook.html
 
 function permutation<A>(input: Array<A>): Array<Array<A>> {
+  input = [...input]
   let length = input.length
   let result = [input.slice()]
   let c = new Array(length).fill(0)

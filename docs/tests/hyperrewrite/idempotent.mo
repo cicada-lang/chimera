@@ -5,5 +5,10 @@ hyperrule h1 {
 }
 
 print h1(quote [LtEq(1, 2), LtEq(2, 3)])
+print h1(quote [LtEq(2, 3), LtEq(1, 2)])
+
+print h1(quote [LtEq(1, 3), LtEq(1, 2), LtEq(2, 3)])
+print h1(quote [LtEq(1, 2), LtEq(2, 3), LtEq(1, 3)])
+print h1(quote [LtEq(1, 3), LtEq(10, 20), LtEq(20, 30)])
 
 print hyperrewriteManySteps(10, h1, quote [LtEq(1, 2), LtEq(2, 3)])
