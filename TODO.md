@@ -1,8 +1,12 @@
 # guard
 
-[rule] support guard
+`Rules.Case` -- has `mod` and `env` for `guard`
+`Rules.Case` -- has `guard`
+`rewriteOnePlace` -- support `guard`
 
-[hyperrule] support guard
+`Hyperrules.Case` -- has `mod` and `env` for `guard`
+`Hyperrules.Case` -- has `guard`
+`hyperrewriteOneStep` -- support `guard`
 
 # hyperrewrite
 
