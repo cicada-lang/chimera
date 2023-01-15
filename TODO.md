@@ -1,9 +1,3 @@
-# guard
-
-`hyperrewriteOneStep` -- support `guard`
-
-- test `hyperrewrite` -- hyperrule-case-with-guard
-
 # hyperrewrite
 
 [hyperrewrite] If a constraint already in the result, a hyperrule should fail.

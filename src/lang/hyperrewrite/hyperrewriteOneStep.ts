@@ -2,6 +2,7 @@ import type { Hyperrule } from "../hyperrule"
 import { match } from "../match"
 import type { Mod } from "../mod"
 import { refresh } from "../refresh"
+import { guardReject } from "../rewrite"
 import type { Substitution } from "../substitution"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
@@ -17,18 +18,28 @@ export function hyperrewriteOneStep(
       const from = hyperrule.from.map((value) => refresh(mod, renames, value))
       const result = hypermatch(mod, substitutionEmpty(), from, values)
 
-      if (result !== undefined) {
-        const to = hyperrule.to.map((value) =>
-          substitutionDeepWalk(
-            result.substitution,
-            refresh(mod, renames, value),
-          ),
-        )
-
-        return [...result.values, ...to]
+      if (result === undefined) {
+        return undefined
       }
 
-      return undefined
+      if (
+        hyperrule.guard !== undefined &&
+        guardReject(
+          hyperrule.mod,
+          hyperrule.env,
+          hyperrule.guard,
+          result.substitution,
+          renames,
+        )
+      ) {
+        return undefined
+      }
+
+      const to = hyperrule.to.map((value) =>
+        substitutionDeepWalk(result.substitution, refresh(mod, renames, value)),
+      )
+
+      return [...result.values, ...to]
     }
 
     case "List": {
