@@ -1,7 +1,5 @@
 # hyperrewrite
 
-`equal` for `Value`
-
 `unify` use `equal` at the end
 
 `hyperrewriteOneStep` if values are already in the result, the hyperrule should fail
@@ -10,11 +8,13 @@
 
 support `=>+` or `+>` syntax to keep all the values in pattern
 
-`hypermatch` -- generating permutation group by group
+`equal` -- support all value types
+
+[performance] `hypermatch` -- generating permutation group by group
 
 - extract `permutationOfPatterns`
 
-save `permutation` of (dedupped) `patterns` in `Rules.Case`
+[performance] save `permutation` of (dedupped) `patterns` in `Rules.Case`
 
 # clp
 

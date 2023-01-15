@@ -1,4 +1,4 @@
-import { equal } from "../match"
+import { equal } from "../equal"
 import type { Mod } from "../mod"
 import {
   Substitution,
