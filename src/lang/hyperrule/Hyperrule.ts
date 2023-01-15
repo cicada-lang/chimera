@@ -1,3 +1,5 @@
+import type { Env } from "../env"
+import type { Mod } from "../mod"
 import type { Value } from "../value"
 
 export type Hyperrule = Case | List
@@ -5,14 +7,23 @@ export type Hyperrule = Case | List
 export type Case = {
   "@type": "Hyperrule"
   "@kind": "Case"
+  mod: Mod
+  env: Env
   from: Array<Value>
   to: Array<Value>
 }
 
-export function Case(from: Array<Value>, to: Array<Value>): Case {
+export function Case(
+  mod: Mod,
+  env: Env,
+  from: Array<Value>,
+  to: Array<Value>,
+): Case {
   return {
     "@type": "Hyperrule",
     "@kind": "Case",
+    mod,
+    env,
     from,
     to,
   }

@@ -3,7 +3,6 @@
 `Rules.Case` -- has `guard`
 `rewriteOnePlace` -- support `guard`
 
-`Hyperrules.Case` -- has `mod` and `env` for `guard`
 `Hyperrules.Case` -- has `guard`
 `hyperrewriteOneStep` -- support `guard`
 
