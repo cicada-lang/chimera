@@ -8,6 +8,7 @@ import type { Exp } from "../exp"
 import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
+import * as Values from "../value"
 import { Relation, Value } from "../value"
 
 export interface ModOptions {
@@ -121,8 +122,13 @@ export class Mod {
   }
 
   ensureRelationOfThisMod(name: string): void {
-    const relation = this.findRelation(name)
-    if (relation !== undefined && relation.mod === this) {
+    const value = this.find(name)
+
+    if (
+      value !== undefined &&
+      value["@kind"] === "Relation" &&
+      value.mod === this
+    ) {
       return
     }
 
@@ -170,32 +176,16 @@ export class Mod {
     this.define(relation.name, relation)
   }
 
-  private findRelation(name: string): Relation | undefined {
-    const relation = this.find(name)
-
-    if (relation === undefined) return undefined
-
-    if (relation["@kind"] !== "Relation") {
-      throw new Errors.LangError(
-        [
-          `[Mod.findRelation] expecting relation`,
-          `  name: ${name}`,
-          `  relation["@kind"]: ${relation["@kind"]}`,
-        ].join("\n"),
-      )
-    }
-
-    return relation
-  }
-
   private findRelationOrFail(name: string): Relation {
-    const relation = this.findRelation(name)
+    const relation = this.find(name)
 
     if (relation === undefined) {
       throw new Errors.LangError(
         `[Mod.findRelationOrFail] undefined relation name: ${name}`,
       )
     }
+
+    Values.assertValue(relation, "Relation", { who: "findRelationOrFail" })
 
     return relation
   }
