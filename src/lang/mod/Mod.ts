@@ -11,13 +11,6 @@ export interface ModOptions {
   loader: Loader
 }
 
-/**
-
-   TODO Is it safe to put the `variableCount` in a `Mod`
-   (instead of using a global `variableCount`)?
-
-**/
-
 export class Mod {
   initialized = false
   variableCount = 0
@@ -42,6 +35,13 @@ export class Mod {
     return mod
   }
 
+  freshen(name: string): string {
+    // TODO Is it safe to put the `variableCount` in a `Mod`
+    // (instead of using a global `variableCount`)?
+    const [prefix, _count] = name.split("#")
+    return `${prefix}#${this.variableCount++}`
+  }
+
   async initialize(): Promise<void> {
     if (this.initialized) return
     const globals = await useGlobals()
@@ -49,21 +49,26 @@ export class Mod {
     this.initialized = true
   }
 
-  entries(): Array<[string, Value]> {
-    return envEntries(this.env)
-  }
-
   find(name: string): Value | undefined {
     return envLookupValue(this.env, name)
   }
 
-  freshen(name: string): string {
-    const [prefix, _count] = name.split("#")
-    return `${prefix}#${this.variableCount++}`
-  }
-
   resolve(href: string): URL {
     return new URL(href, this.options.url)
+  }
+
+  exportedEntries(): Array<[string, Value]> {
+    return envEntries(this.env).filter(([name, value]) =>
+      this.exported.has(name),
+    )
+  }
+
+  define(name: string, value: Value): void {
+    if (this.exportDepth > 0) {
+      this.exported.add(name)
+    }
+
+    this.env = envExtend(this.env, name, value)
   }
 
   async executeStmts(stmts: Array<Stmt>): Promise<void> {
@@ -106,13 +111,5 @@ export class Mod {
         }
       }
     }
-  }
-
-  define(name: string, value: Value): void {
-    if (this.exportDepth > 0) {
-      this.exported.add(name)
-    }
-
-    this.env = envExtend(this.env, name, value)
   }
 }

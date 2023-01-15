@@ -16,10 +16,8 @@ export class ImportAll extends Stmt {
 
   async prepare(mod: Mod): Promise<void> {
     const importedMod = await this.import(mod)
-    for (const [name, value] of importedMod.entries()) {
-      if (importedMod.exported.has(name)) {
-        mod.define(name, value)
-      }
+    for (const [name, value] of importedMod.exportedEntries()) {
+      mod.define(name, value)
     }
 
     mod.imported.push(mod.resolve(this.path))
