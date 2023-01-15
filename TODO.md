@@ -1,5 +1,7 @@
 [refactor] move `defineClause` to `Stmts.Clause`
 
+- keep `Mod` simple
+
 applying `Relation` support currying
 
 # guard
