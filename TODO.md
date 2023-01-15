@@ -1,9 +1,5 @@
 # guard
 
-`rewriteOnePlace` -- support `guard`
-
-- test `rewrite` -- rule-case-with-guard
-
 `hyperrewriteOneStep` -- support `guard`
 
 - test `hyperrewrite` -- hyperrule-case-with-guard
