@@ -8,7 +8,12 @@ import type { RuleExp } from "../rule-exp"
 export function evaluateRuleExp(mod: Mod, env: Env, rule: RuleExp): Rule {
   switch (rule["@kind"]) {
     case "Case": {
-      return Rules.Case(quote(mod, env, rule.from), quote(mod, env, rule.to))
+      return Rules.Case(
+        mod,
+        env,
+        quote(mod, env, rule.from),
+        quote(mod, env, rule.to),
+      )
     }
 
     case "List": {

@@ -1,3 +1,5 @@
+import type { Env } from "../env"
+import type { Mod } from "../mod"
 import type { Value } from "../value"
 
 export type Rule = Case | List
@@ -5,14 +7,18 @@ export type Rule = Case | List
 export type Case = {
   "@type": "Rule"
   "@kind": "Case"
+  mod: Mod
+  env: Env
   from: Value
   to: Value
 }
 
-export function Case(from: Value, to: Value): Case {
+export function Case(mod: Mod, env: Env, from: Value, to: Value): Case {
   return {
     "@type": "Rule",
     "@kind": "Case",
+    mod,
+    env,
     from,
     to,
   }

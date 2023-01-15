@@ -1,6 +1,5 @@
 # guard
 
-`Rules.Case` -- has `mod` and `env` for `guard`
 `Rules.Case` -- has `guard`
 `rewriteOnePlace` -- support `guard`
 
