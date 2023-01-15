@@ -1,10 +1,10 @@
 # hyperrewrite
 
-`hypermatch` -- support orderless by generating permutation
-
 [hyperrewrite] If a constraint already in the result, a hyperrule should fail.
 
 support `=>+` or `+>` syntax to keep all the values in pattern
+
+`hypermatch` -- generating permutation group by group
 
 # clp
 

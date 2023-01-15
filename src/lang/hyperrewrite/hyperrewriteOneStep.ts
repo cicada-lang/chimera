@@ -55,13 +55,25 @@ export function hyperrewriteOneStep(
   }
 }
 
+// TODO We have labelled edge, thus we should:
+// - group by term name (label).
+// - get the permutation of each group.
+// - get the cartesian product of the permutations.
+
 function hypermatch(
   mod: Mod,
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
-  return hypermatchOrdered(mod, substitution, patterns, values)
+  for (const permuted of permutation(patterns)) {
+    const result = hypermatchOrdered(mod, substitution, permuted, values)
+    if (result !== undefined) {
+      return result
+    }
+  }
+
+  return undefined
 }
 
 function hypermatchOrdered(
@@ -89,4 +101,32 @@ function hypermatchOrdered(
   }
 
   return undefined
+}
+
+// Taken from: https://stackoverflow.com/a/37580979
+
+function permutation<A>(input: Array<A>): Array<Array<A>> {
+  let length = input.length
+  let result = [input.slice()]
+  let c = new Array(length).fill(0)
+  let i = 1
+  let k
+  let p
+
+  while (i < length) {
+    if (c[i] < i) {
+      k = i % 2 && c[i]
+      p = input[i]
+      input[i] = input[k]
+      input[k] = p
+      ++c[i]
+      i = 1
+      result.push(input.slice())
+    } else {
+      c[i] = 0
+      ++i
+    }
+  }
+
+  return result
 }
