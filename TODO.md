@@ -1,9 +1,5 @@
 # hyperrewrite
 
-`hyperrewriteOneStep` if values are already in the result, the hyperrule should fail
-
-- use `equal` for `Value`
-
 support `=>+` or `+>` syntax to keep all the values in pattern
 
 `equal` -- support all value types
