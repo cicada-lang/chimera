@@ -1,6 +1,6 @@
 # module
 
-`Stmts.ExportNames` -- for `clause`
+`Stmts.ExportNames` -- syntax
 
 # primitive
 
