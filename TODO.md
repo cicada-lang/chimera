@@ -1,13 +1,11 @@
 # guard
 
-`Rules.Case` -- parse `guard`
-`rewriteOnePlace` -- support `guard`
-
-test `rewrite` -- rule-case-with-guard
-
 `Hyperrules.Case` -- parse `guard`
+
+`rewriteOnePlace` -- support `guard`
 `hyperrewriteOneStep` -- support `guard`
 
+test `rewrite` -- rule-case-with-guard
 test `hyperrewrite` -- hyperrule-case-with-guard
 
 # hyperrewrite

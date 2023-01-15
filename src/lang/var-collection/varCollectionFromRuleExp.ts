@@ -5,10 +5,16 @@ import { varCollectionFromExp, varCollectionMerge } from "../var-collection"
 export function varCollectionFromRuleExp(rule: RuleExp): VarCollection {
   switch (rule["@kind"]) {
     case "Case": {
-      return varCollectionMerge([
-        varCollectionFromExp(rule.from),
-        varCollectionFromExp(rule.to),
-      ])
+      return rule.guard !== undefined
+        ? varCollectionMerge([
+            varCollectionFromExp(rule.from),
+            varCollectionFromExp(rule.to),
+            varCollectionFromExp(rule.guard),
+          ])
+        : varCollectionMerge([
+            varCollectionFromExp(rule.from),
+            varCollectionFromExp(rule.to),
+          ])
     }
 
     case "List": {

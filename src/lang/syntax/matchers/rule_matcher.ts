@@ -12,6 +12,13 @@ export function rule_matcher(tree: pt.Tree): RuleExp {
         undefined,
         span,
       ),
+    "rule:case_guard": ({ from, to, guard }, { span }) =>
+      RuleExps.Case(
+        matchers.exp_matcher(from),
+        matchers.exp_matcher(to),
+        matchers.exp_matcher(guard),
+        span,
+      ),
   })(tree)
 }
 
