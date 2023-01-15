@@ -1,10 +1,20 @@
 # hyperrewrite
 
-[hyperrewrite] If a constraint already in the result, a hyperrule should fail.
+`equal` for `Value`
+
+`unify` use `equal` at the end
+
+`hyperrewriteOneStep` if values are already in the result, the hyperrule should fail
+
+- use `equal` for `Value`
 
 support `=>+` or `+>` syntax to keep all the values in pattern
 
 `hypermatch` -- generating permutation group by group
+
+- extract `permutationOfPatterns`
+
+save `permutation` of (dedupped) `patterns` in `Rules.Case`
 
 # clp
 
