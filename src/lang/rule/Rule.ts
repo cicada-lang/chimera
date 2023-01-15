@@ -1,4 +1,5 @@
 import type { Env } from "../env"
+import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 
@@ -11,9 +12,16 @@ export type Case = {
   env: Env
   from: Value
   to: Value
+  guard: Exp | undefined
 }
 
-export function Case(mod: Mod, env: Env, from: Value, to: Value): Case {
+export function Case(
+  mod: Mod,
+  env: Env,
+  from: Value,
+  to: Value,
+  guard: Exp | undefined,
+): Case {
   return {
     "@type": "Rule",
     "@kind": "Case",
@@ -21,6 +29,7 @@ export function Case(mod: Mod, env: Env, from: Value, to: Value): Case {
     env,
     from,
     to,
+    guard,
   }
 }
 

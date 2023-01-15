@@ -13,6 +13,7 @@ export function evaluateRuleExp(mod: Mod, env: Env, rule: RuleExp): Rule {
         env,
         quote(mod, env, rule.from),
         quote(mod, env, rule.to),
+        rule.guard,
       )
     }
 

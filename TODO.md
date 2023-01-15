@@ -1,6 +1,5 @@
 # guard
 
-`Rules.Case` -- has optional `guard`
 `Rules.Case` -- parse `guard`
 `rewriteOnePlace` -- support `guard`
 

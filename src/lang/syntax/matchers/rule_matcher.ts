@@ -6,7 +6,12 @@ import * as RuleExps from "../../rule-exp"
 export function rule_matcher(tree: pt.Tree): RuleExp {
   return pt.matcher<RuleExp>({
     "rule:case": ({ from, to }, { span }) =>
-      RuleExps.Case(matchers.exp_matcher(from), matchers.exp_matcher(to), span),
+      RuleExps.Case(
+        matchers.exp_matcher(from),
+        matchers.exp_matcher(to),
+        undefined,
+        span,
+      ),
   })(tree)
 }
 

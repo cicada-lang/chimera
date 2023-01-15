@@ -8,15 +8,22 @@ export type Case = {
   "@kind": "Case"
   from: Exp
   to: Exp
+  guard: Exp | undefined
   span: Span
 }
 
-export function Case(from: Exp, to: Exp, span: Span): Case {
+export function Case(
+  from: Exp,
+  to: Exp,
+  guard: Exp | undefined,
+  span: Span,
+): Case {
   return {
     "@type": "RuleExp",
     "@kind": "Case",
     from,
     to,
+    guard,
     span,
   }
 }
