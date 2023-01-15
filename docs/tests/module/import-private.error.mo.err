@@ -1,3 +1,1 @@
-[Import.prepare]
-  can not import private name: Hiya
-  imported path: ./example.mo
+mod.ensureRelationOfThisMod is not a function

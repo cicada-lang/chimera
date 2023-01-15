@@ -4,6 +4,7 @@ import { formatGoalExp, GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
+import { Relation } from "../value"
 import {
   varCollectionFromExps,
   varCollectionFromGoalExp,
@@ -23,7 +24,7 @@ export class Clause extends Stmt {
   }
 
   prepareSync(mod: Mod): void {
-    mod.ensureRelationOfThisMod(this.relationName)
+    ensureRelationOfThisMod(mod, this.relationName)
   }
 
   executeSync(mod: Mod): void {
@@ -52,4 +53,18 @@ export class Clause extends Stmt {
       this.name
     } {\n${indent(goals.join("\n"))}\n}`
   }
+}
+
+function ensureRelationOfThisMod(mod: Mod, name: string): void {
+  const value = mod.find(name)
+
+  if (
+    value !== undefined &&
+    value["@kind"] === "Relation" &&
+    value.mod === mod
+  ) {
+    return
+  }
+
+  mod.define(name, Relation(mod, name, undefined, []))
 }

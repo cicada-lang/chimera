@@ -8,8 +8,8 @@ import type { Exp } from "../exp"
 import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
+import type { Relation, Value } from "../value"
 import * as Values from "../value"
-import { Relation, Value } from "../value"
 
 export interface ModOptions {
   url: URL
@@ -119,20 +119,6 @@ export class Mod {
     }
 
     this.env = envExtend(this.env, name, value)
-  }
-
-  ensureRelationOfThisMod(name: string): void {
-    const value = this.find(name)
-
-    if (
-      value !== undefined &&
-      value["@kind"] === "Relation" &&
-      value.mod === this
-    ) {
-      return
-    }
-
-    this.define(name, Relation(this, name, undefined, []))
   }
 
   defineClause(
