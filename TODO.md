@@ -1,5 +1,11 @@
 # hyperrewrite
 
+rename `hypermatch` to `hypermatchOrdered`
+
+`hypermatch` -- orderless
+
+support `=>+` or `+>` syntax to keep all the values in pattern
+
 [hyperrewrite] If a constraint already in the result, a hyperrule should fail.
 
 # clp

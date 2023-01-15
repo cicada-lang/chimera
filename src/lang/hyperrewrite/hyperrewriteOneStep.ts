@@ -5,7 +5,7 @@ import { refresh } from "../refresh"
 import { guardReject } from "../rewrite"
 import type { Substitution } from "../substitution"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
-import type { Value } from "../value"
+import { Value } from "../value"
 
 export function hyperrewriteOneStep(
   mod: Mod,

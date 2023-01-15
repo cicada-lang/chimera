@@ -1,0 +1,6 @@
+[LtEq(1, 3), LtEq(1, 2), LtEq(2, 3), LtEq(1, 3)]
+[ 
+  [LtEq(1, 2), LtEq(2, 3)],
+  [LtEq(1, 2), LtEq(2, 3), LtEq(1, 3)],
+  [LtEq(1, 3), LtEq(1, 2), LtEq(2, 3), LtEq(1, 3)]
+]
