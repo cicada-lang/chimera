@@ -17,10 +17,12 @@ export function applyCurried(
     ])
   }
 
-  const result = doAp(mod, env, target.target, [...target.args, ...args])
+  const takenArgs = [...target.args, ...args].slice(0, target.arity)
+  const remainArgs = args.slice(target.arity - target.args.length)
 
+  const result = doAp(mod, env, target.target, takenArgs)
   if (target.arity < target.args.length + args.length) {
-    return doAp(mod, env, result, args.slice(target.arity - target.args.length))
+    return doAp(mod, env, result, remainArgs)
   }
 
   return result

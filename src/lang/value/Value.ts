@@ -313,14 +313,12 @@ export type Primitive = {
   name: string
   arity: number
   nativeFn: NativeFn
-  curried: Array<Value>
 }
 
 export function Primitive(
   name: string,
   arity: number,
   nativeFn: NativeFn,
-  curried: Array<Value>,
 ): Primitive {
   return {
     "@type": "Value",
@@ -328,7 +326,6 @@ export function Primitive(
     name,
     arity,
     nativeFn,
-    curried,
   }
 }
 

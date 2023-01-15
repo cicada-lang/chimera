@@ -24,6 +24,6 @@ export class GlobalStore {
   }
 
   primitive(name: string, arity: number, nativeFn: Values.NativeFn): void {
-    this.define(name, Values.Primitive(name, arity, nativeFn, []))
+    this.define(name, Values.Primitive(name, arity, nativeFn))
   }
 }

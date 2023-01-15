@@ -3,6 +3,7 @@ import * as Errors from "../errors"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 import { formatValue } from "../value"
+import { applyCurried } from "./applyCurried"
 import { applyFn } from "./applyFn"
 import { applyHyperrule } from "./applyHyperrule"
 import { applyPrimitive } from "./applyPrimitive"
@@ -30,6 +31,10 @@ export function doAp(
 
   if (target["@kind"] === "Primitive") {
     return applyPrimitive(mod, env, target, args)
+  }
+
+  if (target["@kind"] === "Curried") {
+    return applyCurried(mod, env, target, args)
   }
 
   if (target["@kind"] === "Relation") {

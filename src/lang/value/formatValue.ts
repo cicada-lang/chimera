@@ -102,10 +102,7 @@ export function formatValue(value: Value): string {
     }
 
     case "Primitive": {
-      const curried = value.curried
-        .map((value) => formatValue(value))
-        .join(", ")
-      return `$Primitive(${value.name}, ${value.arity}, [${curried}])`
+      return `$Primitive(${value.name}, ${value.arity})`
     }
 
     case "Curried": {
