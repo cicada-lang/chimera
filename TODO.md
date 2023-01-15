@@ -1,7 +1,5 @@
 # hyperrewrite
 
-`unify` use `equal` at the end
-
 `hyperrewriteOneStep` if values are already in the result, the hyperrule should fail
 
 - use `equal` for `Value`

@@ -1,3 +1,4 @@
+import { equal } from "../equal"
 import type { Mod } from "../mod"
 import {
   Substitution,
@@ -156,7 +157,11 @@ export function unify(
     return substitution
   }
 
-  return undefined
+  if (equal(left, right)) {
+    return substitution
+  } else {
+    return undefined
+  }
 }
 
 function objektAddEtc(
