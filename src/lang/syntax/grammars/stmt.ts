@@ -46,6 +46,12 @@ export const stmt = {
       { path: { $pattern: ["string"] } },
     ],
     "stmt:export": ['"export"', { stmt: "stmt" }],
+    "stmt:export_names": [
+      '"export"',
+      '"{"',
+      { names: "variable_names" },
+      '"}"',
+    ],
     "stmt:rule": [
       '"rule"',
       { name: "rule_name" },

@@ -1,11 +1,13 @@
-export clause Lookup(map, name, found)
+export { Lookup }
+
+clause Lookup(map, name, found)
 ------------------------- here {
   map = [[key, value] | _rest]
   key = name
   found = value
 }
 
-export clause Lookup(map, name, found)
+clause Lookup(map, name, found)
 ------------------------------- there {
   map = [[key, _value] | rest]
   key != name

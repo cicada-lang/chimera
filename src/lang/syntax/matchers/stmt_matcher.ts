@@ -50,6 +50,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       new Stmts.ImportAll(pt.trim_boundary(pt.str(path), 1), span),
     "stmt:export": ({ stmt }, { span }) =>
       new Stmts.Export(matchers.stmt_matcher(stmt), span),
+    "stmt:export_names": ({ names }, { span }) =>
+      new Stmts.ExportNames(matchers.variable_names_matcher(names), span),
     "stmt:rule": ({ name, rules }, { span }) =>
       new Stmts.Rule(pt.str(name), matchers.rules_matcher(rules), span),
     "stmt:hyperrule": ({ name, hyperrules }, { span }) =>

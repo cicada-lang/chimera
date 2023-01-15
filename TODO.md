@@ -1,9 +1,3 @@
-# module
-
-`Stmts.ExportNames` -- syntax
-
-# primitive
-
 `Relation` has `arity`
 
 - which must be optional because there are empty `Relation`
