@@ -8,7 +8,7 @@ import type { Exp } from "../exp"
 import { useGlobals } from "../globals"
 import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
-import type { Relation, Value } from "../value"
+import type { Value } from "../value"
 import * as Values from "../value"
 
 export interface ModOptions {
@@ -127,7 +127,15 @@ export class Mod {
     exps: Array<Exp>,
     goals: Array<GoalExp> = [],
   ): void {
-    const relation = this.findRelationOrFail(name)
+    const relation = this.find(name)
+
+    if (relation === undefined) {
+      throw new Errors.LangError(
+        `[defineClause] undefined relation name: ${name}`,
+      )
+    }
+
+    Values.assertValue(relation, "Relation", { who: "defineClause" })
 
     if (relation.arity !== undefined) {
       if (exps.length !== relation.arity) {
@@ -160,19 +168,5 @@ export class Mod {
     relation.clauses.push(clause)
 
     this.define(relation.name, relation)
-  }
-
-  private findRelationOrFail(name: string): Relation {
-    const relation = this.find(name)
-
-    if (relation === undefined) {
-      throw new Errors.LangError(
-        `[Mod.findRelationOrFail] undefined relation name: ${name}`,
-      )
-    }
-
-    Values.assertValue(relation, "Relation", { who: "findRelationOrFail" })
-
-    return relation
   }
 }
