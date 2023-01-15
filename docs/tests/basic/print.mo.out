@@ -2,3 +2,15 @@
 "a"
 ["a", "b", "c"]
 { "a": 1, "b": 2, "c": 3 }
+$Primitive(stringAppend, 2)
+$Curried($Primitive(stringAppend, 2), 2, ["abc"])
+() => {}
+(x) => {
+  return x
+}
+(x, y) => {
+  return [x, y]
+}
+$Curried((x, y) => {
+  return [x, y]
+}, 2, [1])

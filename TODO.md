@@ -1,5 +1,3 @@
-`applyFn` -- use `Values.Curried`
-
 `applyRelation` -- use `Values.Curried`
 
 # guard

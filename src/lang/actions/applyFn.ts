@@ -1,5 +1,5 @@
 import { doAp } from "../actions"
-import { Env, envEmpty, envMerge } from "../env"
+import { Env, envMerge } from "../env"
 import * as Errors from "../errors"
 import { match } from "../match"
 import type { Mod } from "../mod"
@@ -21,27 +21,20 @@ export function applyFn(
   args: Array<Value>,
 ): Value {
   const mod = target.mod.copy()
-
   mod.env = envMerge(mod.env, target.env)
-
   matchPatterns(mod, target.patterns, args)
 
   if (target.patterns.length > args.length) {
-    return Values.Fn(
-      mod,
-      envEmpty(),
-      target.patterns.slice(args.length),
-      target.stmts,
-    )
+    return Values.Curried(target, target.patterns.length, args)
   }
 
-  const value = catchReturnValue(mod, target.stmts)
-
+  const remainArgs = args.slice(target.patterns.length)
+  const result = catchReturnValue(mod, target.stmts)
   if (target.patterns.length < args.length) {
-    return doAp(mod, env, value, args.slice(target.patterns.length))
+    return doAp(mod, env, result, remainArgs)
   }
 
-  return value
+  return result
 }
 
 function matchPatterns(
