@@ -1,7 +1,7 @@
 ---
 title: Change project name to Mo
 author: Xie Yuheng
-date: 2023-01-14
+date: 2023-01-15
 ---
 
 The project name was "whereabouts".

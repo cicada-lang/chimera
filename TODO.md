@@ -1,7 +1,5 @@
 # module
 
-[diary] 2023-01-15-explicit-export-keyword.md
-
 explicit `export` keyword
 
 - private name by default
