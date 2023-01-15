@@ -126,7 +126,7 @@ export class Mod {
       return
     }
 
-    this.define(name, Relation(this, name, []))
+    this.define(name, Relation(this, name, undefined, []))
   }
 
   defineClause(
@@ -136,6 +136,21 @@ export class Mod {
     goals: Array<GoalExp> = [],
   ): void {
     const relation = this.findRelationOrFail(name)
+
+    if (relation.arity !== undefined) {
+      if (exps.length !== relation.arity) {
+        throw new Errors.LangError(
+          [
+            `[Mod.defineClause] arity mismatch`,
+            `  name: ${name}`,
+            `  relation.arity: ${relation.arity}`,
+            `  exps.length: ${exps.length}`,
+          ].join("\n"),
+        )
+      }
+    }
+
+    relation.arity = exps.length
 
     const clause = Clause(
       clauseName || relation.clauses.length.toString(),

@@ -172,12 +172,14 @@ export type Relation = {
   "@kind": "Relation"
   mod: Mod
   name: string
+  arity: number | undefined
   clauses: Array<Clause>
 }
 
 export function Relation(
   mod: Mod,
   name: string,
+  arity: number | undefined,
   clauses: Array<Clause>,
 ): Relation {
   return {
@@ -185,6 +187,7 @@ export function Relation(
     "@kind": "Relation",
     mod,
     name,
+    arity,
     clauses,
   }
 }

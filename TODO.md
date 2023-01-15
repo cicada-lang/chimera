@@ -1,6 +1,4 @@
-`Relation` has `arity`
-
-- which must be optional because there are empty `Relation`
+[refactor] move `defineClause` to `Stmts.Clause`
 
 applying `Relation` support currying
 

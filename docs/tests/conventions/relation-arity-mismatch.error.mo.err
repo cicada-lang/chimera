@@ -1,0 +1,4 @@
+[Mod.defineClause] arity mismatch
+  name: F
+  relation.arity: 1
+  exps.length: 2
