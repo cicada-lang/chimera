@@ -74,7 +74,8 @@ export function refresh(
     case "Hyperrule":
     case "Fn":
     case "WithConstraints":
-    case "Primitive": {
+    case "Primitive":
+    case "Curried": {
       return value
     }
   }

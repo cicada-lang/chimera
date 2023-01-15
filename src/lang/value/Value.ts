@@ -24,6 +24,7 @@ export type Value =
   | Fn
   | WithConstraints
   | Primitive
+  | Curried
 
 export type PatternVar = {
   "@type": "Value"
@@ -328,5 +329,27 @@ export function Primitive(
     arity,
     nativeFn,
     curried,
+  }
+}
+
+export type Curried = {
+  "@type": "Value"
+  "@kind": "Curried"
+  target: Value
+  arity: number
+  args: Array<Value>
+}
+
+export function Curried(
+  target: Value,
+  arity: number,
+  args: Array<Value>,
+): Curried {
+  return {
+    "@type": "Value",
+    "@kind": "Curried",
+    target,
+    arity,
+    args,
   }
 }

@@ -77,5 +77,9 @@ export function substitutionContainsPatternVar(
     case "Primitive": {
       return false
     }
+
+    case "Curried": {
+      return false
+    }
   }
 }

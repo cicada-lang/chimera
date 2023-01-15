@@ -1,4 +1,6 @@
-applying `Relation` support currying
+`applyCurried`
+
+`applyRelation` support currying
 
 # guard
 
