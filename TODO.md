@@ -1,5 +1,3 @@
-[refactor] move `defineClause` to `Stmts.Clause`
-
 applying `Relation` support currying
 
 # guard

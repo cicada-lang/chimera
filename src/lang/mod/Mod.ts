@@ -1,15 +1,10 @@
 import type { Loader } from "../../loader"
-import { Clause } from "../clause"
 import type { Env } from "../env"
 import { envEmpty, envEntries, envExtend, envLookupValue } from "../env"
 import * as Errors from "../errors"
-import { evaluateGoalExp, quote } from "../evaluate"
-import type { Exp } from "../exp"
 import { useGlobals } from "../globals"
-import type { GoalExp } from "../goal-exp"
 import type { Stmt } from "../stmt"
 import type { Value } from "../value"
-import * as Values from "../value"
 
 export interface ModOptions {
   url: URL
@@ -119,54 +114,5 @@ export class Mod {
     }
 
     this.env = envExtend(this.env, name, value)
-  }
-
-  defineClause(
-    name: string,
-    clauseName: string | undefined,
-    exps: Array<Exp>,
-    goals: Array<GoalExp> = [],
-  ): void {
-    const relation = this.find(name)
-
-    if (relation === undefined) {
-      throw new Errors.LangError(
-        `[defineClause] undefined relation name: ${name}`,
-      )
-    }
-
-    Values.assertValue(relation, "Relation", { who: "defineClause" })
-
-    if (relation.arity !== undefined) {
-      if (exps.length !== relation.arity) {
-        throw new Errors.LangError(
-          [
-            `[Mod.defineClause] arity mismatch`,
-            `  name: ${name}`,
-            `  relation.arity: ${relation.arity}`,
-            `  exps.length: ${exps.length}`,
-          ].join("\n"),
-        )
-      }
-    }
-
-    relation.arity = exps.length
-
-    const clause = Clause(
-      clauseName || relation.clauses.length.toString(),
-      exps.map((exp) => quote(this, this.env, exp)),
-      goals.map((goal) => evaluateGoalExp(this, this.env, goal)),
-    )
-
-    /**
-
-       NOTE We do side-effect on `relation` in `env`,
-       TODO Can we still copy `Mod` safely -- need for `Fn`'s `Mod`.
-
-     **/
-
-    relation.clauses.push(clause)
-
-    this.define(relation.name, relation)
   }
 }

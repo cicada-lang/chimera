@@ -1,9 +1,13 @@
 import { indent } from "../../utils/indent"
+import { Clause as createClause } from "../clause"
+import * as Errors from "../errors"
+import { evaluateGoalExp, quote } from "../evaluate"
 import { Exp, formatArgs } from "../exp"
 import { formatGoalExp, GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
+import * as Values from "../value"
 import { Relation } from "../value"
 import {
   varCollectionFromExps,
@@ -35,7 +39,7 @@ export class Clause extends Stmt {
       ]),
     )
 
-    mod.defineClause(this.relationName, this.name, this.exps, this.goals)
+    defineClause(mod, this.relationName, this.name, this.exps, this.goals)
   }
 
   format(): string {
@@ -67,4 +71,54 @@ function ensureRelationOfThisMod(mod: Mod, name: string): void {
   }
 
   mod.define(name, Relation(mod, name, undefined, []))
+}
+
+function defineClause(
+  mod: Mod,
+  name: string,
+  clauseName: string | undefined,
+  exps: Array<Exp>,
+  goals: Array<GoalExp> = [],
+): void {
+  const relation = mod.find(name)
+
+  if (relation === undefined) {
+    throw new Errors.LangError(
+      `[defineClause] undefined relation name: ${name}`,
+    )
+  }
+
+  Values.assertValue(relation, "Relation", { who: "defineClause" })
+
+  if (relation.arity !== undefined) {
+    if (exps.length !== relation.arity) {
+      throw new Errors.LangError(
+        [
+          `[Mod.defineClause] arity mismatch`,
+          `  name: ${name}`,
+          `  relation.arity: ${relation.arity}`,
+          `  exps.length: ${exps.length}`,
+        ].join("\n"),
+      )
+    }
+  }
+
+  relation.arity = exps.length
+
+  const clause = createClause(
+    clauseName || relation.clauses.length.toString(),
+    exps.map((exp) => quote(mod, mod.env, exp)),
+    goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
+  )
+
+  /**
+
+     NOTE We do side-effect on `relation` in `env`,
+     TODO Can we still copy `Mod` safely -- need for `Fn`'s `Mod`.
+
+  **/
+
+  relation.clauses.push(clause)
+
+  mod.define(relation.name, relation)
 }
