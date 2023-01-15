@@ -1,17 +1,8 @@
-I found syntax error in code:
+[evaluateGoal] Apply fail, undefined target name: Hiya
 
  1 |import * from "./example.mo"
  2 |
  3 |print find q {
- 4 |  clause Hiya(q)
+ 4 |  Hiya(q)
  5 |}
  6 |
-
-Found the identifier "Hiya" in [54, 58], while expecting:
- "=":
-     goal:equal@8 -> (left: exp):operator@9 > "=" (right: exp) 
- "!":
-     goal:not_equal@8 -> (left: exp):operator@9 > "!" "=" (right: exp) 
- "(":
-     args:args@9 -> > "(" (args: zero_or_more) (last_arg: arg) optional ")" 
- and so on ...

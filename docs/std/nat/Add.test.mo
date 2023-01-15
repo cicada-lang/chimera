@@ -1,4 +1,5 @@
-import { Add, Add1, Nat, Zero } from "Add.mo"
+import { Zero, Add1, Nat } from "Nat.mo"
+import { Add } from "Add.mo"
 
 // trace steps 5 {
 //   Add1(add1(zero()), _x)

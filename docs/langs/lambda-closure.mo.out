@@ -10,3 +10,11 @@
   ap(var(_.0), ap(var(_.1), var(_.2))) with { String(_.2) String(_.1) String(_.0) },
   ap(ap(var(_.0), var(_.1)), var(_.2)) with { String(_.2) String(_.1) String(_.0) }
 ]
+[ 
+  ap(fn("x", fn("y", var("x"))), fn("z", var("z"))),
+  ap(fn("x", ap(var("x"), fn("y", var("x")))), fn("z", var("z"))),
+  ap(
+    fn("x", ap(fn(_.0, var(_.0)), fn("y", var("x")))),
+    fn("z", var("z")),
+  )
+]

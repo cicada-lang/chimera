@@ -1,4 +1,4 @@
-clause Car(p, a)
+export clause Car(p, a)
 ---------- {
   [a | _d] = p
 }
@@ -22,7 +22,7 @@ print find r {
   [x | y] = r
 }
 
-clause Cdr(p, d)
+export clause Cdr(p, d)
 ---------- {
   [_a | d] = p
 }
@@ -58,7 +58,7 @@ print find l {
 //   [a | d] = p
 // }
 
-clause Cons(a, d, p)
+export clause Cons(a, d, p)
 --------------- {
   Car(p, a)
   Cdr(p, d)
@@ -101,7 +101,7 @@ print find l {
   "o" = y
 }
 
-clause Null(x)
+export clause Null(x)
 ---------- {
   [] = x
 }

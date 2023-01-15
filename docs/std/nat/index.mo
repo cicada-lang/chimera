@@ -1,4 +1,4 @@
-import * from "Nat.mo"
-import * from "Add.mo"
-import * from "Mul.mo"
-import * from "numbers.mo"
+export import * from "Nat.mo"
+export import * from "Add.mo"
+export import * from "Mul.mo"
+export import * from "numbers.mo"

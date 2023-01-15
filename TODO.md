@@ -1,8 +1,6 @@
 # module
 
-explicit `export` keyword
-
-- private name by default
+`Stmts.ExportNames` -- for `clause`
 
 # primitive
 

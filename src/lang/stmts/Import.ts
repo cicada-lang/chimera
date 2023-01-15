@@ -33,11 +33,11 @@ export class Import extends Stmt {
   async prepare(mod: Mod): Promise<void> {
     const importedMod = await this.import(mod)
     for (const { name, alias } of this.bindings) {
-      if (importedMod.privateNames.has(name)) {
+      if (!importedMod.exported.has(name)) {
         throw new Errors.LangError(
           [
             `[Import.prepare]`,
-            `  can not import provide name: ${name}`,
+            `  can not import private name: ${name}`,
             `  imported path: ${this.path}`,
           ].join("\n"),
         )

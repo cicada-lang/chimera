@@ -2,32 +2,36 @@ import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
 
-export class Private extends Stmt {
+export class Export extends Stmt {
   constructor(public stmt: Stmt, public span: Span) {
     super()
   }
 
   async prepare(mod: Mod): Promise<void> {
+    mod.exportDepth++
     await this.stmt.prepare(mod)
+    mod.exportDepth--
   }
 
   prepareSync(mod: Mod): void {
+    mod.exportDepth++
     this.stmt.prepareSync(mod)
+    mod.exportDepth--
   }
 
   async execute(mod: Mod): Promise<void> {
-    mod.privateDepth++
+    mod.exportDepth++
     await this.stmt.execute(mod)
-    mod.privateDepth--
+    mod.exportDepth--
   }
 
   executeSync(mod: Mod): void {
-    mod.privateDepth++
+    mod.exportDepth++
     this.stmt.executeSync(mod)
-    mod.privateDepth--
+    mod.exportDepth--
   }
 
   format(): string {
-    return `private ${this.stmt.format()}`
+    return `export ${this.stmt.format()}`
   }
 }

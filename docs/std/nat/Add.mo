@@ -1,8 +1,8 @@
 import { Zero, Add1, Nat } from "Nat.mo"
 
-clause Add(zero(), y, y)
+export clause Add(zero(), y, y)
 
-clause Add(add1(prev), y, add1(res))
+export clause Add(add1(prev), y, add1(res))
 --------------------------- {
   Add(prev, y, res)
 }

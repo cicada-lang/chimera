@@ -1,8 +1,0 @@
-[ 
-  ap(fn("x", fn("y", var("x"))), fn("z", var("z"))),
-  ap(fn("x", ap(var("x"), fn("y", var("x")))), fn("z", var("z"))),
-  ap(
-    fn("x", ap(fn(_.0, var(_.0)), fn("y", var("x")))),
-    fn("z", var("z")),
-  )
-]

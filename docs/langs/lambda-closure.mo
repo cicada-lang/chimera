@@ -2,6 +2,10 @@ clause Exp(var(name)) -- { String(name) }
 clause Exp(fn(name, ret)) -- { String(name) Exp(ret) }
 clause Exp(ap(target, arg)) -- { Exp(target) Exp(arg) }
 
+print find exp limit 10 {
+  Exp(exp)
+}
+
 clause Value(closure(name, ret, env)) -- {
   String(name)
   Exp(ret)
@@ -38,4 +42,11 @@ clause Eval(env, ap(target, arg), value)
   Eval(env, target, closure(name, ret, env2))
   Eval(env, arg, argValue)
   Eval([[name, argValue] | env2], ret, value)
+}
+
+print find exp limit 3 {
+  value = closure("y", var("x"), [
+    ["x", closure("z", var("z"), [])]
+  ])
+  Eval([], exp, value)
 }

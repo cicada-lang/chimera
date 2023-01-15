@@ -1,6 +1,6 @@
 import { A } from "./A.mo"
 
-clause AB(a, b)
+export clause AB(a, b)
 ---------- {
   A(a)
   b = "b"

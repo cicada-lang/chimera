@@ -68,7 +68,7 @@ print find [b, x, y, r, c] {
   FullAdder(b, x, y, r, c)
 }
 
-clause Positive(n)
+export clause Positive(n)
 ---------------- {
   [_a | _d] = n
 }
@@ -89,7 +89,7 @@ print find r {
   Positive(r)
 }
 
-clause GreaterThanOne(n)
+export clause GreaterThanOne(n)
 --------------------- {
   [_a, _ad | _dd] = n
 }
@@ -162,7 +162,7 @@ print find [x, y] {
   Adder(0, x, y, [1, 0, 1])
 }
 
-clause Add(x, y, r)
+export clause Add(x, y, r)
 --------------------- {
   Adder(0, x, y, r)
 }

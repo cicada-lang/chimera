@@ -1,1 +1,1 @@
-import * from "Lookup.mo"
+export import * from "Lookup.mo"

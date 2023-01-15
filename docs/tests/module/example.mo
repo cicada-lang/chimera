@@ -1,5 +1,5 @@
-clause Hello("Hello, World!")
+export clause Hello("Hello, World!")
 
-clause Hi("Hi there!")
+export clause Hi("Hi there!")
 
-private clause Hiya("Hiya!")
+clause Hiya("Hiya!")

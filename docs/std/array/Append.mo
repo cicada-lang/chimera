@@ -1,4 +1,4 @@
-clause Append([], l, l)
-clause Append([a | d], l, [a | r]) -- {
+export clause Append([], l, l)
+export clause Append([a | d], l, [a | r]) -- {
   Append(d, l, r)
 }

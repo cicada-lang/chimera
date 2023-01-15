@@ -45,7 +45,7 @@ export const stmt = {
       '"from"',
       { path: { $pattern: ["string"] } },
     ],
-    "stmt:private": ['"private"', { stmt: "stmt" }],
+    "stmt:export": ['"export"', { stmt: "stmt" }],
     "stmt:rule": [
       '"rule"',
       { name: "rule_name" },

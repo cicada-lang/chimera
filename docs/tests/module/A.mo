@@ -1,4 +1,4 @@
-clause A(a)
+export clause A(a)
 ------ {
   a = "a"
 }

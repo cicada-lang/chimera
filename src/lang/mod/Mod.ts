@@ -26,8 +26,8 @@ export class Mod {
   initialized = false
   variableCount = 0
   env: Env = envEmpty()
-  privateNames: Set<string> = new Set()
-  privateDepth: number = 0
+  exported: Set<string> = new Set()
+  exportDepth: number = 0
   outputs: Map<number, string> = new Map()
   stmts: Array<Stmt> = []
   imported: Array<URL> = []
@@ -39,7 +39,7 @@ export class Mod {
     mod.initialized = this.initialized
     mod.variableCount = this.variableCount
     mod.env = this.env
-    mod.privateNames = new Set(this.privateNames)
+    mod.exported = new Set(this.exported)
     mod.outputs = new Map(this.outputs)
     mod.stmts = [...this.stmts]
     mod.imported = [...this.imported]
@@ -113,8 +113,8 @@ export class Mod {
   }
 
   define(name: string, value: Value): void {
-    if (this.privateDepth > 0) {
-      this.privateNames.add(name)
+    if (this.exportDepth > 0) {
+      this.exported.add(name)
     }
 
     this.env = envExtend(this.env, name, value)

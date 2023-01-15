@@ -48,8 +48,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       ),
     "stmt:import_all": ({ path }, { span }) =>
       new Stmts.ImportAll(pt.trim_boundary(pt.str(path), 1), span),
-    "stmt:private": ({ stmt }, { span }) =>
-      new Stmts.Private(matchers.stmt_matcher(stmt), span),
+    "stmt:export": ({ stmt }, { span }) =>
+      new Stmts.Export(matchers.stmt_matcher(stmt), span),
     "stmt:rule": ({ name, rules }, { span }) =>
       new Stmts.Rule(pt.str(name), matchers.rules_matcher(rules), span),
     "stmt:hyperrule": ({ name, hyperrules }, { span }) =>

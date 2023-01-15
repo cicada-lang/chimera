@@ -1,7 +1,7 @@
 function f() {
   print "hi"
   let x = 1
-  private let y = 2
+  export let y = 2
   compute x
 
   function f(x, y) {

@@ -1,1 +1,1 @@
-import * from "Append.mo"
+export import * from "Append.mo"

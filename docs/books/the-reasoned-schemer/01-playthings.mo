@@ -1,6 +1,6 @@
-clause Succeed()
+export clause Succeed()
 
-clause Fail()
+export clause Fail()
 -------- {
   1 = 2
 }
