@@ -6,6 +6,7 @@ import { guardReject } from "../rewrite"
 import type { Substitution } from "../substitution"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
+import { permutation } from "./permutation"
 
 export function hyperrewriteOneStep(
   mod: Mod,
@@ -13,10 +14,14 @@ export function hyperrewriteOneStep(
   values: Array<Value>,
 ): Array<Value> | undefined {
   switch (hyperrule["@kind"]) {
-    case "Simplify": {
+    case "Simplify":
+    case "Propagate": {
       const renames = new Map()
       const from = hyperrule.from.map((value) => refresh(mod, renames, value))
-      const result = hypermatch(mod, substitutionEmpty(), from, values)
+      const result =
+        hyperrule["@kind"] === "Simplify"
+          ? simplify(mod, substitutionEmpty(), from, values)
+          : simplify(mod, substitutionEmpty(), from, values)
 
       if (result === undefined) {
         return undefined
@@ -42,10 +47,6 @@ export function hyperrewriteOneStep(
       return [...result.values, ...to]
     }
 
-    case "Propagate": {
-      throw new Error("TODO")
-    }
-
     case "List": {
       for (const subHyperrule of hyperrule.hyperrules) {
         const results = hyperrewriteOneStep(mod, subHyperrule, values)
@@ -64,19 +65,14 @@ export function hyperrewriteOneStep(
 // - get the permutation of each group.
 // - get the cartesian product of the permutations.
 
-function hypermatch(
+function simplify(
   mod: Mod,
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
   for (const permutedValues of permutation(values)) {
-    const result = hypermatchOrdered(
-      mod,
-      substitution,
-      patterns,
-      permutedValues,
-    )
+    const result = simplifyOrdered(mod, substitution, patterns, permutedValues)
     if (result !== undefined) {
       return result
     }
@@ -85,7 +81,7 @@ function hypermatch(
   return undefined
 }
 
-function hypermatchOrdered(
+function simplifyOrdered(
   mod: Mod,
   substitution: Substitution,
   patterns: Array<Value>,
@@ -103,7 +99,7 @@ function hypermatchOrdered(
   for (const [index, value] of values.entries()) {
     const newSubstitution = match(mod, substitution, pattern, value)
     if (newSubstitution !== undefined) {
-      return hypermatchOrdered(mod, newSubstitution, restPatterns, [
+      return simplifyOrdered(mod, newSubstitution, restPatterns, [
         ...values.slice(0, index),
         ...values.slice(index + 1),
       ])
@@ -111,36 +107,4 @@ function hypermatchOrdered(
   }
 
   return undefined
-}
-
-// NOTE Code taken from: https://stackoverflow.com/a/37580979
-// references:
-// - http://homepage.math.uiowa.edu/~goodman/22m150.dir/2007/Permutation%20Generation%20Methods.pdf
-// - http://homepage.math.uiowa.edu/~goodman/algebrabook.dir/algebrabook.html
-
-function permutation<A>(input: Array<A>): Array<Array<A>> {
-  input = [...input]
-  let length = input.length
-  let result = [input.slice()]
-  let c = new Array(length).fill(0)
-  let i = 1
-  let k
-  let p
-
-  while (i < length) {
-    if (c[i] < i) {
-      k = i % 2 && c[i]
-      p = input[i]
-      input[i] = input[k]
-      input[k] = p
-      ++c[i]
-      i = 1
-      result.push(input.slice())
-    } else {
-      c[i] = 0
-      ++i
-    }
-  }
-
-  return result
 }

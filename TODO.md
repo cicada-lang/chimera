@@ -1,4 +1,10 @@
+[hyperrewrite] extract module `simplify`
+[hyperrewrite] extract module `propagate`
+
 [hyperrewrite] `hyperrewriteOneStep` -- handles `Hyperrule.Propagate`
+
+[hyperrewrite] `propagate` -- keep the input
+[hyperrewrite] `propagate` -- should not apply one rule to the same arguments twice
 
 [hyperrewrite] [performance] `hypermatch` -- generating permutation group by group
 
