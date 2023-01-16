@@ -2,9 +2,7 @@
 
 [hyperrewrite] `propagate` -- should not apply one rule to the same arguments twice
 
-[hyperrewrite] [performance] `hypermatch` -- generating permutation group by group
-
-- extract `permutationOfValues`
+[hyperrewrite] [performance] `permutationOfValues` -- generating permutation group by group
 
 [rewrite] simplify `Rule` to be list of cases (no `Rules.List`) -- just like `Relation`
 

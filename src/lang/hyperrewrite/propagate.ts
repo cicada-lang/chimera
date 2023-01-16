@@ -2,7 +2,7 @@ import { match } from "../match"
 import type { Mod } from "../mod"
 import type { Substitution } from "../substitution"
 import type { Value } from "../value"
-import { permutation } from "./permutation"
+import { permutationOfValues } from "./permutationOfValues"
 
 // TODO We have labelled edge, thus we should:
 // - group by term name (label).
@@ -15,7 +15,7 @@ export function propagate(
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
-  for (const permutedValues of permutation(values)) {
+  for (const permutedValues of permutationOfValues(values)) {
     const result = propagateOrdered(mod, substitution, patterns, permutedValues)
     if (result !== undefined) {
       return result
