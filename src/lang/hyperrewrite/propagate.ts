@@ -10,7 +10,7 @@ export function propagate(
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
-  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
 ): undefined | { substitution: Substitution } {
   for (const permutedValues of permutationOfValues(values)) {
     const result = propagateOrdered(
@@ -18,7 +18,7 @@ export function propagate(
       substitution,
       patterns,
       permutedValues,
-      occurredPropagations,
+      appliedPropagations,
     )
     if (result !== undefined) {
       return result
@@ -33,7 +33,7 @@ function propagateOrdered(
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
-  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
 ): undefined | { substitution: Substitution } {
   if (patterns.length === 0) {
     return {
@@ -51,7 +51,7 @@ function propagateOrdered(
         newSubstitution,
         restPatterns,
         [...values.slice(0, index), ...values.slice(index + 1)],
-        occurredPropagations,
+        appliedPropagations,
       )
     }
   }

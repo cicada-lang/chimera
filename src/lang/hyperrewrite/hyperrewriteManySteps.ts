@@ -7,7 +7,7 @@ export function hyperrewriteManySteps(
   mod: Mod,
   hyperrule: Hyperrule,
   values: Array<Value>,
-  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
   options: { limit: number },
 ): Array<Array<Value>> {
   const results = [values]
@@ -16,7 +16,7 @@ export function hyperrewriteManySteps(
       mod,
       hyperrule,
       values,
-      occurredPropagations,
+      appliedPropagations,
     )
     if (result === undefined) {
       return results

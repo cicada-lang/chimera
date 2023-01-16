@@ -3,20 +3,20 @@ import type { Mod } from "../mod"
 import type { Value } from "../value"
 import { hyperrewriteOneStep } from "./hyperrewriteOneStep"
 
-// NOTE Do side effect on `occurredPropagations`.
+// NOTE Do side effect on `appliedPropagations`.
 
 export function hyperrewrite(
   mod: Mod,
   hyperrule: Hyperrule,
   values: Array<Value>,
-  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
 ): Array<Value> {
   while (true) {
     const result = hyperrewriteOneStep(
       mod,
       hyperrule,
       values,
-      occurredPropagations,
+      appliedPropagations,
     )
 
     if (result === undefined) {

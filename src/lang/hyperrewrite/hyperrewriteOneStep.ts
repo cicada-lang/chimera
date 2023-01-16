@@ -11,7 +11,7 @@ export function hyperrewriteOneStep(
   mod: Mod,
   hyperrule: Hyperrule,
   values: Array<Value>,
-  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
 ): Array<Value> | undefined {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
@@ -51,7 +51,7 @@ export function hyperrewriteOneStep(
         substitutionEmpty(),
         from,
         values,
-        occurredPropagations,
+        appliedPropagations,
       )
 
       if (result === undefined) {
@@ -85,7 +85,7 @@ export function hyperrewriteOneStep(
           mod,
           subHyperrule,
           values,
-          occurredPropagations,
+          appliedPropagations,
         )
         if (results !== undefined) {
           return results
