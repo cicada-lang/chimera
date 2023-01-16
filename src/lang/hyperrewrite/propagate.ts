@@ -5,12 +5,28 @@ import type { Substitution } from "../substitution"
 import type { Value } from "../value"
 import { permutationOfValues } from "./permutationOfValues"
 
+export type Propagation = {
+  hyperrule: Hyperrule
+  values: Array<Value>
+}
+
+export function Propagation(
+  hyperrule: Hyperrule,
+  values: Array<Value>,
+): Propagation {
+  return {
+    hyperrule,
+    values,
+  }
+}
+
 export function propagate(
   mod: Mod,
+  hyperrule: Hyperrule,
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
-  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<Propagation>,
 ): undefined | { substitution: Substitution } {
   for (const permutedValues of permutationOfValues(values)) {
     const result = propagateOrdered(
@@ -20,7 +36,9 @@ export function propagate(
       permutedValues,
       appliedPropagations,
     )
+
     if (result !== undefined) {
+      appliedPropagations.push(Propagation(hyperrule, values))
       return result
     }
   }
@@ -33,7 +51,7 @@ function propagateOrdered(
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
-  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<Propagation>,
 ): undefined | { substitution: Substitution } {
   if (patterns.length === 0) {
     return {

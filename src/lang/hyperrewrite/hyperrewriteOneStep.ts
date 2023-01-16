@@ -4,6 +4,7 @@ import { refresh } from "../refresh"
 import { guardReject } from "../rewrite"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
+import type { Propagation } from "./propagate"
 import { propagate } from "./propagate"
 import { simplify } from "./simplify"
 
@@ -11,7 +12,7 @@ export function hyperrewriteOneStep(
   mod: Mod,
   hyperrule: Hyperrule,
   values: Array<Value>,
-  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<Propagation>,
 ): Array<Value> | undefined {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
@@ -48,6 +49,7 @@ export function hyperrewriteOneStep(
       const from = hyperrule.from.map((value) => refresh(mod, renames, value))
       const result = propagate(
         mod,
+        hyperrule,
         substitutionEmpty(),
         from,
         values,
