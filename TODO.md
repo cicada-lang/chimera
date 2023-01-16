@@ -1,20 +1,20 @@
 # hyperrewrite
 
-[learn] be clear about hyperrewrite semantic
+rename `Hyperrule.Case` to `Hyperrule.Simplify`
 
-- linear logic? order logic? logic?
+- use the terminology of "Constraint handling rules" by Thom Frühwirth
 
-`hyperrewrite` use `dedupValues`
+`hyperrewriteOneStep` permutation on values instead of patterns
 
-`Hyperrule.CaseAppend` -- to keep all the values in pattern
+- permutation on patterns is not complete
 
-`Hyperrule.CaseAppend` -- `=>+` as syntax
+`Hyperrule.Propagate` -- to keep all the values in pattern
+
+`Hyperrule.Propagate` -- `+>` as syntax
 
 [performance] `hypermatch` -- generating permutation group by group
 
-- extract `permutationOfPatterns`
-
-[performance] save `permutation` of (dedupped) `patterns` in `Rules.Case`
+- extract `permutationOfValues`
 
 # reorder this TODO.md file
 

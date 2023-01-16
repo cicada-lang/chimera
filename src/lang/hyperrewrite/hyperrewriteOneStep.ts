@@ -1,4 +1,3 @@
-import { equal } from "../equal"
 import type { Hyperrule } from "../hyperrule"
 import { match } from "../match"
 import type { Mod } from "../mod"
@@ -40,10 +39,6 @@ export function hyperrewriteOneStep(
         substitutionDeepWalk(result.substitution, refresh(mod, renames, value)),
       )
 
-      // if (valueArrayInclude(values, to)) {
-      //   return undefined
-      // }
-
       return [...result.values, ...to]
     }
 
@@ -58,15 +53,6 @@ export function hyperrewriteOneStep(
       return undefined
     }
   }
-}
-
-function valueArrayInclude(
-  leftValues: Array<Value>,
-  rightValues: Array<Value>,
-): boolean {
-  return rightValues.every((right) =>
-    leftValues.some((left) => equal(left, right)),
-  )
 }
 
 // TODO We have labelled edge, thus we should:
