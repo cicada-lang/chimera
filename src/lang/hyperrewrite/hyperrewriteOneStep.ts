@@ -11,6 +11,7 @@ export function hyperrewriteOneStep(
   mod: Mod,
   hyperrule: Hyperrule,
   values: Array<Value>,
+  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
 ): Array<Value> | undefined {
   switch (hyperrule["@kind"]) {
     case "Simplify":
@@ -20,7 +21,13 @@ export function hyperrewriteOneStep(
       const result =
         hyperrule["@kind"] === "Simplify"
           ? simplify(mod, substitutionEmpty(), from, values)
-          : propagate(mod, substitutionEmpty(), from, values)
+          : propagate(
+              mod,
+              substitutionEmpty(),
+              from,
+              values,
+              occurredPropagations,
+            )
 
       if (result === undefined) {
         return undefined
@@ -48,7 +55,12 @@ export function hyperrewriteOneStep(
 
     case "List": {
       for (const subHyperrule of hyperrule.hyperrules) {
-        const results = hyperrewriteOneStep(mod, subHyperrule, values)
+        const results = hyperrewriteOneStep(
+          mod,
+          subHyperrule,
+          values,
+          occurredPropagations,
+        )
         if (results !== undefined) {
           return results
         }

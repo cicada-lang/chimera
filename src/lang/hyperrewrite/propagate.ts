@@ -1,3 +1,4 @@
+import type { Hyperrule } from "../hyperrule"
 import { match } from "../match"
 import type { Mod } from "../mod"
 import type { Substitution } from "../substitution"
@@ -14,9 +15,16 @@ export function propagate(
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
+  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
   for (const permutedValues of permutationOfValues(values)) {
-    const result = propagateOrdered(mod, substitution, patterns, permutedValues)
+    const result = propagateOrdered(
+      mod,
+      substitution,
+      patterns,
+      permutedValues,
+      occurredPropagations,
+    )
     if (result !== undefined) {
       return result
     }
@@ -30,6 +38,7 @@ function propagateOrdered(
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
+  occurredPropagations: Array<[Hyperrule, Array<Value>]>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
   if (patterns.length === 0) {
     return {
@@ -43,10 +52,13 @@ function propagateOrdered(
   for (const [index, value] of values.entries()) {
     const newSubstitution = match(mod, substitution, pattern, value)
     if (newSubstitution !== undefined) {
-      return propagateOrdered(mod, newSubstitution, restPatterns, [
-        ...values.slice(0, index),
-        ...values.slice(index + 1),
-      ])
+      return propagateOrdered(
+        mod,
+        newSubstitution,
+        restPatterns,
+        [...values.slice(0, index), ...values.slice(index + 1)],
+        occurredPropagations,
+      )
     }
   }
 

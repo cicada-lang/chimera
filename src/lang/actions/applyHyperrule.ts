@@ -14,6 +14,6 @@ export function applyHyperrule(
   assertArity(args, 1, { who: "applyHyperrule" })
 
   return Values.fromArray(
-    hyperrewrite(mod, target.hyperrule, Values.toArray(args[0])),
+    hyperrewrite(mod, target.hyperrule, Values.toArray(args[0]), []),
   )
 }

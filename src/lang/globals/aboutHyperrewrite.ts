@@ -16,6 +16,7 @@ export async function aboutHyperrewrite(globals: GlobalStore): Promise<void> {
         mod,
         hyperrule.hyperrule,
         Values.toArray(target),
+        [],
         { limit: limit.data },
       )
 
