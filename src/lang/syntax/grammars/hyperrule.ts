@@ -14,6 +14,20 @@ export const hyperrule = {
       '">"',
       { to: "elements" },
     ],
+    "hyperrule:propagate": [
+      { from: "elements" },
+      '"+"',
+      '">"',
+      { to: "elements" },
+    ],
+    "hyperrule:propagate_guard": [
+      { from: "elements" },
+      '"if"',
+      { guard: "exp" },
+      '"+"',
+      '">"',
+      { to: "elements" },
+    ],
   },
 }
 

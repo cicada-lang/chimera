@@ -1,7 +1,5 @@
 # hyperrewrite
 
-`Hyperrule.Propagate` -- `+>` as syntax
-
 `hyperrewriteOneStep` -- handles `Hyperrule.Propagate`
 
 `hyperrewriteOneStep` -- permutation on values instead of patterns

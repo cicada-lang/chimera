@@ -19,6 +19,20 @@ export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
         matchers.exp_matcher(guard),
         span,
       ),
+    "hyperrule:propagate": ({ from, to }, { span }) =>
+      HyperruleExps.Propagate(
+        matchers.elements_matcher(from),
+        matchers.elements_matcher(to),
+        undefined,
+        span,
+      ),
+    "hyperrule:propagate_guard": ({ from, to, guard }, { span }) =>
+      HyperruleExps.Propagate(
+        matchers.elements_matcher(from),
+        matchers.elements_matcher(to),
+        matchers.exp_matcher(guard),
+        span,
+      ),
   })(tree)
 }
 
