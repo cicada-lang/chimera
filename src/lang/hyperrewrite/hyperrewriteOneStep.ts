@@ -4,6 +4,7 @@ import { refresh } from "../refresh"
 import { guardReject } from "../rewrite"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
+import { propagate } from "./propagate"
 import { simplify } from "./simplify"
 
 export function hyperrewriteOneStep(
@@ -19,7 +20,7 @@ export function hyperrewriteOneStep(
       const result =
         hyperrule["@kind"] === "Simplify"
           ? simplify(mod, substitutionEmpty(), from, values)
-          : simplify(mod, substitutionEmpty(), from, values)
+          : propagate(mod, substitutionEmpty(), from, values)
 
       if (result === undefined) {
         return undefined
