@@ -3,11 +3,11 @@ import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 
-export type Hyperrule = Case | List
+export type Hyperrule = Simplify | List
 
-export type Case = {
+export type Simplify = {
   "@type": "Hyperrule"
-  "@kind": "Case"
+  "@kind": "Simplify"
   mod: Mod
   env: Env
   from: Array<Value>
@@ -15,16 +15,16 @@ export type Case = {
   guard: Exp | undefined
 }
 
-export function Case(
+export function Simplify(
   mod: Mod,
   env: Env,
   from: Array<Value>,
   to: Array<Value>,
   guard: Exp | undefined,
-): Case {
+): Simplify {
   return {
     "@type": "Hyperrule",
-    "@kind": "Case",
+    "@kind": "Simplify",
     mod,
     env,
     from,

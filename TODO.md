@@ -1,9 +1,5 @@
 # hyperrewrite
 
-rename `Hyperrule.Case` to `Hyperrule.Simplify`
-
-- use the terminology of "Constraint handling rules" by Thom Frühwirth
-
 `hyperrewriteOneStep` permutation on values instead of patterns
 
 - permutation on patterns is not complete
@@ -15,6 +11,10 @@ rename `Hyperrule.Case` to `Hyperrule.Simplify`
 [performance] `hypermatch` -- generating permutation group by group
 
 - extract `permutationOfValues`
+
+simplify `Rule` to be list of cases (no `Rules.List`) -- just like `Relation`
+
+simplify `Hyperrule` to be list of cases (no `Hyperrules.List`) -- just like `Relation`
 
 # reorder this TODO.md file
 

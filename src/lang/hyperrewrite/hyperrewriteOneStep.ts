@@ -13,7 +13,7 @@ export function hyperrewriteOneStep(
   values: Array<Value>,
 ): Array<Value> | undefined {
   switch (hyperrule["@kind"]) {
-    case "Case": {
+    case "Simplify": {
       const renames = new Map()
       const from = hyperrule.from.map((value) => refresh(mod, renames, value))
       const result = hypermatch(mod, substitutionEmpty(), from, values)

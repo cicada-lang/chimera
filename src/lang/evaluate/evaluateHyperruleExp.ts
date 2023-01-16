@@ -12,7 +12,7 @@ export function evaluateHyperruleExp(
 ): Hyperrule {
   switch (hyperrule["@kind"]) {
     case "Case": {
-      return Hyperrules.Case(
+      return Hyperrules.Simplify(
         mod,
         env,
         hyperrule.from.map((hyperrule) => quote(mod, env, hyperrule)),
