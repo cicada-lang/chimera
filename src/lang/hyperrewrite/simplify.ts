@@ -2,7 +2,7 @@ import { match } from "../match"
 import type { Mod } from "../mod"
 import type { Substitution } from "../substitution"
 import type { Value } from "../value"
-import { permutationOfValues } from "./permutationOfValues"
+import { permuteByGroup } from "./permuteByGroup"
 
 export function simplify(
   mod: Mod,
@@ -10,7 +10,7 @@ export function simplify(
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; remainValues: Array<Value> } {
-  for (const permutedValues of permutationOfValues(values)) {
+  for (const permutedValues of permuteByGroup(values)) {
     const result = simplifyOrdered(mod, substitution, patterns, permutedValues)
     if (result !== undefined) {
       return result

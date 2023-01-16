@@ -4,7 +4,7 @@ import { match } from "../match"
 import type { Mod } from "../mod"
 import type { Substitution } from "../substitution"
 import type { Value } from "../value"
-import { permutationOfValues } from "./permutationOfValues"
+import { permuteByGroup } from "./permuteByGroup"
 
 export type Propagation = {
   hyperrule: Hyperrule
@@ -29,7 +29,7 @@ export function propagate(
   values: Array<Value>,
   appliedPropagations: Array<Propagation>,
 ): undefined | { substitution: Substitution } {
-  for (const permutedValues of permutationOfValues(values)) {
+  for (const permutedValues of permuteByGroup(values)) {
     const result = propagateOrdered(
       mod,
       substitution,

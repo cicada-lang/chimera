@@ -6,6 +6,6 @@ import type { Value } from "../value"
 // - get the permutation of each group.
 // - get the cartesian product of the permutations.
 
-export function permutationOfValues(values: Array<Value>): Array<Array<Value>> {
+export function permuteByGroup(values: Array<Value>): Array<Array<Value>> {
   return permute(values)
 }
