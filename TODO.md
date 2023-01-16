@@ -1,8 +1,8 @@
+[hyperrewrite] [performance] `permuteByGroup` -- generating permutation group by group
+
 [rewrite] simplify `Rule` to be list of cases (no `Rules.List`) -- just like `Relation`
 
 [hyperrewrite] simplify `Hyperrule` to be list of cases (no `Hyperrules.List`) -- just like `Relation`
-
-[hyperrewrite] [performance] `permutationOfValues` -- generating permutation group by group
 
 # reorder this TODO.md file
 
