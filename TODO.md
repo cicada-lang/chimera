@@ -1,18 +1,12 @@
-# hyperrewrite
+[hyperrewrite] `hyperrewriteOneStep` -- handles `Hyperrule.Propagate`
 
-`hyperrewriteOneStep` -- handles `Hyperrule.Propagate`
-
-`hyperrewriteOneStep` -- permutation on values instead of patterns
-
-- permutation on patterns is not complete
-
-[performance] `hypermatch` -- generating permutation group by group
+[hyperrewrite] [performance] `hypermatch` -- generating permutation group by group
 
 - extract `permutationOfValues`
 
-simplify `Rule` to be list of cases (no `Rules.List`) -- just like `Relation`
+[rewrite] simplify `Rule` to be list of cases (no `Rules.List`) -- just like `Relation`
 
-simplify `Hyperrule` to be list of cases (no `Hyperrules.List`) -- just like `Relation`
+[hyperrewrite] simplify `Hyperrule` to be list of cases (no `Hyperrules.List`) -- just like `Relation`
 
 # reorder this TODO.md file
 

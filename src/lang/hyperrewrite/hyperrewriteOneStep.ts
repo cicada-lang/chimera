@@ -70,8 +70,13 @@ function hypermatch(
   patterns: Array<Value>,
   values: Array<Value>,
 ): undefined | { substitution: Substitution; values: Array<Value> } {
-  for (const permuted of permutation(patterns)) {
-    const result = hypermatchOrdered(mod, substitution, permuted, values)
+  for (const permutedValues of permutation(values)) {
+    const result = hypermatchOrdered(
+      mod,
+      substitution,
+      patterns,
+      permutedValues,
+    )
     if (result !== undefined) {
       return result
     }
