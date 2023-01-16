@@ -11,8 +11,18 @@ export function evaluateHyperruleExp(
   hyperrule: HyperruleExp,
 ): Hyperrule {
   switch (hyperrule["@kind"]) {
-    case "Case": {
+    case "Simplify": {
       return Hyperrules.Simplify(
+        mod,
+        env,
+        hyperrule.from.map((hyperrule) => quote(mod, env, hyperrule)),
+        hyperrule.to.map((hyperrule) => quote(mod, env, hyperrule)),
+        hyperrule.guard,
+      )
+    }
+
+    case "Propagate": {
+      return Hyperrules.Propagate(
         mod,
         env,
         hyperrule.from.map((hyperrule) => quote(mod, env, hyperrule)),

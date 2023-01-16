@@ -4,10 +4,16 @@ import type { HyperruleExp } from "../hyperrule-exp"
 
 export function formatHyperruleExp(hyperrule: HyperruleExp): string {
   switch (hyperrule["@kind"]) {
-    case "Case": {
+    case "Simplify": {
       const from = hyperrule.from.map(formatExp).join(", ")
       const to = hyperrule.to.map(formatExp).join(", ")
       return `[${from}] => [${to}]`
+    }
+
+    case "Propagate": {
+      const from = hyperrule.from.map(formatExp).join(", ")
+      const to = hyperrule.to.map(formatExp).join(", ")
+      return `[${from}] +> [${to}]`
     }
 
     case "List": {

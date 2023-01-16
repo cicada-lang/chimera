@@ -6,14 +6,14 @@ import * as HyperruleExps from "../../hyperrule-exp"
 export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
   return pt.matcher<HyperruleExp>({
     "hyperrule:case": ({ from, to }, { span }) =>
-      HyperruleExps.Case(
+      HyperruleExps.Simplify(
         matchers.elements_matcher(from),
         matchers.elements_matcher(to),
         undefined,
         span,
       ),
     "hyperrule:case_guard": ({ from, to, guard }, { span }) =>
-      HyperruleExps.Case(
+      HyperruleExps.Simplify(
         matchers.elements_matcher(from),
         matchers.elements_matcher(to),
         matchers.exp_matcher(guard),

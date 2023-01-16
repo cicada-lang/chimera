@@ -1,12 +1,12 @@
 # hyperrewrite
 
-`hyperrewriteOneStep` permutation on values instead of patterns
+`Hyperrule.Propagate` -- `+>` as syntax
+
+`hyperrewriteOneStep` -- handles `Hyperrule.Propagate`
+
+`hyperrewriteOneStep` -- permutation on values instead of patterns
 
 - permutation on patterns is not complete
-
-`Hyperrule.Propagate` -- to keep all the values in pattern
-
-`Hyperrule.Propagate` -- `+>` as syntax
 
 [performance] `hypermatch` -- generating permutation group by group
 

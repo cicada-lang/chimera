@@ -42,6 +42,10 @@ export function hyperrewriteOneStep(
       return [...result.values, ...to]
     }
 
+    case "Propagate": {
+      throw new Error("TODO")
+    }
+
     case "List": {
       for (const subHyperrule of hyperrule.hyperrules) {
         const results = hyperrewriteOneStep(mod, subHyperrule, values)

@@ -3,7 +3,7 @@ import type { Exp } from "../exp"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 
-export type Hyperrule = Simplify | List
+export type Hyperrule = Simplify | Propagate | List
 
 export type Simplify = {
   "@type": "Hyperrule"
@@ -25,6 +25,34 @@ export function Simplify(
   return {
     "@type": "Hyperrule",
     "@kind": "Simplify",
+    mod,
+    env,
+    from,
+    to,
+    guard,
+  }
+}
+
+export type Propagate = {
+  "@type": "Hyperrule"
+  "@kind": "Propagate"
+  mod: Mod
+  env: Env
+  from: Array<Value>
+  to: Array<Value>
+  guard: Exp | undefined
+}
+
+export function Propagate(
+  mod: Mod,
+  env: Env,
+  from: Array<Value>,
+  to: Array<Value>,
+  guard: Exp | undefined,
+): Propagate {
+  return {
+    "@type": "Hyperrule",
+    "@kind": "Propagate",
     mod,
     env,
     from,
