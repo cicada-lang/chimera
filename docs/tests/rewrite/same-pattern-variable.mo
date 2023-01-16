@@ -1,9 +1,9 @@
-rule r1 {
+rule r {
   f(x, x) => x
 }
 
-print r1(quote f(a, a))
-print r1(quote f(a, b))
+print r(quote f(a, a))
+print r(quote f(a, b))
 
-print r1(quote f(1, 1))
-print r1(quote f(1, 2))
+print r(quote f(1, 1))
+print r(quote f(1, 2))
