@@ -3,15 +3,17 @@ import type { Mod } from "../mod"
 import type { Value } from "../value"
 import { hyperrewriteOneStep } from "./hyperrewriteOneStep"
 
+// NOTE Do side effect on `occurredPropagations`.
+
 export function hyperrewriteManySteps(
   mod: Mod,
+  limit: number,
   hyperrule: Hyperrule,
   values: Array<Value>,
-  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
-  options: { limit: number },
+  appliedPropagations: Array<[Hyperrule, Array<Value>]> = [],
 ): Array<Array<Value>> {
   const results = [values]
-  while (results.length < options.limit) {
+  while (results.length < limit) {
     const result = hyperrewriteOneStep(
       mod,
       hyperrule,

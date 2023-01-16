@@ -14,10 +14,9 @@ export async function aboutHyperrewrite(globals: GlobalStore): Promise<void> {
 
       const results = hyperrewriteManySteps(
         mod,
+        limit.data,
         hyperrule.hyperrule,
         Values.toArray(target),
-        [],
-        { limit: limit.data },
       )
 
       return Values.fromArray(results.map(Values.fromArray))

@@ -9,7 +9,7 @@ export function hyperrewrite(
   mod: Mod,
   hyperrule: Hyperrule,
   values: Array<Value>,
-  appliedPropagations: Array<[Hyperrule, Array<Value>]>,
+  appliedPropagations: Array<[Hyperrule, Array<Value>]> = [],
 ): Array<Value> {
   while (true) {
     const result = hyperrewriteOneStep(
