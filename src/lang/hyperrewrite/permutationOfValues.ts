@@ -10,10 +10,10 @@ export function permutationOfValues(values: Array<Value>): Array<Array<Value>> {
 }
 
 // NOTE Get the permutation of any array.
-// Code taken from: https://stackoverflow.com/a/37580979
-// references:
-// - http://homepage.math.uiowa.edu/~goodman/22m150.dir/2007/Permutation%20Generation%20Methods.pdf
-// - http://homepage.math.uiowa.edu/~goodman/algebrabook.dir/algebrabook.html
+// - taken from: https://stackoverflow.com/a/37580979
+// - references:
+//   - http://homepage.math.uiowa.edu/~goodman/22m150.dir/2007/Permutation%20Generation%20Methods.pdf
+//   - http://homepage.math.uiowa.edu/~goodman/algebrabook.dir/algebrabook.html
 
 function permutation<A>(input: Array<A>): Array<Array<A>> {
   input = [...input]

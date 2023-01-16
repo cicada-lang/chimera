@@ -9,7 +9,7 @@ export function simplify(
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
-): undefined | { substitution: Substitution; values: Array<Value> } {
+): undefined | { substitution: Substitution; remainValues: Array<Value> } {
   for (const permutedValues of permutationOfValues(values)) {
     const result = simplifyOrdered(mod, substitution, patterns, permutedValues)
     if (result !== undefined) {
@@ -25,11 +25,11 @@ function simplifyOrdered(
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
-): undefined | { substitution: Substitution; values: Array<Value> } {
+): undefined | { substitution: Substitution; remainValues: Array<Value> } {
   if (patterns.length === 0) {
     return {
       substitution,
-      values,
+      remainValues: values,
     }
   }
 

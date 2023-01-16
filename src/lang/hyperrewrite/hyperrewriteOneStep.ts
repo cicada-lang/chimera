@@ -41,7 +41,7 @@ export function hyperrewriteOneStep(
         substitutionDeepWalk(result.substitution, refresh(mod, renames, value)),
       )
 
-      return [...result.values, ...to]
+      return [...result.remainValues, ...to]
     }
 
     case "Propagate": {

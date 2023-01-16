@@ -1,5 +1,3 @@
-[hyperrewrite] `propagate` -- should not apply one rule to the same arguments twice
-
 [rewrite] simplify `Rule` to be list of cases (no `Rules.List`) -- just like `Relation`
 
 [hyperrewrite] simplify `Hyperrule` to be list of cases (no `Hyperrules.List`) -- just like `Relation`

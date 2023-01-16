@@ -1,3 +1,4 @@
+import { equalValues } from "../equal"
 import type { Hyperrule } from "../hyperrule"
 import { match } from "../match"
 import type { Mod } from "../mod"
@@ -35,15 +36,32 @@ export function propagate(
       patterns,
       permutedValues,
       appliedPropagations,
+      [],
     )
 
     if (result !== undefined) {
-      appliedPropagations.push(Propagation(hyperrule, values))
+      const propagation = Propagation(hyperrule, result.matchedValues)
+      if (propagationOccurred(propagation, appliedPropagations)) {
+        return undefined
+      }
+
+      appliedPropagations.push(propagation)
       return result
     }
   }
 
   return undefined
+}
+
+function propagationOccurred(
+  target: Propagation,
+  propagations: Array<Propagation>,
+): boolean {
+  return propagations.some(
+    (propagation) =>
+      target.hyperrule === propagation.hyperrule &&
+      equalValues(target.values, propagation.values),
+  )
 }
 
 function propagateOrdered(
@@ -52,10 +70,12 @@ function propagateOrdered(
   patterns: Array<Value>,
   values: Array<Value>,
   appliedPropagations: Array<Propagation>,
-): undefined | { substitution: Substitution } {
+  matchedValues: Array<Value>,
+): undefined | { substitution: Substitution; matchedValues: Array<Value> } {
   if (patterns.length === 0) {
     return {
       substitution,
+      matchedValues,
     }
   }
 
@@ -70,6 +90,7 @@ function propagateOrdered(
         restPatterns,
         [...values.slice(0, index), ...values.slice(index + 1)],
         appliedPropagations,
+        [...matchedValues, value],
       )
     }
   }
