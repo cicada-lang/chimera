@@ -5,14 +5,14 @@ import * as HyperruleExps from "../../hyperrule-exp"
 
 export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
   return pt.matcher<HyperruleExp>({
-    "hyperrule:case": ({ from, to }, { span }) =>
+    "hyperrule:simplify": ({ from, to }, { span }) =>
       HyperruleExps.Simplify(
         matchers.elements_matcher(from),
         matchers.elements_matcher(to),
         undefined,
         span,
       ),
-    "hyperrule:case_guard": ({ from, to, guard }, { span }) =>
+    "hyperrule:simplify_guard": ({ from, to, guard }, { span }) =>
       HyperruleExps.Simplify(
         matchers.elements_matcher(from),
         matchers.elements_matcher(to),

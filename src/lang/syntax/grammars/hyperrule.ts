@@ -1,7 +1,12 @@
 export const hyperrule = {
   $grammar: {
-    "hyperrule:case": [{ from: "elements" }, '"="', '">"', { to: "elements" }],
-    "hyperrule:case_guard": [
+    "hyperrule:simplify": [
+      { from: "elements" },
+      '"="',
+      '">"',
+      { to: "elements" },
+    ],
+    "hyperrule:simplify_guard": [
       { from: "elements" },
       '"if"',
       { guard: "exp" },
