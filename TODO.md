@@ -1,6 +1,4 @@
-[hyperrewrite] extract module `simplify`
 [hyperrewrite] extract module `propagate`
-
 [hyperrewrite] `hyperrewriteOneStep` -- handles `Hyperrule.Propagate`
 
 [hyperrewrite] `propagate` -- keep the input
