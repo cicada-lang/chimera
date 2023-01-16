@@ -5,18 +5,13 @@ import type { Substitution } from "../substitution"
 import type { Value } from "../value"
 import { permutationOfValues } from "./permutationOfValues"
 
-// TODO We have labelled edge, thus we should:
-// - group by term name (label).
-// - get the permutation of each group.
-// - get the cartesian product of the permutations.
-
 export function propagate(
   mod: Mod,
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
   occurredPropagations: Array<[Hyperrule, Array<Value>]>,
-): undefined | { substitution: Substitution; values: Array<Value> } {
+): undefined | { substitution: Substitution } {
   for (const permutedValues of permutationOfValues(values)) {
     const result = propagateOrdered(
       mod,
@@ -39,11 +34,10 @@ function propagateOrdered(
   patterns: Array<Value>,
   values: Array<Value>,
   occurredPropagations: Array<[Hyperrule, Array<Value>]>,
-): undefined | { substitution: Substitution; values: Array<Value> } {
+): undefined | { substitution: Substitution } {
   if (patterns.length === 0) {
     return {
       substitution,
-      values,
     }
   }
 

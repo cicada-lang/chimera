@@ -4,11 +4,6 @@ import type { Substitution } from "../substitution"
 import type { Value } from "../value"
 import { permutationOfValues } from "./permutationOfValues"
 
-// TODO We have labelled edge, thus we should:
-// - group by term name (label).
-// - get the permutation of each group.
-// - get the cartesian product of the permutations.
-
 export function simplify(
   mod: Mod,
   substitution: Substitution,

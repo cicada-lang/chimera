@@ -14,20 +14,10 @@ export function hyperrewriteOneStep(
   occurredPropagations: Array<[Hyperrule, Array<Value>]>,
 ): Array<Value> | undefined {
   switch (hyperrule["@kind"]) {
-    case "Simplify":
-    case "Propagate": {
+    case "Simplify": {
       const renames = new Map()
       const from = hyperrule.from.map((value) => refresh(mod, renames, value))
-      const result =
-        hyperrule["@kind"] === "Simplify"
-          ? simplify(mod, substitutionEmpty(), from, values)
-          : propagate(
-              mod,
-              substitutionEmpty(),
-              from,
-              values,
-              occurredPropagations,
-            )
+      const result = simplify(mod, substitutionEmpty(), from, values)
 
       if (result === undefined) {
         return undefined
@@ -51,6 +41,42 @@ export function hyperrewriteOneStep(
       )
 
       return [...result.values, ...to]
+    }
+
+    case "Propagate": {
+      const renames = new Map()
+      const from = hyperrule.from.map((value) => refresh(mod, renames, value))
+      const result = propagate(
+        mod,
+        substitutionEmpty(),
+        from,
+        values,
+        occurredPropagations,
+      )
+
+      if (result === undefined) {
+        return undefined
+      }
+
+      if (
+        hyperrule.guard !== undefined &&
+        guardReject(
+          hyperrule.mod,
+          hyperrule.env,
+          hyperrule.guard,
+          result.substitution,
+          renames,
+        )
+      ) {
+        return undefined
+      }
+
+      const to = hyperrule.to.map((value) =>
+        substitutionDeepWalk(result.substitution, refresh(mod, renames, value)),
+      )
+
+      // NOTE Keep the input values.
+      return [...values, ...to]
     }
 
     case "List": {
