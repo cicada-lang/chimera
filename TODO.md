@@ -1,6 +1,8 @@
-[rewrite] simplify `Rule` to be list of cases (no `Rules.List`) -- just like `Relation`
+move all `format*` functions to `format/` dir
 
-[hyperrewrite] simplify `Hyperrule` to be list of cases (no `Hyperrules.List`) -- just like `Relation`
+`Exps.Rule` -- for unnamed rule
+
+`Exps.Hyperrule` -- for unnamed hyperrule
 
 # reorder this TODO.md file
 
