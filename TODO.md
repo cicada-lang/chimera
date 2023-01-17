@@ -2,10 +2,6 @@
 
 `Exps.Hyperrule` -- for unnamed hyperrule
 
-# reorder this TODO.md file
-
-Most todo tasks should be act-able.
-
 # CHR
 
 [read] essentials-of-constraint-programming.pdf
