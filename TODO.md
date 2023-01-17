@@ -1,5 +1,3 @@
-move all `format*` functions to `format/` dir
-
 `Exps.Rule` -- for unnamed rule
 
 `Exps.Hyperrule` -- for unnamed hyperrule
@@ -8,39 +6,26 @@ move all `format*` functions to `format/` dir
 
 Most todo tasks should be act-able.
 
-# clp
+# CHR
 
 [read] essentials-of-constraint-programming.pdf
 
-- [maybe] application of undefined relation should be viewed a term data.
+[constraint] implement constraint systems by hypergraph rewriting
 
 - [maybe] `Solution` should be extended with `customConstraints`
   -- or just `constraints` -- which contains the constraints
   accumulated and simplified so far (whereas in LP we had substitutions).
 
 - [maybe] we should handle all constraints in the goal first,
-  before unfolding an application of a relation.
+  to limit the search space, before unfolding an application of a relation.
+
+- [constraint] provide a syntax keyword for defining new constraint
 
 [note] The general idea about implementing constraint:
 
-- Reduce the set of constraints,
-  to some kind of normal form
-  by which we can build a model in the theory.
+[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
-- If this is true, we can use rewriting
-  to implement the "normal form" part of constraint.
-
-  A set of rewrite rules applied to the set of constraints.
-
-  - Can we implement this kind of rewrite in the logic programming itself?
-
-    (and provide a syntax keyword for defining new constraint)
-
-- elements of a domain can be defined by ADT (or a relation).
-
-- predicates in a domain can be defined by relation with more than one conclusions?
-
-- how to solve linear equations by rewriting?
+[finite-domain] solve some puzzles about finite-domain as example
 
 # claim and runtime type assertion
 
@@ -56,19 +41,13 @@ Most todo tasks should be act-able.
 
 mark as 1.0.0 and writie some docs
 
-# draw
-
-draw labelled hypergraph by JavaScript.
-
 # term rewriting
 
 encode collatz rewrite in term rewrite
 
 use term rewriting to implement lambda calculus -- with explicit substitution
 
-[question] what is the wired syntax of `-->` in prolog? DCG?
-
-- about list-processing?
+[learn] learn DCG of prolog -- the `-->` syntax
 
 # hypergraph rewriting
 
@@ -76,11 +55,11 @@ geometry of hypergraph.
 
 from hypergraph to cell-complex via category theory.
 
-implement constraint systems by hypergraph rewriting.
-
 encode collatz rewrite in hypergraph rewrite (to get a geometry)
 
 use hypergraph rewriting to implement inet
+
+draw labelled hypergraph by JavaScript.
 
 # hypergraph based physics engine for game development
 
@@ -95,41 +74,17 @@ and dynamic is implemented by rewrite rules?
 
 like higher inductive types
 
-# finite-domain constraint programming
-
-use hypergraph rewriting to implement finite-domain constraint programming
-
-- We need to rewrite the set of constraints,
-  because of a new constraint (or new constraints)
-  are added to the set of constraints.
-
-  We can maintain some invariants for the set of constraints.
-
-  Before adding the new constraints, the invariants holds,
-  adding the new constraints will break the invariants,
-  after rewriting, we should bring back the invariants.
-
-  Example invariant is "no more redex".
-
-[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
-
-[finite-domain] solve some puzzles about finite-domain as example
-
 # compiler
 
-Compile to wasm to run in the browser.
+[compiler] compile to x86 -- for linux.
 
-Compile to native code to run in linux.
+[compiler] compile to wasm -- for browser.
 
 # module
 
 [maybe] `mod.freshen` should take into account of the `mod.options.url`
 
 - to keep the generated name unique -- like uuid.
-
-# homoiconicity
-
-read source code file as list of terms
 
 # DX
 
@@ -149,14 +104,8 @@ Implement actor model to handle async programming.
 
 # read
 
-[diary] the goal is to satisfy constraint
-
-- Maybe we should call goals "constraints",
-  because they are actually constraint, and the goal is to satisfy them.
-
-- Or we should say constraint applied to argument value is a goal?
-
 [read] logic-for-problem-solving.pdf
+
 [read] constraint-logic-programming--a-survey.pdf
 
 # higher-order logic
