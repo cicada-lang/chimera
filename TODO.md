@@ -1,7 +1,6 @@
 # CHR
 
-[primitive] [number] `add`, `sub`, `mul`, `div`
-[primitive] [number] `add1`, `sub1`, `div`
+[primitive] [number] `add1`, `sub1`
 [primitive] [number] `min`, `max`
 [primitive] [number] `sum`, `product`
 
