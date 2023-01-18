@@ -16,3 +16,9 @@ assert Equal(mul(2, 3), 6)
 
 assert Equal(div(6, 3), 2)
 assert Equal(div(6, 2), 3)
+
+assert Equal(max(1, 2), 2)
+assert Equal(max(-1, 0), 0)
+
+assert Equal(min(1, 2), 1)
+assert Equal(min(-1, 0), -1)

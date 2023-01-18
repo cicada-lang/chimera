@@ -40,4 +40,16 @@ export async function aboutNumber(globals: GlobalStore): Promise<void> {
     Values.assertValue(y, "Number", { who: "div" })
     return Values.Number(x.data / y.data)
   })
+
+  globals.primitive("max", 2, ([x, y], { mod, env }) => {
+    Values.assertValue(x, "Number", { who: "max" })
+    Values.assertValue(y, "Number", { who: "max" })
+    return Values.Number(Math.max(x.data, y.data))
+  })
+
+  globals.primitive("min", 2, ([x, y], { mod, env }) => {
+    Values.assertValue(x, "Number", { who: "min" })
+    Values.assertValue(y, "Number", { who: "min" })
+    return Values.Number(Math.min(x.data, y.data))
+  })
 }
