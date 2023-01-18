@@ -1,6 +1,20 @@
 # CHR
 
-[read] essentials-of-constraint-programming.pdf
+[primitive] [number] `add`, `mul`, `div`, `min`, `max`
+
+[boolean] `Exps.And` -- to support short-circuit evaluation
+[boolean] `Exps.And` -- syntax `and [...]`
+
+[boolean] `Exps.Or` -- to support short-circuit evaluation
+[boolean] `Exps.Or` -- syntax `or [...]`
+
+[finite-domain] solve some puzzles about finite-domain as example
+
+- [read] essentials-of-constraint-programming.pdf
+
+[maybe] [module] support `import * as <name>`
+
+[maybe] remove `find` and `findAll` functions -- in general body can not be quoted
 
 [constraint] implement constraint systems by hypergraph rewriting
 
@@ -13,11 +27,7 @@
 
 - [constraint] provide a syntax keyword for defining new constraint
 
-[note] The general idea about implementing constraint:
-
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
-
-[finite-domain] solve some puzzles about finite-domain as example
 
 # claim and runtime type assertion
 
@@ -25,9 +35,11 @@
 
 - Using `claim` as keyword.
 
-# more primitives
+# maybe
 
-[primitive] [number] `add`, `mul`, `div`
+[maybe] use closed data for `Stmt` instead of class
+
+[maybe] move `format*` functions to `format/` directory
 
 # 1.0.0
 
@@ -74,7 +86,7 @@ like higher inductive types
 
 # module
 
-[maybe] `mod.freshen` should take into account of the `mod.options.url`
+[module] [maybe] `mod.freshen` should take into account of the `mod.options.url`
 
 - to keep the generated name unique -- like uuid.
 
