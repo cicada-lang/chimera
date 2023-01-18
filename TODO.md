@@ -1,5 +1,3 @@
-`Values.Hyperrule` -- should not have `name` -- for unnamed rule
-
 `Exps.RuleList` -- for unnamed rule
 `Exps.HyperruleList` -- for unnamed hyperrule
 

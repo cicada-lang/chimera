@@ -29,7 +29,6 @@ export class Hyperrule extends Stmt {
     mod.define(
       this.name,
       Values.Hyperrule(
-        this.name,
         Hyperrules.List(
           this.hyperrules.map((hyperrule) =>
             evaluateHyperruleExp(mod, mod.env, hyperrule),

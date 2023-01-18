@@ -72,7 +72,7 @@ export function formatValue(value: Value): string {
     }
 
     case "Hyperrule": {
-      return `$Hyperrule(${value.name})`
+      return `$Hyperrule`
     }
 
     case "Fn": {
