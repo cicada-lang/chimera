@@ -54,14 +54,14 @@ export class If extends Stmt {
     mod.executeStmtsSync(this.elseStmts)
   }
 
-  format(): string {
-    const stmts = this.stmts.map((stmt) => stmt.format())
+  formatStmt(): string {
+    const stmts = this.stmts.map((stmt) => stmt.formatStmt())
 
     if (this.elseIfs.length === 0 && this.elseStmts.length === 0) {
       return `if ${formatExp(this.target)} {\n${indent(stmts.join("\n"))}\n}`
     }
 
-    const elseStmts = this.elseStmts.map((stmt) => stmt.format())
+    const elseStmts = this.elseStmts.map((stmt) => stmt.formatStmt())
 
     if (this.elseIfs.length === 0) {
       return `if ${formatExp(this.target)} {\n${indent(
@@ -72,7 +72,7 @@ export class If extends Stmt {
     const elseIfs = this.elseIfs.map(
       ({ target, stmts }) =>
         `else if ${formatExp(this.target)} {\n${indent(
-          stmts.map((stmt) => stmt.format()).join("\n"),
+          stmts.map((stmt) => stmt.formatStmt()).join("\n"),
         )}\n}`,
     )
 

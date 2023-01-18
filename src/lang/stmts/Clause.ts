@@ -43,7 +43,7 @@ export class Clause extends Stmt {
     defineClause(mod, this.relationName, this.name, this.exps, this.goals)
   }
 
-  format(): string {
+  formatStmt(): string {
     if (this.goals.length === 0 && this.name === undefined) {
       return `${this.relationName}${formatArgs(this.exps)}`
     }

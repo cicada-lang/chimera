@@ -19,7 +19,7 @@ export class ExportNames extends Stmt {
     }
   }
 
-  format(): string {
+  formatStmt(): string {
     return `export { ${this.names.join("\n")} }`
   }
 }

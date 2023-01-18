@@ -23,8 +23,8 @@ export class Fn extends Stmt {
     mod.define(this.name, value)
   }
 
-  format(): string {
-    const stmts = this.stmts.map((stmt) => stmt.format())
+  formatStmt(): string {
+    const stmts = this.stmts.map((stmt) => stmt.formatStmt())
     return `function ${this.name}${formatArgs(this.patterns)} {\n${indent(
       stmts.join("\n"),
     )}\n}`

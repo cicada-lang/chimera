@@ -1,3 +1,5 @@
+[refactor] rename `formatStmt`
+[refactor] extract `execute` -- with `prepare` and `*Sync`
 [refactor] use closed data for `Stmt` instead of class
 
 # CHR

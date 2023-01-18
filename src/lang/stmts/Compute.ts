@@ -14,7 +14,7 @@ export class Compute extends Stmt {
     evaluate(mod, mod.env, this.exp)
   }
 
-  format(): string {
+  formatStmt(): string {
     return `compute ${formatExp(this.exp)}`
   }
 }

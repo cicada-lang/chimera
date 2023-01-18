@@ -36,7 +36,7 @@ export class Assert extends Stmt {
     }
   }
 
-  format(): string {
+  formatStmt(): string {
     return `assert ${formatExp(this.exp)}`
   }
 }

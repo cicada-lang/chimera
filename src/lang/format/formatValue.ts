@@ -82,7 +82,7 @@ export function formatValue(value: Value): string {
       **/
 
       const patterns = value.patterns.map(formatValue).join(", ")
-      const stmts = value.stmts.map((stmt) => stmt.format())
+      const stmts = value.stmts.map((stmt) => stmt.formatStmt())
       return stmts.length === 0
         ? `(${patterns}) => {}`
         : `(${patterns}) => {\n${indent(stmts.join("\n"))}\n}`

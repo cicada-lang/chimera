@@ -38,7 +38,7 @@ export class Hyperrule extends Stmt {
     )
   }
 
-  format(): string {
+  formatStmt(): string {
     const hyperrules = this.hyperrules.map(formatHyperruleExp)
     return `hyperrule ${this.name} {\n${indent(hyperrules.join("\n"))}\n}`
   }

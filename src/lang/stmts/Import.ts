@@ -78,7 +78,7 @@ export class Import extends Stmt {
     }
   }
 
-  format(): string {
+  formatStmt(): string {
     const bindings = this.bindings.map(formatImportBinding)
     return `import { ${bindings.join(", ")} } from "${this.path}"`
   }

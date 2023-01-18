@@ -31,7 +31,7 @@ export class Export extends Stmt {
     mod.exportDepth--
   }
 
-  format(): string {
-    return `export ${this.stmt.format()}`
+  formatStmt(): string {
+    return `export ${this.stmt.formatStmt()}`
   }
 }

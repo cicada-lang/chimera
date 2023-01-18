@@ -41,7 +41,7 @@ export class ImportAll extends Stmt {
     }
   }
 
-  format(): string {
+  formatStmt(): string {
     return `import * from "${this.path}"`
   }
 }

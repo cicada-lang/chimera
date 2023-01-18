@@ -15,7 +15,7 @@ export class Let extends Stmt {
     mod.define(this.name, value)
   }
 
-  format(): string {
+  formatStmt(): string {
     return `let ${this.name} = ${formatExp(this.exp)}`
   }
 }

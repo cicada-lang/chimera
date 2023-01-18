@@ -27,7 +27,7 @@ export class Return extends Stmt {
     throw new ReturnValue(evaluate(mod, mod.env, this.exp))
   }
 
-  format(): string {
+  formatStmt(): string {
     return `return ${formatExp(this.exp)}`
   }
 }

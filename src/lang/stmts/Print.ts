@@ -15,7 +15,7 @@ export class Print extends Stmt {
     return formatValue(value)
   }
 
-  format(): string {
+  formatStmt(): string {
     return `print ${formatExp(this.exp)}`
   }
 }

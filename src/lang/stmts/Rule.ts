@@ -36,7 +36,7 @@ export class Rule extends Stmt {
     )
   }
 
-  format(): string {
+  formatStmt(): string {
     const rules = this.rules.map(formatRuleExp)
     return `rule ${this.name} {\n${indent(rules.join("\n"))}\n}`
   }

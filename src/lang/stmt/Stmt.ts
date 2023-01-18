@@ -2,8 +2,8 @@ import type { Mod } from "../mod"
 import type { Span } from "../span"
 
 export abstract class Stmt {
-  abstract span?: Span
-  abstract format(): string
+  abstract span: Span
+  abstract formatStmt(): string
 
   prepareSync(mod: Mod): void {}
   executeSync(mod: Mod): string | void {}
