@@ -1,6 +1,7 @@
-`Exps.Rule` -- for unnamed rule
+`Values.Hyperrule` -- should not have `name` -- for unnamed rule
 
-`Exps.Hyperrule` -- for unnamed hyperrule
+`Exps.RuleList` -- for unnamed rule
+`Exps.HyperruleList` -- for unnamed hyperrule
 
 # CHR
 

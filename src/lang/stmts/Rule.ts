@@ -28,7 +28,6 @@ export class Rule extends Stmt {
     mod.define(
       this.name,
       Values.Rule(
-        this.name,
         Rules.List(
           this.rules.map((rule) => evaluateRuleExp(mod, mod.env, rule)),
         ),

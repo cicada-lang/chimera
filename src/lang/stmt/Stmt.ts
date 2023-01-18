@@ -3,6 +3,7 @@ import type { Span } from "../span"
 
 export abstract class Stmt {
   abstract span?: Span
+  abstract format(): string
 
   prepareSync(mod: Mod): void {}
   executeSync(mod: Mod): string | void {}
@@ -13,9 +14,5 @@ export abstract class Stmt {
 
   async execute(mod: Mod): Promise<string | void> {
     return this.executeSync(mod)
-  }
-
-  format(): string {
-    return "TODO"
   }
 }

@@ -215,15 +215,13 @@ export function TypeConstraint(
 export type Rule = {
   "@type": "Value"
   "@kind": "Rule"
-  name: string
   rule: EmbeddedRule
 }
 
-export function Rule(name: string, rule: EmbeddedRule): Rule {
+export function Rule(rule: EmbeddedRule): Rule {
   return {
     "@type": "Value",
     "@kind": "Rule",
-    name,
     rule,
   }
 }

@@ -1,4 +1,5 @@
 import type { GoalExp } from "../goal-exp"
+// import type { RuleExp } from "../rule-exp"
 import type { Span } from "../span"
 import type { Stmt } from "../stmt"
 
@@ -16,6 +17,7 @@ export type Exp =
   | Quote
   | Unquote
   | Find
+//  | RuleList
 
 export type Var = {
   "@type": "Exp"
@@ -235,3 +237,19 @@ export function Find(
     span,
   }
 }
+
+// export type RuleList = {
+//   "@type": "Exp"
+//   "@kind": "RuleList"
+//   rules: Array<RuleExp>
+//   span: Span
+// }
+
+// export function RuleList(rules: Array<RuleExp>, span: Span): RuleList {
+//   return {
+//     "@type": "Exp",
+//     "@kind": "RuleList",
+//     rules,
+//     span,
+//   }
+// }

@@ -68,7 +68,7 @@ export function formatValue(value: Value): string {
     }
 
     case "Rule": {
-      return `$Rule(${value.name})`
+      return `$Rule`
     }
 
     case "Hyperrule": {
