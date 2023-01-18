@@ -55,5 +55,9 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
     case "Find": {
       return createVarCollection()
     }
+
+    case "RuleList": {
+      return createVarCollection()
+    }
   }
 }

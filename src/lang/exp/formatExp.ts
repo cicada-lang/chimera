@@ -1,6 +1,7 @@
 import { indent } from "../../utils/indent"
 import type { Exp } from "../exp"
 import { formatGoalExp } from "../goal-exp"
+import { formatRuleExp } from "../rule-exp"
 
 export function formatExp(exp: Exp): string {
   switch (exp["@kind"]) {
@@ -82,6 +83,11 @@ export function formatExp(exp: Exp): string {
       return `find ${formatExp(exp.pattern)} limit ${exp.limit} {\n${indent(
         goals.join("\n"),
       )}\n}`
+    }
+
+    case "RuleList": {
+      const rules = exp.rules.map(formatRuleExp)
+      return `rule {\n${indent(rules.join("\n"))}\n}`
     }
   }
 }
