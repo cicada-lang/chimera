@@ -69,5 +69,11 @@ export const operand = {
       '"}"',
     ],
     "operand:rule_list": ['"rule"', '"{"', { rules: "rules" }, '"}"'],
+    "operand:hyperrule_list": [
+      '"hyperrule"',
+      '"{"',
+      { hyperrules: "hyperrules" },
+      '"}"',
+    ],
   },
 }

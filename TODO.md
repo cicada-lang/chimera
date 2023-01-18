@@ -1,5 +1,3 @@
-`Exps.HyperruleList` -- syntax
-
 # CHR
 
 [read] essentials-of-constraint-programming.pdf
