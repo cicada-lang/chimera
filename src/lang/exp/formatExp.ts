@@ -95,6 +95,16 @@ export function formatExp(exp: Exp): string {
       const hyperrules = exp.hyperrules.map(formatHyperruleExp)
       return `hyperrule {\n${indent(hyperrules.join("\n"))}\n}`
     }
+
+    case "And": {
+      const args = exp.args.map((arg) => formatExp(arg))
+      return `and [${args.join(", ")}]`
+    }
+
+    case "Or": {
+      const args = exp.args.map((arg) => formatExp(arg))
+      return `or [${args.join(", ")}]`
+    }
   }
 }
 

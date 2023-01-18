@@ -20,6 +20,8 @@ export type Exp =
   | Find
   | RuleList
   | HyperruleList
+  | And
+  | Or
 
 export type Var = {
   "@type": "Exp"
@@ -271,6 +273,38 @@ export function HyperruleList(
     "@type": "Exp",
     "@kind": "HyperruleList",
     hyperrules,
+    span,
+  }
+}
+
+export type And = {
+  "@type": "Exp"
+  "@kind": "And"
+  args: Array<Exp>
+  span: Span
+}
+
+export function And(args: Array<Exp>, span: Span): And {
+  return {
+    "@type": "Exp",
+    "@kind": "And",
+    args,
+    span,
+  }
+}
+
+export type Or = {
+  "@type": "Exp"
+  "@kind": "Or"
+  args: Array<Exp>
+  span: Span
+}
+
+export function Or(args: Array<Exp>, span: Span): Or {
+  return {
+    "@type": "Exp",
+    "@kind": "Or",
+    args,
     span,
   }
 }

@@ -1,10 +1,6 @@
 # CHR
 
-[boolean] `Exps.And` -- to support short-circuit evaluation
-[boolean] `Exps.And` -- syntax `and [...]`
-
-[boolean] `Exps.Or` -- to support short-circuit evaluation
-[boolean] `Exps.Or` -- syntax `or [...]`
+[boolean] `Exps.And` & `Exps.Or` -- syntax `and [...]` & `or [...]`
 
 [finite-domain] solve some puzzles about finite-domain as example
 

@@ -137,5 +137,29 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
         ),
       )
     }
+
+    case "And": {
+      for (const arg of exp.args) {
+        const value = evaluate(mod, env, arg)
+        Values.assertValue(value, "Boolean", { who: "evaluate And" })
+        if (value.data === false) {
+          return Values.Boolean(false)
+        }
+      }
+
+      return Values.Boolean(true)
+    }
+
+    case "Or": {
+      for (const arg of exp.args) {
+        const value = evaluate(mod, env, arg)
+        Values.assertValue(value, "Boolean", { who: "evaluate And" })
+        if (value.data === true) {
+          return Values.Boolean(true)
+        }
+      }
+
+      return Values.Boolean(false)
+    }
   }
 }
