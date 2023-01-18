@@ -8,36 +8,20 @@ import type { Span } from "../span"
 import type { Value } from "../value"
 
 export type Stmt =
-  | Assert
   | Clause
-  | Compute
-  | Export
-  | ExportNames
+  | Let
   | Fn
+  | Rule
   | Hyperrule
-  | If
   | Import
   | ImportAll
-  | Let
+  | Export
+  | ExportNames
+  | Compute
   | Print
+  | Assert
   | Return
-  | Rule
-
-export type Assert = {
-  "@type": "Stmt"
-  "@kind": "Assert"
-  exp: Exp
-  span: Span
-}
-
-export function Assert(exp: Exp, span: Span): Assert {
-  return {
-    "@type": "Stmt",
-    "@kind": "Assert",
-    exp,
-    span,
-  }
-}
+  | If
 
 export type Clause = {
   "@type": "Stmt"
@@ -67,50 +51,20 @@ export function Clause(
   }
 }
 
-export type Compute = {
+export type Let = {
   "@type": "Stmt"
-  "@kind": "Compute"
+  "@kind": "Let"
+  name: string
   exp: Exp
   span: Span
 }
 
-export function Compute(exp: Exp, span: Span): Compute {
+export function Let(name: string, exp: Exp, span: Span): Let {
   return {
     "@type": "Stmt",
-    "@kind": "Compute",
+    "@kind": "Let",
+    name,
     exp,
-    span,
-  }
-}
-
-export type Export = {
-  "@type": "Stmt"
-  "@kind": "Export"
-  stmt: Stmt
-  span: Span
-}
-
-export function Export(stmt: Stmt, span: Span): Export {
-  return {
-    "@type": "Stmt",
-    "@kind": "Export",
-    stmt,
-    span,
-  }
-}
-
-export type ExportNames = {
-  "@type": "Stmt"
-  "@kind": "ExportNames"
-  names: Array<string>
-  span: Span
-}
-
-export function ExportNames(names: Array<string>, span: Span): ExportNames {
-  return {
-    "@type": "Stmt",
-    "@kind": "ExportNames",
-    names,
     span,
   }
 }
@@ -140,6 +94,24 @@ export function Fn(
   }
 }
 
+export type Rule = {
+  "@type": "Stmt"
+  "@kind": "Rule"
+  name: string
+  rules: Array<RuleExp>
+  span: Span
+}
+
+export function Rule(name: string, rules: Array<RuleExp>, span: Span): Rule {
+  return {
+    "@type": "Stmt",
+    "@kind": "Rule",
+    name,
+    rules,
+    span,
+  }
+}
+
 export type Hyperrule = {
   "@type": "Stmt"
   "@kind": "Hyperrule"
@@ -158,34 +130,6 @@ export function Hyperrule(
     "@kind": "Hyperrule",
     name,
     hyperrules,
-    span,
-  }
-}
-
-export type If = {
-  "@type": "Stmt"
-  "@kind": "If"
-  target: Exp
-  stmts: Array<Stmt>
-  elseIfs: Array<{ target: Exp; stmts: Array<Stmt> }>
-  elseStmts: Array<Stmt>
-  span: Span
-}
-
-export function If(
-  target: Exp,
-  stmts: Array<Stmt>,
-  elseIfs: Array<{ target: Exp; stmts: Array<Stmt> }>,
-  elseStmts: Array<Stmt>,
-  span: Span,
-): If {
-  return {
-    "@type": "Stmt",
-    "@kind": "If",
-    target,
-    stmts,
-    elseIfs,
-    elseStmts,
     span,
   }
 }
@@ -239,20 +183,49 @@ export function ImportAll(path: string, span: Span): ImportAll {
     span,
   }
 }
-
-export type Let = {
+export type Export = {
   "@type": "Stmt"
-  "@kind": "Let"
-  name: string
+  "@kind": "Export"
+  stmt: Stmt
+  span: Span
+}
+
+export function Export(stmt: Stmt, span: Span): Export {
+  return {
+    "@type": "Stmt",
+    "@kind": "Export",
+    stmt,
+    span,
+  }
+}
+
+export type ExportNames = {
+  "@type": "Stmt"
+  "@kind": "ExportNames"
+  names: Array<string>
+  span: Span
+}
+
+export function ExportNames(names: Array<string>, span: Span): ExportNames {
+  return {
+    "@type": "Stmt",
+    "@kind": "ExportNames",
+    names,
+    span,
+  }
+}
+
+export type Compute = {
+  "@type": "Stmt"
+  "@kind": "Compute"
   exp: Exp
   span: Span
 }
 
-export function Let(name: string, exp: Exp, span: Span): Let {
+export function Compute(exp: Exp, span: Span): Compute {
   return {
     "@type": "Stmt",
-    "@kind": "Let",
-    name,
+    "@kind": "Compute",
     exp,
     span,
   }
@@ -269,6 +242,22 @@ export function Print(exp: Exp, span: Span): Print {
   return {
     "@type": "Stmt",
     "@kind": "Print",
+    exp,
+    span,
+  }
+}
+
+export type Assert = {
+  "@type": "Stmt"
+  "@kind": "Assert"
+  exp: Exp
+  span: Span
+}
+
+export function Assert(exp: Exp, span: Span): Assert {
+  return {
+    "@type": "Stmt",
+    "@kind": "Assert",
     exp,
     span,
   }
@@ -301,20 +290,30 @@ export function Return(exp: Exp, span: Span): Return {
   }
 }
 
-export type Rule = {
+export type If = {
   "@type": "Stmt"
-  "@kind": "Rule"
-  name: string
-  rules: Array<RuleExp>
+  "@kind": "If"
+  target: Exp
+  stmts: Array<Stmt>
+  elseIfs: Array<{ target: Exp; stmts: Array<Stmt> }>
+  elseStmts: Array<Stmt>
   span: Span
 }
 
-export function Rule(name: string, rules: Array<RuleExp>, span: Span): Rule {
+export function If(
+  target: Exp,
+  stmts: Array<Stmt>,
+  elseIfs: Array<{ target: Exp; stmts: Array<Stmt> }>,
+  elseStmts: Array<Stmt>,
+  span: Span,
+): If {
   return {
     "@type": "Stmt",
-    "@kind": "Rule",
-    name,
-    rules,
+    "@kind": "If",
+    target,
+    stmts,
+    elseIfs,
+    elseStmts,
     span,
   }
 }
