@@ -1,7 +1,5 @@
 # CHR
 
-[primitive] [number] `sum`, `product`
-
 [boolean] `Exps.And` -- to support short-circuit evaluation
 [boolean] `Exps.And` -- syntax `and [...]`
 

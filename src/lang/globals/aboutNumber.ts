@@ -74,4 +74,24 @@ export async function aboutNumber(globals: GlobalStore): Promise<void> {
       ),
     )
   })
+
+  globals.primitive("sum", 1, ([value], { mod, env }) => {
+    let result = 0
+    for (const n of Values.toArray(value)) {
+      Values.assertValue(n, "Number", { who: "sum" })
+      result = result + n.data
+    }
+
+    return Values.Number(result)
+  })
+
+  globals.primitive("product", 1, ([value], { mod, env }) => {
+    let result = 1
+    for (const n of Values.toArray(value)) {
+      Values.assertValue(n, "Number", { who: "product" })
+      result = result * n.data
+    }
+
+    return Values.Number(result)
+  })
 }

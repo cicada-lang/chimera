@@ -26,3 +26,7 @@ assert Equal(min(-1, 0), -1)
 assert Equal(maximum([1, 2, 3, 4]), 4)
 
 assert Equal(minimum([1, 2, 3, 4]), 1)
+
+assert Equal(sum([1, 2, 3, 4]), 10)
+
+assert Equal(product([1, 2, 3, 4]), 24)
