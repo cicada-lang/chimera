@@ -1,6 +1,9 @@
 # CHR
 
-[primitive] [number] `add`, `mul`, `div`, `min`, `max`
+[primitive] [number] `add`, `sub`, `mul`, `div`
+[primitive] [number] `add1`, `sub1`, `div`
+[primitive] [number] `min`, `max`
+[primitive] [number] `sum`, `product`
 
 [boolean] `Exps.And` -- to support short-circuit evaluation
 [boolean] `Exps.And` -- syntax `and [...]`
