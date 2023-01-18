@@ -30,3 +30,19 @@ assert Equal(minimum([1, 2, 3, 4]), 1)
 assert Equal(sum([1, 2, 3, 4]), 10)
 
 assert Equal(product([1, 2, 3, 4]), 24)
+
+assert lt(1, 2)
+assert not(lt(1, 1))
+assert not(lt(2, 1))
+
+assert lteq(1, 2)
+assert lteq(1, 1)
+assert not(lteq(2, 1))
+
+assert not(gt(1, 2))
+assert not(gt(1, 1))
+assert gt(2, 1)
+
+assert not(gteq(1, 2))
+assert gteq(1, 1)
+assert gteq(2, 1)
