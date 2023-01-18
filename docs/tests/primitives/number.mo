@@ -22,3 +22,7 @@ assert Equal(max(-1, 0), 0)
 
 assert Equal(min(1, 2), 1)
 assert Equal(min(-1, 0), -1)
+
+assert Equal(maximum([1, 2, 3, 4]), 4)
+
+assert Equal(minimum([1, 2, 3, 4]), 1)

@@ -52,4 +52,26 @@ export async function aboutNumber(globals: GlobalStore): Promise<void> {
     Values.assertValue(y, "Number", { who: "min" })
     return Values.Number(Math.min(x.data, y.data))
   })
+
+  globals.primitive("maximum", 1, ([value], { mod, env }) => {
+    return Values.Number(
+      Math.max(
+        ...Values.toArray(value).map((n) => {
+          Values.assertValue(n, "Number", { who: "maximum" })
+          return n.data
+        }),
+      ),
+    )
+  })
+
+  globals.primitive("minimum", 1, ([value], { mod, env }) => {
+    return Values.Number(
+      Math.min(
+        ...Values.toArray(value).map((n) => {
+          Values.assertValue(n, "Number", { who: "minimum" })
+          return n.data
+        }),
+      ),
+    )
+  })
 }

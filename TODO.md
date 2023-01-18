@@ -1,6 +1,5 @@
 # CHR
 
-[primitive] [number] `maximum`, `minimum`
 [primitive] [number] `sum`, `product`
 
 [boolean] `Exps.And` -- to support short-circuit evaluation
