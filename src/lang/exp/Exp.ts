@@ -1,4 +1,5 @@
 import type { GoalExp } from "../goal-exp"
+import type { HyperruleExp } from "../hyperrule-exp"
 import type { RuleExp } from "../rule-exp"
 import type { Span } from "../span"
 import type { Stmt } from "../stmt"
@@ -18,6 +19,7 @@ export type Exp =
   | Unquote
   | Find
   | RuleList
+  | HyperruleList
 
 export type Var = {
   "@type": "Exp"
@@ -250,6 +252,25 @@ export function RuleList(rules: Array<RuleExp>, span: Span): RuleList {
     "@type": "Exp",
     "@kind": "RuleList",
     rules,
+    span,
+  }
+}
+
+export type HyperruleList = {
+  "@type": "Exp"
+  "@kind": "HyperruleList"
+  hyperrules: Array<HyperruleExp>
+  span: Span
+}
+
+export function HyperruleList(
+  hyperrules: Array<HyperruleExp>,
+  span: Span,
+): HyperruleList {
+  return {
+    "@type": "Exp",
+    "@kind": "HyperruleList",
+    hyperrules,
     span,
   }
 }

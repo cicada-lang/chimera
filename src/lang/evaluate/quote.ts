@@ -95,5 +95,11 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
         span: exp.span,
       })
     }
+
+    case "HyperruleList": {
+      throw new Errors.LangError(`[quote] can not handle Exps.HyperruleList`, {
+        span: exp.span,
+      })
+    }
   }
 }

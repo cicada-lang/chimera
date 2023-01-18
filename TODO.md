@@ -1,4 +1,4 @@
-`Exps.HyperruleList` -- for unnamed hyperrule
+`Exps.HyperruleList` -- syntax
 
 # CHR
 
