@@ -81,11 +81,11 @@ export class Import extends Stmt {
   formatStmt(): string {
     const bindings = this.bindings.map(formatImportBinding)
     return `import { ${bindings.join(", ")} } from "${this.path}"`
-  }
-}
 
-function formatImportBinding(binding: ImportBinding): string {
-  return binding.alias === undefined
-    ? binding.name
-    : `${binding.name} as ${binding.alias}`
+    function formatImportBinding(binding: ImportBinding): string {
+      return binding.alias === undefined
+        ? binding.name
+        : `${binding.name} as ${binding.alias}`
+    }
+  }
 }
