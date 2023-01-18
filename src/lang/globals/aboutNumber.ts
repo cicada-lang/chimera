@@ -13,16 +13,26 @@ export async function aboutNumber(globals: GlobalStore): Promise<void> {
     return Values.Number(x.data + y.data)
   })
 
-  globals.primitive("mul", 2, ([x, y], { mod, env }) => {
-    Values.assertValue(x, "Number", { who: "mul" })
-    Values.assertValue(y, "Number", { who: "mul" })
-    return Values.Number(x.data * y.data)
-  })
-
   globals.primitive("sub", 2, ([x, y], { mod, env }) => {
     Values.assertValue(x, "Number", { who: "sub" })
     Values.assertValue(y, "Number", { who: "sub" })
     return Values.Number(x.data - y.data)
+  })
+
+  globals.primitive("add1", 1, ([x], { mod, env }) => {
+    Values.assertValue(x, "Number", { who: "add1" })
+    return Values.Number(x.data + 1)
+  })
+
+  globals.primitive("sub1", 1, ([x], { mod, env }) => {
+    Values.assertValue(x, "Number", { who: "sub1" })
+    return Values.Number(x.data - 1)
+  })
+
+  globals.primitive("mul", 2, ([x, y], { mod, env }) => {
+    Values.assertValue(x, "Number", { who: "mul" })
+    Values.assertValue(y, "Number", { who: "mul" })
+    return Values.Number(x.data * y.data)
   })
 
   globals.primitive("div", 2, ([x, y], { mod, env }) => {

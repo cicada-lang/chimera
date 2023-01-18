@@ -1,6 +1,5 @@
 # CHR
 
-[primitive] [number] `add1`, `sub1`
 [primitive] [number] `min`, `max`
 [primitive] [number] `sum`, `product`
 
