@@ -1,9 +1,9 @@
 import { evaluate } from "../evaluate"
-import { Exp, formatExp } from "../exp"
+import type { Exp } from "../exp"
+import { formatExp, formatValue } from "../format"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"
-import { formatValue } from "../value"
 
 export class Print extends Stmt {
   constructor(public exp: Exp, public span: Span) {

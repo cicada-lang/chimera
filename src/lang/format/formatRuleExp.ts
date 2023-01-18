@@ -1,5 +1,5 @@
 import { indent } from "../../utils/indent"
-import { formatExp } from "../exp"
+import { formatExp } from "../format"
 import type { RuleExp } from "../rule-exp"
 
 export function formatRuleExp(rule: RuleExp): string {

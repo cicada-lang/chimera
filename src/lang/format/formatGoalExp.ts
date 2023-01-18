@@ -1,5 +1,5 @@
 import { indent } from "../../utils/indent"
-import { formatArgs, formatExp } from "../exp"
+import { formatArgs, formatExp } from "../format"
 import type { GoalExp } from "../goal-exp"
 
 export function formatGoalExp(goal: GoalExp): string {

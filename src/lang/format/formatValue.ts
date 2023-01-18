@@ -1,5 +1,5 @@
 import { indent } from "../../utils/indent"
-import { formatGoal } from "../goal"
+import { formatGoal } from "../format"
 import type { Value } from "../value"
 
 export function formatValue(value: Value): string {

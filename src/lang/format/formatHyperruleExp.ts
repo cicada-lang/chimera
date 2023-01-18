@@ -1,5 +1,5 @@
 import { indent } from "../../utils/indent"
-import { formatExp } from "../exp"
+import { formatExp } from "../format"
 import type { HyperruleExp } from "../hyperrule-exp"
 
 export function formatHyperruleExp(hyperrule: HyperruleExp): string {

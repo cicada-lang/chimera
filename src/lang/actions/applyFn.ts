@@ -1,6 +1,7 @@
 import { doAp } from "../actions"
 import { Env, envMerge } from "../env"
 import * as Errors from "../errors"
+import { formatValue } from "../format"
 import { match } from "../match"
 import type { Mod } from "../mod"
 import type { Stmt } from "../stmt"
@@ -12,7 +13,6 @@ import {
 } from "../substitution"
 import type { Value } from "../value"
 import * as Values from "../value"
-import { formatValue } from "../value"
 
 export function applyFn(
   _mod: Mod,

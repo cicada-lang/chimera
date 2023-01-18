@@ -1,5 +1,6 @@
 import { evaluate } from "../evaluate"
-import { Exp, formatExp } from "../exp"
+import type { Exp } from "../exp"
+import { formatExp } from "../format"
 import type { Mod } from "../mod"
 import type { Span } from "../span"
 import { Stmt } from "../stmt"

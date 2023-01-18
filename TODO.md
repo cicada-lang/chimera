@@ -1,3 +1,5 @@
+[refactor] use closed data for `Stmt` instead of class
+
 # CHR
 
 [finite-domain] solve some puzzles about finite-domain as example
@@ -26,12 +28,6 @@
 `Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
 
 - Using `claim` as keyword.
-
-# maybe
-
-[maybe] use closed data for `Stmt` instead of class
-
-[maybe] move `format*` functions to `format/` directory
 
 # 1.0.0
 

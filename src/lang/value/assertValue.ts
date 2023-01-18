@@ -1,6 +1,6 @@
 import * as Errors from "../errors"
+import { formatValue } from "../format"
 import type { Value } from "../value"
-import { formatValue } from "../value"
 
 export function assertValue<Kind extends Value["@kind"]>(
   value: Value,

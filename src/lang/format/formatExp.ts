@@ -1,8 +1,6 @@
 import { indent } from "../../utils/indent"
 import type { Exp } from "../exp"
-import { formatGoalExp } from "../goal-exp"
-import { formatHyperruleExp } from "../hyperrule-exp"
-import { formatRuleExp } from "../rule-exp"
+import { formatGoalExp, formatHyperruleExp, formatRuleExp } from "../format"
 
 export function formatExp(exp: Exp): string {
   switch (exp["@kind"]) {

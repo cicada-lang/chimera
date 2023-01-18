@@ -1,10 +1,10 @@
 import type { Env } from "../env"
 import * as Errors from "../errors"
 import { lookup } from "../evaluate"
+import { formatValue } from "../format"
 import * as Goals from "../goal"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
-import { formatValue } from "../value"
 
 export function goalFromValue(mod: Mod, env: Env, value: Value) {
   if (value["@kind"] !== "Term") {
