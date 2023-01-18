@@ -1,5 +1,8 @@
 [refactor] extract `execute` -- with `prepare` and `*Sync`
+
 [refactor] use closed data for `Stmt` instead of class
+
+- remove `stmts/`
 
 # CHR
 
