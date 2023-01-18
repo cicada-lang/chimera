@@ -96,5 +96,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
         span,
       )
     },
+    "operand:rule_list": ({ rules }, { span }) =>
+      Exps.RuleList(matchers.rules_matcher(rules), span),
   })(tree)
 }

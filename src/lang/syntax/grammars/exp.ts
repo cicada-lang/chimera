@@ -68,5 +68,6 @@ export const operand = {
       { goals: "goals" },
       '"}"',
     ],
+    "operand:rule_list": ['"rule"', '"{"', { rules: "rules" }, '"}"'],
   },
 }

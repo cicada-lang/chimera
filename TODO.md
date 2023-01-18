@@ -1,5 +1,3 @@
-`Exps.RuleList` -- syntax
-
 `Exps.HyperruleList` -- for unnamed hyperrule
 
 # CHR
