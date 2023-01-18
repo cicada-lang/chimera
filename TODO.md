@@ -1,7 +1,5 @@
 # CHR
 
-[boolean] `Exps.And` & `Exps.Or` -- syntax `and [...]` & `or [...]`
-
 [finite-domain] solve some puzzles about finite-domain as example
 
 - [read] essentials-of-constraint-programming.pdf

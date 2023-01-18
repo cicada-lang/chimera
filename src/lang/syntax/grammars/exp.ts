@@ -75,5 +75,23 @@ export const operand = {
       { hyperrules: "hyperrules" },
       '"}"',
     ],
+    "operand:and": [
+      '"and"',
+      '"["',
+      { elements: { $ap: ["zero_or_more", "exp", '","'] } },
+      { last_element: "exp" },
+      { $ap: ["optional", '","'] },
+      '"]"',
+    ],
+    "operand:and_empty": ['"and"', '"["', '"]"'],
+    "operand:or": [
+      '"or"',
+      '"["',
+      { elements: { $ap: ["zero_or_more", "exp", '","'] } },
+      { last_element: "exp" },
+      { $ap: ["optional", '","'] },
+      '"]"',
+    ],
+    "operand:or_empty": ['"or"', '"["', '"]"'],
   },
 }

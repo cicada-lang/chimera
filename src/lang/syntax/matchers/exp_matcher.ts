@@ -100,5 +100,27 @@ export function operand_matcher(tree: pt.Tree): Exp {
       Exps.RuleList(matchers.rules_matcher(rules), span),
     "operand:hyperrule_list": ({ hyperrules }, { span }) =>
       Exps.HyperruleList(matchers.hyperrules_matcher(hyperrules), span),
+    "operand:and": ({ elements, last_element }, { span }) =>
+      Exps.And(
+        [
+          ...pt.matchers
+            .zero_or_more_matcher(elements)
+            .map(matchers.exp_matcher),
+          matchers.exp_matcher(last_element),
+        ],
+        span,
+      ),
+    "operand:and_empty": ({}, { span }) => Exps.And([], span),
+    "operand:or": ({ elements, last_element }, { span }) =>
+      Exps.Or(
+        [
+          ...pt.matchers
+            .zero_or_more_matcher(elements)
+            .map(matchers.exp_matcher),
+          matchers.exp_matcher(last_element),
+        ],
+        span,
+      ),
+    "operand:or_empty": ({}, { span }) => Exps.Or([], span),
   })(tree)
 }
