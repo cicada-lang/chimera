@@ -2,9 +2,9 @@
 
 - inline `guardReject`
 
-[maybe] `freshen` should be global instead of `mod.freshen`
-`hyperrewriteOneStep` -- should not take `mod`
 `rewriteOneStep` -- should not take `mod`
+
+[maybe] `freshen` should be global instead of `mod.freshen`
 
 # CHR
 

@@ -1,7 +1,6 @@
 import { envMerge } from "../env"
 import { evaluate, quote } from "../evaluate"
 import type { Hyperrule } from "../hyperrule"
-import type { Mod } from "../mod"
 import { refresh } from "../refresh"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
@@ -11,7 +10,6 @@ import { propagate } from "./propagate"
 import { simplify } from "./simplify"
 
 export function hyperrewriteOneStep(
-  mod: Mod,
   hyperrule: Hyperrule,
   values: Array<Value>,
   appliedPropagations: Array<Propagation>,
@@ -55,6 +53,9 @@ export function hyperrewriteOneStep(
     }
 
     case "Propagate": {
+      const mod = hyperrule.mod.copy()
+      mod.env = envMerge(mod.env, hyperrule.env)
+
       const renames = new Map()
       const from = hyperrule.from.map((exp) =>
         refresh(mod, renames, quote(mod, mod.env, exp)),
@@ -99,7 +100,6 @@ export function hyperrewriteOneStep(
     case "List": {
       for (const subHyperrule of hyperrule.hyperrules) {
         const results = hyperrewriteOneStep(
-          mod,
           subHyperrule,
           values,
           appliedPropagations,
