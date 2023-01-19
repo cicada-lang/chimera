@@ -1,15 +1,10 @@
-import type { Mod } from "../mod"
 import type { Rule } from "../rule"
 import type { Value } from "../value"
 import * as Values from "../value"
 import { rewriteOnePlace } from "./rewriteOnePlace"
 
-export function rewriteOneStep(
-  mod: Mod,
-  rule: Rule,
-  value: Value,
-): Value | undefined {
-  const result = rewriteOnePlace(mod, rule, value)
+export function rewriteOneStep(rule: Rule, value: Value): Value | undefined {
+  const result = rewriteOnePlace(rule, value)
   if (result !== undefined) {
     return result
   }
@@ -25,12 +20,12 @@ export function rewriteOneStep(
     }
 
     case "ArrayCons": {
-      const car = rewriteOneStep(mod, rule, value.car)
+      const car = rewriteOneStep(rule, value.car)
       if (car !== undefined) {
         return Values.ArrayCons(car, value.cdr)
       }
 
-      const cdr = rewriteOneStep(mod, rule, value.cdr)
+      const cdr = rewriteOneStep(rule, value.cdr)
       if (cdr !== undefined) {
         return Values.ArrayCons(value.car, cdr)
       }
@@ -44,7 +39,7 @@ export function rewriteOneStep(
 
     case "Objekt": {
       for (const [name, property] of Object.entries(value.properties)) {
-        const result = rewriteOneStep(mod, rule, property)
+        const result = rewriteOneStep(rule, property)
         if (result !== undefined) {
           return Values.Objekt(
             { ...value.properties, [name]: result },
@@ -54,7 +49,7 @@ export function rewriteOneStep(
       }
 
       if (value.etc !== undefined) {
-        const etc = rewriteOneStep(mod, rule, value.etc)
+        const etc = rewriteOneStep(rule, value.etc)
         if (etc !== undefined) {
           return Values.Objekt(value.properties, etc)
         }
@@ -65,7 +60,7 @@ export function rewriteOneStep(
 
     case "Term": {
       for (const [index, arg] of value.args.entries()) {
-        const result = rewriteOneStep(mod, rule, arg)
+        const result = rewriteOneStep(rule, arg)
         if (result !== undefined) {
           return Values.Term(value.name, [
             ...value.args.slice(0, index),

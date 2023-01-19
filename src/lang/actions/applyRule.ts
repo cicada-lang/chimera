@@ -13,5 +13,5 @@ export function applyRule(
 ): Value {
   assertArity(args, 1, { who: "applyRule" })
 
-  return rewrite(mod, target.rule, args[0])
+  return rewrite(target.rule, args[0])
 }

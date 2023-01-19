@@ -11,7 +11,7 @@ export async function aboutRewrite(globals: GlobalStore): Promise<void> {
       Values.assertValue(limit, "Number", { who: "rewriteManySteps" })
       Values.assertValue(rule, "Rule", { who: "rewriteManySteps" })
       return Values.fromArray(
-        rewriteManySteps(mod, rule.rule, target, { limit: limit.data }),
+        rewriteManySteps(rule.rule, target, { limit: limit.data }),
       )
     },
   )

@@ -1,18 +1,13 @@
 import { envMerge } from "../env"
 import { evaluate, quote } from "../evaluate"
 import { match } from "../match"
-import type { Mod } from "../mod"
 import { refresh } from "../refresh"
 import type { Rule } from "../rule"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
 import * as Values from "../value"
 
-export function rewriteOnePlace(
-  mod: Mod,
-  rule: Rule,
-  value: Value,
-): Value | undefined {
+export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
   switch (rule["@kind"]) {
     case "Case": {
       const mod = rule.mod.copy()
@@ -44,7 +39,7 @@ export function rewriteOnePlace(
 
     case "List": {
       for (const subRule of rule.rules) {
-        const result = rewriteOnePlace(mod, subRule, value)
+        const result = rewriteOnePlace(subRule, value)
         if (result !== undefined) {
           return result
         }

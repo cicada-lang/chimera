@@ -1,5 +1,3 @@
-`rewriteOneStep` -- should not take `mod`
-
 [maybe] `freshen` should be global instead of `mod.freshen`
 
 # CHR
@@ -138,10 +136,6 @@ can also be viewed as a new relation with schema
 -- the constrains (the body of the query),
 that must be satisfied when we add new data to the relation,
 or update existing data in the relation.
-
-# docs
-
-[manual] compare with SQL
 
 # database
 
@@ -296,10 +290,3 @@ datalog stratification: https://en.wikipedia.org/wiki/Stratification_(mathematic
 [later] `equal` -- support all value types
 
 [later] [DX] when adding new url to `Loader.tracked`, we should let the `watcher` watch it
-
-# type assertion
-
-[maybe] support type assertion
-
-- because I heard (only heard) that
-  relations fail silently is very bad for debugging.
