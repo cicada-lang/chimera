@@ -1,7 +1,3 @@
-`Rule` -- `from` and `to` should be `Exp` instead of `Value`
-
-- inline `guardReject`
-
 `rewriteOneStep` -- should not take `mod`
 
 [maybe] `freshen` should be global instead of `mod.freshen`
