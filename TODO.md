@@ -4,11 +4,14 @@
 
 - [read] essentials-of-constraint-programming.pdf
 
-[maybe] [module] support `import * as <name>`
-
 [constraint] implement constraint systems by hypergraph rewriting
 
-- [maybe] remove `find` and `findAll` functions -- in general body can not be quoted
+- [constraint] provide a syntax keyword for defining new constraint
+
+- how to import constraints? can constraints be namespaced?
+
+  - [maybe] [module] support `import * as <name>`
+  - [maybe] remove `find` and `findAll` functions -- in general body can not be quoted
 
 - [maybe] `Solution` should be extended with `customConstraints`
   -- or just `constraints` -- which contains the constraints
@@ -16,8 +19,6 @@
 
 - [maybe] we should handle all constraints in the goal first,
   to limit the search space, before unfolding an application of a relation.
-
-- [constraint] provide a syntax keyword for defining new constraint
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
