@@ -24,7 +24,7 @@ export function applyRelation(
 
     const renames = new Map()
 
-    const values = refreshValues(mod, renames, clause.values)
+    const values = refreshValues(renames, clause.values)
     const newSolution = pursueManyEqual(mod, solution, values, args)
 
     /**
@@ -37,7 +37,7 @@ export function applyRelation(
 
     if (newSolution === undefined) return []
 
-    const goals = refreshGoals(mod, renames, clause.goals)
+    const goals = refreshGoals(renames, clause.goals)
 
     return [
       newSolution.update({

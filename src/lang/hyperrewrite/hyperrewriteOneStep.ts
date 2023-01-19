@@ -21,7 +21,7 @@ export function hyperrewriteOneStep(
 
       const renames = new Map()
       const from = hyperrule.from.map((exp) =>
-        refresh(mod, renames, quote(mod, mod.env, exp)),
+        refresh(renames, quote(mod, mod.env, exp)),
       )
 
       const result = simplify(mod, substitutionEmpty(), from, values)
@@ -45,7 +45,7 @@ export function hyperrewriteOneStep(
       const to = hyperrule.to.map((exp) =>
         substitutionDeepWalk(
           result.substitution,
-          refresh(mod, renames, quote(mod, mod.env, exp)),
+          refresh(renames, quote(mod, mod.env, exp)),
         ),
       )
 
@@ -58,7 +58,7 @@ export function hyperrewriteOneStep(
 
       const renames = new Map()
       const from = hyperrule.from.map((exp) =>
-        refresh(mod, renames, quote(mod, mod.env, exp)),
+        refresh(renames, quote(mod, mod.env, exp)),
       )
 
       const result = propagate(
@@ -89,7 +89,7 @@ export function hyperrewriteOneStep(
       const to = hyperrule.to.map((exp) =>
         substitutionDeepWalk(
           result.substitution,
-          refresh(mod, renames, quote(mod, mod.env, exp)),
+          refresh(renames, quote(mod, mod.env, exp)),
         ),
       )
 

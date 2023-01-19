@@ -14,7 +14,7 @@ export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
       mod.env = envMerge(mod.env, rule.env)
 
       const renames = new Map()
-      const from = refresh(mod, renames, quote(mod, mod.env, rule.from))
+      const from = refresh(renames, quote(mod, mod.env, rule.from))
       const substitution = match(mod, substitutionEmpty(), from, value)
 
       if (substitution === undefined) {
@@ -33,7 +33,7 @@ export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
         }
       }
 
-      const to = refresh(mod, renames, quote(mod, mod.env, rule.to))
+      const to = refresh(renames, quote(mod, mod.env, rule.to))
       return substitutionDeepWalk(substitution, to)
     }
 

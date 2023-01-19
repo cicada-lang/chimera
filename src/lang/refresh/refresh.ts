@@ -1,20 +1,17 @@
 import { freshen } from "../freshen"
-import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
 
 // NOTE Do side-effect on `renames`.
 
 export function refreshValues(
-  mod: Mod,
   renames: Map<string, Values.PatternVar>,
   values: Array<Value>,
 ): Array<Value> {
-  return values.map((value) => refresh(mod, renames, value))
+  return values.map((value) => refresh(renames, value))
 }
 
 export function refresh(
-  mod: Mod,
   renames: Map<string, Values.PatternVar>,
   value: Value,
 ): Value {
@@ -41,8 +38,8 @@ export function refresh(
 
     case "ArrayCons": {
       return Values.ArrayCons(
-        refresh(mod, renames, value.car),
-        refresh(mod, renames, value.cdr),
+        refresh(renames, value.car),
+        refresh(renames, value.cdr),
       )
     }
 
@@ -55,17 +52,17 @@ export function refresh(
         Object.fromEntries(
           Object.entries(value.properties).map(([name, property]) => [
             name,
-            refresh(mod, renames, property),
+            refresh(renames, property),
           ]),
         ),
-        value.etc === undefined ? undefined : refresh(mod, renames, value.etc),
+        value.etc === undefined ? undefined : refresh(renames, value.etc),
       )
     }
 
     case "Term": {
       return Values.Term(
         value.name,
-        value.args.map((arg) => refresh(mod, renames, arg)),
+        value.args.map((arg) => refresh(renames, arg)),
       )
     }
 

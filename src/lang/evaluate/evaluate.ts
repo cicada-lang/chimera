@@ -114,9 +114,8 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       )
 
       const renames = new Map()
-      const pattern = refresh(mod, renames, quote(mod, mod.env, exp.pattern))
+      const pattern = refresh(renames, quote(mod, mod.env, exp.pattern))
       const goals = refreshGoals(
-        mod,
         renames,
         exp.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
       )

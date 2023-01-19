@@ -1,5 +1,3 @@
-`refresh` no need to take `mod`
-
 # CHR
 
 [finite-domain] solve some puzzles about finite-domain as example
