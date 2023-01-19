@@ -1,7 +1,6 @@
 import type { Loader } from "../../loader"
 import type { Env } from "../env"
 import { envEmpty, envEntries, envExtend, envLookupValue } from "../env"
-import * as Errors from "../errors"
 import { useGlobals } from "../globals"
 import type { Stmt } from "../stmt"
 import type { Value } from "../value"
@@ -69,47 +68,5 @@ export class Mod {
     }
 
     this.env = envExtend(this.env, name, value)
-  }
-
-  async executeStmts(stmts: Array<Stmt>): Promise<void> {
-    await this.initialize()
-
-    for (const stmt of stmts.values()) {
-      await stmt.prepare(this)
-    }
-
-    const offset = this.stmts.length
-    for (const [index, stmt] of stmts.entries()) {
-      const output = await stmt.execute(this)
-      this.stmts.push(stmt)
-      if (output) {
-        this.outputs.set(offset + index, output)
-        if (this.options.loader.options.onOutput) {
-          this.options.loader.options.onOutput(output)
-        }
-      }
-    }
-  }
-
-  executeStmtsSync(stmts: Array<Stmt>): void {
-    if (!this.initialized) {
-      throw new Errors.LangError(`[Mod.executeStmtsSync] not initialized mod`)
-    }
-
-    for (const stmt of stmts.values()) {
-      stmt.prepareSync(this)
-    }
-
-    const offset = this.stmts.length
-    for (const [index, stmt] of stmts.entries()) {
-      const output = stmt.executeSync(this)
-      this.stmts.push(stmt)
-      if (output) {
-        this.outputs.set(offset + index, output)
-        if (this.options.loader.options.onOutput) {
-          this.options.loader.options.onOutput(output)
-        }
-      }
-    }
   }
 }

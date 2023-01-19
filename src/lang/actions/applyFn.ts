@@ -1,11 +1,12 @@
 import { doAp } from "../actions"
 import { Env, envMerge } from "../env"
 import * as Errors from "../errors"
+import { executeStmtsSync } from "../execute"
 import { formatValue } from "../format"
 import { match } from "../match"
 import type { Mod } from "../mod"
 import type { Stmt } from "../stmt"
-import { ReturnValue } from "../stmts"
+import { ReturnValue } from "../stmt"
 import {
   substitutionDeepWalk,
   substitutionEmpty,
@@ -71,7 +72,7 @@ function matchPatterns(
 
 function catchReturnValue(mod: Mod, stmts: Array<Stmt>): Value {
   try {
-    mod.executeStmtsSync(stmts)
+    executeStmtsSync(mod, stmts)
     return Values.Null()
   } catch (error) {
     if (error instanceof ReturnValue) {

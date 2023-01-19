@@ -6,7 +6,7 @@ import {
   formatHyperruleExp,
   formatRuleExp,
 } from "../format"
-import type { ImportBinding, Stmt } from "../stmt-tobe"
+import type { ImportBinding, Stmt } from "../stmt"
 
 export function formatStmt(stmt: Stmt): string {
   switch (stmt["@kind"]) {

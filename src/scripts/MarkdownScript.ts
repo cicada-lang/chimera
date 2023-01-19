@@ -1,5 +1,6 @@
 import * as commonmark from "commonmark"
 import { createErrorReport } from "../lang/errors"
+import { executeStmts } from "../lang/execute"
 import type { Mod } from "../lang/mod"
 import { parseStmts } from "../lang/syntax"
 import { Script } from "../script"
@@ -27,7 +28,7 @@ export class MarkdownScript extends Script {
 
     try {
       const stmts = parseStmts(text)
-      await this.mod.executeStmts(stmts)
+      await executeStmts(this.mod, stmts)
     } catch (error) {
       throw createErrorReport(error, text)
     }

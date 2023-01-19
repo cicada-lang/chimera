@@ -1,12 +1,4 @@
-[refactor] extract `execute` -- with `prepare` and `*Sync`
-
-[refactor] extract functions about `Mod`
-
 [refactor] use type for `Mod` instead of class
-
-[refactor] use closed data for `Stmt` instead of class
-
-- remove `stmts/`
 
 # CHR
 

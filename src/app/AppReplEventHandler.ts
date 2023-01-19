@@ -2,6 +2,7 @@ import { ReplEvent, ReplEventHandler } from "@cicada-lang/framework/lib/repl"
 import fs from "fs"
 import process from "process"
 import { createErrorReport, highlightErrorMessage } from "../lang/errors"
+import { executeStmts } from "../lang/execute"
 import { parseStmts } from "../lang/syntax"
 import { Loader } from "../loader"
 import { colors } from "../utils/colors"
@@ -36,7 +37,7 @@ export class AppReplEventHandler extends ReplEventHandler {
 
     try {
       const stmts = parseStmts(text)
-      await mod.executeStmts(stmts)
+      await executeStmts(mod, stmts)
     } catch (error) {
       error = createErrorReport(error, text)
       if (error instanceof Error)

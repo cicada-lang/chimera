@@ -1,62 +1,36 @@
+import { executeSync } from "../execute"
 import type { Mod } from "../mod"
-import type { Stmt } from "../stmt-tobe"
+import type { Stmt } from "../stmt"
 
-export async function execute(mod: Mod, stmt: Stmt): Promise<void> {
+export async function execute(
+  mod: Mod,
+  stmt: Stmt,
+): Promise<undefined | string> {
   switch (stmt["@kind"]) {
-    case "Clause": {
-      return
-    }
-
-    case "Let": {
-      return
-    }
-
-    case "Fn": {
-      return
-    }
-
-    case "Rule": {
-      return
-    }
-
-    case "Hyperrule": {
-      return
-    }
-
-    case "Import": {
-      return
-    }
-
+    case "Clause":
+    case "Let":
+    case "Fn":
+    case "Rule":
+    case "Hyperrule":
+    case "Import":
     case "ImportAll": {
-      return
+      return executeSync(mod, stmt)
     }
 
     case "Export": {
+      mod.exportDepth++
+      await execute(mod, stmt.stmt)
+      mod.exportDepth--
       return
     }
 
-    case "ExportNames": {
-      return
-    }
-
-    case "Compute": {
-      return
-    }
-
-    case "Print": {
-      return
-    }
-
-    case "Assert": {
-      return
-    }
-
-    case "Return": {
-      return
-    }
-
+    case "ExportNames":
+    case "Compute":
+    case "Print":
+    case "Assert":
+    case "Return":
     case "If": {
-      return
+      return executeSync(mod, stmt)
     }
   }
 }
