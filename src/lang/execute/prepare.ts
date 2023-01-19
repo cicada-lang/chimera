@@ -1,7 +1,7 @@
 import type { Mod } from "../mod"
 import type { Stmt } from "../stmt-tobe"
 
-export async function execute(mod: Mod, stmt: Stmt): Promise<void> {
+export async function prepare(mod: Mod, stmt: Stmt): Promise<void> {
   switch (stmt["@kind"]) {
     case "Clause": {
       return

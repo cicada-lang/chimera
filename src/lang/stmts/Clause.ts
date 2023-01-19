@@ -29,7 +29,20 @@ export class Clause extends Stmt {
   }
 
   prepareSync(mod: Mod): void {
-    ensureRelationOfThisMod(mod, this.relationName)
+    const value = mod.find(this.relationName)
+
+    if (
+      value !== undefined &&
+      value["@kind"] === "Relation" &&
+      value.mod === mod
+    ) {
+      return
+    }
+
+    mod.define(
+      this.relationName,
+      Relation(mod, this.relationName, undefined, []),
+    )
   }
 
   executeSync(mod: Mod): void {
@@ -58,20 +71,6 @@ export class Clause extends Stmt {
       this.name
     } {\n${indent(goals.join("\n"))}\n}`
   }
-}
-
-function ensureRelationOfThisMod(mod: Mod, name: string): void {
-  const value = mod.find(name)
-
-  if (
-    value !== undefined &&
-    value["@kind"] === "Relation" &&
-    value.mod === mod
-  ) {
-    return
-  }
-
-  mod.define(name, Relation(mod, name, undefined, []))
 }
 
 function defineClause(
