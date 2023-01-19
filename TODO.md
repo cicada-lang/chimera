@@ -1,3 +1,11 @@
+`Rule` -- `from` and `to` should be `Exp` instead of `Value`
+
+- inline `guardReject`
+
+[maybe] `freshen` should be global instead of `mod.freshen`
+`hyperrewriteOneStep` -- should not take `mod`
+`rewriteOneStep` -- should not take `mod`
+
 # CHR
 
 [finite-domain] solve some puzzles about finite-domain as example
@@ -69,12 +77,6 @@ like higher inductive types
 [compiler] compile to x86 -- for linux.
 
 [compiler] compile to wasm -- for browser.
-
-# module
-
-[module] [maybe] `mod.freshen` should take into account of the `mod.options.url`
-
-- to keep the generated name unique -- like uuid.
 
 # DX
 

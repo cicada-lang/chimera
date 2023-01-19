@@ -1,9 +1,11 @@
+import { envMerge } from "../env"
+import { evaluate, quote } from "../evaluate"
 import type { Hyperrule } from "../hyperrule"
 import type { Mod } from "../mod"
 import { refresh } from "../refresh"
-import { guardReject } from "../rewrite"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
+import * as Values from "../value"
 import type { Propagation } from "./propagate"
 import { propagate } from "./propagate"
 import { simplify } from "./simplify"
@@ -16,29 +18,37 @@ export function hyperrewriteOneStep(
 ): Array<Value> | undefined {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
+      const mod = hyperrule.mod.copy()
+      mod.env = envMerge(mod.env, hyperrule.env)
+
       const renames = new Map()
-      const from = hyperrule.from.map((value) => refresh(mod, renames, value))
+      const from = hyperrule.from.map((exp) =>
+        refresh(mod, renames, quote(mod, mod.env, exp)),
+      )
+
       const result = simplify(mod, substitutionEmpty(), from, values)
 
       if (result === undefined) {
         return undefined
       }
 
-      if (
-        hyperrule.guard !== undefined &&
-        guardReject(
-          hyperrule.mod,
-          hyperrule.env,
-          hyperrule.guard,
-          result.substitution,
-          renames,
-        )
-      ) {
-        return undefined
+      for (const [name, variable] of renames.entries()) {
+        mod.define(name, substitutionDeepWalk(result.substitution, variable))
       }
 
-      const to = hyperrule.to.map((value) =>
-        substitutionDeepWalk(result.substitution, refresh(mod, renames, value)),
+      if (hyperrule.guard !== undefined) {
+        const ok = evaluate(mod, mod.env, hyperrule.guard)
+        Values.assertValue(ok, "Boolean", { who: "hyperrewriteOneStep" })
+        if (!ok.data) {
+          return undefined
+        }
+      }
+
+      const to = hyperrule.to.map((exp) =>
+        substitutionDeepWalk(
+          result.substitution,
+          refresh(mod, renames, quote(mod, mod.env, exp)),
+        ),
       )
 
       return [...result.remainValues, ...to]
@@ -46,7 +56,10 @@ export function hyperrewriteOneStep(
 
     case "Propagate": {
       const renames = new Map()
-      const from = hyperrule.from.map((value) => refresh(mod, renames, value))
+      const from = hyperrule.from.map((exp) =>
+        refresh(mod, renames, quote(mod, mod.env, exp)),
+      )
+
       const result = propagate(
         mod,
         hyperrule,
@@ -60,21 +73,23 @@ export function hyperrewriteOneStep(
         return undefined
       }
 
-      if (
-        hyperrule.guard !== undefined &&
-        guardReject(
-          hyperrule.mod,
-          hyperrule.env,
-          hyperrule.guard,
-          result.substitution,
-          renames,
-        )
-      ) {
-        return undefined
+      for (const [name, variable] of renames.entries()) {
+        mod.define(name, substitutionDeepWalk(result.substitution, variable))
       }
 
-      const to = hyperrule.to.map((value) =>
-        substitutionDeepWalk(result.substitution, refresh(mod, renames, value)),
+      if (hyperrule.guard !== undefined) {
+        const ok = evaluate(mod, mod.env, hyperrule.guard)
+        Values.assertValue(ok, "Boolean", { who: "hyperrewriteOneStep" })
+        if (!ok.data) {
+          return undefined
+        }
+      }
+
+      const to = hyperrule.to.map((exp) =>
+        substitutionDeepWalk(
+          result.substitution,
+          refresh(mod, renames, quote(mod, mod.env, exp)),
+        ),
       )
 
       // NOTE Keep the input values.

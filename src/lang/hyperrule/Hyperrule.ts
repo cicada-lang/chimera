@@ -1,7 +1,6 @@
 import type { Env } from "../env"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
-import type { Value } from "../value"
 
 export type Hyperrule = Simplify | Propagate | List
 
@@ -10,16 +9,16 @@ export type Simplify = {
   "@kind": "Simplify"
   mod: Mod
   env: Env
-  from: Array<Value>
-  to: Array<Value>
+  from: Array<Exp>
+  to: Array<Exp>
   guard: Exp | undefined
 }
 
 export function Simplify(
   mod: Mod,
   env: Env,
-  from: Array<Value>,
-  to: Array<Value>,
+  from: Array<Exp>,
+  to: Array<Exp>,
   guard: Exp | undefined,
 ): Simplify {
   return {
@@ -38,16 +37,16 @@ export type Propagate = {
   "@kind": "Propagate"
   mod: Mod
   env: Env
-  from: Array<Value>
-  to: Array<Value>
+  from: Array<Exp>
+  to: Array<Exp>
   guard: Exp | undefined
 }
 
 export function Propagate(
   mod: Mod,
   env: Env,
-  from: Array<Value>,
-  to: Array<Value>,
+  from: Array<Exp>,
+  to: Array<Exp>,
   guard: Exp | undefined,
 ): Propagate {
   return {

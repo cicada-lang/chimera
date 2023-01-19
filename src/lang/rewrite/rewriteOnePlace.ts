@@ -52,7 +52,7 @@ export function rewriteOnePlace(
   }
 }
 
-export function guardReject(
+function guardReject(
   mod: Mod,
   env: Env,
   guard: Exp,

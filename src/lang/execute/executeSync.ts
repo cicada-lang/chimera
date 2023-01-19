@@ -11,8 +11,6 @@ import * as Values from "../value"
 import {
   varCollectionFromExps,
   varCollectionFromGoalExp,
-  varCollectionFromHyperruleExp,
-  varCollectionFromRuleExp,
   varCollectionMerge,
   varCollectionValidate,
 } from "../var-collection"
@@ -47,10 +45,6 @@ export function executeSync(mod: Mod, stmt: Stmt): undefined | string {
     }
 
     case "Rule": {
-      for (const rule of stmt.rules) {
-        varCollectionValidate(varCollectionFromRuleExp(rule))
-      }
-
       mod.define(
         stmt.name,
         Values.Rule(
@@ -59,14 +53,11 @@ export function executeSync(mod: Mod, stmt: Stmt): undefined | string {
           ),
         ),
       )
+
       return
     }
 
     case "Hyperrule": {
-      for (const hyperrule of stmt.hyperrules) {
-        varCollectionValidate(varCollectionFromHyperruleExp(hyperrule))
-      }
-
       mod.define(
         stmt.name,
         Values.Hyperrule(
@@ -77,6 +68,7 @@ export function executeSync(mod: Mod, stmt: Stmt): undefined | string {
           ),
         ),
       )
+
       return
     }
 

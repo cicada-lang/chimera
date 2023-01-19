@@ -1,5 +1,4 @@
 import type { Env } from "../env"
-import { quote } from "../evaluate"
 import type { Hyperrule } from "../hyperrule"
 import * as Hyperrules from "../hyperrule"
 import type { HyperruleExp } from "../hyperrule-exp"
@@ -15,8 +14,8 @@ export function evaluateHyperruleExp(
       return Hyperrules.Simplify(
         mod,
         env,
-        hyperrule.from.map((hyperrule) => quote(mod, env, hyperrule)),
-        hyperrule.to.map((hyperrule) => quote(mod, env, hyperrule)),
+        hyperrule.from,
+        hyperrule.to,
         hyperrule.guard,
       )
     }
@@ -25,8 +24,8 @@ export function evaluateHyperruleExp(
       return Hyperrules.Propagate(
         mod,
         env,
-        hyperrule.from.map((hyperrule) => quote(mod, env, hyperrule)),
-        hyperrule.to.map((hyperrule) => quote(mod, env, hyperrule)),
+        hyperrule.from,
+        hyperrule.to,
         hyperrule.guard,
       )
     }
