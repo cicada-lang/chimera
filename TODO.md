@@ -1,5 +1,3 @@
-[refactor] use type for `Mod` instead of class
-
 # CHR
 
 [finite-domain] solve some puzzles about finite-domain as example
