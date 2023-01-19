@@ -1,4 +1,4 @@
-[maybe] `freshen` should be global instead of `mod.freshen`
+`refresh` no need to take `mod`
 
 # CHR
 

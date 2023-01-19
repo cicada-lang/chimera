@@ -10,6 +10,7 @@ import {
 } from "../evaluate"
 import type { Exp } from "../exp"
 import { find } from "../find"
+import { freshen } from "../freshen"
 import * as Hyperrules from "../hyperrule"
 import type { Mod } from "../mod"
 import { refresh, refreshGoals } from "../refresh"
@@ -71,7 +72,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
             evaluate(mod, env, property),
           ]),
         ),
-        Values.PatternVar(mod.freshen("...etc")),
+        Values.PatternVar(freshen("...etc")),
       )
     }
 

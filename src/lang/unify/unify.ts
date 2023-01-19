@@ -1,4 +1,5 @@
 import { equal } from "../equal"
+import { freshen } from "../freshen"
 import type { Mod } from "../mod"
 import {
   Substitution,
@@ -169,7 +170,7 @@ function objektAddEtc(
   objekt: Values.Objekt,
   variable: Values.PatternVar,
 ): Values.Objekt {
-  const etc = Values.PatternVar(mod.freshen(variable.name))
+  const etc = Values.PatternVar(freshen(variable.name))
   return { ...objekt, etc }
 }
 

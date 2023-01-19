@@ -12,7 +12,6 @@ export interface ModOptions {
 
 export class Mod {
   initialized = false
-  variableCount = 0
   env: Env = envEmpty()
   exported: Set<string> = new Set()
   exportDepth: number = 0
@@ -25,20 +24,12 @@ export class Mod {
   copy(): Mod {
     const mod = new Mod(this.options)
     mod.initialized = this.initialized
-    mod.variableCount = this.variableCount
     mod.env = this.env
     mod.exported = new Set(this.exported)
     mod.outputs = new Map(this.outputs)
     mod.stmts = [...this.stmts]
     mod.imported = [...this.imported]
     return mod
-  }
-
-  freshen(name: string): string {
-    // TODO Is it safe to put the `variableCount` in a `Mod`
-    // (instead of using a global `variableCount`)?
-    const [prefix, _count] = name.split("#")
-    return `${prefix}#${this.variableCount++}`
   }
 
   async initialize(): Promise<void> {

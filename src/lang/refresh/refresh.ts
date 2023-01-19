@@ -1,3 +1,4 @@
+import { freshen } from "../freshen"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
@@ -22,7 +23,7 @@ export function refresh(
       const found = renames.get(value.name)
       if (found !== undefined) return found
 
-      const freshPatternVar = Values.PatternVar(mod.freshen(value.name))
+      const freshPatternVar = Values.PatternVar(freshen(value.name))
       renames.set(value.name, freshPatternVar)
       return freshPatternVar
     }

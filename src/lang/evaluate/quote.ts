@@ -2,6 +2,7 @@ import type { Env } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import type { Exp } from "../exp"
+import { freshen } from "../freshen"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
@@ -47,7 +48,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
             quote(mod, env, property),
           ]),
         ),
-        Values.PatternVar(mod.freshen("...etc")),
+        Values.PatternVar(freshen("...etc")),
       )
     }
 
