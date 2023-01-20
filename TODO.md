@@ -1,8 +1,18 @@
 # CHR
 
-[finite-domain] solve some puzzles about finite-domain as example
+> [finite-domain] solve some puzzles about finite-domain as example
+>
+> - [read] essentials-of-constraint-programming.pdf
 
-- [read] essentials-of-constraint-programming.pdf
+`Hyperrules.Use`
+
+`Rules.Use`
+
+`finiteDomain` -- use `use`
+
+`intervalDomain` -- `Add`
+
+`enumerationDomain`
 
 [constraint] implement constraint systems by hypergraph rewriting
 
