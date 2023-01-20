@@ -96,26 +96,26 @@ export async function aboutNumber(globals: GlobalStore): Promise<void> {
   })
 
   globals.primitive("lt", 2, ([x, y], { mod, env }) => {
-    Values.assertValue(x, "Number", { who: "add" })
-    Values.assertValue(y, "Number", { who: "add" })
+    Values.assertValue(x, "Number", { who: "lt" })
+    Values.assertValue(y, "Number", { who: "lt" })
     return Values.Boolean(x.data < y.data)
   })
 
   globals.primitive("lteq", 2, ([x, y], { mod, env }) => {
-    Values.assertValue(x, "Number", { who: "add" })
-    Values.assertValue(y, "Number", { who: "add" })
+    Values.assertValue(x, "Number", { who: "lteq" })
+    Values.assertValue(y, "Number", { who: "lteq" })
     return Values.Boolean(x.data <= y.data)
   })
 
   globals.primitive("gt", 2, ([x, y], { mod, env }) => {
-    Values.assertValue(x, "Number", { who: "add" })
-    Values.assertValue(y, "Number", { who: "add" })
+    Values.assertValue(x, "Number", { who: "gt" })
+    Values.assertValue(y, "Number", { who: "gt" })
     return Values.Boolean(x.data > y.data)
   })
 
   globals.primitive("gteq", 2, ([x, y], { mod, env }) => {
-    Values.assertValue(x, "Number", { who: "add" })
-    Values.assertValue(y, "Number", { who: "add" })
+    Values.assertValue(x, "Number", { who: "gteq" })
+    Values.assertValue(y, "Number", { who: "gteq" })
     return Values.Boolean(x.data >= y.data)
   })
 }
