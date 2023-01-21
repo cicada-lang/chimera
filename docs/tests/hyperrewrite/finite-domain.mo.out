@@ -3,3 +3,9 @@
 [Range(x, 30, 100)]
 [LtEq(x, y), Range(x, 20, 120), Range(y, 30, 120)]
 [Eq(x, y), Range(x, 30, 120), Range(y, 30, 120)]
+[ 
+  Add(x, y, z),
+  Range(x, 1, 2),
+  Range(y, 2, 3),
+  Range(z, 3, 4)
+]
