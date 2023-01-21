@@ -4,8 +4,6 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`RuleExps.Use` -- test
-
 `Exps.Not` -- to be symmetric with `and` and `or`
 
 `enumerationDomain`
