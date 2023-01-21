@@ -19,6 +19,8 @@ export function rule_matcher(tree: pt.Tree): RuleExp {
         matchers.exp_matcher(guard),
         span,
       ),
+    "rule:use": ({ exp }, { span }) =>
+      RuleExps.Use(matchers.exp_matcher(exp), span),
   })(tree)
 }
 

@@ -9,6 +9,7 @@ export const rule = {
       '">"',
       { to: "exp" },
     ],
+    "rule:use": ['"use"', { exp: "exp" }],
   },
 }
 

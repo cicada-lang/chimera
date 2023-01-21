@@ -4,7 +4,6 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`RuleExps.Use` -- syntax
 `RuleExps.Use` -- test
 
 `Exps.Not` -- to be symmetric with `and` and `or`
