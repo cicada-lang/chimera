@@ -122,5 +122,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
         span,
       ),
     "operand:or_empty": ({}, { span }) => Exps.Or([], span),
+    "operand:not": ({ exp }, { span }) =>
+      Exps.Not(matchers.exp_matcher(exp), span),
   })(tree)
 }

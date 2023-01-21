@@ -4,8 +4,6 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`Exps.Not` -- syntax
-
 `Exps.If` -- `if then else` with out `{}` should be viewed as expression
 `Exps.If` -- syntax -- `if then else`
 
