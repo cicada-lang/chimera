@@ -5,8 +5,10 @@
 > - [read] essentials-of-constraint-programming.pdf
 
 `RuleExps.Use`
+`RuleExps.Use` -- syntax
+`RuleExps.Use` -- test
 
-`intervalDomain` -- `Add`
+`Exps.Not` -- to be symmetric with `and` and `or`
 
 `enumerationDomain`
 

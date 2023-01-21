@@ -45,7 +45,26 @@ hyperrule intervalDomain {
   if and [Number(a), Equal(a, c), Equal(c, d)]
   => [NotEq(x, y), Range(x, unquote add1(a), b), Range(y, c, d)]
 
-  // TODO
+  // x + y = z
+
+  [Add(x, y, z), Range(x, a, b), Range(y, c, d), Range(z, e, f)]
+  if not(and [
+    Number(a), Number(b),
+    Number(c), Number(d),
+    Number(e), Number(f),
+    gteq(a, sub(e, d)),
+    lteq(b, sub(f, c)),
+    gteq(c, sub(e, b)),
+    lteq(d, sub(f, a)),
+    gteq(e, add(a, c)),
+    lteq(f, add(b, d)),
+  ])
+  => [
+    Add(x, y, z),
+    Range(x, unquote max(a, sub(e, d)), unquote min(b, sub(f, c))),
+    Range(y, unquote max(c, sub(e, b)), unquote min(d, sub(f, a))),
+    Range(z, unquote max(e, add(a, c)), unquote min(f, add(b, d))),
+  ]
 }
 
 hyperrule finiteDomain {
@@ -59,3 +78,5 @@ print finiteDomain(quote [Range(x, 20, 100), Range(x, 30, 120)])
 print finiteDomain(quote [LtEq(x, y), Range(x, 20, 150), Range(y, 30, 120)])
 
 print finiteDomain(quote [Eq(x, y), Range(x, 20, 150), Range(y, 30, 120)])
+
+print finiteDomain(quote [Range(x, 1, 3), Range(y, 2, 4), Range(z, 0, 4), Add(x, y, z)])
