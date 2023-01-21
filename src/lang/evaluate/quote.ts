@@ -120,5 +120,11 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
         span: exp.span,
       })
     }
+
+    case "If": {
+      throw new Errors.LangError(`[quote] can not handle Exps.If`, {
+        span: exp.span,
+      })
+    }
   }
 }

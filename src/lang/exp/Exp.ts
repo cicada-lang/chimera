@@ -23,6 +23,7 @@ export type Exp =
   | And
   | Or
   | Not
+  | If
 
 export type Var = {
   "@type": "Exp"
@@ -322,6 +323,26 @@ export function Not(exp: Exp, span: Span): Not {
     "@type": "Exp",
     "@kind": "Not",
     exp,
+    span,
+  }
+}
+
+export type If = {
+  "@type": "Exp"
+  "@kind": "If"
+  target: Exp
+  thenExp: Exp
+  elseExp: Exp
+  span: Span
+}
+
+export function If(target: Exp, thenExp: Exp, elseExp: Exp, span: Span): If {
+  return {
+    "@type": "Exp",
+    "@kind": "If",
+    target,
+    thenExp,
+    elseExp,
     span,
   }
 }
