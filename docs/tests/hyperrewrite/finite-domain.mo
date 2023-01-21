@@ -30,11 +30,11 @@ hyperrule intervalDomain {
   // same.
 
   [Eq(x, y), Range(x, a, b), Range(y, c, d)]
-  if and [Number(a), Number(c), not(Equal(c, a))]
+  if and [Number(a), Number(c), not Equal(c, a)]
   => [Eq(x, y), Range(x, unquote max(a, c), b), Range(y, unquote max(a, c), d)]
 
   [Eq(x, y), Range(x, a, b), Range(y, c, d)]
-  if and [Number(b), Number(d), not(Equal(b, d))]
+  if and [Number(b), Number(d), not Equal(b, d)]
   => [Eq(x, y), Range(x, a, unquote min(b, d)), Range(y, c, unquote min(b, d))]
 
   // The `NotEq` constraint can only cause a domain tightening if one of the
@@ -48,7 +48,7 @@ hyperrule intervalDomain {
   // x + y = z
 
   [Add(x, y, z), Range(x, a, b), Range(y, c, d), Range(z, e, f)]
-  if not(and [
+  if not and [
     Number(a), Number(b),
     Number(c), Number(d),
     Number(e), Number(f),
@@ -58,7 +58,7 @@ hyperrule intervalDomain {
     lteq(d, sub(f, a)),
     gteq(e, add(a, c)),
     lteq(f, add(b, d)),
-  ])
+  ]
   => [
     Add(x, y, z),
     Range(x, unquote max(a, sub(e, d)), unquote min(b, sub(f, c))),
