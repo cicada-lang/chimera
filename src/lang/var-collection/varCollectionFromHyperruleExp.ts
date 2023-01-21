@@ -25,5 +25,9 @@ export function varCollectionFromHyperruleExp(
         hyperrule.hyperrules.map(varCollectionFromHyperruleExp),
       )
     }
+
+    case "Use": {
+      return varCollectionFromExp(hyperrule.exp)
+    }
   }
 }

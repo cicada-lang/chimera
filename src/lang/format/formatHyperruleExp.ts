@@ -20,5 +20,10 @@ export function formatHyperruleExp(hyperrule: HyperruleExp): string {
       const hyperrules = hyperrule.hyperrules.map(formatHyperruleExp)
       return `list {\n${indent(hyperrules.join("\n"))}\n}`
     }
+
+    case "Use": {
+      const exp = formatExp(hyperrule.exp)
+      return `use ${exp}`
+    }
   }
 }

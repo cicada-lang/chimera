@@ -4,7 +4,7 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`HyperruleExps.Use`
+`HyperruleExps.Use` -- syntax
 
 `RuleExps.Use`
 

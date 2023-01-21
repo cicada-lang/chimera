@@ -3,6 +3,8 @@ import type { Hyperrule } from "../hyperrule"
 import * as Hyperrules from "../hyperrule"
 import type { HyperruleExp } from "../hyperrule-exp"
 import type { Mod } from "../mod"
+import * as Values from "../value"
+import { evaluate } from "./evaluate"
 
 export function evaluateHyperruleExp(
   mod: Mod,
@@ -36,6 +38,15 @@ export function evaluateHyperruleExp(
           evaluateHyperruleExp(mod, env, hyperrule),
         ),
       )
+    }
+
+    case "Use": {
+      const value = evaluate(mod, env, hyperrule.exp)
+      Values.assertValue(value, "Hyperrule", {
+        who: "evaluateHyperruleExp Use",
+      })
+
+      return Hyperrules.List([value.hyperrule])
     }
   }
 }
