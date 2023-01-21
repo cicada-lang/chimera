@@ -22,6 +22,7 @@ export type Exp =
   | HyperruleList
   | And
   | Or
+  | Not
 
 export type Var = {
   "@type": "Exp"
@@ -305,6 +306,22 @@ export function Or(args: Array<Exp>, span: Span): Or {
     "@type": "Exp",
     "@kind": "Or",
     args,
+    span,
+  }
+}
+
+export type Not = {
+  "@type": "Exp"
+  "@kind": "Not"
+  arg: Exp
+  span: Span
+}
+
+export function Not(arg: Exp, span: Span): Not {
+  return {
+    "@type": "Exp",
+    "@kind": "Not",
+    arg,
     span,
   }
 }

@@ -161,5 +161,11 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
 
       return Values.Boolean(false)
     }
+
+    case "Not": {
+      const value = evaluate(mod, env, exp.arg)
+      Values.assertValue(value, "Boolean", { who: "evaluate Not" })
+      return Values.Boolean(!value.data)
+    }
   }
 }

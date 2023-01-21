@@ -108,6 +108,11 @@ export function formatExp(exp: Exp): string {
       const args = exp.args.map((arg) => formatExp(arg))
       return `or [${args.join(", ")}]`
     }
+
+    case "Not": {
+      const arg = formatExp(exp.arg)
+      return `not [${arg}]`
+    }
   }
 }
 

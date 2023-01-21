@@ -71,5 +71,9 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
     case "Or": {
       return createVarCollection()
     }
+
+    case "Not": {
+      return createVarCollection()
+    }
   }
 }
