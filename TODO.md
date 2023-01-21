@@ -4,7 +4,6 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`propagate` and `simplify` should not take `mod`
 `unify` should not take `mod`
 
 `HyperruleExps.Use`

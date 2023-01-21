@@ -24,7 +24,7 @@ export function hyperrewriteOneStep(
         refresh(renames, quote(mod, mod.env, exp)),
       )
 
-      const result = simplify(mod, substitutionEmpty(), from, values)
+      const result = simplify(substitutionEmpty(), from, values)
 
       if (result === undefined) {
         return undefined
@@ -62,7 +62,6 @@ export function hyperrewriteOneStep(
       )
 
       const result = propagate(
-        mod,
         hyperrule,
         substitutionEmpty(),
         from,

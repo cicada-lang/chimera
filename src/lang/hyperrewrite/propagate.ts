@@ -1,7 +1,6 @@
 import { equalValues } from "../equal"
 import type { Hyperrule } from "../hyperrule"
 import { match } from "../match"
-import type { Mod } from "../mod"
 import type { Substitution } from "../substitution"
 import type { Value } from "../value"
 import { permuteByGroup } from "./permuteByGroup"
@@ -22,7 +21,6 @@ export function Propagation(
 }
 
 export function propagate(
-  mod: Mod,
   hyperrule: Hyperrule,
   substitution: Substitution,
   patterns: Array<Value>,
@@ -31,7 +29,6 @@ export function propagate(
 ): undefined | { substitution: Substitution } {
   for (const permutedValues of permuteByGroup(values)) {
     const result = propagateOrdered(
-      mod,
       substitution,
       patterns,
       permutedValues,
@@ -65,7 +62,6 @@ function propagationOccurred(
 }
 
 function propagateOrdered(
-  mod: Mod,
   substitution: Substitution,
   patterns: Array<Value>,
   values: Array<Value>,
@@ -85,7 +81,6 @@ function propagateOrdered(
     const newSubstitution = match(substitution, pattern, value)
     if (newSubstitution !== undefined) {
       return propagateOrdered(
-        mod,
         newSubstitution,
         restPatterns,
         [...values.slice(0, index), ...values.slice(index + 1)],
