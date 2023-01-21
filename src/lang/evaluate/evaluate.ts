@@ -139,7 +139,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "And": {
-      for (const arg of exp.args) {
+      for (const arg of exp.exps) {
         const value = evaluate(mod, env, arg)
         Values.assertValue(value, "Boolean", { who: "evaluate And" })
         if (value.data === false) {
@@ -151,7 +151,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Or": {
-      for (const arg of exp.args) {
+      for (const arg of exp.exps) {
         const value = evaluate(mod, env, arg)
         Values.assertValue(value, "Boolean", { who: "evaluate And" })
         if (value.data === true) {
@@ -163,7 +163,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Not": {
-      const value = evaluate(mod, env, exp.arg)
+      const value = evaluate(mod, env, exp.exp)
       Values.assertValue(value, "Boolean", { who: "evaluate Not" })
       return Values.Boolean(!value.data)
     }

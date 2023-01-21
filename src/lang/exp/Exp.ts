@@ -281,15 +281,15 @@ export function HyperruleList(
 export type And = {
   "@type": "Exp"
   "@kind": "And"
-  args: Array<Exp>
+  exps: Array<Exp>
   span: Span
 }
 
-export function And(args: Array<Exp>, span: Span): And {
+export function And(exps: Array<Exp>, span: Span): And {
   return {
     "@type": "Exp",
     "@kind": "And",
-    args,
+    exps,
     span,
   }
 }
@@ -297,15 +297,15 @@ export function And(args: Array<Exp>, span: Span): And {
 export type Or = {
   "@type": "Exp"
   "@kind": "Or"
-  args: Array<Exp>
+  exps: Array<Exp>
   span: Span
 }
 
-export function Or(args: Array<Exp>, span: Span): Or {
+export function Or(exps: Array<Exp>, span: Span): Or {
   return {
     "@type": "Exp",
     "@kind": "Or",
-    args,
+    exps,
     span,
   }
 }
@@ -313,15 +313,15 @@ export function Or(args: Array<Exp>, span: Span): Or {
 export type Not = {
   "@type": "Exp"
   "@kind": "Not"
-  arg: Exp
+  exp: Exp
   span: Span
 }
 
-export function Not(arg: Exp, span: Span): Not {
+export function Not(exp: Exp, span: Span): Not {
   return {
     "@type": "Exp",
     "@kind": "Not",
-    arg,
+    exp,
     span,
   }
 }

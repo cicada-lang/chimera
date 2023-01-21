@@ -100,17 +100,17 @@ export function formatExp(exp: Exp): string {
     }
 
     case "And": {
-      const args = exp.args.map((arg) => formatExp(arg))
+      const args = exp.exps.map((arg) => formatExp(arg))
       return `and [${args.join(", ")}]`
     }
 
     case "Or": {
-      const args = exp.args.map((arg) => formatExp(arg))
+      const args = exp.exps.map((arg) => formatExp(arg))
       return `or [${args.join(", ")}]`
     }
 
     case "Not": {
-      const arg = formatExp(exp.arg)
+      const arg = formatExp(exp.exp)
       return `not [${arg}]`
     }
   }
