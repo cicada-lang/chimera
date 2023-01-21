@@ -1,4 +1,4 @@
-hyperrule finiteDomain {
+hyperrule intervalDomain {
   // range inconsistency
   [Range(_, a, b)]
   if and [Number(a), Number(b), gt(a, b)]
@@ -46,6 +46,10 @@ hyperrule finiteDomain {
   => [NotEq(x, y), Range(x, unquote add1(a), b), Range(y, c, d)]
 
   // TODO
+}
+
+hyperrule finiteDomain {
+  use intervalDomain
 }
 
 print finiteDomain(quote [Range(x, 2, 1)])

@@ -28,6 +28,7 @@ export const hyperrule = {
       '">"',
       { to: "elements" },
     ],
+    "hyperrule:use": ['"use"', { exp: "exp" }],
   },
 }
 

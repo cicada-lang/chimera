@@ -4,11 +4,7 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`HyperruleExps.Use` -- syntax
-
 `RuleExps.Use`
-
-`finiteDomain` -- use `use`
 
 `intervalDomain` -- `Add`
 
