@@ -4,9 +4,12 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`Hyperrules.Use`
+`propagate` and `simplify` should not take `mod`
+`unify` should not take `mod`
 
-`Rules.Use`
+`HyperruleExps.Use`
+
+`RuleExps.Use`
 
 `finiteDomain` -- use `use`
 

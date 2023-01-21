@@ -51,7 +51,7 @@ function matchPatterns(
       break
     }
 
-    const newSubstitution = match(mod, substitution, pattern, arg)
+    const newSubstitution = match(substitution, pattern, arg)
     if (newSubstitution === undefined) {
       throw new Errors.LangError(
         [

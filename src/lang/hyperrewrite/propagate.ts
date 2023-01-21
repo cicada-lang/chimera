@@ -82,7 +82,7 @@ function propagateOrdered(
   const [pattern, ...restPatterns] = patterns
 
   for (const [index, value] of values.entries()) {
-    const newSubstitution = match(mod, substitution, pattern, value)
+    const newSubstitution = match(substitution, pattern, value)
     if (newSubstitution !== undefined) {
       return propagateOrdered(
         mod,

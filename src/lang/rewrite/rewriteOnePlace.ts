@@ -15,7 +15,7 @@ export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
 
       const renames = new Map()
       const from = refresh(renames, quote(mod, mod.env, rule.from))
-      const substitution = match(mod, substitutionEmpty(), from, value)
+      const substitution = match(substitutionEmpty(), from, value)
 
       if (substitution === undefined) {
         return undefined

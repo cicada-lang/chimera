@@ -1,5 +1,4 @@
 import { equal } from "../equal"
-import type { Mod } from "../mod"
 import {
   Substitution,
   substitutionExtend,
@@ -9,12 +8,11 @@ import type { Value } from "../value"
 import * as Values from "../value"
 
 export function matchMany(
-  mod: Mod,
   substitution: Substitution,
   pairs: Array<[Value, Value]>,
 ): Substitution | undefined {
   for (const [left, right] of pairs) {
-    const nextSubstitution = match(mod, substitution, left, right)
+    const nextSubstitution = match(substitution, left, right)
     if (nextSubstitution === undefined) return undefined
     substitution = nextSubstitution
   }
@@ -29,7 +27,6 @@ export function matchMany(
 **/
 
 export function match(
-  mod: Mod,
   substitution: Substitution,
   left: Value,
   right: Value,
@@ -75,9 +72,9 @@ export function match(
   }
 
   if (left["@kind"] === "ArrayCons" && right["@kind"] === "ArrayCons") {
-    const carSubstitution = match(mod, substitution, left.car, right.car)
+    const carSubstitution = match(substitution, left.car, right.car)
     if (carSubstitution === undefined) return undefined
-    const cdrSubstitution = match(mod, carSubstitution, left.cdr, right.cdr)
+    const cdrSubstitution = match(carSubstitution, left.cdr, right.cdr)
     return cdrSubstitution
   }
 
@@ -90,18 +87,13 @@ export function match(
       const rightProperty = right.properties[name]
       if (rightProperty === undefined) continue
 
-      const nextSubstitution = match(
-        mod,
-        substitution,
-        leftProperty,
-        rightProperty,
-      )
+      const nextSubstitution = match(substitution, leftProperty, rightProperty)
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
 
     if (left.etc && right.etc) {
-      const nextSubstitution = match(mod, substitution, left.etc, right.etc)
+      const nextSubstitution = match(substitution, left.etc, right.etc)
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
@@ -109,7 +101,6 @@ export function match(
     if (left.etc) {
       const properties = diffProperties(right.properties, left.properties)
       const nextSubstitution = match(
-        mod,
         substitution,
         left.etc,
         Values.Objekt(properties),
@@ -121,7 +112,6 @@ export function match(
     if (right.etc) {
       const properties = diffProperties(left.properties, right.properties)
       const nextSubstitution = match(
-        mod,
         substitution,
         right.etc,
         Values.Objekt(properties),
@@ -139,7 +129,7 @@ export function match(
 
     for (const [i, leftArg] of left.args.entries()) {
       const rightArg = right.args[i]
-      const nextSubstitution = match(mod, substitution, leftArg, rightArg)
+      const nextSubstitution = match(substitution, leftArg, rightArg)
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
