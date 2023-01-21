@@ -112,7 +112,6 @@ function isSubsumed(
 ): boolean {
   return inequalities.some((inequality) => {
     const newSubstitution = unifyMany(
-      mod,
       substitution,
       substitutionPairs(inequality),
     )

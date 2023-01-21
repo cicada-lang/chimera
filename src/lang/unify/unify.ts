@@ -1,6 +1,5 @@
 import { equal } from "../equal"
 import { freshen } from "../freshen"
-import type { Mod } from "../mod"
 import {
   Substitution,
   substitutionExtend,
@@ -11,12 +10,11 @@ import * as Values from "../value"
 import { occur } from "./occur"
 
 export function unifyMany(
-  mod: Mod,
   substitution: Substitution,
   pairs: Array<[Value, Value]>,
 ): Substitution | undefined {
   for (const [left, right] of pairs) {
-    const nextSubstitution = unify(mod, substitution, left, right)
+    const nextSubstitution = unify(substitution, left, right)
     if (nextSubstitution === undefined) return undefined
     substitution = nextSubstitution
   }
@@ -25,7 +23,6 @@ export function unifyMany(
 }
 
 export function unify(
-  mod: Mod,
   substitution: Substitution,
   left: Value,
   right: Value,
@@ -51,7 +48,7 @@ export function unify(
     **/
 
     if (right["@kind"] === "Objekt" && right.etc === undefined) {
-      right = objektAddEtc(mod, right, left)
+      right = objektAddEtc(right, left)
     }
 
     return substitutionExtend(substitution, left.name, right)
@@ -60,7 +57,7 @@ export function unify(
   if (right["@kind"] === "PatternVar") {
     if (occur(substitution, right.name, left)) return undefined
     if (left["@kind"] === "Objekt" && left.etc === undefined) {
-      left = objektAddEtc(mod, left, right)
+      left = objektAddEtc(left, right)
     }
 
     return substitutionExtend(substitution, right.name, left)
@@ -86,9 +83,9 @@ export function unify(
   }
 
   if (left["@kind"] === "ArrayCons" && right["@kind"] === "ArrayCons") {
-    const carSubstitution = unify(mod, substitution, left.car, right.car)
+    const carSubstitution = unify(substitution, left.car, right.car)
     if (carSubstitution === undefined) return undefined
-    const cdrSubstitution = unify(mod, carSubstitution, left.cdr, right.cdr)
+    const cdrSubstitution = unify(carSubstitution, left.cdr, right.cdr)
     return cdrSubstitution
   }
 
@@ -101,18 +98,13 @@ export function unify(
       const rightProperty = right.properties[name]
       if (rightProperty === undefined) continue
 
-      const nextSubstitution = unify(
-        mod,
-        substitution,
-        leftProperty,
-        rightProperty,
-      )
+      const nextSubstitution = unify(substitution, leftProperty, rightProperty)
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
 
     if (left.etc && right.etc) {
-      const nextSubstitution = unify(mod, substitution, left.etc, right.etc)
+      const nextSubstitution = unify(substitution, left.etc, right.etc)
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
@@ -120,7 +112,6 @@ export function unify(
     if (left.etc) {
       const properties = diffProperties(right.properties, left.properties)
       const nextSubstitution = unify(
-        mod,
         substitution,
         left.etc,
         Values.Objekt(properties),
@@ -132,7 +123,6 @@ export function unify(
     if (right.etc) {
       const properties = diffProperties(left.properties, right.properties)
       const nextSubstitution = unify(
-        mod,
         substitution,
         right.etc,
         Values.Objekt(properties),
@@ -150,7 +140,7 @@ export function unify(
 
     for (const [i, leftArg] of left.args.entries()) {
       const rightArg = right.args[i]
-      const nextSubstitution = unify(mod, substitution, leftArg, rightArg)
+      const nextSubstitution = unify(substitution, leftArg, rightArg)
       if (nextSubstitution === undefined) return undefined
       substitution = nextSubstitution
     }
@@ -166,7 +156,6 @@ export function unify(
 }
 
 function objektAddEtc(
-  mod: Mod,
   objekt: Values.Objekt,
   variable: Values.PatternVar,
 ): Values.Objekt {

@@ -4,8 +4,6 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`unify` should not take `mod`
-
 `HyperruleExps.Use`
 
 `RuleExps.Use`

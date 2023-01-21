@@ -29,7 +29,6 @@ export function maintainInequalities(
   const inequalities: Array<Substitution> = []
   for (const inequality of solution.inequalities) {
     const newSubstitution = unifyMany(
-      mod,
       solution.substitution,
       substitutionPairs(inequality),
     )
