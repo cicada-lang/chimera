@@ -14,5 +14,10 @@ export function formatRuleExp(rule: RuleExp): string {
       const rules = rule.rules.map(formatRuleExp)
       return `list {\n${indent(rules.join("\n"))}\n}`
     }
+
+    case "Use": {
+      const exp = formatExp(rule.exp)
+      return `use ${exp}`
+    }
   }
 }

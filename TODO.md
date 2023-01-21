@@ -4,7 +4,6 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`RuleExps.Use`
 `RuleExps.Use` -- syntax
 `RuleExps.Use` -- test
 

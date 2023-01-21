@@ -20,5 +20,9 @@ export function varCollectionFromRuleExp(rule: RuleExp): VarCollection {
     case "List": {
       return varCollectionMerge(rule.rules.map(varCollectionFromRuleExp))
     }
+
+    case "Use": {
+      return varCollectionFromExp(rule.exp)
+    }
   }
 }
