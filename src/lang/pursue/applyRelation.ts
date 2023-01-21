@@ -1,5 +1,3 @@
-import type { Env } from "../env"
-import type { Mod } from "../mod"
 import { refreshGoals, refreshValues } from "../refresh"
 import type { Solution } from "../solution"
 import type * as Values from "../value"
@@ -7,8 +5,6 @@ import type { Value } from "../value"
 import { pursueEqual } from "./pursueEqual"
 
 export function applyRelation(
-  mod: Mod,
-  env: Env,
   solution: Solution,
   target: Values.Relation,
   args: Array<Value>,
@@ -25,7 +21,7 @@ export function applyRelation(
     const renames = new Map()
 
     const values = refreshValues(renames, clause.values)
-    const newSolution = pursueManyEqual(mod, solution, values, args)
+    const newSolution = pursueManyEqual(solution, values, args)
 
     /**
 
@@ -48,14 +44,13 @@ export function applyRelation(
 }
 
 function pursueManyEqual(
-  mod: Mod,
   solution: Solution | undefined,
   values: Array<Value>,
   args: Array<Value>,
 ): Solution | undefined {
   for (const [index, value] of values.entries()) {
     if (solution === undefined) return undefined
-    solution = pursueEqual(mod, solution, value, args[index])
+    solution = pursueEqual(solution, value, args[index])
   }
 
   return solution

@@ -1,4 +1,3 @@
-import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import {
   Substitution,
@@ -9,7 +8,6 @@ import {
 import { unifyMany } from "../unify"
 
 export function maintainInequalities(
-  mod: Mod,
   solution: Solution | undefined,
 ): Solution | undefined {
   if (solution === undefined) return undefined

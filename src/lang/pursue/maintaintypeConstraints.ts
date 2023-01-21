@@ -1,11 +1,9 @@
-import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import { substitutionWalk } from "../substitution"
 import type * as Values from "../value"
 import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
 
 export function maintaintypeConstraints(
-  mod: Mod,
   solution: Solution | undefined,
 ): Solution | undefined {
   if (solution === undefined) return undefined

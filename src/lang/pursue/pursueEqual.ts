@@ -1,4 +1,3 @@
-import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import { substitutionEqual } from "../substitution"
 import { unify } from "../unify"
@@ -7,7 +6,6 @@ import { maintainInequalities } from "./maintainInequalities"
 import { maintaintypeConstraints } from "./maintaintypeConstraints"
 
 export function pursueEqual(
-  mod: Mod,
   solution: Solution,
   left: Value,
   right: Value,
@@ -24,8 +22,8 @@ export function pursueEqual(
 
   let newSolution: Solution | undefined = solution.update({ substitution })
 
-  newSolution = maintainInequalities(mod, newSolution)
-  newSolution = maintaintypeConstraints(mod, newSolution)
+  newSolution = maintainInequalities(newSolution)
+  newSolution = maintaintypeConstraints(newSolution)
 
   return newSolution
 }

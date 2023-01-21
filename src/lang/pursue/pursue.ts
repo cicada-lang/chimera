@@ -1,7 +1,5 @@
-import type { Env } from "../env"
 import * as Errors from "../errors"
 import type { Goal } from "../goal"
-import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import { applyRelation } from "./applyRelation"
 import { applyTypeConstraint } from "./applyTypeConstraint"
@@ -13,26 +11,15 @@ function unit(solution: Solution | undefined): Array<Solution> {
   return [solution]
 }
 
-export function pursue(
-  mod: Mod,
-  env: Env,
-  solution: Solution,
-  goal: Goal,
-): Array<Solution> {
+export function pursue(solution: Solution, goal: Goal): Array<Solution> {
   switch (goal["@kind"]) {
     case "Apply": {
       if (goal.target["@kind"] === "Relation") {
-        return applyRelation(mod, env, solution, goal.target, goal.args)
+        return applyRelation(solution, goal.target, goal.args)
       }
 
       if (goal.target["@kind"] === "TypeConstraint") {
-        return applyTypeConstraint(
-          mod,
-          env,
-          solution,
-          goal.target,
-          goal.args[0],
-        )
+        return applyTypeConstraint(solution, goal.target, goal.args[0])
       }
 
       throw new Errors.LangError(
@@ -44,11 +31,11 @@ export function pursue(
     }
 
     case "Equal": {
-      return unit(pursueEqual(mod, solution, goal.left, goal.right))
+      return unit(pursueEqual(solution, goal.left, goal.right))
     }
 
     case "NotEqual": {
-      return unit(pursueNotEqual(mod, solution, goal.left, goal.right))
+      return unit(pursueNotEqual(solution, goal.left, goal.right))
     }
 
     case "Conj": {

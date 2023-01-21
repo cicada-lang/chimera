@@ -85,7 +85,7 @@ export class Solver {
       return
     }
 
-    const partialSolutions = pursue(mod, mod.env, solution, goal)
+    const partialSolutions = pursue(solution, goal)
 
     /**
 
