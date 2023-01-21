@@ -4,8 +4,6 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-`Exps.If` -- syntax -- `if then else`
-
 `enumerationDomain`
 
 [constraint] implement constraint systems by hypergraph rewriting

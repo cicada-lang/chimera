@@ -94,5 +94,13 @@ export const operand = {
     ],
     "operand:or_empty": ['"or"', '"["', '"]"'],
     "operand:not": ['"not"', { exp: "exp" }],
+    "operand:if": [
+      '"if"',
+      { target: "exp" },
+      '"then"',
+      { thenExp: "exp" },
+      '"else"',
+      { elseExp: "exp" },
+    ],
   },
 }
