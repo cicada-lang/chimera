@@ -35,6 +35,10 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
 
     return Values.fromArray(arrayDedup(results))
   })
+
+  globals.primitive("arrayMember", 2, ([values, target]) => {
+    return Values.Boolean(arrayMember(values, target))
+  })
 }
 
 function arrayDedup(values: Array<Value>): Array<Value> {

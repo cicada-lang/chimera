@@ -1,7 +1,5 @@
 # CHR
 
-[array primitive] `arrayMember`
-
 `enumerationDomain`
 
 [finite-domain] solve some puzzles about finite-domain as example
