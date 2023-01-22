@@ -1,11 +1,11 @@
 # CHR
 
-a value for hyperrewrite failure
-
 `enumerationDomain` -- `LtEq`
 `enumerationDomain` -- `Eq`
 `enumerationDomain` -- `NotEq`
 `enumerationDomain` -- `Add`
+
+a value for hyperrewrite failure
 
 [finite-domain] solve some puzzles about finite-domain as example
 
@@ -36,6 +36,22 @@ a value for hyperrewrite failure
 `Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
 
 - Using `claim` as keyword.
+
+# first-order logic
+
+[learn] logic programming's correspondence to first-order logic
+
+[learn] Since I understand the use of untyped bound variables now,
+maybe I can understand Gentzen and Goedel's works.
+
+[learn] I should read Ray's book about first-order logic
+
+[write] understand constraint in first-order logic by writing?
+
+- take `Disequality` as an example
+- take finite domain as an example
+
+[learn] we can learn more about first-order logic by implementing alphaLean
 
 # 1.0.0
 
@@ -186,33 +202,6 @@ design syntax for deduction
 > How to implement quotient in logic programming language?
 
 https://en.wikipedia.org/wiki/Quotient_by_an_equivalence_relation
-
-# first-order logic
-
-[learn] logic programming's correspondence to first-order logic
-
-- In a Horn clause all variables are universally quantified
-  and the scope is the whole clause.
-
-  This means Horn clause can only express a subset of first-order logic.
-
-  How should we understand this limitation?
-
-[plan] Since I understand the use of untyped bound variables now,
-maybe I can understand Gentzen and Goedel's works.
-
-[learn] I should read Ray's book about first-order logic
-
-[question] how to understand constraint in first-order logic?
-
-- a group of built-in predicates with some axioms?
-
-  - take `Disequality` as an example
-  - take finite domain as an example
-  - if they are axioms, can we use set theoretical
-    rule based language to specify a constraint?
-
-- we can learn more about first-order logic by implementing alphaLean
 
 # learn
 
