@@ -1,6 +1,9 @@
 # CHR
 
-`enumerationDomain`
+`enumerationDomain` -- `LtEq`
+`enumerationDomain` -- `Eq`
+`enumerationDomain` -- `NotEq`
+`enumerationDomain` -- `Add`
 
 [finite-domain] solve some puzzles about finite-domain as example
 
