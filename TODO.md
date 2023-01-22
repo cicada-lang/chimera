@@ -1,6 +1,7 @@
 # CHR
 
-`enumerationDomain` -- `LtEq`
+`arrayFilter`
+
 `enumerationDomain` -- `Eq`
 `enumerationDomain` -- `NotEq`
 `enumerationDomain` -- `Add`

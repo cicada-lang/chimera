@@ -84,6 +84,14 @@ hyperrule enumerationDomain {
   [In(x, l1), In(x, l2)]
   if and [NumberArray(l1), NumberArray(l2)]
   => [In(x, eval arrayIntersection(l1, l2))]
+
+  [LtEq(x, y), In(x, l1), In(y, l2)]
+  if and [NumberArray(l1), NumberArray(l2), gt(maximum(l1), maximum(l2))]
+  => [
+    LtEq(x, y),
+    In(x, eval arrayFilter(l1, (n) => lteq(n, maximum(l2)))),
+    In(y, l2),
+  ]
 }
 
 hyperrule finiteDomain {
