@@ -9,3 +9,5 @@
   Range(y, 2, 3),
   Range(z, 3, 4)
 ]
+[false]
+[In(x, [2, 3])]
