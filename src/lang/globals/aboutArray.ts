@@ -21,15 +21,39 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
       arrayDedup([...Values.toArray(left), ...Values.toArray(right)]),
     )
   })
+
+  globals.primitive("arrayIntersection", 2, ([left, right]) => {
+    const leftValues = Values.toArray(left)
+    const rightValues = Values.toArray(right)
+    const results: Array<Value> = []
+
+    for (const leftValue of leftValues) {
+      if (arrayMember(rightValues, leftValue)) {
+        results.push(leftValue)
+      }
+    }
+
+    return Values.fromArray(arrayDedup(results))
+  })
 }
 
 function arrayDedup(values: Array<Value>): Array<Value> {
   const results: Array<Value> = []
   for (const value of values) {
-    if (results.every((result) => !equal(value, result))) {
+    if (!arrayMember(results, value)) {
       results.push(value)
     }
   }
 
   return results
+}
+
+function arrayMember(values: Array<Value>, target: Value): boolean {
+  for (const value of values) {
+    if (equal(value, target)) {
+      return true
+    }
+  }
+
+  return false
 }

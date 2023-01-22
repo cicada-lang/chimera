@@ -1,6 +1,6 @@
 # CHR
 
-[array primitive] `arrayIntersection` -- with dedup
+[array primitive] `arrayMember`
 
 `enumerationDomain`
 
