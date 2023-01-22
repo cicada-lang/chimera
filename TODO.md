@@ -1,5 +1,9 @@
 # CHR
 
+rename `unquote` to `eval`
+
+a value for hyperrewrite fail
+
 `enumerationDomain` -- `LtEq`
 `enumerationDomain` -- `Eq`
 `enumerationDomain` -- `NotEq`
