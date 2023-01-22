@@ -1,6 +1,5 @@
 import { aboutArray } from "./aboutArray"
 import { aboutBoolean } from "./aboutBoolean"
-import { aboutControlFlow } from "./aboutControlFlow"
 import { aboutEqual } from "./aboutEqual"
 import { aboutHyperrewrite } from "./aboutHyperrewrite"
 import { aboutNull } from "./aboutNull"
@@ -18,7 +17,6 @@ export async function useGlobals(): Promise<GlobalStore> {
   globals = new GlobalStore()
 
   await aboutEqual(globals)
-  await aboutControlFlow(globals)
   await aboutNull(globals)
   await aboutBoolean(globals)
   await aboutNumber(globals)

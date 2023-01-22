@@ -6,6 +6,13 @@
 
 `enumerationDomain`
 
+[array] `Array(Number)(l1)`
+
+- [maybe] use constraint to implement higher-order logic.
+
+[array primitive] `intersection`
+[array primitive] `union`
+
 [constraint] implement constraint systems by hypergraph rewriting
 
 - [constraint] provide a syntax keyword for defining new constraint
@@ -94,10 +101,6 @@ Implement actor model to handle async programming.
 [read] logic-for-problem-solving.pdf
 
 [read] constraint-logic-programming--a-survey.pdf
-
-# higher-order logic
-
-use constraint to implement higher-order logic.
 
 # alphaKanren and alphaLean
 
