@@ -53,9 +53,21 @@ maybe I can understand Gentzen and Goedel's works.
 
 [learn] we can learn more about first-order logic by implementing alphaLean
 
+# compiler
+
+[maybe] remove the feature for importing form url, and use for sync `execute` only
+
+- to support a self-hosting compiler
+
+[compiler] compile to x86 -- for linux.
+
+[compiler] compile to wasm -- for browser.
+
 # 1.0.0
 
 mark as 1.0.0 and writie some docs
+
+- about set-theory based programming for language development
 
 # term rewriting
 
@@ -89,12 +101,6 @@ and dynamic is implemented by rewrite rules?
 # hypergraph presentation
 
 like higher inductive types
-
-# compiler
-
-[compiler] compile to x86 -- for linux.
-
-[compiler] compile to wasm -- for browser.
 
 # DX
 
