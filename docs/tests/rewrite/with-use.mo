@@ -1,14 +1,14 @@
 rule add1 {
-  add1(x) if Equal(x, 0) => 1
-  add1(x) if Equal(x, 1) => 2
-  add1(x) if Equal(x, 2) => 3
-  add1(x) if Equal(x, 3) => 4
+  add1(x) if equal(x, 0) => 1
+  add1(x) if equal(x, 1) => 2
+  add1(x) if equal(x, 2) => 3
+  add1(x) if equal(x, 3) => 4
 }
 
 rule sub1 {
-  sub1(x) if Equal(x, 1) => 0
-  sub1(x) if Equal(x, 2) => 1
-  sub1(x) if Equal(x, 3) => 2
+  sub1(x) if equal(x, 1) => 0
+  sub1(x) if equal(x, 2) => 1
+  sub1(x) if equal(x, 3) => 2
 }
 
 rule r {

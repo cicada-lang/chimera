@@ -10,6 +10,9 @@ print { a: 1, b: 2, c: 3 }
 print stringAppend
 print stringAppend("abc")
 
+print equal
+print equal("abc")
+
 // relation and curried
 
 print Equal

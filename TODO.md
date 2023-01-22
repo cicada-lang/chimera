@@ -4,9 +4,7 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
-[primitive] `equal`
-
-- we can not use `Equal` as predicate for `equal` because it also does unification
+`formatValue` print `Relation` `arity`
 
 [array primitive] `arrayDedup`
 [array primitive] `arrayIntersection` -- with dedup

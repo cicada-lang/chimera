@@ -5,7 +5,7 @@ print find [x, y] {
   Append(x, y, [1, 2, 3, 4, 5])
 }
 
-assert Equal(
+assert equal(
   findAll(quote [x, y], quote [
     Append(x, y, [1, 2, 3, 4, 5])
   ]),
@@ -23,7 +23,7 @@ print find [x, y] limit 3 {
   Append(x, y, [1, 2, 3, 4, 5])
 }
 
-assert Equal(
+assert equal(
   find(3, quote [x, y], quote [
     Append(x, y, [1, 2, 3, 4, 5])
   ]),
@@ -43,4 +43,4 @@ function f(R) {
 
 clause Hi("hi")
 
-assert Equal(f(Hi), ["hi"])
+assert equal(f(Hi), ["hi"])

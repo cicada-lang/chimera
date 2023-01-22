@@ -1,7 +1,7 @@
 hyperrule weather {
   [SunRain(x)] => [Sun(x), Rain(x)]
   [Rain(x), Car()] => [Rain(x), InCar()]
-  [Rain(x)] if Equal(x, 10) => [WearUmbrella(), Flood()]
+  [Rain(x)] if equal(x, 10) => [WearUmbrella(), Flood()]
   [Rain(_x)] => [WearUmbrella()]
   [Sun(_x)] => [WearSunGlasses(), Cool()]
 }
