@@ -37,7 +37,7 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
   })
 
   globals.primitive("arrayMember", 2, ([values, target]) => {
-    return Values.Boolean(arrayMember(values, target))
+    return Values.Boolean(arrayMember(Values.toArray(values), target))
   })
 }
 

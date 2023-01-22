@@ -91,12 +91,16 @@ hyperrule finiteDomain {
   use enumerationDomain
 }
 
+// intervalDomain
+
 print finiteDomain(quote [Range(x, 2, 1)])
 print finiteDomain(quote [Range(x, a, b), Range(x, c, d)])
 print finiteDomain(quote [Range(x, 20, 100), Range(x, 30, 120)])
-
 print finiteDomain(quote [LtEq(x, y), Range(x, 20, 150), Range(y, 30, 120)])
-
 print finiteDomain(quote [Eq(x, y), Range(x, 20, 150), Range(y, 30, 120)])
-
 print finiteDomain(quote [Range(x, 1, 3), Range(y, 2, 4), Range(z, 0, 4), Add(x, y, z)])
+
+// enumerationDomain
+
+print finiteDomain(quote [In(x, [])])
+print finiteDomain(quote [In(x, [1, 2, 3]), In(x, [2, 3, 4])])
