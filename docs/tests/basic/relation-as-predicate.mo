@@ -10,6 +10,11 @@ assert not(Exp(quote fn()))
 assert Equal({ x: 1 }, { x: 1 })
 assert not(Equal({ x: 1 }, { x: 2 }))
 
+assert Equal(quote x, quote x)
+
+// `Equal` will do unification
+assert Equal(quote x, quote y)
+
 assert Boolean(true)
 assert Boolean(false)
 assert Null(null)

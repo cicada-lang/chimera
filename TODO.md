@@ -4,14 +4,19 @@
 >
 > - [read] essentials-of-constraint-programming.pdf
 
+[primitive] `equal`
+
+- we can not use `Equal` as predicate for `equal` because it also does unification
+
+[array primitive] `arrayDedup`
+[array primitive] `arrayIntersection` -- with dedup
+[array primitive] `arrayUnion` -- with dedup
+
 `enumerationDomain`
 
 [array] `Array(Number)(l1)`
 
 - [maybe] use constraint to implement higher-order logic.
-
-[array primitive] `intersection`
-[array primitive] `union`
 
 [constraint] implement constraint systems by hypergraph rewriting
 

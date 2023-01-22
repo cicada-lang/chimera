@@ -71,6 +71,9 @@ hyperrule intervalDomain {
   ]
 }
 
+clause NumberArray([])
+clause NumberArray([a | d]) -- { Number(a) NumberArray(d) }
+
 hyperrule enumerationDomain {
   // inconsistency
 
@@ -78,12 +81,9 @@ hyperrule enumerationDomain {
 
   // intersection
 
-  // [In(x, l1), In(x, l2)]
-  // if and []
-  // Array(Number)(l1)
-  // Array(Number)(l2)
-  // => [In(x, unquote intersection(l1, l2))]
-
+  [In(x, l1), In(x, l2)]
+  if and [NumberArray(l1), NumberArray(l2)]
+  => [In(x, unquote arrayIntersection(l1, l2))]
 }
 
 hyperrule finiteDomain {
