@@ -99,10 +99,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Eval": {
-      throw new Errors.LangError(
-        `[evaluate] eval can only be used inside quote`,
-        { span: exp.span },
-      )
+      return evaluate(mod, env, exp.exp)
     }
 
     case "Find": {

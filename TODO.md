@@ -1,7 +1,5 @@
 # CHR
 
-`evaluate` can handle `Eval`
-
 a value for hyperrewrite failure
 
 `enumerationDomain` -- `LtEq`
