@@ -85,8 +85,8 @@ export function operand_matcher(tree: pt.Tree): Exp {
       ),
     "operand:quote": ({ exp }, { span }) =>
       Exps.Quote(matchers.exp_matcher(exp), span),
-    "operand:unquote": ({ exp }, { span }) =>
-      Exps.Unquote(matchers.exp_matcher(exp), span),
+    "operand:eval": ({ exp }, { span }) =>
+      Exps.Eval(matchers.exp_matcher(exp), span),
     "operand:find": ({ pattern, limit, goals }, { span }) => {
       const realLimit = pt.matchers.optional_matcher(limit)
       return Exps.Find(

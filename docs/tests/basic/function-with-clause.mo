@@ -5,7 +5,7 @@ function greet(x) {
 
   let results = find q {
     Hi(p)
-    q = [p, unquote x]
+    q = [p, eval x]
   }
 
   print results

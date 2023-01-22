@@ -98,9 +98,9 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       return quote(mod, env, exp.exp)
     }
 
-    case "Unquote": {
+    case "Eval": {
       throw new Errors.LangError(
-        `[evaluate] unquote can only be used inside quote`,
+        `[evaluate] eval can only be used inside quote`,
         { span: exp.span },
       )
     }

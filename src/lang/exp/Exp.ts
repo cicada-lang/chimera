@@ -16,7 +16,7 @@ export type Exp =
   | Ap
   | Fn
   | Quote
-  | Unquote
+  | Eval
   | Find
   | RuleList
   | HyperruleList
@@ -203,17 +203,17 @@ export function Quote(exp: Exp, span: Span): Quote {
   }
 }
 
-export type Unquote = {
+export type Eval = {
   "@type": "Exp"
-  "@kind": "Unquote"
+  "@kind": "Eval"
   exp: Exp
   span: Span
 }
 
-export function Unquote(exp: Exp, span: Span): Unquote {
+export function Eval(exp: Exp, span: Span): Eval {
   return {
     "@type": "Exp",
-    "@kind": "Unquote",
+    "@kind": "Eval",
     exp,
     span,
   }

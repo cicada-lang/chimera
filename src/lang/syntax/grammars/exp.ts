@@ -59,7 +59,7 @@ export const operand = {
       { ret: "exp" },
     ],
     "operand:quote": ['"quote"', { exp: "exp" }],
-    "operand:unquote": ['"unquote"', { exp: "exp" }],
+    "operand:eval": ['"eval"', { exp: "exp" }],
     "operand:find": [
       '"find"',
       { pattern: "exp" },

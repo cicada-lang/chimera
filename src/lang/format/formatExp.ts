@@ -71,8 +71,8 @@ export function formatExp(exp: Exp): string {
       return `quote ${formatExp(exp.exp)}`
     }
 
-    case "Unquote": {
-      return `unquote ${formatExp(exp.exp)}`
+    case "Eval": {
+      return `eval ${formatExp(exp.exp)}`
     }
 
     case "Find": {

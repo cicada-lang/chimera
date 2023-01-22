@@ -1,7 +1,7 @@
-[evaluate] unquote can only be used inside quote
+[evaluate] eval can only be used inside quote
 
  1 |let h = quote g(y)
  2 |
- 3 |print unquote h
+ 3 |print eval h
  4 |
 

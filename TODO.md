@@ -1,8 +1,8 @@
 # CHR
 
-rename `unquote` to `eval`
+`evaluate` can handle `Eval`
 
-a value for hyperrewrite fail
+a value for hyperrewrite failure
 
 `enumerationDomain` -- `LtEq`
 `enumerationDomain` -- `Eq`

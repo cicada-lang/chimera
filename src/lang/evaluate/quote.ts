@@ -81,7 +81,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       })
     }
 
-    case "Unquote": {
+    case "Eval": {
       return evaluate(mod, env, exp.exp)
     }
 
