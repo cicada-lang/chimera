@@ -60,7 +60,9 @@ export function formatValue(value: Value): string {
     }
 
     case "Relation": {
-      return `$Relation(${value.name})`
+      return value.arity === undefined
+        ? `$Relation(${value.name})`
+        : `$Relation(${value.name}, ${value.arity})`
     }
 
     case "TypeConstraint": {

@@ -1,16 +1,12 @@
 # CHR
 
-> [finite-domain] solve some puzzles about finite-domain as example
->
-> - [read] essentials-of-constraint-programming.pdf
-
-`formatValue` print `Relation` `arity`
-
 [array primitive] `arrayDedup`
 [array primitive] `arrayIntersection` -- with dedup
 [array primitive] `arrayUnion` -- with dedup
 
 `enumerationDomain`
+
+[finite-domain] solve some puzzles about finite-domain as example
 
 [array] `Array(Number)(l1)`
 
