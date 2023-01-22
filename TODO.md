@@ -1,7 +1,6 @@
 # CHR
 
 [array primitive] `arrayIntersection` -- with dedup
-[array primitive] `arrayUnion` -- with dedup
 
 `enumerationDomain`
 

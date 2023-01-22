@@ -13,13 +13,23 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
   })
 
   globals.primitive("arrayDedup", 1, ([array]) => {
-    const results: Array<Value> = []
-    for (const value of Values.toArray(array)) {
-      if (results.every((result) => !equal(value, result))) {
-        results.push(value)
-      }
-    }
-
-    return Values.fromArray(results)
+    return Values.fromArray(arrayDedup(Values.toArray(array)))
   })
+
+  globals.primitive("arrayUnion", 2, ([left, right]) => {
+    return Values.fromArray(
+      arrayDedup([...Values.toArray(left), ...Values.toArray(right)]),
+    )
+  })
+}
+
+function arrayDedup(values: Array<Value>): Array<Value> {
+  const results: Array<Value> = []
+  for (const value of values) {
+    if (results.every((result) => !equal(value, result))) {
+      results.push(value)
+    }
+  }
+
+  return results
 }
