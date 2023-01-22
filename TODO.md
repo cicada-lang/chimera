@@ -1,6 +1,5 @@
 # CHR
 
-[array primitive] `arrayDedup`
 [array primitive] `arrayIntersection` -- with dedup
 [array primitive] `arrayUnion` -- with dedup
 
