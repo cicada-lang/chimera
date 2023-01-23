@@ -1,9 +1,5 @@
 # CHR
 
-`GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
-
-`arrayGet`
-
 `enumerationDomain` -- `Add`
 `enumerationDomain` -- `NotEq`
 
@@ -21,19 +17,21 @@ a value for hyperrewrite failure
 - [maybe] use constraint to implement higher-order logic.
 - [maybe] when using relation as predicate, we should not overload `Ap`
 
+[module] support `import * as <name>`
+
+`GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
+
 [constraint] implement constraint systems by hypergraph rewriting
 
 - [constraint] provide a syntax keyword for defining new constraint
 
-- how to import constraints? can constraints be namespaced?
+- We should import constraint system instead of constraints.
 
-  - [maybe] [module] support `import * as <name>`
+  Constraints should be pure data (for example, quoted terms),
+  but relation should be special value.
 
-  - [maybe] Constraints should be pure data (for example, quoted terms),
-    but relation should be special value.
-
-    - By doing this, we can use `Dot` for relation,
-      but not namespace for constraints.
+  - By doing this, we can use `Dot` for relation,
+    but not namespace for constraints.
 
 - [maybe] `Solution` should be extended with `customConstraints`
   -- or just `constraints` -- which contains the constraints

@@ -1,11 +1,29 @@
 import { product } from "../../utils/product"
 import * as Actions from "../actions"
 import { equal } from "../equal"
+import * as Errors from "../errors"
+import { formatValue } from "../format"
 import type { Value } from "../value"
 import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export async function aboutArray(globals: GlobalStore): Promise<void> {
+  globals.primitive("arrayGet", 2, ([array, index]) => {
+    Values.assertValue(index, "Number", { who: "arrayGet" })
+    const result = Values.toArray(array)[index.data]
+    if (result === undefined) {
+      throw new Errors.LangError(
+        [
+          `[arrayGet] index out of bound`,
+          `  array: ${formatValue(array)}`,
+          `  index: ${index.data}`,
+        ].join("\n"),
+      )
+    }
+
+    return result
+  })
+
   globals.primitive("arrayLength", 1, ([array]) => {
     return Values.Number(Values.toArray(array).length)
   })
