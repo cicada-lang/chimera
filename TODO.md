@@ -1,5 +1,9 @@
 # CHR
 
+hyperrewrite/boolean-algebra -- add
+
+hyperrewrite/boolean-algebra -- search
+
 `enumerationDomain` -- `NotEq`
 
 `Exps.Match` -- support pattern match
