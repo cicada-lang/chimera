@@ -9,7 +9,7 @@ export type Case = {
   "@kind": "Case"
   mod: Mod
   env: Env
-  from: Exp
+  pattern: Exp
   to: Exp
   guard: Exp | undefined
 }
@@ -17,7 +17,7 @@ export type Case = {
 export function Case(
   mod: Mod,
   env: Env,
-  from: Exp,
+  pattern: Exp,
   to: Exp,
   guard: Exp | undefined,
 ): Case {
@@ -26,7 +26,7 @@ export function Case(
     "@kind": "Case",
     mod,
     env,
-    from,
+    pattern,
     to,
     guard,
   }

@@ -5,30 +5,30 @@ import * as HyperruleExps from "../../hyperrule-exp"
 
 export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
   return pt.matcher<HyperruleExp>({
-    "hyperrule:simplify": ({ from, to }, { span }) =>
+    "hyperrule:simplify": ({ pattern, to }, { span }) =>
       HyperruleExps.Simplify(
-        matchers.exp_matcher(from),
+        matchers.exp_matcher(pattern),
         matchers.exp_matcher(to),
         undefined,
         span,
       ),
-    "hyperrule:simplify_guard": ({ from, to, guard }, { span }) =>
+    "hyperrule:simplify_guard": ({ pattern, to, guard }, { span }) =>
       HyperruleExps.Simplify(
-        matchers.exp_matcher(from),
+        matchers.exp_matcher(pattern),
         matchers.exp_matcher(to),
         matchers.exp_matcher(guard),
         span,
       ),
-    "hyperrule:propagate": ({ from, to }, { span }) =>
+    "hyperrule:propagate": ({ pattern, to }, { span }) =>
       HyperruleExps.Propagate(
-        matchers.exp_matcher(from),
+        matchers.exp_matcher(pattern),
         matchers.exp_matcher(to),
         undefined,
         span,
       ),
-    "hyperrule:propagate_guard": ({ from, to, guard }, { span }) =>
+    "hyperrule:propagate_guard": ({ pattern, to, guard }, { span }) =>
       HyperruleExps.Propagate(
-        matchers.exp_matcher(from),
+        matchers.exp_matcher(pattern),
         matchers.exp_matcher(to),
         matchers.exp_matcher(guard),
         span,

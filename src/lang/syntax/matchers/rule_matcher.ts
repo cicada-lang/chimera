@@ -5,16 +5,16 @@ import * as RuleExps from "../../rule-exp"
 
 export function rule_matcher(tree: pt.Tree): RuleExp {
   return pt.matcher<RuleExp>({
-    "rule:case": ({ from, to }, { span }) =>
+    "rule:case": ({ pattern, to }, { span }) =>
       RuleExps.Case(
-        matchers.exp_matcher(from),
+        matchers.exp_matcher(pattern),
         matchers.exp_matcher(to),
         undefined,
         span,
       ),
-    "rule:case_guard": ({ from, to, guard }, { span }) =>
+    "rule:case_guard": ({ pattern, to, guard }, { span }) =>
       RuleExps.Case(
-        matchers.exp_matcher(from),
+        matchers.exp_matcher(pattern),
         matchers.exp_matcher(to),
         matchers.exp_matcher(guard),
         span,

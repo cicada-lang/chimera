@@ -1,8 +1,8 @@
 export const rule = {
   $grammar: {
-    "rule:case": [{ from: "exp" }, '"="', '">"', { to: "exp" }],
+    "rule:case": [{ pattern: "exp" }, '"="', '">"', { to: "exp" }],
     "rule:case_guard": [
-      { from: "exp" },
+      { pattern: "exp" },
       '"if"',
       { guard: "exp" },
       '"="',
