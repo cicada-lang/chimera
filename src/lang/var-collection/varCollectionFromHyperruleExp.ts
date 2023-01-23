@@ -11,12 +11,12 @@ export function varCollectionFromHyperruleExp(
       return hyperrule.guard !== undefined
         ? varCollectionMerge([
             ...hyperrule.from.map(varCollectionFromExp),
-            ...hyperrule.to.map(varCollectionFromExp),
+            varCollectionFromExp(hyperrule.to),
             varCollectionFromExp(hyperrule.guard),
           ])
         : varCollectionMerge([
             ...hyperrule.from.map(varCollectionFromExp),
-            ...hyperrule.to.map(varCollectionFromExp),
+            varCollectionFromExp(hyperrule.to),
           ])
     }
 

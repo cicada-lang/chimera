@@ -42,14 +42,12 @@ export function hyperrewriteOneStep(
         }
       }
 
-      const to = hyperrule.to.map((exp) =>
-        substitutionDeepWalk(
-          result.substitution,
-          refresh(renames, quote(mod, mod.env, exp)),
-        ),
+      const to = substitutionDeepWalk(
+        result.substitution,
+        refresh(renames, quote(mod, mod.env, hyperrule.to)),
       )
 
-      return [...result.remainValues, ...to]
+      return [...result.remainValues, ...Values.toArray(to)]
     }
 
     case "Propagate": {
@@ -85,15 +83,13 @@ export function hyperrewriteOneStep(
         }
       }
 
-      const to = hyperrule.to.map((exp) =>
-        substitutionDeepWalk(
-          result.substitution,
-          refresh(renames, quote(mod, mod.env, exp)),
-        ),
+      const to = substitutionDeepWalk(
+        result.substitution,
+        refresh(renames, quote(mod, mod.env, hyperrule.to)),
       )
 
       // NOTE Keep the input values.
-      return [...values, ...to]
+      return [...values, ...Values.toArray(to)]
     }
 
     case "List": {

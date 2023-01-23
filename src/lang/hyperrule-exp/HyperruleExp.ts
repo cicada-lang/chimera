@@ -7,14 +7,14 @@ export type Simplify = {
   "@type": "HyperruleExp"
   "@kind": "Simplify"
   from: Array<Exp>
-  to: Array<Exp>
+  to: Exp
   guard: Exp | undefined
   span: Span
 }
 
 export function Simplify(
   from: Array<Exp>,
-  to: Array<Exp>,
+  to: Exp,
   guard: Exp | undefined,
   span: Span,
 ): Simplify {
@@ -32,14 +32,14 @@ export type Propagate = {
   "@type": "HyperruleExp"
   "@kind": "Propagate"
   from: Array<Exp>
-  to: Array<Exp>
+  to: Exp
   guard: Exp | undefined
   span: Span
 }
 
 export function Propagate(
   from: Array<Exp>,
-  to: Array<Exp>,
+  to: Exp,
   guard: Exp | undefined,
   span: Span,
 ): Propagate {
