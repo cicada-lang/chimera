@@ -1,7 +1,5 @@
 # CHR
 
-keep `NativeFn` simple
-
 `GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
 
 `arrayGet`

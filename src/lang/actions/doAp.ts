@@ -1,7 +1,5 @@
-import type { Env } from "../env"
 import * as Errors from "../errors"
 import { formatValue } from "../format"
-import type { Mod } from "../mod"
 import type { Value } from "../value"
 import { applyCurried } from "./applyCurried"
 import { applyFn } from "./applyFn"
@@ -11,38 +9,33 @@ import { applyRelation } from "./applyRelation"
 import { applyRule } from "./applyRule"
 import { applyTypeConstraint } from "./applyTypeConstraint"
 
-export function doAp(
-  mod: Mod,
-  env: Env,
-  target: Value,
-  args: Array<Value>,
-): Value {
+export function doAp(target: Value, args: Array<Value>): Value {
   if (target["@kind"] === "Rule") {
-    return applyRule(mod, env, target, args)
+    return applyRule(target, args)
   }
 
   if (target["@kind"] === "Hyperrule") {
-    return applyHyperrule(mod, env, target, args)
+    return applyHyperrule(target, args)
   }
 
   if (target["@kind"] === "Fn") {
-    return applyFn(mod, env, target, args)
+    return applyFn(target, args)
   }
 
   if (target["@kind"] === "Primitive") {
-    return applyPrimitive(mod, env, target, args)
+    return applyPrimitive(target, args)
   }
 
   if (target["@kind"] === "Curried") {
-    return applyCurried(mod, env, target, args)
+    return applyCurried(target, args)
   }
 
   if (target["@kind"] === "Relation") {
-    return applyRelation(mod, env, target, args)
+    return applyRelation(target, args)
   }
 
   if (target["@kind"] === "TypeConstraint") {
-    return applyTypeConstraint(mod, env, target, args)
+    return applyTypeConstraint(target, args)
   }
 
   throw new Errors.LangError(

@@ -42,17 +42,17 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
     return Values.Boolean(arrayMember(Values.toArray(values), target))
   })
 
-  globals.primitive("arrayFilter", 2, ([values, predicate], { mod, env }) => {
+  globals.primitive("arrayFilter", 2, ([values, predicate]) => {
     return Values.fromArray(
       Values.toArray(values).filter((value) => {
-        const result = Actions.doAp(mod, env, predicate, [value])
+        const result = Actions.doAp(predicate, [value])
         Values.assertValue(result, "Boolean", { who: "arrayFilter" })
         return result.data
       }),
     )
   })
 
-  globals.primitive("arrayProduct", 1, ([arrays], { mod, env }) => {
+  globals.primitive("arrayProduct", 1, ([arrays]) => {
     return Values.fromArray(
       product(Values.toArray(arrays).map(Values.toArray)).map(Values.fromArray),
     )

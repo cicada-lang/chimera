@@ -1,12 +1,8 @@
-import type { Env } from "../env"
-import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
 import { assertArity } from "./assertArity"
 
 export function applyTypeConstraint(
-  mod: Mod,
-  env: Env,
   target: Values.TypeConstraint,
   args: Array<Value>,
 ): Value {

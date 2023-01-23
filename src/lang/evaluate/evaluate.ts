@@ -78,8 +78,6 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
 
     case "Ap": {
       return Actions.doAp(
-        mod,
-        env,
         evaluate(mod, env, exp.target),
         exp.args.map((arg) => evaluate(mod, env, arg)),
       )

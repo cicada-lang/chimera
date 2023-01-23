@@ -1,15 +1,11 @@
-import type { Env } from "../env"
 import * as Errors from "../errors"
 import { formatValue } from "../format"
 import * as Goals from "../goal"
-import type { Mod } from "../mod"
 import { Solver } from "../solver"
 import type { Value } from "../value"
 import * as Values from "../value"
 
 export function applyRelation(
-  mod: Mod,
-  env: Env,
   target: Values.Relation,
   args: Array<Value>,
 ): Value {

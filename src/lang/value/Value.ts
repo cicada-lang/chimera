@@ -296,9 +296,7 @@ export function WithConstraints(
   }
 }
 
-export type NativeFnOptions = { mod: Mod; env: Env }
-
-export type NativeFn = (args: Array<Value>, options: NativeFnOptions) => Value
+export type NativeFn = (args: Array<Value>) => Value
 
 export type Primitive = {
   "@type": "Value"
