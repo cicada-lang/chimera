@@ -97,5 +97,11 @@ export const operand = {
       '"else"',
       { elseExp: "exp" },
     ],
+    "operand:if_without_else": [
+      '"if"',
+      { target: "exp" },
+      '"then"',
+      { thenExp: "exp" },
+    ],
   },
 }

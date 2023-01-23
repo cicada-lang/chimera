@@ -131,5 +131,12 @@ export function operand_matcher(tree: pt.Tree): Exp {
         matchers.exp_matcher(elseExp),
         span,
       ),
+    "operand:if_without_else": ({ target, thenExp }, { span }) =>
+      Exps.If(
+        matchers.exp_matcher(target),
+        matchers.exp_matcher(thenExp),
+        Exps.Null(span),
+        span,
+      ),
   })(tree)
 }

@@ -1,7 +1,5 @@
 # CHR
 
-`if then` without `else` evaluate to null on else
-
 be able to use function body in `hyperrule`
 
 - remove guard from `hyperrule` -- return `null` means this case fail
