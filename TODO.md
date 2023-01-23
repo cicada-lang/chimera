@@ -1,5 +1,15 @@
 # CHR
 
+remove `find` and `findAll` functions -- in general body can not be quoted
+
+- if we use `goalFromValue` to implement `find`,
+  the goals must be pure data,
+  thus can not have `Dot`.
+
+keep `NativeFn` simple
+
+`GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
+
 `arrayGet`
 
 `enumerationDomain` -- `Add`
@@ -26,11 +36,6 @@ a value for hyperrewrite failure
 - how to import constraints? can constraints be namespaced?
 
   - [maybe] [module] support `import * as <name>`
-
-  - [maybe] remove `find` and `findAll` functions -- in general body can not be quoted
-
-    - if we use `goalFromValue` to implement `find`, the goals must be pure data,
-      thus can not have `Dot`.
 
   - [maybe] Constraints should be pure data (for example, quoted terms),
     but relation should be special value.
