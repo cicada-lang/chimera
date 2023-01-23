@@ -1,5 +1,6 @@
 import { product } from "../../utils/product"
 import * as Actions from "../actions"
+import { doAp } from "../actions"
 import { equal } from "../equal"
 import * as Errors from "../errors"
 import { formatValue } from "../format"
@@ -8,22 +9,6 @@ import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export async function aboutArray(globals: GlobalStore): Promise<void> {
-  globals.primitive("arrayGet", 2, ([array, index]) => {
-    Values.assertValue(index, "Number", { who: "arrayGet" })
-    const result = Values.toArray(array)[index.data]
-    if (result === undefined) {
-      throw new Errors.LangError(
-        [
-          `[arrayGet] index out of bound`,
-          `  array: ${formatValue(array)}`,
-          `  index: ${index.data}`,
-        ].join("\n"),
-      )
-    }
-
-    return result
-  })
-
   globals.primitive("arrayLength", 1, ([array]) => {
     return Values.Number(Values.toArray(array).length)
   })
@@ -73,6 +58,34 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
   globals.primitive("arrayProduct", 1, ([arrays]) => {
     return Values.fromArray(
       product(Values.toArray(arrays).map(Values.toArray)).map(Values.fromArray),
+    )
+  })
+
+  globals.primitive("arrayGet", 2, ([array, index]) => {
+    Values.assertValue(index, "Number", { who: "arrayGet" })
+    const result = Values.toArray(array)[index.data]
+    if (result === undefined) {
+      throw new Errors.LangError(
+        [
+          `[arrayGet] index out of bound`,
+          `  array: ${formatValue(array)}`,
+          `  index: ${index.data}`,
+        ].join("\n"),
+      )
+    }
+
+    return result
+  })
+
+  globals.primitive("arrayMap", 2, ([array, f]) => {
+    return Values.fromArray(
+      Values.toArray(array).map((value) => doAp(f, [value])),
+    )
+  })
+
+  globals.primitive("arrayMapSpread", 2, ([array, f]) => {
+    return Values.fromArray(
+      Values.toArray(array).map((value) => doAp(f, Values.toArray(value))),
     )
   })
 }

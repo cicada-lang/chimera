@@ -1,0 +1,3 @@
+[arrayGet] index out of bound
+  array: ["a", "b", "c"]
+  index: 3

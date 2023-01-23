@@ -84,12 +84,16 @@ hyperrule enumerationDomain {
   then quote [In(x, eval arrayIntersection(l1, l2))]
 
   [LtEq(x, y), In(x, l1), In(y, l2)] => {
-    if not and [NumberArray(l1), NumberArray(l2)] { return }
+    if not and [NumberArray(l1), NumberArray(l2)] {
+      return
+    }
 
     let l1max = maximum(l1)
     let l2max = maximum(l2)
 
-    if not and [gt(l1max, l2max)] { return }
+    if not and [gt(l1max, l2max)] {
+      return
+    }
 
     return quote [
       LtEq(x, y),
@@ -100,12 +104,16 @@ hyperrule enumerationDomain {
 
 
   [LtEq(x, y), In(x, l1), In(y, l2)] => {
-    if not and [NumberArray(l1), NumberArray(l2)] { return }
+    if not and [NumberArray(l1), NumberArray(l2)] {
+      return
+    }
 
     let l1min = minimum(l1)
     let l2min = minimum(l2)
 
-    if not and [gt(l1min, l2min)] { return }
+    if not and [gt(l1min, l2min)] {
+      return
+    }
 
     return quote [
       LtEq(x, y),
@@ -121,6 +129,23 @@ hyperrule enumerationDomain {
     In(x, eval arrayIntersection(l1, l2)),
     In(y, eval arrayIntersection(l1, l2)),
   ]
+
+  [Add(x, y), In(x, l1), In(y, l2), In(z, l3)] => {
+    if not and [NumberArray(l1), NumberArray(l2), NumberArray(l3)] {
+      return
+    }
+
+    let l4 = arrayMapSpread(arrayProduct([l3, l2]), sub)
+    let l5 = arrayMapSpread(arrayProduct([l3, l1]), sub)
+    let l6 = arrayMapSpread(arrayProduct([l1, l2]), add)
+
+    if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+      return
+    }
+
+    return quote [Add(x, y), In(x, l4), In(y, l5), In(z, l6)]
+  }
+
 }
 
 hyperrule finiteDomain {

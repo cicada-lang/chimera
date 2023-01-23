@@ -1,7 +1,3 @@
-assert equal(arrayGet(["a", "b", "c"], 0), "a")
-assert equal(arrayGet(["a", "b", "c"], 1), "b")
-assert equal(arrayGet(["a", "b", "c"], 2), "c")
-
 assert equal(arrayLength([]), 0)
 assert equal(arrayLength([1, 2, 3]), 3)
 
@@ -41,3 +37,11 @@ assert equal(
     [2, 20, 300],
   ]
 )
+
+assert equal(arrayGet(["a", "b", "c"], 0), "a")
+assert equal(arrayGet(["a", "b", "c"], 1), "b")
+assert equal(arrayGet(["a", "b", "c"], 2), "c")
+
+assert equal(arrayMap([0, 1, 2], add1), [1, 2, 3])
+
+assert equal(arrayMapSpread([[0, 0], [1, 1], [2, 2]], add), [0, 2, 4])
