@@ -1,6 +1,5 @@
 # CHR
 
-`reify` should not take `mod`
 `find` should not take `mod`
 
 `enumerationDomain` -- `Eq`

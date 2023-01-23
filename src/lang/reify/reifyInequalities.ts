@@ -1,6 +1,5 @@
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
-import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import {
   Substitution,
@@ -13,7 +12,6 @@ import { unifyMany } from "../unify"
 import type { Value } from "../value"
 
 export function reifyInequalities(
-  mod: Mod,
   solution: Solution,
   substitutionForRenaming: Substitution,
 ): Array<Goal> {
@@ -40,7 +38,7 @@ export function reifyInequalities(
       ),
   )
 
-  inequalities = removeSubsumed(mod, inequalities)
+  inequalities = removeSubsumed(inequalities)
 
   return inequalities.map((inequality) =>
     inequalityAsGoal(inequality, substitutionForRenaming),
@@ -75,7 +73,6 @@ function somePairContainsVar(
 **/
 
 function removeSubsumed(
-  mod: Mod,
   inequalities: Array<Substitution>,
   results: Array<Substitution> = [],
 ): Array<Substitution> {
@@ -83,12 +80,12 @@ function removeSubsumed(
 
   const [inequality, ...restInequalities] = inequalities
   if (
-    isSubsumed(mod, inequality, restInequalities) ||
-    isSubsumed(mod, inequality, results)
+    isSubsumed(inequality, restInequalities) ||
+    isSubsumed(inequality, results)
   ) {
-    return removeSubsumed(mod, restInequalities, results)
+    return removeSubsumed(restInequalities, results)
   } else {
-    return removeSubsumed(mod, restInequalities, [inequality, ...results])
+    return removeSubsumed(restInequalities, [inequality, ...results])
   }
 }
 
@@ -106,7 +103,6 @@ function removeSubsumed(
 **/
 
 function isSubsumed(
-  mod: Mod,
   substitution: Substitution,
   inequalities: Array<Substitution>,
 ): boolean {

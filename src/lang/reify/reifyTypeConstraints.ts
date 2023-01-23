@@ -1,6 +1,5 @@
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
-import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import {
   Substitution,
@@ -10,7 +9,6 @@ import {
 import type * as Values from "../value"
 
 export function reifyTypeConstraints(
-  mod: Mod,
   solution: Solution,
   substitutionForRenaming: Substitution,
 ): Array<Goal> {

@@ -1,4 +1,3 @@
-import type { Mod } from "../mod"
 import type { Solution } from "../solution"
 import { substitutionDeepWalk } from "../substitution"
 import type { Value } from "../value"
@@ -15,12 +14,12 @@ import { reifyTypeConstraints } from "./reifyTypeConstraints"
 
 **/
 
-export function reify(mod: Mod, solution: Solution, value: Value): Value {
+export function reify(solution: Solution, value: Value): Value {
   value = substitutionDeepWalk(solution.substitution, value)
   const substitutionForRenaming = prepareSubstitution(value)
   const constraints = [
-    ...reifyInequalities(mod, solution, substitutionForRenaming),
-    ...reifyTypeConstraints(mod, solution, substitutionForRenaming),
+    ...reifyInequalities(solution, substitutionForRenaming),
+    ...reifyTypeConstraints(solution, substitutionForRenaming),
   ]
 
   if (constraints.length > 0) {
