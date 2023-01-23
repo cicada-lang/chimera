@@ -10,12 +10,12 @@ export function varCollectionFromHyperruleExp(
     case "Propagate": {
       return hyperrule.guard !== undefined
         ? varCollectionMerge([
-            ...hyperrule.from.map(varCollectionFromExp),
+            varCollectionFromExp(hyperrule.from),
             varCollectionFromExp(hyperrule.to),
             varCollectionFromExp(hyperrule.guard),
           ])
         : varCollectionMerge([
-            ...hyperrule.from.map(varCollectionFromExp),
+            varCollectionFromExp(hyperrule.from),
             varCollectionFromExp(hyperrule.to),
           ])
     }

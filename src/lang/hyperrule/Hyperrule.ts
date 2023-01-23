@@ -9,7 +9,7 @@ export type Simplify = {
   "@kind": "Simplify"
   mod: Mod
   env: Env
-  from: Array<Exp>
+  from: Exp
   to: Exp
   guard: Exp | undefined
 }
@@ -17,7 +17,7 @@ export type Simplify = {
 export function Simplify(
   mod: Mod,
   env: Env,
-  from: Array<Exp>,
+  from: Exp,
   to: Exp,
   guard: Exp | undefined,
 ): Simplify {
@@ -37,7 +37,7 @@ export type Propagate = {
   "@kind": "Propagate"
   mod: Mod
   env: Env
-  from: Array<Exp>
+  from: Exp
   to: Exp
   guard: Exp | undefined
 }
@@ -45,7 +45,7 @@ export type Propagate = {
 export function Propagate(
   mod: Mod,
   env: Env,
-  from: Array<Exp>,
+  from: Exp,
   to: Exp,
   guard: Exp | undefined,
 ): Propagate {

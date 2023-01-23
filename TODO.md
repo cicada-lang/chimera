@@ -1,7 +1,5 @@
 # CHR
 
-`hyperrule.from` should be `Exp`
-
 be able to use function body in `rule`
 be able to use function body in `hyperrule`
 

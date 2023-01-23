@@ -20,11 +20,9 @@ export function hyperrewriteOneStep(
       mod.env = envMerge(mod.env, hyperrule.env)
 
       const renames = new Map()
-      const from = hyperrule.from.map((exp) =>
-        refresh(renames, quote(mod, mod.env, exp)),
-      )
+      const from = refresh(renames, quote(mod, mod.env, hyperrule.from))
 
-      const result = simplify(substitutionEmpty(), from, values)
+      const result = simplify(substitutionEmpty(), Values.toArray(from), values)
 
       if (result === undefined) {
         return undefined
@@ -55,14 +53,12 @@ export function hyperrewriteOneStep(
       mod.env = envMerge(mod.env, hyperrule.env)
 
       const renames = new Map()
-      const from = hyperrule.from.map((exp) =>
-        refresh(renames, quote(mod, mod.env, exp)),
-      )
+      const from = refresh(renames, quote(mod, mod.env, hyperrule.from))
 
       const result = propagate(
         hyperrule,
         substitutionEmpty(),
-        from,
+        Values.toArray(from),
         values,
         appliedPropagations,
       )

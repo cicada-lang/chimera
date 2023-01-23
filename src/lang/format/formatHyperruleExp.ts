@@ -5,15 +5,15 @@ import type { HyperruleExp } from "../hyperrule-exp"
 export function formatHyperruleExp(hyperrule: HyperruleExp): string {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
-      const from = hyperrule.from.map(formatExp).join(", ")
+      const from = formatExp(hyperrule.from)
       const to = formatExp(hyperrule.to)
-      return `[${from}] => ${to}`
+      return `${from} => ${to}`
     }
 
     case "Propagate": {
-      const from = hyperrule.from.map(formatExp).join(", ")
+      const from = formatExp(hyperrule.from)
       const to = formatExp(hyperrule.to)
-      return `[${from}] +> ${to}`
+      return `${from} +> ${to}`
     }
 
     case "List": {
