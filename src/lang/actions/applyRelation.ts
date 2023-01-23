@@ -31,7 +31,7 @@ export function applyRelation(
 
   const goal = Goals.Apply(target.name, target, args)
   const solver = Solver.start([goal])
-  const solutions = solver.solve(mod, { limit: Infinity })
+  const solutions = solver.solve({ limit: Infinity })
   if (solutions.length === 0) {
     return Values.Boolean(false)
   } else {

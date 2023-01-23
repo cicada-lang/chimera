@@ -11,6 +11,6 @@ export function find(
   goals: Array<Goal>,
 ): Array<Value> {
   const solver = Solver.start(goals)
-  const solutions = solver.solve(mod, { limit })
+  const solutions = solver.solve({ limit })
   return solutions.map((solution) => reify(mod, solution, pattern))
 }

@@ -1,5 +1,4 @@
 import type { Goal } from "../goal"
-import type { Mod } from "../mod"
 import { pursue } from "../pursue"
 import { Solution } from "../solution"
 
@@ -41,10 +40,10 @@ export class Solver {
     return new Solver([Solution.initial(goals)])
   }
 
-  solve(mod: Mod, options: SolveOptions): Array<Solution> {
+  solve(options: SolveOptions): Array<Solution> {
     const limit = options.limit || Infinity
     while (this.solutions.length < limit && this.partialSolutions.length > 0) {
-      this.solveStep(mod)
+      this.solveStep()
     }
 
     /**
@@ -57,7 +56,7 @@ export class Solver {
     return this.solutions.slice(0, limit)
   }
 
-  solveStep(mod: Mod): void {
+  solveStep(): void {
     /**
 
        Doing side-effect on `this.partialSolutions` is intended,
