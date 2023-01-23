@@ -130,22 +130,21 @@ hyperrule enumerationDomain {
     In(y, eval arrayIntersection(l1, l2)),
   ]
 
-  [Add(x, y), In(x, l1), In(y, l2), In(z, l3)] => {
+  [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
     if not and [NumberArray(l1), NumberArray(l2), NumberArray(l3)] {
       return
     }
 
-    let l4 = arrayMapSpread(arrayProduct([l3, l2]), sub)
-    let l5 = arrayMapSpread(arrayProduct([l3, l1]), sub)
-    let l6 = arrayMapSpread(arrayProduct([l1, l2]), add)
+    let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+    let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+    let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
 
     if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
       return
     }
 
-    return quote [Add(x, y), In(x, l4), In(y, l5), In(z, l6)]
+    return quote [Add(x, y, z), In(x, eval l4), In(y, eval l5), In(z, eval l6)]
   }
-
 }
 
 hyperrule finiteDomain {
@@ -160,7 +159,7 @@ print finiteDomain(quote [Range(x, a, b), Range(x, c, d)])
 print finiteDomain(quote [Range(x, 20, 100), Range(x, 30, 120)])
 print finiteDomain(quote [LtEq(x, y), Range(x, 20, 150), Range(y, 30, 120)])
 print finiteDomain(quote [Eq(x, y), Range(x, 20, 150), Range(y, 30, 120)])
-print finiteDomain(quote [Range(x, 1, 3), Range(y, 2, 4), Range(z, 0, 4), Add(x, y, z)])
+print finiteDomain(quote [Add(x, y, z), Range(x, 1, 3), Range(y, 2, 4), Range(z, 0, 4)])
 
 // enumerationDomain
 
@@ -170,3 +169,7 @@ print finiteDomain(quote [LtEq(x, y), In(x, [4, 6, 7]), In(y, [3, 7])])
 print finiteDomain(quote [LtEq(x, y), In(x, [2, 3, 4, 5]), In(y, [1, 2, 3])])
 print finiteDomain(quote [LtEq(x, y), In(x, [2, 3, 4]), In(y, [0, 1])])
 print finiteDomain(quote [Eq(x, y), In(x, [2, 3, 4, 5]), In(y, [1, 2, 3])])
+print finiteDomain(quote [Add(x, y, z), In(x, [1, 2, 3]), In(y, [2, 3, 4]), In(z, [0, 1, 2, 3, 4])])
+print finiteDomain(quote [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3])])
+print finiteDomain(quote [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [4])])
+print finiteDomain(quote [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3, 4])])

@@ -1,6 +1,5 @@
 # CHR
 
-`enumerationDomain` -- `Add`
 `enumerationDomain` -- `NotEq`
 
 `Exps.Match` -- support pattern match

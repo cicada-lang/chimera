@@ -15,3 +15,7 @@
 [LtEq(x, y), In(x, [2, 3]), In(y, [2, 3])]
 [LtEq(x, y), In(y, [0, 1]), false]
 [LtEq(x, y), In(x, [2, 3]), In(y, [2, 3])]
+[Add(x, y, z), In(x, [1, 2]), In(y, [2, 3]), In(z, [3, 4])]
+[Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3])]
+[Add(x, y, z), false, false, false]
+[Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3])]
