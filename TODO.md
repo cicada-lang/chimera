@@ -1,7 +1,5 @@
 # CHR
 
-improve `utils/product` with test
-
 `arrayProduct(arrays)`
 `arrayGet`
 
