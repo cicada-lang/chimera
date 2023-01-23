@@ -77,7 +77,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
         matchers.stmts_matcher(stmts),
         span,
       ),
-    "operand:fn_with_ret_exp": ({ patterns, ret }, { span }) =>
+    "operand:fn_with_exp": ({ patterns, ret }, { span }) =>
       Exps.Fn(
         matchers.args_matcher(patterns),
         [Stmts.Return(matchers.exp_matcher(ret), span)],
