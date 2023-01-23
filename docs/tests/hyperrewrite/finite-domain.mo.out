@@ -14,3 +14,4 @@
 [LtEq(x, y), In(x, [4, 6, 7]), In(y, [7])]
 [LtEq(x, y), In(x, [2, 3]), In(y, [2, 3])]
 [LtEq(x, y), In(y, [0, 1]), false]
+[LtEq(x, y), In(x, [2, 3]), In(y, [2, 3])]
