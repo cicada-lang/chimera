@@ -1,6 +1,7 @@
 import type { Env } from "../env"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
+import type { Stmt } from "../stmt"
 
 export type Hyperrule = Simplify | Propagate | List
 
@@ -9,26 +10,23 @@ export type Simplify = {
   "@kind": "Simplify"
   mod: Mod
   env: Env
-  from: Exp
-  to: Exp
-  guard: Exp | undefined
+  pattern: Exp
+  stmts: Array<Stmt>
 }
 
 export function Simplify(
   mod: Mod,
   env: Env,
-  from: Exp,
-  to: Exp,
-  guard: Exp | undefined,
+  pattern: Exp,
+  stmts: Array<Stmt>,
 ): Simplify {
   return {
     "@type": "Hyperrule",
     "@kind": "Simplify",
     mod,
     env,
-    from,
-    to,
-    guard,
+    pattern,
+    stmts,
   }
 }
 
@@ -37,26 +35,23 @@ export type Propagate = {
   "@kind": "Propagate"
   mod: Mod
   env: Env
-  from: Exp
-  to: Exp
-  guard: Exp | undefined
+  pattern: Exp
+  stmts: Array<Stmt>
 }
 
 export function Propagate(
   mod: Mod,
   env: Env,
-  from: Exp,
-  to: Exp,
-  guard: Exp | undefined,
+  pattern: Exp,
+  stmts: Array<Stmt>,
 ): Propagate {
   return {
     "@type": "Hyperrule",
     "@kind": "Propagate",
     mod,
     env,
-    from,
-    to,
-    guard,
+    pattern,
+    stmts,
   }
 }
 

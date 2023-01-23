@@ -1,55 +1,53 @@
 hyperrule intervalDomain {
   // inconsistency
 
-  [Range(_, a, b)]
-  if and [Number(a), Number(b), gt(a, b)]
-  => quote [false]
+  [Range(_, a, b)] => if and [Number(a), Number(b), gt(a, b)] then quote [false]
 
   // intersection
 
-  [Range(x, a, b), Range(x, c, d)]
+  [Range(x, a, b), Range(x, c, d)] =>
   if and [Number(a), Number(b), Number(c), Number(d)]
-  => quote [Range(x, eval max(a, c), eval min(b, d))]
+  then quote [Range(x, eval max(a, c), eval min(b, d))]
 
   // `LtEq(x, y)` means that `x` is less than or equal to `y`. Hence, `x`
   // cannot be larger than the upper bound `d` of `y`. Therefore, if the
   // upper bound `b` of `x` is larger than `d`, we can replace `b` by `d`
   // without removing any solutions.
 
-  [LtEq(x, y), Range(x, a, b), Range(y, c, d)]
+  [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [Number(b), Number(d), gt(b, d)]
-  => quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)]
+  then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)]
 
   // Analogously, one can reason on the lower bounds to tighten the
   // interval for `y`.
 
-  [LtEq(x, y), Range(x, a, b), Range(y, c, d)]
+  [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [Number(a), Number(c), lt(c, a)]
-  => quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)]
+  then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)]
 
   // The `Eq` constraint enforces the intersection of the intervals
   // associated with its variables provided the bounds are not yet the
   // same.
 
-  [Eq(x, y), Range(x, a, b), Range(y, c, d)]
+  [Eq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [Number(a), Number(c), not equal(c, a)]
-  => quote [Eq(x, y), Range(x, eval max(a, c), b), Range(y, eval max(a, c), d)]
+  then quote [Eq(x, y), Range(x, eval max(a, c), b), Range(y, eval max(a, c), d)]
 
-  [Eq(x, y), Range(x, a, b), Range(y, c, d)]
+  [Eq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [Number(b), Number(d), not equal(b, d)]
-  => quote [Eq(x, y), Range(x, a, eval min(b, d)), Range(y, c, eval min(b, d))]
+  then quote [Eq(x, y), Range(x, a, eval min(b, d)), Range(y, c, eval min(b, d))]
 
   // The `NotEq` constraint can only cause a domain tightening if one of the
   // intervals denote a unique value that happens to be the bound of the
   // other intervals.
 
-  [NotEq(x, y), Range(x, a, b), Range(y, c, d)]
+  [NotEq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [Number(a), equal(a, c), equal(c, d)]
-  => quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)]
+  then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)]
 
   // x + y = z
 
-  [Add(x, y, z), Range(x, a, b), Range(y, c, d), Range(z, e, f)]
+  [Add(x, y, z), Range(x, a, b), Range(y, c, d), Range(z, e, f)] =>
   if and [
     Number(a), Number(b),
     Number(c), Number(d),
@@ -63,7 +61,7 @@ hyperrule intervalDomain {
       lteq(f, add(b, d)),
     ]
   ]
-  => quote [
+  then quote [
     Add(x, y, z),
     Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
     Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
@@ -81,29 +79,29 @@ hyperrule enumerationDomain {
 
   // intersection
 
-  [In(x, l1), In(x, l2)]
+  [In(x, l1), In(x, l2)] =>
   if and [NumberArray(l1), NumberArray(l2)]
-  => quote [In(x, eval arrayIntersection(l1, l2))]
+  then quote [In(x, eval arrayIntersection(l1, l2))]
 
-  [LtEq(x, y), In(x, l1), In(y, l2)]
+  [LtEq(x, y), In(x, l1), In(y, l2)] =>
   if and [NumberArray(l1), NumberArray(l2), gt(maximum(l1), maximum(l2))]
-  => quote [
+  then quote [
     LtEq(x, y),
     In(x, eval arrayFilter(l1, (n) => lteq(n, maximum(l2)))),
     In(y, l2),
   ]
 
-  [LtEq(x, y), In(x, l1), In(y, l2)]
+  [LtEq(x, y), In(x, l1), In(y, l2)] =>
   if and [NumberArray(l1), NumberArray(l2), gt(minimum(l1), minimum(l2))]
-  => quote [
+  then quote [
     LtEq(x, y),
     In(x, l1),
     In(y, eval arrayFilter(l2, (n) => gteq(n, minimum(l1)))),
   ]
 
-  [Eq(x, y), In(x, l1), In(y, l2)]
+  [Eq(x, y), In(x, l1), In(y, l2)] =>
   if and [NumberArray(l1), NumberArray(l2), not equal(l1, l2)]
-  => quote [
+  then quote [
     LtEq(x, y),
     In(x, eval arrayIntersection(l1, l2)),
     In(y, eval arrayIntersection(l1, l2)),

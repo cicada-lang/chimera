@@ -1,22 +1,32 @@
 export const hyperrule = {
   $grammar: {
-    "hyperrule:simplify": [{ pattern: "exp" }, '"="', '">"', { to: "exp" }],
-    "hyperrule:simplify_guard": [
+    "hyperrule:simplify": [
       { pattern: "exp" },
-      '"if"',
-      { guard: "exp" },
       '"="',
       '">"',
-      { to: "exp" },
+      '"{"',
+      { stmts: "stmts" },
+      '"}"',
     ],
-    "hyperrule:propagate": [{ pattern: "exp" }, '"+"', '">"', { to: "exp" }],
-    "hyperrule:propagate_guard": [
+    "hyperrule:simplify_with_exp": [
       { pattern: "exp" },
-      '"if"',
-      { guard: "exp" },
+      '"="',
+      '">"',
+      { exp: "exp" },
+    ],
+    "hyperrule:propagate": [
+      { pattern: "exp" },
       '"+"',
       '">"',
-      { to: "exp" },
+      '"{"',
+      { stmts: "stmts" },
+      '"}"',
+    ],
+    "hyperrule:propagate_with_exp": [
+      { pattern: "exp" },
+      '"+"',
+      '">"',
+      { exp: "exp" },
     ],
     "hyperrule:use": ['"use"', { exp: "exp" }],
   },

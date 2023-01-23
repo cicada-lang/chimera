@@ -1,19 +1,37 @@
 import { indent } from "../../utils/indent"
-import { formatExp } from "../format"
+import { formatExp, formatStmt } from "../format"
 import type { HyperruleExp } from "../hyperrule-exp"
 
 export function formatHyperruleExp(hyperrule: HyperruleExp): string {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
-      const from = formatExp(hyperrule.pattern)
-      const to = formatExp(hyperrule.to)
-      return `${from} => ${to}`
+      const pattern = formatExp(hyperrule.pattern)
+
+      if (
+        hyperrule.stmts.length === 1 &&
+        hyperrule.stmts[0]["@kind"] === "Return"
+      ) {
+        const exp = formatExp(hyperrule.stmts[0].exp)
+        return `${pattern} => ${exp}`
+      }
+
+      const stmts = hyperrule.stmts.map(formatStmt)
+      return `${pattern} => {\n${indent(stmts.join("\n"))}\n}`
     }
 
     case "Propagate": {
-      const from = formatExp(hyperrule.pattern)
-      const to = formatExp(hyperrule.to)
-      return `${from} +> ${to}`
+      const pattern = formatExp(hyperrule.pattern)
+
+      if (
+        hyperrule.stmts.length === 1 &&
+        hyperrule.stmts[0]["@kind"] === "Return"
+      ) {
+        const exp = formatExp(hyperrule.stmts[0].exp)
+        return `${pattern} +> ${exp}`
+      }
+
+      const stmts = hyperrule.stmts.map(formatStmt)
+      return `${pattern} +> {\n${indent(stmts.join("\n"))}\n}`
     }
 
     case "List": {

@@ -13,23 +13,11 @@ export function evaluateHyperruleExp(
 ): Hyperrule {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
-      return Hyperrules.Simplify(
-        mod,
-        env,
-        hyperrule.pattern,
-        hyperrule.to,
-        hyperrule.guard,
-      )
+      return Hyperrules.Simplify(mod, env, hyperrule.pattern, hyperrule.stmts)
     }
 
     case "Propagate": {
-      return Hyperrules.Propagate(
-        mod,
-        env,
-        hyperrule.pattern,
-        hyperrule.to,
-        hyperrule.guard,
-      )
+      return Hyperrules.Propagate(mod, env, hyperrule.pattern, hyperrule.stmts)
     }
 
     case "List": {

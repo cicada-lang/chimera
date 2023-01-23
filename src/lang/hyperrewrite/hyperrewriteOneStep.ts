@@ -1,5 +1,6 @@
+import { catchReturnValue } from "../actions/catchReturnValue"
 import { envMerge } from "../env"
-import { evaluate, quote } from "../evaluate"
+import { quote } from "../evaluate"
 import type { Hyperrule } from "../hyperrule"
 import { refresh } from "../refresh"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
@@ -20,9 +21,13 @@ export function hyperrewriteOneStep(
       mod.env = envMerge(mod.env, hyperrule.env)
 
       const renames = new Map()
-      const from = refresh(renames, quote(mod, mod.env, hyperrule.from))
+      const pattern = refresh(renames, quote(mod, mod.env, hyperrule.pattern))
 
-      const result = simplify(substitutionEmpty(), Values.toArray(from), values)
+      const result = simplify(
+        substitutionEmpty(),
+        Values.toArray(pattern),
+        values,
+      )
 
       if (result === undefined) {
         return undefined
@@ -32,17 +37,15 @@ export function hyperrewriteOneStep(
         mod.define(name, substitutionDeepWalk(result.substitution, variable))
       }
 
-      if (hyperrule.guard !== undefined) {
-        const ok = evaluate(mod, mod.env, hyperrule.guard)
-        Values.assertValue(ok, "Boolean", { who: "hyperrewriteOneStep" })
-        if (!ok.data) {
-          return undefined
-        }
+      const returnValue = catchReturnValue(mod, hyperrule.stmts)
+
+      if (returnValue["@kind"] === "Null") {
+        return undefined
       }
 
       const to = substitutionDeepWalk(
         result.substitution,
-        refresh(renames, evaluate(mod, mod.env, hyperrule.to)),
+        refresh(renames, returnValue),
       )
 
       return [...result.remainValues, ...Values.toArray(to)]
@@ -53,12 +56,12 @@ export function hyperrewriteOneStep(
       mod.env = envMerge(mod.env, hyperrule.env)
 
       const renames = new Map()
-      const from = refresh(renames, quote(mod, mod.env, hyperrule.from))
+      const pattern = refresh(renames, quote(mod, mod.env, hyperrule.pattern))
 
       const result = propagate(
         hyperrule,
         substitutionEmpty(),
-        Values.toArray(from),
+        Values.toArray(pattern),
         values,
         appliedPropagations,
       )
@@ -71,17 +74,15 @@ export function hyperrewriteOneStep(
         mod.define(name, substitutionDeepWalk(result.substitution, variable))
       }
 
-      if (hyperrule.guard !== undefined) {
-        const ok = evaluate(mod, mod.env, hyperrule.guard)
-        Values.assertValue(ok, "Boolean", { who: "hyperrewriteOneStep" })
-        if (!ok.data) {
-          return undefined
-        }
+      const returnValue = catchReturnValue(mod, hyperrule.stmts)
+
+      if (returnValue["@kind"] === "Null") {
+        return undefined
       }
 
       const to = substitutionDeepWalk(
         result.substitution,
-        refresh(renames, evaluate(mod, mod.env, hyperrule.to)),
+        refresh(renames, returnValue),
       )
 
       // NOTE Keep the input values.

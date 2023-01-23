@@ -2,35 +2,32 @@ import * as pt from "@cicada-lang/partech"
 import * as matchers from "."
 import type { HyperruleExp } from "../../hyperrule-exp"
 import * as HyperruleExps from "../../hyperrule-exp"
+import * as Stmts from "../../stmt"
 
 export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
   return pt.matcher<HyperruleExp>({
-    "hyperrule:simplify": ({ pattern, to }, { span }) =>
+    "hyperrule:simplify": ({ pattern, stmts }, { span }) =>
       HyperruleExps.Simplify(
         matchers.exp_matcher(pattern),
-        matchers.exp_matcher(to),
-        undefined,
+        matchers.stmts_matcher(stmts),
         span,
       ),
-    "hyperrule:simplify_guard": ({ pattern, to, guard }, { span }) =>
+    "hyperrule:simplify_with_exp": ({ pattern, exp }, { span }) =>
       HyperruleExps.Simplify(
         matchers.exp_matcher(pattern),
-        matchers.exp_matcher(to),
-        matchers.exp_matcher(guard),
+        [Stmts.Return(matchers.exp_matcher(exp), span)],
         span,
       ),
-    "hyperrule:propagate": ({ pattern, to }, { span }) =>
+    "hyperrule:propagate": ({ pattern, stmts }, { span }) =>
       HyperruleExps.Propagate(
         matchers.exp_matcher(pattern),
-        matchers.exp_matcher(to),
-        undefined,
+        matchers.stmts_matcher(stmts),
         span,
       ),
-    "hyperrule:propagate_guard": ({ pattern, to, guard }, { span }) =>
+    "hyperrule:propagate_with_exp": ({ pattern, exp }, { span }) =>
       HyperruleExps.Propagate(
         matchers.exp_matcher(pattern),
-        matchers.exp_matcher(to),
-        matchers.exp_matcher(guard),
+        [Stmts.Return(matchers.exp_matcher(exp), span)],
         span,
       ),
     "hyperrule:use": ({ exp }, { span }) =>

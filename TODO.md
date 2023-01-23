@@ -1,17 +1,13 @@
 # CHR
 
-be able to use function body in `hyperrule`
-
-- remove guard from `hyperrule` -- return `null` means this case fail
-
-`Exps.Match` support pattern match
-
-`let` support `pattern`
-
 `arrayGet`
 
 `enumerationDomain` -- `Add`
 `enumerationDomain` -- `NotEq`
+
+`Exps.Match` support pattern match
+
+`let` support `pattern`
 
 a value for hyperrewrite failure
 

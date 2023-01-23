@@ -1,5 +1,6 @@
 import type { Exp } from "../exp"
 import type { Span } from "../span"
+import type { Stmt } from "../stmt"
 
 export type HyperruleExp = Simplify | Propagate | List | Use
 
@@ -7,23 +8,20 @@ export type Simplify = {
   "@type": "HyperruleExp"
   "@kind": "Simplify"
   pattern: Exp
-  to: Exp
-  guard: Exp | undefined
+  stmts: Array<Stmt>
   span: Span
 }
 
 export function Simplify(
   pattern: Exp,
-  to: Exp,
-  guard: Exp | undefined,
+  stmts: Array<Stmt>,
   span: Span,
 ): Simplify {
   return {
     "@type": "HyperruleExp",
     "@kind": "Simplify",
     pattern,
-    to,
-    guard,
+    stmts,
     span,
   }
 }
@@ -32,23 +30,20 @@ export type Propagate = {
   "@type": "HyperruleExp"
   "@kind": "Propagate"
   pattern: Exp
-  to: Exp
-  guard: Exp | undefined
+  stmts: Array<Stmt>
   span: Span
 }
 
 export function Propagate(
   pattern: Exp,
-  to: Exp,
-  guard: Exp | undefined,
+  stmts: Array<Stmt>,
   span: Span,
 ): Propagate {
   return {
     "@type": "HyperruleExp",
     "@kind": "Propagate",
     pattern,
-    to,
-    guard,
+    stmts,
     span,
   }
 }
