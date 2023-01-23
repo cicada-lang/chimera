@@ -92,6 +92,22 @@ hyperrule enumerationDomain {
     In(x, eval arrayFilter(l1, (n) => lteq(n, maximum(l2)))),
     In(y, l2),
   ]
+
+  [LtEq(x, y), In(x, l1), In(y, l2)]
+  if and [NumberArray(l1), NumberArray(l2), gt(minimum(l1), minimum(l2))]
+  => [
+    LtEq(x, y),
+    In(x, l1),
+    In(y, eval arrayFilter(l2, (n) => gteq(n, minimum(l1)))),
+  ]
+
+  [Eq(x, y), In(x, l1), In(y, l2)]
+  if and [NumberArray(l1), NumberArray(l2), not equal(l1, l2)]
+  => [
+    LtEq(x, y),
+    In(x, eval arrayIntersection(l1, l2)),
+    In(y, eval arrayIntersection(l1, l2)),
+  ]
 }
 
 hyperrule finiteDomain {
@@ -112,3 +128,7 @@ print finiteDomain(quote [Range(x, 1, 3), Range(y, 2, 4), Range(z, 0, 4), Add(x,
 
 print finiteDomain(quote [In(x, [])])
 print finiteDomain(quote [In(x, [1, 2, 3]), In(x, [2, 3, 4])])
+print finiteDomain(quote [LtEq(x, y), In(x, [4, 6, 7]), In(y, [3, 7])])
+print finiteDomain(quote [LtEq(x, y), In(x, [2, 3, 4, 5]), In(y, [1, 2, 3])])
+print finiteDomain(quote [LtEq(x, y), In(x, [2, 3, 4]), In(y, [0, 1])])
+print finiteDomain(quote [Eq(x, y), In(x, [2, 3, 4, 5]), In(y, [1, 2, 3])])

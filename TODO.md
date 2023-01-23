@@ -1,8 +1,7 @@
 # CHR
 
-`enumerationDomain` -- `Eq`
-`enumerationDomain` -- `NotEq`
 `enumerationDomain` -- `Add`
+`enumerationDomain` -- `NotEq`
 
 a value for hyperrewrite failure
 
@@ -19,7 +18,11 @@ a value for hyperrewrite failure
 - how to import constraints? can constraints be namespaced?
 
   - [maybe] [module] support `import * as <name>`
+
   - [maybe] remove `find` and `findAll` functions -- in general body can not be quoted
+
+    - if we use `goalFromValue` to implement `find`, the goals must be pure data,
+      thus can not have `Dot`.
 
 - [maybe] `Solution` should be extended with `customConstraints`
   -- or just `constraints` -- which contains the constraints
