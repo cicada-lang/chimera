@@ -1,7 +1,5 @@
 # CHR
 
-improve `formatRuleExp`
-
 `if then` without `else` evaluate to null on else
 
 be able to use function body in `hyperrule`
