@@ -16,7 +16,7 @@ export function evaluateHyperruleExp(
       return Hyperrules.Simplify(
         mod,
         env,
-        hyperrule.from,
+        hyperrule.pattern,
         hyperrule.to,
         hyperrule.guard,
       )
@@ -26,7 +26,7 @@ export function evaluateHyperruleExp(
       return Hyperrules.Propagate(
         mod,
         env,
-        hyperrule.from,
+        hyperrule.pattern,
         hyperrule.to,
         hyperrule.guard,
       )

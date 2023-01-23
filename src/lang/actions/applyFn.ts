@@ -70,7 +70,7 @@ function matchPatterns(
   }
 }
 
-function catchReturnValue(mod: Mod, stmts: Array<Stmt>): Value {
+export function catchReturnValue(mod: Mod, stmts: Array<Stmt>): Value {
   try {
     executeStmtsSync(mod, stmts)
     return Values.Null()

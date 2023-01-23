@@ -1,14 +1,14 @@
 export const rule = {
   $grammar: {
-    "rule:case": [{ pattern: "exp" }, '"="', '">"', { to: "exp" }],
-    "rule:case_guard": [
+    "rule:case": [
       { pattern: "exp" },
-      '"if"',
-      { guard: "exp" },
       '"="',
       '">"',
-      { to: "exp" },
+      '"{"',
+      { stmts: "stmts" },
+      '"}"',
     ],
+    "rule:case_with_exp": [{ pattern: "exp" }, '"="', '">"', { exp: "exp" }],
     "rule:use": ['"use"', { exp: "exp" }],
   },
 }

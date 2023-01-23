@@ -1,22 +1,21 @@
 import * as pt from "@cicada-lang/partech"
-import * as matchers from "."
 import type { RuleExp } from "../../rule-exp"
 import * as RuleExps from "../../rule-exp"
+import * as Stmts from "../../stmt"
+import * as matchers from "./index"
 
 export function rule_matcher(tree: pt.Tree): RuleExp {
   return pt.matcher<RuleExp>({
-    "rule:case": ({ pattern, to }, { span }) =>
+    "rule:case": ({ pattern, stmts }, { span }) =>
       RuleExps.Case(
         matchers.exp_matcher(pattern),
-        matchers.exp_matcher(to),
-        undefined,
+        matchers.stmts_matcher(stmts),
         span,
       ),
-    "rule:case_guard": ({ pattern, to, guard }, { span }) =>
+    "rule:case_with_exp": ({ pattern, exp }, { span }) =>
       RuleExps.Case(
         matchers.exp_matcher(pattern),
-        matchers.exp_matcher(to),
-        matchers.exp_matcher(guard),
+        [Stmts.Return(matchers.exp_matcher(exp), span)],
         span,
       ),
     "rule:use": ({ exp }, { span }) =>

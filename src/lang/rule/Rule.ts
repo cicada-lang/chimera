@@ -1,6 +1,7 @@
 import type { Env } from "../env"
 import type { Exp } from "../exp"
 import type { Mod } from "../mod"
+import type { Stmt } from "../stmt"
 
 export type Rule = Case | List
 
@@ -10,16 +11,14 @@ export type Case = {
   mod: Mod
   env: Env
   pattern: Exp
-  to: Exp
-  guard: Exp | undefined
+  stmts: Array<Stmt>
 }
 
 export function Case(
   mod: Mod,
   env: Env,
   pattern: Exp,
-  to: Exp,
-  guard: Exp | undefined,
+  stmts: Array<Stmt>,
 ): Case {
   return {
     "@type": "Rule",
@@ -27,8 +26,7 @@ export function Case(
     mod,
     env,
     pattern,
-    to,
-    guard,
+    stmts,
   }
 }
 

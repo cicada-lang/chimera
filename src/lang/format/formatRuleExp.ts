@@ -1,13 +1,13 @@
 import { indent } from "../../utils/indent"
-import { formatExp } from "../format"
+import { formatExp, formatStmt } from "../format"
 import type { RuleExp } from "../rule-exp"
 
 export function formatRuleExp(rule: RuleExp): string {
   switch (rule["@kind"]) {
     case "Case": {
-      const from = formatExp(rule.from)
-      const to = formatExp(rule.to)
-      return `${from} => ${to}`
+      const from = formatExp(rule.pattern)
+      const stmts = rule.stmts.map(formatStmt)
+      return `${from} => {\n${indent(stmts.join("\n"))}\n}`
     }
 
     case "List": {

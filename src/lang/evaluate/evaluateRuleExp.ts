@@ -9,7 +9,7 @@ import { evaluate } from "./evaluate"
 export function evaluateRuleExp(mod: Mod, env: Env, rule: RuleExp): Rule {
   switch (rule["@kind"]) {
     case "Case": {
-      return Rules.Case(mod, env, rule.from, rule.to, rule.guard)
+      return Rules.Case(mod, env, rule.pattern, rule.stmts)
     }
 
     case "List": {

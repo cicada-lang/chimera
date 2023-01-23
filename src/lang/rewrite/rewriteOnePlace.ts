@@ -1,11 +1,11 @@
+import { catchReturnValue } from "../actions/applyFn"
 import { envMerge } from "../env"
-import { evaluate, quote } from "../evaluate"
+import { quote } from "../evaluate"
 import { match } from "../match"
 import { refresh } from "../refresh"
 import type { Rule } from "../rule"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
-import * as Values from "../value"
 
 export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
   switch (rule["@kind"]) {
@@ -14,8 +14,8 @@ export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
       mod.env = envMerge(mod.env, rule.env)
 
       const renames = new Map()
-      const from = refresh(renames, quote(mod, mod.env, rule.pattern))
-      const substitution = match(substitutionEmpty(), from, value)
+      const pattern = refresh(renames, quote(mod, mod.env, rule.pattern))
+      const substitution = match(substitutionEmpty(), pattern, value)
 
       if (substitution === undefined) {
         return undefined
@@ -25,16 +25,13 @@ export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
         mod.define(name, substitutionDeepWalk(substitution, variable))
       }
 
-      if (rule.guard !== undefined) {
-        const ok = evaluate(mod, mod.env, rule.guard)
-        Values.assertValue(ok, "Boolean", { who: "rewriteOneStep" })
-        if (!ok.data) {
-          return undefined
-        }
+      const returnValue = catchReturnValue(mod, rule.stmts)
+
+      if (returnValue["@kind"] === "Null") {
+        return undefined
       }
 
-      const to = refresh(renames, evaluate(mod, mod.env, rule.to))
-      return substitutionDeepWalk(substitution, to)
+      return substitutionDeepWalk(substitution, refresh(renames, returnValue))
     }
 
     case "List": {

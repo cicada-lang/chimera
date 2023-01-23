@@ -1,12 +1,18 @@
 # CHR
 
-be able to use function body in `rule`
+`if then` without `else` evaluate to null on else
+
+extract `catchReturnValue`
+
+improve `formatRuleExp`
+
 be able to use function body in `hyperrule`
 
-remove guard from `rule` -- return `null` means this case fail
-remove guard from `hyperrule` -- return `null` means this case fail
+- remove guard from `hyperrule` -- return `null` means this case fail
 
 `Exps.Match` support pattern match
+
+`let` support `pattern`
 
 `arrayGet`
 
