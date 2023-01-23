@@ -53,7 +53,7 @@ function matchPatterns(
     if (newSubstitution === undefined) {
       throw new Errors.LangError(
         [
-          `[applyFn] fail to match pattern with arg`,
+          `[matchPatterns] fail to match pattern with arg`,
           `  pattern: ${formatValue(pattern)}`,
           `  arg: ${formatValue(arg)}`,
         ].join("\n"),
