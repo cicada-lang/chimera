@@ -6,7 +6,7 @@ export async function aboutHyperrewrite(globals: GlobalStore): Promise<void> {
   globals.primitive(
     "hyperrewriteManySteps",
     3,
-    ([limit, hyperrule, target], { mod, env }) => {
+    ([limit, hyperrule, target]) => {
       Values.assertValue(limit, "Number", { who: "hyperrewriteManySteps" })
       Values.assertValue(hyperrule, "Hyperrule", {
         who: "hyperrewriteManySteps",
