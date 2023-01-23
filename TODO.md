@@ -1,5 +1,10 @@
 # CHR
 
+improve `utils/product` with test
+
+`arrayProduct(arrays)`
+`arrayGet`
+
 `enumerationDomain` -- `Add`
 `enumerationDomain` -- `NotEq`
 
