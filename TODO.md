@@ -3,8 +3,8 @@
 be able to use function body in `rule`
 be able to use function body in `hyperrule`
 
-remove guard from `rule` -- return `null` means this clause fail
-remove guard from `hyperrule` -- return `null` means this clause fail
+remove guard from `rule` -- return `null` means this case fail
+remove guard from `hyperrule` -- return `null` means this case fail
 
 `Exps.Match` support pattern match
 
