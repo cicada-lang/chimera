@@ -33,7 +33,7 @@ export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
         }
       }
 
-      const to = refresh(renames, quote(mod, mod.env, rule.to))
+      const to = refresh(renames, evaluate(mod, mod.env, rule.to))
       return substitutionDeepWalk(substitution, to)
     }
 

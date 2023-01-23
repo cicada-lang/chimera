@@ -1,15 +1,15 @@
 rule arithmetic {
-  add(x, zero()) => x
-  add(x, add1(y)) => add1(add(x, y))
+  add(x, zero()) => quote x
+  add(x, add1(y)) => quote add1(add(x, y))
 
-  mul(_, zero()) => zero()
-  mul(x, add1(y)) => add(x, mul(x, y))
+  mul(_, zero()) => quote zero()
+  mul(x, add1(y)) => quote add(x, mul(x, y))
 
-  sub(x, zero()) => x
-  sub(add1(x), add1(y)) => sub(x, y)
+  sub(x, zero()) => quote x
+  sub(add1(x), add1(y)) => quote sub(x, y)
 
-  div(zero(), add1(_)) => zero()
-  div(add1(x), add1(y)) => add1(div(sub(x, y), add1(y)))
+  div(zero(), add1(_)) => quote zero()
+  div(add1(x), add1(y)) => quote add1(div(sub(x, y), add1(y)))
 }
 
 let one = quote add1(zero())

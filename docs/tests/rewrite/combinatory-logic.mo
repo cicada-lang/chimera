@@ -3,9 +3,9 @@
 // - use string as constants.
 
 rule ski {
-  ap(ap(ap("S", x), y), z) => ap(ap(x, z), ap(y, z))
-  ap(ap("K", x), _) => x
-  ap("I", x) => x
+  ap(ap(ap("S", x), y), z) => quote ap(ap(x, z), ap(y, z))
+  ap(ap("K", x), _) => quote x
+  ap("I", x) => quote x
 }
 
 print ski(quote ap(ap(ap("S", "K"), "I"), "I"))
@@ -16,13 +16,13 @@ print ski(quote ap(ap(ap("S", "I"), "K"), "K"))
 // - use string as constants.
 
 rule ski2 {
-  [[["S", x], y], z] => [[x, z], [y, z]]
-  [["K", x], _] => x
-  ["I", x] => x
+  [[["S", x], y], z] => quote [[x, z], [y, z]]
+  [["K", x], _] => quote x
+  ["I", x] => quote x
 
-  [x, y, z | r] => [[x, y], z | r]
+  [x, y, z | r] => quote [[x, y], z | r]
 
-  ["D", x] => ["S", "I", "I", x]
+  ["D", x] => quote ["S", "I", "I", x]
 }
 
 print ski2(quote ["S", "K", "I", "I"])

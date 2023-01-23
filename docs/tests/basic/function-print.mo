@@ -17,11 +17,11 @@ function f() {
   print abc(quote ["a", "a", "a"])
 
   rule conjunctiveNormalForm {
-    not(not(x)) => x
-    not(and(x, y)) => or(not(x), not(y))
-    not(or(x, y)) => and(not(x), not(y))
-    or(and(x, y), z) => and(or(x, z), or(y, z))
-    or(x, and(y, z)) => and(or(x, y), or(x, z))
+    not(not(x)) => quote x
+    not(and(x, y)) => quote or(not(x), not(y))
+    not(or(x, y)) => quote and(not(x), not(y))
+    or(and(x, y), z) => quote and(or(x, z), or(y, z))
+    or(x, and(y, z)) => quote and(or(x, y), or(x, z))
   }
 
   print conjunctiveNormalForm(

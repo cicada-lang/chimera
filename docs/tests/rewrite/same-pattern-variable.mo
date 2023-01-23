@@ -1,5 +1,5 @@
 rule r {
-  f(x, x) => x
+  f(x, x) => quote x
 }
 
 print r(quote f(a, a))
