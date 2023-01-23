@@ -116,7 +116,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
         renames,
         exp.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
       )
-      return Values.fromArray(find(mod, exp.limit, pattern, goals))
+      return Values.fromArray(find(exp.limit, pattern, goals))
     }
 
     case "RuleList": {

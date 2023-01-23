@@ -1,11 +1,9 @@
 import type { Goal } from "../goal"
-import type { Mod } from "../mod"
 import { reify } from "../reify"
 import { Solver } from "../solver"
 import type { Value } from "../value"
 
 export function find(
-  mod: Mod,
   limit: number,
   pattern: Value,
   goals: Array<Goal>,

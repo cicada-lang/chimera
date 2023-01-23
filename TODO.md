@@ -1,7 +1,5 @@
 # CHR
 
-`find` should not take `mod`
-
 `enumerationDomain` -- `Eq`
 `enumerationDomain` -- `NotEq`
 `enumerationDomain` -- `Add`

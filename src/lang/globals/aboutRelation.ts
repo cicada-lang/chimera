@@ -11,7 +11,7 @@ export async function aboutRelation(globals: GlobalStore): Promise<void> {
     const goals = Values.toArray(refresh(renames, args[1])).map((value) =>
       goalFromValue(mod, env, value),
     )
-    return Values.fromArray(find(mod, Infinity, pattern, goals))
+    return Values.fromArray(find(Infinity, pattern, goals))
   })
 
   globals.primitive("find", 3, (args, { mod, env }) => {
@@ -22,6 +22,6 @@ export async function aboutRelation(globals: GlobalStore): Promise<void> {
     const goals = Values.toArray(refresh(renames, args[2])).map((value) =>
       goalFromValue(mod, env, value),
     )
-    return Values.fromArray(find(mod, limit.data, pattern, goals))
+    return Values.fromArray(find(limit.data, pattern, goals))
   })
 }
