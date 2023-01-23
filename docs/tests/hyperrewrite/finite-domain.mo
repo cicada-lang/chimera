@@ -83,21 +83,36 @@ hyperrule enumerationDomain {
   if and [NumberArray(l1), NumberArray(l2)]
   then quote [In(x, eval arrayIntersection(l1, l2))]
 
-  [LtEq(x, y), In(x, l1), In(y, l2)] =>
-  if and [NumberArray(l1), NumberArray(l2), gt(maximum(l1), maximum(l2))]
-  then quote [
-    LtEq(x, y),
-    In(x, eval arrayFilter(l1, (n) => lteq(n, maximum(l2)))),
-    In(y, l2),
-  ]
+  [LtEq(x, y), In(x, l1), In(y, l2)] => {
+    if not and [NumberArray(l1), NumberArray(l2)] { return }
 
-  [LtEq(x, y), In(x, l1), In(y, l2)] =>
-  if and [NumberArray(l1), NumberArray(l2), gt(minimum(l1), minimum(l2))]
-  then quote [
-    LtEq(x, y),
-    In(x, l1),
-    In(y, eval arrayFilter(l2, (n) => gteq(n, minimum(l1)))),
-  ]
+    let l1max = maximum(l1)
+    let l2max = maximum(l2)
+
+    if not and [gt(l1max, l2max)] { return }
+
+    return quote [
+      LtEq(x, y),
+      In(x, eval arrayFilter(l1, (n) => lteq(n, l2max))),
+      In(y, l2),
+    ]
+  }
+
+
+  [LtEq(x, y), In(x, l1), In(y, l2)] => {
+    if not and [NumberArray(l1), NumberArray(l2)] { return }
+
+    let l1min = minimum(l1)
+    let l2min = minimum(l2)
+
+    if not and [gt(l1min, l2min)] { return }
+
+    return quote [
+      LtEq(x, y),
+      In(x, l1),
+      In(y, eval arrayFilter(l2, (n) => gteq(n, l1min))),
+    ]
+  }
 
   [Eq(x, y), In(x, l1), In(y, l2)] =>
   if and [NumberArray(l1), NumberArray(l2), not equal(l1, l2)]
