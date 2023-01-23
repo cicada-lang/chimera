@@ -1,8 +1,8 @@
 let weather = hyperrule {
-  [SunRain()] => [Sun(), Rain()]
-  [Rain(), Car()] => [Rain(), InCar()]
-  [Rain()] => [WearUmbrella()]
-  [Sun()] => [WearSunGlasses(), Cool()]
+  [SunRain()] => quote [Sun(), Rain()]
+  [Rain(), Car()] => quote [Rain(), InCar()]
+  [Rain()] => quote [WearUmbrella()]
+  [Sun()] => quote [WearSunGlasses(), Cool()]
 }
 
 print weather(quote [SunRain()])

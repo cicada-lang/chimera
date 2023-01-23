@@ -44,7 +44,7 @@ export function hyperrewriteOneStep(
 
       const to = substitutionDeepWalk(
         result.substitution,
-        refresh(renames, quote(mod, mod.env, hyperrule.to)),
+        refresh(renames, evaluate(mod, mod.env, hyperrule.to)),
       )
 
       return [...result.remainValues, ...Values.toArray(to)]
@@ -85,7 +85,7 @@ export function hyperrewriteOneStep(
 
       const to = substitutionDeepWalk(
         result.substitution,
-        refresh(renames, quote(mod, mod.env, hyperrule.to)),
+        refresh(renames, evaluate(mod, mod.env, hyperrule.to)),
       )
 
       // NOTE Keep the input values.

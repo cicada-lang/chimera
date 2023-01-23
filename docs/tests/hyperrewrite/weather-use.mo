@@ -1,14 +1,14 @@
 hyperrule rain {
-  [Rain(), Car()] => [Rain(), InCar()]
-  [Rain()] => [WearUmbrella()]
+  [Rain(), Car()] => quote [Rain(), InCar()]
+  [Rain()] => quote [WearUmbrella()]
 }
 
 hyperrule sun {
-  [Sun()] => [WearSunGlasses(), Cool()]
+  [Sun()] => quote [WearSunGlasses(), Cool()]
 }
 
 hyperrule weather {
-  [SunRain()] => [Sun(), Rain()]
+  [SunRain()] => quote [Sun(), Rain()]
   use rain
   use sun
 }

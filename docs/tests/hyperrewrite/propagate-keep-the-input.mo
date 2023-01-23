@@ -1,5 +1,5 @@
 hyperrule h {
-  ["a", "b"] +> ["c", "d"]
+  ["a", "b"] +> quote ["c", "d"]
 }
 
 print h(quote ["a", "b"])

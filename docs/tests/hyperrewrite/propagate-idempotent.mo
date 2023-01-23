@@ -1,7 +1,7 @@
 // Should not apply one propagate to the same arguments twice.
 
 hyperrule h {
-  [LtEq(x, y), LtEq(y, z)] +> [LtEq(x, z)]
+  [LtEq(x, y), LtEq(y, z)] +> quote [LtEq(x, z)]
 }
 
 print h(quote [LtEq(1, 2), LtEq(2, 3)])
@@ -16,7 +16,7 @@ print hyperrewriteManySteps(10, h, quote [LtEq(1, 2), LtEq(2, 3)])
 // For testing permutation by `console.log`.
 
 hyperrule h2 {
-  [LtEq(x, y), LtEq(y, z), F(_)] +> [LtEq(x, z)]
+  [LtEq(x, y), LtEq(y, z), F(_)] +> quote [LtEq(x, z)]
 }
 
 print h2(quote [LtEq(1, 2), LtEq(2, 3), F(100)])

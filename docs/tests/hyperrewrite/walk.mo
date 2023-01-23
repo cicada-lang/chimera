@@ -1,6 +1,6 @@
 hyperrule walk {
-  ["left", "right"] => []
-  ["forward", "backward"] => []
+  ["left", "right"] => quote []
+  ["forward", "backward"] => quote []
 }
 
 print walk(quote [

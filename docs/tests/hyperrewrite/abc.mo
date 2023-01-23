@@ -1,7 +1,7 @@
 hyperrule abc {
-  ["a", "b"] => ["c"]
-  ["a", "c"] => ["b"]
-  ["b", "c"] => ["a"]
+  ["a", "b"] => quote ["c"]
+  ["a", "c"] => quote ["b"]
+  ["b", "c"] => quote ["a"]
 }
 
 print abc(quote ["a", "a", "a"])
