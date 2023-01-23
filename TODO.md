@@ -1,6 +1,5 @@
 # CHR
 
-`arrayProduct(arrays)`
 `arrayGet`
 
 `enumerationDomain` -- `Add`

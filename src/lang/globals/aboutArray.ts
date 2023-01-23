@@ -1,3 +1,4 @@
+import { product } from "../../utils/product"
 import * as Actions from "../actions"
 import { equal } from "../equal"
 import type { Value } from "../value"
@@ -48,6 +49,12 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
         Values.assertValue(result, "Boolean", { who: "arrayFilter" })
         return result.data
       }),
+    )
+  })
+
+  globals.primitive("arrayProduct", 1, ([arrays], { mod, env }) => {
+    return Values.fromArray(
+      product(Values.toArray(arrays).map(Values.toArray)).map(Values.fromArray),
     )
   })
 }
