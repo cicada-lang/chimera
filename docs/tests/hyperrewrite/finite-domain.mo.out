@@ -19,3 +19,11 @@
 [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3])]
 [Add(x, y, z), false, false, false]
 [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3])]
+[ 
+  Range(z, 3, 5),
+  Range(x, 3, 4),
+  Range(y, 3, 4),
+  Eq(x, y),
+  LtEq(x, 5),
+  NotEq(x, 5)
+]

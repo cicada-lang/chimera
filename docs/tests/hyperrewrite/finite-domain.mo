@@ -150,6 +150,7 @@ hyperrule enumerationDomain {
 hyperrule finiteDomain {
   use intervalDomain
   use enumerationDomain
+  [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
 }
 
 // intervalDomain
@@ -173,3 +174,11 @@ print finiteDomain(quote [Add(x, y, z), In(x, [1, 2, 3]), In(y, [2, 3, 4]), In(z
 print finiteDomain(quote [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3])])
 print finiteDomain(quote [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [4])])
 print finiteDomain(quote [Add(x, y, z), In(x, [1]), In(y, [2]), In(z, [3, 4])])
+
+print finiteDomain(quote [
+  Range(x, 3, 5),
+  Range(z, 3, 5),
+  Range(y, 1, 4),
+  Lt(x, 5),
+  Eq(x, y),
+])
