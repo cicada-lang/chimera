@@ -1,11 +1,5 @@
 # CHR
 
-remove `find` and `findAll` functions -- in general body can not be quoted
-
-- if we use `goalFromValue` to implement `find`,
-  the goals must be pure data,
-  thus can not have `Dot`.
-
 keep `NativeFn` simple
 
 `GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
