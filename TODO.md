@@ -11,8 +11,6 @@ hyperrewrite/boolean-algebra -- search
 
 `let` support `pattern`
 
-fn pattern support`let` support `pattern`
-
 a value for hyperrewrite failure
 
 [finite-domain] solve some puzzles about finite-domain as example
