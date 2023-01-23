@@ -1,5 +1,16 @@
 # CHR
 
+use explicit `quote` in `hyperrule`
+use explicit `quote` in `rule`
+
+be able to use function body in `hyperrule`
+be able to use function body in `rule`
+
+remove guard from `rule`
+remove guard from `hyperrule`
+
+`Exps.Match` support pattern match
+
 `arrayGet`
 
 `enumerationDomain` -- `Add`
