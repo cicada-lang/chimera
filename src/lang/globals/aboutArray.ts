@@ -1,3 +1,4 @@
+import * as Actions from "../actions"
 import { equal } from "../equal"
 import type { Value } from "../value"
 import * as Values from "../value"
@@ -38,6 +39,16 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
 
   globals.primitive("arrayMember", 2, ([values, target]) => {
     return Values.Boolean(arrayMember(Values.toArray(values), target))
+  })
+
+  globals.primitive("arrayFilter", 2, ([values, predicate], { mod, env }) => {
+    return Values.fromArray(
+      Values.toArray(values).filter((value) => {
+        const result = Actions.doAp(mod, env, predicate, [value])
+        Values.assertValue(result, "Boolean", { who: "arrayFilter" })
+        return result.data
+      }),
+    )
   })
 }
 

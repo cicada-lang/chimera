@@ -13,3 +13,5 @@ assert equal(arrayIntersection([1, 2, 3, 4, 1, 2, 3], [3, 4, 5, 6, 4, 5, 6]), [3
 
 assert not arrayMember([1, 2, 3], 0)
 assert arrayMember([1, 2, 3], 1)
+
+assert equal(arrayFilter([0, 1, 2, 3], (x) => gt(x, 1)), [2, 3])

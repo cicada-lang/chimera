@@ -1,7 +1,5 @@
 # CHR
 
-`arrayFilter`
-
 `enumerationDomain` -- `Eq`
 `enumerationDomain` -- `NotEq`
 `enumerationDomain` -- `Add`
