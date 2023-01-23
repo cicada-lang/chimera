@@ -3,8 +3,8 @@
 be able to use function body in `rule`
 be able to use function body in `hyperrule`
 
-remove guard from `rule`
-remove guard from `hyperrule`
+remove guard from `rule` -- return `null` means this clause fail
+remove guard from `hyperrule` -- return `null` means this clause fail
 
 `Exps.Match` support pattern match
 
@@ -20,6 +20,7 @@ a value for hyperrewrite failure
 [array] `Array(Number)(l1)`
 
 - [maybe] use constraint to implement higher-order logic.
+- [maybe] when using relation as predicate, we should not overload `Ap`
 
 [constraint] implement constraint systems by hypergraph rewriting
 
@@ -33,6 +34,12 @@ a value for hyperrewrite failure
 
     - if we use `goalFromValue` to implement `find`, the goals must be pure data,
       thus can not have `Dot`.
+
+  - [maybe] Constraints should be pure data (for example, quoted terms),
+    but relation should be special value.
+
+    - By doing this, we can use `Dot` for relation,
+      but not namespace for constraints.
 
 - [maybe] `Solution` should be extended with `customConstraints`
   -- or just `constraints` -- which contains the constraints
