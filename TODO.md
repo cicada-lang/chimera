@@ -5,7 +5,8 @@
 `enumerationDomain` -- `Add`
 `enumerationDomain` -- `NotEq`
 
-`Exps.Match` support pattern match
+`Exps.Match` -- support pattern match
+`Exps.Match` -- syntax -- without `case` prefix
 
 `let` support `pattern`
 
