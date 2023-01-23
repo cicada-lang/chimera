@@ -1,4 +1,4 @@
-import { catchReturnValue } from "../actions/applyFn"
+import { catchReturnValue } from "../actions/catchReturnValue"
 import { envMerge } from "../env"
 import { quote } from "../evaluate"
 import { match } from "../match"

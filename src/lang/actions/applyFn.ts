@@ -1,12 +1,9 @@
 import { doAp } from "../actions"
 import { Env, envMerge } from "../env"
 import * as Errors from "../errors"
-import { executeStmtsSync } from "../execute"
 import { formatValue } from "../format"
 import { match } from "../match"
 import type { Mod } from "../mod"
-import type { Stmt } from "../stmt"
-import { ReturnValue } from "../stmt"
 import {
   substitutionDeepWalk,
   substitutionEmpty,
@@ -14,6 +11,7 @@ import {
 } from "../substitution"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { catchReturnValue } from "./catchReturnValue"
 
 export function applyFn(
   _mod: Mod,
@@ -67,18 +65,5 @@ function matchPatterns(
 
   for (const [name, value] of substitutionEntries(substitution)) {
     mod.define(name, substitutionDeepWalk(substitution, value))
-  }
-}
-
-export function catchReturnValue(mod: Mod, stmts: Array<Stmt>): Value {
-  try {
-    executeStmtsSync(mod, stmts)
-    return Values.Null()
-  } catch (error) {
-    if (error instanceof ReturnValue) {
-      return error.value
-    }
-
-    throw error
   }
 }
