@@ -1,49 +1,58 @@
-# CHR
-
-hyperrewrite/boolean-algebra -- add
-
-hyperrewrite/boolean-algebra -- search
-
-`enumerationDomain` -- `NotEq`
+# pattern matching
 
 `Exps.Match` -- support pattern match
 `Exps.Match` -- syntax -- without `case` prefix
 
 `let` support `pattern`
 
-a value for hyperrewrite failure
+# dot
 
-[finite-domain] solve some puzzles about finite-domain as example
+`Exps.Dot`
+`Exps.Dot` -- evaluate
+`Exps.Dot` -- syntax
+`doDot`
 
-[array] `Array(Number)(l1)`
+`Values.Term` can have prefix -- for `Dot`
 
-- [maybe] use constraint to implement higher-order logic.
-- [maybe] when using relation as predicate, we should not overload `Ap`
+hyperrewrite can operate under with given prefix
 
 [module] support `import * as <name>`
 
 `GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
 
-[constraint] implement constraint systems by hypergraph rewriting
+# CHR
 
-- [constraint] provide a syntax keyword for defining new constraint
+`rule` rename `use` to `include`
+`hyperrule` rename `use` to `include`
+
+a value for hyperrewrite failure
+
+`use` -- to register `hyperrule` to `mod` -- maybe with `as` for prefix
 
 - We should import constraint system instead of constraints.
 
   Constraints should be pure data (for example, quoted terms),
   but relation should be special value.
 
-  - By doing this, we can use `Dot` for relation,
-    but not namespace for constraints.
+`Goal` -- check head is defined relation or constraint
 
-- [maybe] `Solution` should be extended with `customConstraints`
-  -- or just `constraints` -- which contains the constraints
-  accumulated and simplified so far (whereas in LP we had substitutions).
+`Solution` has `constraints`
 
-- [maybe] we should handle all constraints in the goal first,
-  to limit the search space, before unfolding an application of a relation.
+`Goals.Constraints`
+
+`Goals.Constraints` -- syntax
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
+
+[finite-domain] solve some puzzles about finite-domain as example
+
+# hyperrewrite
+
+hyperrewrite/boolean-algebra -- add
+
+hyperrewrite/boolean-algebra -- search
+
+`enumerationDomain` -- `NotEq`
 
 # claim and runtime type assertion
 
@@ -271,6 +280,11 @@ learn more about adder: https://en.wikipedia.org/wiki/Adder_(electronics)
 
 [higher order relation] We can support higher order relation
 by allowing a relation to take relations as arguments.
+
+[array] `Array(Number)(l1)`
+
+- [maybe] use constraint to implement higher-order logic.
+- [maybe] when using relation as predicate, we should not overload `Ap`
 
 # tabling
 
