@@ -1,0 +1,5 @@
+assert isTerm(quote f(x, y))
+assert not isTerm({})
+assert not isTerm({ x: 1, y: 2, z: 3 })
+assert not isTerm(null)
+assert not isTerm([])

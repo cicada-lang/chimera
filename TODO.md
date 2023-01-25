@@ -1,7 +1,5 @@
 # relation
 
-[global] `isObject` `isTerm`
-
 `satisfy` treat all kind of goals the same
 
 [relation] goal use `Equal` -- instead of `=`

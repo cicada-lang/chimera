@@ -5,9 +5,11 @@ import { aboutGoal } from "./aboutGoal"
 import { aboutHyperrewrite } from "./aboutHyperrewrite"
 import { aboutNull } from "./aboutNull"
 import { aboutNumber } from "./aboutNumber"
+import { aboutObject } from "./aboutObject"
 import { aboutRelation } from "./aboutRelation"
 import { aboutRewrite } from "./aboutRewrite"
 import { aboutString } from "./aboutString"
+import { aboutTerm } from "./aboutTerm"
 import { GlobalStore } from "./GlobalStore"
 
 let globals: GlobalStore | undefined = undefined
@@ -23,6 +25,8 @@ export async function useGlobals(): Promise<GlobalStore> {
   await aboutNumber(globals)
   await aboutString(globals)
   await aboutArray(globals)
+  await aboutObject(globals)
+  await aboutTerm(globals)
   await aboutRelation(globals)
   await aboutGoal(globals)
   await aboutRewrite(globals)
