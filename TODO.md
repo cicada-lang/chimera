@@ -1,6 +1,8 @@
 # relation
 
-[relation] `clause` has `stmts` -- instead of just a list of goals
+[relation] `clause` has `goals: Exp` -- instead of just a list of `Goal`
+
+[relation] `clause` has `stmts` -- instead of `goals`
 
 [relation] `clause` use `[]` syntax (require ",") -- instead of `{}`
 

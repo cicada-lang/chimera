@@ -16,11 +16,11 @@ export function applyRelation(
 
     **/
 
-    if (clause.values.length !== args.length) return []
+    if (clause.patterns.length !== args.length) return []
 
     const renames = new Map()
 
-    const values = refreshValues(renames, clause.values)
+    const values = refreshValues(renames, clause.patterns)
     const newSolution = pursueManyEqual(solution, values, args)
 
     /**
