@@ -2,6 +2,8 @@
 
 `Exps.Match` -- evaluate
 
+`doMatch`
+
 `Exps.Match` -- syntax -- without `case` prefix
 
 `let` support `pattern`

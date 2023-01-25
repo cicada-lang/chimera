@@ -174,6 +174,8 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Match": {
+      const target = evaluate(mod, env, exp.target)
+
       throw new Error()
     }
   }
