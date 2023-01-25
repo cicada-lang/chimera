@@ -54,16 +54,16 @@ export function Clause(
 export type Let = {
   "@type": "Stmt"
   "@kind": "Let"
-  name: string
+  pattern: Exp
   exp: Exp
   span: Span
 }
 
-export function Let(name: string, exp: Exp, span: Span): Let {
+export function Let(pattern: Exp, exp: Exp, span: Span): Let {
   return {
     "@type": "Stmt",
     "@kind": "Let",
-    name,
+    pattern,
     exp,
     span,
   }

@@ -60,8 +60,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
         matchers.hyperrules_matcher(hyperrules),
         span,
       ),
-    "stmt:let": ({ name, exp }, { span }) =>
-      Stmts.Let(pt.str(name), matchers.exp_matcher(exp), span),
+    "stmt:let": ({ pattern, exp }, { span }) =>
+      Stmts.Let(matchers.exp_matcher(pattern), matchers.exp_matcher(exp), span),
     "stmt:print": ({ exp }, { span }) =>
       Stmts.Print(matchers.exp_matcher(exp), span),
     "stmt:compute": ({ exp }, { span }) =>

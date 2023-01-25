@@ -66,7 +66,7 @@ export const stmt = {
       { hyperrules: "hyperrules" },
       '"}"',
     ],
-    "stmt:let": ['"let"', { name: "variable_name" }, '"="', { exp: "exp" }],
+    "stmt:let": ['"let"', { pattern: "exp" }, '"="', { exp: "exp" }],
     "stmt:print": ['"print"', { exp: "exp" }],
     "stmt:compute": ['"compute"', { exp: "exp" }],
     "stmt:fn": [

@@ -27,7 +27,7 @@ export function formatStmt(stmt: Stmt): string {
     }
 
     case "Let": {
-      return `let ${stmt.name} = ${formatExp(stmt.exp)}`
+      return `let ${formatExp(stmt.pattern)} = ${formatExp(stmt.exp)}`
     }
 
     case "Fn": {

@@ -1,7 +1,3 @@
-# let
-
-`let` support `pattern`
-
 # relation
 
 `GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`

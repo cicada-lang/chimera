@@ -1,12 +1,23 @@
 import * as Errors from "../errors"
-import { evaluate, evaluateHyperruleExp, evaluateRuleExp } from "../evaluate"
+import {
+  evaluate,
+  evaluateHyperruleExp,
+  evaluateRuleExp,
+  quote,
+} from "../evaluate"
 import * as Exps from "../exp"
 import { formatExp, formatValue } from "../format"
 import * as Hyperrules from "../hyperrule"
+import { match } from "../match"
 import type { Mod } from "../mod"
 import * as Rules from "../rule"
 import type { Stmt } from "../stmt"
 import { ReturnValue } from "../stmt"
+import {
+  substitutionDeepWalk,
+  substitutionEmpty,
+  substitutionEntries,
+} from "../substitution"
 import * as Values from "../value"
 import {
   varCollectionFromExps,
@@ -32,8 +43,24 @@ export function executeSync(mod: Mod, stmt: Stmt): undefined | string {
     }
 
     case "Let": {
+      const pattern = quote(mod, mod.env, stmt.pattern)
       const value = evaluate(mod, mod.env, stmt.exp)
-      mod.define(stmt.name, value)
+      const substitution = match(substitutionEmpty(), pattern, value)
+
+      if (substitution === undefined) {
+        throw new Errors.LangError(
+          [
+            `[executeSync Let] pattern mismatch`,
+            `  pattern: ${formatValue(pattern)}`,
+            `  value: ${formatValue(value)}`,
+          ].join("\n"),
+        )
+      }
+
+      for (const [name, value] of substitutionEntries(substitution)) {
+        mod.define(name, substitutionDeepWalk(substitution, value))
+      }
+
       return
     }
 
