@@ -1,6 +1,6 @@
 # relation
 
-apply relation returns `Values.Goal`
+`satisfy` goal -- return `boolean`
 
 relation as predicate -- require a special predicate
 
