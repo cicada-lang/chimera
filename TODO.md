@@ -1,7 +1,5 @@
 # relation
 
-`satisfy` goal -- return `boolean`
-
 relation as predicate -- require a special predicate
 
 - name
