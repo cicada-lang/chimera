@@ -1,3 +1,13 @@
+assert isArray([])
+assert isArray([1, 2, 3])
+assert isArray([1 | 2])
+assert not isArray("abc")
+assert not isArray("")
+assert not isArray(123)
+assert not isArray(null)
+assert not isArray(true)
+assert not isArray(false)
+
 assert equal(arrayLength([]), 0)
 assert equal(arrayLength([1, 2, 3]), 3)
 
