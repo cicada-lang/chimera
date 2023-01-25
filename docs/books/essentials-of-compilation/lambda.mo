@@ -25,4 +25,5 @@ function lookup(env, name) {
 }
 
 let env = [["a", 1], ["b", 2], ["c", 3]]
+
 assert equal(lookup(env, "b"), 2)

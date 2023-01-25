@@ -2,6 +2,12 @@
 
 `let` support `pattern`
 
+# relation
+
+`GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
+
+`GoalExp` -- should be evaluated late -- for the repl
+
 # functional
 
 [functional] implement lambda calculus with env in functional language
@@ -13,13 +19,15 @@
 `Exps.Dot` -- syntax
 `doDot`
 
+# prefix as namespace
+
 `Values.Term` can have prefix -- for `Dot`
 
 hyperrewrite can operate under with given prefix
 
-[module] support `import * as <name>`
+# module
 
-`GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
+[module] support `import * as <name>`
 
 # CHR
 
