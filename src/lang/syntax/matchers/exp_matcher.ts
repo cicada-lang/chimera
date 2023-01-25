@@ -138,5 +138,11 @@ export function operand_matcher(tree: pt.Tree): Exp {
         Exps.Null(span),
         span,
       ),
+    "operand:match": ({ target, cazes }, { span }) =>
+      Exps.Match(
+        matchers.exp_matcher(target),
+        matchers.cazes_matcher(cazes),
+        span,
+      ),
   })(tree)
 }

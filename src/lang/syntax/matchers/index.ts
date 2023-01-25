@@ -1,4 +1,5 @@
 export * from "./arg_matcher"
+export * from "./caze_matcher"
 export * from "./else_if_matcher"
 export * from "./exp_matcher"
 export * from "./goal_matcher"

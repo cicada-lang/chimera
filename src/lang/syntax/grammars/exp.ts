@@ -103,5 +103,12 @@ export const operand = {
       '"then"',
       { thenExp: "exp" },
     ],
+    "operand:match": [
+      '"match"',
+      { target: "exp" },
+      '"{"',
+      { cazes: "cazes" },
+      '"}"',
+    ],
   },
 }

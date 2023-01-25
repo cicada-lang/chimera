@@ -1,6 +1,4 @@
-# pattern matching
-
-`Exps.Match` -- syntax -- without `case` prefix
+# let
 
 `let` support `pattern`
 

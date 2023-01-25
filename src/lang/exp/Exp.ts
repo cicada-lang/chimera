@@ -351,12 +351,14 @@ export function If(target: Exp, thenExp: Exp, elseExp: Exp, span: Span): If {
 export type Caze = {
   pattern: Exp
   stmts: Array<Stmt>
+  span: Span
 }
 
-export function Caze(pattern: Exp, stmts: Array<Stmt>): Caze {
+export function Caze(pattern: Exp, stmts: Array<Stmt>, span: Span): Caze {
   return {
     pattern,
     stmts,
+    span,
   }
 }
 
