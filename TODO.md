@@ -9,7 +9,9 @@
 
 relation as predicate -- require a special predicate
 
-- `sat(Number(x))`
+- `is(Number(x))`
+
+[relation] add `find` and `findAll` back
 
 [relation] `clause` has `stmts` -- instead of just a list of goals
 
