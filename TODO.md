@@ -1,13 +1,7 @@
 # relation
 
-[global] `isNumber`
-[global] `isString`
 [global] `isArray`
-[global] `isObject`
-[global] `isTerm`
-[global] `isBoolean`
-[global] `isNull`
-[global] `isAny`
+[global] `isObject` `isTerm`
 
 `satisfy` treat all kind of goals the same
 

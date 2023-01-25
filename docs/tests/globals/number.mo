@@ -1,3 +1,12 @@
+assert isNumber(123)
+assert isNumber(-1)
+assert isNumber(0)
+assert isNumber(3.14)
+assert not isNumber(null)
+assert not isNumber(true)
+assert not isNumber(false)
+assert not isNumber("abc")
+
 assert equal(add(2, 2), 4)
 assert equal(add(1, 0), 1)
 

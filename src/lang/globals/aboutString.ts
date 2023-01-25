@@ -8,6 +8,10 @@ export async function aboutString(globals: GlobalStore): Promise<void> {
     Values.TypeConstraint("String", (value) => value["@kind"] === "String"),
   )
 
+  globals.primitive("isString", 1, ([value]) => {
+    return Values.Boolean(value["@kind"] === "String")
+  })
+
   globals.primitive("stringLength", 1, ([value]) => {
     assertValue(value, "String", { who: "stringLength" })
     return Values.Number(value.data.length)

@@ -7,6 +7,10 @@ export async function aboutNumber(globals: GlobalStore): Promise<void> {
     Values.TypeConstraint("Number", (value) => value["@kind"] === "Number"),
   )
 
+  globals.primitive("isNumber", 1, ([value]) => {
+    return Values.Boolean(value["@kind"] === "Number")
+  })
+
   globals.primitive("add", 2, ([x, y]) => {
     Values.assertValue(x, "Number", { who: "add" })
     Values.assertValue(y, "Number", { who: "add" })
