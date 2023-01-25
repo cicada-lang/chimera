@@ -1,4 +1,4 @@
-[_.0 with { _.0 != add1(add1(add1(zero()))) }]
+[_.0 with { NotEqual(_.0, add1(add1(add1(zero())))) }]
 [_.0]
 [_.0]
 [_.0]

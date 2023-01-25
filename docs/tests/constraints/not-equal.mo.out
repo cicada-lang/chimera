@@ -3,9 +3,11 @@
 []
 []
 [[3, 5]]
-[["cat", _.0] with { _.0 != 3 }]
-[[_.0, _.1] with { disj { _.0 != 1 _.1 != 2 } }]
-[[1, _.0] with { _.0 != 2 }]
+[["cat", _.0] with { NotEqual(_.0, 3) }]
+[ 
+  [_.0, _.1] with { disj { NotEqual(_.0, 1) NotEqual(_.1, 2) } }
+]
+[[1, _.0] with { NotEqual(_.0, 2) }]
 []
-[_.0 with { _.0 != 1 }]
-[[_.0, _.1] with { _.0 != 3 }]
+[_.0 with { NotEqual(_.0, 1) }]
+[[_.0, _.1] with { NotEqual(_.0, 3) }]
