@@ -1,15 +1,18 @@
 # relation
 
+`Values.Goal` -- goal as a value
+
+relation as predicate -- require a special predicate
+
+- name
+
+  - `sat(Number(x))`
+  - `satisfy(Number(x))`
+
 [relation] goal use `Equal` -- instead of `=`
 [relation] goal use `NotEqual` -- instead of `!=`
 
 [relation] `clause` use `[]` syntax (require ",") -- instead of `{}`
-
-`Values.Goal`
-
-relation as predicate -- require a special predicate
-
-- `is(Number(x))`
 
 [relation] add `find` and `findAll` back
 
