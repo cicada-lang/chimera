@@ -1,6 +1,5 @@
 # relation
 
-[global] `isArray`
 [global] `isObject` `isTerm`
 
 `satisfy` treat all kind of goals the same

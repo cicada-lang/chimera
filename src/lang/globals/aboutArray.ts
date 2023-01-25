@@ -9,6 +9,12 @@ import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export async function aboutArray(globals: GlobalStore): Promise<void> {
+  globals.primitive("isArray", 1, ([value]) => {
+    return Values.Boolean(
+      value["@kind"] === "ArrayNull" || value["@kind"] === "ArrayCons",
+    )
+  })
+
   globals.primitive("arrayLength", 1, ([array]) => {
     return Values.Number(Values.toArray(array).length)
   })
