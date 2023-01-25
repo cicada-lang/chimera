@@ -1,12 +1,14 @@
 # relation
 
-[relation] [global] `conj` and `disj`
-
-[relation] remove `conj` and `disj` syntax -- use `conj` and `disj` function
+[relation] `clause` has `stmts` -- instead of just a list of goals
 
 [relation] `clause` use `[]` syntax (require ",") -- instead of `{}`
 
-[relation] `clause` has `stmts` -- instead of just a list of goals
+[relation] remove `Conj` and `Disj` syntax -- use `Conj` and `Disj` global function
+
+[relation] fix `formatGoal` for `Conj` and `Disj` function
+
+[relation] remove `GoalExps.Conj` and `GoalExps.Disj`
 
 [relation] `find` has `stmts` -- instead of just a list of goals
 

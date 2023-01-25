@@ -47,10 +47,10 @@ print find x {
 // }
 
 print find x limit 5 {
-  disj {
-    Equal(x, true)
-    Equal(x, false)
-  }
+  Disj([
+    Equal(x, true),
+    Equal(x, false),
+  ])
   Always()
   Equal(x, false)
 }
@@ -61,10 +61,10 @@ print find x limit 5 {
 // and return as many `false`s as asked.
 
 // trace steps 5 {
-//   disj {
-//     Equal(x, true)
-//     Equal(x, false)
-//   }
+//   Disj([
+//     Equal(x, true),
+//     Equal(x, false),
+//   ])
 //   Always()
 //   Equal(x, false)
 // }
@@ -73,10 +73,10 @@ print find x limit 5 {
 // we get as many `true`s as asked.
 
 print find x limit 5 {
-  disj {
-    Equal(x, true)
-    Equal(x, false)
-  }
+  Disj([
+    Equal(x, true),
+    Equal(x, false),
+  ])
   Always()
   Equal(x, true)
 }

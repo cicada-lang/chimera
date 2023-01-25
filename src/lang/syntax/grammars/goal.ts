@@ -2,16 +2,24 @@ export const goal = {
   $grammar: {
     "goal:apply": [{ name: "relation_name" }, { args: "args" }],
     "goal:conj": [
-      '"conj"',
-      '"{"',
-      { goals: { $ap: ["zero_or_more", "goal"] } },
-      '"}"',
+      '"Conj"',
+      '"("',
+      '"["',
+      {
+        goals: { $ap: ["zero_or_more", "goal", '","'] },
+      },
+      '"]"',
+      '")"',
     ],
     "goal:disj": [
-      '"disj"',
-      '"{"',
-      { goals: { $ap: ["zero_or_more", "goal"] } },
-      '"}"',
+      '"Disj"',
+      '"("',
+      '"["',
+      {
+        goals: { $ap: ["zero_or_more", "goal", '","'] },
+      },
+      '"]"',
+      '")"',
     ],
   },
 }

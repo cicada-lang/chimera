@@ -20,6 +20,12 @@ export async function useGlobals(): Promise<GlobalStore> {
   globals = new GlobalStore()
 
   await aboutEqual(globals)
+
+  await aboutGoal(globals)
+  await aboutRelation(globals)
+  await aboutRewrite(globals)
+  await aboutHyperrewrite(globals)
+
   await aboutNull(globals)
   await aboutBoolean(globals)
   await aboutNumber(globals)
@@ -27,10 +33,6 @@ export async function useGlobals(): Promise<GlobalStore> {
   await aboutArray(globals)
   await aboutObject(globals)
   await aboutTerm(globals)
-  await aboutRelation(globals)
-  await aboutGoal(globals)
-  await aboutRewrite(globals)
-  await aboutHyperrewrite(globals)
 
   return globals
 }

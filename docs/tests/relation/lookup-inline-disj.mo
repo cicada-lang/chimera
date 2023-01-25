@@ -27,10 +27,16 @@ print find map limit 3 {
 clause LookupInlineDisj(map, name, found)
 ------------------------------------ {
   Equal(map, [[key, value] | rest])
-  disj {
-    conj { Equal(key, name) Equal(found, value) }
-    conj { NotEqual(key, name) LookupInlineDisj(rest, name, found) }
-  }
+  Disj([
+    Conj([
+      Equal(key, name),
+      Equal(found, value),
+    ]),
+    Conj([
+      NotEqual(key, name),
+      LookupInlineDisj(rest, name, found),
+    ]),
+  ])
 }
 
 print find x {
