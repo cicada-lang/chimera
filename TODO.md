@@ -1,7 +1,5 @@
 # relation
 
-[relation] fix `formatGoal`
-
 [relation] [global] `conj` and `disj`
 
 [relation] remove `conj` and `disj` syntax -- use `conj` and `disj` function

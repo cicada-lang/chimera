@@ -9,11 +9,11 @@ export function formatGoal(goal: Goal): string {
     }
 
     case "Equal": {
-      return `${formatValue(goal.left)} = ${formatValue(goal.right)}`
+      return `Equal(${formatValue(goal.left)}, ${formatValue(goal.right)})`
     }
 
     case "NotEqual": {
-      return `${formatValue(goal.left)} != ${formatValue(goal.right)}`
+      return `NotEqual(${formatValue(goal.left)}, ${formatValue(goal.right)})`
     }
 
     case "Conj": {
