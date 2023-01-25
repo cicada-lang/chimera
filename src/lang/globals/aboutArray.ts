@@ -94,6 +94,30 @@ export async function aboutArray(globals: GlobalStore): Promise<void> {
       Values.toArray(array).map((value) => doAp(f, Values.toArray(value))),
     )
   })
+
+  globals.primitive("arrayEvery", 2, ([array, predicate]) => {
+    for (const value of Values.toArray(array)) {
+      const result = doAp(predicate, [value])
+      Values.assertValue(result, "Boolean", { who: "arrayEvery" })
+      if (result.data === false) {
+        return Values.Boolean(false)
+      }
+    }
+
+    return Values.Boolean(true)
+  })
+
+  globals.primitive("arraySome", 2, ([array, predicate]) => {
+    for (const value of Values.toArray(array)) {
+      const result = doAp(predicate, [value])
+      Values.assertValue(result, "Boolean", { who: "arraySome" })
+      if (result.data === true) {
+        return Values.Boolean(true)
+      }
+    }
+
+    return Values.Boolean(false)
+  })
 }
 
 function arrayDedup(values: Array<Value>): Array<Value> {

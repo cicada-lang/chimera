@@ -55,3 +55,9 @@ assert equal(arrayGet(["a", "b", "c"], 2), "c")
 assert equal(arrayMap([0, 1, 2], add1), [1, 2, 3])
 
 assert equal(arrayMapSpread([[0, 0], [1, 1], [2, 2]], add), [0, 2, 4])
+
+assert arrayEvery([0, 1, 2], isNumber)
+assert not arrayEvery([0, "1", 2], isNumber)
+
+assert not arraySome([0, 1, 2], isString)
+assert arraySome([0, "1", 2], isString)
