@@ -15,13 +15,13 @@ print find _ limit 3 {
 }
 
 print find q limit 3 {
-  q = "onion"
+  Equal(q, "onion")
   Always()
 }
 
 print find q limit 3 {
   Always()
-  q = "onion"
+  Equal(q, "onion")
 }
 
 // NOTE Infinite loop
@@ -34,14 +34,14 @@ print find q limit 3 {
 // NOTE Infinite loop
 
 // print find q {
-//   q = "garlic"
+//   Equal(q, "garlic")
 //   Always()
-//   q = "onion"
+//   Equal(q, "onion")
 // }
 
 print find q {
-  q = "garlic"
-  q = "onion"
+  Equal(q, "garlic")
+  Equal(q, "onion")
   Always()
 }
 

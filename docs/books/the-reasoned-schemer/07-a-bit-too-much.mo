@@ -70,7 +70,7 @@ print find [b, x, y, r, c] {
 
 export clause Positive(n)
 ---------------- {
-  [_a | _d] = n
+  Equal([_a | _d], n)
 }
 
 print find _ {
@@ -91,7 +91,7 @@ print find r {
 
 export clause GreaterThanOne(n)
 --------------------- {
-  [_a, _ad | _dd] = n
+  Equal([_a, _ad | _dd], n)
 }
 
 print find _ {
@@ -131,9 +131,9 @@ clause Adder(b, n, m, r) -- { GreaterThanOne(n) GenAdder(b, n, m, r) }
 
 clause GenAdder(b, n, m, r)
 ------------------------- {
-  [a | x] = n
-  [d | y] = m  Positive(y)
-  [c | z] = r  Positive(z)
+  Equal([a | x], n)
+  Equal([d | y], m)  Positive(y)
+  Equal([c | z], r)  Positive(z)
   FullAdder(b, a, d, c, e)
   Adder(e, x, y, z)
 }

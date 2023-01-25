@@ -8,12 +8,12 @@ print find _ limit 3 {
 // This code diverges,
 // because `Always` succeeds
 // an unbounded number of times,
-// and because `x = false` fails each of those times.
+// and because `Equal(x, false)` fails each of those times.
 
 // print find x limit 1 {
-//   x = true
+//   Equal(x, true)
 //   Always()
-//   x = false
+//   Equal(x, false)
 // }
 
 // Termination is relative to implementation,
@@ -24,9 +24,9 @@ print find _ limit 3 {
 // thus infinite loop here.
 
 // trace steps 5 {
-//   x = true
+//   Equal(x, true)
 //   Always()
-//   x = false
+//   Equal(x, false)
 // }
 
 // We can simply reorder the goals in the conjunction
@@ -35,24 +35,24 @@ print find _ limit 3 {
 // (depth-first v.s. breadth-first).
 
 print find x {
-  x = true
-  x = false
+  Equal(x, true)
+  Equal(x, false)
   Always()
 }
 
 // trace {
-//   x = true
-//   x = false
+//   Equal(x, true)
+//   Equal(x, false)
 //   Always()
 // }
 
 print find x limit 5 {
   disj {
-    x = true
-    x = false
+    Equal(x, true)
+    Equal(x, false)
   }
   Always()
-  x = false
+  Equal(x, false)
 }
 
 // Some solutions will diverge,
@@ -62,21 +62,21 @@ print find x limit 5 {
 
 // trace steps 5 {
 //   disj {
-//     x = true
-//     x = false
+//     Equal(x, true)
+//     Equal(x, false)
 //   }
 //   Always()
-//   x = false
+//   Equal(x, false)
 // }
 
-// If we change the last line to `x = true`
+// If we change the last line to `Equal(x, true)`
 // we get as many `true`s as asked.
 
 print find x limit 5 {
   disj {
-    x = true
-    x = false
+    Equal(x, true)
+    Equal(x, false)
   }
   Always()
-  x = true
+  Equal(x, true)
 }

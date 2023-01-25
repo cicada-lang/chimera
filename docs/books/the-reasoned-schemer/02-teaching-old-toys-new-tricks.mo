@@ -1,6 +1,6 @@
 export clause Car(p, a)
 ---------- {
-  [a | _d] = p
+  Equal([a | _d], p)
 }
 
 print find q {
@@ -13,18 +13,18 @@ print find _ {
 
 print find r {
   Car([r | _y], x)
-  "pear" = x
+  Equal("pear", x)
 }
 
 print find r {
   Car(["grape", "raisin", "pear"], x)
   Car([["a"], ["b"], ["c"]], y)
-  [x | y] = r
+  Equal([x | y], r)
 }
 
 export clause Cdr(p, d)
 ---------- {
-  [_a | d] = p
+  Equal([_a | d], p)
 }
 
 print find r {
@@ -36,7 +36,7 @@ print find r {
 print find r {
   Cdr(["grape", "raisin", "pear"], x)
   Car([["a"], ["b"], ["c"]], y)
-  [x | y] = r
+  Equal([x | y], r)
 }
 
 print find _ {
@@ -50,12 +50,12 @@ print find x {
 print find l {
   Cdr(l, ["c", "o", "r", "n"])
   Car(l, x)
-  x = "a"
+  Equal(x, "a")
 }
 
 // clause Cons(a, d, p)
 // --------------- {
-//   [a | d] = p
+//   Equal([a | d], p)
 // }
 
 export clause Cons(a, d, p)
@@ -73,7 +73,7 @@ print find x {
 }
 
 print find r {
-  ["e", "a", "d", _x] = r
+  Equal(["e", "a", "d", _x], r)
   Cons(_y, ["a", _z, "c"], r)
 }
 
@@ -82,28 +82,28 @@ print find x {
 }
 
 print find l {
-  ["d", "a", x, "c"] = l
+  Equal(["d", "a", x, "c"], l)
   Cons(x, ["a", x, "c"], l)
 }
 
 print find l {
   Cons(x, ["a", x, "c"], l)
-  ["d", "a", x, "c"] = l
+  Equal(["d", "a", x, "c"], l)
 }
 
 print find l {
   Cons(_w, ["n", "u", "s"], t)
   Cdr(l, t)
   Car(l, x)
-  "b" = x
+  Equal("b", x)
   Cdr(l, d)
   Car(d, y)
-  "o" = y
+  Equal("o", y)
 }
 
 export clause Null(x)
 ---------- {
-  [] = x
+  Equal([], x)
 }
 
 print find _ {
@@ -119,7 +119,7 @@ print find x {
 }
 
 print find r {
-  [_x, _y, "salad"] = r
+  Equal([_x, _y, "salad"], r)
 }
 
 clause Pair(p)

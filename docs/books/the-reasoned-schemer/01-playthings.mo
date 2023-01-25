@@ -2,7 +2,7 @@ export clause Succeed()
 
 export clause Fail()
 -------- {
-  1 = 2
+  Equal(1, 2)
 }
 
 print find _ {
@@ -10,15 +10,15 @@ print find _ {
 }
 
 print find _ {
-  "pea" = "pod"
+  Equal("pea", "pod")
 }
 
 print find q {
-  q = "pea"
+  Equal(q, "pea")
 }
 
 print find q {
-  "pea" = q
+  Equal("pea", q)
 }
 
 print find _ {
@@ -26,55 +26,55 @@ print find _ {
 }
 
 print find _ {
-  "pea" = "pea"
+  Equal("pea", "pea")
 }
 
 print find q {
-  q = q
+  Equal(q, q)
 }
 
 print find q {
-  q = _
+  Equal(q, _)
 }
 
 print find q {
-  q = [_]
+  Equal(q, [_])
 }
 
 print find _ {
-  [[["pea"]], "pod"] = [[["pea"]], "pod"]
+  Equal([[["pea"]], "pod"], [[["pea"]], "pod"])
 }
 
 print find q {
-  [[[q]], "pod"] = [[[_]], "pod"]
+  Equal([[[q]], "pod"], [[[_]], "pod"])
 }
 
 print find q {
-  [[[q]], x] = [[[x]], "pod"]
+  Equal([[[q]], x], [[[x]], "pod"])
 }
 
 print find q {
-  [x, x] = q
+  Equal([x, x], q)
 }
 
 print find q {
-  [_x, _y] = q
+  Equal([_x, _y], q)
 }
 
 print find s {
-  [_t, _u] = s
+  Equal([_t, _u], s)
 }
 
 print find q {
-  [x, _y, x] = q
+  Equal([x, _y, x], q)
 }
 
 print find _ {
-  ["pea"] = "pea"
+  Equal(["pea"], "pea")
 }
 
 print find _ {
-  [x] = x
+  Equal([x], x)
 }
 
 print find _ {
@@ -84,37 +84,37 @@ print find _ {
 
 print find q {
   Succeed()
-  "corn" = q
+  Equal("corn", q)
 }
 
 print find q {
   Fail()
-  "corn" = q
+  Equal("corn", q)
 }
 
 print find q {
-  "corn" = q
+  Equal("corn", q)
   Fail()
 }
 
 print find q {
-  "corn" = q
-  "meal" = q
+  Equal("corn", q)
+  Equal("meal", q)
 }
 
 print find q {
-  "corn" = q
-  "corn" = q
+  Equal("corn", q)
+  Equal("corn", q)
 }
 
 clause Teacup(t)
 --------------- tea {
-  t = "tea"
+  Equal(t, "tea")
 }
 
 clause Teacup(t)
 --------------- cup {
-  t = "cup"
+  Equal(t, "cup")
 }
 
 print find q {

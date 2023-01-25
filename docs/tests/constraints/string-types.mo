@@ -7,7 +7,7 @@ print find _ {
 }
 
 print find x {
-  x = "cat"
+  Equal(x, "cat")
   String(x)
 }
 
@@ -21,52 +21,52 @@ print find x {
 
 print find x {
   String(x)
-  x = 1
+  Equal(x, 1)
 }
 
 // An indirect unification breaks a type constraint.
 
 print find x {
   String(x)
-  x = z
-  z = 1
+  Equal(x, z)
+  Equal(z, 1)
 }
 
 print find x {
-  x = z
-  z = 1
+  Equal(x, z)
+  Equal(z, 1)
   String(x)
 }
 
 print find x {
-  x = z
+  Equal(x, z)
   String(x)
-  z = 1
+  Equal(z, 1)
 }
 
 // An unification subsums a type constraint.
 
 print find x {
   String(x)
-  x = "A"
+  Equal(x, "A")
 }
 
 // An indirect unification subsums a type constraint.
 
 print find x {
   String(x)
-  x = z
-  z = "A"
+  Equal(x, z)
+  Equal(z, "A")
 }
 
 print find x {
-  x = z
-  z = "A"
+  Equal(x, z)
+  Equal(z, "A")
   String(x)
 }
 
 print find x {
-  x = z
+  Equal(x, z)
   String(x)
-  z = "A"
+  Equal(z, "A")
 }

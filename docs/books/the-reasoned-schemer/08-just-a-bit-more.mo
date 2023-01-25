@@ -36,9 +36,9 @@ print find p {
 }
 
 print find [x, y, r] limit 1 {
-  x = [1, 1]
-  y = [1, 1]
-  r = [1, 0, 0, 1]
+  Equal(x, [1, 1])
+  Equal(y, [1, 1])
+  Equal(r, [1, 0, 0, 1])
   Mul(x, y, r)
 }
 

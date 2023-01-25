@@ -1,8 +1,12 @@
 # relation
 
-[relation] remove `=` and `!=` syntax
-
 [relation] remove `GoalExps.Equal` and `GoalExps.NotEqual`
+
+[relation] fix `formatGoal`
+
+[relation] [global] `conj` and `disj`
+
+[relation] remove `conj` and `disj` syntax -- use `conj` and `disj` function
 
 [relation] `clause` use `[]` syntax (require ",") -- instead of `{}`
 

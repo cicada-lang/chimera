@@ -1,6 +1,6 @@
 clause LtEqThree(n)
 -------------- {
-  n != add1(add1(add1(zero())))
+  NotEqual(n, add1(add1(add1(zero()))))
 }
 
 print find n {

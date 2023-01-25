@@ -7,10 +7,10 @@ print find _ {
 }
 
 print find [list, x, y, z] {
-  list = cons(1, cons(2, cons(3, null)))
-  list = cons(x, cons(y, cons(z, null)))
+  Equal(list, cons(1, cons(2, cons(3, null))))
+  Equal(list, cons(x, cons(y, cons(z, null))))
 }
 
 print find [list, x, y, z] {
-  list = cons(x, cons(y, cons(z, null)))
+  Equal(list, cons(x, cons(y, cons(z, null))))
 }

@@ -1,19 +1,19 @@
 clause Lookup(map, name, found)
 ------------------------- here {
-  map = [[key, value] | _rest]
-  key = name
-  found = value
+  Equal(map, [[key, value] | _rest])
+  Equal(key, name)
+  Equal(found, value)
 }
 
 clause Lookup(map, name, found)
 ------------------------------- there {
-  map = [[key, _value] | rest]
-  key != name
+  Equal(map, [[key, _value] | rest])
+  NotEqual(key, name)
   Lookup(rest, name, found)
 }
 
 print find x {
-  map = [["a", 1], ["b", 2], ["c", 3]]
+  Equal(map, [["a", 1], ["b", 2], ["c", 3]])
   Lookup(map, "b", x)
 }
 
@@ -26,15 +26,15 @@ print find map limit 3 {
 
 clause LookupInlineDisj(map, name, found)
 ------------------------------------ {
-  map = [[key, value] | rest]
+  Equal(map, [[key, value] | rest])
   disj {
-    conj { key = name found = value }
-    conj { key != name LookupInlineDisj(rest, name, found) }
+    conj { Equal(key, name) Equal(found, value) }
+    conj { NotEqual(key, name) LookupInlineDisj(rest, name, found) }
   }
 }
 
 print find x {
-  map = [["a", 1], ["b", 2], ["c", 3]]
+  Equal(map, [["a", 1], ["b", 2], ["c", 3]])
   LookupInlineDisj(map, "b", x)
 }
 

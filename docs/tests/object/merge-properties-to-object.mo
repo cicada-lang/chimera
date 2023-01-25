@@ -1,26 +1,26 @@
 print find q {
-  q = { name: "Xie Yuheng" }
-  q = { country: "China" }
+  Equal(q, { name: "Xie Yuheng" })
+  Equal(q, { country: "China" })
 }
 
 print find q {
-  q = { name: "Xie Yuheng" }
-  p = { name: "Xie Yuheng" }
-  p = q
-  p = { country: "China" }
+  Equal(q, { name: "Xie Yuheng" })
+  Equal(p, { name: "Xie Yuheng" })
+  Equal(p, q)
+  Equal(p, { country: "China" })
 }
 
 print find q {
-  q = { numbers: { a: 1, b: 2 } }
-  p = { numbers: { a: 1, c: 3 } }
-  p = q
-  p = { ok: true }
+  Equal(q, { numbers: { a: 1, b: 2 } })
+  Equal(p, { numbers: { a: 1, c: 3 } })
+  Equal(p, q)
+  Equal(p, { ok: true })
 }
 
 print find q {
-  q = { numbers: { a: 1, b: 2 } }
-  p = { numbers: n }
-  p = q
-  p = { ok: true }
-  n = { a: 1, c: 3 }
+  Equal(q, { numbers: { a: 1, b: 2 } })
+  Equal(p, { numbers: n })
+  Equal(p, q)
+  Equal(p, { ok: true })
+  Equal(n, { a: 1, c: 3 })
 }

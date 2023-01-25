@@ -1,5 +1,5 @@
 print find [x, y, z] {
-  x = 100
-  y = -100
-  z = 3.14
+  Equal(x, 100)
+  Equal(y, -100)
+  Equal(z, 3.14)
 }

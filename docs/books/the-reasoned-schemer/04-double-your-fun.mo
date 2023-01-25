@@ -3,7 +3,7 @@ import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.mo"
 clause Append(l, t, out)
 ------------------ {
   Null(l)
-  out = t
+  Equal(out, t)
 }
 
 clause Append(l, t, out)
@@ -118,7 +118,7 @@ clause Unwrap(x, out)
 
 clause Unwrap(x, out)
 --------------- {
-  x = out
+  Equal(x, out)
 }
 
 print find x {

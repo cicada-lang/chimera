@@ -59,7 +59,7 @@ print find x limit 5 {
 
 clause Singleton(l)
 ----------- {
-  l = [_]
+  Equal(l, [_])
 }
 
 clause ListOfSingletons(l)
@@ -85,11 +85,11 @@ print find l limit 5 {
 
 print find r limit 5 {
   ListOfSingletons([["g"], ["e" | w], [x | y] | z])
-  r = [w, [x | y], z]
+  Equal(r, [w, [x | y], z])
 }
 
 print find out limit 5 {
-  [["g"], ["e" | _w], [_x | _y] | _z] = out
+  Equal([["g"], ["e" | _w], [_x | _y] | _z], out)
   ListOfSingletons(out)
 }
 
@@ -104,7 +104,7 @@ print find out limit 5 {
 // clause Member(x, l)
 // ------------- {
 //   Car(l, a)
-//   x = a
+//   Equal(x, a)
 // }
 
 clause Member(x, l)
@@ -151,7 +151,7 @@ print find [x, y] {
 }
 
 print find q {
-  ["pasta", _x, "fagioli", _y] = q
+  Equal(["pasta", _x, "fagioli", _y], q)
   Member("e", q)
 }
 

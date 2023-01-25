@@ -7,12 +7,12 @@ print find _ {
 }
 
 print find x {
-  x = "cat"
+  Equal(x, "cat")
   Number(x)
 }
 
 print find x {
-  x = 1
+  Equal(x, 1)
   Number(x)
 }
 
@@ -24,7 +24,7 @@ print find x {
 // An inequality is subsumed by a type constraint.
 
 print find x {
-  x != "cat"
+  NotEqual(x, "cat")
   Number(x)
 }
 
@@ -32,27 +32,27 @@ print find x {
 
 print find x {
   Number(x)
-  x != "cat"
+  NotEqual(x, "cat")
 }
 
 // An inequality (applied later) is subsumed by an indirect type constraint.
 
 print find x {
   Number(z)
-  z = x
-  x != "cat"
+  Equal(z, x)
+  NotEqual(x, "cat")
 }
 
 print find x {
   Number(z)
-  x != "cat"
-  z = x
+  NotEqual(x, "cat")
+  Equal(z, x)
 }
 
 // An inequality (in a conjunction) is subsumed by a type constraint.
 
 print find [x, y] {
-  [x, y] != ["cat", 1]
+  NotEqual([x, y], ["cat", 1])
   Number(x)
 }
 
@@ -60,5 +60,5 @@ print find [x, y] {
 
 print find [x, y] {
   Number(x)
-  [x, y] != ["cat", 1]
+  NotEqual([x, y], ["cat", 1])
 }

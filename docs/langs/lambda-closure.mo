@@ -22,7 +22,7 @@ clause Env([[name, value] | rest]) -- {
 clause Lookup([[key, value] | _rest], key, value) -- here
 clause Lookup([[key, _value] | rest], name, found)
 --------------------------------------------- there {
-  key != name
+  NotEqual(key, name)
   Lookup(rest, name, found)
 }
 
@@ -33,7 +33,7 @@ clause Eval(env, var(name), value)
 
 clause Eval(env, fn(name, ret), value)
 ---------------------------------- fn {
-  value = closure(name, ret, env)
+  Equal(value, closure(name, ret, env))
 }
 
 clause Eval(env, ap(target, arg), value)
@@ -44,8 +44,8 @@ clause Eval(env, ap(target, arg), value)
 }
 
 print find exp limit 3 {
-  value = closure("y", var("x"), [
+  Equal(value, closure("y", var("x"), [
     ["x", closure("z", var("z"), [])]
-  ])
+  ]))
   Eval([], exp, value)
 }

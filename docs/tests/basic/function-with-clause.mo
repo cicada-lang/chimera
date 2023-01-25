@@ -5,7 +5,7 @@ function greet(x) {
 
   let results = find q {
     Hi(p)
-    q = [p, eval x]
+    Equal(q, [p, eval x])
   }
 
   print results

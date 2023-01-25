@@ -3,7 +3,7 @@ clause Append([], t, t)
 clause Append([a | d], t, out)
 ------------------------- {
   Append(d, t, res)
-  out = [a | res]
+  Equal(out, [a | res])
 }
 
 print find [x, y] limit 6 {
@@ -23,7 +23,7 @@ clause AppendFF([], t, t)
 
 clause AppendFF([a | d], t, out)
 -------------------------------------- {
-  out = [a | res]
+  Equal(out, [a | res])
   AppendFF(d, t, res)
 }
 

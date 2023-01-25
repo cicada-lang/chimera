@@ -2,8 +2,8 @@
 // for `false` and `true`,
 // because the code looks tidier.
 
-clause Bit(x) -- { x = 0 }
-clause Bit(x) -- { x = 1 }
+clause Bit(x) -- { Equal(x, 0) }
+clause Bit(x) -- { Equal(x, 1) }
 
 clause Not(0, 1)
 clause Not(1, 0)

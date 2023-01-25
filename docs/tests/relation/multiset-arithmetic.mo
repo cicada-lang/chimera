@@ -33,7 +33,7 @@ clause Multi([car | cdr]) -- { Poly(car) Multi(cdr) }
 
 clause Append([], t, t)
 clause Append([a | d], t, out) -- {
-  out = [a | res]
+  Equal(out, [a | res])
   Append(d, t, res)
 }
 
@@ -65,7 +65,7 @@ clause Product([x | xs], [y | ys], out) -- {
   Product(xs, ys, body)
   Append(xSide, ySide, sides)
   Append(sides, body, tmp)
-  out = [[x, y] | tmp]
+  Equal(out, [[x, y] | tmp])
 }
 
 print find q {

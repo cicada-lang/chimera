@@ -4,7 +4,7 @@ clause Append([], t, t)
 clause Append([a | d], t, out)
 ------------------------- {
   Append(d, t, res)
-  out = [a | res]
+  Equal(out, [a | res])
 }
 
 clause Step([stack, [[quoted] | rest]], [[[quoted] | stack], rest])
@@ -29,36 +29,36 @@ clause Eval(start, end)
 }
 
 print find end {
-  start = [
+  Equal(start, [
     [1, 2, 3],
     ["swap", "drop", "swap", "drop"],
-  ]
+  ])
   Eval(start, end)
 }
 
 print find end {
-  start = [
+  Equal(start, [
     [[], 1, 2, 3],
     ["swap", "cons", "swap", "cons", "swap", "cons"],
-  ]
+  ])
   Eval(start, end)
 }
 
 print find end {
-  start = [[], ["hello", "world"]]
+  Equal(start, [[], ["hello", "world"]])
   Eval(start, end)
 }
 
 print find words limit 10 {
-  start = [[], words]
-  end = [["I", "love", "you"], []]
+  Equal(start, [[], words])
+  Equal(end, [["I", "love", "you"], []])
   Eval(start, end)
 }
 
 // Try to solve something like quine.
 
 print find words limit 1 {
-  start = [[], [words, "apply"]]
-  end = [words, []]
+  Equal(start, [[], [words, "apply"]])
+  Equal(end, [words, []])
   Eval(start, end)
 }

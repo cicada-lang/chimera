@@ -18,7 +18,7 @@ clause Legal(_, [])
 
 clause Legal(z, [head | tail])
 ---------------------------- {
-  z != head
+  NotEqual(z, head)
   Legal(z, tail)
 }
 

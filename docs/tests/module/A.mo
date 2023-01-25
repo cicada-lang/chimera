@@ -1,6 +1,6 @@
 export clause A(a)
 ------ {
-  a = "a"
+  Equal(a, "a")
 }
 
 print find [x] {

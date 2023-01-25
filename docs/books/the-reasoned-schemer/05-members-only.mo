@@ -3,7 +3,7 @@ import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.mo"
 clause Mem(x, l, out)
 --------------- {
   Car(l, x)
-  out = l
+  Equal(out, l)
 }
 
 clause Mem(x, l, out)
@@ -121,7 +121,7 @@ print find [y, z, w, out] limit 5 {
 }
 
 // But should the following succeed?
-// We will need != to implementation a version
+// We will need `NotEqual` to implementation a version
 // that does not succeed on the following query.
 
 print find _ {

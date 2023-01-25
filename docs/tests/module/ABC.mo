@@ -3,7 +3,7 @@ import { AB } from "./AB.mo"
 export clause ABC(a, b, c)
 -------------- {
   AB(a, b)
-  c = "c"
+  Equal(c, "c")
 }
 
 print find [x, y, z] {

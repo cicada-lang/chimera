@@ -4,6 +4,6 @@ title: Example Markdown Script
 
 ```mo
 print find q {
-  q = "Hello, World!"
+  Equal(q, "Hello, World!")
 }
 ```

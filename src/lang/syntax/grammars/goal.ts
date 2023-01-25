@@ -1,8 +1,6 @@
 export const goal = {
   $grammar: {
     "goal:apply": [{ name: "relation_name" }, { args: "args" }],
-    "goal:equal": [{ left: "exp" }, '"="', { right: "exp" }],
-    "goal:not_equal": [{ left: "exp" }, '"!"', '"="', { right: "exp" }],
     "goal:conj": [
       '"conj"',
       '"{"',

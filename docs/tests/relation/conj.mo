@@ -1,6 +1,6 @@
 print find [x, y] {
   conj {
-    x = 1
-    y = 2
+    Equal(x, 1)
+    Equal(y, 2)
   }
 }

@@ -11,7 +11,7 @@ clause Ctx([[name, type] | rest]) -- { String(name) Type(type) Ctx(rest) }
 clause Lookup([[key, value] | _rest], key, value)
 clause Lookup([[key, _value] | rest], name, found)
 -------------------------------------------- {
-  key != name
+  NotEqual(key, name)
   Lookup(rest, name, found)
 }
 
@@ -32,14 +32,14 @@ clause Check(ctx, ap(target, arg), retType)
 }
 
 print find type {
-  ctx = []
-  exp = fn("x", var("x"))
+  Equal(ctx, [])
+  Equal(exp, fn("x", var("x")))
   Check(ctx, exp, type)
 }
 
 print find exp limit 10 {
-  ctx = []
-  type = arrow("A", "A")
+  Equal(ctx, [])
+  Equal(type, arrow("A", "A"))
   Check(ctx, exp, type)
 }
 
@@ -50,7 +50,7 @@ print find exp limit 10 {
 // for more about this.
 
 print find type {
-  ctx = []
-  exp = fn("f", ap(var("f"), var("f")))
+  Equal(ctx, [])
+  Equal(exp, fn("f", ap(var("f"), var("f"))))
   Check(ctx, exp, type)
 }

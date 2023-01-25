@@ -1,7 +1,7 @@
 import { Lookup } from "Lookup.mo"
 
 print find x {
-  map = [["a", 1], ["b", 2], ["c", 3]]
+  Equal(map, [["a", 1], ["b", 2], ["c", 3]])
   Lookup(map, "b", x)
 }
 

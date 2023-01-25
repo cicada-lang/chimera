@@ -4,7 +4,9 @@ print find [x] {
   A(x)
 }
 
-clause A(x) -- { x = "b" }
+clause A(x) -- {
+  Equal(x, "b")
+}
 
 print find [x] {
   A(x)

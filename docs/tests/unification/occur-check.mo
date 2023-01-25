@@ -1,11 +1,11 @@
 print find _ {
-  x = [x]
+  Equal(x, [x])
 }
 
 print find _ {
-  x = { x }
+  Equal(x, { x })
 }
 
 print find _ {
-  x = { y: x }
+  Equal(x, { y: x })
 }

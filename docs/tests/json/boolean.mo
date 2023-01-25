@@ -1,4 +1,4 @@
 print find [x, y] {
-  x = true
-  y = false
+  Equal(x, true)
+  Equal(y, false)
 }

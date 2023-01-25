@@ -1,3 +1,3 @@
 print find x {
-  x = Uppercase()
+  Equal(x, Uppercase())
 }

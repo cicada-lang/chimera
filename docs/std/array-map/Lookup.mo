@@ -2,14 +2,14 @@ export { Lookup }
 
 clause Lookup(map, name, found)
 ------------------------- here {
-  map = [[key, value] | _rest]
-  key = name
-  found = value
+  Equal(map, [[key, value] | _rest])
+  Equal(key, name)
+  Equal(found, value)
 }
 
 clause Lookup(map, name, found)
 ------------------------------- there {
-  map = [[key, _value] | rest]
-  key != name
+  Equal(map, [[key, _value] | rest])
+  NotEqual(key, name)
   Lookup(rest, name, found)
 }

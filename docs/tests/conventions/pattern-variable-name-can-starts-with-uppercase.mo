@@ -1,3 +1,3 @@
 print find [X, Y] {
-  X = Y
+  Equal(X, Y)
 }

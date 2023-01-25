@@ -1,3 +1,3 @@
 print find x {
-  x = null
+  Equal(x, null)
 }

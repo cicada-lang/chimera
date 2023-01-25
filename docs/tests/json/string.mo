@@ -1,3 +1,3 @@
 print find abc {
-  abc = "abc"
+  Equal(abc, "abc")
 }
