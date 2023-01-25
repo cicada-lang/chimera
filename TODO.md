@@ -1,12 +1,5 @@
 # relation
 
-relation as predicate -- require a special predicate
-
-- name
-
-  - `sat(Number(x))`
-  - `satisfy(Number(x))`
-
 [relation] goal use `Equal` -- instead of `=`
 
 [relation] goal use `NotEqual` -- instead of `!=`
