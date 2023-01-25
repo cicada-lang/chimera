@@ -2,6 +2,8 @@
 
 [relation] remove `=` and `!=` syntax
 
+[relation] remove `GoalExps.Equal` and `GoalExps.NotEqual`
+
 [relation] `clause` use `[]` syntax (require ",") -- instead of `{}`
 
 [relation] add `find` and `findAll` back

@@ -1,5 +1,4 @@
-[applyRelation] too many arguments
-  target.name: Equal
-  target.arity: 2
-  args.length: 3
-  args: 1, 2, 3
+[doAp] can not apply target
+  target['@kind']: Goal
+  target: $Goal(1 = 2)
+  args: 3
