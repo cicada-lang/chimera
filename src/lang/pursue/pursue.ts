@@ -1,6 +1,8 @@
+import * as Actions from "../actions"
 import * as Errors from "../errors"
 import type { Goal } from "../goal"
 import type { Solution } from "../solution"
+import * as Values from "../value"
 import { applyRelation } from "./applyRelation"
 import { applyTypeConstraint } from "./applyTypeConstraint"
 import { pursueEqual } from "./pursueEqual"
@@ -20,6 +22,12 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
 
       if (goal.target["@kind"] === "TypeConstraint") {
         return applyTypeConstraint(solution, goal.target, goal.args[0])
+      }
+
+      if (goal.target["@kind"] === "Primitive") {
+        const value = Actions.doAp(goal.target, goal.args)
+        Values.assertValue(value, "Goal", { who: "pursue" })
+        return pursue(solution, value.goal)
       }
 
       throw new Errors.LangError(

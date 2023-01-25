@@ -1,8 +1,6 @@
 # relation
 
-[relation] goal use `Equal` -- instead of `=`
-
-[relation] goal use `NotEqual` -- instead of `!=`
+[relation] remove `=` and `!=` syntax
 
 [relation] `clause` use `[]` syntax (require ",") -- instead of `{}`
 
