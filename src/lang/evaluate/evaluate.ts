@@ -172,5 +172,9 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
         return evaluate(mod, env, exp.elseExp)
       }
     }
+
+    case "Match": {
+      throw new Error()
+    }
   }
 }

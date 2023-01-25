@@ -119,6 +119,15 @@ export function formatExp(exp: Exp): string {
       const elseExp = formatExp(exp.elseExp)
       return `if ${target} then ${thenExp} else ${elseExp}`
     }
+
+    case "Match": {
+      const cazes = exp.cazes.map((caze) => {
+        const stmts = caze.stmts.map((stmt) => formatStmt(stmt))
+        return `${formatExp(caze.pattern)} => {\n${indent(stmts.join("\n"))}\n}`
+      })
+
+      return `match ${formatExp(exp.target)} {\n${indent(cazes.join("\n"))}\n}`
+    }
   }
 }
 

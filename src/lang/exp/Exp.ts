@@ -24,6 +24,7 @@ export type Exp =
   | Or
   | Not
   | If
+  | Match
 
 export type Var = {
   "@type": "Exp"
@@ -343,6 +344,36 @@ export function If(target: Exp, thenExp: Exp, elseExp: Exp, span: Span): If {
     target,
     thenExp,
     elseExp,
+    span,
+  }
+}
+
+export type Caze = {
+  pattern: Exp
+  stmts: Array<Stmt>
+}
+
+export function Caze(pattern: Exp, stmts: Array<Stmt>): Caze {
+  return {
+    pattern,
+    stmts,
+  }
+}
+
+export type Match = {
+  "@type": "Exp"
+  "@kind": "Match"
+  target: Exp
+  cazes: Array<Caze>
+  span: Span
+}
+
+export function Match(target: Exp, cazes: Array<Caze>, span: Span): Match {
+  return {
+    "@type": "Exp",
+    "@kind": "Match",
+    target,
+    cazes,
     span,
   }
 }

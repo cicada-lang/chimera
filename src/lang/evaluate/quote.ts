@@ -126,5 +126,11 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
         span: exp.span,
       })
     }
+
+    case "Match": {
+      throw new Errors.LangError(`[quote] can not handle Exps.Match`, {
+        span: exp.span,
+      })
+    }
   }
 }
