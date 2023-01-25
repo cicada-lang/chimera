@@ -81,5 +81,9 @@ export function substitutionContainsPatternVar(
     case "Curried": {
       return false
     }
+
+    case "Goal": {
+      return false
+    }
   }
 }

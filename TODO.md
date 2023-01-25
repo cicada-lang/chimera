@@ -1,6 +1,6 @@
 # relation
 
-`Values.Goal` -- goal as a value
+apply relation returns `Values.Goal`
 
 relation as predicate -- require a special predicate
 
@@ -10,6 +10,7 @@ relation as predicate -- require a special predicate
   - `satisfy(Number(x))`
 
 [relation] goal use `Equal` -- instead of `=`
+
 [relation] goal use `NotEqual` -- instead of `!=`
 
 [relation] `clause` use `[]` syntax (require ",") -- instead of `{}`

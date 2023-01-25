@@ -1,6 +1,6 @@
 import type { Clause } from "../clause"
 import type { Env } from "../env"
-import type { Goal } from "../goal"
+import type { Goal as EmbeddedGoal } from "../goal"
 import type { Hyperrule as EmbeddedHyperrule } from "../hyperrule"
 import type { Mod } from "../mod"
 import type { Rule as EmbeddedRule } from "../rule"
@@ -25,6 +25,7 @@ export type Value =
   | WithConstraints
   | Primitive
   | Curried
+  | Goal
 
 export type PatternVar = {
   "@type": "Value"
@@ -281,12 +282,12 @@ export type WithConstraints = {
   "@type": "Value"
   "@kind": "WithConstraints"
   value: Value
-  constraints: Array<Goal>
+  constraints: Array<EmbeddedGoal>
 }
 
 export function WithConstraints(
   value: Value,
-  constraints: Array<Goal>,
+  constraints: Array<EmbeddedGoal>,
 ): WithConstraints {
   return {
     "@type": "Value",
@@ -339,5 +340,19 @@ export function Curried(
     target,
     arity,
     args,
+  }
+}
+
+export type Goal = {
+  "@type": "Value"
+  "@kind": "Goal"
+  goal: EmbeddedGoal
+}
+
+export function Goal(goal: EmbeddedGoal): Goal {
+  return {
+    "@type": "Value",
+    "@kind": "Goal",
+    goal,
   }
 }

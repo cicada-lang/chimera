@@ -112,6 +112,10 @@ export function formatValue(value: Value): string {
       const args = value.args.map((arg) => formatValue(arg))
       return `$Curried(${target}, ${value.arity}, [${args.join(", ")}])`
     }
+
+    case "Goal": {
+      return `$Goal(${formatGoal(value.goal)})`
+    }
   }
 }
 

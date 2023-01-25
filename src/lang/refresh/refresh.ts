@@ -73,7 +73,8 @@ export function refresh(
     case "Fn":
     case "WithConstraints":
     case "Primitive":
-    case "Curried": {
+    case "Curried":
+    case "Goal": {
       return value
     }
   }
