@@ -1,11 +1,13 @@
-[functional] implement lambda calculus with env in functional language
-
 # pattern matching
 
 `Exps.Match` -- support pattern match
 `Exps.Match` -- syntax -- without `case` prefix
 
 `let` support `pattern`
+
+# functional
+
+[functional] implement lambda calculus with env in functional language
 
 # dot
 
