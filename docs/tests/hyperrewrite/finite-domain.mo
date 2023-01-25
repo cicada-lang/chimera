@@ -2,13 +2,13 @@ hyperrule intervalDomain {
   // inconsistency
 
   [Range(_, a, b)] =>
-  if and [satisfy(Number(a)), satisfy(Number(b)), gt(a, b)]
+  if and [isNumber(a), isNumber(b), gt(a, b)]
   then quote [false]
 
   // intersection
 
   [Range(x, a, b), Range(x, c, d)] =>
-  if and [satisfy(Number(a)), satisfy(Number(b)), satisfy(Number(c)), satisfy(Number(d))]
+  if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)]
   then quote [Range(x, eval max(a, c), eval min(b, d))]
 
   // `LtEq(x, y)` means that `x` is less than or equal to `y`. Hence, `x`
@@ -17,14 +17,14 @@ hyperrule intervalDomain {
   // without removing any solutions.
 
   [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [satisfy(Number(b)), satisfy(Number(d)), gt(b, d)]
+  if and [isNumber(b), isNumber(d), gt(b, d)]
   then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)]
 
   // Analogously, one can reason on the lower bounds to tighten the
   // interval for `y`.
 
   [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [satisfy(Number(a)), satisfy(Number(c)), lt(c, a)]
+  if and [isNumber(a), isNumber(c), lt(c, a)]
   then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)]
 
   // The `Eq` constraint enforces the intersection of the intervals
@@ -32,11 +32,11 @@ hyperrule intervalDomain {
   // same.
 
   [Eq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [satisfy(Number(a)), satisfy(Number(c)), not equal(c, a)]
+  if and [isNumber(a), isNumber(c), not equal(c, a)]
   then quote [Eq(x, y), Range(x, eval max(a, c), b), Range(y, eval max(a, c), d)]
 
   [Eq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [satisfy(Number(b)), satisfy(Number(d)), not equal(b, d)]
+  if and [isNumber(b), isNumber(d), not equal(b, d)]
   then quote [Eq(x, y), Range(x, a, eval min(b, d)), Range(y, c, eval min(b, d))]
 
   // The `NotEq` constraint can only cause a domain tightening if one of the
@@ -44,16 +44,16 @@ hyperrule intervalDomain {
   // other intervals.
 
   [NotEq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [satisfy(Number(a)), equal(a, c), equal(c, d)]
+  if and [isNumber(a), equal(a, c), equal(c, d)]
   then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)]
 
   // x + y = z
 
   [Add(x, y, z), Range(x, a, b), Range(y, c, d), Range(z, e, f)] =>
   if and [
-    satisfy(Number(a)), satisfy(Number(b)),
-    satisfy(Number(c)), satisfy(Number(d)),
-    satisfy(Number(e)), satisfy(Number(f)),
+    isNumber(a), isNumber(b),
+    isNumber(c), isNumber(d),
+    isNumber(e), isNumber(f),
     not and [
       gteq(a, sub(e, d)),
       lteq(b, sub(f, c)),
@@ -71,9 +71,6 @@ hyperrule intervalDomain {
   ]
 }
 
-clause NumberArray([])
-clause NumberArray([a | d]) -- { Number(a) NumberArray(d) }
-
 hyperrule enumerationDomain {
   // inconsistency
 
@@ -82,11 +79,17 @@ hyperrule enumerationDomain {
   // intersection
 
   [In(x, l1), In(x, l2)] =>
-  if and [satisfy(NumberArray(l1)), satisfy(NumberArray(l2))]
+  if and [
+    isArray(l1), arrayEvery(l1, isNumber),
+    isArray(l2), arrayEvery(l2, isNumber),
+  ]
   then quote [In(x, eval arrayIntersection(l1, l2))]
 
   [LtEq(x, y), In(x, l1), In(y, l2)] => {
-    if not and [satisfy(NumberArray(l1)), satisfy(NumberArray(l2))] {
+    if not and [
+      isArray(l1), arrayEvery(l1, isNumber),
+      isArray(l2), arrayEvery(l2, isNumber),
+    ] {
       return
     }
 
@@ -106,7 +109,10 @@ hyperrule enumerationDomain {
 
 
   [LtEq(x, y), In(x, l1), In(y, l2)] => {
-    if not and [satisfy(NumberArray(l1)), satisfy(NumberArray(l2))] {
+    if not and [
+      isArray(l1), arrayEvery(l1, isNumber),
+      isArray(l2), arrayEvery(l2, isNumber),
+    ] {
       return
     }
 
@@ -125,7 +131,11 @@ hyperrule enumerationDomain {
   }
 
   [Eq(x, y), In(x, l1), In(y, l2)] =>
-  if and [satisfy(NumberArray(l1)), satisfy(NumberArray(l2)), not equal(l1, l2)]
+  if and [
+    isArray(l1), arrayEvery(l1, isNumber),
+    isArray(l2), arrayEvery(l2, isNumber),
+    not equal(l1, l2),
+  ]
   then quote [
     LtEq(x, y),
     In(x, eval arrayIntersection(l1, l2)),
@@ -133,7 +143,11 @@ hyperrule enumerationDomain {
   ]
 
   [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
-    if not and [satisfy(NumberArray(l1)), satisfy(NumberArray(l2)), satisfy(NumberArray(l3))] {
+    if not and [
+      isArray(l1), arrayEvery(l1, isNumber),
+      isArray(l2), arrayEvery(l2, isNumber),
+      isArray(l3), arrayEvery(l3, isNumber),
+    ] {
       return
     }
 
