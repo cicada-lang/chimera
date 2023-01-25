@@ -1,7 +1,5 @@
 # relation
 
-remove `sat`
-
 [global] `isNumber`
 [global] `isString`
 [global] `isArray`

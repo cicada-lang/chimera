@@ -1,1 +1,1 @@
-print sat(Equal(1, 2, 3))
+print satisfy(Equal(1, 2, 3))

@@ -7,9 +7,4 @@ export async function aboutGoal(globals: GlobalStore): Promise<void> {
     Values.assertValue(value, "Goal", { who: "satisfy" })
     return Values.Boolean(satisfy(value.goal))
   })
-
-  globals.primitive("sat", 1, ([value]) => {
-    Values.assertValue(value, "Goal", { who: "sat" })
-    return Values.Boolean(satisfy(value.goal))
-  })
 }
