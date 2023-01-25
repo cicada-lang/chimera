@@ -9,7 +9,6 @@ clause Ctx([])
 clause Ctx([[name, type] | rest]) -- { String(name) Type(type) Ctx(rest) }
 
 clause Lookup([[key, value] | _rest], key, value)
-
 clause Lookup([[key, _value] | rest], name, found)
 -------------------------------------------- {
   key != name

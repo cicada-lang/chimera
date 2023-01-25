@@ -1,8 +1,4 @@
-# term rewriting
-
 [functional] implement lambda calculus with env in functional language
-
-[term rewriting] implement lambda calculus -- with explicit substitution
 
 # pattern matching
 
@@ -10,10 +6,6 @@
 `Exps.Match` -- syntax -- without `case` prefix
 
 `let` support `pattern`
-
-# do notation
-
-support do notation -- for programming without `try` and `catch`
 
 # dot
 
@@ -55,6 +47,14 @@ a value for hyperrewrite failure
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
+
+# term rewriting
+
+[term rewriting] implement lambda calculus -- with explicit substitution
+
+# do notation
+
+support do notation -- for programming without `try` and `catch`
 
 # hyperrewrite
 

@@ -1,59 +1,21 @@
 // Small step operational semantics of a Forth-like language.
 
 clause Append([], t, t)
-
 clause Append([a | d], t, out)
 ------------------------- {
   Append(d, t, res)
   out = [a | res]
 }
 
-clause Step(
-  [stack, [[quoted] | rest]],
-  [[[quoted] | stack], rest],
-)
-
-clause Step(
-  [[quoted | stack], ["apply" | rest]],
-  [stack, result],
-) -- {
-  Append(quoted, rest, result)
-}
-
-clause Step(
-  [[car, cdr | stack], ["cons" | rest]],
-  [[[car | cdr] | stack], rest],
-)
-
-clause Step(
-  [[x | stack], ["dup" | rest]],
-  [[x, x | stack], rest],
-)
-
-clause Step(
-  [[_x | stack], ["drop" | rest]],
-  [stack, rest],
-)
-
-clause Step(
-  [[x, y | stack], ["swap" | rest]],
-  [[y, x | stack], rest],
-)
-
-clause Step(
-  [[x, y | stack], ["over" | rest]],
-  [[y, x, y | stack], rest],
-)
-
-clause Step(
-  [[x, y, z | stack], ["rot" | rest]],
-  [[z, y, x | stack], rest],
-)
-
-clause Step(
-  [stack, ["lit", value | rest]],
-  [[value | stack], rest],
-)
+clause Step([stack, [[quoted] | rest]], [[[quoted] | stack], rest])
+clause Step([[quoted | stack], ["apply" | rest]], [stack, result]) -- { Append(quoted, rest, result) }
+clause Step([[car, cdr | stack], ["cons" | rest]], [[[car | cdr] | stack], rest])
+clause Step([[x | stack], ["dup" | rest]], [[x, x | stack], rest])
+clause Step([[_x | stack], ["drop" | rest]], [stack, rest])
+clause Step([[x, y | stack], ["swap" | rest]], [[y, x | stack], rest])
+clause Step([[x, y | stack], ["over" | rest]], [[y, x, y | stack], rest])
+clause Step([[x, y, z | stack], ["rot" | rest]], [[z, y, x | stack], rest])
+clause Step([stack, ["lit", value | rest]], [[value | stack], rest])
 
 clause Eval(start, end)
 -------------------- {

@@ -20,7 +20,6 @@ clause Env([[name, value] | rest]) -- {
 }
 
 clause Lookup([[key, value] | _rest], key, value) -- here
-
 clause Lookup([[key, _value] | rest], name, found)
 --------------------------------------------- there {
   key != name
