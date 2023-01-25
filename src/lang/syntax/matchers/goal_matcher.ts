@@ -7,18 +7,6 @@ export function goal_matcher(tree: pt.Tree): GoalExp {
   return pt.matcher<GoalExp>({
     "goal:apply": ({ name, args }, { span }) =>
       GoalExps.Apply(pt.str(name), matchers.args_matcher(args), span),
-    "goal:equal": ({ left, right }, { span }) =>
-      GoalExps.Equal(
-        matchers.exp_matcher(left),
-        matchers.exp_matcher(right),
-        span,
-      ),
-    "goal:not_equal": ({ left, right }, { span }) =>
-      GoalExps.NotEqual(
-        matchers.exp_matcher(left),
-        matchers.exp_matcher(right),
-        span,
-      ),
     "goal:conj": ({ goals }, { span }) =>
       GoalExps.Conj(
         pt.matchers.zero_or_more_matcher(goals).map(goal_matcher),

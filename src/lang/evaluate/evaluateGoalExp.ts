@@ -24,20 +24,6 @@ export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
       )
     }
 
-    case "Equal": {
-      return Goals.Equal(
-        quote(mod, env, goal.left),
-        quote(mod, env, goal.right),
-      )
-    }
-
-    case "NotEqual": {
-      return Goals.NotEqual(
-        quote(mod, env, goal.left),
-        quote(mod, env, goal.right),
-      )
-    }
-
     case "Conj": {
       return Goals.Conj(
         goal.goals.map((goal) => evaluateGoalExp(mod, env, goal)),

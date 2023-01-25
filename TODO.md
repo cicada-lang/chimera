@@ -1,7 +1,5 @@
 # relation
 
-[relation] remove `GoalExps.Equal` and `GoalExps.NotEqual`
-
 [relation] fix `formatGoal`
 
 [relation] [global] `conj` and `disj`
