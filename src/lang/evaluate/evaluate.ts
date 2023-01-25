@@ -1,4 +1,5 @@
 import * as Actions from "../actions"
+import { Caze } from "../caze"
 import type { Env } from "../env"
 import * as Errors from "../errors"
 import {
@@ -174,9 +175,10 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Match": {
-      const target = evaluate(mod, env, exp.target)
-
-      throw new Error()
+      return Actions.doMatch(
+        evaluate(mod, env, exp.target),
+        exp.cazes.map((caze) => Caze(mod, env, caze.pattern, caze.stmts)),
+      )
     }
   }
 }

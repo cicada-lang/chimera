@@ -1,7 +1,5 @@
 # pattern matching
 
-`Exps.Match` -- evaluate
-
 `doMatch`
 
 `Exps.Match` -- syntax -- without `case` prefix
