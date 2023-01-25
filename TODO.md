@@ -1,5 +1,18 @@
 # relation
 
+remove `sat`
+
+[global] `isNumber`
+[global] `isString`
+[global] `isArray`
+[global] `isObject`
+[global] `isTerm`
+[global] `isBoolean`
+[global] `isNull`
+[global] `isAny`
+
+`satisfy` treat all kind of goals the same
+
 [relation] goal use `Equal` -- instead of `=`
 
 [relation] goal use `NotEqual` -- instead of `!=`
