@@ -1,9 +1,19 @@
+# term rewriting
+
+[functional] implement lambda calculus with env in functional language
+
+[term rewriting] implement lambda calculus -- with explicit substitution
+
 # pattern matching
 
 `Exps.Match` -- support pattern match
 `Exps.Match` -- syntax -- without `case` prefix
 
 `let` support `pattern`
+
+# do notation
+
+support do notation -- for programming without `try` and `catch`
 
 # dot
 
@@ -95,8 +105,6 @@ mark as 1.0.0 and writie some docs
 # term rewriting
 
 encode collatz rewrite in term rewrite
-
-use term rewriting to implement lambda calculus -- with explicit substitution
 
 [learn] learn DCG of prolog -- the `-->` syntax
 

@@ -1,7 +1,9 @@
 hyperrule intervalDomain {
   // inconsistency
 
-  [Range(_, a, b)] => if and [Number(a), Number(b), gt(a, b)] then quote [false]
+  [Range(_, a, b)] =>
+  if and [Number(a), Number(b), gt(a, b)]
+  then quote [false]
 
   // intersection
 
