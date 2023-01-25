@@ -34,5 +34,10 @@ assert not satisfy(Null(1))
 assert satisfy(String("abc"))
 assert not satisfy(String(123))
 
+// NOTE Not good because quoted variable is pattern variable,
+//  for predicate use `isString` instead.
+
+assert satisfy(String(quote x))
+
 assert satisfy(Number(123))
 assert not satisfy(Number("abc"))

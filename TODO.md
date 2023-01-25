@@ -1,7 +1,5 @@
 # relation
 
-`satisfy` should treat all kind of goals the same
-
 [relation] goal use `Equal` -- instead of `=`
 
 [relation] goal use `NotEqual` -- instead of `!=`
