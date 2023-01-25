@@ -1,8 +1,29 @@
 # relation
 
+[relation] goal use `Equal` -- instead of `=`
+[relation] goal use `NotEqual` -- instead of `!=`
+
+[relation] `clause` use `[]` syntax (require ",") -- instead of `{}`
+
+`Values.Goal`
+
+relation as predicate -- require a special predicate
+
+- `sat(Number(x))`
+
+[relation] `clause` has `stmts` -- instead of just a list of goals
+
+extract `defineRenames`
+
 `GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
 
 `GoalExp` -- should be evaluated late -- for the repl
+
+`stmt` -- remove `prepare`
+
+remove the feature for importing form url, and use for sync `execute` only
+
+- to support a self-hosting compiler
 
 # functional
 
@@ -90,10 +111,6 @@ maybe I can understand Gentzen and Goedel's works.
 [learn] we can learn more about first-order logic by implementing alphaLean
 
 # compiler
-
-[maybe] remove the feature for importing form url, and use for sync `execute` only
-
-- to support a self-hosting compiler
 
 [compiler] compile to x86 -- for linux.
 

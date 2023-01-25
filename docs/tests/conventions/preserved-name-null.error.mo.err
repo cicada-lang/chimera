@@ -1,10 +1,3 @@
-I found syntax error in code:
-
- 1 |let null = 1
- 2 |
-
-
-Found the identifier "null" in [4, 8], while expecting:
- ["identifier"]:
-     stmt:let@0 -> "let"@1 > (name: identifier) "=" (exp: exp) 
-
+[executeSync Let] pattern mismatch
+  pattern: null
+  value: 1
