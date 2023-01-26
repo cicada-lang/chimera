@@ -5,7 +5,7 @@ import type { GoalExp } from "../goal-exp"
 export function formatGoalExp(goal: GoalExp): string {
   switch (goal["@kind"]) {
     case "Apply": {
-      return `${goal.name}${formatArgs(goal.args)}`
+      return `${formatExp(goal.target)}${formatArgs(goal.args)}`
     }
 
     case "Equal": {

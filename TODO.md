@@ -1,6 +1,4 @@
-# relation
-
-`GoalExps.Apply` -- support `Dot` -- instead of always using `name`
+improve `formatGoal`
 
 # prefix as namespace
 

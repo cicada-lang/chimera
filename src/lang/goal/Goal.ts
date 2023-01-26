@@ -5,16 +5,14 @@ export type Goal = Apply | Equal | NotEqual | Conj | Disj
 export type Apply = {
   "@type": "Goal"
   "@kind": "Apply"
-  name: string
   target: Value
   args: Array<Value>
 }
 
-export function Apply(name: string, target: Value, args: Array<Value>): Apply {
+export function Apply(target: Value, args: Array<Value>): Apply {
   return {
     "@type": "Goal",
     "@kind": "Apply",
-    name,
     target,
     args,
   }

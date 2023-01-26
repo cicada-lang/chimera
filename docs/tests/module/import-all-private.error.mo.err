@@ -1,4 +1,4 @@
-[evaluateGoal] Apply fail, undefined target name: Hiya
+[evaluate] undefined name: Hiya
 
  1 |import * from "./example.mo"
  2 |

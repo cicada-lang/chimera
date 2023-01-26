@@ -6,16 +6,16 @@ export type GoalExp = Apply | Equal | NotEqual | Conj | Disj
 export type Apply = {
   "@type": "GoalExp"
   "@kind": "Apply"
-  name: string
+  target: Exp
   args: Array<Exp>
   span: Span
 }
 
-export function Apply(name: string, args: Array<Exp>, span: Span): Apply {
+export function Apply(target: Exp, args: Array<Exp>, span: Span): Apply {
   return {
     "@type": "GoalExp",
     "@kind": "Apply",
-    name,
+    target,
     args,
     span,
   }

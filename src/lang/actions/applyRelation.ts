@@ -24,5 +24,5 @@ export function applyRelation(
     )
   }
 
-  return Values.Goal(Goals.Apply(target.name, target, args))
+  return Values.Goal(Goals.Apply(target, args))
 }
