@@ -1,9 +1,5 @@
 # relation
 
-test infix-notation-equal.mo
-
-test infix-notation-not-equal.mo
-
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
 # prefix as namespace
