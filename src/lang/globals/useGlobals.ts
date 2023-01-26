@@ -14,25 +14,25 @@ import { GlobalStore } from "./GlobalStore"
 
 let globals: GlobalStore | undefined = undefined
 
-export async function useGlobals(): Promise<GlobalStore> {
+export function useGlobals(): GlobalStore {
   if (globals) return globals
 
   globals = new GlobalStore()
 
-  await aboutEqual(globals)
+  aboutEqual(globals)
 
-  await aboutGoal(globals)
-  await aboutRelation(globals)
-  await aboutRewrite(globals)
-  await aboutHyperrewrite(globals)
+  aboutGoal(globals)
+  aboutRelation(globals)
+  aboutRewrite(globals)
+  aboutHyperrewrite(globals)
 
-  await aboutNull(globals)
-  await aboutBoolean(globals)
-  await aboutNumber(globals)
-  await aboutString(globals)
-  await aboutArray(globals)
-  await aboutObject(globals)
-  await aboutTerm(globals)
+  aboutNull(globals)
+  aboutBoolean(globals)
+  aboutNumber(globals)
+  aboutString(globals)
+  aboutArray(globals)
+  aboutObject(globals)
+  aboutTerm(globals)
 
   return globals
 }

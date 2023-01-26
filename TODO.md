@@ -1,7 +1,3 @@
-sync `execute` only
-
-- to support a self-hosting compiler
-
 # relation
 
 [relation] `varCollection`

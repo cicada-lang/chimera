@@ -2,7 +2,7 @@ import * as Values from "../value"
 import { assertValue } from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
-export async function aboutString(globals: GlobalStore): Promise<void> {
+export function aboutString(globals: GlobalStore): void {
   globals.define(
     "String",
     Values.TypeConstraint("String", (value) => value["@kind"] === "String"),

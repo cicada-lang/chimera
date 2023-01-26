@@ -33,11 +33,11 @@ export class AppReplEventHandler extends ReplEventHandler {
     const { text } = event
 
     const url = new URL(`repl://${this.pathname}`)
-    const mod = await this.loader.load(url, { text: "" })
+    const mod = this.loader.load(url, { text: "" })
 
     try {
       const stmts = parseStmts(text)
-      await executeStmts(mod, stmts)
+      executeStmts(mod, stmts)
     } catch (error) {
       error = createErrorReport(error, text)
       if (error instanceof Error)

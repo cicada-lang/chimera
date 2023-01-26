@@ -8,7 +8,7 @@ import type { Value } from "../value"
 import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
-export async function aboutArray(globals: GlobalStore): Promise<void> {
+export function aboutArray(globals: GlobalStore): void {
   globals.primitive("isArray", 1, ([value]) => {
     return Values.Boolean(
       value["@kind"] === "ArrayNull" || value["@kind"] === "ArrayCons",

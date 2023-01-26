@@ -1,8 +1,8 @@
 import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
-export async function aboutNull(globals: GlobalStore): Promise<void> {
-  await globals.code(`
+export function aboutNull(globals: GlobalStore): void {
+  globals.code(`
 
 clause Null(x) -- { Equal(x, null) }
 

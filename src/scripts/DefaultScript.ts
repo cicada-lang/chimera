@@ -9,10 +9,10 @@ export class DefaultScript extends Script {
     super()
   }
 
-  async run(): Promise<void> {
+  run(): void {
     try {
       const stmts = parseStmts(this.text)
-      await executeStmts(this.mod, stmts)
+      executeStmts(this.mod, stmts)
     } catch (error) {
       throw createErrorReport(error, this.text)
     }

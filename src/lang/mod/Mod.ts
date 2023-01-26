@@ -32,10 +32,10 @@ export class Mod {
     return mod
   }
 
-  async initialize(): Promise<void> {
+  initialize(): void {
     if (this.initialized) return
-    const globals = await useGlobals()
-    await globals.mount(this)
+    const globals = useGlobals()
+    globals.mount(this)
     this.initialized = true
   }
 

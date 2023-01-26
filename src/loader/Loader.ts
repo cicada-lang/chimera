@@ -14,7 +14,7 @@ export class Loader {
 
   constructor(public options: LoaderOptions) {}
 
-  async load(url: URL, options?: { text?: string }): Promise<Mod> {
+  load(url: URL, options?: { text?: string }): Mod {
     const found = this.cache.get(url.href)
     if (found !== undefined) return found.mod
 
@@ -22,7 +22,7 @@ export class Loader {
     const text = options?.text || this.fetcher.fetch(url)
     const mod = new Mod({ url, loader: this })
     const script = Scripts.createScript(mod, text)
-    await script.run()
+    script.run()
     this.cache.set(url.href, script)
     return mod
   }

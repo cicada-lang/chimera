@@ -10,9 +10,9 @@ export class MarkdownScript extends Script {
     super()
   }
 
-  async run(): Promise<void> {
+  run(): void {
     for (const block of collectBlocks(this.text)) {
-      await this.runBlock(block)
+      this.runBlock(block)
     }
   }
 
@@ -22,13 +22,13 @@ export class MarkdownScript extends Script {
     }
   }
 
-  async runBlock(block: Block): Promise<void> {
+  private runBlock(block: Block): void {
     const text = this.buildText(block)
     if (text === undefined) return
 
     try {
       const stmts = parseStmts(text)
-      await executeStmts(this.mod, stmts)
+      executeStmts(this.mod, stmts)
     } catch (error) {
       throw createErrorReport(error, text)
     }

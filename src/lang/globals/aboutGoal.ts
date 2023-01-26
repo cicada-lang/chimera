@@ -3,7 +3,7 @@ import { satisfy } from "../satisfy"
 import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
-export async function aboutGoal(globals: GlobalStore): Promise<void> {
+export function aboutGoal(globals: GlobalStore): void {
   globals.primitive("Equal", 2, ([x, y]) => {
     return Values.Goal(Goals.Equal(x, y))
   })

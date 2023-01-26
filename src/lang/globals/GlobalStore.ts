@@ -8,15 +8,15 @@ import * as Values from "../value"
 export class GlobalStore {
   mod = new Mod({ loader: new Loader({}), url: new URL("globals://") })
 
-  async mount(mod: Mod): Promise<void> {
+  mount(mod: Mod): void {
     for (const [name, value] of envEntries(this.mod.env)) {
       mod.env = envExtend(mod.env, name, value)
     }
   }
 
-  async code(text: string): Promise<void> {
+  code(text: string): void {
     const script = Scripts.createScript(this.mod, text)
-    await script.run()
+    script.run()
   }
 
   define(name: string, value: Value): void {

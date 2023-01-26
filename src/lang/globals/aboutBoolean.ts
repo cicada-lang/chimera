@@ -2,8 +2,8 @@ import * as Values from "../value"
 import { assertValue } from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
-export async function aboutBoolean(globals: GlobalStore): Promise<void> {
-  await globals.code(`
+export function aboutBoolean(globals: GlobalStore): void {
+  globals.code(`
 
 clause Boolean(x) -- { Equal(x, false) }
 clause Boolean(x) -- { Equal(x, true) }

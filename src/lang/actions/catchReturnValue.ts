@@ -1,4 +1,4 @@
-import { executeStmtsSync } from "../execute"
+import { executeStmts } from "../execute"
 import type { Mod } from "../mod"
 import type { Stmt } from "../stmt"
 import { ReturnValue } from "../stmt"
@@ -7,7 +7,7 @@ import * as Values from "../value"
 
 export function catchReturnValue(mod: Mod, stmts: Array<Stmt>): Value {
   try {
-    executeStmtsSync(mod, stmts)
+    executeStmts(mod, stmts)
     return Values.Null()
   } catch (error) {
     if (error instanceof ReturnValue) {
