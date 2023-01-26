@@ -1,6 +1,5 @@
 # dot
 
-`utils/arrayEqual`
 `Values.Term` -- fix `unify`
 `Values.Term` -- fix `match`
 `Exps.Ap` -- fix `quote`
