@@ -48,6 +48,8 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       ),
     "stmt:import_all": ({ path }, { span }) =>
       Stmts.ImportAll(pt.trim_boundary(pt.str(path), 1), span),
+    "stmt:import_all_as": ({ name, path }, { span }) =>
+      Stmts.ImportAllAs(pt.str(name), pt.trim_boundary(pt.str(path), 1), span),
     "stmt:export": ({ stmt }, { span }) =>
       Stmts.Export(matchers.stmt_matcher(stmt), span),
     "stmt:export_names": ({ names }, { span }) =>

@@ -1,7 +1,5 @@
 # dot
 
-`Stmts.ImportAllAs` -- syntax
-
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
 # claim and runtime type assertion

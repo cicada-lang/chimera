@@ -45,6 +45,14 @@ export const stmt = {
       '"from"',
       { path: { $pattern: ["string"] } },
     ],
+    "stmt:import_all_as": [
+      '"import"',
+      '"*"',
+      '"as"',
+      { names: "variable_names" },
+      '"from"',
+      { path: { $pattern: ["string"] } },
+    ],
     "stmt:export": ['"export"', { stmt: "stmt" }],
     "stmt:export_names": [
       '"export"',
