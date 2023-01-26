@@ -1,3 +1,10 @@
+# CHR
+
+`rule` rename `use` to `include`
+`hyperrule` rename `use` to `include`
+
+a value for hyperrewrite failure
+
 # dot
 
 `Exps.Dot`
@@ -18,11 +25,6 @@ hyperrewrite can operate under with given prefix
 [module] support `import * as <name>`
 
 # CHR
-
-`rule` rename `use` to `include`
-`hyperrule` rename `use` to `include`
-
-a value for hyperrewrite failure
 
 `use` -- to register `hyperrule` to `mod` -- maybe with `as` for prefix
 
