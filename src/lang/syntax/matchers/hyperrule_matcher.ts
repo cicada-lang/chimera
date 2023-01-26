@@ -30,8 +30,8 @@ export function hyperrule_matcher(tree: pt.Tree): HyperruleExp {
         [Stmts.Return(matchers.exp_matcher(exp), span)],
         span,
       ),
-    "hyperrule:use": ({ exp }, { span }) =>
-      HyperruleExps.Use(matchers.exp_matcher(exp), span),
+    "hyperrule:include": ({ exp }, { span }) =>
+      HyperruleExps.Include(matchers.exp_matcher(exp), span),
   })(tree)
 }
 

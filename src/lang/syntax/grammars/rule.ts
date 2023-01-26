@@ -9,7 +9,7 @@ export const rule = {
       '"}"',
     ],
     "rule:case_with_exp": [{ pattern: "exp" }, '"="', '">"', { exp: "exp" }],
-    "rule:use": ['"use"', { exp: "exp" }],
+    "rule:include": ['"include"', { exp: "exp" }],
   },
 }
 

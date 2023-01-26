@@ -2,7 +2,7 @@ import type { Exp } from "../exp"
 import type { Span } from "../span"
 import type { Stmt } from "../stmt"
 
-export type HyperruleExp = Simplify | Propagate | List | Use
+export type HyperruleExp = Simplify | Propagate | List | Include
 
 export type Simplify = {
   "@type": "HyperruleExp"
@@ -64,17 +64,17 @@ export function List(hyperrules: Array<HyperruleExp>, span: Span): List {
   }
 }
 
-export type Use = {
+export type Include = {
   "@type": "HyperruleExp"
-  "@kind": "Use"
+  "@kind": "Include"
   exp: Exp
   span: Span
 }
 
-export function Use(exp: Exp, span: Span): Use {
+export function Include(exp: Exp, span: Span): Include {
   return {
     "@type": "HyperruleExp",
-    "@kind": "Use",
+    "@kind": "Include",
     exp,
     span,
   }

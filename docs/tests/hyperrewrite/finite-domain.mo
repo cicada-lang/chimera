@@ -164,8 +164,8 @@ hyperrule enumerationDomain {
 }
 
 hyperrule finiteDomain {
-  use intervalDomain
-  use enumerationDomain
+  include intervalDomain
+  include enumerationDomain
   [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
 }
 

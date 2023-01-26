@@ -18,7 +18,7 @@ export function evaluateRuleExp(mod: Mod, env: Env, rule: RuleExp): Rule {
       )
     }
 
-    case "Use": {
+    case "Include": {
       const value = evaluate(mod, env, rule.exp)
       Values.assertValue(value, "Rule", { who: "evaluateRuleExp Use" })
       return Rules.List([value.rule])

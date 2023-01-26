@@ -28,7 +28,7 @@ export const hyperrule = {
       '">"',
       { exp: "exp" },
     ],
-    "hyperrule:use": ['"use"', { exp: "exp" }],
+    "hyperrule:include": ['"include"', { exp: "exp" }],
   },
 }
 

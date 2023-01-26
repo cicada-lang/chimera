@@ -1,8 +1,5 @@
 # CHR
 
-`rule` rename `use` to `include`
-`hyperrule` rename `use` to `include`
-
 a value for hyperrewrite failure
 
 # dot

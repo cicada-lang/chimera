@@ -28,7 +28,7 @@ export function evaluateHyperruleExp(
       )
     }
 
-    case "Use": {
+    case "Include": {
       const value = evaluate(mod, env, hyperrule.exp)
       Values.assertValue(value, "Hyperrule", {
         who: "evaluateHyperruleExp Use",

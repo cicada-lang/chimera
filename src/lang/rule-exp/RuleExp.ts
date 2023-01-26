@@ -2,7 +2,7 @@ import type { Exp } from "../exp"
 import type { Span } from "../span"
 import type { Stmt } from "../stmt"
 
-export type RuleExp = Case | List | Use
+export type RuleExp = Case | List | Include
 
 export type Case = {
   "@type": "RuleExp"
@@ -38,17 +38,17 @@ export function List(rules: Array<RuleExp>, span: Span): List {
   }
 }
 
-export type Use = {
+export type Include = {
   "@type": "RuleExp"
-  "@kind": "Use"
+  "@kind": "Include"
   exp: Exp
   span: Span
 }
 
-export function Use(exp: Exp, span: Span): Use {
+export function Include(exp: Exp, span: Span): Include {
   return {
     "@type": "RuleExp",
-    "@kind": "Use",
+    "@kind": "Include",
     exp,
     span,
   }

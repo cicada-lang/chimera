@@ -21,7 +21,7 @@ export function formatRuleExp(rule: RuleExp): string {
       return `list {\n${indent(rules.join("\n"))}\n}`
     }
 
-    case "Use": {
+    case "Include": {
       const exp = formatExp(rule.exp)
       return `use ${exp}`
     }

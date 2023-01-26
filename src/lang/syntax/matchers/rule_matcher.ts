@@ -18,8 +18,8 @@ export function rule_matcher(tree: pt.Tree): RuleExp {
         [Stmts.Return(matchers.exp_matcher(exp), span)],
         span,
       ),
-    "rule:use": ({ exp }, { span }) =>
-      RuleExps.Use(matchers.exp_matcher(exp), span),
+    "rule:include": ({ exp }, { span }) =>
+      RuleExps.Include(matchers.exp_matcher(exp), span),
   })(tree)
 }
 

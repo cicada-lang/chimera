@@ -39,7 +39,7 @@ export function formatHyperruleExp(hyperrule: HyperruleExp): string {
       return `list {\n${indent(hyperrules.join("\n"))}\n}`
     }
 
-    case "Use": {
+    case "Include": {
       const exp = formatExp(hyperrule.exp)
       return `use ${exp}`
     }
