@@ -1,9 +1,8 @@
 # dot
 
+`Values.Term` -- fix `formatValue`
 `Values.Term` -- fix `unify`
 `Values.Term` -- fix `match`
-`Exps.Ap` -- fix `quote`
-`Exps.Dot` -- fix `quote`
 
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
