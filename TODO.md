@@ -1,7 +1,5 @@
 # relation
 
-[relation] restore `conj` and `disj` syntax
-
 [relation] `varCollection`
 
 extract `defineRenames(mod, renames, substitution)`

@@ -1,5 +1,5 @@
 print find [x, y] {
-  Conj([
+  conj([
     Equal(x, 1),
     Equal(y, 2),
   ])
