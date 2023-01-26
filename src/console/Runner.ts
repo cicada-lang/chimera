@@ -14,12 +14,9 @@ export class Runner {
     )
   }
 
-  async run(
-    url: URL,
-    opts?: { silent?: boolean },
-  ): Promise<{ error?: unknown }> {
+  run(url: URL, opts?: { silent?: boolean }): { error?: unknown } {
     try {
-      await this.loader.load(url)
+      this.loader.load(url)
       return { error: undefined }
     } catch (error) {
       if (!opts?.silent) {
@@ -32,8 +29,8 @@ export class Runner {
     }
   }
 
-  async watch(main: URL): Promise<void> {
-    await this.run(main)
+  watch(main: URL): void {
+    this.run(main)
     app.logger.info({ tag: "run", msg: main.pathname })
     app.logger.info({
       msg: `Watching for changes.`,
@@ -43,21 +40,21 @@ export class Runner {
     for (const url of this.loader.tracked) {
       if (main.protocol !== "file:") continue
 
-      watcher(url.pathname, async (event) => {
+      watcher(url.pathname, (event) => {
         if (event === "remove") {
           this.loader.delete(url)
           if (url.href === main.href) {
             app.logger.info({ tag: event, msg: url.pathname })
             app.logger.info({ msg: "The main file is removed." })
           } else {
-            await this.run(main)
+            this.run(main)
             app.logger.info({ tag: event, msg: url.pathname })
           }
         }
 
         if (event === "update") {
           this.loader.delete(url)
-          await this.run(main)
+          this.run(main)
           app.logger.info({ tag: event, msg: url.pathname })
         }
       })
