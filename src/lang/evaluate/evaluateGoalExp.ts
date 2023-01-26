@@ -12,7 +12,11 @@ export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
       const target = mod.find(goal.name)
       if (target === undefined) {
         throw new Errors.LangError(
-          `[evaluateGoal] Apply fail, undefined target name: ${goal.name}`,
+          [
+            `[evaluateGoal Term] undefined term`,
+            // `  prefix: ${goal.prefix.join(", ")}`,
+            `  name: ${goal.name}`,
+          ].join("\n"),
           { span: goal.span },
         )
       }
