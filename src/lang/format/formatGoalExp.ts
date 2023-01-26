@@ -1,11 +1,19 @@
 import { indent } from "../../utils/indent"
-import { formatArgs } from "../format"
+import { formatArgs, formatExp } from "../format"
 import type { GoalExp } from "../goal-exp"
 
 export function formatGoalExp(goal: GoalExp): string {
   switch (goal["@kind"]) {
     case "Apply": {
       return `${goal.name}${formatArgs(goal.args)}`
+    }
+
+    case "Equal": {
+      return `${formatExp(goal.left)} = ${formatExp(goal.right)}`
+    }
+
+    case "NotEqual": {
+      return `${formatExp(goal.left)} != ${formatExp(goal.right)}`
     }
 
     case "Conj": {

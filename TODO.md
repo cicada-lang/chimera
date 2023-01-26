@@ -1,12 +1,8 @@
 # relation
 
-`GoalExps.Equal` -- add back
+test infix-notation-equal.mo
 
-- test infix-notation-equal.mo
-
-`GoalExps.NotEqual` -- add back
-
-- test infix-notation-not-equal.mo
+test infix-notation-not-equal.mo
 
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 

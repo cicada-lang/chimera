@@ -8,6 +8,14 @@ export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
       return varCollectionFromExps(goal.args)
     }
 
+    case "Equal": {
+      return varCollectionFromExps([goal.left, goal.right])
+    }
+
+    case "NotEqual": {
+      return varCollectionFromExps([goal.left, goal.right])
+    }
+
     case "Conj": {
       return varCollectionMerge(goal.goals.map(varCollectionFromGoalExp))
     }
