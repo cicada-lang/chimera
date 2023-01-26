@@ -1,12 +1,8 @@
 # dot
 
-`Exps.Dot` -- syntax
+[module] support `import * as <name>`
 
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
-
-# module
-
-[module] support `import * as <name>`
 
 # claim and runtime type assertion
 
