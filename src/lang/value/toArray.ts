@@ -3,28 +3,38 @@ import type { Value } from "../value"
 import * as Values from "../value"
 
 export function toArray(value: Value): Array<Value> {
-  if (value["@kind"] === "ArrayNull") {
-    return []
-  }
+  const array: Array<Value> = []
 
-  if (value["@kind"] === "ArrayCons") {
-    return [value.car, ...toArray(value.cdr)]
-  }
+  while (true) {
+    if (value["@kind"] === "ArrayNull") {
+      return array
+    }
 
-  throw new Errors.LangError(
-    [
-      `[toArray] the given value is not an array`,
-      `  value['@kind']: ${value["@kind"]}`,
-    ].join("\n"),
-  )
+    if (value["@kind"] === "ArrayCons") {
+      array.push(value.car)
+      value = value.cdr
+      continue
+    }
+
+    throw new Errors.LangError(
+      [
+        `[toArray] the given value is not an array`,
+        `  value['@kind']: ${value["@kind"]}`,
+      ].join("\n"),
+    )
+  }
 }
 
 export function fromArray(values: Array<Value>): Value {
-  if (values.length === 0) {
-    return Values.ArrayNull()
+  values = [...values]
+  let result: Value = Values.ArrayNull()
+
+  while (true) {
+    const value = values.pop()
+    if (value === undefined) {
+      return result
+    }
+
+    result = Values.ArrayCons(value, result)
   }
-
-  const [value, ...restValues] = values
-
-  return Values.ArrayCons(value, fromArray(restValues))
 }

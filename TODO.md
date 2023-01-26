@@ -1,9 +1,5 @@
 # relation
 
-fix `Values.toArray` -- use loop
-
-fix `Values.fromArray` -- use loop
-
 `GoalExp` -- should be evaluated late -- for the repl
 
 [relation] `varCollection`
