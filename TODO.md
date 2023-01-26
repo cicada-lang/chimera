@@ -1,12 +1,12 @@
 # relation
 
-[relation] `varCollection`
-
 extract `defineRenames(mod, renames, substitution)`
 
 `GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
 
 `GoalExp` -- should be evaluated late -- for the repl
+
+[relation] `varCollection`
 
 `stmt` -- remove `prepare`
 
