@@ -26,14 +26,16 @@ export type Equal = {
   "@kind": "Equal"
   left: Exp
   right: Exp
+  span: Span
 }
 
-export function Equal(left: Exp, right: Exp): Equal {
+export function Equal(left: Exp, right: Exp, span: Span): Equal {
   return {
     "@type": "Goal",
     "@kind": "Equal",
     left,
     right,
+    span,
   }
 }
 
@@ -42,14 +44,16 @@ export type NotEqual = {
   "@kind": "NotEqual"
   left: Exp
   right: Exp
+  span: Span
 }
 
-export function NotEqual(left: Exp, right: Exp): NotEqual {
+export function NotEqual(left: Exp, right: Exp, span: Span): NotEqual {
   return {
     "@type": "Goal",
     "@kind": "NotEqual",
     left,
     right,
+    span,
   }
 }
 
