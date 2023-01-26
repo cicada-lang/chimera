@@ -1,6 +1,8 @@
-# dot
+# relation
 
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
+`GoalExps.Equal` -- add back
+`GoalExps.NotEqual` -- add back
 
 # prefix as namespace
 
