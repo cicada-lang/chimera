@@ -1,9 +1,6 @@
 # dot
 
-`Exps.Dot`
-`Exps.Dot` -- evaluate
 `Exps.Dot` -- syntax
-`doDot`
 
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
@@ -20,6 +17,8 @@
 # prefix as namespace
 
 `Values.Term` can have prefix -- for `Dot`
+
+`Exps.Dot` -- `quote`
 
 hyperrewrite can operate under with given prefix
 

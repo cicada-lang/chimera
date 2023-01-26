@@ -36,6 +36,10 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       ])
     }
 
+    case "Dot": {
+      return createVarCollection()
+    }
+
     case "Ap": {
       return varCollectionMerge(exp.args.map(varCollectionFromExp))
     }

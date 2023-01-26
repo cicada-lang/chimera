@@ -77,6 +77,10 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
+    case "Dot": {
+      return Actions.doDot(evaluate(mod, env, exp.target), exp.name)
+    }
+
     case "Ap": {
       return Actions.doAp(
         evaluate(mod, env, exp.target),

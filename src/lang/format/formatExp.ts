@@ -55,6 +55,10 @@ export function formatExp(exp: Exp): string {
       return `{ ${entries.join(", ")} }`
     }
 
+    case "Dot": {
+      return `${formatExp(exp.target)}.${exp.name}`
+    }
+
     case "Ap": {
       return `${formatExp(exp.target)}${formatArgs(exp.args)}`
     }

@@ -13,6 +13,7 @@ export type Exp =
   | ArrayCons
   | ArrayNull
   | Objekt
+  | Dot
   | Ap
   | Fn
   | Quote
@@ -148,6 +149,24 @@ export function Objekt(properties: Record<string, Exp>, span: Span): Objekt {
     "@type": "Exp",
     "@kind": "Objekt",
     properties,
+    span,
+  }
+}
+
+export type Dot = {
+  "@type": "Exp"
+  "@kind": "Dot"
+  target: Exp
+  name: string
+  span: Span
+}
+
+export function Dot(target: Exp, name: string, span: Span): Dot {
+  return {
+    "@type": "Exp",
+    "@kind": "Dot",
+    target,
+    name,
     span,
   }
 }

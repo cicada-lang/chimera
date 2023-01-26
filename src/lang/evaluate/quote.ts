@@ -52,6 +52,12 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
+    case "Dot": {
+      throw new Errors.LangError(`[quote] can not handle Exps.Dot`, {
+        span: exp.span,
+      })
+    }
+
     case "Ap": {
       if (exp.target["@kind"] !== "Var") {
         throw new Errors.LangError(
