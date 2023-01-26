@@ -1,7 +1,3 @@
-# relation
-
-[relation] `varCollection`
-
 # functional
 
 [functional] implement lambda calculus with env in functional language

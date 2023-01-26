@@ -18,6 +18,12 @@ import { refresh, refreshGoals } from "../refresh"
 import * as Rules from "../rule"
 import type { Value } from "../value"
 import * as Values from "../value"
+import {
+  varCollectionFromExp,
+  varCollectionFromGoalExp,
+  varCollectionMerge,
+  varCollectionValidate,
+} from "../var-collection"
 
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
@@ -96,6 +102,13 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Find": {
+      varCollectionValidate(
+        varCollectionMerge([
+          varCollectionFromExp(exp.pattern),
+          ...exp.goals.map(varCollectionFromGoalExp),
+        ]),
+      )
+
       const renames = new Map()
       const pattern = refresh(renames, quote(mod, mod.env, exp.pattern))
       const goals = refreshGoals(

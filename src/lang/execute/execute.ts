@@ -19,6 +19,12 @@ import {
   substitutionEntries,
 } from "../substitution"
 import * as Values from "../value"
+import {
+  varCollectionFromExps,
+  varCollectionFromGoalExp,
+  varCollectionMerge,
+  varCollectionValidate,
+} from "../var-collection"
 import { defineClause } from "./defineClause"
 import { executeStmts } from "./executeStmts"
 import { importMod } from "./importMod"
@@ -26,6 +32,13 @@ import { importMod } from "./importMod"
 export function execute(mod: Mod, stmt: Stmt): undefined | string {
   switch (stmt["@kind"]) {
     case "Clause": {
+      varCollectionValidate(
+        varCollectionMerge([
+          varCollectionFromExps(stmt.exps),
+          ...stmt.goals.map(varCollectionFromGoalExp),
+        ]),
+      )
+
       defineClause(mod, stmt.relationName, stmt.name, stmt.exps, stmt.goals)
       return
     }
