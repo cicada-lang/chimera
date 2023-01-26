@@ -1,7 +1,5 @@
 # dot
 
-`Values.Term` -- fix `match`
-
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
 # prefix as namespace
