@@ -1,18 +1,14 @@
 # dot
 
+`utils/arrayEqual`
+`Values.Term` -- fix `unify`
+`Values.Term` -- fix `match`
+`Exps.Ap` -- fix `quote`
+`Exps.Dot` -- fix `quote`
+
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
-# claim and runtime type assertion
-
-`Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
-
-- Using `claim` as keyword.
-
 # prefix as namespace
-
-`Values.Term` can have prefix -- for `Dot`
-
-`Exps.Dot` -- `quote`
 
 hyperrewrite can operate under with given prefix
 
@@ -38,6 +34,16 @@ a value for hyperrewrite failure
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
+
+# claim and runtime type assertion
+
+`Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
+
+- Using `claim` as keyword.
+
+`forall`
+
+`exists`
 
 # term rewriting
 

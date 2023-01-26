@@ -30,6 +30,7 @@ export function substitutionDeepWalk(
 
     case "Term": {
       return Values.Term(
+        value.prefix,
         value.name,
         value.args.map((arg) => substitutionDeepWalk(substitution, arg)),
       )

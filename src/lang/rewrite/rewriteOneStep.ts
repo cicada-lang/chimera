@@ -62,7 +62,7 @@ export function rewriteOneStep(rule: Rule, value: Value): Value | undefined {
       for (const [index, arg] of value.args.entries()) {
         const result = rewriteOneStep(rule, arg)
         if (result !== undefined) {
-          return Values.Term(value.name, [
+          return Values.Term(value.prefix, value.name, [
             ...value.args.slice(0, index),
             result,
             ...value.args.slice(index + 1),

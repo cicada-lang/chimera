@@ -67,6 +67,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       }
 
       return Values.Term(
+        [],
         exp.target.name,
         exp.args.map((arg) => quote(mod, env, arg)),
       )
