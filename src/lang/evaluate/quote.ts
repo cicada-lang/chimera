@@ -82,8 +82,8 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
         if (target["@kind"] === "Dot") {
           const { prefix, name } = parseTermHead(target.target)
           return {
-            prefix: [target.name, ...prefix],
-            name,
+            prefix: [...prefix, name],
+            name: target.name,
           }
         }
 

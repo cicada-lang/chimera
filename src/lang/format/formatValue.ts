@@ -56,7 +56,13 @@ export function formatValue(value: Value): string {
 
     case "Term": {
       const args = value.args.map(formatValue)
-      return `${value.name}${formatArgs(args)}`
+
+      if (value.prefix.length === 0) {
+        return `${value.name}${formatArgs(args)}`
+      }
+
+      const prefix = value.prefix.join(".")
+      return `${prefix}.${value.name}${formatArgs(args)}`
     }
 
     case "Relation": {

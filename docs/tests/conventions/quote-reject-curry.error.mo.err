@@ -1,4 +1,5 @@
-[quote] can not quote application whose target is not a variable
+[quote Ap] can not quote application
+  target: f(x)
 
  1 |print quote f(x)(y)
  2 |

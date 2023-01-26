@@ -1,6 +1,5 @@
 # dot
 
-`Values.Term` -- fix `formatValue`
 `Values.Term` -- fix `unify`
 `Values.Term` -- fix `match`
 
