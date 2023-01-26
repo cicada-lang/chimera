@@ -1,6 +1,6 @@
 # relation
 
-`GoalExps.Apply` -- support `Dot` -- instead of always using `name`
+`GoalExps.Term` -- support `Dot` -- instead of always using `name`
 
 # prefix as namespace
 

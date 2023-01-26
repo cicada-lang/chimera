@@ -8,7 +8,7 @@ import type { Mod } from "../mod"
 
 export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
   switch (goal["@kind"]) {
-    case "Apply": {
+    case "Term": {
       const target = mod.find(goal.name)
       if (target === undefined) {
         throw new Errors.LangError(
@@ -17,7 +17,7 @@ export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
         )
       }
 
-      return Goals.Apply(
+      return Goals.Term(
         goal.name,
         target,
         goal.args.map((arg) => quote(mod, env, arg)),

@@ -4,7 +4,7 @@ import { varCollectionFromExps, varCollectionMerge } from "../var-collection"
 
 export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
   switch (goal["@kind"]) {
-    case "Apply": {
+    case "Term": {
       return varCollectionFromExps(goal.args)
     }
 

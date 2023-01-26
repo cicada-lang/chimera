@@ -4,7 +4,7 @@ import type { GoalExp } from "../goal-exp"
 
 export function formatGoalExp(goal: GoalExp): string {
   switch (goal["@kind"]) {
-    case "Apply": {
+    case "Term": {
       return `${goal.name}${formatArgs(goal.args)}`
     }
 

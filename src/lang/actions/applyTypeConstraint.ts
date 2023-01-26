@@ -9,5 +9,5 @@ export function applyTypeConstraint(
 ): Value {
   assertArity(args, 1, { who: "applyTypeConstraint" })
 
-  return Values.Goal(Goals.Apply(target.name, target, args))
+  return Values.Goal(Goals.Term(target.name, target, args))
 }
