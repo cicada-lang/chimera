@@ -7,15 +7,21 @@
 
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
+# module
+
+[module] support `import * as <name>`
+
+# claim and runtime type assertion
+
+`Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
+
+- Using `claim` as keyword.
+
 # prefix as namespace
 
 `Values.Term` can have prefix -- for `Dot`
 
 hyperrewrite can operate under with given prefix
-
-# module
-
-[module] support `import * as <name>`
 
 # CHR
 
@@ -55,12 +61,6 @@ hyperrewrite/boolean-algebra -- add
 hyperrewrite/boolean-algebra -- search
 
 `enumerationDomain` -- `NotEq`
-
-# claim and runtime type assertion
-
-`Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
-
-- Using `claim` as keyword.
 
 # first-order logic
 
