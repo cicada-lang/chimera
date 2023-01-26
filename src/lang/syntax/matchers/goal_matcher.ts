@@ -6,7 +6,7 @@ import * as matchers from "../matchers"
 export function goal_matcher(tree: pt.Tree): GoalExp {
   return pt.matcher<GoalExp>({
     "goal:apply": ({ name, args }, { span }) =>
-      GoalExps.Term(pt.str(name), matchers.args_matcher(args), span),
+      GoalExps.Apply(pt.str(name), matchers.args_matcher(args), span),
     "goal:equal": ({ left, right }, { span }) =>
       GoalExps.Equal(
         matchers.exp_matcher(left),

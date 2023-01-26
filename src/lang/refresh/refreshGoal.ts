@@ -15,8 +15,8 @@ export function refreshGoal(
   goal: Goal,
 ): Goal {
   switch (goal["@kind"]) {
-    case "Term": {
-      return Goals.Term(
+    case "Apply": {
+      return Goals.Apply(
         goal.name,
         refresh(renames, goal.target),
         refreshValues(renames, goal.args),

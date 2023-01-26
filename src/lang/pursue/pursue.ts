@@ -15,7 +15,7 @@ function unit(solution: Solution | undefined): Array<Solution> {
 
 export function pursue(solution: Solution, goal: Goal): Array<Solution> {
   switch (goal["@kind"]) {
-    case "Term": {
+    case "Apply": {
       if (goal.target["@kind"] === "Relation") {
         return applyRelation(solution, goal.target, goal.args)
       }

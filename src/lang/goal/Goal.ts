@@ -1,19 +1,19 @@
 import type { Value } from "../value"
 
-export type Goal = Term | Equal | NotEqual | Conj | Disj
+export type Goal = Apply | Equal | NotEqual | Conj | Disj
 
-export type Term = {
+export type Apply = {
   "@type": "Goal"
-  "@kind": "Term"
+  "@kind": "Apply"
   name: string
   target: Value
   args: Array<Value>
 }
 
-export function Term(name: string, target: Value, args: Array<Value>): Term {
+export function Apply(name: string, target: Value, args: Array<Value>): Apply {
   return {
     "@type": "Goal",
-    "@kind": "Term",
+    "@kind": "Apply",
     name,
     target,
     args,

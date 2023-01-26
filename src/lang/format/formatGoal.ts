@@ -3,7 +3,7 @@ import type { Goal } from "../goal"
 
 export function formatGoal(goal: Goal): string {
   switch (goal["@kind"]) {
-    case "Term": {
+    case "Apply": {
       const args = goal.args.map((arg) => formatValue(arg)).join(", ")
       return `${goal.name}(${args})`
     }

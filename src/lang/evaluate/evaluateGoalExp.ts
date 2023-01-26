@@ -8,20 +8,16 @@ import type { Mod } from "../mod"
 
 export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
   switch (goal["@kind"]) {
-    case "Term": {
+    case "Apply": {
       const target = mod.find(goal.name)
       if (target === undefined) {
         throw new Errors.LangError(
-          [
-            `[evaluateGoal Term] undefined term`,
-            // `  prefix: ${goal.prefix.join(", ")}`,
-            `  name: ${goal.name}`,
-          ].join("\n"),
+          `[evaluateGoal] Apply fail, undefined target name: ${goal.name}`,
           { span: goal.span },
         )
       }
 
-      return Goals.Term(
+      return Goals.Apply(
         goal.name,
         target,
         goal.args.map((arg) => quote(mod, env, arg)),

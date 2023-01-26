@@ -1,20 +1,20 @@
 import type { Exp } from "../exp"
 import type { Span } from "../span"
 
-export type GoalExp = Term | Equal | NotEqual | Conj | Disj
+export type GoalExp = Apply | Equal | NotEqual | Conj | Disj
 
-export type Term = {
+export type Apply = {
   "@type": "GoalExp"
-  "@kind": "Term"
+  "@kind": "Apply"
   name: string
   args: Array<Exp>
   span: Span
 }
 
-export function Term(name: string, args: Array<Exp>, span: Span): Term {
+export function Apply(name: string, args: Array<Exp>, span: Span): Apply {
   return {
     "@type": "GoalExp",
-    "@kind": "Term",
+    "@kind": "Apply",
     name,
     args,
     span,

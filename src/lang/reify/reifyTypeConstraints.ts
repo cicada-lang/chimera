@@ -40,7 +40,7 @@ function typeConstraintAsGoal(
   typeConstraint: Values.TypeConstraint,
   substitutionForRenaming: Substitution,
 ): Goal {
-  return Goals.Term(typeConstraint.name, typeConstraint, [
+  return Goals.Apply(typeConstraint.name, typeConstraint, [
     substitutionDeepWalk(substitutionForRenaming, variable),
   ])
 }
