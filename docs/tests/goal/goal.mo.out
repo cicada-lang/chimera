@@ -1,4 +1,4 @@
 $Relation(Exp, 1)
-$Goal($Relation(Exp, 1)(var("x")))
+$Goal(Exp(var("x")))
 $TypeConstraint(Number)
-$Goal($TypeConstraint(Number)(1))
+$Goal(Number(1))

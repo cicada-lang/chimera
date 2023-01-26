@@ -5,6 +5,15 @@ export function formatGoal(goal: Goal): string {
   switch (goal["@kind"]) {
     case "Apply": {
       const args = goal.args.map((arg) => formatValue(arg)).join(", ")
+
+      if (goal.target["@kind"] === "TypeConstraint") {
+        return `${goal.target.name}(${args})`
+      }
+
+      if (goal.target["@kind"] === "Relation") {
+        return `${goal.target.name}(${args})`
+      }
+
       return `${formatValue(goal.target)}(${args})`
     }
 

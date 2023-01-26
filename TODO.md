@@ -1,5 +1,3 @@
-improve `formatGoal`
-
 # prefix as namespace
 
 hyperrewrite can operate under with given prefix
