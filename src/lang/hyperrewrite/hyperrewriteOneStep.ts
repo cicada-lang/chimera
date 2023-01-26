@@ -1,4 +1,5 @@
 import { catchReturnValue } from "../actions/catchReturnValue"
+import { defineRenames } from "../actions/defineRenames"
 import { envMerge } from "../env"
 import { quote } from "../evaluate"
 import type { Hyperrule } from "../hyperrule"
@@ -33,10 +34,7 @@ export function hyperrewriteOneStep(
         return undefined
       }
 
-      for (const [name, variable] of renames.entries()) {
-        mod.define(name, substitutionDeepWalk(result.substitution, variable))
-      }
-
+      defineRenames(mod, renames, result.substitution)
       const returnValue = catchReturnValue(mod, hyperrule.stmts)
 
       if (returnValue["@kind"] === "Null") {
@@ -70,10 +68,7 @@ export function hyperrewriteOneStep(
         return undefined
       }
 
-      for (const [name, variable] of renames.entries()) {
-        mod.define(name, substitutionDeepWalk(result.substitution, variable))
-      }
-
+      defineRenames(mod, renames, result.substitution)
       const returnValue = catchReturnValue(mod, hyperrule.stmts)
 
       if (returnValue["@kind"] === "Null") {

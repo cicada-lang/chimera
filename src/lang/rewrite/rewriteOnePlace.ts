@@ -1,4 +1,5 @@
 import { catchReturnValue } from "../actions/catchReturnValue"
+import { defineRenames } from "../actions/defineRenames"
 import { envMerge } from "../env"
 import { quote } from "../evaluate"
 import { match } from "../match"
@@ -21,10 +22,7 @@ export function rewriteOnePlace(rule: Rule, value: Value): Value | undefined {
         return undefined
       }
 
-      for (const [name, variable] of renames.entries()) {
-        mod.define(name, substitutionDeepWalk(substitution, variable))
-      }
-
+      defineRenames(mod, renames, substitution)
       const returnValue = catchReturnValue(mod, rule.stmts)
 
       if (returnValue["@kind"] === "Null") {
