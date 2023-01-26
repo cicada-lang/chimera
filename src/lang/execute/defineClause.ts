@@ -1,6 +1,5 @@
 import { Clause as createClause } from "../clause"
 import * as Errors from "../errors"
-import { quote } from "../evaluate"
 import type { Exp } from "../exp"
 import type { GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
@@ -42,7 +41,7 @@ export function defineClause(
     mod,
     mod.env,
     clauseName || relation.clauses.length.toString(),
-    exps.map((exp) => quote(mod, mod.env, exp)),
+    exps,
     goals,
   )
 

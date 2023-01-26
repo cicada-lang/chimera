@@ -1,4 +1,4 @@
-import { evaluateGoalExp } from "../evaluate"
+import { evaluateGoalExp, quote } from "../evaluate"
 import { refreshGoals, refreshValues } from "../refresh"
 import type { Solution } from "../solution"
 import type * as Values from "../value"
@@ -21,7 +21,12 @@ export function applyRelation(
 
     const renames = new Map()
 
-    const values = refreshValues(renames, clause.patterns)
+    const values = refreshValues(
+      renames,
+      clause.patterns.map((pattern) =>
+        quote(clause.mod, clause.mod.env, pattern),
+      ),
+    )
     const newSolution = pursueManyEqual(solution, values, args)
 
     /**
