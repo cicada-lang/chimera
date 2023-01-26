@@ -1,6 +1,8 @@
 # relation
 
-`GoalExp` -- support any `Exp` that evaluate to `Relation` -- instead of using `GoalExps.Apply`
+fix `Values.toArray` -- use loop
+
+fix `Values.fromArray` -- use loop
 
 `GoalExp` -- should be evaluated late -- for the repl
 
@@ -22,6 +24,8 @@ remove the feature for importing form url, and use for sync `execute` only
 `Exps.Dot` -- evaluate
 `Exps.Dot` -- syntax
 `doDot`
+
+`GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 
 # prefix as namespace
 
