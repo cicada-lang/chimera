@@ -12,8 +12,8 @@ rule sub1 {
 }
 
 rule r {
-  use add1
-  use sub1
+  include add1
+  include sub1
 }
 
 print r(quote add1(1))

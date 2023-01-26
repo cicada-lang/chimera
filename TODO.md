@@ -1,7 +1,3 @@
-# CHR
-
-a value for hyperrewrite failure
-
 # dot
 
 `Exps.Dot`
@@ -37,6 +33,8 @@ hyperrewrite can operate under with given prefix
 `Goals.Constraints`
 
 `Goals.Constraints` -- syntax
+
+a value for hyperrewrite failure
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 

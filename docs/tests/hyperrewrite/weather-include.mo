@@ -9,8 +9,8 @@ hyperrule sun {
 
 hyperrule weather {
   [SunRain()] => quote [Sun(), Rain()]
-  use rain
-  use sun
+  include rain
+  include sun
 }
 
 print weather(quote [SunRain()])
