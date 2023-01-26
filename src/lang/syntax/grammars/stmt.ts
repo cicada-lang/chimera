@@ -49,7 +49,7 @@ export const stmt = {
       '"import"',
       '"*"',
       '"as"',
-      { names: "variable_names" },
+      { name: "variable_name" },
       '"from"',
       { path: { $pattern: ["string"] } },
     ],
