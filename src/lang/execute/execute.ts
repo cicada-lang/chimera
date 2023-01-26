@@ -18,6 +18,7 @@ import {
   substitutionEmpty,
   substitutionEntries,
 } from "../substitution"
+import type { Value } from "../value"
 import * as Values from "../value"
 import {
   varCollectionFromExps,
@@ -137,6 +138,18 @@ export function execute(mod: Mod, stmt: Stmt): undefined | string {
         mod.define(name, value)
       }
 
+      mod.imported.push(mod.resolve(stmt.path))
+      return
+    }
+
+    case "ImportAllAs": {
+      const properties: Record<string, Value> = {}
+      const importedMod = importMod(mod, stmt.path)
+      for (const [name, value] of importedMod.exportedEntries()) {
+        properties[name] = value
+      }
+
+      mod.define(stmt.name, Values.Objekt(properties))
       mod.imported.push(mod.resolve(stmt.path))
       return
     }

@@ -1,6 +1,6 @@
 # dot
 
-[module] support `import * as <name>`
+`Stmts.ImportAllAs` -- syntax
 
 `GoalExps.Apply` -- support `Dot` -- instead of always using `name`
 

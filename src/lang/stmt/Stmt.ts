@@ -15,6 +15,7 @@ export type Stmt =
   | Hyperrule
   | Import
   | ImportAll
+  | ImportAllAs
   | Export
   | ExportNames
   | Compute
@@ -183,6 +184,29 @@ export function ImportAll(path: string, span: Span): ImportAll {
     span,
   }
 }
+
+export type ImportAllAs = {
+  "@type": "Stmt"
+  "@kind": "ImportAllAs"
+  name: string
+  path: string
+  span: Span
+}
+
+export function ImportAllAs(
+  name: string,
+  path: string,
+  span: Span,
+): ImportAllAs {
+  return {
+    "@type": "Stmt",
+    "@kind": "ImportAllAs",
+    name,
+    path,
+    span,
+  }
+}
+
 export type Export = {
   "@type": "Stmt"
   "@kind": "Export"

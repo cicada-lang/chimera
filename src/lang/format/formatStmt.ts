@@ -62,6 +62,10 @@ export function formatStmt(stmt: Stmt): string {
       return `import * from "${stmt.path}"`
     }
 
+    case "ImportAllAs": {
+      return `import * as ${stmt.name} from "${stmt.path}"`
+    }
+
     case "Export": {
       return `export ${formatStmt(stmt.stmt)}`
     }
