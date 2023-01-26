@@ -19,7 +19,6 @@ import {
   substitutionEntries,
 } from "../substitution"
 import * as Values from "../value"
-
 import { defineClause } from "./defineClause"
 import { executeStmtsSync } from "./executeStmtsSync"
 
@@ -103,6 +102,10 @@ export function executeSync(mod: Mod, stmt: Stmt): undefined | string {
     }
 
     case "ExportNames": {
+      for (const name of stmt.names) {
+        mod.exported.add(name)
+      }
+
       return
     }
 

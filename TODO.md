@@ -1,12 +1,10 @@
 # relation
 
-[relation] `varCollection`
-
-`stmt` -- remove `prepare`
-
 remove the feature for importing form url, and use for sync `execute` only
 
 - to support a self-hosting compiler
+
+[relation] `varCollection`
 
 # functional
 

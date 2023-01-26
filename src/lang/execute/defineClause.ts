@@ -4,6 +4,7 @@ import type { Exp } from "../exp"
 import type { GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
 import * as Values from "../value"
+import { Relation } from "../value"
 
 export function defineClause(
   mod: Mod,
@@ -12,15 +13,14 @@ export function defineClause(
   exps: Array<Exp>,
   goals: Array<GoalExp> = [],
 ): void {
-  const relation = mod.find(name)
-
-  if (relation === undefined) {
-    throw new Errors.LangError(
-      `[defineClause] undefined relation name: ${name}`,
-    )
-  }
+  let relation = mod.find(name) || Relation(mod, name, undefined, [])
 
   Values.assertValue(relation, "Relation", { who: "defineClause" })
+
+  if (relation.mod !== mod) {
+    // NOTE We should override imported relation.
+    relation = Relation(mod, name, undefined, [])
+  }
 
   if (relation.arity !== undefined) {
     if (exps.length !== relation.arity) {
