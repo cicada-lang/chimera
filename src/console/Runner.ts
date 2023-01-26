@@ -10,7 +10,7 @@ export class Runner {
 
   constructor() {
     this.loader.fetcher.register("file", (url) =>
-      fs.promises.readFile(url.pathname, "utf8"),
+      fs.readFileSync(url.pathname, "utf8"),
     )
   }
 

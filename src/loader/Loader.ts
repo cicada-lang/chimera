@@ -1,4 +1,4 @@
-import { Fetcher } from "@cicada-lang/framework/lib/fetcher"
+import { FetcherSync } from "@cicada-lang/framework/lib/fetcher-sync"
 import { Mod } from "../lang/mod"
 import type { Script } from "../script"
 import * as Scripts from "../scripts"
@@ -9,7 +9,7 @@ export interface LoaderOptions {
 
 export class Loader {
   private cache: Map<string, Script> = new Map()
-  fetcher = new Fetcher()
+  fetcher = new FetcherSync()
   tracked: Array<URL> = []
 
   constructor(public options: LoaderOptions) {}
@@ -19,7 +19,7 @@ export class Loader {
     if (found !== undefined) return found.mod
 
     this.tracked.push(url)
-    const text = options?.text || (await this.fetcher.fetch(url))
+    const text = options?.text || this.fetcher.fetch(url)
     const mod = new Mod({ url, loader: this })
     const script = Scripts.createScript(mod, text)
     await script.run()

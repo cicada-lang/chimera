@@ -1,8 +1,8 @@
-# relation
-
-remove the feature for importing form url, and use for sync `execute` only
+sync `execute` only
 
 - to support a self-hosting compiler
+
+# relation
 
 [relation] `varCollection`
 

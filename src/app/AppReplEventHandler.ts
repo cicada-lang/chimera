@@ -16,12 +16,12 @@ export class AppReplEventHandler extends ReplEventHandler {
   constructor() {
     super()
     this.loader.fetcher.register("file", (url) =>
-      fs.promises.readFile(url.pathname, "utf8"),
+      fs.readFileSync(url.pathname, "utf8"),
     )
     this.loader.fetcher.register("repl", (url) => {
       return url.pathname === this.pathname
         ? ""
-        : fs.promises.readFile(url.pathname, "utf8")
+        : fs.readFileSync(url.pathname, "utf8")
     })
   }
 
