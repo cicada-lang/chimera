@@ -1,3 +1,4 @@
+import { evaluateGoalExp } from "../evaluate"
 import { refreshGoals, refreshValues } from "../refresh"
 import type { Solution } from "../solution"
 import type * as Values from "../value"
@@ -33,7 +34,12 @@ export function applyRelation(
 
     if (newSolution === undefined) return []
 
-    const goals = refreshGoals(renames, clause.goals)
+    const goals = refreshGoals(
+      renames,
+      clause.goals.map((goal) =>
+        evaluateGoalExp(clause.mod, clause.mod.env, goal),
+      ),
+    )
 
     return [
       newSolution.update({

@@ -1,7 +1,5 @@
 # relation
 
-`GoalExp` -- should be evaluated late -- for the repl
-
 [relation] `varCollection`
 
 `stmt` -- remove `prepare`

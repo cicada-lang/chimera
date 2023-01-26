@@ -1,6 +1,6 @@
 import { Clause as createClause } from "../clause"
 import * as Errors from "../errors"
-import { evaluateGoalExp, quote } from "../evaluate"
+import { quote } from "../evaluate"
 import type { Exp } from "../exp"
 import type { GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
@@ -39,9 +39,11 @@ export function defineClause(
   relation.arity = exps.length
 
   const clause = createClause(
+    mod,
+    mod.env,
     clauseName || relation.clauses.length.toString(),
     exps.map((exp) => quote(mod, mod.env, exp)),
-    goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
+    goals,
   )
 
   /**
