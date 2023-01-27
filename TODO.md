@@ -1,14 +1,12 @@
 # CHR
 
-`Values.ConstraintSystem` -- has `hyperrule` and `termHeads`
-
-[global] `createConstraintSystem` -- from `hyperrule`
+`Hyperrule` and `termHeads`
 
 `Values.Constraint`
 
-`Values.ConstraintSystem` -- overload `Ap` -- to get `Values.Constraint`
+`Values.Hyperrule` -- overload `Ap` -- to get `Values.Constraint`
 
-`Values.ConstraintSystem` -- overload `Dot` -- to get `Values.Constraint`
+`Values.Hyperrule` -- overload `Dot` -- to get `Values.Constraint`
 
 [goal] `pursue/applyConstraint`
 
