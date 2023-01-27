@@ -2,11 +2,11 @@ import type { Env } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import type { Exp } from "../exp"
-import { formatExp } from "../format"
 import { freshen } from "../freshen"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
+import { createTermHeadFromExp } from "./createTermHeadFromExp"
 
 export function quote(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
@@ -60,48 +60,9 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Ap": {
-      const { prefix, name } = parseTermHead(exp.target)
-
-      return Values.Term(
-        prefix,
-        name,
-        exp.args.map((arg) => quote(mod, env, arg)),
-      )
-
-      type TermHead = {
-        prefix: Array<string>
-        name: string
-      }
-
-      function parseTermHead(target: Exp): TermHead {
-        if (target["@kind"] === "Var") {
-          return {
-            prefix: [],
-            name: target.name,
-          }
-        }
-
-        if (target["@kind"] === "Dot") {
-          const { prefix, name } = parseTermHead(target.target)
-          return {
-            prefix: [...prefix, name],
-            name: target.name,
-          }
-        }
-
-        throw new Errors.LangError(
-          [
-            `[quote Ap] can not quote application`,
-            `  target: ${formatExp(target)}`,
-          ].join("\n"),
-          { span: exp.span },
-        )
-      }
-
-      throw new Errors.LangError(
-        `[quote] can not quote application whose target is not a variable`,
-        { span: exp.span },
-      )
+      const { prefix, name } = createTermHeadFromExp(exp.target)
+      const args = exp.args.map((arg) => quote(mod, env, arg))
+      return Values.Term(prefix, name, args)
     }
 
     case "Fn": {

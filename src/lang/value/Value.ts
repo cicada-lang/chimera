@@ -153,6 +153,11 @@ export function Objekt(properties: Record<string, Value>, etc?: Value): Objekt {
   }
 }
 
+export type TermHead = {
+  prefix: Array<string>
+  name: string
+}
+
 export type Term = {
   "@type": "Value"
   "@kind": "Term"
