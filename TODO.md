@@ -1,4 +1,3 @@
-[refactor] extract `quote` dir
 [refactor] extract type `TermHead`
 [refactor] extract functions about `TermHead`
 

@@ -7,13 +7,13 @@ import {
   evaluateHyperruleExp,
   evaluateRuleExp,
   lookup,
-  quote,
 } from "../evaluate"
 import type { Exp } from "../exp"
 import { find } from "../find"
 import { freshen } from "../freshen"
 import * as Hyperrules from "../hyperrule"
 import type { Mod } from "../mod"
+import { quote } from "../quote"
 import { refresh, refreshGoals } from "../refresh"
 import * as Rules from "../rule"
 import type { Value } from "../value"

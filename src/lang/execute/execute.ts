@@ -1,15 +1,11 @@
 import * as Errors from "../errors"
-import {
-  evaluate,
-  evaluateHyperruleExp,
-  evaluateRuleExp,
-  quote,
-} from "../evaluate"
+import { evaluate, evaluateHyperruleExp, evaluateRuleExp } from "../evaluate"
 import * as Exps from "../exp"
 import { formatExp, formatValue } from "../format"
 import * as Hyperrules from "../hyperrule"
 import { match } from "../match"
 import type { Mod } from "../mod"
+import { quote } from "../quote"
 import * as Rules from "../rule"
 import type { Stmt } from "../stmt"
 import { ReturnValue } from "../stmt"

@@ -1,9 +1,9 @@
 import type { Caze } from "../caze"
 import { envMerge } from "../env"
 import * as Errors from "../errors"
-import { quote } from "../evaluate"
 import { formatValue } from "../format"
 import { match } from "../match"
+import { quote } from "../quote"
 import {
   substitutionDeepWalk,
   substitutionEmpty,

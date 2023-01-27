@@ -1,9 +1,10 @@
 import type { Env } from "../env"
-import { evaluate, quote } from "../evaluate"
+import { evaluate } from "../evaluate"
 import type { Goal } from "../goal"
 import * as Goals from "../goal"
 import type { GoalExp } from "../goal-exp"
 import type { Mod } from "../mod"
+import { quote } from "../quote"
 
 export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
   switch (goal["@kind"]) {

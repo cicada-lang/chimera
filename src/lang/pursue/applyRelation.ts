@@ -1,4 +1,5 @@
-import { evaluateGoalExp, quote } from "../evaluate"
+import { evaluateGoalExp } from "../evaluate"
+import { quote } from "../quote"
 import { refreshGoals, refreshValues } from "../refresh"
 import type { Solution } from "../solution"
 import type * as Values from "../value"
