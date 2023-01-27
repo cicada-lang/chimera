@@ -11,7 +11,7 @@
     ["a", "c"] => ["b"]
     ["b", "c"] => ["a"]
   }
-  print abc(quote ["a", "a", "a"])
+  print hyperrewrite(abc, quote ["a", "a", "a"])
   rule conjunctiveNormalForm {
     not(not(x)) => quote x
     not(and(x, y)) => quote or(not(x), not(y))

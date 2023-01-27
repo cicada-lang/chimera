@@ -14,7 +14,7 @@ function f() {
     ["b", "c"] => ["a"]
   }
 
-  print abc(quote ["a", "a", "a"])
+  print hyperrewrite(abc, quote ["a", "a", "a"])
 
   rule conjunctiveNormalForm {
     not(not(x)) => quote x
