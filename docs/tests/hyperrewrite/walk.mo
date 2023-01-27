@@ -3,7 +3,7 @@ hyperrule walk {
   ["forward", "backward"] => quote []
 }
 
-print walk(quote [
+print hyperrewrite(walk, quote [
   "left", "forward", "right",
   "right", "forward", "forward",
   "backward", "left", "left",

@@ -1,8 +1,15 @@
-import { hyperrewriteManySteps } from "../hyperrewrite"
+import { hyperrewrite, hyperrewriteManySteps } from "../hyperrewrite"
 import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export function aboutHyperrule(globals: GlobalStore): void {
+  globals.primitive("hyperrewrite", 2, ([hyperrule, target]) => {
+    Values.assertValue(hyperrule, "Hyperrule", { who: "hyperrewrite" })
+    return Values.fromArray(
+      hyperrewrite(hyperrule.hyperrule, Values.toArray(target)),
+    )
+  })
+
   globals.primitive(
     "hyperrewriteManySteps",
     3,

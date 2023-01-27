@@ -2,4 +2,4 @@ hyperrule h {
   ["a", "b"] +> quote ["c", "d"]
 }
 
-print h(quote ["a", "b"])
+print hyperrewrite(h, quote ["a", "b"])

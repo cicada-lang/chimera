@@ -1,5 +1,3 @@
-[global] `hyperrewrite` -- quit overloading `Ap` for `hyperrewrite`
-
 use `false` as the value for hyperrewrite failure
 
 # CHR

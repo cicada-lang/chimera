@@ -4,23 +4,23 @@ hyperrule abc {
   ["b", "c"] => quote ["a"]
 }
 
-print abc(quote ["a", "a", "a"])
+print hyperrewrite(abc, quote ["a", "a", "a"])
 
-print abc(quote [
+print hyperrewrite(abc, quote [
   "a", "b", "b", "a",
 ])
 
-print abc(quote [
+print hyperrewrite(abc, quote [
   "a", "b", "b", "a",
   "a",
 ])
 
-print abc(quote [
+print hyperrewrite(abc, quote [
   "a", "b", "b", "a",
   "a", "a",
 ])
 
-print abc(quote [
+print hyperrewrite(abc, quote [
   "a", "b", "b", "a",
   "a", "a", "a",
 ])

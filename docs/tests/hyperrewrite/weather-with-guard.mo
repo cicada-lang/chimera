@@ -6,8 +6,8 @@ hyperrule weather {
   [Sun(_x)] => quote [WearSunGlasses(), Cool()]
 }
 
-print weather(quote [SunRain(3)])
-print weather(quote [SunRain(3), Car()])
+print hyperrewrite(weather, quote [SunRain(3)])
+print hyperrewrite(weather, quote [SunRain(3), Car()])
 
-print weather(quote [SunRain(10)])
-print weather(quote [SunRain(10), Car()])
+print hyperrewrite(weather, quote [SunRain(10)])
+print hyperrewrite(weather, quote [SunRain(10), Car()])

@@ -5,5 +5,5 @@ let weather = hyperrule {
   [Sun()] => quote [WearSunGlasses(), Cool()]
 }
 
-print weather(quote [SunRain()])
-print weather(quote [SunRain(), Car()])
+print hyperrewrite(weather, quote [SunRain()])
+print hyperrewrite(weather, quote [SunRain(), Car()])

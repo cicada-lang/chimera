@@ -3,16 +3,11 @@ import { formatValue } from "../format"
 import type { Value } from "../value"
 import { applyCurried } from "./applyCurried"
 import { applyFn } from "./applyFn"
-import { applyHyperrule } from "./applyHyperrule"
 import { applyPrimitive } from "./applyPrimitive"
 import { applyRelation } from "./applyRelation"
 import { applyTypeConstraint } from "./applyTypeConstraint"
 
 export function doAp(target: Value, args: Array<Value>): Value {
-  if (target["@kind"] === "Hyperrule") {
-    return applyHyperrule(target, args)
-  }
-
   if (target["@kind"] === "Fn") {
     return applyFn(target, args)
   }
