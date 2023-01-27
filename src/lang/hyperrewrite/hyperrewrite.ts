@@ -9,9 +9,13 @@ export function hyperrewrite(
   hyperrule: Hyperrule,
   values: Array<Value>,
   appliedPropagations: Array<Propagation> = [],
-): Array<Value> {
+): Array<Value> | false {
   while (true) {
     const result = hyperrewriteOneStep(hyperrule, values, appliedPropagations)
+
+    if (result === false) {
+      return false
+    }
 
     if (result === undefined) {
       return values

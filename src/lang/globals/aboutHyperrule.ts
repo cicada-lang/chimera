@@ -5,9 +5,12 @@ import type { GlobalStore } from "./GlobalStore"
 export function aboutHyperrule(globals: GlobalStore): void {
   globals.primitive("hyperrewrite", 2, ([hyperrule, target]) => {
     Values.assertValue(hyperrule, "Hyperrule", { who: "hyperrewrite" })
-    return Values.fromArray(
-      hyperrewrite(hyperrule.hyperrule, Values.toArray(target)),
-    )
+    const result = hyperrewrite(hyperrule.hyperrule, Values.toArray(target))
+    if (result === false) {
+      return Values.Boolean(false)
+    }
+
+    return Values.fromArray(result)
   })
 
   globals.primitive(
@@ -25,7 +28,15 @@ export function aboutHyperrule(globals: GlobalStore): void {
         Values.toArray(target),
       )
 
-      return Values.fromArray(results.map(Values.fromArray))
+      return Values.fromArray(
+        results.map((result) => {
+          if (result === false) {
+            return Values.Boolean(false)
+          }
+
+          return Values.fromArray(result)
+        }),
+      )
     },
   )
 }

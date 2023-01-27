@@ -15,7 +15,7 @@ export function hyperrewriteOneStep(
   hyperrule: Hyperrule,
   values: Array<Value>,
   appliedPropagations: Array<Propagation>,
-): Array<Value> | undefined {
+): Array<Value> | false | undefined {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
       const mod = hyperrule.mod.copy()
@@ -45,6 +45,10 @@ export function hyperrewriteOneStep(
         result.substitution,
         refresh(renames, returnValue),
       )
+
+      if (to["@kind"] === "Boolean" && to.data === false) {
+        return false
+      }
 
       return [...result.remainValues, ...Values.toArray(to)]
     }
@@ -80,7 +84,12 @@ export function hyperrewriteOneStep(
         refresh(renames, returnValue),
       )
 
+      if (to["@kind"] === "Boolean" && to.data === false) {
+        return false
+      }
+
       // NOTE Keep the input values.
+
       return [...values, ...Values.toArray(to)]
     }
 

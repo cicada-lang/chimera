@@ -3,7 +3,7 @@ hyperrule intervalDomain {
 
   [Range(_, a, b)] =>
   if and [isNumber(a), isNumber(b), gt(a, b)]
-  then quote [false]
+  then false
 
   // intersection
 

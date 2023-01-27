@@ -1,5 +1,3 @@
-use `false` as the value for hyperrewrite failure
-
 # CHR
 
 `Values.ConstraintSystem` -- has `hyperrule` and `termHeads`

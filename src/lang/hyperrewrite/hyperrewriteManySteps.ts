@@ -10,10 +10,16 @@ export function hyperrewriteManySteps(
   hyperrule: Hyperrule,
   values: Array<Value>,
   appliedPropagations: Array<Propagation> = [],
-): Array<Array<Value>> {
-  const results = [values]
+): Array<Array<Value> | false> {
+  const results: Array<Array<Value> | false> = [values]
   while (results.length < limit) {
     const result = hyperrewriteOneStep(hyperrule, values, appliedPropagations)
+
+    if (result === false) {
+      results.push(false)
+      return results
+    }
+
     if (result === undefined) {
       return results
     }
