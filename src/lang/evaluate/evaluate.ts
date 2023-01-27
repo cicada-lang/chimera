@@ -6,7 +6,6 @@ import {
   evaluateGoalExp,
   evaluateHyperruleExp,
   evaluateRuleExp,
-  lookup,
 } from "../evaluate"
 import type { Exp } from "../exp"
 import { find } from "../find"
@@ -24,6 +23,7 @@ import {
   varCollectionMerge,
   varCollectionValidate,
 } from "../var-collection"
+import { lookup } from "./lookup"
 
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
