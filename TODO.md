@@ -1,25 +1,34 @@
-# prefix as namespace
+[global] `rewrite` -- quit overloading `Ap` for `rewrite`
 
-hyperrewrite can operate under with given prefix
+[global] `hyperrewrite` -- quit overloading `Ap` for `hyperrewrite`
+
+use `false` as the value for hyperrewrite failure
+
+[maybe] `import as =`
+
+- example:
+
+  ```
+  import { finiteDomain as FD = createConstraintSystem(finiteDomain) } from "..."
+  ```
 
 # CHR
 
-`use` -- to register `hyperrule` to `mod` -- maybe with `as` for prefix
+`Values.ConstraintSystem` -- has `hyperrule` and `termHeads`
 
-- We should import constraint system instead of constraints.
+[global] `createConstraintSystem` -- from `hyperrule`
 
-  Constraints should be pure data (for example, quoted terms),
-  but relation should be special value.
+- should we just import hyperrule and overload hyperrule?
 
-`Goal` -- check head is defined relation or constraint
+`Values.Constraint`
+
+`Values.ConstraintSystem` -- overload `Ap` -- to get `Values.Constraint`
+
+`Values.ConstraintSystem` -- overload `Dot` -- to get `Values.Constraint`
+
+[goal] `pursue/applyConstraint`
 
 `Solution` has `constraints`
-
-`Goals.Constraints`
-
-`Goals.Constraints` -- syntax
-
-a value for hyperrewrite failure
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
