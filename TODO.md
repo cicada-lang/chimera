@@ -1,16 +1,12 @@
+[refactor] extract `quote` dir
+[refactor] extract type `TermHead`
+[refactor] extract functions about `TermHead`
+
 # CHR
 
 `Values.ConstraintSystem` -- has `hyperrule` and `termHeads`
 
 [global] `createConstraintSystem` -- from `hyperrule`
-
-[maybe] `import as =`
-
-- example:
-
-  ```
-  import { finiteDomain as FD = createConstraintSystem(finiteDomain) } from "..."
-  ```
 
 `Values.Constraint`
 

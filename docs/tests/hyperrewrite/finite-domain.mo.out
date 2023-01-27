@@ -1,4 +1,4 @@
-[false]
+false
 [Range(x, a, b), Range(x, c, d)]
 [Range(x, 30, 100)]
 [LtEq(x, y), Range(x, 20, 120), Range(y, 30, 120)]

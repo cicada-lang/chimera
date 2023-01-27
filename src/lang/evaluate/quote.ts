@@ -68,10 +68,12 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
         exp.args.map((arg) => quote(mod, env, arg)),
       )
 
-      function parseTermHead(target: Exp): {
+      type TermHead = {
         prefix: Array<string>
         name: string
-      } {
+      }
+
+      function parseTermHead(target: Exp): TermHead {
         if (target["@kind"] === "Var") {
           return {
             prefix: [],
