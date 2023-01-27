@@ -2,12 +2,12 @@ import { aboutArray } from "./aboutArray"
 import { aboutBoolean } from "./aboutBoolean"
 import { aboutEqual } from "./aboutEqual"
 import { aboutGoal } from "./aboutGoal"
-import { aboutHyperrewrite } from "./aboutHyperrewrite"
+import { aboutHyperrule } from "./aboutHyperrule"
 import { aboutNull } from "./aboutNull"
 import { aboutNumber } from "./aboutNumber"
 import { aboutObject } from "./aboutObject"
 import { aboutRelation } from "./aboutRelation"
-import { aboutRewrite } from "./aboutRewrite"
+import { aboutRule } from "./aboutRule"
 import { aboutString } from "./aboutString"
 import { aboutTerm } from "./aboutTerm"
 import { GlobalStore } from "./GlobalStore"
@@ -23,8 +23,8 @@ export function useGlobals(): GlobalStore {
 
   aboutGoal(globals)
   aboutRelation(globals)
-  aboutRewrite(globals)
-  aboutHyperrewrite(globals)
+  aboutRule(globals)
+  aboutHyperrule(globals)
 
   aboutNull(globals)
   aboutBoolean(globals)

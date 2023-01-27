@@ -24,8 +24,9 @@ function f() {
     or(x, and(y, z)) => quote and(or(x, y), or(x, z))
   }
 
-  print conjunctiveNormalForm(
-    quote not(and(not(A), not(B)))
+  print rewrite(
+    conjunctiveNormalForm,
+    quote not(and(not(A), not(B))),
   )
 
   if false {

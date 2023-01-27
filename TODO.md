@@ -1,8 +1,12 @@
-[global] `rewrite` -- quit overloading `Ap` for `rewrite`
-
 [global] `hyperrewrite` -- quit overloading `Ap` for `hyperrewrite`
 
 use `false` as the value for hyperrewrite failure
+
+# CHR
+
+`Values.ConstraintSystem` -- has `hyperrule` and `termHeads`
+
+[global] `createConstraintSystem` -- from `hyperrule`
 
 [maybe] `import as =`
 
@@ -11,14 +15,6 @@ use `false` as the value for hyperrewrite failure
   ```
   import { finiteDomain as FD = createConstraintSystem(finiteDomain) } from "..."
   ```
-
-# CHR
-
-`Values.ConstraintSystem` -- has `hyperrule` and `termHeads`
-
-[global] `createConstraintSystem` -- from `hyperrule`
-
-- should we just import hyperrule and overload hyperrule?
 
 `Values.Constraint`
 

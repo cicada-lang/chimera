@@ -2,7 +2,7 @@ import { hyperrewriteManySteps } from "../hyperrewrite"
 import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
-export function aboutHyperrewrite(globals: GlobalStore): void {
+export function aboutHyperrule(globals: GlobalStore): void {
   globals.primitive(
     "hyperrewriteManySteps",
     3,

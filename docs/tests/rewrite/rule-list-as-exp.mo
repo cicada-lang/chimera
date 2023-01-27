@@ -2,8 +2,8 @@ let r = rule {
   f(x, x) => quote x
 }
 
-print r(quote f(a, a))
-print r(quote f(a, b))
+print rewrite(r, quote f(a, a))
+print rewrite(r, quote f(a, b))
 
-print r(quote f(1, 1))
-print r(quote f(1, 2))
+print rewrite(r, quote f(1, 1))
+print rewrite(r, quote f(1, 2))

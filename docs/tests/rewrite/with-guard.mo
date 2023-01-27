@@ -4,7 +4,7 @@ rule r {
   add1(x) => if equal(x, 3) then 4
 }
 
-print r(quote add1(1))
-print r(quote add1(2))
-print r(quote add1(3))
-print r(quote add1(4))
+print rewrite(r, quote add1(1))
+print rewrite(r, quote add1(2))
+print rewrite(r, quote add1(3))
+print rewrite(r, quote add1(4))

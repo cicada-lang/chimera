@@ -16,17 +16,17 @@ rule r {
   include sub1
 }
 
-print r(quote add1(1))
-print r(quote add1(2))
-print r(quote add1(3))
-print r(quote add1(4))
+print rewrite(r, quote add1(1))
+print rewrite(r, quote add1(2))
+print rewrite(r, quote add1(3))
+print rewrite(r, quote add1(4))
 
-print r(quote sub1(1))
-print r(quote sub1(2))
-print r(quote sub1(3))
-print r(quote sub1(4))
+print rewrite(r, quote sub1(1))
+print rewrite(r, quote sub1(2))
+print rewrite(r, quote sub1(3))
+print rewrite(r, quote sub1(4))
 
-print r(quote add1(sub1(1)))
-print r(quote add1(sub1(2)))
-print r(quote add1(sub1(3)))
-print r(quote add1(sub1(4)))
+print rewrite(r, quote add1(sub1(1)))
+print rewrite(r, quote add1(sub1(2)))
+print rewrite(r, quote add1(sub1(3)))
+print rewrite(r, quote add1(sub1(4)))

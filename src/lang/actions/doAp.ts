@@ -6,14 +6,9 @@ import { applyFn } from "./applyFn"
 import { applyHyperrule } from "./applyHyperrule"
 import { applyPrimitive } from "./applyPrimitive"
 import { applyRelation } from "./applyRelation"
-import { applyRule } from "./applyRule"
 import { applyTypeConstraint } from "./applyTypeConstraint"
 
 export function doAp(target: Value, args: Array<Value>): Value {
-  if (target["@kind"] === "Rule") {
-    return applyRule(target, args)
-  }
-
   if (target["@kind"] === "Hyperrule") {
     return applyHyperrule(target, args)
   }

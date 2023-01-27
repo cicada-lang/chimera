@@ -6,6 +6,7 @@ rule conjunctiveNormalForm {
   or(x, and(y, z)) => quote and(or(x, y), or(x, z))
 }
 
-print conjunctiveNormalForm(
+print rewrite(
+  conjunctiveNormalForm,
   quote not(and(not(A), not(B)))
 )
