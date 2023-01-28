@@ -20,6 +20,7 @@ export function reify(solution: Solution, value: Value): Value {
   const constraints = [
     ...reifyInequalities(solution, substitutionForRenaming),
     ...reifyTypeConstraints(solution, substitutionForRenaming),
+    // ...reifyHyperruleConstraints(solution, substitutionForRenaming),
   ]
 
   if (constraints.length > 0) {
