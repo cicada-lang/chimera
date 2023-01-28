@@ -1,7 +1,7 @@
 import * as Actions from "../actions"
 import * as Errors from "../errors"
 import type { Goal } from "../goal"
-import type { Solution } from "../solution"
+import { Solution, solutionUpdate } from "../solution"
 import * as Values from "../value"
 import { applyHyperrule } from "./applyHyperrule"
 import { applyRelation } from "./applyRelation"
@@ -53,7 +53,7 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
 
     case "Conj": {
       return [
-        solution.update({
+        solutionUpdate(solution, {
           goals: [...goal.goals, ...solution.goals],
         }),
       ]
@@ -61,7 +61,7 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
 
     case "Disj": {
       return goal.goals.map((goal) =>
-        solution.update({
+        solutionUpdate(solution, {
           goals: [goal, ...solution.goals],
         }),
       )

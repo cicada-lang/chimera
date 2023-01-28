@@ -1,4 +1,4 @@
-import type { Solution } from "../solution"
+import { Solution, solutionUpdate } from "../solution"
 import {
   Substitution,
   substitutionEqual,
@@ -81,5 +81,7 @@ export function maintainInequalities(
     )
   }
 
-  return solution.update({ inequalities })
+  return solutionUpdate(solution, {
+    inequalities,
+  })
 }

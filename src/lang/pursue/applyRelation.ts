@@ -1,7 +1,7 @@
 import { evaluateGoalExp } from "../evaluate"
 import { quote } from "../quote"
 import { refreshGoals, refreshValues } from "../refresh"
-import type { Solution } from "../solution"
+import { Solution, solutionUpdate } from "../solution"
 import type * as Values from "../value"
 import type { Value } from "../value"
 import { pursueEqual } from "./pursueEqual"
@@ -48,7 +48,7 @@ export function applyRelation(
     )
 
     return [
-      newSolution.update({
+      solutionUpdate(newSolution, {
         goals: [...goals, ...solution.goals],
       }),
     ]

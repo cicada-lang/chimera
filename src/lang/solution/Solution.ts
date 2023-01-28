@@ -10,32 +10,34 @@ export type HyperruleConstraint = {
   value: Value
 }
 
-export class Solution {
-  constructor(
-    public goals: Array<Goal>,
-    public substitution: Substitution,
-    public inequalities: Array<Substitution>,
-    public typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]>,
-    public hyperruleConstraints: Array<HyperruleConstraint>,
-  ) {}
+export type Solution = {
+  goals: Array<Goal>
+  substitution: Substitution
+  inequalities: Array<Substitution>
+  typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]>
+  hyperruleConstraints: Array<HyperruleConstraint>
+}
 
-  static initial(goals: Array<Goal>): Solution {
-    return new Solution(goals, substitutionEmpty(), [], [], [])
+export function createSolutionFromGoals(goals: Array<Goal>): Solution {
+  return {
+    goals,
+    substitution: substitutionEmpty(),
+    inequalities: [],
+    typeConstraints: [],
+    hyperruleConstraints: [],
   }
+}
 
-  update(options: {
-    goals?: Array<Goal>
-    substitution?: Substitution
-    inequalities?: Array<Substitution>
-    typeConstraints?: Array<[Values.PatternVar, Values.TypeConstraint]>
-    hyperruleConstraints?: Array<HyperruleConstraint>
-  }): Solution {
-    return new Solution(
-      options.goals || this.goals,
-      options.substitution || this.substitution,
-      options.inequalities || this.inequalities,
-      options.typeConstraints || this.typeConstraints,
-      options.hyperruleConstraints || this.hyperruleConstraints,
-    )
+export function solutionUpdate(
+  target: Solution,
+  options: Partial<Solution>,
+): Solution {
+  return {
+    goals: options.goals || target.goals,
+    substitution: options.substitution || target.substitution,
+    inequalities: options.inequalities || target.inequalities,
+    typeConstraints: options.typeConstraints || target.typeConstraints,
+    hyperruleConstraints:
+      options.hyperruleConstraints || target.hyperruleConstraints,
   }
 }

@@ -1,4 +1,4 @@
-import type { Solution } from "../solution"
+import { Solution, solutionUpdate } from "../solution"
 import { substitutionEqual } from "../substitution"
 import { unify } from "../unify"
 import type { Value } from "../value"
@@ -20,7 +20,9 @@ export function pursueEqual(
     return solution
   }
 
-  let newSolution: Solution | undefined = solution.update({ substitution })
+  let newSolution: Solution | undefined = solutionUpdate(solution, {
+    substitution,
+  })
 
   newSolution = maintainInequalities(newSolution)
   newSolution = maintaintypeConstraints(newSolution)

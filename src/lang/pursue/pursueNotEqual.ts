@@ -1,4 +1,4 @@
-import type { Solution } from "../solution"
+import { Solution, solutionUpdate } from "../solution"
 import { substitutionEqual, substitutionPrefix } from "../substitution"
 import { unify } from "../unify"
 import type { Value } from "../value"
@@ -59,5 +59,5 @@ export function pursueNotEqual(
     ),
   ]
 
-  return solution.update({ inequalities })
+  return solutionUpdate(solution, { inequalities })
 }

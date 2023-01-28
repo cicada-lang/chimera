@@ -1,6 +1,6 @@
 import type { Goal } from "../goal"
 import { pursue } from "../pursue"
-import { Solution } from "../solution"
+import { createSolutionFromGoals, Solution } from "../solution"
 
 /**
 
@@ -37,7 +37,7 @@ export class Solver {
   constructor(public partialSolutions: Array<Solution>) {}
 
   static start(goals: Array<Goal>): Solver {
-    return new Solver([Solution.initial(goals)])
+    return new Solver([createSolutionFromGoals(goals)])
   }
 
   solve(options: SolveOptions): Array<Solution> {

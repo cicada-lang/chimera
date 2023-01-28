@@ -1,4 +1,4 @@
-import type { Solution } from "../solution"
+import { Solution, solutionUpdate } from "../solution"
 import { substitutionWalk } from "../substitution"
 import type * as Values from "../value"
 import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
@@ -18,7 +18,7 @@ export function maintaintypeConstraints(
     }
   }
 
-  return solution.update({
+  return solutionUpdate(solution, {
     typeConstraints,
     inequalities: removeInequalitiesSubsumedByTypeConstraints(
       solution,
