@@ -2,8 +2,6 @@
 
 `updateHyperruleConstraints`
 
-`HyperruleConstraint` has `values` instead of `value`
-
 `maintainHyperruleConstraints`
 
 `pursue/pursueHyperrule` -- update `reify` to display information about `hyperruleConstraints`

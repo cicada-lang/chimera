@@ -3,15 +3,15 @@ import type { Value } from "../value"
 
 export type HyperruleConstraint = {
   hyperrule: Hyperrule
-  value: Value
+  values: Array<Value>
 }
 
 export function HyperruleConstraint(
   hyperrule: Hyperrule,
-  value: Value,
+  values: Array<Value>,
 ): HyperruleConstraint {
   return {
     hyperrule,
-    value,
+    values,
   }
 }

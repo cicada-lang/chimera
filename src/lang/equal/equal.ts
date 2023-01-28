@@ -77,5 +77,5 @@ export function equal(left: Value, right: Value): boolean {
     return true
   }
 
-  return false
+  return left === right
 }
