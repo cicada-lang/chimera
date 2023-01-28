@@ -6,7 +6,9 @@ import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitie
 export function maintaintypeConstraints(
   solution: Solution | undefined,
 ): Solution | undefined {
-  if (solution === undefined) return undefined
+  if (solution === undefined) {
+    return undefined
+  }
 
   const typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]> = []
   for (const [variable, typeConstraint] of solution.typeConstraints) {

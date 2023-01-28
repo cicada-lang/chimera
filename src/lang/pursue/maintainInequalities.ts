@@ -10,7 +10,9 @@ import { unifyMany } from "../unify"
 export function maintainInequalities(
   solution: Solution | undefined,
 ): Solution | undefined {
-  if (solution === undefined) return undefined
+  if (solution === undefined) {
+    return undefined
+  }
 
   /**
 
