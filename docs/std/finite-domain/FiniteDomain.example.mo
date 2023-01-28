@@ -26,7 +26,7 @@ print find [x, y, z] {
 print find x {
   FD(Lt(2, x))
   FD(LtEq(x, 7))
-  FD(Range(x, [0, 10]))
+  FD(Range(x, 0, 10))
 }
 
 // => [3, 4, 5, 6, 7]
@@ -101,9 +101,9 @@ print find [x, y, z] {
 // TODO solution changes (as in the paper) to the exmaples.
 
 print find [y, z] {
-  FD(Range(x, [3, 5]))
-  FD(Range(z, [3, 5]))
-  FD(Range(y, [1, 4]))
+  FD(Range(x, 3, 5))
+  FD(Range(z, 3, 5))
+  FD(Range(y, 1, 4))
   FD(Lt(x, 5))
   x = y
 }
@@ -111,9 +111,9 @@ print find [y, z] {
 // => [[3, 3], [4, 3], [3, 4], [4, 4], [3, 5], [4, 5]]
 
 print find [y, z] {
-  FD(Range(x, [3, 5]))
-  FD(Range(z, [3, 5]))
-  FD(Range(y, [1, 4]))
+  FD(Range(x, 3, 5))
+  FD(Range(z, 3, 5))
+  FD(Range(y, 1, 4))
   x = y
   FD(Lt(x, 5))
 }
@@ -121,14 +121,14 @@ print find [y, z] {
 print find [y, z] {
   x = y
   FD(Lt(x, 5))
-  FD(Range(x, [3, 5]))
-  FD(Range(z, [3, 5]))
-  FD(Range(y, [1, 4]))
+  FD(Range(x, 3, 5))
+  FD(Range(z, 3, 5))
+  FD(Range(y, 1, 4))
 }
 
 // print find q {
-//   FD(Range(w, [1, 5]))
-//   FD(Range(z, [1, 5]))
+//   FD(Range(w, 1, 5))
+//   FD(Range(z, 1, 5))
 //   FD(AllDiff(q))
 //   q = [x, y, z]
 //   [x, y] = [1, 2]
