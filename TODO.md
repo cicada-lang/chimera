@@ -1,12 +1,10 @@
 # CHR
 
-rename `pursue/pursueNotEqual` to `pursue/applyNotEqual`
-
 `maintainHyperruleConstraints`
 
-`pursue/applyHyperrule` -- call `maintainHyperruleConstraints`
+`pursue/pursueHyperrule` -- call `maintainHyperruleConstraints`
 
-`pursue/applyHyperrule` -- update `reify` to display information about `hyperruleConstraints`
+`pursue/pursueHyperrule` -- update `reify` to display information about `hyperruleConstraints`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 

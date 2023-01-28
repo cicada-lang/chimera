@@ -4,8 +4,8 @@ import type { Goal } from "../goal"
 import { Solution, solutionUpdate } from "../solution"
 import * as Values from "../value"
 import { applyEqual } from "./applyEqual"
+import { applyNotEqual } from "./applyNotEqual"
 import { pursueHyperrule } from "./pursueHyperrule"
-import { pursueNotEqual } from "./pursueNotEqual"
 import { pursueRelation } from "./pursueRelation"
 import { pursueTypeConstraint } from "./pursueTypeConstraint"
 
@@ -48,7 +48,7 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
     }
 
     case "NotEqual": {
-      return unit(pursueNotEqual(solution, goal.left, goal.right))
+      return unit(applyNotEqual(solution, goal.left, goal.right))
     }
 
     case "Conj": {

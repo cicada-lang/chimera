@@ -4,7 +4,7 @@ import { unify } from "../unify"
 import type { Value } from "../value"
 import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
 
-export function pursueNotEqual(
+export function applyNotEqual(
   solution: Solution,
   left: Value,
   right: Value,
