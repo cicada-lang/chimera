@@ -1,10 +1,8 @@
 # CHR
 
-`pursue/applyHyperrule` -- add `HyperruleConstraint`
-
-`pursue/applyHyperrule` -- use `hyperrewrite`
-
-`pursue/applyHyperrule` -- interacts with other constraints
+`maintainHyperruleConstraints`
+`pursue/applyHyperrule` -- call `maintainHyperruleConstraints`
+`pursueEqual` -- call `maintainHyperruleConstraints`
 
 `pursue/applyHyperrule` -- update `reify` to display information about `hyperruleConstraints`
 

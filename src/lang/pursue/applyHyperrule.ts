@@ -1,5 +1,5 @@
-import type { Solution } from "../solution"
-import { substitutionWalk } from "../substitution"
+import { HyperruleConstraint, Solution, solutionUpdate } from "../solution"
+import { substitutionDeepWalk } from "../substitution"
 import type * as Values from "../value"
 import type { Value } from "../value"
 
@@ -8,6 +8,12 @@ export function applyHyperrule(
   target: Values.Hyperrule,
   arg: Value,
 ): Array<Solution> {
-  throw new Error()
-  arg = substitutionWalk(solution.substitution, arg)
+  arg = substitutionDeepWalk(solution.substitution, arg)
+
+  const hyperruleConstraints = [
+    ...solution.hyperruleConstraints,
+    HyperruleConstraint(target.hyperrule, arg),
+  ]
+
+  return [solutionUpdate(solution, { hyperruleConstraints })]
 }

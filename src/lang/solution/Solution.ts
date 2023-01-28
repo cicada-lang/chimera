@@ -10,6 +10,16 @@ export type HyperruleConstraint = {
   value: Value
 }
 
+export function HyperruleConstraint(
+  hyperrule: Hyperrule,
+  value: Value,
+): HyperruleConstraint {
+  return {
+    hyperrule,
+    value,
+  }
+}
+
 export type Solution = {
   goals: Array<Goal>
   substitution: Substitution
