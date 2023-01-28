@@ -3,7 +3,7 @@ import { substitutionDeepWalk } from "../substitution"
 import type * as Values from "../value"
 import type { Value } from "../value"
 
-export function applyHyperrule(
+export function pursueHyperrule(
   solution: Solution,
   target: Values.Hyperrule,
   arg: Value,

@@ -1,7 +1,5 @@
 # CHR
 
-rename `pursue/applyHyperrule` to `pursue/pursueHyperrule`
-
 rename `pursue/pursueEqual` to `pursue/applyEqual`
 rename `pursue/pursueNotEqual` to `pursue/applyNotEqual`
 
