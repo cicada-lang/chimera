@@ -1,6 +1,6 @@
 # CHR
 
-[goal] `pursue/applyHyperrule`
+`pursue/applyHyperrule`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 

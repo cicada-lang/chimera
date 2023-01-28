@@ -3,6 +3,7 @@ import * as Errors from "../errors"
 import type { Goal } from "../goal"
 import type { Solution } from "../solution"
 import * as Values from "../value"
+import { applyHyperrule } from "./applyHyperrule"
 import { applyRelation } from "./applyRelation"
 import { applyTypeConstraint } from "./applyTypeConstraint"
 import { pursueEqual } from "./pursueEqual"
@@ -22,6 +23,10 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
 
       if (goal.target["@kind"] === "TypeConstraint") {
         return applyTypeConstraint(solution, goal.target, goal.args[0])
+      }
+
+      if (goal.target["@kind"] === "Hyperrule") {
+        return applyHyperrule(solution, goal.target, goal.args[0])
       }
 
       if (goal.target["@kind"] === "Primitive") {
