@@ -1,5 +1,4 @@
-import { HyperruleConstraint } from "../hyperrule"
-import { Solution, solutionUpdate } from "../solution"
+import { HyperruleConstraint, Solution, solutionUpdate } from "../solution"
 import { substitutionDeepWalk } from "../substitution"
 import type * as Values from "../value"
 import type { Value } from "../value"

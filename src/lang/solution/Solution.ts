@@ -1,5 +1,5 @@
 import type { Goal } from "../goal"
-import type { HyperruleConstraint } from "../hyperrule"
+import type { HyperruleConstraint } from "../solution"
 import type { Substitution } from "../substitution"
 import { substitutionEmpty } from "../substitution"
 import type * as Values from "../value"
