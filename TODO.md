@@ -1,6 +1,6 @@
 # CHR
 
-`reifyHyperruleConstraints`
+rename `substitutionContainsPatternVar` to `substitutionContainsPatternVarInValue`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 

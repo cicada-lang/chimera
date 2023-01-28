@@ -1,6 +1,12 @@
 import type { Goal } from "../goal"
-import type { Solution } from "../solution"
-import type { Substitution } from "../substitution"
+import * as Goals from "../goal"
+import { HyperruleConstraint, Solution } from "../solution"
+import {
+  Substitution,
+  substitutionContainsPatternVar,
+  substitutionDeepWalk,
+} from "../substitution"
+import * as Values from "../value"
 
 export function reifyHyperruleConstraints(
   solution: Solution,
@@ -19,24 +25,28 @@ export function reifyHyperruleConstraints(
 
   **/
 
-  // hyperruleConstraints = hyperruleConstraints.filter(
-  //   ([variable, _typeConstraint]) =>
-  //     !substitutionContainsPatternVar(variable, substitutionForRenaming),
-  // )
+  hyperruleConstraints = hyperruleConstraints.map((hyperruleConstraint) =>
+    HyperruleConstraint(
+      hyperruleConstraint.hyperrule,
+      hyperruleConstraint.values.filter(
+        (value) =>
+          !substitutionContainsPatternVar(value, substitutionForRenaming),
+      ),
+    ),
+  )
 
-  return []
-
-  // typeConstraints.map(([variable, typeConstraint]) =>
-  //   typeConstraintAsGoal(variable, typeConstraint, substitutionForRenaming),
-  // )
+  return hyperruleConstraints.flatMap((hyperruleConstraint) =>
+    hyperruleConstraintAsGoals(hyperruleConstraint, substitutionForRenaming),
+  )
 }
 
-// function typeConstraintAsGoal(
-//   variable: Values.PatternVar,
-//   typeConstraint: Values.TypeConstraint,
-//   substitutionForRenaming: Substitution,
-// ): Goal {
-//   return Goals.Apply(typeConstraint, [
-//     substitutionDeepWalk(substitutionForRenaming, variable),
-//   ])
-// }
+function hyperruleConstraintAsGoals(
+  hyperruleConstraint: HyperruleConstraint,
+  substitutionForRenaming: Substitution,
+): Array<Goal> {
+  return hyperruleConstraint.values.map((value) =>
+    Goals.Apply(Values.Hyperrule(hyperruleConstraint.hyperrule), [
+      substitutionDeepWalk(substitutionForRenaming, value),
+    ]),
+  )
+}
