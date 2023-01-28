@@ -1,6 +1,12 @@
 # CHR
 
-`pursue/applyHyperrule`
+`pursue/applyHyperrule` -- add `HyperruleConstraint`
+
+`pursue/applyHyperrule` -- use `hyperrewrite`
+
+`pursue/applyHyperrule` -- interacts with other constraints
+
+`pursue/applyHyperrule` -- update `reify` to display information about `hyperruleConstraints`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
