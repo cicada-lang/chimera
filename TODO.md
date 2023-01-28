@@ -1,8 +1,8 @@
 # CHR
 
 `maintainHyperruleConstraints`
+
 `pursue/applyHyperrule` -- call `maintainHyperruleConstraints`
-`pursueEqual` -- call `maintainHyperruleConstraints`
 
 `pursue/applyHyperrule` -- update `reify` to display information about `hyperruleConstraints`
 

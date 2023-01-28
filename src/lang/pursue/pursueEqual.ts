@@ -1,7 +1,9 @@
-import { Solution, solutionUpdate } from "../solution"
+import type { Solution } from "../solution"
+import { solutionUpdate } from "../solution"
 import { substitutionEqual } from "../substitution"
 import { unify } from "../unify"
 import type { Value } from "../value"
+import { maintainHyperruleConstraints } from "./maintainHyperruleConstraints"
 import { maintainInequalities } from "./maintainInequalities"
 import { maintainTypeConstraints } from "./maintainTypeConstraints"
 
@@ -20,12 +22,13 @@ export function pursueEqual(
     return solution
   }
 
-  let newSolution: Solution | undefined = solutionUpdate(solution, {
-    substitution,
-  })
-
-  newSolution = maintainInequalities(newSolution)
-  newSolution = maintainTypeConstraints(newSolution)
-
-  return newSolution
+  return maintainHyperruleConstraints(
+    maintainTypeConstraints(
+      maintainInequalities(
+        solutionUpdate(solution, {
+          substitution,
+        }),
+      ),
+    ),
+  )
 }
