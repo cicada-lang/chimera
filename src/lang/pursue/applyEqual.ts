@@ -7,7 +7,7 @@ import { maintainHyperruleConstraints } from "./maintainHyperruleConstraints"
 import { maintainInequalities } from "./maintainInequalities"
 import { maintainTypeConstraints } from "./maintainTypeConstraints"
 
-export function pursueEqual(
+export function applyEqual(
   solution: Solution,
   left: Value,
   right: Value,

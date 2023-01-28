@@ -4,7 +4,7 @@ import { refreshGoals, refreshValues } from "../refresh"
 import { Solution, solutionUpdate } from "../solution"
 import type * as Values from "../value"
 import type { Value } from "../value"
-import { pursueEqual } from "./pursueEqual"
+import { applyEqual } from "./applyEqual"
 
 export function pursueRelation(
   solution: Solution,
@@ -62,7 +62,7 @@ function pursueManyEqual(
 ): Solution | undefined {
   for (const [index, value] of values.entries()) {
     if (solution === undefined) return undefined
-    solution = pursueEqual(solution, value, args[index])
+    solution = applyEqual(solution, value, args[index])
   }
 
   return solution

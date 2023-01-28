@@ -1,6 +1,5 @@
 # CHR
 
-rename `pursue/pursueEqual` to `pursue/applyEqual`
 rename `pursue/pursueNotEqual` to `pursue/applyNotEqual`
 
 `maintainHyperruleConstraints`
