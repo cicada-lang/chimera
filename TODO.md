@@ -1,10 +1,18 @@
 # CHR
 
+`Hyperrule` has optional `name`
+
+`formatGoal` handle `Hyperrule` specially
+
+`formatGoal` hash the content for hyperrule without name
+
+`EnumerationDomain` -- `NotEq`
+
+FiniteDomain.example.mo
+
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
-
-- [maybe] `EnumerationDomain` -- `NotEq`
 
 # claim and runtime type assertion
 

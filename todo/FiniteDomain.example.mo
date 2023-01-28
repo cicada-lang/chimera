@@ -1,15 +1,29 @@
+import { FiniteDomain as FD } from "../docs/std/finite-domain/index.mo"
+
 // `In` is a special relation which requires
 // its second argument to be a list of numbers
 // i.e. to be grounded.
 
-find q {
+print hyperrewrite(FD, quote [
+  In(q, [1, 2, 3]),
+  NotEq(q, 2),
+])
+
+print find q {
+  constraints {
+    In(q, [1, 2, 3])
+    NotEq(q, 2)
+  }
+}
+
+print find q {
   FD.In(q, [1, 2, 3])
   FD.NotEq(q, 2)
 }
 
 // => [1, 3]
 
-find [x, y, z] {
+print find [x, y, z] {
   FD.In(x, [1, 2, 3])
   FD.In(y, [3, 4, 5])
   FD.In(z, [5, 6, 9])
@@ -23,7 +37,7 @@ clause FD.Lt(x, y) -- { FD.LtEq(x, y) FD.NotEq(x, y) }
 
 // `FD.Range` requires its second argument to be grounded.
 
-find x {
+print find x {
   FD.Lt(2, x)
   FD.LtEq(x, 7)
   FD.Range(x, [0, 10])
@@ -35,7 +49,7 @@ find x {
 // must have domain (or equal to a number).
 // The follow in is error instead of fail.
 
-find [x, y] {
+print find [x, y] {
   FD.Lt(x, y)
   FD.Lt(y, x)
 }
@@ -44,7 +58,7 @@ find [x, y] {
 // referenced or associated with the run variable in any way,
 // still result in failure.
 
-find q {
+print find q {
   FD.In(x, [1, 2, 3])
   FD.In(y, [1, 2, 3])
   FD.In(z, [1, 2, 3])
@@ -54,7 +68,7 @@ find q {
 
 // => []
 
-find q {
+print find q {
   FD.In(x, [1, 2, 3])
   FD.In(y, [1, 2, 3])
   FD.In(z, [1, 2, 3])
@@ -64,7 +78,7 @@ find q {
 
 // => [1, 2, 3]
 
-find q {
+print find q {
   FD.In(x, [1, 2, 3])
   FD.In(y, [1, 2, 3])
   FD.In(z, [1, 2, 3])
@@ -74,14 +88,14 @@ find q {
 
 // => [[1, 2], [1, 3], [2, 1], [3, 1], [2, 3], [3, 2]]
 
-find q {
+print find q {
   FD.In(q, [3, 4, 5, 6])
   FD.AllDiff(2, 3, q)
 }
 
 // => [4, 5, 6]
 
-find [x, y, z] {
+print find [x, y, z] {
   FD.In(x, [1, 2, 3, 4, 5])
   FD.In(y, [1, 2, 3, 4, 5])
   FD.In(z, [1, 2, 3, 4, 5])
@@ -100,7 +114,7 @@ find [x, y, z] {
 
 // TODO solution changes (as in the paper) to the exmaples.
 
-find [y, z] {
+print find [y, z] {
   FD.Range(x, [3, 5])
   FD.Range(z, [3, 5])
   FD.Range(y, [1, 4])
@@ -110,7 +124,7 @@ find [y, z] {
 
 // => [[3, 3], [4, 3], [3, 4], [4, 4], [3, 5], [4, 5]]
 
-find [y, z] {
+print find [y, z] {
   FD.Range(x, [3, 5])
   FD.Range(z, [3, 5])
   FD.Range(y, [1, 4])
@@ -118,7 +132,7 @@ find [y, z] {
   FD.Lt(x, 5)
 }
 
-find [y, z] {
+print find [y, z] {
   x = y
   FD.Lt(x, 5)
   FD.Range(x, [3, 5])
@@ -126,7 +140,7 @@ find [y, z] {
   FD.Range(y, [1, 4])
 }
 
-find q {
+print find q {
   FD.Range(w, [1, 5])
   FD.Range(z, [1, 5])
   FD.AllDiff(q)
