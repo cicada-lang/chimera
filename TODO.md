@@ -2,8 +2,6 @@
 
 `maintainHyperruleConstraints`
 
-`pursue/pursueHyperrule` -- call `maintainHyperruleConstraints`
-
 `pursue/pursueHyperrule` -- update `reify` to display information about `hyperruleConstraints`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`

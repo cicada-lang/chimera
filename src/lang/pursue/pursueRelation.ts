@@ -18,7 +18,9 @@ export function pursueRelation(
 
     **/
 
-    if (clause.patterns.length !== args.length) return []
+    if (clause.patterns.length !== args.length) {
+      return []
+    }
 
     const renames = new Map()
 
@@ -38,7 +40,9 @@ export function pursueRelation(
 
     **/
 
-    if (newSolution === undefined) return []
+    if (newSolution === undefined) {
+      return []
+    }
 
     const goals = refreshGoals(
       renames,

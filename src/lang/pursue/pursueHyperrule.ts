@@ -2,6 +2,7 @@ import { HyperruleConstraint, Solution, solutionUpdate } from "../solution"
 import { substitutionDeepWalk } from "../substitution"
 import type * as Values from "../value"
 import type { Value } from "../value"
+import { maintainHyperruleConstraints } from "./maintainHyperruleConstraints"
 
 export function pursueHyperrule(
   solution: Solution,
@@ -15,5 +16,15 @@ export function pursueHyperrule(
     HyperruleConstraint(target.hyperrule, arg),
   ]
 
-  return [solutionUpdate(solution, { hyperruleConstraints })]
+  const newSolution = maintainHyperruleConstraints(
+    solutionUpdate(solution, {
+      hyperruleConstraints,
+    }),
+  )
+
+  if (newSolution === undefined) {
+    return []
+  }
+
+  return [newSolution]
 }
