@@ -1,0 +1,3431 @@
+[ 
+  _.0 with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(In(_.0, [1, 2, 3]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(_.0, 2))
+  }
+]
+[ 
+  [_.0, _.0, _.1] with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(In(_.1, [5, 6]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(In(_.0, [3]))
+  }
+]
+[ 
+  _.0 with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(_.0, 7))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(2, _.0))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(2, _.0))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.0, [0, 10]))
+  }
+]
+[ 
+  [_.0, _.1] with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(_.0, _.1))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(_.0, _.1))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(_.1, _.0))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(_.1, _.0))
+  }
+]
+[ 
+  [_.0, _.1, _.2] with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(In(_.0, [1, 2, 3, 4, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(In(_.1, [1, 2, 3, 4, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(In(_.2, [1, 2, 3, 4, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(_.2, _.0))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(_.2, _.0))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Add(_.1, 2, _.2))
+  }
+]
+[ 
+  [_.0, _.1] with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.0, [3, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.1, [3, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.0, [1, 4]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(_.0, 5))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(_.0, 5))
+  }
+]
+[ 
+  [_.0, _.1] with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.0, [3, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.1, [3, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.0, [1, 4]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(_.0, 5))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(_.0, 5))
+  }
+]
+[ 
+  [_.0, _.1] with {
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.0, [3, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(LtEq(_.0, 5))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(NotEq(_.0, 5))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.1, [3, 5]))
+    $Hyperrule(hyperrule {
+      hyperrule {
+        [Range(_, a, b)] => if and [isNumber(a), isNumber(b), gt(a, b)] then false else null
+        [Range(x, a, b), Range(x, c, d)] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)] then quote [Range(x, eval max(a, c), eval min(b, d))] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), gt(b, d)] then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)] else null
+        [LtEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), lt(c, a)] then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), isNumber(c), not equal(c, a)] then quote [ 
+          Eq(x, y),
+          Range(x, eval max(a, c), b),
+          Range(y, eval max(a, c), d)
+        ] else null
+        [Eq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(b), isNumber(d), not equal(b, d)] then quote [ 
+          Eq(x, y),
+          Range(x, a, eval min(b, d)),
+          Range(y, c, eval min(b, d))
+        ] else null
+        [NotEq(x, y), Range(x, a, b), Range(y, c, d)] => if and [isNumber(a), equal(a, c), equal(c, d)] then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)] else null
+        [ 
+          Add(x, y, z),
+          Range(x, a, b),
+          Range(y, c, d),
+          Range(z, e, f)
+        ] => if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d), isNumber(e), isNumber(f), not and [gteq(a, sub(e, d)), lteq(b, sub(f, c)), gteq(c, sub(e, b)), lteq(d, sub(f, a)), gteq(e, add(a, c)), lteq(f, add(b, d))]] then quote [ 
+          Add(x, y, z),
+          Range(x, eval max(a, sub(e, d)), eval min(b, sub(f, c))),
+          Range(y, eval max(c, sub(e, b)), eval min(d, sub(f, a))),
+          Range(z, eval max(e, add(a, c)), eval min(f, add(b, d)))
+        ] else null
+      }
+      hyperrule {
+        [In(_, [])] => quote [false]
+        [In(x, l1), In(x, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] then quote [In(x, eval arrayIntersection(l1, l2))] else null
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1max = maximum(l1)
+          let l2max = maximum(l2)
+          if not and [gt(l1max, l2max)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(
+              x,
+              eval arrayFilter(
+                l1,
+                (n) => {
+                  return lteq(n, l2max)
+                },
+              ),
+            ),
+            In(y, l2)
+          ]
+        }
+        [LtEq(x, y), In(x, l1), In(y, l2)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber)] {
+            return null
+          }
+          let l1min = minimum(l1)
+          let l2min = minimum(l2)
+          if not and [gt(l1min, l2min)] {
+            return null
+          }
+          return quote [ 
+            LtEq(x, y),
+            In(x, l1),
+            In(
+              y,
+              eval arrayFilter(
+                l2,
+                (n) => {
+                  return gteq(n, l1min)
+                },
+              ),
+            )
+          ]
+        }
+        [Eq(x, y), In(x, l1), In(y, l2)] => if and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), not equal(l1, l2)] then quote [ 
+          LtEq(x, y),
+          In(x, eval arrayIntersection(l1, l2)),
+          In(y, eval arrayIntersection(l1, l2))
+        ] else null
+        [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
+          if not and [isArray(l1), arrayEvery(l1, isNumber), isArray(l2), arrayEvery(l2, isNumber), isArray(l3), arrayEvery(l3, isNumber)] {
+            return null
+          }
+          let l4 = arrayIntersection(l1, arrayDedup(arrayMapSpread(arrayProduct([l3, l2]), sub)))
+          let l5 = arrayIntersection(l2, arrayDedup(arrayMapSpread(arrayProduct([l3, l1]), sub)))
+          let l6 = arrayIntersection(l3, arrayDedup(arrayMapSpread(arrayProduct([l1, l2]), add)))
+          if and [equal(l1, l4), equal(l2, l5), equal(l3, l6)] {
+            return null
+          }
+          return quote [ 
+            Add(x, y, z),
+            In(x, eval l4),
+            In(y, eval l5),
+            In(z, eval l6)
+          ]
+        }
+      }
+      [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+    })(Range(_.0, [1, 4]))
+  }
+]
