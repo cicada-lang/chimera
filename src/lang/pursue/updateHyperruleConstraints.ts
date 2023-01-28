@@ -1,4 +1,4 @@
-import { arrayReplace } from "src/utils/arrayReplace"
+import { arrayReplace } from "../../utils/arrayReplace"
 import { hyperrewrite } from "../hyperrewrite"
 import type { Hyperrule } from "../hyperrule"
 import { HyperruleConstraint, Solution } from "../solution"
