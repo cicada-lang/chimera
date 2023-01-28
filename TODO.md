@@ -1,7 +1,5 @@
 # CHR
 
-`applyHyperrule` -- check `termHead`
-
 [goal] `pursue/applyHyperrule`
 
 `Solution` has `hyperruleConstraints`

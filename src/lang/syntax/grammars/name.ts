@@ -37,7 +37,3 @@ export const relation_name = {
 export const clause_name = {
   $pattern: ["identifier", "([a-z][_\\p{Letter}0-9]*)"],
 }
-
-export const rule_name = {
-  $pattern: ["identifier", "([a-z][_\\p{Letter}0-9]*)"],
-}

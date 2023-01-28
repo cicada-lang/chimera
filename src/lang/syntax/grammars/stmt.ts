@@ -62,14 +62,14 @@ export const stmt = {
     ],
     "stmt:rule": [
       '"rule"',
-      { name: "rule_name" },
+      { name: "variable_name" },
       '"{"',
       { rules: "rules" },
       '"}"',
     ],
     "stmt:hyperrule": [
       '"hyperrule"',
-      { name: "rule_name" },
+      { name: "variable_name" },
       '"{"',
       { hyperrules: "hyperrules" },
       '"}"',
