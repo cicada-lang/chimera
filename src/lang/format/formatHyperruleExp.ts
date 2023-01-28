@@ -35,6 +35,10 @@ export function formatHyperruleExp(hyperrule: HyperruleExp): string {
     }
 
     case "List": {
+      if (hyperrule.hyperrules.length == 1) {
+        return formatHyperruleExp(hyperrule.hyperrules[0])
+      }
+
       const hyperrules = hyperrule.hyperrules.map(formatHyperruleExp)
       return `hyperrule {\n${indent(hyperrules.join("\n"))}\n}`
     }

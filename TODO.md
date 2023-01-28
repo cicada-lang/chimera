@@ -2,7 +2,7 @@
 
 `formatRule`
 
-fix `formatValue` by `formatRule`
+- fix `formatValue` by `formatRule`
 
 `Values.TermConstraint` has `hyperrule` and `termHead`
 
