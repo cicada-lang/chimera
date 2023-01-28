@@ -1,6 +1,8 @@
 # CHR
 
-`doAp` -- `Values.Hyperrule` -- to get `Values.Goal` -- check `termHead`
+fix hyperrule naming
+
+`applyHyperrule` -- check `termHead`
 
 [goal] `pursue/applyHyperrule`
 
