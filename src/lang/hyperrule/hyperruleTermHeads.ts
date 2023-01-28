@@ -1,20 +1,36 @@
+import { envMerge } from "../env"
 import type { Hyperrule } from "../hyperrule"
-import type * as Values from "../value"
+import { quote } from "../quote"
+import type { Value } from "../value"
+import * as Values from "../value"
 
 export function hyperruleTermHeads(
   hyperrule: Hyperrule,
 ): Array<Values.TermHead> {
   switch (hyperrule["@kind"]) {
-    case "Simplify": {
-      throw new Error()
-    }
-
+    case "Simplify":
     case "Propagate": {
-      throw new Error()
+      const mod = hyperrule.mod.copy()
+      mod.env = envMerge(mod.env, hyperrule.env)
+      const patterns = Values.toArray(quote(mod, mod.env, hyperrule.patterns))
+      return patterns.flatMap(valueTermHead)
     }
 
     case "List": {
       return hyperrule.hyperrules.flatMap(hyperruleTermHeads)
     }
   }
+}
+
+function valueTermHead(value: Value): Array<Values.TermHead> {
+  if (value["@kind"] === "Term") {
+    return [
+      {
+        prefix: value.prefix,
+        name: value.name,
+      },
+    ]
+  }
+
+  return []
 }
