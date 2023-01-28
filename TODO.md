@@ -1,9 +1,5 @@
 # CHR
 
-`formatRule`
-
-- fix `formatValue` by `formatRule`
-
 `Values.TermConstraint` has `hyperrule` and `termHead`
 
 `Hyperrule` and `termHeads`

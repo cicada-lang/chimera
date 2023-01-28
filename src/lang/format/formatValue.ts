@@ -1,5 +1,5 @@
 import { indent } from "../../utils/indent"
-import { formatGoal, formatHyperrule, formatStmt } from "../format"
+import { formatGoal, formatHyperrule, formatRule, formatStmt } from "../format"
 import type { Value } from "../value"
 
 export function formatValue(value: Value): string {
@@ -76,7 +76,7 @@ export function formatValue(value: Value): string {
     }
 
     case "Rule": {
-      return `$Rule`
+      return `$Rule(${formatRule(value.rule)})`
     }
 
     case "Hyperrule": {
