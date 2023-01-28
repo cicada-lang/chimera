@@ -1,7 +1,5 @@
 # CHR
 
-fix hyperrule naming
-
 `applyHyperrule` -- check `termHead`
 
 [goal] `pursue/applyHyperrule`

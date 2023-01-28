@@ -8,13 +8,13 @@ function f() {
     return [x, y]
   }
 
-  hyperrule abc {
+  hyperrule ABC {
     ["a", "b"] => ["c"]
     ["a", "c"] => ["b"]
     ["b", "c"] => ["a"]
   }
 
-  print hyperrewrite(abc, quote ["a", "a", "a"])
+  print hyperrewrite(ABC, quote ["a", "a", "a"])
 
   rule conjunctiveNormalForm {
     not(not(x)) => quote x

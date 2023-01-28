@@ -1,5 +1,5 @@
-hyperrule h {
+hyperrule H {
   ["a", "b"] +> quote ["c", "d"]
 }
 
-print hyperrewrite(h, quote ["a", "b"])
+print hyperrewrite(H, quote ["a", "b"])

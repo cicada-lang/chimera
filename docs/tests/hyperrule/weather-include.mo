@@ -1,17 +1,17 @@
-hyperrule rain {
+hyperrule Rain {
   [Rain(), Car()] => quote [Rain(), InCar()]
   [Rain()] => quote [WearUmbrella()]
 }
 
-hyperrule sun {
+hyperrule Sun {
   [Sun()] => quote [WearSunGlasses(), Cool()]
 }
 
-hyperrule weather {
+hyperrule Weather {
   [SunRain()] => quote [Sun(), Rain()]
-  include rain
-  include sun
+  include Rain
+  include Sun
 }
 
-print hyperrewrite(weather, quote [SunRain()])
-print hyperrewrite(weather, quote [SunRain(), Car()])
+print hyperrewrite(Weather, quote [SunRain()])
+print hyperrewrite(Weather, quote [SunRain(), Car()])
