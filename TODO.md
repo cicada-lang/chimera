@@ -7,8 +7,11 @@
 `formatGoal` hash the content for hyperrule without name
 
 `EnumerationDomain` -- `NotEq`
+`EnumerationDomain` -- `AllDiff`
 
-FiniteDomain.example.mo
+`IntervalDomain` -- `AllDiff`
+
+`FiniteDomain.example.mo`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
