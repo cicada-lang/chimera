@@ -6,7 +6,7 @@ import type * as Values from "../value"
 import type { Value } from "../value"
 import { pursueEqual } from "./pursueEqual"
 
-export function applyRelation(
+export function pursueRelation(
   solution: Solution,
   target: Values.Relation,
   args: Array<Value>,

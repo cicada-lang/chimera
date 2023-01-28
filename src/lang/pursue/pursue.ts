@@ -4,10 +4,10 @@ import type { Goal } from "../goal"
 import { Solution, solutionUpdate } from "../solution"
 import * as Values from "../value"
 import { applyHyperrule } from "./applyHyperrule"
-import { applyRelation } from "./applyRelation"
 import { applyTypeConstraint } from "./applyTypeConstraint"
 import { pursueEqual } from "./pursueEqual"
 import { pursueNotEqual } from "./pursueNotEqual"
+import { pursueRelation } from "./pursueRelation"
 
 function unit(solution: Solution | undefined): Array<Solution> {
   if (solution === undefined) return []
@@ -18,7 +18,7 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
   switch (goal["@kind"]) {
     case "Apply": {
       if (goal.target["@kind"] === "Relation") {
-        return applyRelation(solution, goal.target, goal.args)
+        return pursueRelation(solution, goal.target, goal.args)
       }
 
       if (goal.target["@kind"] === "TypeConstraint") {
