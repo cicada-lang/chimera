@@ -167,4 +167,5 @@ export hyperrule FiniteDomain {
   include IntervalDomain
   include EnumerationDomain
   [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+  [LtEq(x, y), LtEq(y, x), NotEq(x, y)] => false
 }
