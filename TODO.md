@@ -1,10 +1,8 @@
 # CHR
 
 `doDot` -- `Values.Hyperrule` -- check `termHead`
-
-`Values.Hyperrule` -- overload `Ap` -- to get `Values.Goal`
-
-[goal] `pursue/applyTermConstraint`
+`doAp` -- `Values.Hyperrule` -- to get `Values.Goal`
+`doAp` -- `Values.TermConstraint` -- to get `Values.Goal` -- construct value by `termHead`
 
 [goal] `pursue/applyHyperrule`
 
