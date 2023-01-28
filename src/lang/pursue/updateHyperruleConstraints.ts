@@ -1,5 +1,5 @@
 import type { Hyperrule } from "../hyperrule"
-import type { HyperruleConstraint, Solution } from "../solution"
+import { HyperruleConstraint, Solution } from "../solution"
 import type { Value } from "../value"
 
 export function updateHyperruleConstraints(
@@ -8,13 +8,15 @@ export function updateHyperruleConstraints(
   hyperrule: Hyperrule,
   value: Value,
 ): Array<HyperruleConstraint> {
-  const found = hyperruleConstraints.find(
+  const index = hyperruleConstraints.findIndex(
     (hyperruleConstraint) => hyperruleConstraint.hyperrule === hyperrule,
   )
 
-  if (found === undefined) {
-    //
+  if (index === -1) {
+    return [...hyperruleConstraints, HyperruleConstraint(hyperrule, [value])]
   }
+
+  const hyperruleConstraint = hyperruleConstraints[index]
 
   return hyperruleConstraints
 }
