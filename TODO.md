@@ -1,7 +1,5 @@
 # CHR
 
-`formatGoal` hash the content for hyperrule without name
-
 `EnumerationDomain` -- `NotEq`
 
 `EnumerationDomain` -- `AllDiff`

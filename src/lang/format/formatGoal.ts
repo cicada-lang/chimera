@@ -1,3 +1,4 @@
+import { stringHash } from "src/utils/stringHash"
 import { formatValue } from "../format"
 import type { Goal } from "../goal"
 
@@ -15,6 +16,12 @@ export function formatGoal(goal: Goal): string {
       }
 
       if (goal.target["@kind"] === "Hyperrule") {
+        if (goal.target.name === undefined) {
+          return `$AnonymousHyperruleConstraint(${stringHash(
+            formatValue(goal.target),
+          )})(${args})`
+        }
+
         return `${goal.target.name}(${args})`
       }
 
