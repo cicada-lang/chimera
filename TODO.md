@@ -1,6 +1,6 @@
 # CHR
 
-`Hyperrule` has optional `name`
+`Values.Hyperrule` has optional `name`
 
 `formatGoal` handle `Hyperrule` specially
 

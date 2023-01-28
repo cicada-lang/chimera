@@ -6,7 +6,6 @@ import {
   substitutionContainsPatternVarInValue,
   substitutionDeepWalk,
 } from "../substitution"
-import * as Values from "../value"
 
 export function reifyHyperruleConstraints(
   solution: Solution,
@@ -27,7 +26,7 @@ export function reifyHyperruleConstraints(
 
   hyperruleConstraints = hyperruleConstraints.map((hyperruleConstraint) =>
     HyperruleConstraint(
-      hyperruleConstraint.hyperrule,
+      hyperruleConstraint.target,
       hyperruleConstraint.values.filter(
         (value) =>
           !substitutionContainsPatternVarInValue(
@@ -48,7 +47,7 @@ function hyperruleConstraintAsGoals(
   substitutionForRenaming: Substitution,
 ): Array<Goal> {
   return hyperruleConstraint.values.map((value) =>
-    Goals.Apply(Values.Hyperrule(hyperruleConstraint.hyperrule), [
+    Goals.Apply(hyperruleConstraint.target, [
       substitutionDeepWalk(substitutionForRenaming, value),
     ]),
   )

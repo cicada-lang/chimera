@@ -1,17 +1,17 @@
-import type { Hyperrule } from "../hyperrule"
+import type * as Values from "../value"
 import type { Value } from "../value"
 
 export type HyperruleConstraint = {
-  hyperrule: Hyperrule
+  target: Values.Hyperrule
   values: Array<Value>
 }
 
 export function HyperruleConstraint(
-  hyperrule: Hyperrule,
+  target: Values.Hyperrule,
   values: Array<Value>,
 ): HyperruleConstraint {
   return {
-    hyperrule,
+    target,
     values,
   }
 }

@@ -14,7 +14,7 @@ export function pursueHyperrule(
   const hyperruleConstraints = updateHyperruleConstraints(
     solution,
     solution.hyperruleConstraints,
-    target.hyperrule,
+    target,
     arg,
   )
 

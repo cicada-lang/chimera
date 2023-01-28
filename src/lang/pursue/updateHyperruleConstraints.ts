@@ -1,18 +1,18 @@
 import { arrayReplace } from "../../utils/arrayReplace"
 import { hyperrewrite } from "../hyperrewrite"
-import type { Hyperrule } from "../hyperrule"
 import { HyperruleConstraint, Solution } from "../solution"
 import { substitutionDeepWalk } from "../substitution"
+import type * as Values from "../value"
 import type { Value } from "../value"
 
 export function updateHyperruleConstraints(
   solution: Solution,
   hyperruleConstraints: Array<HyperruleConstraint>,
-  hyperrule: Hyperrule,
+  hyperrule: Values.Hyperrule,
   value: Value,
 ): Array<HyperruleConstraint> | undefined {
   const index = hyperruleConstraints.findIndex(
-    (hyperruleConstraint) => hyperruleConstraint.hyperrule === hyperrule,
+    (hyperruleConstraint) => hyperruleConstraint.target === hyperrule,
   )
 
   if (index === -1) {
@@ -43,7 +43,7 @@ export function hyperruleConstraintDeepWalk(
   hyperruleConstraint: HyperruleConstraint,
 ): HyperruleConstraint {
   return HyperruleConstraint(
-    hyperruleConstraint.hyperrule,
+    hyperruleConstraint.target,
     hyperruleConstraint.values.map((value) =>
       substitutionDeepWalk(solution.substitution, value),
     ),
@@ -54,7 +54,7 @@ function hyperruleConstraintAddValue(
   hyperruleConstraint: HyperruleConstraint,
   value: Value,
 ): HyperruleConstraint {
-  return HyperruleConstraint(hyperruleConstraint.hyperrule, [
+  return HyperruleConstraint(hyperruleConstraint.target, [
     ...hyperruleConstraint.values,
     value,
   ])
@@ -64,7 +64,7 @@ export function hyperruleConstraintHyperrewrite(
   hyperruleConstraint: HyperruleConstraint,
 ): HyperruleConstraint | undefined {
   const values = hyperrewrite(
-    hyperruleConstraint.hyperrule,
+    hyperruleConstraint.target.hyperrule,
     hyperruleConstraint.values,
   )
 
@@ -72,5 +72,5 @@ export function hyperruleConstraintHyperrewrite(
     return undefined
   }
 
-  return HyperruleConstraint(hyperruleConstraint.hyperrule, values)
+  return HyperruleConstraint(hyperruleConstraint.target, values)
 }
