@@ -125,7 +125,7 @@ export function formatValue(value: Value): string {
 
     case "TermConstraint": {
       const head = [...value.termHead.prefix, value.termHead.name].join(".")
-      return `$TermConstraint(${formatHyperrule(value.hyperrule)}, ${head})`
+      return `$TermConstraint(${head}, ${formatHyperrule(value.hyperrule)})`
     }
   }
 }

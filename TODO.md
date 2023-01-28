@@ -1,12 +1,14 @@
 # CHR
 
-`Values.Hyperrule` -- overload `Ap` -- to get `Values.Goal`
+`doDot` -- `Values.Hyperrule` -- check `termHead`
 
-`Values.Hyperrule` -- overload `Dot` -- to get `Values.TermConstraint`
+`Values.Hyperrule` -- overload `Ap` -- to get `Values.Goal`
 
 [goal] `pursue/applyTermConstraint`
 
-`Solution` has `customConstraints`
+[goal] `pursue/applyHyperrule`
+
+`Solution` has `hyperruleConstraints`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
