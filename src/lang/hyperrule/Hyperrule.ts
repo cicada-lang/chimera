@@ -10,14 +10,14 @@ export type Simplify = {
   "@kind": "Simplify"
   mod: Mod
   env: Env
-  pattern: Exp
+  patterns: Exp
   stmts: Array<Stmt>
 }
 
 export function Simplify(
   mod: Mod,
   env: Env,
-  pattern: Exp,
+  patterns: Exp,
   stmts: Array<Stmt>,
 ): Simplify {
   return {
@@ -25,7 +25,7 @@ export function Simplify(
     "@kind": "Simplify",
     mod,
     env,
-    pattern,
+    patterns,
     stmts,
   }
 }
@@ -35,14 +35,14 @@ export type Propagate = {
   "@kind": "Propagate"
   mod: Mod
   env: Env
-  pattern: Exp
+  patterns: Exp
   stmts: Array<Stmt>
 }
 
 export function Propagate(
   mod: Mod,
   env: Env,
-  pattern: Exp,
+  patterns: Exp,
   stmts: Array<Stmt>,
 ): Propagate {
   return {
@@ -50,7 +50,7 @@ export function Propagate(
     "@kind": "Propagate",
     mod,
     env,
-    pattern,
+    patterns,
     stmts,
   }
 }

@@ -5,7 +5,7 @@ import type { Hyperrule } from "../hyperrule"
 export function formatHyperrule(hyperrule: Hyperrule): string {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
-      const pattern = formatExp(hyperrule.pattern)
+      const pattern = formatExp(hyperrule.patterns)
 
       if (
         hyperrule.stmts.length === 1 &&
@@ -20,7 +20,7 @@ export function formatHyperrule(hyperrule: Hyperrule): string {
     }
 
     case "Propagate": {
-      const pattern = formatExp(hyperrule.pattern)
+      const pattern = formatExp(hyperrule.patterns)
 
       if (
         hyperrule.stmts.length === 1 &&

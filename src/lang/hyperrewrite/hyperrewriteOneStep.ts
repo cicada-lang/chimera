@@ -22,35 +22,33 @@ export function hyperrewriteOneStep(
       mod.env = envMerge(mod.env, hyperrule.env)
 
       const renames = new Map()
-      const pattern = refresh(renames, quote(mod, mod.env, hyperrule.pattern))
-
-      const result = simplify(
-        substitutionEmpty(),
-        Values.toArray(pattern),
-        values,
+      const patterns = Values.toArray(
+        refresh(renames, quote(mod, mod.env, hyperrule.patterns)),
       )
+
+      const result = simplify(substitutionEmpty(), patterns, values)
 
       if (result === undefined) {
         return undefined
       }
 
       defineRenames(mod, renames, result.substitution)
-      const returnValue = catchReturnValue(mod, hyperrule.stmts)
+      let returnValue = catchReturnValue(mod, hyperrule.stmts)
 
       if (returnValue["@kind"] === "Null") {
         return undefined
       }
 
-      const to = substitutionDeepWalk(
+      returnValue = substitutionDeepWalk(
         result.substitution,
         refresh(renames, returnValue),
       )
 
-      if (to["@kind"] === "Boolean" && to.data === false) {
+      if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
         return false
       }
 
-      return [...result.remainValues, ...Values.toArray(to)]
+      return [...result.remainValues, ...Values.toArray(returnValue)]
     }
 
     case "Propagate": {
@@ -58,12 +56,14 @@ export function hyperrewriteOneStep(
       mod.env = envMerge(mod.env, hyperrule.env)
 
       const renames = new Map()
-      const pattern = refresh(renames, quote(mod, mod.env, hyperrule.pattern))
+      const patterns = Values.toArray(
+        refresh(renames, quote(mod, mod.env, hyperrule.patterns)),
+      )
 
       const result = propagate(
         hyperrule,
         substitutionEmpty(),
-        Values.toArray(pattern),
+        patterns,
         values,
         appliedPropagations,
       )
@@ -73,24 +73,24 @@ export function hyperrewriteOneStep(
       }
 
       defineRenames(mod, renames, result.substitution)
-      const returnValue = catchReturnValue(mod, hyperrule.stmts)
+      let returnValue = catchReturnValue(mod, hyperrule.stmts)
 
       if (returnValue["@kind"] === "Null") {
         return undefined
       }
 
-      const to = substitutionDeepWalk(
+      returnValue = substitutionDeepWalk(
         result.substitution,
         refresh(renames, returnValue),
       )
 
-      if (to["@kind"] === "Boolean" && to.data === false) {
+      if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
         return false
       }
 
       // NOTE Keep the input values.
 
-      return [...values, ...Values.toArray(to)]
+      return [...values, ...Values.toArray(returnValue)]
     }
 
     case "List": {

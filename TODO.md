@@ -1,8 +1,6 @@
 # CHR
 
-`Values.TermConstraint` has `hyperrule` and `termHead`
-
-`Hyperrule` and `termHeads`
+`hyperruleTermHeads`
 
 `Values.Hyperrule` -- overload `Ap` -- to get `Values.Goal`
 
