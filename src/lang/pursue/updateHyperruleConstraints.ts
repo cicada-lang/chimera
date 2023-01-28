@@ -19,5 +19,34 @@ export function updateHyperruleConstraints(
 
   let hyperruleConstraint = hyperruleConstraints[index]
 
+  hyperruleConstraint = hyperruleConstraintDeepWalk(
+    solution,
+    hyperruleConstraint,
+  )
+
+  hyperruleConstraint = hyperruleConstraintAddValue(hyperruleConstraint, value)
+
+  hyperruleConstraint = hyperruleConstraintHyperrewrite(hyperruleConstraint)
+
   return arrayReplace(hyperruleConstraints, index, hyperruleConstraint)
+}
+
+function hyperruleConstraintDeepWalk(
+  solution: Solution,
+  hyperruleConstraint: HyperruleConstraint,
+): HyperruleConstraint {
+  return hyperruleConstraint
+}
+
+function hyperruleConstraintAddValue(
+  hyperruleConstraint: HyperruleConstraint,
+  value: Value,
+) {
+  return hyperruleConstraint
+}
+
+function hyperruleConstraintHyperrewrite(
+  hyperruleConstraint: HyperruleConstraint,
+) {
+  return hyperruleConstraint
 }
