@@ -2,8 +2,6 @@
 
 [goal] `pursue/applyHyperrule`
 
-`Solution` has `hyperruleConstraints`
-
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
 [finite-domain] solve some puzzles about finite-domain as example
