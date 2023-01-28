@@ -85,9 +85,5 @@ export function substitutionContainsPatternVar(
     case "Goal": {
       return false
     }
-
-    case "TermConstraint": {
-      return false
-    }
   }
 }

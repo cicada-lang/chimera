@@ -26,7 +26,6 @@ export type Value =
   | Primitive
   | Curried
   | Goal
-  | TermConstraint
 
 export type PatternVar = {
   "@type": "Value"
@@ -366,24 +365,5 @@ export function Goal(goal: EmbeddedGoal): Goal {
     "@type": "Value",
     "@kind": "Goal",
     goal,
-  }
-}
-
-export type TermConstraint = {
-  "@type": "Value"
-  "@kind": "TermConstraint"
-  hyperrule: EmbeddedHyperrule
-  termHead: TermHead
-}
-
-export function TermConstraint(
-  hyperrule: EmbeddedHyperrule,
-  termHead: TermHead,
-): TermConstraint {
-  return {
-    "@type": "Value",
-    "@kind": "TermConstraint",
-    hyperrule,
-    termHead,
   }
 }
