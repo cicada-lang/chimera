@@ -3,30 +3,30 @@
 // i.e. to be grounded.
 
 find q {
-  FD::In(q, [1, 2, 3])
-  FD::NotEq(q, 2)
+  FD.In(q, [1, 2, 3])
+  FD.NotEq(q, 2)
 }
 
 // => [1, 3]
 
 find [x, y, z] {
-  FD::In(x, [1, 2, 3])
-  FD::In(y, [3, 4, 5])
-  FD::In(z, [5, 6, 9])
-  FD::In(z, [1, 2, 3, 5, 6, 7, 8])
+  FD.In(x, [1, 2, 3])
+  FD.In(y, [3, 4, 5])
+  FD.In(z, [5, 6, 9])
+  FD.In(z, [1, 2, 3, 5, 6, 7, 8])
   x = y
 }
 
 // => [[3, 3, 5], [3, 3, 6]]
 
-clause FD::Lt(x, y) -- { FD::LtEq(x, y) FD::NotEq(x, y) }
+clause FD.Lt(x, y) -- { FD.LtEq(x, y) FD.NotEq(x, y) }
 
-// `FD::Range` requires its second argument to be grounded.
+// `FD.Range` requires its second argument to be grounded.
 
 find x {
-  FD::Lt(2, x)
-  FD::LtEq(x, 7)
-  FD::Range(x, [0, 10])
+  FD.Lt(2, x)
+  FD.LtEq(x, 7)
+  FD.Range(x, [0, 10])
 }
 
 // => [3, 4, 5, 6, 7]
@@ -36,8 +36,8 @@ find x {
 // The follow in is error instead of fail.
 
 find [x, y] {
-  FD::Lt(x, y)
-  FD::Lt(y, x)
+  FD.Lt(x, y)
+  FD.Lt(y, x)
 }
 
 // Unsatisfiable constraints, even when the variables are not
@@ -45,48 +45,48 @@ find [x, y] {
 // still result in failure.
 
 find q {
-  FD::In(x, [1, 2, 3])
-  FD::In(y, [1, 2, 3])
-  FD::In(z, [1, 2, 3])
-  FD::AllDiff(x, y, z)
+  FD.In(x, [1, 2, 3])
+  FD.In(y, [1, 2, 3])
+  FD.In(z, [1, 2, 3])
+  FD.AllDiff(x, y, z)
   q = 5
 }
 
 // => []
 
 find q {
-  FD::In(x, [1, 2, 3])
-  FD::In(y, [1, 2, 3])
-  FD::In(z, [1, 2, 3])
-  FD::AllDiff(x, y, z)
+  FD.In(x, [1, 2, 3])
+  FD.In(y, [1, 2, 3])
+  FD.In(z, [1, 2, 3])
+  FD.AllDiff(x, y, z)
   q = x
 }
 
 // => [1, 2, 3]
 
 find q {
-  FD::In(x, [1, 2, 3])
-  FD::In(y, [1, 2, 3])
-  FD::In(z, [1, 2, 3])
-  FD::AllDiff(x, y, z)
+  FD.In(x, [1, 2, 3])
+  FD.In(y, [1, 2, 3])
+  FD.In(z, [1, 2, 3])
+  FD.AllDiff(x, y, z)
   q = [x, z]
 }
 
 // => [[1, 2], [1, 3], [2, 1], [3, 1], [2, 3], [3, 2]]
 
 find q {
-  FD::In(q, [3, 4, 5, 6])
-  FD::AllDiff(2, 3, q)
+  FD.In(q, [3, 4, 5, 6])
+  FD.AllDiff(2, 3, q)
 }
 
 // => [4, 5, 6]
 
 find [x, y, z] {
-  FD::In(x, [1, 2, 3, 4, 5])
-  FD::In(y, [1, 2, 3, 4, 5])
-  FD::In(z, [1, 2, 3, 4, 5])
-  FD::Lt(z, x)
-  FD::Add(y, 2, z)
+  FD.In(x, [1, 2, 3, 4, 5])
+  FD.In(y, [1, 2, 3, 4, 5])
+  FD.In(z, [1, 2, 3, 4, 5])
+  FD.Lt(z, x)
+  FD.Add(y, 2, z)
 }
 
 // => [[4, 1, 3], [5, 1, 3], [5, 2, 4]]
@@ -101,39 +101,39 @@ find [x, y, z] {
 // TODO solution changes (as in the paper) to the exmaples.
 
 find [y, z] {
-  FD::Range(x, [3, 5])
-  FD::Range(z, [3, 5])
-  FD::Range(y, [1, 4])
-  FD::Lt(x, 5)
+  FD.Range(x, [3, 5])
+  FD.Range(z, [3, 5])
+  FD.Range(y, [1, 4])
+  FD.Lt(x, 5)
   x = y
 }
 
 // => [[3, 3], [4, 3], [3, 4], [4, 4], [3, 5], [4, 5]]
 
 find [y, z] {
-  FD::Range(x, [3, 5])
-  FD::Range(z, [3, 5])
-  FD::Range(y, [1, 4])
+  FD.Range(x, [3, 5])
+  FD.Range(z, [3, 5])
+  FD.Range(y, [1, 4])
   x = y
-  FD::Lt(x, 5)
+  FD.Lt(x, 5)
 }
 
 find [y, z] {
   x = y
-  FD::Lt(x, 5)
-  FD::Range(x, [3, 5])
-  FD::Range(z, [3, 5])
-  FD::Range(y, [1, 4])
+  FD.Lt(x, 5)
+  FD.Range(x, [3, 5])
+  FD.Range(z, [3, 5])
+  FD.Range(y, [1, 4])
 }
 
 find q {
-  FD::Range(w, [1, 5])
-  FD::Range(z, [1, 5])
-  FD::AllDiff(q)
+  FD.Range(w, [1, 5])
+  FD.Range(z, [1, 5])
+  FD.AllDiff(q)
   q = [x, y, z]
   [x, y] = [1, 2]
-  FD::Add(x, y, w)
-  FD::Add(w, y, z)
+  FD.Add(x, y, w)
+  FD.Add(w, y, z)
 }
 
 // => [[1, 2, 5]]

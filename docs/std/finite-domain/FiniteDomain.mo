@@ -163,7 +163,7 @@ hyperrule EnumerationDomain {
   }
 }
 
-hyperrule FiniteDomain {
+export hyperrule FiniteDomain {
   include IntervalDomain
   include EnumerationDomain
   [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
