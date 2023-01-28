@@ -6,6 +6,8 @@
 
 [finite-domain] solve some puzzles about finite-domain as example
 
+- [maybe] `EnumerationDomain` -- `NotEq`
+
 # claim and runtime type assertion
 
 `Stmts.Claim` -- Use predicate as runtime type assertion (active during test only).
@@ -23,14 +25,6 @@
 # do notation
 
 support do notation -- for programming without `try` and `catch`
-
-# hyperrewrite
-
-hyperrewrite/boolean-algebra -- add
-
-hyperrewrite/boolean-algebra -- search
-
-`enumerationDomain` -- `NotEq`
 
 # first-order logic
 
@@ -154,21 +148,11 @@ or update existing data in the relation.
 
 # database
 
-how to use protocol to separate the storage layer?
-
 [idea] If we use a database of constraints,
 we can let the database generates events when some query success or fail,
 and clients can subscribe to these events.
 
-[learn] CMU database courses
-
-[maybe] as an in-memory database first
-
-- the main is not a database,
-  but to analyze data
-  to get useful information.
-
-[aim] we need to be able to analyze personal data
+[aim] to analyze personal data
 
 - the data might be exported from somewhere,
   thus readonly,
@@ -180,13 +164,7 @@ and clients can subscribe to these events.
 
 [aim] To use this language as web app backend.
 
-[problem] how to handle large data?
-
-- [problem] how to not load all facts (which might be very large) as goals?
-
-- [question] minikanren uses stream to implement search.
-
-  - is stream also useful when we want to use relational programming language as a database?
+[problem] how to handle large data? forward-chaining?
 
 # deduction
 
@@ -226,15 +204,6 @@ about how schedule the result solutions.
 # propagator
 
 [propagator] [learn] about propagator and constraints
-
-# optional output valid JSON
-
-> It is ok to use more elaborated format here,
-> because it is intended to be read by machine.
-
-`Exps.ReifiedVar` -- valid JSON -- `_.0` -> `{ @type: ..., @kind: ..., name: ... }`
-
-`Exps.ArrayCons` -- valid JSON -- `[_.0 | _.1]` -> `{ @type: ..., @kind: ..., head: ..., tail: ... }`
 
 # the-reasoned-schemer
 
