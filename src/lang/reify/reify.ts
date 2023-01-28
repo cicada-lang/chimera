@@ -3,6 +3,7 @@ import { substitutionDeepWalk } from "../substitution"
 import type { Value } from "../value"
 import * as Values from "../value"
 import { prepareSubstitution } from "./prepareSubstitution"
+import { reifyHyperruleConstraints } from "./reifyHyperruleConstraints"
 import { reifyInequalities } from "./reifyInequalities"
 import { reifyTypeConstraints } from "./reifyTypeConstraints"
 
@@ -20,7 +21,7 @@ export function reify(solution: Solution, value: Value): Value {
   const constraints = [
     ...reifyInequalities(solution, substitutionForRenaming),
     ...reifyTypeConstraints(solution, substitutionForRenaming),
-    // ...reifyHyperruleConstraints(solution, substitutionForRenaming),
+    ...reifyHyperruleConstraints(solution, substitutionForRenaming),
   ]
 
   if (constraints.length > 0) {
