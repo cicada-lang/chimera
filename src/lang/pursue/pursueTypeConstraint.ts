@@ -4,7 +4,7 @@ import type * as Values from "../value"
 import type { Value } from "../value"
 import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
 
-export function applyTypeConstraint(
+export function pursueTypeConstraint(
   solution: Solution,
   target: Values.TypeConstraint,
   arg: Value,

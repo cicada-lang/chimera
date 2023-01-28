@@ -1,8 +1,6 @@
 # CHR
 
-rename `pursue/applyRelation` to `pursue/pursueRelation`
-rename `pursue/applyTypeConstraint` to `pursue/applyTypeConstraint`
-rename `pursue/applyHyperrule` to `pursue/applyHyperrule`
+rename `pursue/applyHyperrule` to `pursue/pursueHyperrule`
 
 rename `pursue/pursueEqual` to `pursue/applyEqual`
 rename `pursue/pursueNotEqual` to `pursue/applyNotEqual`
