@@ -38,7 +38,7 @@ export function updateHyperruleConstraints(
   return arrayReplace(hyperruleConstraints, index, newHyperruleConstraint)
 }
 
-function hyperruleConstraintDeepWalk(
+export function hyperruleConstraintDeepWalk(
   solution: Solution,
   hyperruleConstraint: HyperruleConstraint,
 ): HyperruleConstraint {
