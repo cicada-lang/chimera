@@ -75,7 +75,8 @@ export function refresh(
     case "WithConstraints":
     case "Primitive":
     case "Curried":
-    case "Goal": {
+    case "Goal":
+    case "TermConstraint": {
       return value
     }
   }

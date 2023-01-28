@@ -122,6 +122,11 @@ export function formatValue(value: Value): string {
     case "Goal": {
       return `$Goal(${formatGoal(value.goal)})`
     }
+
+    case "TermConstraint": {
+      const head = [...value.termHead.prefix, value.termHead.name].join(".")
+      return `$TermConstraint(${head})`
+    }
   }
 }
 

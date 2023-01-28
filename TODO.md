@@ -1,16 +1,20 @@
 # CHR
 
+`formatHyperrule`
+
+fix `formatValue` of `TermConstraint` by `formatHyperrule`
+
+`Values.TermConstraint` has `hyperrule` and `termHead`
+
 `Hyperrule` and `termHeads`
 
-`Values.Constraint`
+`Values.Hyperrule` -- overload `Ap` -- to get `Values.TermConstraint`
 
-`Values.Hyperrule` -- overload `Ap` -- to get `Values.Constraint`
+`Values.Hyperrule` -- overload `Dot` -- to get `Values.TermConstraint`
 
-`Values.Hyperrule` -- overload `Dot` -- to get `Values.Constraint`
+[goal] `pursue/applyTermConstraint`
 
-[goal] `pursue/applyConstraint`
-
-`Solution` has `constraints`
+`Solution` has `customConstraints`
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
 
