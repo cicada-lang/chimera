@@ -3,7 +3,7 @@ import * as Goals from "../goal"
 import type { Solution } from "../solution"
 import {
   Substitution,
-  substitutionContainsPatternVar,
+  substitutionContainsPatternVarInValue,
   substitutionDeepWalk,
   substitutionEqual,
   substitutionPairs,
@@ -51,8 +51,8 @@ function somePairContainsVar(
 ): boolean {
   return pairs.some(
     ([left, right]) =>
-      substitutionContainsPatternVar(left, substitutionForRenaming) ||
-      substitutionContainsPatternVar(right, substitutionForRenaming),
+      substitutionContainsPatternVarInValue(substitutionForRenaming, left) ||
+      substitutionContainsPatternVarInValue(substitutionForRenaming, right),
   )
 }
 

@@ -3,7 +3,7 @@ import * as Goals from "../goal"
 import { HyperruleConstraint, Solution } from "../solution"
 import {
   Substitution,
-  substitutionContainsPatternVar,
+  substitutionContainsPatternVarInValue,
   substitutionDeepWalk,
 } from "../substitution"
 import * as Values from "../value"
@@ -30,7 +30,10 @@ export function reifyHyperruleConstraints(
       hyperruleConstraint.hyperrule,
       hyperruleConstraint.values.filter(
         (value) =>
-          !substitutionContainsPatternVar(value, substitutionForRenaming),
+          !substitutionContainsPatternVarInValue(
+            substitutionForRenaming,
+            value,
+          ),
       ),
     ),
   )

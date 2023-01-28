@@ -1,4 +1,4 @@
 export * from "./Substitution"
-export * from "./substitutionContainsPatternVar"
+export * from "./substitutionContainsPatternVarInValue"
 export * from "./substitutionDeepWalk"
 export * from "./substitutionWalk"

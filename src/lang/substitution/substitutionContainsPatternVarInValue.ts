@@ -1,9 +1,9 @@
-import { Substitution, substitutionWalk } from "../substitution"
+import { Substitution, substitutionWalk } from "."
 import type { Value } from "../value"
 
-export function substitutionContainsPatternVar(
-  value: Value,
+export function substitutionContainsPatternVarInValue(
   substitution: Substitution,
+  value: Value,
 ): boolean {
   switch (value["@kind"]) {
     case "PatternVar": {
@@ -24,8 +24,8 @@ export function substitutionContainsPatternVar(
 
     case "ArrayCons": {
       return (
-        substitutionContainsPatternVar(value.car, substitution) ||
-        substitutionContainsPatternVar(value.cdr, substitution)
+        substitutionContainsPatternVarInValue(substitution, value.car) ||
+        substitutionContainsPatternVarInValue(substitution, value.cdr)
       )
     }
 
@@ -36,17 +36,18 @@ export function substitutionContainsPatternVar(
     case "Objekt": {
       return (
         Object.values(value.properties).some((value) =>
-          substitutionContainsPatternVar(value, substitution),
+          substitutionContainsPatternVarInValue(substitution, value),
         ) ||
         Boolean(
-          value.etc && substitutionContainsPatternVar(value.etc, substitution),
+          value.etc &&
+            substitutionContainsPatternVarInValue(substitution, value.etc),
         )
       )
     }
 
     case "Term": {
       return value.args.some((value) =>
-        substitutionContainsPatternVar(value, substitution),
+        substitutionContainsPatternVarInValue(substitution, value),
       )
     }
 
@@ -71,7 +72,7 @@ export function substitutionContainsPatternVar(
     }
 
     case "WithConstraints": {
-      return substitutionContainsPatternVar(value.value, substitution)
+      return substitutionContainsPatternVarInValue(substitution, value.value)
     }
 
     case "Primitive": {

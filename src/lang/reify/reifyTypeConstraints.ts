@@ -3,7 +3,7 @@ import * as Goals from "../goal"
 import type { Solution } from "../solution"
 import {
   Substitution,
-  substitutionContainsPatternVar,
+  substitutionContainsPatternVarInValue,
   substitutionDeepWalk,
 } from "../substitution"
 import type * as Values from "../value"
@@ -27,7 +27,7 @@ export function reifyTypeConstraints(
 
   typeConstraints = typeConstraints.filter(
     ([variable, _typeConstraint]) =>
-      !substitutionContainsPatternVar(variable, substitutionForRenaming),
+      !substitutionContainsPatternVarInValue(substitutionForRenaming, variable),
   )
 
   return typeConstraints.map(([variable, typeConstraint]) =>
