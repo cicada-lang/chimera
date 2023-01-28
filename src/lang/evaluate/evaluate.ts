@@ -124,6 +124,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
 
     case "RuleList": {
       return Values.Rule(
+        exp.name,
         Rules.List(exp.rules.map((rule) => evaluateRuleExp(mod, env, rule))),
       )
     }

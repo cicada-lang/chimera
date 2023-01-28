@@ -73,6 +73,7 @@ export function execute(mod: Mod, stmt: Stmt): undefined | string {
       mod.define(
         stmt.name,
         Values.Rule(
+          stmt.name,
           Rules.List(
             stmt.rules.map((rule) => evaluateRuleExp(mod, mod.env, rule)),
           ),

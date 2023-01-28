@@ -267,14 +267,20 @@ export function Find(
 export type RuleList = {
   "@type": "Exp"
   "@kind": "RuleList"
+  name: string | undefined
   rules: Array<RuleExp>
   span: Span
 }
 
-export function RuleList(rules: Array<RuleExp>, span: Span): RuleList {
+export function RuleList(
+  name: string | undefined,
+  rules: Array<RuleExp>,
+  span: Span,
+): RuleList {
   return {
     "@type": "Exp",
     "@kind": "RuleList",
+    name,
     rules,
     span,
   }

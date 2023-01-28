@@ -1,10 +1,9 @@
 # CHR
 
-`Values.Rule` has optional `name` -- to be symmetric with `Values.Hyperrule`
-
 `formatGoal` hash the content for hyperrule without name
 
 `EnumerationDomain` -- `NotEq`
+
 `EnumerationDomain` -- `AllDiff`
 
 `IntervalDomain` -- `AllDiff`
