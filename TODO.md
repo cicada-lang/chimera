@@ -1,7 +1,5 @@
 # CHR
 
-`hyperruleConstraintHyperrewrite`
-
 `maintainHyperruleConstraints`
 
 `pursue/pursueHyperrule` -- update `reify` to display information about `hyperruleConstraints`
