@@ -1,9 +1,5 @@
 # CHR
 
-`hyperruleConstraintDeepWalk`
-
-`hyperruleConstraintAddValue`
-
 `hyperruleConstraintHyperrewrite`
 
 `maintainHyperruleConstraints`

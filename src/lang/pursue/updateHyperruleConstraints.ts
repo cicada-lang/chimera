@@ -1,6 +1,7 @@
 import { arrayReplace } from "src/utils/arrayReplace"
 import type { Hyperrule } from "../hyperrule"
 import { HyperruleConstraint, Solution } from "../solution"
+import { substitutionDeepWalk } from "../substitution"
 import type { Value } from "../value"
 
 export function updateHyperruleConstraints(
@@ -35,14 +36,22 @@ function hyperruleConstraintDeepWalk(
   solution: Solution,
   hyperruleConstraint: HyperruleConstraint,
 ): HyperruleConstraint {
-  return hyperruleConstraint
+  return HyperruleConstraint(
+    hyperruleConstraint.hyperrule,
+    hyperruleConstraint.values.map((value) =>
+      substitutionDeepWalk(solution.substitution, value),
+    ),
+  )
 }
 
 function hyperruleConstraintAddValue(
   hyperruleConstraint: HyperruleConstraint,
   value: Value,
 ) {
-  return hyperruleConstraint
+  return HyperruleConstraint(hyperruleConstraint.hyperrule, [
+    ...hyperruleConstraint.values,
+    value,
+  ])
 }
 
 function hyperruleConstraintHyperrewrite(
