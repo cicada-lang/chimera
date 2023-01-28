@@ -3,7 +3,7 @@ import { substitutionEqual } from "../substitution"
 import { unify } from "../unify"
 import type { Value } from "../value"
 import { maintainInequalities } from "./maintainInequalities"
-import { maintaintypeConstraints } from "./maintaintypeConstraints"
+import { maintainTypeConstraints } from "./maintainTypeConstraints"
 
 export function pursueEqual(
   solution: Solution,
@@ -25,7 +25,7 @@ export function pursueEqual(
   })
 
   newSolution = maintainInequalities(newSolution)
-  newSolution = maintaintypeConstraints(newSolution)
+  newSolution = maintainTypeConstraints(newSolution)
 
   return newSolution
 }

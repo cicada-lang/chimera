@@ -3,7 +3,7 @@ import { substitutionWalk } from "../substitution"
 import type * as Values from "../value"
 import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
 
-export function maintaintypeConstraints(
+export function maintainTypeConstraints(
   solution: Solution | undefined,
 ): Solution | undefined {
   if (solution === undefined) {
