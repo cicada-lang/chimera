@@ -14,6 +14,10 @@ export function formatGoal(goal: Goal): string {
         return `${goal.target.name}(${args})`
       }
 
+      if (goal.target["@kind"] === "Hyperrule") {
+        return `${goal.target.name}(${args})`
+      }
+
       return `${formatValue(goal.target)}(${args})`
     }
 

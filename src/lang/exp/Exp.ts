@@ -283,17 +283,20 @@ export function RuleList(rules: Array<RuleExp>, span: Span): RuleList {
 export type HyperruleList = {
   "@type": "Exp"
   "@kind": "HyperruleList"
+  name: string | undefined
   hyperrules: Array<HyperruleExp>
   span: Span
 }
 
 export function HyperruleList(
+  name: string | undefined,
   hyperrules: Array<HyperruleExp>,
   span: Span,
 ): HyperruleList {
   return {
     "@type": "Exp",
     "@kind": "HyperruleList",
+    name,
     hyperrules,
     span,
   }

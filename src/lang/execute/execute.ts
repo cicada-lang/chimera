@@ -86,6 +86,7 @@ export function execute(mod: Mod, stmt: Stmt): undefined | string {
       mod.define(
         stmt.name,
         Values.Hyperrule(
+          stmt.name,
           Hyperrules.List(
             stmt.hyperrules.map((hyperrule) =>
               evaluateHyperruleExp(mod, mod.env, hyperrule),

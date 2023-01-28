@@ -130,6 +130,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
 
     case "HyperruleList": {
       return Values.Hyperrule(
+        exp.name,
         Hyperrules.List(
           exp.hyperrules.map((hyperrule) =>
             evaluateHyperruleExp(mod, env, hyperrule),

@@ -1,8 +1,6 @@
 # CHR
 
-`Values.Hyperrule` has optional `name`
-
-`formatGoal` handle `Hyperrule` specially
+`Values.Rule` has optional `name`
 
 `formatGoal` hash the content for hyperrule without name
 

@@ -241,13 +241,18 @@ export function Rule(rule: EmbeddedRule): Rule {
 export type Hyperrule = {
   "@type": "Value"
   "@kind": "Hyperrule"
+  name: string | undefined
   hyperrule: EmbeddedHyperrule
 }
 
-export function Hyperrule(hyperrule: EmbeddedHyperrule): Hyperrule {
+export function Hyperrule(
+  name: string | undefined,
+  hyperrule: EmbeddedHyperrule,
+): Hyperrule {
   return {
     "@type": "Value",
     "@kind": "Hyperrule",
+    name,
     hyperrule,
   }
 }
