@@ -1,5 +1,5 @@
 import { indent } from "../../utils/indent"
-import { formatGoal, formatStmt } from "../format"
+import { formatGoal, formatHyperrule, formatStmt } from "../format"
 import type { Value } from "../value"
 
 export function formatValue(value: Value): string {
@@ -80,7 +80,7 @@ export function formatValue(value: Value): string {
     }
 
     case "Hyperrule": {
-      return `$Hyperrule`
+      return `$Hyperrule(${formatHyperrule(value.hyperrule)})`
     }
 
     case "Fn": {
@@ -125,7 +125,7 @@ export function formatValue(value: Value): string {
 
     case "TermConstraint": {
       const head = [...value.termHead.prefix, value.termHead.name].join(".")
-      return `$TermConstraint(${head})`
+      return `$TermConstraint(${formatHyperrule(value.hyperrule)}, ${head})`
     }
   }
 }

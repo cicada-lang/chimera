@@ -1,6 +1,7 @@
 export * from "./formatExp"
 export * from "./formatGoal"
 export * from "./formatGoalExp"
+export * from "./formatHyperrule"
 export * from "./formatHyperruleExp"
 export * from "./formatRuleExp"
 export * from "./formatStmt"

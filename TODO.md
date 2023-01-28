@@ -1,14 +1,14 @@
 # CHR
 
-`formatHyperrule`
+`formatRule`
 
-fix `formatValue` of `TermConstraint` by `formatHyperrule`
+fix `formatValue` by `formatRule`
 
 `Values.TermConstraint` has `hyperrule` and `termHead`
 
 `Hyperrule` and `termHeads`
 
-`Values.Hyperrule` -- overload `Ap` -- to get `Values.TermConstraint`
+`Values.Hyperrule` -- overload `Ap` -- to get `Values.Goal`
 
 `Values.Hyperrule` -- overload `Dot` -- to get `Values.TermConstraint`
 

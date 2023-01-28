@@ -1,8 +1,8 @@
 import { indent } from "../../utils/indent"
 import { formatExp, formatStmt } from "../format"
-import type { HyperruleExp } from "../hyperrule-exp"
+import type { Hyperrule } from "../hyperrule"
 
-export function formatHyperruleExp(hyperrule: HyperruleExp): string {
+export function formatHyperrule(hyperrule: Hyperrule): string {
   switch (hyperrule["@kind"]) {
     case "Simplify": {
       const pattern = formatExp(hyperrule.pattern)
@@ -35,13 +35,8 @@ export function formatHyperruleExp(hyperrule: HyperruleExp): string {
     }
 
     case "List": {
-      const hyperrules = hyperrule.hyperrules.map(formatHyperruleExp)
+      const hyperrules = hyperrule.hyperrules.map(formatHyperrule)
       return `hyperrule {\n${indent(hyperrules.join("\n"))}\n}`
-    }
-
-    case "Include": {
-      const exp = formatExp(hyperrule.exp)
-      return `include ${exp}`
     }
   }
 }

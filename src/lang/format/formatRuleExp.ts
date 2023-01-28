@@ -18,12 +18,12 @@ export function formatRuleExp(rule: RuleExp): string {
 
     case "List": {
       const rules = rule.rules.map(formatRuleExp)
-      return `list {\n${indent(rules.join("\n"))}\n}`
+      return `rule {\n${indent(rules.join("\n"))}\n}`
     }
 
     case "Include": {
       const exp = formatExp(rule.exp)
-      return `use ${exp}`
+      return `include ${exp}`
     }
   }
 }
