@@ -1,4 +1,4 @@
-import { stringHash } from "src/utils/stringHash"
+import { stringHash } from "../../utils/stringHash"
 import { formatValue } from "../format"
 import type { Goal } from "../goal"
 
