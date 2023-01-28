@@ -1,7 +1,5 @@
 # CHR
 
-`utils/arrayReplace`
-
 `updateHyperruleConstraints`
 
 `maintainHyperruleConstraints`

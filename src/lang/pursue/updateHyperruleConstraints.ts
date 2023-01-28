@@ -1,3 +1,4 @@
+import { arrayReplace } from "src/utils/arrayReplace"
 import type { Hyperrule } from "../hyperrule"
 import { HyperruleConstraint, Solution } from "../solution"
 import type { Value } from "../value"
@@ -16,7 +17,7 @@ export function updateHyperruleConstraints(
     return [...hyperruleConstraints, HyperruleConstraint(hyperrule, [value])]
   }
 
-  const hyperruleConstraint = hyperruleConstraints[index]
+  let hyperruleConstraint = hyperruleConstraints[index]
 
-  return hyperruleConstraints
+  return arrayReplace(hyperruleConstraints, index, hyperruleConstraint)
 }
