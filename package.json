@@ -30,7 +30,8 @@
     "lodash": "^4.17.21",
     "node-watch": "^0.7.3",
     "picocolors": "^1.0.0",
-    "readdirp": "^3.6.0"
+    "readdirp": "^3.6.0",
+    "sjcl": "^1.0.8"
   },
   "devDependencies": {
     "@types/commonmark": "^0.27.5",
