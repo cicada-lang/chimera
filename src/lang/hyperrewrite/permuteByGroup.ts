@@ -11,7 +11,8 @@ import type { Value } from "../value"
 export function permuteByGroup(values: Array<Value>): Array<Array<Value>> {
   const groups = groupByTag(values)
   const fragments = product(groups.map(permute))
-  return fragments.map((fragment) => fragment.flat())
+  const permutation = fragments.map((fragment) => fragment.flat())
+  return permutation
 }
 
 function groupByTag(values: Array<Value>): Array<Array<Value>> {
