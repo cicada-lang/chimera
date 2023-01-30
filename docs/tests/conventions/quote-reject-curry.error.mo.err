@@ -1,6 +1,1 @@
-[createTermHeadFromExp] can not handle exp
-  target: f(x)
-
- 1 |print quote f(x)(y)
- 2 |
-
+[quote] can not quote: f(x)(y)

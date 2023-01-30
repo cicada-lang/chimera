@@ -1,5 +1,7 @@
 # CHR
 
+remove `TermHead` type -- just use string
+
 `EnumerationDomain` -- `NotEq`
 
 `EnumerationDomain` -- `AllDiff`

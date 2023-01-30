@@ -2,11 +2,11 @@ import type { Env } from "../env"
 import * as Errors from "../errors"
 import { evaluate } from "../evaluate"
 import type { Exp } from "../exp"
+import { formatExp } from "../format"
 import { freshen } from "../freshen"
 import type { Mod } from "../mod"
 import type { Value } from "../value"
 import * as Values from "../value"
-import { createTermHeadFromExp } from "./createTermHeadFromExp"
 
 export function quote(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {
@@ -60,9 +60,16 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Ap": {
-      const { prefix, name } = createTermHeadFromExp(exp.target)
-      const args = exp.args.map((arg) => quote(mod, env, arg))
-      return Values.Term(prefix, name, args)
+      if (exp.target["@kind"] !== "Var") {
+        throw new Errors.LangError(`[quote] can not quote: ${formatExp(exp)}`, {
+          span: exp.span,
+        })
+      }
+
+      return Values.Term(
+        exp.target.name,
+        exp.args.map((arg) => quote(mod, env, arg)),
+      )
     }
 
     case "Fn": {

@@ -26,7 +26,6 @@ function valueTermHead(value: Value): Array<Values.TermHead> {
   if (value["@kind"] === "Term") {
     return [
       {
-        prefix: value.prefix,
         name: value.name,
       },
     ]

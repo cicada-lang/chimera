@@ -1,4 +1,3 @@
-import { arrayEqual } from "../../utils/arrayEqual"
 import { equal } from "../equal"
 import { freshen } from "../freshen"
 import {
@@ -136,8 +135,6 @@ export function unify(
   }
 
   if (left["@kind"] === "Term" && right["@kind"] === "Term") {
-    if (!arrayEqual(left.prefix, right.prefix, (x, y) => x === y))
-      return undefined
     if (left.name !== right.name) return undefined
     if (left.args.length !== right.args.length) return undefined
 

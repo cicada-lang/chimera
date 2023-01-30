@@ -1,4 +1,3 @@
-import { arrayEqual } from "../../utils/arrayEqual"
 import * as Errors from "../errors"
 import * as Goals from "../goal"
 import { hyperruleTermHeads } from "../hyperrule"
@@ -16,17 +15,10 @@ export function applyHyperrule(
   const arg = args[0]
 
   if (arg["@kind"] === "Term") {
-    if (
-      !termHeads.some(
-        ({ prefix, name }) =>
-          arrayEqual(prefix, arg.prefix, (x, y) => x === y) &&
-          name === arg.name,
-      )
-    ) {
+    if (!termHeads.some(({ name }) => name === arg.name)) {
       throw new Errors.LangError(
         [
           `[applyHyperrule] can not apply to unknown term`,
-          `  prefix: [${arg.prefix.join(", ")}]`,
           `  name: ${arg.name}`,
         ].join("\n"),
       )
