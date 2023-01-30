@@ -1,1 +1,1 @@
-export import { FiniteDomain } from "FiniteDomain.mo"
+export import * from "FiniteDomain.mo"
