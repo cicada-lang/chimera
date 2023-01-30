@@ -4,9 +4,7 @@ import { quote } from "../quote"
 import type { Value } from "../value"
 import * as Values from "../value"
 
-export function hyperruleTermHeads(
-  hyperrule: Hyperrule,
-): Array<Values.TermHead> {
+export function hyperruleTermHeads(hyperrule: Hyperrule): Array<string> {
   switch (hyperrule["@kind"]) {
     case "Simplify":
     case "Propagate": {
@@ -22,13 +20,9 @@ export function hyperruleTermHeads(
   }
 }
 
-function valueTermHead(value: Value): Array<Values.TermHead> {
+function valueTermHead(value: Value): Array<string> {
   if (value["@kind"] === "Term") {
-    return [
-      {
-        name: value.name,
-      },
-    ]
+    return [value.name]
   }
 
   return []

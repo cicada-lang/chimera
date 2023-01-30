@@ -15,7 +15,7 @@ export function applyHyperrule(
   const arg = args[0]
 
   if (arg["@kind"] === "Term") {
-    if (!termHeads.some(({ name }) => name === arg.name)) {
+    if (!termHeads.some((name) => name === arg.name)) {
       throw new Errors.LangError(
         [
           `[applyHyperrule] can not apply to unknown term`,
