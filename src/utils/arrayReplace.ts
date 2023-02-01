@@ -1,10 +1,10 @@
 export function arrayReplace<A>(
-  xs: Array<A>,
+  array: Array<A>,
   index: number,
   value: A,
 ): Array<A> {
   const results: Array<A> = []
-  for (const [i, x] of xs.entries()) {
+  for (const [i, x] of array.entries()) {
     if (i === index) {
       results.push(value)
     } else {

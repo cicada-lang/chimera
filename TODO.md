@@ -1,5 +1,7 @@
 # CHR
 
+`utils/arrayCombination(array, n)`
+
 implement `Different` by `NotEqual` -- fix `FiniteDomain.example.mo`
 
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite

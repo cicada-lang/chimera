@@ -1,10 +1,10 @@
 import assert from "node:assert/strict"
 import test from "node:test"
-import { product } from "./product"
+import { arrayProduct } from "./arrayProduct"
 
 test("product", () => {
   assert.deepStrictEqual(
-    product([
+    arrayProduct([
       [1, 2],
       [10, 20],
       [100, 200, 300],
@@ -28,7 +28,7 @@ test("product", () => {
 
 test("product keep element", () => {
   assert.deepStrictEqual(
-    product([
+    arrayProduct([
       [[1], [2]],
       [[10], [20]],
       [[100], [200], [300]],

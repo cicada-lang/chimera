@@ -4,7 +4,7 @@
 //   - http://homepage.math.uiowa.edu/~goodman/22m150.dir/2007/Permutation%20Generation%20Methods.pdf
 //   - http://homepage.math.uiowa.edu/~goodman/algebrabook.dir/algebrabook.html
 
-export function permute<A>(input: Array<A>): Array<Array<A>> {
+export function arrayPermutation<A>(input: Array<A>): Array<Array<A>> {
   input = [...input]
   let length = input.length
   let result = [input.slice()]

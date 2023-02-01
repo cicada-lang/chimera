@@ -1,4 +1,4 @@
-import { product } from "../../utils/product"
+import { arrayProduct } from "../../utils/arrayProduct"
 import * as Actions from "../actions"
 import { doAp } from "../actions"
 import { equal } from "../equal"
@@ -63,7 +63,9 @@ export function aboutArray(globals: GlobalStore): void {
 
   globals.primitive("arrayProduct", 1, ([arrays]) => {
     return Values.fromArray(
-      product(Values.toArray(arrays).map(Values.toArray)).map(Values.fromArray),
+      arrayProduct(Values.toArray(arrays).map(Values.toArray)).map(
+        Values.fromArray,
+      ),
     )
   })
 

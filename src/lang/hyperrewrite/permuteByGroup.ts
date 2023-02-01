@@ -1,6 +1,6 @@
 import groupBy from "lodash/groupBy"
-import { permute } from "../../utils/permute"
-import { product } from "../../utils/product"
+import { arrayPermutation } from "../../utils/arrayPermutation"
+import { arrayProduct } from "../../utils/arrayProduct"
 import type { Value } from "../value"
 
 // NOTE We have labelled edge, thus we should:
@@ -10,7 +10,7 @@ import type { Value } from "../value"
 
 export function permuteByGroup(values: Array<Value>): Array<Array<Value>> {
   const groups = groupByTag(values)
-  const fragments = product(groups.map(permute))
+  const fragments = arrayProduct(groups.map(arrayPermutation))
   const permutation = fragments.map((fragment) => fragment.flat())
   return permutation
 }
