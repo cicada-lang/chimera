@@ -5,7 +5,7 @@
   }
 ]
 [ 
-  [_.0, _.0, _.1] with { FiniteDomain(In(_.1, [5, 6])) FiniteDomain(In(_.0, [3])) }
+  [_.0, _.0, _.1] with { FiniteDomain(In(_.1, [5, 6])) FiniteDomain(Equal(_.0, 3)) }
 ]
 [ 
   _.0 with {

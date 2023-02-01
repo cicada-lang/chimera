@@ -3,6 +3,8 @@ hyperrule IntervalDomain {
   if and [isNumber(a), isNumber(b), gt(a, b)]
   then false
 
+  [Range(x, a, a)] => quote [Equal(x, a)]
+
   [Range(x, a, b), Range(x, c, d)] =>
   if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)]
   then quote [Range(x, eval max(a, c), eval min(b, d))]
@@ -69,6 +71,8 @@ hyperrule IntervalDomain {
 
 hyperrule EnumerationDomain {
   [In(_, [])] => quote [false]
+
+  [In(x, [a])] => quote [Equal(x, a)]
 
   [In(x, l1), In(x, l2)] =>
   if and [
@@ -156,8 +160,10 @@ hyperrule EnumerationDomain {
 }
 
 export hyperrule FiniteDomain {
+  [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
+
+  [LtEq(x, y), LtEq(y, x), NotEq(x, y)] => false
+
   include IntervalDomain
   include EnumerationDomain
-  [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
-  [LtEq(x, y), LtEq(y, x), NotEq(x, y)] => false
 }
