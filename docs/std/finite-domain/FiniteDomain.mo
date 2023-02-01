@@ -1,11 +1,7 @@
 hyperrule IntervalDomain {
-  // inconsistency
-
   [Range(_, a, b)] =>
   if and [isNumber(a), isNumber(b), gt(a, b)]
   then false
-
-  // intersection
 
   [Range(x, a, b), Range(x, c, d)] =>
   if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)]
@@ -72,11 +68,7 @@ hyperrule IntervalDomain {
 }
 
 hyperrule EnumerationDomain {
-  // inconsistency
-
   [In(_, [])] => quote [false]
-
-  // intersection
 
   [In(x, l1), In(x, l2)] =>
   if and [
