@@ -1,10 +1,13 @@
 # CHR
 
-`EnumerationDomain` -- `NotEq`
+implement `Different` by `NotEqual` -- fix `FiniteDomain.example.mo`
 
-`EnumerationDomain` -- `AllDiff`
+`maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
 
-`IntervalDomain` -- `AllDiff`
+`pursueHyperrule` -- pursue goals returned by hyperrewrite
+
+`FiniteDomain` -- remove `Eq`
+`FiniteDomain` -- remove `NotEq`
 
 `FiniteDomain.example.mo`
 
