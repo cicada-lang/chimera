@@ -20,9 +20,11 @@ export class Runner {
       return { error: undefined }
     } catch (error) {
       if (!opts?.silent) {
-        if (error instanceof Error)
+        if (error instanceof Error) {
           console.error(highlightErrorMessage(error.message))
-        else console.error(error)
+        } else {
+          console.error(error)
+        }
       }
 
       return { error }
@@ -38,7 +40,9 @@ export class Runner {
     })
 
     for (const url of this.loader.tracked) {
-      if (main.protocol !== "file:") continue
+      if (main.protocol !== "file:") {
+        continue
+      }
 
       watcher(url.pathname, (event) => {
         if (event === "remove") {

@@ -11,7 +11,10 @@ export class DefaultCommand extends Command<Args, Opts> {
   description = "Run an file"
 
   args = { file: ty.optional(ty.string()) }
-  opts = { help: ty.optional(ty.boolean()), version: ty.optional(ty.boolean()) }
+  opts = {
+    help: ty.optional(ty.boolean()),
+    version: ty.optional(ty.boolean()),
+  }
   alias = { help: ["h"], version: ["v"] }
 
   async execute(argv: Args & Opts, runner: CommandRunner): Promise<void> {

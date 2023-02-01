@@ -40,9 +40,9 @@ export class AppReplEventHandler extends ReplEventHandler {
       executeStmts(mod, stmts)
     } catch (error) {
       error = createErrorReport(error, text)
-      if (error instanceof Error)
+      if (error instanceof Error) {
         console.error(highlightErrorMessage(error.message))
-      else console.error(error)
+      } else console.error(error)
     }
   }
 }
