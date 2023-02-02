@@ -1,5 +1,7 @@
 # CHR
 
+fix `reify` by fixing `substitutionDeepWalk` for `Goal` and `Curried`
+
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
 
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite

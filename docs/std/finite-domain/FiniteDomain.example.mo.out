@@ -55,7 +55,6 @@
   [_.0, _.1] with {
     FiniteDomain(Range(_.1, 3, 5))
     FiniteDomain(LtEq(_.0, 5))
-    FiniteDomain($Goal(NotEqual(x#1722, 5)))
     FiniteDomain(Range(_.0, 3, 4))
   }
 ]

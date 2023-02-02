@@ -1,4 +1,5 @@
 import { Substitution, substitutionWalk } from "."
+import type { Goal } from "../goal"
 import type { Value } from "../value"
 
 export function substitutionContainsPatternVarInValue(
@@ -80,11 +81,58 @@ export function substitutionContainsPatternVarInValue(
     }
 
     case "Curried": {
-      return false
+      return (
+        substitutionContainsPatternVarInValue(substitution, value.target) ||
+        value.args.some((value) =>
+          substitutionContainsPatternVarInValue(substitution, value),
+        )
+      )
     }
 
     case "Goal": {
-      return false
+      return substitutionContainsPatternVarInGoal(substitution, value.goal)
+    }
+  }
+}
+
+function substitutionContainsPatternVarInGoal(
+  substitution: Substitution,
+  goal: Goal,
+): boolean {
+  switch (goal["@kind"]) {
+    case "Apply": {
+      return (
+        substitutionContainsPatternVarInValue(substitution, goal.target) ||
+        goal.args.some((value) =>
+          substitutionContainsPatternVarInValue(substitution, value),
+        )
+      )
+    }
+
+    case "Equal": {
+      return (
+        substitutionContainsPatternVarInValue(substitution, goal.left) ||
+        substitutionContainsPatternVarInValue(substitution, goal.right)
+      )
+    }
+
+    case "NotEqual": {
+      return (
+        substitutionContainsPatternVarInValue(substitution, goal.left) ||
+        substitutionContainsPatternVarInValue(substitution, goal.right)
+      )
+    }
+
+    case "Conj": {
+      return goal.goals.some((goal) =>
+        substitutionContainsPatternVarInGoal(substitution, goal),
+      )
+    }
+
+    case "Disj": {
+      return goal.goals.some((goal) =>
+        substitutionContainsPatternVarInGoal(substitution, goal),
+      )
     }
   }
 }
