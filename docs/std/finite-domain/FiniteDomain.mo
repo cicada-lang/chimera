@@ -3,8 +3,6 @@ hyperrule IntervalDomain {
   if and [isNumber(a), isNumber(b), gt(a, b)]
   then false
 
-  [Range(x, a, a)] => [Equal(x, a)]
-
   [Range(x, a, b), Range(x, c, d)] =>
   if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)]
   then quote [Range(x, eval max(a, c), eval min(b, d))]
@@ -25,13 +23,13 @@ hyperrule IntervalDomain {
   if and [isNumber(a), isNumber(c), lt(c, a)]
   then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)]
 
-  // The `NotEq` constraint can only cause a domain tightening if one of the
+  // The `NotEqual` constraint can only cause a domain tightening if one of the
   // intervals denote a unique value that happens to be the bound of the
   // other intervals.
 
-  [NotEq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [isNumber(a), equal(a, c), equal(c, d)]
-  then quote [NotEq(x, y), Range(x, eval add1(a), b), Range(y, c, d)]
+  [Range(x, a, b), Range(y, c, d)] =>
+  if and [satisfy(NotEqual(x, y)), isNumber(a), equal(a, c), equal(c, d)]
+  then quote [Range(x, eval add1(a), b), Range(y, c, d)]
 
   // x + y = z
 
@@ -59,8 +57,6 @@ hyperrule IntervalDomain {
 
 hyperrule EnumerationDomain {
   [In(_, [])] => false
-
-  [In(x, [a])] => [Equal(x, a)]
 
   [In(x, l1), In(x, l2)] =>
   if and [
@@ -136,10 +132,10 @@ hyperrule EnumerationDomain {
 }
 
 export hyperrule FiniteDomain {
-  [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
-
-  [LtEq(x, y), LtEq(y, x)] => [Equal(x, y)]
-
   include IntervalDomain
   include EnumerationDomain
+  [Lt(x, y)] => quote [LtEq(x, y), eval NotEqual(x, y)]
+  [LtEq(x, y), LtEq(y, x)] => [Equal(x, y)]
+  [Range(x, a, a)] => [Equal(x, a)]
+  [In(x, [a])] => [Equal(x, a)]
 }

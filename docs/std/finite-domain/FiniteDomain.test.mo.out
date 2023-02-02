@@ -20,17 +20,12 @@ false
   $Goal(Equal(y, 2)),
   $Goal(Equal(z, 3))
 ]
+false
 [ 
   Add(x, y, z),
   $Goal(Equal(x, 1)),
   $Goal(Equal(y, 2)),
-  $Goal(Equal(z, 4))
-]
-[ 
-  Add(x, y, z),
-  In(z, [3, 4]),
-  $Goal(Equal(x, 1)),
-  $Goal(Equal(y, 2))
+  $Goal(Equal(z, 3))
 ]
 [ 
   Range(x, 3, 5),
@@ -38,5 +33,5 @@ false
   Range(y, 1, 4),
   Equal(x, y),
   LtEq(x, 5),
-  NotEq(x, 5)
+  $Goal(NotEqual(x, 5))
 ]

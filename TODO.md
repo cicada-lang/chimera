@@ -1,16 +1,14 @@
 # CHR
 
-`maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
-
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
 
-hyperrewrite can get `NotEqual`
+`maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
 
-`FiniteDomain` -- remove `NotEq`
+`EnumerationDomain` -- handle `NotEqual`
 
-`FiniteDomain.example.mo`
+`FiniteDomain.example.mo` -- complete solver
 
-[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `<=`
+[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `Fd(LtEq(x, y))`
 
 [finite-domain] solve some puzzles about finite-domain as example
 
