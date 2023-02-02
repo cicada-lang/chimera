@@ -1,8 +1,8 @@
 # CHR
 
-`utils/arrayDedup`
+`utils/arrayCombination(array, n)`
 
-`utils/arrayCombination(array, n)` -- with `arrayDedup`
+`utils/arrayDedup`
 
 implement `Different` by `NotEqual` -- fix `FiniteDomain.example.mo`
 
