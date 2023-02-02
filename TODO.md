@@ -1,10 +1,10 @@
 # CHR
 
+hyperrewrite -- handle `NotEqual` as input
+
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
 
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
-
-`EnumerationDomain` -- handle `NotEqual`
 
 `FiniteDomain.example.mo` -- complete solver
 

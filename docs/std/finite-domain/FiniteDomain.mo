@@ -27,9 +27,9 @@ hyperrule IntervalDomain {
   // intervals denote a unique value that happens to be the bound of the
   // other intervals.
 
-  [Range(x, a, b), Range(y, c, d)] =>
-  if and [satisfy(NotEqual(x, y)), isNumber(a), equal(a, c), equal(c, d)]
-  then quote [Range(x, eval add1(a), b), Range(y, c, d)]
+  // [Range(x, a, b), Range(y, c, d)] =>
+  // if and [satisfy(NotEqual(x, y)), isNumber(a), equal(a, c), equal(c, d)]
+  // then quote [Range(x, eval add1(a), b), Range(y, c, d)]
 
   // x + y = z
 
@@ -64,6 +64,20 @@ hyperrule EnumerationDomain {
     isArray(l2), arrayEvery(l2, isNumber),
   ]
   then quote [In(x, eval arrayIntersection(l1, l2))]
+
+  // [In(x, l1)] => {
+  //   if not isArray(l1) {
+  //     return
+  //   }
+
+  //   let l2 = arrayFilter(l1, (y) => satisfy(NotEqual(x, y)))
+
+  //   if equal(arrayLength(l1), arrayLength(l2)) {
+  //     return
+  //   }
+
+  //   return quote [In(x, eval l2)]
+  // }
 
   [LtEq(x, y), In(x, l1), In(y, l2)] => {
     if not and [
@@ -132,6 +146,7 @@ hyperrule EnumerationDomain {
 }
 
 export hyperrule FiniteDomain {
+  // NOTE The order matters
   include IntervalDomain
   include EnumerationDomain
   [Lt(x, y)] => quote [LtEq(x, y), eval NotEqual(x, y)]
