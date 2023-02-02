@@ -4,9 +4,25 @@
 
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
 
-`pursueHyperrule` -- goals in input as guard
+`Goals.Constraints`
 
-`maintainHyperruleConstraints` -- goals in input as guard
+`GoalExps.Constraints` -- `constraints FiniteDomain { ... }`
+
+`Values.Solution`
+
+`hyperrule` can take `context` -- `{ solution }` as argument
+
+- `hyperrewrite` may take `context`
+
+  - every function has fixed arity, thus we may use another name
+
+    - `hyperrewriteInContext`
+
+- to support using goals in input in hyperrule
+
+primitive about solution
+
+- `solve`? `find`? `satisfy`?
 
 `FiniteDomain.example.mo` -- complete solver
 
@@ -59,6 +75,10 @@ maybe I can understand Gentzen and Goedel's works.
 mark as 1.0.0 and writie some docs
 
 - about set-theory based programming for language development
+
+# pattern match
+
+pattern match support telescope
 
 # term rewriting
 
