@@ -1,10 +1,12 @@
 # CHR
 
-implement `Different` by `NotEqual` -- fix `FiniteDomain.example.mo`
+`aboutArray` -- use utils' `arrayDedup` and `arrayMember`
 
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
 
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
+
+hyperrewrite can get `NotEqual`
 
 `FiniteDomain` -- remove `Eq`
 `FiniteDomain` -- remove `NotEq`

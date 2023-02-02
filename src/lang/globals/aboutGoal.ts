@@ -16,4 +16,26 @@ export function aboutGoal(globals: GlobalStore): void {
     Values.assertValue(value, "Goal", { who: "satisfy" })
     return Values.Boolean(satisfy(value.goal))
   })
+
+  globals.primitive("conj", 1, ([value]) => {
+    return Values.Goal(
+      Goals.Conj(
+        Values.toArray(value).map((value) => {
+          Values.assertValue(value, "Goal", { who: "conj" })
+          return value.goal
+        }),
+      ),
+    )
+  })
+
+  globals.primitive("disj", 1, ([value]) => {
+    return Values.Goal(
+      Goals.Disj(
+        Values.toArray(value).map((value) => {
+          Values.assertValue(value, "Goal", { who: "disj" })
+          return value.goal
+        }),
+      ),
+    )
+  })
 }

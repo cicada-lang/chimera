@@ -16,6 +16,22 @@
   }
 ]
 []
+[5]
+[_.0 with { FiniteDomain(In(_.0, [1, 2, 3])) }]
+[ 
+  [_.0, _.1] with {
+    NotEqual(_.1, _.0)
+    FiniteDomain(In(_.0, [1, 2, 3]))
+    FiniteDomain(In(_.1, [1, 2, 3]))
+  }
+]
+[ 
+  _.0 with {
+    NotEqual(_.0, 3)
+    NotEqual(_.0, 2)
+    FiniteDomain(In(_.0, [3, 4, 5, 6]))
+  }
+]
 [ 
   [_.0, _.1, _.2] with {
     FiniteDomain(In(_.0, [1, 2, 3, 4, 5]))
@@ -48,5 +64,12 @@
     FiniteDomain(LtEq(_.0, 5))
     FiniteDomain(NotEq(_.0, 5))
     FiniteDomain(Range(_.0, 3, 4))
+  }
+]
+[ 
+  [1, 2, _.0] with {
+    NotEqual(_.0, 2)
+    NotEqual(_.0, 1)
+    FiniteDomain(Range(_.0, 1, 5))
   }
 ]

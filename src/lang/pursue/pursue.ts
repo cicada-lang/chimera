@@ -35,6 +35,12 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
         return pursue(solution, value.goal)
       }
 
+      if (goal.target["@kind"] === "Fn") {
+        const value = Actions.doAp(goal.target, goal.args)
+        Values.assertValue(value, "Goal", { who: "pursue" })
+        return pursue(solution, value.goal)
+      }
+
       throw new Errors.LangError(
         [
           `[pursue] can not apply goal.target`,

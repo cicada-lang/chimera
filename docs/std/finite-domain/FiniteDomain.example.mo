@@ -1,5 +1,9 @@
 import { FiniteDomain as FD } from "FiniteDomain.mo"
 
+function Different(values) {
+  return conj(arrayMapSpread(arrayCombination(values, 2), NotEqual))
+}
+
 // `In` is a special relation which requires
 // its second argument to be a list of numbers
 // i.e. to be grounded.
@@ -44,40 +48,40 @@ print find [x, y] {
 // referenced or associated with the run variable in any way,
 // still result in failure.
 
-// print find q {
-//   FD(In(x, [1, 2, 3]))
-//   FD(In(y, [1, 2, 3]))
-//   FD(In(z, [1, 2, 3]))
-//   FD(AllDiff(x, y, z))
-//   q = 5
-// }
+print find q {
+  FD(In(x, [1, 2]))
+  FD(In(y, [1, 2]))
+  FD(In(z, [1, 2]))
+  Different([x, y, z])
+  q = 5
+}
 
 // => []
 
-// print find q {
-//   FD(In(x, [1, 2, 3]))
-//   FD(In(y, [1, 2, 3]))
-//   FD(In(z, [1, 2, 3]))
-//   FD(AllDiff(x, y, z))
-//   q = x
-// }
+print find q {
+  FD(In(x, [1, 2, 3]))
+  FD(In(y, [1, 2, 3]))
+  FD(In(z, [1, 2, 3]))
+  Different([x, y, z])
+  q = x
+}
 
 // => [1, 2, 3]
 
-// print find q {
-//   FD(In(x, [1, 2, 3]))
-//   FD(In(y, [1, 2, 3]))
-//   FD(In(z, [1, 2, 3]))
-//   FD(AllDiff(x, y, z))
-//   q = [x, z]
-// }
+print find q {
+  FD(In(x, [1, 2, 3]))
+  FD(In(y, [1, 2, 3]))
+  FD(In(z, [1, 2, 3]))
+  Different([x, y, z])
+  q = [x, z]
+}
 
 // => [[1, 2], [1, 3], [2, 1], [3, 1], [2, 3], [3, 2]]
 
-// print find q {
-//   FD(In(q, [3, 4, 5, 6]))
-//   FD(AllDiff(2, 3, q))
-// }
+print find q {
+  FD(In(q, [3, 4, 5, 6]))
+  Different([2, 3, q])
+}
 
 // => [4, 5, 6]
 
@@ -126,14 +130,14 @@ print find [y, z] {
   FD(Range(y, 1, 4))
 }
 
-// print find q {
-//   FD(Range(w, 1, 5))
-//   FD(Range(z, 1, 5))
-//   FD(AllDiff(q))
-//   q = [x, y, z]
-//   [x, y] = [1, 2]
-//   FD(Add(x, y, w))
-//   FD(Add(w, y, z))
-// }
+print find q {
+  FD(Range(w, 1, 5))
+  FD(Range(z, 1, 5))
+  Different([x, y, z])
+  q = [x, y, z]
+  [x, y] = [1, 2]
+  FD(Add(x, y, w))
+  FD(Add(w, y, z))
+}
 
 // => [[1, 2, 5]]

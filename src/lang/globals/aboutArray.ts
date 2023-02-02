@@ -1,3 +1,4 @@
+import { arrayCombination } from "../../utils/arrayCombination"
 import { arrayProduct } from "../../utils/arrayProduct"
 import * as Actions from "../actions"
 import { doAp } from "../actions"
@@ -119,6 +120,13 @@ export function aboutArray(globals: GlobalStore): void {
     }
 
     return Values.Boolean(false)
+  })
+
+  globals.primitive("arrayCombination", 2, ([array, n]) => {
+    Values.assertValue(n, "Number", { who: "arrayCombination" })
+    return Values.fromArray(
+      arrayCombination(Values.toArray(array), n.data).map(Values.fromArray),
+    )
   })
 }
 
