@@ -1,16 +1,3 @@
-[diary] naming convention of constraint
-
-Constraint in hyperrule should use relation naming convention.
-
-Because a constraint is a relation,
-just like relation name in LP,
-we should use upper case.
-
-Although they are just terms (data).
-
-Because `Add(x, y, z)` has three arguments,
-`add(x, y)` has two arguments.
-
 # CHR
 
 `utils/arrayDedup`
