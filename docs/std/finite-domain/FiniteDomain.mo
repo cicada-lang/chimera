@@ -3,7 +3,7 @@ hyperrule IntervalDomain {
   if and [isNumber(a), isNumber(b), gt(a, b)]
   then false
 
-  [Range(x, a, a)] => quote [Equal(x, a)]
+  [Range(x, a, a)] => [Equal(x, a)]
 
   [Range(x, a, b), Range(x, c, d)] =>
   if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)]
@@ -24,18 +24,6 @@ hyperrule IntervalDomain {
   [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [isNumber(a), isNumber(c), lt(c, a)]
   then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)]
-
-  // The `Eq` constraint enforces the intersection of the intervals
-  // associated with its variables provided the bounds are not yet the
-  // same.
-
-  [Eq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [isNumber(a), isNumber(c), not equal(c, a)]
-  then quote [Eq(x, y), Range(x, eval max(a, c), b), Range(y, eval max(a, c), d)]
-
-  [Eq(x, y), Range(x, a, b), Range(y, c, d)] =>
-  if and [isNumber(b), isNumber(d), not equal(b, d)]
-  then quote [Eq(x, y), Range(x, a, eval min(b, d)), Range(y, c, eval min(b, d))]
 
   // The `NotEq` constraint can only cause a domain tightening if one of the
   // intervals denote a unique value that happens to be the bound of the
@@ -70,9 +58,9 @@ hyperrule IntervalDomain {
 }
 
 hyperrule EnumerationDomain {
-  [In(_, [])] => quote [false]
+  [In(_, [])] => false
 
-  [In(x, [a])] => quote [Equal(x, a)]
+  [In(x, [a])] => [Equal(x, a)]
 
   [In(x, l1), In(x, l2)] =>
   if and [
@@ -126,18 +114,6 @@ hyperrule EnumerationDomain {
     ]
   }
 
-  [Eq(x, y), In(x, l1), In(y, l2)] =>
-  if and [
-    isArray(l1), arrayEvery(l1, isNumber),
-    isArray(l2), arrayEvery(l2, isNumber),
-    not equal(l1, l2),
-  ]
-  then quote [
-    LtEq(x, y),
-    In(x, eval arrayIntersection(l1, l2)),
-    In(y, eval arrayIntersection(l1, l2)),
-  ]
-
   [Add(x, y, z), In(x, l1), In(y, l2), In(z, l3)] => {
     if not and [
       isArray(l1), arrayEvery(l1, isNumber),
@@ -162,7 +138,7 @@ hyperrule EnumerationDomain {
 export hyperrule FiniteDomain {
   [Lt(x, y)] => quote [LtEq(x, y), NotEq(x, y)]
 
-  [LtEq(x, y), LtEq(y, x), NotEq(x, y)] => false
+  [LtEq(x, y), LtEq(y, x)] => [Equal(x, y)]
 
   include IntervalDomain
   include EnumerationDomain

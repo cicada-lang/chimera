@@ -1,14 +1,11 @@
 # CHR
 
-`aboutArray` -- use utils' `arrayDedup` and `arrayMember`
-
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
 
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
 
 hyperrewrite can get `NotEqual`
 
-`FiniteDomain` -- remove `Eq`
 `FiniteDomain` -- remove `NotEq`
 
 `FiniteDomain.example.mo`

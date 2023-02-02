@@ -1,4 +1,6 @@
 import { arrayCombination } from "../../utils/arrayCombination"
+import { arrayDedup } from "../../utils/arrayDedup"
+import { arrayMember } from "../../utils/arrayMember"
 import { arrayProduct } from "../../utils/arrayProduct"
 import * as Actions from "../actions"
 import { doAp } from "../actions"
@@ -25,12 +27,12 @@ export function aboutArray(globals: GlobalStore): void {
   })
 
   globals.primitive("arrayDedup", 1, ([array]) => {
-    return Values.fromArray(arrayDedup(Values.toArray(array)))
+    return Values.fromArray(arrayDedup(Values.toArray(array), equal))
   })
 
   globals.primitive("arrayUnion", 2, ([left, right]) => {
     return Values.fromArray(
-      arrayDedup([...Values.toArray(left), ...Values.toArray(right)]),
+      arrayDedup([...Values.toArray(left), ...Values.toArray(right)], equal),
     )
   })
 
@@ -40,16 +42,16 @@ export function aboutArray(globals: GlobalStore): void {
     const results: Array<Value> = []
 
     for (const leftValue of leftValues) {
-      if (arrayMember(rightValues, leftValue)) {
+      if (arrayMember(rightValues, leftValue, equal)) {
         results.push(leftValue)
       }
     }
 
-    return Values.fromArray(arrayDedup(results))
+    return Values.fromArray(arrayDedup(results, equal))
   })
 
   globals.primitive("arrayMember", 2, ([values, target]) => {
-    return Values.Boolean(arrayMember(Values.toArray(values), target))
+    return Values.Boolean(arrayMember(Values.toArray(values), target, equal))
   })
 
   globals.primitive("arrayFilter", 2, ([values, predicate]) => {
@@ -128,25 +130,4 @@ export function aboutArray(globals: GlobalStore): void {
       arrayCombination(Values.toArray(array), n.data).map(Values.fromArray),
     )
   })
-}
-
-function arrayDedup(values: Array<Value>): Array<Value> {
-  const results: Array<Value> = []
-  for (const value of values) {
-    if (!arrayMember(results, value)) {
-      results.push(value)
-    }
-  }
-
-  return results
-}
-
-function arrayMember(values: Array<Value>, target: Value): boolean {
-  for (const value of values) {
-    if (equal(value, target)) {
-      return true
-    }
-  }
-
-  return false
 }

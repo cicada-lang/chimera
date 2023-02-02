@@ -6,7 +6,7 @@ export function arrayDedup<A>(
 ): Array<A> {
   const results: Array<A> = []
   for (const x of array) {
-    if (!arrayMember(array, x, eq)) {
+    if (!arrayMember(results, x, eq)) {
       results.push(x)
     }
   }
