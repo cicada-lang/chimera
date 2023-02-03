@@ -1,6 +1,6 @@
 # CHR
 
-inline `updateHyperruleConstraints`
+inline `hyperruleConstraintAddValue`
 
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
 

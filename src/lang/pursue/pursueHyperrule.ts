@@ -9,36 +9,27 @@ export function pursueHyperrule(
   target: Values.Hyperrule,
   arg: Value,
 ): Array<Solution> {
-  const hyperruleConstraints = updateHyperruleConstraints(
-    solution,
-    solution.hyperruleConstraints,
-    target,
-    arg,
-  )
+  const hyperruleConstraints = solution.hyperruleConstraints
 
-  if (hyperruleConstraints === undefined) {
-    return []
-  }
-
-  return [
-    solutionUpdate(solution, {
-      hyperruleConstraints,
-    }),
-  ]
-}
-
-function updateHyperruleConstraints(
-  solution: Solution,
-  hyperruleConstraints: Array<HyperruleConstraint>,
-  hyperrule: Values.Hyperrule,
-  arg: Value,
-): Array<HyperruleConstraint> | undefined {
   const index = hyperruleConstraints.findIndex(
-    (hyperruleConstraint) => hyperruleConstraint.target === hyperrule,
+    (hyperruleConstraint) => hyperruleConstraint.target === target,
   )
 
   if (index === -1) {
-    return [...hyperruleConstraints, HyperruleConstraint(hyperrule, [arg])]
+    const hyperruleConstraint = hyperruleConstraintHyperrewrite(
+      solution,
+      HyperruleConstraint(target, [arg]),
+    )
+
+    if (hyperruleConstraint === undefined) {
+      return []
+    }
+
+    return [
+      solutionUpdate(solution, {
+        hyperruleConstraints: [...hyperruleConstraints, hyperruleConstraint],
+      }),
+    ]
   }
 
   const hyperruleConstraint = hyperruleConstraintHyperrewrite(
@@ -47,10 +38,18 @@ function updateHyperruleConstraints(
   )
 
   if (hyperruleConstraint === undefined) {
-    return undefined
+    return []
   }
 
-  return arrayReplace(hyperruleConstraints, index, hyperruleConstraint)
+  return [
+    solutionUpdate(solution, {
+      hyperruleConstraints: arrayReplace(
+        hyperruleConstraints,
+        index,
+        hyperruleConstraint,
+      ),
+    }),
+  ]
 }
 
 function hyperruleConstraintAddValue(
