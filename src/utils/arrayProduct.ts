@@ -1,6 +1,10 @@
 // NOTE Cartesian product of array of array.
 
 export function arrayProduct<A>(arrays: Array<Array<A>>): Array<Array<A>> {
+  if (arrays.length === 0) {
+    return []
+  }
+
   const [head, ...tail] = arrays
 
   if (tail.length === 0) {

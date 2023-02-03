@@ -1,4 +1,4 @@
-import { FiniteDomain as FD } from "FiniteDomain.mo"
+import { FiniteDomain } from "FiniteDomain.mo"
 
 function Different(values) {
   return conj(arrayMapSpread(arrayCombination(values, 2), NotEqual))
@@ -9,22 +9,23 @@ function Different(values) {
 // i.e. to be grounded.
 
 print find q {
-  FD(In(q, [1, 2, 3]))
+  constraints FiniteDomain {
+    In(q, [1, 2, 3])
+  }
   NotEqual(q, 2)
 }
 
 print find q {
-  constraints FD {
+  NotEqual(q, 2)
+  constraints FiniteDomain {
     In(q, [1, 2, 3])
   }
-
-  NotEqual(q, 2)
 }
 
 // => [1, 3]
 
 print find [x, y, z] {
-  constraints FD {
+  constraints FiniteDomain {
     In(x, [1, 2, 3])
     In(y, [3, 4, 5])
     In(z, [5, 6, 9])
@@ -38,9 +39,11 @@ print find [x, y, z] {
 // `FD.Range` requires its second argument to be grounded.
 
 print find x {
-  FD(Lt(2, x))
-  FD(LtEq(x, 7))
-  FD(Range(x, 0, 10))
+  constraints FiniteDomain {
+    Lt(2, x)
+    LtEq(x, 7)
+    Range(x, 0, 10)
+  }
 }
 
 // => [3, 4, 5, 6, 7]
@@ -50,8 +53,10 @@ print find x {
 // The follow in is error instead of fail.
 
 print find [x, y] {
-  FD(Lt(x, y))
-  FD(Lt(y, x))
+  constraints FiniteDomain {
+    Lt(x, y)
+    Lt(y, x)
+  }
 }
 
 // Unsatisfiable constraints, even when the variables are not
@@ -59,9 +64,11 @@ print find [x, y] {
 // still result in failure.
 
 print find q {
-  FD(In(x, [1, 2]))
-  FD(In(y, [1, 2]))
-  FD(In(z, [1, 2]))
+  constraints FiniteDomain {
+    In(x, [1, 2])
+    In(y, [1, 2])
+    In(z, [1, 2])
+  }
   Different([x, y, z])
   q = 5
 }
@@ -69,9 +76,11 @@ print find q {
 // => []
 
 print find q {
-  FD(In(x, [1, 2, 3]))
-  FD(In(y, [1, 2, 3]))
-  FD(In(z, [1, 2, 3]))
+  constraints FiniteDomain {
+    In(x, [1, 2, 3])
+    In(y, [1, 2, 3])
+    In(z, [1, 2, 3])
+  }
   Different([x, y, z])
   q = x
 }
@@ -79,9 +88,11 @@ print find q {
 // => [1, 2, 3]
 
 print find q {
-  FD(In(x, [1, 2, 3]))
-  FD(In(y, [1, 2, 3]))
-  FD(In(z, [1, 2, 3]))
+  constraints FiniteDomain {
+    In(x, [1, 2, 3])
+    In(y, [1, 2, 3])
+    In(z, [1, 2, 3])
+  }
   Different([x, y, z])
   q = [x, z]
 }
@@ -89,18 +100,22 @@ print find q {
 // => [[1, 2], [1, 3], [2, 1], [3, 1], [2, 3], [3, 2]]
 
 print find q {
-  FD(In(q, [3, 4, 5, 6]))
+  constraints FiniteDomain {
+    In(q, [3, 4, 5, 6])
+  }
   Different([2, 3, q])
 }
 
 // => [4, 5, 6]
 
 print find [x, y, z] {
-  FD(In(x, [1, 2, 3, 4, 5]))
-  FD(In(y, [1, 2, 3, 4, 5]))
-  FD(In(z, [1, 2, 3, 4, 5]))
-  FD(Lt(z, x))
-  FD(Add(y, 2, z))
+  constraints FiniteDomain {
+    In(x, [1, 2, 3, 4, 5])
+    In(y, [1, 2, 3, 4, 5])
+    In(z, [1, 2, 3, 4, 5])
+    Lt(z, x)
+    Add(y, 2, z)
+  }
 }
 
 // => [[4, 1, 3], [5, 1, 3], [5, 2, 4]]
@@ -115,39 +130,53 @@ print find [x, y, z] {
 // TODO solution changes (as in the paper) to the exmaples.
 
 print find [y, z] {
-  FD(Range(x, 3, 5))
-  FD(Range(z, 3, 5))
-  FD(Range(y, 1, 4))
-  FD(Lt(x, 5))
+  constraints FiniteDomain {
+    Range(x, 3, 5)
+    Range(z, 3, 5)
+    Range(y, 1, 4)
+    Lt(x, 5)
+  }
   x = y
 }
 
 // => [[3, 3], [4, 3], [3, 4], [4, 4], [3, 5], [4, 5]]
 
 print find [y, z] {
-  FD(Range(x, 3, 5))
-  FD(Range(z, 3, 5))
-  FD(Range(y, 1, 4))
+  constraints FiniteDomain {
+    Range(x, 3, 5)
+    Range(z, 3, 5)
+    Range(y, 1, 4)
+  }
   x = y
-  FD(Lt(x, 5))
+  constraints FiniteDomain {
+    Lt(x, 5)
+  }
 }
 
 print find [y, z] {
   x = y
-  FD(Lt(x, 5))
-  FD(Range(x, 3, 5))
-  FD(Range(z, 3, 5))
-  FD(Range(y, 1, 4))
+  constraints FiniteDomain {
+    Lt(x, 5)
+    Range(x, 3, 5)
+    Range(z, 3, 5)
+    Range(y, 1, 4)
+  }
 }
 
 print find q {
-  FD(Range(w, 1, 5))
-  FD(Range(z, 1, 5))
+  constraints FiniteDomain {
+    Range(w, 1, 5)
+    Range(z, 1, 5)
+  }
+
   Different([x, y, z])
   q = [x, y, z]
   [x, y] = [1, 2]
-  FD(Add(x, y, w))
-  FD(Add(w, y, z))
+
+  constraints FiniteDomain {
+    Add(x, y, w)
+    Add(w, y, z)
+  }
 }
 
 // => [[1, 2, 5]]
