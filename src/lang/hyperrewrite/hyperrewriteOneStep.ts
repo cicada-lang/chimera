@@ -5,7 +5,11 @@ import { envMerge } from "../env"
 import type { Hyperrule } from "../hyperrule"
 import { quote } from "../quote"
 import { refresh } from "../refresh"
-import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
+import {
+  Substitution,
+  substitutionDeepWalk,
+  substitutionEmpty,
+} from "../substitution"
 import type { Value } from "../value"
 import * as Values from "../value"
 import type { HyperrewriteContext } from "./hyperrewrite"
@@ -36,48 +40,19 @@ export function hyperrewriteOneStep(
       }
 
       defineRenames(mod, renames, result.substitution)
-      let returnValue = catchReturnValue(mod, hyperrule.stmts)
 
-      returnValue = substitutionDeepWalk(
+      const returnValue = catchReturnValue(mod, hyperrule.stmts)
+
+      const finialValues = handleReturnValue(
+        context,
+        renames,
         result.substitution,
-        refresh(renames, returnValue),
+        returnValue,
       )
 
-      if (returnValue["@kind"] === "Null") {
-        return undefined
-      }
-
-      if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
-        return false
-      }
-
-      if (returnValue["@kind"] === "Fn") {
-        let newReturnValue = Actions.doAp(returnValue, [
-          Values.Objekt({
-            solution: Values.Solution(context.solution),
-          }),
-        ])
-
-        newReturnValue = substitutionDeepWalk(
-          result.substitution,
-          refresh(renames, newReturnValue),
-        )
-
-        if (newReturnValue["@kind"] === "Null") {
-          return undefined
-        }
-
-        if (
-          newReturnValue["@kind"] === "Boolean" &&
-          newReturnValue.data === false
-        ) {
-          return false
-        }
-
-        return [...result.remainValues, ...Values.toArray(newReturnValue)]
-      }
-
-      return [...result.remainValues, ...Values.toArray(returnValue)]
+      if (finialValues === false) return false
+      if (finialValues === undefined) return undefined
+      return [...result.remainValues, ...finialValues]
     }
 
     case "Propagate": {
@@ -102,50 +77,19 @@ export function hyperrewriteOneStep(
       }
 
       defineRenames(mod, renames, result.substitution)
-      let returnValue = catchReturnValue(mod, hyperrule.stmts)
 
-      returnValue = substitutionDeepWalk(
+      const returnValue = catchReturnValue(mod, hyperrule.stmts)
+
+      const finialValues = handleReturnValue(
+        context,
+        renames,
         result.substitution,
-        refresh(renames, returnValue),
+        returnValue,
       )
 
-      if (returnValue["@kind"] === "Null") {
-        return undefined
-      }
-
-      if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
-        return false
-      }
-
-      if (returnValue["@kind"] === "Fn") {
-        let newReturnValue = Actions.doAp(returnValue, [
-          Values.Objekt({
-            solution: Values.Solution(context.solution),
-          }),
-        ])
-
-        newReturnValue = substitutionDeepWalk(
-          result.substitution,
-          refresh(renames, newReturnValue),
-        )
-
-        if (newReturnValue["@kind"] === "Null") {
-          return undefined
-        }
-
-        if (
-          newReturnValue["@kind"] === "Boolean" &&
-          newReturnValue.data === false
-        ) {
-          return false
-        }
-
-        return [...values, ...Values.toArray(newReturnValue)]
-      }
-
-      // NOTE Keep the input values.
-
-      return [...values, ...Values.toArray(returnValue)]
+      if (finialValues === false) return false
+      if (finialValues === undefined) return undefined
+      return [...values, ...finialValues]
     }
 
     case "List": {
@@ -164,4 +108,36 @@ export function hyperrewriteOneStep(
       return undefined
     }
   }
+}
+
+function handleReturnValue(
+  context: HyperrewriteContext,
+  renames: Map<string, Values.PatternVar>,
+  substitution: Substitution,
+  returnValue: Value,
+): Array<Value> | false | undefined {
+  returnValue = substitutionDeepWalk(
+    substitution,
+    refresh(renames, returnValue),
+  )
+
+  if (returnValue["@kind"] === "Null") {
+    return undefined
+  }
+
+  if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
+    return false
+  }
+
+  if (returnValue["@kind"] === "Fn") {
+    let newReturnValue = Actions.doAp(returnValue, [
+      Values.Objekt({
+        solution: Values.Solution(context.solution),
+      }),
+    ])
+
+    return handleReturnValue(context, renames, substitution, newReturnValue)
+  }
+
+  return Values.toArray(returnValue)
 }

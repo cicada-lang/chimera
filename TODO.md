@@ -1,7 +1,5 @@
 # CHR
 
-[refactor] `hyperrewriteOneStep`
-
 `FiniteDomain.example.mo` -- complete solver
 
 [books/clause-and-effect] 08-maximum-of-a-list.wa -- need `constraints FiniteDomain { LtEq(x, y) }`
