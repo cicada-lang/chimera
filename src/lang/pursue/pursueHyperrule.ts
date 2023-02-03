@@ -9,9 +9,7 @@ export function pursueHyperrule(
   target: Values.Hyperrule,
   arg: Value,
 ): Array<Solution> {
-  const hyperruleConstraints = solution.hyperruleConstraints
-
-  const index = hyperruleConstraints.findIndex(
+  const index = solution.hyperruleConstraints.findIndex(
     (hyperruleConstraint) => hyperruleConstraint.target === target,
   )
 
@@ -27,14 +25,20 @@ export function pursueHyperrule(
 
     return [
       solutionUpdate(solution, {
-        hyperruleConstraints: [...hyperruleConstraints, hyperruleConstraint],
+        hyperruleConstraints: [
+          ...solution.hyperruleConstraints,
+          hyperruleConstraint,
+        ],
       }),
     ]
   }
 
   const hyperruleConstraint = hyperruleConstraintHyperrewrite(
     solution,
-    hyperruleConstraintAddValue(hyperruleConstraints[index], arg),
+    HyperruleConstraint(solution.hyperruleConstraints[index].target, [
+      ...solution.hyperruleConstraints[index].values,
+      arg,
+    ]),
   )
 
   if (hyperruleConstraint === undefined) {
@@ -44,20 +48,10 @@ export function pursueHyperrule(
   return [
     solutionUpdate(solution, {
       hyperruleConstraints: arrayReplace(
-        hyperruleConstraints,
+        solution.hyperruleConstraints,
         index,
         hyperruleConstraint,
       ),
     }),
   ]
-}
-
-function hyperruleConstraintAddValue(
-  hyperruleConstraint: HyperruleConstraint,
-  arg: Value,
-): HyperruleConstraint {
-  return HyperruleConstraint(hyperruleConstraint.target, [
-    ...hyperruleConstraint.values,
-    arg,
-  ])
 }

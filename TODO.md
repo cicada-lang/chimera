@@ -1,7 +1,5 @@
 # CHR
 
-inline `hyperruleConstraintAddValue`
-
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
 
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
