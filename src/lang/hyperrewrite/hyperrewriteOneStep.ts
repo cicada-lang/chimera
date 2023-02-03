@@ -40,9 +40,7 @@ export function hyperrewriteOneStep(
       }
 
       defineRenames(mod, renames, result.substitution)
-
       const returnValue = catchReturnValue(mod, hyperrule.stmts)
-
       const finialValues = handleReturnValue(
         context,
         renames,
@@ -77,9 +75,7 @@ export function hyperrewriteOneStep(
       }
 
       defineRenames(mod, renames, result.substitution)
-
       const returnValue = catchReturnValue(mod, hyperrule.stmts)
-
       const finialValues = handleReturnValue(
         context,
         renames,
