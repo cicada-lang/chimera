@@ -52,8 +52,8 @@
   [_.0, _.1] with {
     NotEqual(_.0, 5)
     FiniteDomain(Range(_.1, 3, 5))
-    FiniteDomain(Range(_.0, 3, 4))
     FiniteDomain(LtEq(_.0, 5))
+    FiniteDomain(Range(_.0, 3, 4))
   }
 ]
 [ 
