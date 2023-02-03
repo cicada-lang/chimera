@@ -2,8 +2,6 @@
 
 `pursue` -- `Goals.Constraints`
 
-`GoalExps.Constraints` -- syntax -- `constraints FiniteDomain { ... }`
-
 `Values.Solution`
 
 `hyperrule` can take `context` -- `{ solution }` as argument

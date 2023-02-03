@@ -33,6 +33,12 @@ export function goal_matcher(tree: pt.Tree): GoalExp {
         pt.matchers.zero_or_more_matcher(goals).map(goal_matcher),
         span,
       ),
+    "goal:constraints": ({ target, exps }, { span }) =>
+      GoalExps.Constraints(
+        matchers.exp_matcher(target),
+        pt.matchers.zero_or_more_matcher(exps).map(matchers.exp_matcher),
+        span,
+      ),
   })(tree)
 }
 

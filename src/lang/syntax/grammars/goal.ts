@@ -15,6 +15,13 @@ export const goal = {
       { goals: { $ap: ["zero_or_more", "goal"] } },
       '"}"',
     ],
+    "goal:constraints": [
+      '"constraints"',
+      { target: "exp" },
+      '"{"',
+      { exps: { $ap: ["zero_or_more", "exp"] } },
+      '"}"',
+    ],
   },
 }
 
