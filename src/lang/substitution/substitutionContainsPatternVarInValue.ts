@@ -92,6 +92,10 @@ export function substitutionContainsPatternVarInValue(
     case "Goal": {
       return substitutionContainsPatternVarInGoal(substitution, value.goal)
     }
+
+    case "Solution": {
+      return false
+    }
   }
 }
 

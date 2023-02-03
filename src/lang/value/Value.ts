@@ -4,6 +4,7 @@ import type { Goal as EmbeddedGoal } from "../goal"
 import type { Hyperrule as EmbeddedHyperrule } from "../hyperrule"
 import type { Mod } from "../mod"
 import type { Rule as EmbeddedRule } from "../rule"
+import type { Solution as EmbeddedSolution } from "../solution"
 import type { Stmt } from "../stmt"
 
 export type Value =
@@ -26,6 +27,7 @@ export type Value =
   | Primitive
   | Curried
   | Goal
+  | Solution
 
 export type PatternVar = {
   "@type": "Value"
@@ -361,5 +363,19 @@ export function Goal(goal: EmbeddedGoal): Goal {
     "@type": "Value",
     "@kind": "Goal",
     goal,
+  }
+}
+
+export type Solution = {
+  "@type": "Value"
+  "@kind": "Solution"
+  solution: EmbeddedSolution
+}
+
+export function Solution(solution: EmbeddedSolution): Solution {
+  return {
+    "@type": "Value",
+    "@kind": "Solution",
+    solution,
   }
 }

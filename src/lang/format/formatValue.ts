@@ -116,6 +116,10 @@ export function formatValue(value: Value): string {
     case "Goal": {
       return `$Goal(${formatGoal(value.goal)})`
     }
+
+    case "Solution": {
+      return `$Solution`
+    }
   }
 }
 

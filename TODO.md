@@ -1,7 +1,5 @@
 # CHR
 
-`Values.Solution` -- opaque for now
-
 `hyperrule` can take `context` -- `{ solution }` as argument
 
 - `hyperrewrite` may take `context`
