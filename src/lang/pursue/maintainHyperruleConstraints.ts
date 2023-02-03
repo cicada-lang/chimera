@@ -1,3 +1,4 @@
+import type { Goal } from "../goal"
 import { HyperruleConstraint, Solution, solutionUpdate } from "../solution"
 import { hyperruleConstraintHyperrewrite } from "./hyperruleConstraintHyperrewrite"
 
@@ -9,6 +10,8 @@ export function maintainHyperruleConstraints(
   }
 
   const hyperruleConstraints: Array<HyperruleConstraint> = []
+  const goals: Array<Goal> = []
+
   for (const hyperruleConstraint of solution.hyperruleConstraints) {
     const result = hyperruleConstraintHyperrewrite(
       solution,
@@ -20,9 +23,11 @@ export function maintainHyperruleConstraints(
     }
 
     hyperruleConstraints.push(result.hyperruleConstraint)
+    goals.push(...result.goals)
   }
 
   return solutionUpdate(solution, {
+    goals: [...goals, ...solution.goals],
     hyperruleConstraints,
   })
 }

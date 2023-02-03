@@ -1,7 +1,5 @@
 # CHR
 
-`maintainHyperruleConstraints` -- handle goals returned by hyperrewrite
-
 `Goals.Constraints`
 
 `GoalExps.Constraints` -- `constraints FiniteDomain { ... }`
