@@ -1,9 +1,9 @@
 import { arrayReplace } from "../../utils/arrayReplace"
-import { hyperrewrite } from "../hyperrewrite"
 import { HyperruleConstraint, Solution } from "../solution"
 import type * as Values from "../value"
 import type { Value } from "../value"
 import { hyperruleConstraintDeepWalk } from "./hyperruleConstraintDeepWalk"
+import { hyperruleConstraintHyperrewrite } from "./hyperruleConstraintHyperrewrite"
 
 export function updateHyperruleConstraints(
   solution: Solution,
@@ -46,19 +46,4 @@ function hyperruleConstraintAddValue(
     ...hyperruleConstraint.values,
     value,
   ])
-}
-
-export function hyperruleConstraintHyperrewrite(
-  hyperruleConstraint: HyperruleConstraint,
-): HyperruleConstraint | undefined {
-  const values = hyperrewrite(
-    hyperruleConstraint.target.hyperrule,
-    hyperruleConstraint.values,
-  )
-
-  if (values === false) {
-    return undefined
-  }
-
-  return HyperruleConstraint(hyperruleConstraint.target, values)
 }

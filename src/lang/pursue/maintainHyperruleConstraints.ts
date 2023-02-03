@@ -1,6 +1,6 @@
 import { HyperruleConstraint, Solution, solutionUpdate } from "../solution"
 import { hyperruleConstraintDeepWalk } from "./hyperruleConstraintDeepWalk"
-import { hyperruleConstraintHyperrewrite } from "./updateHyperruleConstraints"
+import { hyperruleConstraintHyperrewrite } from "./hyperruleConstraintHyperrewrite"
 
 export function maintainHyperruleConstraints(
   solution: Solution | undefined,
