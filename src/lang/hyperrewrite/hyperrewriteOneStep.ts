@@ -38,25 +38,34 @@ export function hyperrewriteOneStep(
       defineRenames(mod, renames, result.substitution)
       let returnValue = catchReturnValue(mod, hyperrule.stmts)
 
-      if (returnValue["@kind"] === "Null") {
-        return undefined
-      }
-
       returnValue = substitutionDeepWalk(
         result.substitution,
         refresh(renames, returnValue),
       )
+
+      if (returnValue["@kind"] === "Null") {
+        return undefined
+      }
 
       if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
         return false
       }
 
       if (returnValue["@kind"] === "Fn") {
-        const newReturnValue = Actions.doAp(returnValue, [
+        let newReturnValue = Actions.doAp(returnValue, [
           Values.Objekt({
             solution: Values.Solution(context.solution),
           }),
         ])
+
+        newReturnValue = substitutionDeepWalk(
+          result.substitution,
+          refresh(renames, newReturnValue),
+        )
+
+        if (newReturnValue["@kind"] === "Null") {
+          return undefined
+        }
 
         if (
           newReturnValue["@kind"] === "Boolean" &&
@@ -95,25 +104,34 @@ export function hyperrewriteOneStep(
       defineRenames(mod, renames, result.substitution)
       let returnValue = catchReturnValue(mod, hyperrule.stmts)
 
-      if (returnValue["@kind"] === "Null") {
-        return undefined
-      }
-
       returnValue = substitutionDeepWalk(
         result.substitution,
         refresh(renames, returnValue),
       )
+
+      if (returnValue["@kind"] === "Null") {
+        return undefined
+      }
 
       if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
         return false
       }
 
       if (returnValue["@kind"] === "Fn") {
-        const newReturnValue = Actions.doAp(returnValue, [
+        let newReturnValue = Actions.doAp(returnValue, [
           Values.Objekt({
             solution: Values.Solution(context.solution),
           }),
         ])
+
+        newReturnValue = substitutionDeepWalk(
+          result.substitution,
+          refresh(renames, newReturnValue),
+        )
+
+        if (newReturnValue["@kind"] === "Null") {
+          return undefined
+        }
 
         if (
           newReturnValue["@kind"] === "Boolean" &&

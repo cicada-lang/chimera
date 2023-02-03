@@ -65,12 +65,14 @@ hyperrule EnumerationDomain {
   ]
   then quote [In(x, eval arrayIntersection(l1, l2))]
 
-  // [In(x, l1)] => {
+  // [In(x, l1)] => ({ solution }) => {
   //   if not isArray(l1) {
   //     return
   //   }
 
-  //   let l2 = arrayFilter(l1, (y) => satisfy(NotEqual(x, y)))
+  //   let l2 = arrayFilter(l1, (y) => {
+  //     return not solvable(solution, NotEqual(x, y))
+  //   })
 
   //   if equal(arrayLength(l1), arrayLength(l2)) {
   //     return

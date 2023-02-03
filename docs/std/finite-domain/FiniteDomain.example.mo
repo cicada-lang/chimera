@@ -10,14 +10,15 @@ function Different(values) {
 
 print find q {
   FD(In(q, [1, 2, 3]))
-  FD(NotEq(q, 2))
+  NotEqual(q, 2)
 }
 
 print find q {
   constraints FD {
     In(q, [1, 2, 3])
-    NotEq(q, 2)
   }
+
+  NotEqual(q, 2)
 }
 
 // => [1, 3]

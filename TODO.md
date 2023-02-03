@@ -1,7 +1,5 @@
 # CHR
 
-[globals] `solvable` -- a primitive like `satisfy` but take `solution`
-
 [refactor] `hyperrewriteOneStep`
 
 `FiniteDomain.example.mo` -- complete solver
