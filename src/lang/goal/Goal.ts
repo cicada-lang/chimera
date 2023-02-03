@@ -81,13 +81,15 @@ export function Disj(goals: Array<Goal>): Disj {
 export type Constraints = {
   "@type": "Goal"
   "@kind": "Constraints"
+  target: Value
   values: Array<Value>
 }
 
-export function Constraints(values: Array<Value>): Constraints {
+export function Constraints(target: Value, values: Array<Value>): Constraints {
   return {
     "@type": "Goal",
     "@kind": "Constraints",
+    target,
     values,
   }
 }

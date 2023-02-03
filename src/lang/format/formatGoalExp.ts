@@ -27,8 +27,9 @@ export function formatGoalExp(goal: GoalExp): string {
     }
 
     case "Constraints": {
-      const values = goal.exps.map(formatExp)
-      return `constraints {\n${indent(values.join("\n"))}\n}`
+      const target = formatExp(goal.target)
+      const exps = goal.exps.map(formatExp)
+      return `constraints ${target} {\n${indent(exps.join("\n"))}\n}`
     }
   }
 }

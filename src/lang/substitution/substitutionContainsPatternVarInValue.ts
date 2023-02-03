@@ -136,8 +136,11 @@ function substitutionContainsPatternVarInGoal(
     }
 
     case "Constraints": {
-      return goal.values.some((value) =>
-        substitutionContainsPatternVarInValue(substitution, value),
+      return (
+        substitutionContainsPatternVarInValue(substitution, goal.target) ||
+        goal.values.some((value) =>
+          substitutionContainsPatternVarInValue(substitution, value),
+        )
       )
     }
   }

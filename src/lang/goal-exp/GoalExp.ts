@@ -92,14 +92,20 @@ export function Disj(goals: Array<GoalExp>, span: Span): Disj {
 export type Constraints = {
   "@type": "GoalExp"
   "@kind": "Constraints"
+  target: Exp
   exps: Array<Exp>
   span: Span
 }
 
-export function Constraints(exps: Array<Exp>, span: Span): Constraints {
+export function Constraints(
+  target: Exp,
+  exps: Array<Exp>,
+  span: Span,
+): Constraints {
   return {
     "@type": "GoalExp",
     "@kind": "Constraints",
+    target,
     exps,
     span,
   }

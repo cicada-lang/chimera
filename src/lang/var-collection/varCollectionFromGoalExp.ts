@@ -1,7 +1,6 @@
 import type { GoalExp } from "../goal-exp"
 import {
   VarCollection,
-  varCollectionFromExp,
   varCollectionFromExps,
   varCollectionMerge,
 } from "../var-collection"
@@ -29,7 +28,7 @@ export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
     }
 
     case "Constraints": {
-      return varCollectionMerge(goal.exps.map(varCollectionFromExp))
+      return varCollectionFromExps([goal.target, ...goal.exps])
     }
   }
 }

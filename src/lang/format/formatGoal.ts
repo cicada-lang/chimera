@@ -47,8 +47,9 @@ export function formatGoal(goal: Goal): string {
     }
 
     case "Constraints": {
+      const target = formatValue(goal.target)
       const values = goal.values.map(formatValue).join(" ")
-      return `constraints { ${values} }`
+      return `constraints ${target} { ${values} }`
     }
   }
 }

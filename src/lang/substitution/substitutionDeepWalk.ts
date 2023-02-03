@@ -104,6 +104,7 @@ export function substitutionDeepWalkGoal(
 
     case "Constraints": {
       return Goals.Constraints(
+        substitutionDeepWalk(substitution, goal.target),
         goal.values.map((value) => substitutionDeepWalk(substitution, value)),
       )
     }

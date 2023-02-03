@@ -45,7 +45,10 @@ export function refreshGoal(
     }
 
     case "Constraints": {
-      return Goals.Constraints(refreshValues(renames, goal.values))
+      return Goals.Constraints(
+        refresh(renames, goal.target),
+        refreshValues(renames, goal.values),
+      )
     }
   }
 }
