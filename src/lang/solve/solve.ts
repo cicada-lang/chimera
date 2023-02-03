@@ -39,12 +39,14 @@ export function solve(
   const limit = options.limit || Infinity
   while (true) {
     if (solutions.length >= limit) {
-      break
+      // NOTE We might find more then one solutions in one step,
+      // thus the length of `solutions` might be larger than the `limit`.
+      return solutions.slice(0, limit)
     }
 
     const partialSolution = partialSolutions.shift()
     if (partialSolution === undefined) {
-      break
+      return solutions
     }
 
     if (partialSolution.goals.length === 0) {
@@ -66,8 +68,4 @@ export function solve(
       }
     }
   }
-
-  // NOTE We might find more then one solutions in one step,
-  // thus the length of `solutions` might be larger than the `limit`.
-  return solutions.slice(0, limit)
 }
