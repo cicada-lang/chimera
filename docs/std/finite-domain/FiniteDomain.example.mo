@@ -13,13 +13,22 @@ print find q {
   FD(NotEq(q, 2))
 }
 
+print find q {
+  constraints FD {
+    In(q, [1, 2, 3])
+    NotEq(q, 2)
+  }
+}
+
 // => [1, 3]
 
 print find [x, y, z] {
-  FD(In(x, [1, 2, 3]))
-  FD(In(y, [3, 4, 5]))
-  FD(In(z, [5, 6, 9]))
-  FD(In(z, [1, 2, 3, 5, 6, 7, 8]))
+  constraints FD {
+    In(x, [1, 2, 3])
+    In(y, [3, 4, 5])
+    In(z, [5, 6, 9])
+    In(z, [1, 2, 3, 5, 6, 7, 8])
+  }
   x = y
 }
 

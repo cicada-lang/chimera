@@ -1,7 +1,5 @@
 # CHR
 
-`pursue` -- `Goals.Constraints`
-
 `Values.Solution`
 
 `hyperrule` can take `context` -- `{ solution }` as argument

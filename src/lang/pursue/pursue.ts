@@ -26,7 +26,7 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
       }
 
       if (goal.target["@kind"] === "Hyperrule") {
-        return pursueHyperrule(solution, goal.target, goal.args[0])
+        return pursueHyperrule(solution, goal.target, goal.args)
       }
 
       if (goal.target["@kind"] === "Primitive") {
@@ -74,7 +74,16 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
     }
 
     case "Constraints": {
-      return [solution]
+      if (goal.target["@kind"] === "Hyperrule") {
+        return pursueHyperrule(solution, goal.target, goal.values)
+      }
+
+      throw new Errors.LangError(
+        [
+          `[pursue Constraints] can not apply goal.target`,
+          `  goal.target["@kind"]: ${goal.target["@kind"]}`,
+        ].join("\n"),
+      )
     }
   }
 }

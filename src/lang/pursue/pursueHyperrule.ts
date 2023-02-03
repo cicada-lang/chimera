@@ -7,7 +7,7 @@ import { hyperruleConstraintHyperrewrite } from "./hyperruleConstraintHyperrewri
 export function pursueHyperrule(
   solution: Solution,
   target: Values.Hyperrule,
-  arg: Value,
+  args: Array<Value>,
 ): Array<Solution> {
   const index = solution.hyperruleConstraints.findIndex(
     (hyperruleConstraint) => hyperruleConstraint.target === target,
@@ -16,7 +16,7 @@ export function pursueHyperrule(
   if (index === -1) {
     const result = hyperruleConstraintHyperrewrite(
       solution,
-      HyperruleConstraint(target, [arg]),
+      HyperruleConstraint(target, args),
     )
 
     if (result === undefined) {
@@ -38,7 +38,7 @@ export function pursueHyperrule(
     solution,
     HyperruleConstraint(solution.hyperruleConstraints[index].target, [
       ...solution.hyperruleConstraints[index].values,
-      arg,
+      ...args,
     ]),
   )
 

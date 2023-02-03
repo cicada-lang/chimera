@@ -28,7 +28,7 @@ export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
     }
 
     case "Constraints": {
-      return varCollectionFromExps([goal.target, ...goal.exps])
+      return varCollectionFromExps(goal.exps)
     }
   }
 }
