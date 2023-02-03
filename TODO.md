@@ -1,18 +1,14 @@
 # CHR
 
-`hyperrule` can take `context` -- `{ solution }` as argument
+`hyperrewriteOneStep` -- take `solution`
 
-- `hyperrewrite` may take `context`
+`hyperrewriteOneStep` -- pass context -- `{ solution }` to returned function
 
-  - every function has fixed arity, thus we may use another name
+[globals] `hyperrewriteInContext` -- to support using goals in input in hyperrule
 
-    - `hyperrewriteInContext`
+- every function has fixed arity, thus we can not reuse `hyperrewrite`
 
-- to support using goals in input in hyperrule
-
-primitive about solution
-
-- `solve`? `find`? `satisfy`?
+`solvable` -- primitive like `satisfy` but take `solution`
 
 `FiniteDomain.example.mo` -- complete solver
 
@@ -264,6 +260,8 @@ datalog can be implemented using forward chaining
 datalog stratification: https://en.wikipedia.org/wiki/Stratification_(mathematics)
 
 # later
+
+[later] `find` -- support taking solution -- `in <solution>`
 
 [later] `equal` -- support all value types
 
