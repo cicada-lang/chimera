@@ -1,5 +1,4 @@
 import { HyperruleConstraint, Solution, solutionUpdate } from "../solution"
-import { hyperruleConstraintDeepWalk } from "./hyperruleConstraintDeepWalk"
 import { hyperruleConstraintHyperrewrite } from "./hyperruleConstraintHyperrewrite"
 
 export function maintainHyperruleConstraints(
@@ -12,7 +11,8 @@ export function maintainHyperruleConstraints(
   const hyperruleConstraints: Array<HyperruleConstraint> = []
   for (const hyperruleConstraint of solution.hyperruleConstraints) {
     const result = hyperruleConstraintHyperrewrite(
-      hyperruleConstraintDeepWalk(solution, hyperruleConstraint),
+      solution,
+      hyperruleConstraint,
     )
 
     if (result === undefined) {

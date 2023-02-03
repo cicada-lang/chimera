@@ -1,9 +1,7 @@
 import { arrayReplace } from "../../utils/arrayReplace"
 import { HyperruleConstraint, Solution, solutionUpdate } from "../solution"
-import { substitutionDeepWalk } from "../substitution"
 import type * as Values from "../value"
 import type { Value } from "../value"
-import { hyperruleConstraintDeepWalk } from "./hyperruleConstraintDeepWalk"
 import { hyperruleConstraintHyperrewrite } from "./hyperruleConstraintHyperrewrite"
 
 export function pursueHyperrule(
@@ -11,8 +9,6 @@ export function pursueHyperrule(
   target: Values.Hyperrule,
   arg: Value,
 ): Array<Solution> {
-  arg = substitutionDeepWalk(solution.substitution, arg)
-
   const hyperruleConstraints = updateHyperruleConstraints(
     solution,
     solution.hyperruleConstraints,
@@ -35,41 +31,34 @@ function updateHyperruleConstraints(
   solution: Solution,
   hyperruleConstraints: Array<HyperruleConstraint>,
   hyperrule: Values.Hyperrule,
-  value: Value,
+  arg: Value,
 ): Array<HyperruleConstraint> | undefined {
   const index = hyperruleConstraints.findIndex(
     (hyperruleConstraint) => hyperruleConstraint.target === hyperrule,
   )
 
   if (index === -1) {
-    return [...hyperruleConstraints, HyperruleConstraint(hyperrule, [value])]
+    return [...hyperruleConstraints, HyperruleConstraint(hyperrule, [arg])]
   }
 
-  let hyperruleConstraint = hyperruleConstraints[index]
-
-  hyperruleConstraint = hyperruleConstraintDeepWalk(
+  const hyperruleConstraint = hyperruleConstraintHyperrewrite(
     solution,
-    hyperruleConstraint,
+    hyperruleConstraintAddValue(hyperruleConstraints[index], arg),
   )
 
-  hyperruleConstraint = hyperruleConstraintAddValue(hyperruleConstraint, value)
-
-  const newHyperruleConstraint =
-    hyperruleConstraintHyperrewrite(hyperruleConstraint)
-
-  if (newHyperruleConstraint === undefined) {
+  if (hyperruleConstraint === undefined) {
     return undefined
   }
 
-  return arrayReplace(hyperruleConstraints, index, newHyperruleConstraint)
+  return arrayReplace(hyperruleConstraints, index, hyperruleConstraint)
 }
 
 function hyperruleConstraintAddValue(
   hyperruleConstraint: HyperruleConstraint,
-  value: Value,
+  arg: Value,
 ): HyperruleConstraint {
   return HyperruleConstraint(hyperruleConstraint.target, [
     ...hyperruleConstraint.values,
-    value,
+    arg,
   ])
 }
