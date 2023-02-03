@@ -43,5 +43,9 @@ export function refreshGoal(
     case "Disj": {
       return Goals.Disj(refreshGoals(renames, goal.goals))
     }
+
+    case "Constraints": {
+      return Goals.Constraints(refreshValues(renames, goal.values))
+    }
   }
 }

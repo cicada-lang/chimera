@@ -1,6 +1,10 @@
 import type { GoalExp } from "../goal-exp"
-import type { VarCollection } from "../var-collection"
-import { varCollectionFromExps, varCollectionMerge } from "../var-collection"
+import {
+  VarCollection,
+  varCollectionFromExp,
+  varCollectionFromExps,
+  varCollectionMerge,
+} from "../var-collection"
 
 export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
   switch (goal["@kind"]) {
@@ -22,6 +26,10 @@ export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
 
     case "Disj": {
       return varCollectionMerge(goal.goals.map(varCollectionFromGoalExp))
+    }
+
+    case "Constraints": {
+      return varCollectionMerge(goal.exps.map(varCollectionFromExp))
     }
   }
 }

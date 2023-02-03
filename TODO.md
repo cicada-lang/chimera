@@ -1,8 +1,8 @@
 # CHR
 
-`Goals.Constraints`
+`pursue` -- `Goals.Constraints`
 
-`GoalExps.Constraints` -- `constraints FiniteDomain { ... }`
+`GoalExps.Constraints` -- syntax -- `constraints FiniteDomain { ... }`
 
 `Values.Solution`
 

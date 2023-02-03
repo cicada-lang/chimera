@@ -72,5 +72,9 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
         }),
       )
     }
+
+    case "Constraints": {
+      return [solution]
+    }
   }
 }
