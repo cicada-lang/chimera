@@ -15,8 +15,10 @@ export function hyperruleConstraintHyperrewrite(
     hyperruleConstraint,
   )
 
+  const context = { solution }
+
   let values = hyperrewrite(
-    { solution },
+    context,
     hyperruleConstraint.target.hyperrule,
     hyperruleConstraint.values,
   )
