@@ -1,8 +1,10 @@
 import type { Goal } from "../goal"
-import { Solver } from "../solver"
+import { createSolutionFromGoals } from "../solution"
+import { solve } from "../solve"
 
 export function satisfy(goal: Goal): boolean {
-  const solver = Solver.start([goal])
-  const solutions = solver.solve({ limit: Infinity })
+  const solutions = solve([createSolutionFromGoals([goal])], {
+    limit: Infinity,
+  })
   return solutions.length !== 0
 }

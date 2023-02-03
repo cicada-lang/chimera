@@ -1,6 +1,6 @@
 # CHR
 
-`Values.Solution`
+`Values.Solution` -- opaque for now
 
 `hyperrule` can take `context` -- `{ solution }` as argument
 

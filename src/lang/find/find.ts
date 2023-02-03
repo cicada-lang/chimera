@@ -1,6 +1,7 @@
 import type { Goal } from "../goal"
 import { reify } from "../reify"
-import { Solver } from "../solver"
+import { createSolutionFromGoals } from "../solution"
+import { solve } from "../solve"
 import type { Value } from "../value"
 
 export function find(
@@ -8,7 +9,8 @@ export function find(
   pattern: Value,
   goals: Array<Goal>,
 ): Array<Value> {
-  const solver = Solver.start(goals)
-  const solutions = solver.solve({ limit })
+  const solutions = solve([createSolutionFromGoals(goals)], {
+    limit,
+  })
   return solutions.map((solution) => reify(solution, pattern))
 }
