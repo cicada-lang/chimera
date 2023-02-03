@@ -1,3 +1,4 @@
+import * as Actions from "../actions"
 import { catchReturnValue } from "../actions/catchReturnValue"
 import { defineRenames } from "../actions/defineRenames"
 import { envMerge } from "../env"
@@ -50,6 +51,23 @@ export function hyperrewriteOneStep(
         return false
       }
 
+      if (returnValue["@kind"] === "Fn") {
+        const newReturnValue = Actions.doAp(returnValue, [
+          Values.Objekt({
+            solution: Values.Solution(context.solution),
+          }),
+        ])
+
+        if (
+          newReturnValue["@kind"] === "Boolean" &&
+          newReturnValue.data === false
+        ) {
+          return false
+        }
+
+        return [...result.remainValues, ...Values.toArray(newReturnValue)]
+      }
+
       return [...result.remainValues, ...Values.toArray(returnValue)]
     }
 
@@ -88,6 +106,23 @@ export function hyperrewriteOneStep(
 
       if (returnValue["@kind"] === "Boolean" && returnValue.data === false) {
         return false
+      }
+
+      if (returnValue["@kind"] === "Fn") {
+        const newReturnValue = Actions.doAp(returnValue, [
+          Values.Objekt({
+            solution: Values.Solution(context.solution),
+          }),
+        ])
+
+        if (
+          newReturnValue["@kind"] === "Boolean" &&
+          newReturnValue.data === false
+        ) {
+          return false
+        }
+
+        return [...values, ...Values.toArray(newReturnValue)]
       }
 
       // NOTE Keep the input values.

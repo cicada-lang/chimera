@@ -1,12 +1,8 @@
 # CHR
 
-`hyperrewriteOneStep` -- pass context -- `{ solution }` to returned function
-
-[globals] `hyperrewriteInContext` -- to support using goals in input in hyperrule
-
-- every function has fixed arity, thus we can not reuse `hyperrewrite`
-
 [globals] `solvable` -- a primitive like `satisfy` but take `solution`
+
+[refactor] `hyperrewriteOneStep`
 
 `FiniteDomain.example.mo` -- complete solver
 
