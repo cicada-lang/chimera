@@ -7,11 +7,15 @@ import { Solution, solutionUpdate } from "../solution"
    much like how a person solve a problem
    by working on partial solutions until some of them are complete.
 
-   A `solve` takes a queue of `partialSolutions`,
+   A problem is a partial solution.
+
+   A `solve` takes a problem,
+   and has a queue of partial solutions,
    one solution represents a path we are searching.
 
    A `Solution` has a queue of `goals`,
-   if this queue is not empty, the solution is partial.
+   if the queue is empty the solution is complete,
+   if the queue is not empty the solution is partial.
 
    Beside the `goals`, a `Solution` is composed by many kind of constraints,
    among which the most important one is `substitution` of bindings,
@@ -26,15 +30,11 @@ import { Solution, solutionUpdate } from "../solution"
 
 **/
 
-export type SolveOptions = {
-  limit: number
-}
-
 export function solve(
-  partialSolutions: Array<Solution>,
-  options: SolveOptions,
+  partialSolution: Solution,
+  options: { limit: number },
 ): Array<Solution> {
-  partialSolutions = [...partialSolutions]
+  const partialSolutions = [partialSolution]
   const solutions: Array<Solution> = []
   const limit = options.limit || Infinity
   while (true) {
@@ -44,6 +44,7 @@ export function solve(
       return solutions.slice(0, limit)
     }
 
+    // NOTE Working on the first `partialSolution`.
     const partialSolution = partialSolutions.shift()
     if (partialSolution === undefined) {
       return solutions
@@ -58,8 +59,8 @@ export function solve(
     const newSolution = solutionUpdate(partialSolution, { goals: restGoals })
     const newPartialSolutions = pursue(newSolution, goal)
 
-    // NOTE We try to be fair by pushing the newly generated partial
-    // solutions to the end of the queue.
+    // NOTE We try to be fair by pushing
+    // the newly generated partial solutions to the end.
     for (const solution of newPartialSolutions) {
       if (solution.goals.length === 0) {
         solutions.push(solution)

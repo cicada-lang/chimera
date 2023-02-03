@@ -9,7 +9,7 @@ export function find(
   pattern: Value,
   goals: Array<Goal>,
 ): Array<Value> {
-  const solutions = solve([createSolutionFromGoals(goals)], {
+  const solutions = solve(createSolutionFromGoals(goals), {
     limit,
   })
   return solutions.map((solution) => reify(solution, pattern))
