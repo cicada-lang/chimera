@@ -16,6 +16,7 @@ export function hyperruleConstraintHyperrewrite(
   )
 
   let values = hyperrewrite(
+    { solution },
     hyperruleConstraint.target.hyperrule,
     hyperruleConstraint.values,
   )

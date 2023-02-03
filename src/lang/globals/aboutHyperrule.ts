@@ -1,11 +1,16 @@
 import { hyperrewrite, hyperrewriteManySteps } from "../hyperrewrite"
+import { createEmptySolution } from "../solution"
 import * as Values from "../value"
 import type { GlobalStore } from "./GlobalStore"
 
 export function aboutHyperrule(globals: GlobalStore): void {
   globals.primitive("hyperrewrite", 2, ([hyperrule, target]) => {
     Values.assertValue(hyperrule, "Hyperrule", { who: "hyperrewrite" })
-    const result = hyperrewrite(hyperrule.hyperrule, Values.toArray(target))
+    const result = hyperrewrite(
+      { solution: createEmptySolution() },
+      hyperrule.hyperrule,
+      Values.toArray(target),
+    )
     if (result === false) {
       return Values.Boolean(false)
     }
@@ -23,6 +28,7 @@ export function aboutHyperrule(globals: GlobalStore): void {
       })
 
       const results = hyperrewriteManySteps(
+        { solution: createEmptySolution() },
         limit.data,
         hyperrule.hyperrule,
         Values.toArray(target),

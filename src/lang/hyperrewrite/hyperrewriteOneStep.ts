@@ -7,11 +7,13 @@ import { refresh } from "../refresh"
 import { substitutionDeepWalk, substitutionEmpty } from "../substitution"
 import type { Value } from "../value"
 import * as Values from "../value"
+import type { HyperrewriteContext } from "./hyperrewrite"
 import type { Propagation } from "./propagate"
 import { propagate } from "./propagate"
 import { simplify } from "./simplify"
 
 export function hyperrewriteOneStep(
+  context: HyperrewriteContext,
   hyperrule: Hyperrule,
   values: Array<Value>,
   appliedPropagations: Array<Propagation>,
@@ -96,6 +98,7 @@ export function hyperrewriteOneStep(
     case "List": {
       for (const subHyperrule of hyperrule.hyperrules) {
         const results = hyperrewriteOneStep(
+          context,
           subHyperrule,
           values,
           appliedPropagations,

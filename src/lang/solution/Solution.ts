@@ -22,6 +22,16 @@ export function createSolutionFromGoals(goals: Array<Goal>): Solution {
   }
 }
 
+export function createEmptySolution(): Solution {
+  return {
+    goals: [],
+    substitution: substitutionEmpty(),
+    inequalities: [],
+    typeConstraints: [],
+    hyperruleConstraints: [],
+  }
+}
+
 export function solutionUpdate(
   target: Solution,
   options: Partial<Solution>,
