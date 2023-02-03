@@ -4,6 +4,12 @@
     FiniteDomain(NotEq(_.0, 2))
   }
 ]
+[ 
+  _.0 with {
+    FiniteDomain(In(_.0, [1, 2, 3]))
+    FiniteDomain(NotEq(_.0, 2))
+  }
+]
 [[3, 3, _.0] with { FiniteDomain(In(_.0, [5, 6])) }]
 [ 
   _.0 with {
