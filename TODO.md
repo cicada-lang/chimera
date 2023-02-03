@@ -1,5 +1,9 @@
 # CHR
 
+extract `hyperruleConstraintHyperrewrite`
+
+move `updateHyperruleConstraints` to `pursueHyperrule`
+
 `pursueHyperrule` -- pursue goals returned by hyperrewrite
 
 `maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
