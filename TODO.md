@@ -1,8 +1,6 @@
 # CHR
 
-`pursueHyperrule` -- pursue goals returned by hyperrewrite
-
-`maintainHyperruleConstraints` -- pursue goals returned by hyperrewrite
+`maintainHyperruleConstraints` -- handle goals returned by hyperrewrite
 
 `Goals.Constraints`
 

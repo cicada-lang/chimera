@@ -14,26 +14,27 @@ export function pursueHyperrule(
   )
 
   if (index === -1) {
-    const hyperruleConstraint = hyperruleConstraintHyperrewrite(
+    const result = hyperruleConstraintHyperrewrite(
       solution,
       HyperruleConstraint(target, [arg]),
     )
 
-    if (hyperruleConstraint === undefined) {
+    if (result === undefined) {
       return []
     }
 
     return [
       solutionUpdate(solution, {
+        goals: [...result.goals, ...solution.goals],
         hyperruleConstraints: [
           ...solution.hyperruleConstraints,
-          hyperruleConstraint,
+          result.hyperruleConstraint,
         ],
       }),
     ]
   }
 
-  const hyperruleConstraint = hyperruleConstraintHyperrewrite(
+  const result = hyperruleConstraintHyperrewrite(
     solution,
     HyperruleConstraint(solution.hyperruleConstraints[index].target, [
       ...solution.hyperruleConstraints[index].values,
@@ -41,16 +42,17 @@ export function pursueHyperrule(
     ]),
   )
 
-  if (hyperruleConstraint === undefined) {
+  if (result === undefined) {
     return []
   }
 
   return [
     solutionUpdate(solution, {
+      goals: [...result.goals, ...solution.goals],
       hyperruleConstraints: arrayReplace(
         solution.hyperruleConstraints,
         index,
-        hyperruleConstraint,
+        result.hyperruleConstraint,
       ),
     }),
   ]

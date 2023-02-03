@@ -1,17 +1,21 @@
+import type { Goal } from "../goal"
 import { hyperrewrite } from "../hyperrewrite"
 import { HyperruleConstraint, Solution } from "../solution"
 import { substitutionDeepWalk } from "../substitution"
+import type * as Values from "../value"
 
 export function hyperruleConstraintHyperrewrite(
   solution: Solution,
   hyperruleConstraint: HyperruleConstraint,
-): HyperruleConstraint | undefined {
+):
+  | { hyperruleConstraint: HyperruleConstraint; goals: Array<Goal> }
+  | undefined {
   hyperruleConstraint = hyperruleConstraintDeepWalk(
     solution,
     hyperruleConstraint,
   )
 
-  const values = hyperrewrite(
+  let values = hyperrewrite(
     hyperruleConstraint.target.hyperrule,
     hyperruleConstraint.values,
   )
@@ -20,7 +24,19 @@ export function hyperruleConstraintHyperrewrite(
     return undefined
   }
 
-  return HyperruleConstraint(hyperruleConstraint.target, values)
+  const goals = values
+    .filter((value): value is Values.Goal => value["@kind"] === "Goal")
+    .map((value) => value.goal)
+
+  values = values.filter((value) => value["@kind"] !== "Goal")
+
+  return {
+    hyperruleConstraint: HyperruleConstraint(
+      hyperruleConstraint.target,
+      values,
+    ),
+    goals,
+  }
 }
 
 function hyperruleConstraintDeepWalk(

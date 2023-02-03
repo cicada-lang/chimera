@@ -19,7 +19,7 @@ export function maintainHyperruleConstraints(
       return undefined
     }
 
-    hyperruleConstraints.push(result)
+    hyperruleConstraints.push(result.hyperruleConstraint)
   }
 
   return solutionUpdate(solution, {
