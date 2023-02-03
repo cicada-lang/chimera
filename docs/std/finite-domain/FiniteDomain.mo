@@ -7,31 +7,37 @@ hyperrule IntervalDomain {
   if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)]
   then quote [Range(x, eval max(a, c), eval min(b, d))]
 
-  // `LtEq(x, y)` means that `x` is less than or equal to `y`. Hence, `x`
-  // cannot be larger than the upper bound `d` of `y`. Therefore, if the
-  // upper bound `b` of `x` is larger than `d`, we can replace `b` by `d`
-  // without removing any solutions.
-
   [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [isNumber(b), isNumber(d), gt(b, d)]
   then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)]
-
-  // Analogously, one can reason on the lower bounds to tighten the
-  // interval for `y`.
 
   [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [isNumber(a), isNumber(c), lt(c, a)]
   then quote [LtEq(x, y), Range(x, a, d), Range(y, a, d)]
 
-  // The `NotEqual` constraint can only cause a domain tightening if one of the
-  // intervals denote a unique value that happens to be the bound of the
-  // other intervals.
+  [Range(x, a, b)] => ({ solution }) => {
+    if not and [isNumber(a)] {
+      return
+    }
 
-  // [Range(x, a, b), Range(y, c, d)] =>
-  // if and [satisfy(NotEqual(x, y)), isNumber(a), equal(a, c), equal(c, d)]
-  // then quote [Range(x, eval add1(a), b), Range(y, c, d)]
+    if solvable(solution, Equal(x, a)) {
+      return
+    }
 
-  // x + y = z
+    return quote [Range(x, eval add1(a), b)]
+  }
+
+  [Range(x, a, b)] => ({ solution }) => {
+    if not and [isNumber(b)] {
+      return
+    }
+
+    if solvable(solution, Equal(x, b)) {
+      return
+    }
+
+    return quote [Range(x, a, eval sub1(b))]
+  }
 
   [Add(x, y, z), Range(x, a, b), Range(y, c, d), Range(z, e, f)] =>
   if and [

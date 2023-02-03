@@ -24,6 +24,21 @@ print find q {
 
 // => [1, 3]
 
+print find q {
+  constraints FiniteDomain {
+    Range(q, 1, 3)
+  }
+  NotEqual(q, 1)
+}
+
+print find q {
+  constraints FiniteDomain {
+    Range(q, 1, 3)
+  }
+  NotEqual(q, 1)
+  NotEqual(q, 3)
+}
+
 print find [x, y, z] {
   constraints FiniteDomain {
     In(x, [1, 2, 3])

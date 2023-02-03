@@ -4,7 +4,7 @@
 
 `FiniteDomain.example.mo` -- complete solver
 
-[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `Fd(LtEq(x, y))`
+[books/clause-and-effect] 08-maximum-of-a-list.wa -- need `constraints FiniteDomain { LtEq(x, y) }`
 
 [finite-domain] solve some puzzles about finite-domain as example
 
