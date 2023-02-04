@@ -7,6 +7,14 @@ hyperrule IntervalDomain {
   if and [isNumber(a), isNumber(b), isNumber(c), isNumber(d)]
   then quote [Range(x, eval max(a, c), eval min(b, d))]
 
+  [LtEq(x, y), Range(x, a, b)] =>
+  if and [isNumber(y), isNumber(b), lt(y, b)]
+  then quote [LtEq(x, y), Range(x, a, eval y)]
+
+  [LtEq(y, x), Range(x, a, b)] =>
+  if and [isNumber(y), isNumber(a), gt(y, a)]
+  then quote [LtEq(y, x), Range(x, eval y, b)]
+
   [LtEq(x, y), Range(x, a, b), Range(y, c, d)] =>
   if and [isNumber(b), isNumber(d), gt(b, d)]
   then quote [LtEq(x, y), Range(x, a, d), Range(y, c, d)]

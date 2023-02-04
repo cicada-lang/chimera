@@ -59,5 +59,7 @@ export function applyNotEqual(
     ),
   ]
 
-  return solutionUpdate(solution, { inequalities })
+  return solutionUpdate(solution, {
+    inequalities,
+  })
 }

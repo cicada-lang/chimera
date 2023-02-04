@@ -4,10 +4,6 @@ function Different(values) {
   return conj(arrayMapSpread(arrayCombination(values, 2), NotEqual))
 }
 
-// `In` is a special relation which requires
-// its second argument to be a list of numbers
-// i.e. to be grounded.
-
 print find q {
   constraints FiniteDomain {
     In(q, [1, 2, 3])
@@ -39,6 +35,14 @@ print find q {
     Range(q, 1, 3)
   }
 
+  NotEqual(q, 3)
+}
+
+print find q {
+  constraints FiniteDomain {
+    Range(q, 1, 3)
+  }
+
   NotEqual(q, 1)
   NotEqual(q, 3)
 }
@@ -55,8 +59,6 @@ print find [x, y, z] {
 }
 
 // => [[3, 3, 5], [3, 3, 6]]
-
-// `FD.Range` requires its second argument to be grounded.
 
 print find x {
   constraints FiniteDomain {
@@ -97,37 +99,37 @@ print find q {
 // => []
 
 print find q {
+  Different([x, y, z])
+  q = x
+
   constraints FiniteDomain {
     In(x, [1, 2, 3])
     In(y, [1, 2, 3])
     In(z, [1, 2, 3])
   }
-
-  Different([x, y, z])
-  q = x
 }
 
 // => [1, 2, 3]
 
 print find q {
+  Different([x, y, z])
+  q = [x, z]
+
   constraints FiniteDomain {
     In(x, [1, 2, 3])
     In(y, [1, 2, 3])
     In(z, [1, 2, 3])
   }
-
-  Different([x, y, z])
-  q = [x, z]
 }
 
 // => [[1, 2], [1, 3], [2, 1], [3, 1], [2, 3], [3, 2]]
 
 print find q {
+  Different([2, 3, q])
+
   constraints FiniteDomain {
     In(q, [3, 4, 5, 6])
   }
-
-  Different([2, 3, q])
 }
 
 // => [4, 5, 6]
@@ -154,14 +156,14 @@ print find [x, y, z] {
 // TODO solution changes (as in the paper) to the exmaples.
 
 print find [y, z] {
+  x = y
+
   constraints FiniteDomain {
     Range(x, 3, 5)
     Range(z, 3, 5)
     Range(y, 1, 4)
     Lt(x, 5)
   }
-
-  x = y
 }
 
 // => [[3, 3], [4, 3], [3, 4], [4, 4], [3, 5], [4, 5]]
@@ -189,16 +191,16 @@ print find [y, z] {
 }
 
 print find q {
+  Different([x, y, z])
+  q = [x, y, z]
+  [x, y] = [1, 2]
+
   constraints FiniteDomain {
     Range(w, 1, 5)
     Range(z, 1, 5)
     Add(x, y, w)
     Add(w, y, z)
   }
-
-  Different([x, y, z])
-  q = [x, y, z]
-  [x, y] = [1, 2]
 }
 
 // => [[1, 2, 5]]
