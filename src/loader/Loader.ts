@@ -1,5 +1,4 @@
-// import { FetcherSync } from "@cicada-lang/framework/lib/fetcher-sync"
-import { FetcherSync } from "../framework/fetcher-sync"
+import { FetcherSync } from "@cicada-lang/framework/lib/fetcher-sync"
 import { Mod } from "../lang/mod"
 import type { Script } from "../script"
 import * as Scripts from "../scripts"
