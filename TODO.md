@@ -1,3 +1,5 @@
+use vitest instead of node test
+
 # CHR
 
 `FiniteDomain.example.mo` -- complete solver
