@@ -18,7 +18,7 @@ mo run <file>          # Run a file
 mo run <file> --watch  # Run and watch file change
 ```
 
-Type `wa help` to see what other commands are available.
+Type `mo help` to see what other commands are available.
 
 ## Development
 
