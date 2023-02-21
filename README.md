@@ -13,12 +13,11 @@ sudo npm install -g @cicada-lang/mo
 The command line program is called `mo`.
 
 ```sh
+mo help                # Print help message
 mo repl                # Open an interactive REPL
 mo run <file>          # Run a file
 mo run <file> --watch  # Run and watch file change
 ```
-
-Type `mo help` to see what other commands are available.
 
 ## Development
 
