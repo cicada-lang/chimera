@@ -1,5 +1,3 @@
-rename `console/` to `command-line/`
-
 use vitest instead of node test
 
 # CHR
