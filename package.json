@@ -11,13 +11,16 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "build": "tsc",
-    "build:watch": "tsc --watch",
+    "build": "rm -rf lib; tsc",
+    "build:watch": "rm -rf lib; tsc --watch",
     "test:mo:docs": "test-runner snapshot './bin/mo.js run' 'docs/**/*.(mo|md)' --exclude 'docs/**/*.error.(mo|md)'",
     "test:mo:docs-error": "test-runner snapshot-error './bin/mo.js run' 'docs/**/*.error.(mo|md)'",
     "test:mo": "npm run test:mo:docs && npm run test:mo:docs-error",
-    "test:node": "node --test",
-    "test": "npm run test:node && npm run test:mo",
+    "test:ts": "vitest --dir src --threads false --run",
+    "test:watch": "vitest --dir src --threads false",
+    "test:coverage": "vitest --dir src --threads false --run --coverage ",
+    "test:gui": "vitest --dir src --threads false --ui",
+    "test": "npm run test:ts && npm run test:mo",
     "format": "prettier src --write"
   },
   "dependencies": {
@@ -38,12 +41,17 @@
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.14.6",
     "@types/sjcl": "^1.0.30",
+    "@vitest/coverage-c8": "^0.29.2",
+    "@vitest/coverage-istanbul": "^0.29.2",
+    "@vitest/ui": "^0.29.2",
     "@xieyuheng/test-runner": "^0.2.7",
     "husky": "^8.0.3",
     "prettier": "^2.8.4",
     "prettier-plugin-organize-imports": "^3.2.2",
     "pretty-quick": "^3.1.3",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4",
+    "vitest": "^0.29.2"
   },
   "license": "GPL-3.0-or-later"
 }
