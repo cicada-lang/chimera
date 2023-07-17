@@ -5,7 +5,10 @@ import { parseStmts } from "../lang/syntax"
 import { Script } from "../script"
 
 export class DefaultScript extends Script {
-  constructor(public mod: Mod, public text: string) {
+  constructor(
+    public mod: Mod,
+    public text: string,
+  ) {
     super()
   }
 

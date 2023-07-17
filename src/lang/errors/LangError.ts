@@ -2,7 +2,10 @@ import * as pt from "@cicada-lang/partech"
 import type { Span } from "../span"
 
 export class LangError extends Error {
-  constructor(public message: string, public options?: { span?: Span }) {
+  constructor(
+    public message: string,
+    public options?: { span?: Span },
+  ) {
     super(message)
   }
 

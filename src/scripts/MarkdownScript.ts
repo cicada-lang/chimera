@@ -6,7 +6,10 @@ import { parseStmts } from "../lang/syntax"
 import { Script } from "../script"
 
 export class MarkdownScript extends Script {
-  constructor(public mod: Mod, public text: string) {
+  constructor(
+    public mod: Mod,
+    public text: string,
+  ) {
     super()
   }
 
