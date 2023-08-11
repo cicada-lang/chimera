@@ -12,8 +12,8 @@
   "scripts": {
     "build": "rm -rf lib; tsc",
     "build:watch": "rm -rf lib; tsc --watch",
-    "test:mo:docs": "test-runner snapshot './bin/mo.js run' 'docs/**/*.(mo|md)' --exclude 'docs/**/*.error.(mo|md)'",
-    "test:mo:docs-error": "test-runner snapshot-error './bin/mo.js run' 'docs/**/*.error.(mo|md)'",
+    "test:mo:docs": "test-runner snapshot 'node ./bin/mo.js run --no-color' 'docs/**/*.(mo|md)' --exclude 'docs/**/*.error.(mo|md)'",
+    "test:mo:docs-error": "test-runner snapshot-error 'node ./bin/mo.js run --no-color' 'docs/**/*.error.(mo|md)'",
     "test:mo": "npm run test:mo:docs && npm run test:mo:docs-error",
     "test:ts": "vitest --dir src --threads false --run",
     "test:watch": "vitest --dir src --threads false",
