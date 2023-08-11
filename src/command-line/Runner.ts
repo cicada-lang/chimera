@@ -9,9 +9,13 @@ export class Runner {
   })
 
   constructor() {
-    this.loader.fetcher.register("file", (url) =>
-      fs.readFileSync(url.pathname, "utf8"),
-    )
+    this.loader.fetcher.register("file", (url) => {
+      if (process.platform === "win32") {
+        return fs.readFileSync(url.pathname.slice(1), "utf8")
+      } else {
+        return fs.readFileSync(url.pathname, "utf8")
+      }
+    })
   }
 
   run(url: URL, opts?: { silent?: boolean }): { error?: unknown } {
