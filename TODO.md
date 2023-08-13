@@ -1,3 +1,5 @@
+fix repl for windows
+
 # CHR
 
 `FiniteDomain.example.mo` -- complete solver
