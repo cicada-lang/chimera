@@ -35,12 +35,6 @@ export class RunCommand extends Command<Args, Opts> {
         `  ${runner.name} ${this.name} docs/books/clause-and-effect/01-party-pairs.mo`,
       ),
       ``,
-      `We can also run a URL directly.`,
-      ``,
-      blue(
-        `  ${runner.name} ${this.name} "https://cdn.mo.cic.run/docs/books/clause-and-effect/01-party-pairs.mo"`,
-      ),
-      ``,
       `You can use ${
         blue("--watch")
       } to let the program stand by, and react to changes.`,
