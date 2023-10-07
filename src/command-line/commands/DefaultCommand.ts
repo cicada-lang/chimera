@@ -1,5 +1,5 @@
 import { Command, CommandRunner } from "@xieyuheng/command-line"
-import ty from "@xieyuheng/ty"
+import { ty } from "@xieyuheng/ty"
 import * as Commands from "../commands"
 
 type Args = { file?: string }
@@ -19,7 +19,7 @@ export class DefaultCommand extends Command<Args, Opts> {
 
   async execute(argv: Args & Opts, runner: CommandRunner): Promise<void> {
     if (argv["help"]) {
-      const command = new Commands.CommonHelpCommand()
+      const command = new Commands.CommonHelp()
       await command.execute({}, runner)
       return
     }

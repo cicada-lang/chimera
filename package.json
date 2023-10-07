@@ -10,8 +10,8 @@
     "mo": "bin/mo.js"
   },
   "scripts": {
-    "build": "rm -rf lib; tsc",
-    "build:watch": "rm -rf lib; tsc --watch",
+    "build": "rm -rf lib && tsc",
+    "build:watch": "rm -rf lib && tsc --watch",
     "test:mo:docs": "test-runner snapshot 'node ./bin/mo.js run --no-color' 'docs/**/*.(mo|md)' --exclude 'docs/**/*.error.(mo|md)'",
     "test:mo:docs-error": "test-runner snapshot-error 'node ./bin/mo.js run --no-color' 'docs/**/*.error.(mo|md)'",
     "test:mo": "npm run test:mo:docs && npm run test:mo:docs-error",
@@ -23,10 +23,10 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@cicada-lang/framework": "^0.1.5",
+    "@cicada-lang/framework": "^0.1.6",
     "@cicada-lang/partech": "^0.2.5",
-    "@xieyuheng/command-line": "^0.0.11",
-    "@xieyuheng/ty": "^0.1.23",
+    "@xieyuheng/command-line": "^0.0.13",
+    "@xieyuheng/ty": "^0.1.26",
     "commonmark": "^0.30.0",
     "immutable": "^4.3.4",
     "lodash": "^4.17.21",
@@ -37,18 +37,18 @@
   },
   "devDependencies": {
     "@types/commonmark": "^0.27.7",
-    "@types/lodash": "^4.14.198",
-    "@types/node": "^20.6.0",
-    "@types/sjcl": "^1.0.30",
+    "@types/lodash": "^4.14.199",
+    "@types/node": "^20.8.3",
+    "@types/sjcl": "^1.0.31",
     "@vitest/coverage-c8": "^0.33.0",
-    "@vitest/coverage-istanbul": "^0.34.4",
-    "@vitest/ui": "^0.34.4",
-    "@xieyuheng/test-runner": "^0.2.9",
+    "@vitest/coverage-istanbul": "^0.34.6",
+    "@vitest/ui": "^0.34.6",
+    "@xieyuheng/test-runner": "^0.2.10",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "vitest": "^0.34.4"
+    "vite": "^4.4.11",
+    "vitest": "^0.34.6"
   },
   "license": "GPL-3.0-or-later"
 }
