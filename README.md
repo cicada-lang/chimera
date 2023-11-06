@@ -10,7 +10,7 @@ Install it by the following command:
 npm install -g @cicada-lang/mo
 ```
 
-The command line program is called `mo`.
+The command-line program is called `mo`.
 
 ```sh
 mo help                # Print help message
