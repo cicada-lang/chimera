@@ -26,7 +26,7 @@ export class AppReplEventHandler extends ReplEventHandler {
   }
 
   greeting(): void {
-    console.log(`Mo ${app.config.pkg.version}`)
+    console.log(`Chimera ${app.config.pkg.version}`)
   }
 
   async handle(event: ReplEvent): Promise<void> {

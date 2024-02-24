@@ -1,4 +1,4 @@
-# Mo
+# Chimera
 
 ## Usages
 
@@ -7,16 +7,16 @@
 Install it by the following command:
 
 ```sh
-npm install -g @cicada-lang/mo
+npm install -g @cicada-lang/chimera
 ```
 
-The command-line program is called `mo`.
+The command-line program is called `chimera`.
 
 ```sh
-mo help                # Print help message
-mo repl                # Open an interactive REPL
-mo run <file>          # Run a file
-mo run <file> --watch  # Run and watch file change
+chimera help                # Print help message
+chimera repl                # Open an interactive REPL
+chimera run <file>          # Run a file
+chimera run <file> --watch  # Run and watch file change
 ```
 
 ## Development

@@ -1,25 +1,25 @@
 {
-  "name": "@cicada-lang/mo",
+  "name": "@cicada-lang/chimera",
   "version": "0.4.3",
-  "repository": "github:cicada-lang/mo",
+  "repository": "github:cicada-lang/chimera",
   "main": "./lib/index.js",
   "files": [
     "lib"
   ],
   "bin": {
-    "mo": "bin/mo.js"
+    "chimera": "bin/chimera.js"
   },
   "scripts": {
     "build": "rm -rf lib && tsc",
     "build:watch": "rm -rf lib && tsc --watch",
-    "test:mo:docs": "test-runner snapshot 'node ./bin/mo.js run --no-color' 'docs/**/*.(mo|md)' --exclude 'docs/**/*.error.(mo|md)'",
-    "test:mo:docs-error": "test-runner snapshot-error 'node ./bin/mo.js run --no-color' 'docs/**/*.error.(mo|md)'",
-    "test:mo": "npm run test:mo:docs && npm run test:mo:docs-error",
+    "test:chimera:docs": "test-runner snapshot 'node ./bin/chimera.js run --no-color' 'docs/**/*.(ch|md)' --exclude 'docs/**/*.error.(ch|md)'",
+    "test:chimera:docs-error": "test-runner snapshot-error 'node ./bin/chimera.js run --no-color' 'docs/**/*.error.(ch|md)'",
+    "test:chimera": "npm run test:chimera:docs && npm run test:chimera:docs-error",
     "test:ts": "vitest --dir src --threads false --run",
     "test:watch": "vitest --dir src --threads false",
     "test:coverage": "vitest --dir src --threads false --run --coverage ",
     "test:gui": "vitest --dir src --threads false --ui",
-    "test": "npm run test:ts && npm run test:mo",
+    "test": "npm run test:ts && npm run test:chimera",
     "format": "prettier src --write"
   },
   "dependencies": {
