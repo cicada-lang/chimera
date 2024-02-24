@@ -1,4 +1,4 @@
-import { FiniteDomain } from "FiniteDomain.mo"
+import { FiniteDomain } from "FiniteDomain.ch"
 
 function Different(values) {
   return conj(arrayMapSpread(arrayCombination(values, 2), NotEqual))

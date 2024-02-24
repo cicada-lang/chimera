@@ -1,4 +1,4 @@
-import { Lookup } from "Lookup.mo"
+import { Lookup } from "Lookup.ch"
 
 print find x {
   Equal(map, [["a", 1], ["b", 2], ["c", 3]])

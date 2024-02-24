@@ -1,5 +1,5 @@
-rename file ext from .mo to .ch
 update to esmodule
+
 fix repl for windows
 
 # CHR

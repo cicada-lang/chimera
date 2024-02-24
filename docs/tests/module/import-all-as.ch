@@ -1,4 +1,4 @@
-import * as Example from "./example.mo"
+import * as Example from "./example.ch"
 
 print find q {
   Example.Hi(q)

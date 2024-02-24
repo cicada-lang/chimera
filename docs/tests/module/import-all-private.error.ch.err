@@ -1,6 +1,6 @@
 [evaluate] undefined name: Hiya
 
- 1 |import * from "./example.mo"
+ 1 |import * from "./example.ch"
  2 |
  3 |print find q {
  4 |  Hiya(q)

@@ -1,4 +1,4 @@
-import { Zero, Add1 } from "Nat.mo"
+import { Zero, Add1 } from "Nat.ch"
 
 export clause One(n) -- { Add1(prev, n) Zero(prev) }
 export clause Two(n) -- { Add1(prev, n) One(prev) }

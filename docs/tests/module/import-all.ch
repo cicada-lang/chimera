@@ -1,4 +1,4 @@
-import * from "./example.mo"
+import * from "./example.ch"
 
 print find q {
   Hi(q)

@@ -1,4 +1,4 @@
-import { FiniteDomain } from "FiniteDomain.mo"
+import { FiniteDomain } from "FiniteDomain.ch"
 
 // intervalDomain
 

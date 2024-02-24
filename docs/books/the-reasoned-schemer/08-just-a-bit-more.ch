@@ -2,7 +2,7 @@ import {
   Positive,
   GreaterThanOne,
   Add,
-} from "07-a-bit-too-much.mo"
+} from "07-a-bit-too-much.ch"
 
 clause Mul([], _m, [])
 clause Mul(n, [], []) -- { Positive(n) }

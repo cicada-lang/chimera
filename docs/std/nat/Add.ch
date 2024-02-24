@@ -1,4 +1,4 @@
-import { Zero, Add1, Nat } from "Nat.mo"
+import { Zero, Add1, Nat } from "Nat.ch"
 
 export { Add }
 

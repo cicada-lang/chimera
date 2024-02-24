@@ -1,5 +1,5 @@
-import { Succeed, Fail } from "01-playthings.mo"
-import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.mo"
+import { Succeed, Fail } from "01-playthings.ch"
+import { Null, Cons, Car, Cdr } from "02-teaching-old-toys-new-tricks.ch"
 
 clause List(l)
 ----------- {

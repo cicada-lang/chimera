@@ -1,4 +1,4 @@
-import { A } from "./A.mo"
+import { A } from "./A.ch"
 
 export clause AB(a, b)
 ---------- {
