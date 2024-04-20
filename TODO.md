@@ -1,10 +1,10 @@
+总结 chimera 中已有的功能（用中文）。
+
 update to esmodule
 
 fix repl for windows
 
 # chimera
-
-[chimera] 总结 chimera 中已有的功能（用中文）。
 
 [chimera] 如何在逻辑式中恢复部分的过程式 contral flow？
 
