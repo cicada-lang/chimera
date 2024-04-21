@@ -1,8 +1,10 @@
-update to esmodule
+inline DefaultScript to Script
 
 尝试用 node:test 而不用 test-runner
 
 - 因为每次开启 node 解释器有严重的 overhead。
+
+update to esmodule
 
 remove hypergraph support
 
