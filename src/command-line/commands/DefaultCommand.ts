@@ -32,9 +32,9 @@ export class DefaultCommand extends Command<Args, Opts> {
     const file = argv["file"]
 
     if (file === undefined) {
-      const dir = process.cwd()
-      const command = new Commands.ReplCommand()
-      await command.execute({ dir })
+      const command = new Commands.CommonHelp()
+      await command.execute({}, runner)
+      return
     } else {
       const command = new Commands.RunCommand()
       await command.execute({ file })

@@ -7,6 +7,7 @@ update to esmodule
 remove hypergraph support
 
 - move test about hypergraph to docs/archive
+- remove "sjcl"
 
 fix repl for windows
 
