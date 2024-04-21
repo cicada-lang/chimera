@@ -1,5 +1,3 @@
-remove vitest -- use node:test instead
-
 update to esmodule
 
 尝试用 node:test 而不用 test-runner

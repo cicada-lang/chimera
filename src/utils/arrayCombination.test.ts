@@ -1,14 +1,15 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { arrayCombination } from "./arrayCombination"
 
 test("arrayCombination", () => {
-  expect(arrayCombination([1, 2, 3], 2)).toEqual([
+  assert.deepStrictEqual(arrayCombination([1, 2, 3], 2), [
     [2, 1],
     [3, 1],
     [3, 2],
   ])
 
-  expect(arrayCombination([1, 2, 3, 4], 2)).toEqual([
+  assert.deepStrictEqual(arrayCombination([1, 2, 3, 4], 2), [
     [2, 1],
     [3, 1],
     [4, 1],
@@ -17,7 +18,7 @@ test("arrayCombination", () => {
     [4, 3],
   ])
 
-  expect(arrayCombination([1, 2, 3, 4], 3)).toEqual([
+  assert.deepStrictEqual(arrayCombination([1, 2, 3, 4], 3), [
     [3, 2, 1],
     [4, 2, 1],
     [4, 3, 1],

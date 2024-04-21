@@ -1,14 +1,15 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { arrayProduct } from "./arrayProduct"
 
 test("arrayProduct", () => {
-  expect(
+  assert.deepStrictEqual(
     arrayProduct([
       [1, 2],
       [10, 20],
       [100, 200, 300],
-    ]),
-  ).toEqual([
+    ])
+  ,[
     [1, 10, 100],
     [2, 10, 100],
     [1, 20, 100],
@@ -25,13 +26,13 @@ test("arrayProduct", () => {
 })
 
 test("arrayProduct keep element", () => {
-  expect(
+  assert.deepStrictEqual(
     arrayProduct([
       [[1], [2]],
       [[10], [20]],
       [[100], [200], [300]],
-    ]),
-  ).toEqual([
+    ])
+  ,[
     [[1], [10], [100]],
     [[2], [10], [100]],
     [[1], [20], [100]],
