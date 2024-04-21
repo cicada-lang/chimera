@@ -1,5 +1,3 @@
-update to esmodule
-
 remove rule support
 
 remove hypergraph support
@@ -7,7 +5,7 @@ remove hypergraph support
 - move test about hypergraph to docs/archive
 - remove "sjcl"
 
-fix repl for windows
+update to esmodule
 
 # chimera
 
