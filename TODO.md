@@ -1,9 +1,6 @@
-remove rule support
-
 remove hypergraph support
-
-- move test about hypergraph to docs/archive
-- remove "sjcl"
+remove "sjcl"
+remove rule support
 
 update to esmodule
 
