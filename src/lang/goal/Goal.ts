@@ -1,6 +1,6 @@
 import type { Value } from "../value"
 
-export type Goal = Apply | Equal | NotEqual | Conj | Disj | Constraints
+export type Goal = Apply | Equal | NotEqual | Conj | Disj
 
 export type Apply = {
   "@type": "Goal"
@@ -75,21 +75,5 @@ export function Disj(goals: Array<Goal>): Disj {
     "@type": "Goal",
     "@kind": "Disj",
     goals,
-  }
-}
-
-export type Constraints = {
-  "@type": "Goal"
-  "@kind": "Constraints"
-  target: Value
-  values: Array<Value>
-}
-
-export function Constraints(target: Value, values: Array<Value>): Constraints {
-  return {
-    "@type": "Goal",
-    "@kind": "Constraints",
-    target,
-    values,
   }
 }

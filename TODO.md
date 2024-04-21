@@ -1,8 +1,9 @@
-remove hypergraph support
 remove "sjcl"
 remove rule support
 
 update to esmodule
+
+remove partech -- use hand write parser
 
 # chimera
 

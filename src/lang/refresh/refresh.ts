@@ -69,7 +69,6 @@ export function refresh(
     case "Relation":
     case "TypeConstraint":
     case "Rule":
-    case "Hyperrule":
     case "Fn":
     case "WithConstraints":
     case "Primitive":

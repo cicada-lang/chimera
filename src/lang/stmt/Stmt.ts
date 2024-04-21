@@ -2,7 +2,6 @@ import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import { formatValue } from "../format"
 import type { GoalExp } from "../goal-exp"
-import type { HyperruleExp } from "../hyperrule-exp"
 import type { RuleExp } from "../rule-exp"
 import type { Span } from "../span"
 import type { Value } from "../value"
@@ -12,7 +11,6 @@ export type Stmt =
   | Let
   | Fn
   | Rule
-  | Hyperrule
   | Import
   | ImportAll
   | ImportAllAs
@@ -109,28 +107,6 @@ export function Rule(name: string, rules: Array<RuleExp>, span: Span): Rule {
     "@kind": "Rule",
     name,
     rules,
-    span,
-  }
-}
-
-export type Hyperrule = {
-  "@type": "Stmt"
-  "@kind": "Hyperrule"
-  name: string
-  hyperrules: Array<HyperruleExp>
-  span: Span
-}
-
-export function Hyperrule(
-  name: string,
-  hyperrules: Array<HyperruleExp>,
-  span: Span,
-): Hyperrule {
-  return {
-    "@type": "Stmt",
-    "@kind": "Hyperrule",
-    name,
-    hyperrules,
     span,
   }
 }

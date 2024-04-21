@@ -1,11 +1,5 @@
 import { indent } from "../../utils/indent"
-import {
-  formatArgs,
-  formatExp,
-  formatGoalExp,
-  formatHyperruleExp,
-  formatRuleExp,
-} from "../format"
+import { formatArgs, formatExp, formatGoalExp, formatRuleExp } from "../format"
 import type { ImportBinding, Stmt } from "../stmt"
 
 export function formatStmt(stmt: Stmt): string {
@@ -40,11 +34,6 @@ export function formatStmt(stmt: Stmt): string {
     case "Rule": {
       const rules = stmt.rules.map(formatRuleExp)
       return `rule ${stmt.name} {\n${indent(rules.join("\n"))}\n}`
-    }
-
-    case "Hyperrule": {
-      const hyperrules = stmt.hyperrules.map(formatHyperruleExp)
-      return `hyperrule ${stmt.name} {\n${indent(hyperrules.join("\n"))}\n}`
     }
 
     case "Import": {

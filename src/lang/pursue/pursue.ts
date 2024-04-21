@@ -1,12 +1,10 @@
 import * as Actions from "../actions"
 import * as Errors from "../errors"
 import type { Goal } from "../goal"
-import { hyperruleTermHeads } from "../hyperrule"
 import { Solution, solutionUpdate } from "../solution"
 import * as Values from "../value"
 import { applyEqual } from "./applyEqual"
 import { applyNotEqual } from "./applyNotEqual"
-import { pursueHyperrule } from "./pursueHyperrule"
 import { pursueRelation } from "./pursueRelation"
 import { pursueTypeConstraint } from "./pursueTypeConstraint"
 
@@ -67,34 +65,6 @@ export function pursue(solution: Solution, goal: Goal): Array<Solution> {
         solutionUpdate(solution, {
           goals: [goal, ...solution.goals],
         }),
-      )
-    }
-
-    case "Constraints": {
-      if (goal.target["@kind"] === "Hyperrule") {
-        const termHeads = hyperruleTermHeads(goal.target.hyperrule)
-
-        for (const value of goal.values) {
-          if (value["@kind"] === "Term") {
-            if (!termHeads.some((name) => name === value.name)) {
-              throw new Errors.LangError(
-                [
-                  `[pursue Constraints] can not handle unknown term`,
-                  `  name: ${value.name}`,
-                ].join("\n"),
-              )
-            }
-          }
-        }
-
-        return pursueHyperrule(solution, goal.target, goal.values)
-      }
-
-      throw new Errors.LangError(
-        [
-          `[pursue Constraints] can not apply goal.target`,
-          `  goal.target["@kind"]: ${goal.target["@kind"]}`,
-        ].join("\n"),
       )
     }
   }

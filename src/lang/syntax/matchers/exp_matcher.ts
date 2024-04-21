@@ -102,18 +102,6 @@ export function operand_matcher(tree: pt.Tree): Exp {
       Exps.RuleList(pt.str(name), matchers.rules_matcher(rules), span),
     "operand:rule_list_nameless": ({ rules }, { span }) =>
       Exps.RuleList(undefined, matchers.rules_matcher(rules), span),
-    "operand:hyperrule_list": ({ name, hyperrules }, { span }) =>
-      Exps.HyperruleList(
-        pt.str(name),
-        matchers.hyperrules_matcher(hyperrules),
-        span,
-      ),
-    "operand:hyperrule_list_nameless": ({ hyperrules }, { span }) =>
-      Exps.HyperruleList(
-        undefined,
-        matchers.hyperrules_matcher(hyperrules),
-        span,
-      ),
     "operand:and": ({ elements, last_element }, { span }) =>
       Exps.And(
         [

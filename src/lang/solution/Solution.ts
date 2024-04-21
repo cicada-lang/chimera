@@ -1,5 +1,4 @@
 import type { Goal } from "../goal"
-import type { HyperruleConstraint } from "../solution"
 import type { Substitution } from "../substitution"
 import { substitutionEmpty } from "../substitution"
 import type * as Values from "../value"
@@ -9,7 +8,6 @@ export type Solution = {
   substitution: Substitution
   inequalities: Array<Substitution>
   typeConstraints: Array<[Values.PatternVar, Values.TypeConstraint]>
-  hyperruleConstraints: Array<HyperruleConstraint>
 }
 
 export function createSolutionFromGoals(goals: Array<Goal>): Solution {
@@ -18,7 +16,6 @@ export function createSolutionFromGoals(goals: Array<Goal>): Solution {
     substitution: substitutionEmpty(),
     inequalities: [],
     typeConstraints: [],
-    hyperruleConstraints: [],
   }
 }
 
@@ -28,7 +25,6 @@ export function createEmptySolution(): Solution {
     substitution: substitutionEmpty(),
     inequalities: [],
     typeConstraints: [],
-    hyperruleConstraints: [],
   }
 }
 
@@ -41,7 +37,5 @@ export function solutionUpdate(
     substitution: options.substitution || target.substitution,
     inequalities: options.inequalities || target.inequalities,
     typeConstraints: options.typeConstraints || target.typeConstraints,
-    hyperruleConstraints:
-      options.hyperruleConstraints || target.hyperruleConstraints,
   }
 }

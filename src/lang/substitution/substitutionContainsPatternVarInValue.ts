@@ -64,10 +64,6 @@ export function substitutionContainsPatternVarInValue(
       return false
     }
 
-    case "Hyperrule": {
-      return false
-    }
-
     case "Fn": {
       return false
     }
@@ -136,15 +132,6 @@ function substitutionContainsPatternVarInGoal(
     case "Disj": {
       return goal.goals.some((goal) =>
         substitutionContainsPatternVarInGoal(substitution, goal),
-      )
-    }
-
-    case "Constraints": {
-      return (
-        substitutionContainsPatternVarInValue(substitution, goal.target) ||
-        goal.values.some((value) =>
-          substitutionContainsPatternVarInValue(substitution, value),
-        )
       )
     }
   }

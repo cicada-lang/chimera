@@ -3,7 +3,6 @@ import { solutionUpdate } from "../solution"
 import { substitutionEqual } from "../substitution"
 import { unify } from "../unify"
 import type { Value } from "../value"
-import { maintainHyperruleConstraints } from "./maintainHyperruleConstraints"
 import { maintainInequalities } from "./maintainInequalities"
 import { maintainTypeConstraints } from "./maintainTypeConstraints"
 
@@ -22,13 +21,11 @@ export function applyEqual(
     return solution
   }
 
-  return maintainHyperruleConstraints(
-    maintainTypeConstraints(
-      maintainInequalities(
-        solutionUpdate(solution, {
-          substitution,
-        }),
-      ),
+  return maintainTypeConstraints(
+    maintainInequalities(
+      solutionUpdate(solution, {
+        substitution,
+      }),
     ),
   )
 }

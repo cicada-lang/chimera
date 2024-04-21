@@ -1,7 +1,6 @@
 import type { Clause } from "../clause"
 import type { Env } from "../env"
 import type { Goal as EmbeddedGoal } from "../goal"
-import type { Hyperrule as EmbeddedHyperrule } from "../hyperrule"
 import type { Mod } from "../mod"
 import type { Rule as EmbeddedRule } from "../rule"
 import type { Solution as EmbeddedSolution } from "../solution"
@@ -21,7 +20,6 @@ export type Value =
   | Relation
   | TypeConstraint
   | Rule
-  | Hyperrule
   | Fn
   | WithConstraints
   | Primitive
@@ -228,25 +226,6 @@ export function Rule(name: string | undefined, rule: EmbeddedRule): Rule {
     "@kind": "Rule",
     name,
     rule,
-  }
-}
-
-export type Hyperrule = {
-  "@type": "Value"
-  "@kind": "Hyperrule"
-  name: string | undefined
-  hyperrule: EmbeddedHyperrule
-}
-
-export function Hyperrule(
-  name: string | undefined,
-  hyperrule: EmbeddedHyperrule,
-): Hyperrule {
-  return {
-    "@type": "Value",
-    "@kind": "Hyperrule",
-    name,
-    hyperrule,
   }
 }
 

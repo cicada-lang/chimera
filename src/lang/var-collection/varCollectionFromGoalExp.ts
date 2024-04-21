@@ -26,9 +26,5 @@ export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
     case "Disj": {
       return varCollectionMerge(goal.goals.map(varCollectionFromGoalExp))
     }
-
-    case "Constraints": {
-      return varCollectionFromExps(goal.exps)
-    }
   }
 }

@@ -40,12 +40,5 @@ export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
         goal.goals.map((goal) => evaluateGoalExp(mod, env, goal)),
       )
     }
-
-    case "Constraints": {
-      return Goals.Constraints(
-        evaluate(mod, env, goal.target),
-        goal.exps.map((exp) => quote(mod, env, exp)),
-      )
-    }
   }
 }

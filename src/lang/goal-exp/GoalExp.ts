@@ -1,7 +1,7 @@
 import type { Exp } from "../exp"
 import type { Span } from "../span"
 
-export type GoalExp = Apply | Equal | NotEqual | Conj | Disj | Constraints
+export type GoalExp = Apply | Equal | NotEqual | Conj | Disj
 
 export type Apply = {
   "@type": "GoalExp"
@@ -85,28 +85,6 @@ export function Disj(goals: Array<GoalExp>, span: Span): Disj {
     "@type": "GoalExp",
     "@kind": "Disj",
     goals,
-    span,
-  }
-}
-
-export type Constraints = {
-  "@type": "GoalExp"
-  "@kind": "Constraints"
-  target: Exp
-  exps: Array<Exp>
-  span: Span
-}
-
-export function Constraints(
-  target: Exp,
-  exps: Array<Exp>,
-  span: Span,
-): Constraints {
-  return {
-    "@type": "GoalExp",
-    "@kind": "Constraints",
-    target,
-    exps,
     span,
   }
 }

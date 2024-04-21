@@ -103,12 +103,6 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       })
     }
 
-    case "HyperruleList": {
-      throw new Errors.LangError(`[quote] can not handle Exps.HyperruleList`, {
-        span: exp.span,
-      })
-    }
-
     case "And": {
       throw new Errors.LangError(`[quote] can not handle Exps.And`, {
         span: exp.span,

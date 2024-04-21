@@ -56,12 +56,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       Stmts.ExportNames(matchers.variable_names_matcher(names), span),
     "stmt:rule": ({ name, rules }, { span }) =>
       Stmts.Rule(pt.str(name), matchers.rules_matcher(rules), span),
-    "stmt:hyperrule": ({ name, hyperrules }, { span }) =>
-      Stmts.Hyperrule(
-        pt.str(name),
-        matchers.hyperrules_matcher(hyperrules),
-        span,
-      ),
     "stmt:let": ({ pattern, exp }, { span }) =>
       Stmts.Let(matchers.exp_matcher(pattern), matchers.exp_matcher(exp), span),
     "stmt:print": ({ exp }, { span }) =>

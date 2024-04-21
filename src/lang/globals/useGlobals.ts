@@ -2,7 +2,6 @@ import { aboutArray } from "./aboutArray"
 import { aboutBoolean } from "./aboutBoolean"
 import { aboutEqual } from "./aboutEqual"
 import { aboutGoal } from "./aboutGoal"
-import { aboutHyperrule } from "./aboutHyperrule"
 import { aboutNull } from "./aboutNull"
 import { aboutNumber } from "./aboutNumber"
 import { aboutObject } from "./aboutObject"
@@ -24,7 +23,6 @@ export function useGlobals(): GlobalStore {
   aboutGoal(globals)
   aboutRelation(globals)
   aboutRule(globals)
-  aboutHyperrule(globals)
 
   aboutNull(globals)
   aboutBoolean(globals)

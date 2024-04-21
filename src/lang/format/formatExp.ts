@@ -1,11 +1,6 @@
 import { indent } from "../../utils/indent"
 import type { Exp } from "../exp"
-import {
-  formatGoalExp,
-  formatHyperruleExp,
-  formatRuleExp,
-  formatStmt,
-} from "../format"
+import { formatGoalExp, formatRuleExp, formatStmt } from "../format"
 
 export function formatExp(exp: Exp): string {
   switch (exp["@kind"]) {
@@ -96,11 +91,6 @@ export function formatExp(exp: Exp): string {
     case "RuleList": {
       const rules = exp.rules.map(formatRuleExp)
       return `rule {\n${indent(rules.join("\n"))}\n}`
-    }
-
-    case "HyperruleList": {
-      const hyperrules = exp.hyperrules.map(formatHyperruleExp)
-      return `hyperrule {\n${indent(hyperrules.join("\n"))}\n}`
     }
 
     case "And": {

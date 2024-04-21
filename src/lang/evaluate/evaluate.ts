@@ -2,15 +2,10 @@ import * as Actions from "../actions"
 import { Caze } from "../caze"
 import type { Env } from "../env"
 import * as Errors from "../errors"
-import {
-  evaluateGoalExp,
-  evaluateHyperruleExp,
-  evaluateRuleExp,
-} from "../evaluate"
+import { evaluateGoalExp, evaluateRuleExp } from "../evaluate"
 import type { Exp } from "../exp"
 import { find } from "../find"
 import { freshen } from "../freshen"
-import * as Hyperrules from "../hyperrule"
 import type { Mod } from "../mod"
 import { quote } from "../quote"
 import { refresh, refreshGoals } from "../refresh"
@@ -126,17 +121,6 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Rule(
         exp.name,
         Rules.List(exp.rules.map((rule) => evaluateRuleExp(mod, env, rule))),
-      )
-    }
-
-    case "HyperruleList": {
-      return Values.Hyperrule(
-        exp.name,
-        Hyperrules.List(
-          exp.hyperrules.map((hyperrule) =>
-            evaluateHyperruleExp(mod, env, hyperrule),
-          ),
-        ),
       )
     }
 

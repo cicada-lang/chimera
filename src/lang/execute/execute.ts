@@ -1,8 +1,7 @@
 import * as Errors from "../errors"
-import { evaluate, evaluateHyperruleExp, evaluateRuleExp } from "../evaluate"
+import { evaluate, evaluateRuleExp } from "../evaluate"
 import * as Exps from "../exp"
 import { formatExp, formatValue } from "../format"
-import * as Hyperrules from "../hyperrule"
 import { match } from "../match"
 import type { Mod } from "../mod"
 import { quote } from "../quote"
@@ -76,22 +75,6 @@ export function execute(mod: Mod, stmt: Stmt): undefined | string {
           stmt.name,
           Rules.List(
             stmt.rules.map((rule) => evaluateRuleExp(mod, mod.env, rule)),
-          ),
-        ),
-      )
-
-      return
-    }
-
-    case "Hyperrule": {
-      mod.define(
-        stmt.name,
-        Values.Hyperrule(
-          stmt.name,
-          Hyperrules.List(
-            stmt.hyperrules.map((hyperrule) =>
-              evaluateHyperruleExp(mod, mod.env, hyperrule),
-            ),
           ),
         ),
       )
