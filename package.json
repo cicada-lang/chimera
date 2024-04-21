@@ -12,11 +12,7 @@
   "scripts": {
     "build": "rm -rf lib && tsc",
     "build:watch": "rm -rf lib && tsc --watch",
-    "test:chimera:docs": "test-runner snapshot 'node ./bin/chimera.js run --no-color' 'docs/**/*.ch' --exclude 'docs/**/*.error.ch'",
-    "test:chimera:docs-error": "test-runner snapshot-error 'node ./bin/chimera.js run --no-color' 'docs/**/*.error.ch'",
-    "test:chimera": "npm run test:chimera:docs && npm run test:chimera:docs-error",
-    "test:node": "node --test",
-    "test": "npm run test:node && npm run test:chimera",
+    "test": "node --test",
     "format": "prettier src --write"
   },
   "dependencies": {
@@ -24,6 +20,7 @@
     "@cicada-lang/partech": "^0.2.5",
     "@xieyuheng/command-line": "^0.0.13",
     "@xieyuheng/ty": "^0.1.26",
+    "glob": "^10.3.12",
     "immutable": "^4.3.4",
     "lodash": "^4.17.21",
     "node-watch": "^0.7.4",
@@ -35,7 +32,6 @@
     "@types/lodash": "^4.14.199",
     "@types/node": "^20.8.3",
     "@types/sjcl": "^1.0.31",
-    "@xieyuheng/test-runner": "^0.2.10",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
     "typescript": "^5.2.2"

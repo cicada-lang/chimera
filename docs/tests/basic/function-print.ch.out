@@ -31,7 +31,3 @@
   }
   return null
 }
-"hi"
-["a", "a", "a"]
-or(A, B)
-3
