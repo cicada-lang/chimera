@@ -1,4 +1,3 @@
-remove "sjcl"
 remove rule support
 
 update to esmodule
