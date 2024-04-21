@@ -1,5 +1,3 @@
-总结 chimera 中已有的功能（用中文）。
-
 update to esmodule
 
 fix repl for windows

@@ -2,7 +2,7 @@
 title: Example Markdown Script
 ---
 
-```mo
+```ch
 print find q {
   Equal(q, "Hello, World!")
 }
