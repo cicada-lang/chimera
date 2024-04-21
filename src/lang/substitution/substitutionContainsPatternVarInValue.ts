@@ -60,10 +60,6 @@ export function substitutionContainsPatternVarInValue(
       return false
     }
 
-    case "Rule": {
-      return false
-    }
-
     case "Fn": {
       return false
     }

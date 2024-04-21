@@ -1,5 +1,4 @@
 import type { GoalExp } from "../goal-exp"
-import type { RuleExp } from "../rule-exp"
 import type { Span } from "../span"
 import type { Stmt } from "../stmt"
 
@@ -18,7 +17,6 @@ export type Exp =
   | Quote
   | Eval
   | Find
-  | RuleList
   | And
   | Or
   | Not
@@ -258,28 +256,6 @@ export function Find(
     pattern,
     limit,
     goals,
-    span,
-  }
-}
-
-export type RuleList = {
-  "@type": "Exp"
-  "@kind": "RuleList"
-  name: string | undefined
-  rules: Array<RuleExp>
-  span: Span
-}
-
-export function RuleList(
-  name: string | undefined,
-  rules: Array<RuleExp>,
-  span: Span,
-): RuleList {
-  return {
-    "@type": "Exp",
-    "@kind": "RuleList",
-    name,
-    rules,
     span,
   }
 }

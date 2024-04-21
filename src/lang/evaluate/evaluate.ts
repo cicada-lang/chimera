@@ -2,14 +2,13 @@ import * as Actions from "../actions"
 import { Caze } from "../caze"
 import type { Env } from "../env"
 import * as Errors from "../errors"
-import { evaluateGoalExp, evaluateRuleExp } from "../evaluate"
+import { evaluateGoalExp } from "../evaluate"
 import type { Exp } from "../exp"
 import { find } from "../find"
 import { freshen } from "../freshen"
 import type { Mod } from "../mod"
 import { quote } from "../quote"
 import { refresh, refreshGoals } from "../refresh"
-import * as Rules from "../rule"
 import type { Value } from "../value"
 import * as Values from "../value"
 import {
@@ -115,13 +114,6 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
         exp.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
       )
       return Values.fromArray(find(exp.limit, pattern, goals))
-    }
-
-    case "RuleList": {
-      return Values.Rule(
-        exp.name,
-        Rules.List(exp.rules.map((rule) => evaluateRuleExp(mod, env, rule))),
-      )
     }
 
     case "And": {

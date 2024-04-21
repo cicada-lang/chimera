@@ -60,10 +60,6 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       return createVarCollection()
     }
 
-    case "RuleList": {
-      return createVarCollection()
-    }
-
     case "And": {
       return createVarCollection()
     }

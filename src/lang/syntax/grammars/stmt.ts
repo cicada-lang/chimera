@@ -60,13 +60,6 @@ export const stmt = {
       { names: "variable_names" },
       '"}"',
     ],
-    "stmt:rule": [
-      '"rule"',
-      { name: "variable_name" },
-      '"{"',
-      { rules: "rules" },
-      '"}"',
-    ],
     "stmt:let": ['"let"', { pattern: "exp" }, '"="', { exp: "exp" }],
     "stmt:print": ['"print"', { exp: "exp" }],
     "stmt:compute": ['"compute"', { exp: "exp" }],

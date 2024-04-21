@@ -68,7 +68,6 @@ export function refresh(
 
     case "Relation":
     case "TypeConstraint":
-    case "Rule":
     case "Fn":
     case "WithConstraints":
     case "Primitive":

@@ -54,8 +54,6 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       Stmts.Export(matchers.stmt_matcher(stmt), span),
     "stmt:export_names": ({ names }, { span }) =>
       Stmts.ExportNames(matchers.variable_names_matcher(names), span),
-    "stmt:rule": ({ name, rules }, { span }) =>
-      Stmts.Rule(pt.str(name), matchers.rules_matcher(rules), span),
     "stmt:let": ({ pattern, exp }, { span }) =>
       Stmts.Let(matchers.exp_matcher(pattern), matchers.exp_matcher(exp), span),
     "stmt:print": ({ exp }, { span }) =>

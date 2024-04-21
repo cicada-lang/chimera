@@ -1,5 +1,5 @@
 import { indent } from "../../utils/indent"
-import { formatGoal, formatRule, formatStmt } from "../format"
+import { formatGoal, formatStmt } from "../format"
 import type { Value } from "../value"
 
 export function formatValue(value: Value): string {
@@ -67,10 +67,6 @@ export function formatValue(value: Value): string {
 
     case "TypeConstraint": {
       return `$TypeConstraint(${value.name})`
-    }
-
-    case "Rule": {
-      return `$Rule(${formatRule(value.rule)})`
     }
 
     case "Fn": {

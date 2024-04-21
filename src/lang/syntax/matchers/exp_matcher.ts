@@ -98,10 +98,6 @@ export function operand_matcher(tree: pt.Tree): Exp {
         span,
       )
     },
-    "operand:rule_list": ({ name, rules }, { span }) =>
-      Exps.RuleList(pt.str(name), matchers.rules_matcher(rules), span),
-    "operand:rule_list_nameless": ({ rules }, { span }) =>
-      Exps.RuleList(undefined, matchers.rules_matcher(rules), span),
     "operand:and": ({ elements, last_element }, { span }) =>
       Exps.And(
         [

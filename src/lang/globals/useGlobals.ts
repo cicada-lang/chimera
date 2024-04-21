@@ -6,7 +6,6 @@ import { aboutNull } from "./aboutNull"
 import { aboutNumber } from "./aboutNumber"
 import { aboutObject } from "./aboutObject"
 import { aboutRelation } from "./aboutRelation"
-import { aboutRule } from "./aboutRule"
 import { aboutString } from "./aboutString"
 import { aboutTerm } from "./aboutTerm"
 import { GlobalStore } from "./GlobalStore"
@@ -22,7 +21,6 @@ export function useGlobals(): GlobalStore {
 
   aboutGoal(globals)
   aboutRelation(globals)
-  aboutRule(globals)
 
   aboutNull(globals)
   aboutBoolean(globals)

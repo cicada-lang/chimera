@@ -2,7 +2,6 @@ import * as Errors from "../errors"
 import type { Exp } from "../exp"
 import { formatValue } from "../format"
 import type { GoalExp } from "../goal-exp"
-import type { RuleExp } from "../rule-exp"
 import type { Span } from "../span"
 import type { Value } from "../value"
 
@@ -10,7 +9,6 @@ export type Stmt =
   | Clause
   | Let
   | Fn
-  | Rule
   | Import
   | ImportAll
   | ImportAllAs
@@ -89,24 +87,6 @@ export function Fn(
     name,
     patterns,
     stmts,
-    span,
-  }
-}
-
-export type Rule = {
-  "@type": "Stmt"
-  "@kind": "Rule"
-  name: string
-  rules: Array<RuleExp>
-  span: Span
-}
-
-export function Rule(name: string, rules: Array<RuleExp>, span: Span): Rule {
-  return {
-    "@type": "Stmt",
-    "@kind": "Rule",
-    name,
-    rules,
     span,
   }
 }

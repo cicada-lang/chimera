@@ -1,11 +1,10 @@
 import * as Errors from "../errors"
-import { evaluate, evaluateRuleExp } from "../evaluate"
+import { evaluate } from "../evaluate"
 import * as Exps from "../exp"
 import { formatExp, formatValue } from "../format"
 import { match } from "../match"
 import type { Mod } from "../mod"
 import { quote } from "../quote"
-import * as Rules from "../rule"
 import type { Stmt } from "../stmt"
 import { ReturnValue } from "../stmt"
 import {
@@ -65,20 +64,6 @@ export function execute(mod: Mod, stmt: Stmt): undefined | string {
       const exp = Exps.Fn(stmt.patterns, stmt.stmts, stmt.span)
       const value = evaluate(mod, mod.env, exp)
       mod.define(stmt.name, value)
-      return
-    }
-
-    case "Rule": {
-      mod.define(
-        stmt.name,
-        Values.Rule(
-          stmt.name,
-          Rules.List(
-            stmt.rules.map((rule) => evaluateRuleExp(mod, mod.env, rule)),
-          ),
-        ),
-      )
-
       return
     }
 

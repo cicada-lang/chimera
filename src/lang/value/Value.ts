@@ -2,7 +2,6 @@ import type { Clause } from "../clause"
 import type { Env } from "../env"
 import type { Goal as EmbeddedGoal } from "../goal"
 import type { Mod } from "../mod"
-import type { Rule as EmbeddedRule } from "../rule"
 import type { Solution as EmbeddedSolution } from "../solution"
 import type { Stmt } from "../stmt"
 
@@ -19,7 +18,6 @@ export type Value =
   | Term
   | Relation
   | TypeConstraint
-  | Rule
   | Fn
   | WithConstraints
   | Primitive
@@ -210,22 +208,6 @@ export function TypeConstraint(
     "@kind": "TypeConstraint",
     name,
     predicate,
-  }
-}
-
-export type Rule = {
-  "@type": "Value"
-  "@kind": "Rule"
-  name: string | undefined
-  rule: EmbeddedRule
-}
-
-export function Rule(name: string | undefined, rule: EmbeddedRule): Rule {
-  return {
-    "@type": "Value",
-    "@kind": "Rule",
-    name,
-    rule,
   }
 }
 
