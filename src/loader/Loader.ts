@@ -1,7 +1,6 @@
 import { FetcherSync } from "@cicada-lang/framework/lib/fetcher-sync"
 import { Mod } from "../lang/mod"
-import type { Script } from "../script"
-import * as Scripts from "../scripts"
+import { Script } from "../script"
 
 export interface LoaderOptions {
   onOutput?: (output: string) => void
@@ -21,7 +20,7 @@ export class Loader {
     this.tracked.push(url)
     const text = options?.text || this.fetcher.fetch(url)
     const mod = new Mod({ url, loader: this })
-    const script = Scripts.createScript(mod, text)
+    const script = new Script(mod, text)
     script.run()
     this.cache.set(url.href, script)
     return mod

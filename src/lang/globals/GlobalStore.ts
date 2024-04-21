@@ -1,5 +1,5 @@
 import { Loader } from "../../loader"
-import * as Scripts from "../../scripts"
+import { Script } from "../../script"
 import { envEntries, envExtend } from "../env"
 import { Mod } from "../mod"
 import type { Value } from "../value"
@@ -15,7 +15,7 @@ export class GlobalStore {
   }
 
   code(text: string): void {
-    const script = Scripts.createScript(this.mod, text)
+    const script = new Script(this.mod, text)
     script.run()
   }
 
