@@ -1,13 +1,13 @@
-import { equal } from "../equal"
-import { freshen } from "../freshen"
+import { equal } from "../equal/index.js"
+import { freshen } from "../freshen/index.js"
 import {
-  Substitution,
   substitutionExtend,
   substitutionWalk,
-} from "../substitution"
-import type { Value } from "../value"
-import * as Values from "../value"
-import { occur } from "./occur"
+  type Substitution,
+} from "../substitution/index.js"
+import type { Value } from "../value/index.js"
+import * as Values from "../value/index.js"
+import { occur } from "./occur.js"
 
 export function unifyMany(
   substitution: Substitution,

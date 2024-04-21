@@ -1,7 +1,7 @@
-import type { Env } from "../env"
-import type { Exp } from "../exp"
-import type { GoalExp } from "../goal-exp"
-import type { Mod } from "../mod"
+import type { Env } from "../env/index.js"
+import type { Exp } from "../exp/index.js"
+import type { GoalExp } from "../goal-exp/index.js"
+import type { Mod } from "../mod/index.js"
 
 export type Clause = {
   mod: Mod

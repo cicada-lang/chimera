@@ -1,9 +1,14 @@
-import type { Loader } from "../../loader"
-import type { Env } from "../env"
-import { envEmpty, envEntries, envExtend, envLookupValue } from "../env"
-import { useGlobals } from "../globals"
-import type { Stmt } from "../stmt"
-import type { Value } from "../value"
+import type { Loader } from "../../loader/index.js"
+import type { Env } from "../env/index.js"
+import {
+  envEmpty,
+  envEntries,
+  envExtend,
+  envLookupValue,
+} from "../env/index.js"
+import { useGlobals } from "../globals/index.js"
+import type { Stmt } from "../stmt/index.js"
+import type { Value } from "../value/index.js"
 
 export interface ModOptions {
   url: URL

@@ -1,6 +1,6 @@
-import { FetcherSync } from "@cicada-lang/framework/lib/fetcher-sync"
-import { Mod } from "../lang/mod"
-import { Script } from "../script"
+import fs from "node:fs"
+import { Mod } from "../lang/mod/index.js"
+import { Script } from "../script/index.js"
 
 export interface LoaderOptions {
   onOutput?: (output: string) => void
@@ -8,7 +8,7 @@ export interface LoaderOptions {
 
 export class Loader {
   private cache: Map<string, Script> = new Map()
-  fetcher = new FetcherSync()
+
   tracked: Array<URL> = []
 
   constructor(public options: LoaderOptions) {}
@@ -18,7 +18,7 @@ export class Loader {
     if (found !== undefined) return found.mod
 
     this.tracked.push(url)
-    const text = options?.text || this.fetcher.fetch(url)
+    const text = options?.text || readFileSync(url.pathname)
     const mod = new Mod({ url, loader: this })
     const script = new Script(mod, text)
     script.run()
@@ -34,5 +34,13 @@ export class Loader {
         this.delete(script.mod.options.url)
       }
     }
+  }
+}
+
+function readFileSync(file: string): string {
+  if (process.platform === "win32") {
+    return fs.readFileSync(file.slice(1), "utf8")
+  } else {
+    return fs.readFileSync(file, "utf8")
   }
 }

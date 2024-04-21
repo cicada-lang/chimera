@@ -1,6 +1,6 @@
-import { execute } from "../execute"
-import type { Mod } from "../mod"
-import type { Stmt } from "../stmt"
+import { execute } from "../execute/index.js"
+import type { Mod } from "../mod/index.js"
+import type { Stmt } from "../stmt/index.js"
 
 export function executeStmts(mod: Mod, stmts: Array<Stmt>): void {
   mod.initialize()

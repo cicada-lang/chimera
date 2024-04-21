@@ -1,7 +1,7 @@
-import type { Goal } from "../goal"
-import * as Goals from "../goal"
-import type * as Values from "../value"
-import { refresh, refreshValues } from "./refresh"
+import type { Goal } from "../goal/index.js"
+import * as Goals from "../goal/index.js"
+import type * as Values from "../value/index.js"
+import { refresh, refreshValues } from "./refresh.js"
 
 export function refreshGoals(
   renames: Map<string, Values.PatternVar>,

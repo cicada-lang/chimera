@@ -1,1 +1,1 @@
-export * from "./solve"
+export * from "./solve.js"

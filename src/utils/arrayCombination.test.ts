@@ -1,6 +1,6 @@
 import assert from "node:assert"
 import { test } from "node:test"
-import { arrayCombination } from "./arrayCombination"
+import { arrayCombination } from "./arrayCombination.js"
 
 test("arrayCombination", () => {
   assert.deepStrictEqual(arrayCombination([1, 2, 3], 2), [

@@ -1,6 +1,6 @@
-import type { GoalExp } from "../goal-exp"
-import type { Span } from "../span"
-import type { Stmt } from "../stmt"
+import type { GoalExp } from "../goal-exp/index.js"
+import type { Span } from "../span/index.js"
+import type { Stmt } from "../stmt/index.js"
 
 export type Exp =
   | Var

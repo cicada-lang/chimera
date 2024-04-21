@@ -1,5 +1,5 @@
-import * as Errors from "../errors"
-import type { VarCollection } from "../var-collection"
+import * as Errors from "../errors/index.js"
+import type { VarCollection } from "../var-collection/index.js"
 
 export function varCollectionValidate(varCollection: VarCollection): void {
   varCollectionAssertNoUnused(varCollection)

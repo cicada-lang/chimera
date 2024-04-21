@@ -1,9 +1,9 @@
-import type { Clause } from "../clause"
-import type { Env } from "../env"
-import type { Goal as EmbeddedGoal } from "../goal"
-import type { Mod } from "../mod"
-import type { Solution as EmbeddedSolution } from "../solution"
-import type { Stmt } from "../stmt"
+import type { Clause } from "../clause/index.js"
+import type { Env } from "../env/index.js"
+import type { Goal as EmbeddedGoal } from "../goal/index.js"
+import type { Mod } from "../mod/index.js"
+import type { Solution as EmbeddedSolution } from "../solution/index.js"
+import type { Stmt } from "../stmt/index.js"
 
 export type Value =
   | PatternVar

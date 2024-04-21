@@ -1,5 +1,5 @@
 import * as pt from "@cicada-lang/partech"
-import type { Span } from "../span"
+import type { Span } from "../span/index.js"
 
 export class LangError extends Error {
   constructor(

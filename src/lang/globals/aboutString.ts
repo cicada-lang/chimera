@@ -1,6 +1,6 @@
-import * as Values from "../value"
-import { assertValue } from "../value"
-import type { GlobalStore } from "./GlobalStore"
+import * as Values from "../value/index.js"
+import { assertValue } from "../value/index.js"
+import type { GlobalStore } from "./GlobalStore.js"
 
 export function aboutString(globals: GlobalStore): void {
   globals.define(

@@ -1,12 +1,12 @@
-import type { Env } from "../env"
-import * as Errors from "../errors"
-import { evaluate } from "../evaluate"
-import type { Exp } from "../exp"
-import { formatExp } from "../format"
-import { freshen } from "../freshen"
-import type { Mod } from "../mod"
-import type { Value } from "../value"
-import * as Values from "../value"
+import type { Env } from "../env/index.js"
+import * as Errors from "../errors/index.js"
+import { evaluate } from "../evaluate/index.js"
+import type { Exp } from "../exp/index.js"
+import { formatExp } from "../format/index.js"
+import { freshen } from "../freshen/index.js"
+import type { Mod } from "../mod/index.js"
+import type { Value } from "../value/index.js"
+import * as Values from "../value/index.js"
 
 export function quote(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {

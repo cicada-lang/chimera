@@ -1,7 +1,7 @@
 import * as pt from "@cicada-lang/partech"
-import * as Exps from "../../exp"
-import * as Stmts from "../../stmt"
-import * as matchers from "./index"
+import * as Exps from "../../exp/index.js"
+import * as Stmts from "../../stmt/index.js"
+import * as matchers from "./index.js"
 
 export function caze_matcher(tree: pt.Tree): Exps.Caze {
   return pt.matcher({

@@ -1,6 +1,6 @@
-import { doAp } from "../actions"
-import type { Value } from "../value"
-import * as Values from "../value"
+import { doAp } from "../actions/index.js"
+import type { Value } from "../value/index.js"
+import * as Values from "../value/index.js"
 
 export function applyCurried(
   target: Values.Curried,

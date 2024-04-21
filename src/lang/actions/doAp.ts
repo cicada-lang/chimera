@@ -1,11 +1,11 @@
-import * as Errors from "../errors"
-import { formatValue } from "../format"
-import type { Value } from "../value"
-import { applyCurried } from "./applyCurried"
-import { applyFn } from "./applyFn"
-import { applyPrimitive } from "./applyPrimitive"
-import { applyRelation } from "./applyRelation"
-import { applyTypeConstraint } from "./applyTypeConstraint"
+import * as Errors from "../errors/index.js"
+import { formatValue } from "../format/index.js"
+import type { Value } from "../value/index.js"
+import { applyCurried } from "./applyCurried.js"
+import { applyFn } from "./applyFn.js"
+import { applyPrimitive } from "./applyPrimitive.js"
+import { applyRelation } from "./applyRelation.js"
+import { applyTypeConstraint } from "./applyTypeConstraint.js"
 
 export function doAp(target: Value, args: Array<Value>): Value {
   if (target["@kind"] === "Fn") {

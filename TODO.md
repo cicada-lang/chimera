@@ -1,5 +1,3 @@
-update to esmodule
-
 remove partech -- use hand write parser
 
 # chimera

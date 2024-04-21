@@ -1,6 +1,6 @@
-import { indent } from "../../utils/indent"
-import { formatArgs, formatExp, formatGoalExp } from "../format"
-import type { ImportBinding, Stmt } from "../stmt"
+import { indent } from "../../utils/indent.js"
+import { formatArgs, formatExp, formatGoalExp } from "../format/index.js"
+import type { ImportBinding, Stmt } from "../stmt/index.js"
 
 export function formatStmt(stmt: Stmt): string {
   switch (stmt["@kind"]) {

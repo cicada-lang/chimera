@@ -1,6 +1,9 @@
-import type { Mod } from "../mod"
-import { Substitution, substitutionDeepWalk } from "../substitution"
-import type * as Values from "../value"
+import type { Mod } from "../mod/index.js"
+import {
+  substitutionDeepWalk,
+  type Substitution,
+} from "../substitution/index.js"
+import type * as Values from "../value/index.js"
 
 export function defineRenames(
   mod: Mod,

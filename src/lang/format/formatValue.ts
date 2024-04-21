@@ -1,6 +1,6 @@
-import { indent } from "../../utils/indent"
-import { formatGoal, formatStmt } from "../format"
-import type { Value } from "../value"
+import { indent } from "../../utils/indent.js"
+import { formatGoal, formatStmt } from "../format/index.js"
+import { type Value } from "../value/index.js"
 
 export function formatValue(value: Value): string {
   switch (value["@kind"]) {

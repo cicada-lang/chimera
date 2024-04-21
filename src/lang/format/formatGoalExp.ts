@@ -1,6 +1,6 @@
-import { indent } from "../../utils/indent"
-import { formatArgs, formatExp } from "../format"
-import type { GoalExp } from "../goal-exp"
+import { indent } from "../../utils/indent.js"
+import { formatArgs, formatExp } from "../format/index.js"
+import type { GoalExp } from "../goal-exp/index.js"
 
 export function formatGoalExp(goal: GoalExp): string {
   switch (goal["@kind"]) {

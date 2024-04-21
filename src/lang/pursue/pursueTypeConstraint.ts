@@ -1,8 +1,8 @@
-import { Solution, solutionUpdate } from "../solution"
-import { substitutionWalk } from "../substitution"
-import type * as Values from "../value"
-import type { Value } from "../value"
-import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
+import { solutionUpdate, type Solution } from "../solution/index.js"
+import { substitutionWalk } from "../substitution/index.js"
+import type * as Values from "../value/index.js"
+import type { Value } from "../value/index.js"
+import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints.js"
 
 export function pursueTypeConstraint(
   solution: Solution,

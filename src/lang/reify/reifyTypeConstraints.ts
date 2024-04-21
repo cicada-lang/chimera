@@ -1,12 +1,12 @@
-import type { Goal } from "../goal"
-import * as Goals from "../goal"
-import type { Solution } from "../solution"
+import * as Goals from "../goal/index.js"
+import { type Goal } from "../goal/index.js"
+import { type Solution } from "../solution/index.js"
 import {
-  Substitution,
   substitutionContainsPatternVarInValue,
   substitutionDeepWalk,
-} from "../substitution"
-import type * as Values from "../value"
+  type Substitution,
+} from "../substitution/index.js"
+import type * as Values from "../value/index.js"
 
 export function reifyTypeConstraints(
   solution: Solution,

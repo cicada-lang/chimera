@@ -1,9 +1,9 @@
-import type { GoalExp } from "../goal-exp"
+import type { GoalExp } from "../goal-exp/index.js"
 import {
-  VarCollection,
   varCollectionFromExps,
   varCollectionMerge,
-} from "../var-collection"
+  type VarCollection,
+} from "../var-collection/index.js"
 
 export function varCollectionFromGoalExp(goal: GoalExp): VarCollection {
   switch (goal["@kind"]) {

@@ -1,9 +1,9 @@
-import { executeStmts } from "../execute"
-import type { Mod } from "../mod"
-import type { Stmt } from "../stmt"
-import { ReturnValue } from "../stmt"
-import type { Value } from "../value"
-import * as Values from "../value"
+import { executeStmts } from "../execute/index.js"
+import type { Mod } from "../mod/index.js"
+import type { Stmt } from "../stmt/index.js"
+import { ReturnValue } from "../stmt/index.js"
+import type { Value } from "../value/index.js"
+import * as Values from "../value/index.js"
 
 export function catchReturnValue(mod: Mod, stmts: Array<Stmt>): Value {
   try {

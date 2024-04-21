@@ -1,5 +1,5 @@
-import * as Values from "../value"
-import type { GlobalStore } from "./GlobalStore"
+import * as Values from "../value/index.js"
+import type { GlobalStore } from "./GlobalStore.js"
 
 export function aboutObject(globals: GlobalStore): void {
   globals.primitive("isObject", 1, ([value]) => {

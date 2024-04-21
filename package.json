@@ -2,8 +2,10 @@
   "name": "@cicada-lang/chimera",
   "version": "0.4.6",
   "repository": "github:cicada-lang/chimera",
+  "type": "module",
   "main": "./lib/index.js",
   "files": [
+    "src",
     "lib"
   ],
   "bin": {
@@ -16,23 +18,23 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@cicada-lang/framework": "^0.1.6",
+    "@cicada-lang/framework": "^0.2.0",
     "@cicada-lang/partech": "^0.2.5",
-    "@xieyuheng/command-line": "^0.0.13",
-    "@xieyuheng/ty": "^0.1.26",
+    "@xieyuheng/command-line": "^0.1.2",
+    "@xieyuheng/ty": "^0.2.1",
     "glob": "^10.3.12",
-    "immutable": "^4.3.4",
+    "immutable": "^4.3.5",
     "lodash": "^4.17.21",
     "node-watch": "^0.7.4",
     "picocolors": "^1.0.0",
     "readdirp": "^3.6.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.199",
-    "@types/node": "^20.8.3",
-    "prettier": "^3.0.3",
-    "prettier-plugin-organize-imports": "^3.2.3",
-    "typescript": "^5.2.2"
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.12.7",
+    "prettier": "^3.2.5",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "typescript": "^5.4.5"
   },
   "license": "GPL-3.0-or-later"
 }

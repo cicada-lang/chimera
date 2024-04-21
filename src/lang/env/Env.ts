@@ -1,5 +1,6 @@
 import Immutable from "immutable"
-import type { Value } from "../value"
+
+import type { Value } from "../value/index.js"
 
 export type Env = Immutable.Map<string, Value>
 

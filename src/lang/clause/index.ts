@@ -1,1 +1,1 @@
-export * from "./Clause"
+export * from "./Clause.js"

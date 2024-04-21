@@ -1,9 +1,9 @@
-import { Loader } from "../../loader"
-import { Script } from "../../script"
-import { envEntries, envExtend } from "../env"
-import { Mod } from "../mod"
-import type { Value } from "../value"
-import * as Values from "../value"
+import { Loader } from "../../loader/index.js"
+import { Script } from "../../script/index.js"
+import { envEntries, envExtend } from "../env/index.js"
+import { Mod } from "../mod/index.js"
+import * as Values from "../value/index.js"
+import { type Value } from "../value/index.js"
 
 export class GlobalStore {
   mod = new Mod({ loader: new Loader({}), url: new URL("globals://") })

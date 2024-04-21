@@ -1,5 +1,5 @@
-import { Substitution, substitutionLookup } from "../substitution"
-import type { Value } from "../value"
+import { substitutionLookup, type Substitution } from "../substitution/index.js"
+import { type Value } from "../value/index.js"
 
 export function substitutionWalk(
   substitution: Substitution,

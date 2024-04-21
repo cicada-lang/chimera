@@ -1,6 +1,6 @@
-import { Substitution, substitutionWalk } from "."
-import type { Goal } from "../goal"
-import type { Value } from "../value"
+import { type Goal } from "../goal/index.js"
+import { type Value } from "../value/index.js"
+import { substitutionWalk, type Substitution } from "./index.js"
 
 export function substitutionContainsPatternVarInValue(
   substitution: Substitution,

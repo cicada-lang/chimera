@@ -1,10 +1,10 @@
-import { evaluateGoalExp } from "../evaluate"
-import { quote } from "../quote"
-import { refreshGoals, refreshValues } from "../refresh"
-import { Solution, solutionUpdate } from "../solution"
-import type * as Values from "../value"
-import type { Value } from "../value"
-import { applyEqual } from "./applyEqual"
+import { evaluateGoalExp } from "../evaluate/index.js"
+import { quote } from "../quote/index.js"
+import { refreshGoals, refreshValues } from "../refresh/index.js"
+import { solutionUpdate, type Solution } from "../solution/index.js"
+import type * as Values from "../value/index.js"
+import { type Value } from "../value/index.js"
+import { applyEqual } from "./applyEqual.js"
 
 export function pursueRelation(
   solution: Solution,

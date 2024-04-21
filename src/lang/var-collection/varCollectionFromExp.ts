@@ -1,6 +1,9 @@
-import type { Exp } from "../exp"
-import type { VarCollection } from "../var-collection"
-import { createVarCollection, varCollectionMerge } from "../var-collection"
+import type { Exp } from "../exp/index.js"
+import type { VarCollection } from "../var-collection/index.js"
+import {
+  createVarCollection,
+  varCollectionMerge,
+} from "../var-collection/index.js"
 
 export function varCollectionFromExps(exps: Array<Exp>): VarCollection {
   return varCollectionMerge(exps.map(varCollectionFromExp))

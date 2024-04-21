@@ -1,8 +1,8 @@
-import { Solution, solutionUpdate } from "../solution"
-import { substitutionEqual, substitutionPrefix } from "../substitution"
-import { unify } from "../unify"
-import type { Value } from "../value"
-import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints"
+import { solutionUpdate, type Solution } from "../solution/index.js"
+import { substitutionEqual, substitutionPrefix } from "../substitution/index.js"
+import { unify } from "../unify/index.js"
+import type { Value } from "../value/index.js"
+import { removeInequalitiesSubsumedByTypeConstraints } from "./removeInequalitiesSubsumedByTypeConstraints.js"
 
 export function applyNotEqual(
   solution: Solution,

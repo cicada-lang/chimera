@@ -1,8 +1,8 @@
-import type { Goal } from "../goal"
-import * as Goals from "../goal"
-import { Substitution, substitutionWalk } from "../substitution"
-import type { Value } from "../value"
-import * as Values from "../value"
+import type { Goal } from "../goal/index.js"
+import * as Goals from "../goal/index.js"
+import { substitutionWalk, type Substitution } from "../substitution/index.js"
+import type { Value } from "../value/index.js"
+import * as Values from "../value/index.js"
 
 export function substitutionDeepWalk(
   substitution: Substitution,

@@ -1,4 +1,4 @@
-import { arrayMember } from "./arrayMember"
+import { arrayMember } from "./arrayMember.js"
 
 export function arrayDedup<A>(
   array: Array<A>,

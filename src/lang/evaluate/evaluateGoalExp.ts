@@ -1,10 +1,10 @@
-import type { Env } from "../env"
-import { evaluate } from "../evaluate"
-import type { Goal } from "../goal"
-import * as Goals from "../goal"
-import type { GoalExp } from "../goal-exp"
-import type { Mod } from "../mod"
-import { quote } from "../quote"
+import { type Env } from "../env/index.js"
+import { evaluate } from "../evaluate/index.js"
+import { type GoalExp } from "../goal-exp/index.js"
+import * as Goals from "../goal/index.js"
+import { type Goal } from "../goal/index.js"
+import { type Mod } from "../mod/index.js"
+import { quote } from "../quote/index.js"
 
 export function evaluateGoalExp(mod: Mod, env: Env, goal: GoalExp): Goal {
   switch (goal["@kind"]) {

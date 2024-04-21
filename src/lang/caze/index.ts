@@ -1,1 +1,1 @@
-export * from "./Caze"
+export * from "./Caze.js"

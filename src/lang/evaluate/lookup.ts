@@ -1,7 +1,7 @@
-import type { Env } from "../env"
-import { envLookupValue } from "../env"
-import type { Mod } from "../mod"
-import type { Value } from "../value"
+import type { Env } from "../env/index.js"
+import { envLookupValue } from "../env/index.js"
+import type { Mod } from "../mod/index.js"
+import type { Value } from "../value/index.js"
 
 export function lookup(mod: Mod, env: Env, name: string): Value | undefined {
   const local = envLookupValue(env, name)

@@ -1,6 +1,6 @@
-import { equal } from "../equal"
-import * as Values from "../value"
-import type { GlobalStore } from "./GlobalStore"
+import { equal } from "../equal/index.js"
+import * as Values from "../value/index.js"
+import type { GlobalStore } from "./GlobalStore.js"
 
 export function aboutEqual(globals: GlobalStore): void {
   globals.primitive("equal", 2, ([x, y]) => {

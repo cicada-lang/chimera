@@ -1,7 +1,7 @@
-import type { Env } from "../env"
-import type { Exp } from "../exp"
-import type { Mod } from "../mod"
-import type { Stmt } from "../stmt"
+import type { Env } from "../env/index.js"
+import type { Exp } from "../exp/index.js"
+import type { Mod } from "../mod/index.js"
+import type { Stmt } from "../stmt/index.js"
 
 export type Caze = {
   mod: Mod

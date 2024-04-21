@@ -1,2 +1,2 @@
-export * from "./equal"
-export * from "./equalValues"
+export * from "./equal.js"
+export * from "./equalValues.js"

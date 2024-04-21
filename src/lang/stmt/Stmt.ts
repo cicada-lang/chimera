@@ -1,9 +1,9 @@
-import * as Errors from "../errors"
-import type { Exp } from "../exp"
-import { formatValue } from "../format"
-import type { GoalExp } from "../goal-exp"
-import type { Span } from "../span"
-import type { Value } from "../value"
+import * as Errors from "../errors/index.js"
+import type { Exp } from "../exp/index.js"
+import { formatValue } from "../format/index.js"
+import type { GoalExp } from "../goal-exp/index.js"
+import type { Span } from "../span/index.js"
+import type { Value } from "../value/index.js"
 
 export type Stmt =
   | Clause

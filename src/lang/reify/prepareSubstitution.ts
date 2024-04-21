@@ -1,12 +1,12 @@
 import {
-  Substitution,
   substitutionEmpty,
   substitutionExtend,
   substitutionLength,
   substitutionWalk,
-} from "../substitution"
-import type { Value } from "../value"
-import * as Values from "../value"
+  type Substitution,
+} from "../substitution/index.js"
+import * as Values from "../value/index.js"
+import { type Value } from "../value/index.js"
 
 /**
 

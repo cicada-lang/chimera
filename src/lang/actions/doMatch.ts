@@ -1,16 +1,16 @@
-import type { Caze } from "../caze"
-import { envMerge } from "../env"
-import * as Errors from "../errors"
-import { formatValue } from "../format"
-import { match } from "../match"
-import { quote } from "../quote"
+import type { Caze } from "../caze/index.js"
+import { envMerge } from "../env/index.js"
+import * as Errors from "../errors/index.js"
+import { formatValue } from "../format/index.js"
+import { match } from "../match/index.js"
+import { quote } from "../quote/index.js"
 import {
   substitutionDeepWalk,
   substitutionEmpty,
   substitutionEntries,
-} from "../substitution"
-import type { Value } from "../value"
-import { catchReturnValue } from "./catchReturnValue"
+} from "../substitution/index.js"
+import type { Value } from "../value/index.js"
+import { catchReturnValue } from "./catchReturnValue.js"
 
 export function doMatch(target: Value, cazes: Array<Caze>): Value {
   for (const caze of cazes) {

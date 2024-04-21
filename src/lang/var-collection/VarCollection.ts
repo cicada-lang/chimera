@@ -1,5 +1,5 @@
 import Immutable from "immutable"
-import type * as Exps from "../exp"
+import type * as Exps from "../exp/index.js"
 
 export type VarCollection = Immutable.Map<string, Array<Exps.Var>>
 
