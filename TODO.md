@@ -1,8 +1,14 @@
+remove vitest -- use node:test instead
+
 update to esmodule
 
 尝试用 node:test 而不用 test-runner
 
 - 因为每次开启 node 解释器有严重的 overhead。
+
+remove hypergraph support
+
+- move test about hypergraph to docs/archive
 
 fix repl for windows
 

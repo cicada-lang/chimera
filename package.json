@@ -17,8 +17,6 @@
     "test:chimera": "npm run test:chimera:docs && npm run test:chimera:docs-error",
     "test:ts": "vitest --dir src --threads false --run",
     "test:watch": "vitest --dir src --threads false",
-    "test:coverage": "vitest --dir src --threads false --run --coverage ",
-    "test:gui": "vitest --dir src --threads false --ui",
     "test": "npm run test:ts && npm run test:chimera",
     "format": "prettier src --write"
   },
@@ -40,14 +38,10 @@
     "@types/lodash": "^4.14.199",
     "@types/node": "^20.8.3",
     "@types/sjcl": "^1.0.31",
-    "@vitest/coverage-c8": "^0.33.0",
-    "@vitest/coverage-istanbul": "^0.34.6",
-    "@vitest/ui": "^0.34.6",
     "@xieyuheng/test-runner": "^0.2.10",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
     "typescript": "^5.2.2",
-    "vite": "^4.4.11",
     "vitest": "^0.34.6"
   },
   "license": "GPL-3.0-or-later"
