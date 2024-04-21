@@ -1,7 +1,10 @@
 {
   "name": "@cicada-lang/chimera",
   "version": "0.4.7",
-  "repository": "github:cicada-lang/chimera",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cicada-lang/chimera.git"
+  },
   "type": "module",
   "main": "./lib/index.js",
   "files": [
