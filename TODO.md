@@ -1,5 +1,12 @@
 remove partech -- use hand write parser
 
+为什么 chimera 这个项目是值得做的？
+
+- 因为 dependent type 与 logic programming 之间的关系。
+- 因为 constraint programming 我还没有探索过。
+
+顶层不需要 compute 和 任意的 exp，只需要 application 以及 method application。
+
 # chimera
 
 [chimera] 如何在逻辑式中恢复部分的过程式 contral flow？
