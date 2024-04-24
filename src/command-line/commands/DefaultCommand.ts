@@ -25,7 +25,7 @@ export class DefaultCommand extends Command<Args, Opts> {
     }
 
     if (argv["version"]) {
-      console.log(app.config.pkg.version)
+      console.log(`2024-04-24`)
       return
     }
 
