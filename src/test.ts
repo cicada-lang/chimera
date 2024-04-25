@@ -1,8 +1,8 @@
 import { glob } from "glob"
-import Path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import fs from "node:fs"
+import Path from "node:path"
 import { test } from "node:test"
+import { fileURLToPath } from "node:url"
 import { Runner } from "./command-line/Runner.js"
 import { stripAnsi } from "./utils/ansi.js"
 
