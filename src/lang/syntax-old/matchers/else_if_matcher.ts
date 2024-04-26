@@ -1,7 +1,7 @@
 import * as pt from "@cicada-lang/partech"
 import type { Exp } from "../../exp/index.js"
 import type { Stmt } from "../../stmt/index.js"
-import * as matchers from "../matchers/index.js"
+import * as matchers from "./index.js"
 
 export function else_if_matcher(tree: pt.Tree): {
   target: Exp
