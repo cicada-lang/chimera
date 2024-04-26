@@ -88,6 +88,7 @@ function matchTokenEntry(
   label: string,
   regexp: RegExp,
 ): (Token & { forword: number }) | undefined {
+  regexp = new RegExp ("^\\s*(" + regexp.source + ")\\s*", "u")
   const result = execWithIndices(regexp, text)
   if (result === null) {
     return undefined
