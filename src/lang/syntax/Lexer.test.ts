@@ -3,10 +3,6 @@ import { test } from "node:test"
 import { createLexer } from "./Lexer.js"
 
 const lexer = createLexer({
-  // identifier: /^\s*([_\p{Letter}][_\p{Letter}0-9]*)\s*/u,
-  // string: /^\s*("(\\.|[^"])*")\s*/u,
-  // number: /^\s*(\d+\.\d+|\d+|-\d+\.\d+|-\d+)\s*/u,
-  // symbol: /^\s*([^_\p{Letter}0-9\s])\s*/u,
   identifier: /[_\p{Letter}][_\p{Letter}0-9]*/,
   string: /"(\\.|[^"])*"/,
   number: /\d+\.\d+|\d+|-\d+\.\d+|-\d+/,
