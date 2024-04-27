@@ -1,5 +1,3 @@
-remove functional global -- equal
-
 remove quote and eval
 
 `datatype` -- `Data` should have `type` and `kind`
