@@ -7,9 +7,6 @@ print { a: 1, b: 2, c: 3 }
 
 // primitive and curried
 
-print stringAppend
-print stringAppend("abc")
-
 print equal
 print equal("abc")
 

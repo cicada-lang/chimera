@@ -2,8 +2,6 @@
 "a"
 ["a", "b", "c"]
 { "a": 1, "b": 2, "c": 3 }
-$Primitive(stringAppend, 2)
-$Curried($Primitive(stringAppend, 2), 2, ["abc"])
 $Primitive(equal, 2)
 $Curried($Primitive(equal, 2), 2, ["abc"])
 $Primitive(Equal, 2)

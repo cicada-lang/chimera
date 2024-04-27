@@ -1,4 +1,3 @@
-remove functional globals about String
 remove functional globals about Boolean
 
 remove quote and eval
