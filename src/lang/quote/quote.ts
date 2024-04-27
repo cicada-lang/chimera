@@ -31,10 +31,7 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "ListCons": {
-      return Values.ListCons(
-        quote(mod, env, exp.car),
-        quote(mod, env, exp.cdr),
-      )
+      return Values.ListCons(quote(mod, env, exp.car), quote(mod, env, exp.cdr))
     }
 
     case "ListNull": {

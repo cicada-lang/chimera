@@ -1,3 +1,6 @@
+remove functional globals about String
+remove functional globals about Boolean
+
 remove quote and eval
 
 `datatype` -- `Data` should have `type` and `kind`
