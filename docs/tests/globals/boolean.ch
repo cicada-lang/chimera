@@ -2,12 +2,6 @@ print find x {
   Boolean(x)
 }
 
-assert isBoolean(true)
-assert isBoolean(false)
-assert not isBoolean(null)
-assert not isBoolean(123)
-assert not isBoolean("abc")
-
 assert and []
 assert and [true]
 assert and [true, true]

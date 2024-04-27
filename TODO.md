@@ -1,5 +1,4 @@
-remove functional global -- isBoolean
-remove functional global -- not
+remove functional global -- equal
 
 remove quote and eval
 
