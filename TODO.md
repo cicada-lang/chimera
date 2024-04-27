@@ -1,12 +1,9 @@
-remove partech -- use hand write parser
+> remove partech -- use hand write parser
 
-parseExps
-parseExp
 parseOperator
 parseOperand
 parseStmt & parseStmts
-
-- loopUntilEnd
+loopUntilEnd
 
 `datatype` -- `Data` should have `type` and `kind`
 
