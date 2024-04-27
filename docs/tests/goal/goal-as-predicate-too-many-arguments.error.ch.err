@@ -1,4 +1,0 @@
-[doAp] can not apply target
-  target['@kind']: Goal
-  target: $Goal(Equal(1, 2))
-  args: 3
