@@ -1,2 +1,0 @@
-closure("x", var("x"), [])
-closure("x", var("x"), [])

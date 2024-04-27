@@ -1,9 +1,5 @@
-> remove partech -- use hand write parser
-
-parseOperator
-parseOperand
-parseStmt & parseStmts
-loopUntilEnd
+remove docs/langs/joy.ch
+remove quote and eval
 
 `datatype` -- `Data` should have `type` and `kind`
 
@@ -11,6 +7,8 @@ type constraint should not be `String(x)`
 
 - should be `The(String, x)`
 - or just `x: String`
+
+# note
 
 放弃 return 作为 block，直接模仿 JS 语法。
 
@@ -20,6 +18,15 @@ NOTE 我们想把很多 `Set` 处理函数整理到 `Set.*` 这个命名空间�
 因为我们想要避免大量的 import。
 但是 vue 的 API 都是单个的 import，而不是 `Vue.*`。
 所以也许不应该避免大量的 import。
+
+# syntax
+
+> remove partech -- use hand write parser
+
+parseOperator
+parseOperand
+parseStmt & parseStmts
+loopUntilEnd
 
 # chimera
 
