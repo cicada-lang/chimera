@@ -3,8 +3,6 @@ import { aboutEqual } from "./aboutEqual.js"
 import { aboutGoal } from "./aboutGoal.js"
 import { aboutNull } from "./aboutNull.js"
 import { aboutNumber } from "./aboutNumber.js"
-import { aboutObject } from "./aboutObject.js"
-import { aboutRelation } from "./aboutRelation.js"
 import { aboutString } from "./aboutString.js"
 import { GlobalStore } from "./GlobalStore.js"
 
@@ -16,15 +14,11 @@ export function useGlobals(): GlobalStore {
   globals = new GlobalStore()
 
   aboutEqual(globals)
-
   aboutGoal(globals)
-  aboutRelation(globals)
-
   aboutNull(globals)
   aboutBoolean(globals)
   aboutNumber(globals)
   aboutString(globals)
-  aboutObject(globals)
 
   return globals
 }
