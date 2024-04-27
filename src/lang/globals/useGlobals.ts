@@ -1,4 +1,3 @@
-import { aboutArray } from "./aboutArray.js"
 import { aboutBoolean } from "./aboutBoolean.js"
 import { aboutEqual } from "./aboutEqual.js"
 import { aboutGoal } from "./aboutGoal.js"
@@ -26,7 +25,6 @@ export function useGlobals(): GlobalStore {
   aboutBoolean(globals)
   aboutNumber(globals)
   aboutString(globals)
-  aboutArray(globals)
   aboutObject(globals)
   aboutTerm(globals)
 

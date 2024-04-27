@@ -6,7 +6,8 @@ date: 2022-11-19
 
 # Functional
 
-[maybe] We need a functional part to construct data with out record name
+[maybe] We need a functional part to construct data
+without named properties (record).
 
 - syntax for define datatype, that can be used as predicate.
 
