@@ -31,7 +31,7 @@ export function prepareSubstitution(
       return substitutionExtend(substitution, value.name, reifiedVar)
     }
 
-    case "ArrayCons": {
+    case "ListCons": {
       substitution = prepareSubstitution(value.car, substitution)
       substitution = prepareSubstitution(value.cdr, substitution)
       return substitution

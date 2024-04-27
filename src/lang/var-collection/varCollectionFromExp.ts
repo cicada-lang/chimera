@@ -22,14 +22,14 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       return createVarCollection()
     }
 
-    case "ArrayCons": {
+    case "ListCons": {
       return varCollectionMerge([
         varCollectionFromExp(exp.car),
         varCollectionFromExp(exp.cdr),
       ])
     }
 
-    case "ArrayNull": {
+    case "ListNull": {
       return createVarCollection()
     }
 

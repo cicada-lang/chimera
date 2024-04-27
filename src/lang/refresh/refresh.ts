@@ -36,14 +36,14 @@ export function refresh(
       return value
     }
 
-    case "ArrayCons": {
-      return Values.ArrayCons(
+    case "ListCons": {
+      return Values.ListCons(
         refresh(renames, value.car),
         refresh(renames, value.cdr),
       )
     }
 
-    case "ArrayNull": {
+    case "ListNull": {
       return value
     }
 

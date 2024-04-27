@@ -23,14 +23,14 @@ export function substitutionContainsPatternVarInValue(
       return false
     }
 
-    case "ArrayCons": {
+    case "ListCons": {
       return (
         substitutionContainsPatternVarInValue(substitution, value.car) ||
         substitutionContainsPatternVarInValue(substitution, value.cdr)
       )
     }
 
-    case "ArrayNull": {
+    case "ListNull": {
       return false
     }
 

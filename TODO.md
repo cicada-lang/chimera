@@ -1,4 +1,3 @@
-rename ArrayCons and ArrayNull to ListCons and ListNull
 remove quote and eval
 
 `datatype` -- `Data` should have `type` and `kind`

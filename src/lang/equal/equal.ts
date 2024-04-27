@@ -21,11 +21,11 @@ export function equal(left: Value, right: Value): boolean {
     return left.data === right.data
   }
 
-  if (left["@kind"] === "ArrayCons" && right["@kind"] === "ArrayCons") {
+  if (left["@kind"] === "ListCons" && right["@kind"] === "ListCons") {
     return equal(left.car, right.car) && equal(left.cdr, right.cdr)
   }
 
-  if (left["@kind"] === "ArrayNull" && right["@kind"] === "ArrayNull") {
+  if (left["@kind"] === "ListNull" && right["@kind"] === "ListNull") {
     return true
   }
 

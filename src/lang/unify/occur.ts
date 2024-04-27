@@ -13,7 +13,7 @@ export function occur(
       return value.name === name
     }
 
-    case "ArrayCons": {
+    case "ListCons": {
       return (
         occur(substitution, name, value.car) ||
         occur(substitution, name, value.cdr)

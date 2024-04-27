@@ -11,8 +11,8 @@ export function substitutionDeepWalk(
   value = substitutionWalk(substitution, value)
 
   switch (value["@kind"]) {
-    case "ArrayCons": {
-      return Values.ArrayCons(
+    case "ListCons": {
+      return Values.ListCons(
         substitutionDeepWalk(substitution, value.car),
         substitutionDeepWalk(substitution, value.cdr),
       )

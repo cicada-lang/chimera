@@ -71,14 +71,14 @@ export function match(
     return substitution
   }
 
-  if (left["@kind"] === "ArrayCons" && right["@kind"] === "ArrayCons") {
+  if (left["@kind"] === "ListCons" && right["@kind"] === "ListCons") {
     const carSubstitution = match(substitution, left.car, right.car)
     if (carSubstitution === undefined) return undefined
     const cdrSubstitution = match(carSubstitution, left.cdr, right.cdr)
     return cdrSubstitution
   }
 
-  if (left["@kind"] === "ArrayNull" && right["@kind"] === "ArrayNull") {
+  if (left["@kind"] === "ListNull" && right["@kind"] === "ListNull") {
     return substitution
   }
 

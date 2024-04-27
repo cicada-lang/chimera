@@ -48,15 +48,15 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Null()
     }
 
-    case "ArrayCons": {
-      return Values.ArrayCons(
+    case "ListCons": {
+      return Values.ListCons(
         evaluate(mod, env, exp.car),
         evaluate(mod, env, exp.cdr),
       )
     }
 
-    case "ArrayNull": {
-      return Values.ArrayNull()
+    case "ListNull": {
+      return Values.ListNull()
     }
 
     case "Objekt": {

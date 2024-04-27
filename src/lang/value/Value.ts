@@ -12,8 +12,8 @@ export type Value =
   | Number
   | Boolean
   | Null
-  | ArrayCons
-  | ArrayNull
+  | ListCons
+  | ListNull
   | Objekt
   | Term
   | Relation
@@ -107,31 +107,31 @@ export function Null(): Null {
   }
 }
 
-export type ArrayCons = {
+export type ListCons = {
   "@type": "Value"
-  "@kind": "ArrayCons"
+  "@kind": "ListCons"
   car: Value
   cdr: Value
 }
 
-export function ArrayCons(car: Value, cdr: Value): ArrayCons {
+export function ListCons(car: Value, cdr: Value): ListCons {
   return {
     "@type": "Value",
-    "@kind": "ArrayCons",
+    "@kind": "ListCons",
     car,
     cdr,
   }
 }
 
-export type ArrayNull = {
+export type ListNull = {
   "@type": "Value"
-  "@kind": "ArrayNull"
+  "@kind": "ListNull"
 }
 
-export function ArrayNull(): ArrayNull {
+export function ListNull(): ListNull {
   return {
     "@type": "Value",
-    "@kind": "ArrayNull",
+    "@kind": "ListNull",
   }
 }
 

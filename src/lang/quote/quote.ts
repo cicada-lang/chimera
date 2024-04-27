@@ -30,15 +30,15 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Null()
     }
 
-    case "ArrayCons": {
-      return Values.ArrayCons(
+    case "ListCons": {
+      return Values.ListCons(
         quote(mod, env, exp.car),
         quote(mod, env, exp.cdr),
       )
     }
 
-    case "ArrayNull": {
-      return Values.ArrayNull()
+    case "ListNull": {
+      return Values.ListNull()
     }
 
     case "Objekt": {

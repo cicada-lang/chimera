@@ -6,11 +6,11 @@ export function toArray(value: Value): Array<Value> {
   const array: Array<Value> = []
 
   while (true) {
-    if (value["@kind"] === "ArrayNull") {
+    if (value["@kind"] === "ListNull") {
       return array
     }
 
-    if (value["@kind"] === "ArrayCons") {
+    if (value["@kind"] === "ListCons") {
       array.push(value.car)
       value = value.cdr
       continue
@@ -27,7 +27,7 @@ export function toArray(value: Value): Array<Value> {
 
 export function fromArray(values: Array<Value>): Value {
   values = [...values]
-  let result: Value = Values.ArrayNull()
+  let result: Value = Values.ListNull()
 
   while (true) {
     const value = values.pop()
@@ -35,6 +35,6 @@ export function fromArray(values: Array<Value>): Value {
       return result
     }
 
-    result = Values.ArrayCons(value, result)
+    result = Values.ListCons(value, result)
   }
 }

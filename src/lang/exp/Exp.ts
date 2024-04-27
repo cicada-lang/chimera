@@ -8,8 +8,8 @@ export type Exp =
   | Number
   | Boolean
   | Null
-  | ArrayCons
-  | ArrayNull
+  | ListCons
+  | ListNull
   | Objekt
   | Dot
   | Ap
@@ -101,34 +101,34 @@ export function Null(span: Span): Null {
   }
 }
 
-export type ArrayCons = {
+export type ListCons = {
   "@type": "Exp"
-  "@kind": "ArrayCons"
+  "@kind": "ListCons"
   car: Exp
   cdr: Exp
   span: Span
 }
 
-export function ArrayCons(car: Exp, cdr: Exp, span: Span): ArrayCons {
+export function ListCons(car: Exp, cdr: Exp, span: Span): ListCons {
   return {
     "@type": "Exp",
-    "@kind": "ArrayCons",
+    "@kind": "ListCons",
     car,
     cdr,
     span,
   }
 }
 
-export type ArrayNull = {
+export type ListNull = {
   "@type": "Exp"
-  "@kind": "ArrayNull"
+  "@kind": "ListNull"
   span: Span
 }
 
-export function ArrayNull(span: Span): ArrayNull {
+export function ListNull(span: Span): ListNull {
   return {
     "@type": "Exp",
-    "@kind": "ArrayNull",
+    "@kind": "ListNull",
     span,
   }
 }
