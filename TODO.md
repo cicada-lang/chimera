@@ -1,4 +1,3 @@
-remove docs/langs/joy.ch
 remove quote and eval
 
 `datatype` -- `Data` should have `type` and `kind`
