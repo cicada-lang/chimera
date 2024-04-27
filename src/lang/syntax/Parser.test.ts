@@ -34,9 +34,6 @@ const lexer = createLexer({
   symbol: /[^_\p{Letter}0-9\s]/,
 })
 
-
-
-
 test("Parser", () => {
   {
     const tokens = lexer("a")

@@ -18,6 +18,21 @@ export function choose<A>(parsers: Array<Parser<A>>): Parser<A> {
   }
 }
 
+export function loopUntilFail<A>(parser: Parser<A>): Parser<Array<A>> {
+  return (tokens) => {
+    const list: Array<A> = []
+    while (true) {
+      try {
+        const [element, remain] = parser(tokens)
+        list.push(element)
+        tokens = remain
+      } catch (_error) {
+        return [list, tokens]
+      }
+    }
+  }
+}
+
 export function loopUntil<A>(
   parser: Parser<A>,
   end: Parser<any>,

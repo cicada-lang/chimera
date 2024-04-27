@@ -1,5 +1,13 @@
 remove partech -- use hand write parser
 
+parseExps
+parseExp
+parseOperator
+parseOperand
+parseStmt & parseStmts
+
+- loopUntilEnd
+
 `datatype` -- `Data` should have `type` and `kind`
 
 type constraint should not be `String(x)`
