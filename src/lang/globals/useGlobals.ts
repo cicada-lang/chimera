@@ -6,7 +6,6 @@ import { aboutNumber } from "./aboutNumber.js"
 import { aboutObject } from "./aboutObject.js"
 import { aboutRelation } from "./aboutRelation.js"
 import { aboutString } from "./aboutString.js"
-import { aboutTerm } from "./aboutTerm.js"
 import { GlobalStore } from "./GlobalStore.js"
 
 let globals: GlobalStore | undefined = undefined
@@ -26,7 +25,6 @@ export function useGlobals(): GlobalStore {
   aboutNumber(globals)
   aboutString(globals)
   aboutObject(globals)
-  aboutTerm(globals)
 
   return globals
 }
