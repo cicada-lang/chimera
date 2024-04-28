@@ -1,2 +1,2 @@
-[zero()]
-[add1(zero())]
+[Nat::Zero()]
+[Nat::Add1(Nat::Zero())]

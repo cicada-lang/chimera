@@ -24,6 +24,7 @@ export const operand = {
     "operand:false": ['"false"'],
     "operand:string": [{ data: { $pattern: ["string"] } }],
     "operand:number": [{ data: { $pattern: ["number"] } }],
+    "operand:term": [{ type: "relation_name" }, '":"', '":"', { kind: "relation_name" }, { args: "args" }],
     "operand:array": [
       '"["',
       { elements: { $ap: ["zero_or_more", "exp", '","'] } },

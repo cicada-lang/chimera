@@ -1,4 +1,4 @@
-`datatype` -- `Data` should have `type` and `kind`
+`Data` instead of `Term` -- only defined by `datatype`
 
 [maybe] remove eval
 [maybe] remove print -- find should print

@@ -64,7 +64,7 @@ export function equal(left: Value, right: Value): boolean {
   }
 
   if (left["@kind"] === "Term" && right["@kind"] === "Term") {
-    if (left.name !== right.name) return false
+    if (left.kind !== right.kind) return false
     if (left.args.length !== right.args.length) return false
 
     for (const [i, leftArg] of left.args.entries()) {

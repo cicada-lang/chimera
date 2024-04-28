@@ -1,7 +1,7 @@
 export { Nat, Zero, Add1 }
 
-clause Nat(zero())
-clause Nat(add1(prev)) -- { Nat(prev) }
+clause Nat(Nat::Zero())
+clause Nat(Nat::Add1(prev)) -- { Nat(prev) }
 
-clause Zero(zero())
-clause Add1(prev, add1(prev))
+clause Zero(Nat::Zero())
+clause Add1(prev, Nat::Add1(prev))

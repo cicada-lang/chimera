@@ -1,20 +1,29 @@
 [ 
-  var(_.0) with { String(_.0) },
-  fn(_.0, var(_.1)) with { String(_.1) String(_.0) },
-  ap(var(_.0), var(_.1)) with { String(_.1) String(_.0) },
-  fn(_.0, fn(_.1, var(_.2))) with { String(_.2) String(_.1) String(_.0) },
-  fn(_.0, ap(var(_.1), var(_.2))) with { String(_.2) String(_.1) String(_.0) },
-  ap(var(_.0), fn(_.1, var(_.2))) with { String(_.2) String(_.1) String(_.0) },
-  ap(fn(_.0, var(_.1)), var(_.2)) with { String(_.2) String(_.1) String(_.0) },
-  fn(_.0, fn(_.1, fn(_.2, var(_.3)))) with { String(_.3) String(_.2) String(_.1) String(_.0) },
-  ap(var(_.0), ap(var(_.1), var(_.2))) with { String(_.2) String(_.1) String(_.0) },
-  ap(ap(var(_.0), var(_.1)), var(_.2)) with { String(_.2) String(_.1) String(_.0) }
+  Exp::Var(_.0) with { String(_.0) },
+  Exp::Fn(_.0, Exp::Var(_.1)) with { String(_.1) String(_.0) },
+  Exp::Ap(Exp::Var(_.0), Exp::Var(_.1)) with { String(_.1) String(_.0) },
+  Exp::Fn(_.0, Exp::Fn(_.1, Exp::Var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  Exp::Fn(_.0, Exp::Ap(Exp::Var(_.1), Exp::Var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  Exp::Ap(Exp::Var(_.0), Exp::Fn(_.1, Exp::Var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  Exp::Ap(Exp::Fn(_.0, Exp::Var(_.1)), Exp::Var(_.2)) with { String(_.2) String(_.1) String(_.0) },
+  Exp::Fn(_.0, Exp::Fn(_.1, Exp::Fn(_.2, Exp::Var(_.3)))) with { String(_.3) String(_.2) String(_.1) String(_.0) },
+  Exp::Ap(Exp::Var(_.0), Exp::Ap(Exp::Var(_.1), Exp::Var(_.2))) with { String(_.2) String(_.1) String(_.0) },
+  Exp::Ap(Exp::Ap(Exp::Var(_.0), Exp::Var(_.1)), Exp::Var(_.2)) with { String(_.2) String(_.1) String(_.0) }
 ]
 [ 
-  ap(fn("x", fn("y", var("x"))), fn("z", var("z"))),
-  ap(fn("x", ap(var("x"), fn("y", var("x")))), fn("z", var("z"))),
-  ap(
-    fn("x", ap(fn(_.0, var(_.0)), fn("y", var("x")))),
-    fn("z", var("z")),
+  Exp::Ap(
+    Exp::Fn("x", Exp::Fn("y", Exp::Var("x"))),
+    Exp::Fn("z", Exp::Var("z")),
+  ),
+  Exp::Ap(
+    Exp::Fn("x", Exp::Ap(Exp::Var("x"), Exp::Fn("y", Exp::Var("x")))),
+    Exp::Fn("z", Exp::Var("z")),
+  ),
+  Exp::Ap(
+    Exp::Fn(
+      "x",
+      Exp::Ap(Exp::Fn(_.0, Exp::Var(_.0)), Exp::Fn("y", Exp::Var("x"))),
+    ),
+    Exp::Fn("z", Exp::Var("z")),
   )
 ]

@@ -8,6 +8,7 @@ export type Exp =
   | Number
   | Boolean
   | Null
+  | Term
   | ListCons
   | ListNull
   | Objekt
@@ -96,6 +97,31 @@ export function Null(span: Span): Null {
   return {
     "@type": "Exp",
     "@kind": "Null",
+    span,
+  }
+}
+
+export type Term = {
+  "@type": "Exp"
+  "@kind": "Term"
+  type: string
+  kind: string
+  args: Array<Exp>
+  span: Span
+}
+
+export function Term(
+  type: string,
+  kind: string,
+  args: Array<Exp>,
+  span: Span,
+): Term {
+  return {
+    "@type": "Exp",
+    "@kind": "Term",
+    type,
+    kind,
+    args,
     span,
   }
 }
@@ -201,7 +227,6 @@ export function Fn(patterns: Array<Exp>, stmts: Array<Stmt>, span: Span): Fn {
     span,
   }
 }
-
 
 export type Eval = {
   "@type": "Exp"

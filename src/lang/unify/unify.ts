@@ -135,7 +135,7 @@ export function unify(
   }
 
   if (left["@kind"] === "Term" && right["@kind"] === "Term") {
-    if (left.name !== right.name) return undefined
+    if (left.kind !== right.kind) return undefined
     if (left.args.length !== right.args.length) return undefined
 
     for (const [i, leftArg] of left.args.entries()) {

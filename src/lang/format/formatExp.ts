@@ -24,6 +24,10 @@ export function formatExp(exp: Exp): string {
       return "null"
     }
 
+    case "Term": {
+      return `${exp.type}::${exp.kind}${formatArgs(exp.args)}`
+    }
+
     case "ListCons": {
       const { elements, last } = foldListCons(exp.car, exp.cdr)
       return formatElements(

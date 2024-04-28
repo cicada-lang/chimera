@@ -1,4 +1,6 @@
-[_.0 with { NotEqual(_.0, add1(add1(add1(zero())))) }]
+[ 
+  _.0 with { NotEqual(_.0, Nat::Add1(Nat::Add1(Nat::Add1(Nat::Zero())))) }
+]
 [_.0]
 [_.0]
 [_.0]

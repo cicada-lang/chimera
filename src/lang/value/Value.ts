@@ -154,15 +154,17 @@ export function Objekt(properties: Record<string, Value>, etc?: Value): Objekt {
 export type Term = {
   "@type": "Value"
   "@kind": "Term"
-  name: string
+  type: string
+  kind: string
   args: Array<Value>
 }
 
-export function Term(name: string, args: Array<Value>): Term {
+export function Term(type: string, kind: string, args: Array<Value>): Term {
   return {
     "@type": "Value",
     "@kind": "Term",
-    name,
+    type,
+    kind,
     args,
   }
 }

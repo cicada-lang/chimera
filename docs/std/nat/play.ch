@@ -1,6 +1,6 @@
 clause LtEqThree(n)
 -------------- {
-  NotEqual(n, add1(add1(add1(zero()))))
+  NotEqual(n, Nat::Add1(Nat::Add1(Nat::Add1(Nat::Zero()))))
 }
 
 print find n {
@@ -8,17 +8,17 @@ print find n {
 }
 
 print find _ {
-  LtEqThree(zero())
+  LtEqThree(Nat::Zero())
 }
 
 print find _ {
-  LtEqThree(add1(zero()))
+  LtEqThree(Nat::Add1(Nat::Zero()))
 }
 
 print find _ {
-  LtEqThree(add1(add1(zero())))
+  LtEqThree(Nat::Add1(Nat::Add1(Nat::Zero())))
 }
 
 print find _ {
-  LtEqThree(add1(add1(add1(zero()))))
+  LtEqThree(Nat::Add1(Nat::Add1(Nat::Add1(Nat::Zero()))))
 }

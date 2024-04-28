@@ -2,20 +2,20 @@ import { Zero, Add1, Nat } from "Nat.ch"
 import { Add } from "Add.ch"
 
 // trace steps 5 {
-//   Add1(add1(zero()), _x)
+//   Add1(Nat::Add1(Nat::Zero()), _x)
 // }
 
 print find x {
-  Add(x, x, zero())
+  Add(x, x, Nat::Zero())
 }
 
 print find x {
-  Add(x, x, add1(add1(zero())))
+  Add(x, x, Nat::Add1(Nat::Add1(Nat::Zero())))
 }
 
 // The following query diverges.
 
 // trace steps 5 {
 //   Add(x, y, z)
-//   Add(x, y, add1(z))
+//   Add(x, y, Nat::Add1(z))
 // }

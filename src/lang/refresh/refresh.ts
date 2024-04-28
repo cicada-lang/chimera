@@ -61,7 +61,8 @@ export function refresh(
 
     case "Term": {
       return Values.Term(
-        value.name,
+        value.type,
+        value.kind,
         value.args.map((arg) => refresh(renames, arg)),
       )
     }

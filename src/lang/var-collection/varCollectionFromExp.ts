@@ -22,6 +22,10 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       return createVarCollection()
     }
 
+    case "Term": {
+      return varCollectionMerge(exp.args.map(varCollectionFromExp))
+    }
+
     case "ListCons": {
       return varCollectionMerge([
         varCollectionFromExp(exp.car),

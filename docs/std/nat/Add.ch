@@ -2,8 +2,8 @@ import { Zero, Add1, Nat } from "Nat.ch"
 
 export { Add }
 
-clause Add(zero(), y, y)
-clause Add(add1(prev), y, add1(res))
+clause Add(Nat::Zero(), y, y)
+clause Add(Nat::Add1(prev), y, Nat::Add1(res))
 --------------------------- {
   Add(prev, y, res)
 }

@@ -48,6 +48,14 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Null()
     }
 
+    case "Term": {
+      return Values.Term(
+        exp.type,
+        exp.kind,
+        exp.args.map(arg => evaluate(mod, env, arg))
+      )
+    }
+
     case "ListCons": {
       return Values.ListCons(
         evaluate(mod, env, exp.car),

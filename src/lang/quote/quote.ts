@@ -30,6 +30,14 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Null()
     }
 
+    case "Term": {
+      return Values.Term(
+        exp.type,
+        exp.kind,
+        exp.args.map((arg) => quote(mod, env, arg)),
+      )
+    }
+
     case "ListCons": {
       return Values.ListCons(quote(mod, env, exp.car), quote(mod, env, exp.cdr))
     }
@@ -57,16 +65,9 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
     }
 
     case "Ap": {
-      if (exp.target["@kind"] !== "Var") {
-        throw new Errors.LangError(`[quote] can not quote: ${formatExp(exp)}`, {
-          span: exp.span,
-        })
-      }
-
-      return Values.Term(
-        exp.target.name,
-        exp.args.map((arg) => quote(mod, env, arg)),
-      )
+      throw new Errors.LangError(`[quote] can not quote: ${formatExp(exp)}`, {
+        span: exp.span,
+      })
     }
 
     case "Fn": {

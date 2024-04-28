@@ -1,9 +1,9 @@
-clause Exp(var(name)) -- { String(name) }
-clause Exp(fn(name, ret)) -- { String(name) Exp(ret) }
-clause Exp(ap(target, arg)) -- { Exp(target) Exp(arg) }
+clause Exp(Exp::Var(name)) -- { String(name) }
+clause Exp(Exp::Fn(name, ret)) -- { String(name) Exp(ret) }
+clause Exp(Exp::Ap(target, arg)) -- { Exp(target) Exp(arg) }
 
-clause Type(atom(name)) -- { String(name) }
-clause Type(arrow(argType, retType)) -- { Type(argType) Type(retType) }
+clause Type(Type::Atom(name)) -- { String(name) }
+clause Type(Type::Arrow(argType, retType)) -- { Type(argType) Type(retType) }
 
 clause Ctx([])
 clause Ctx([[name, type] | rest]) -- { String(name) Type(type) Ctx(rest) }
@@ -15,31 +15,31 @@ clause Lookup([[key, _value] | rest], name, found)
   Lookup(rest, name, found)
 }
 
-clause Check(ctx, var(name), type)
+clause Check(ctx, Exp::Var(name), type)
 ---------------------------- {
   Lookup(ctx, name, type)
 }
 
-clause Check(ctx, fn(name, ret), arrow(argType, retType))
+clause Check(ctx, Exp::Fn(name, ret), Type::Arrow(argType, retType))
 --------------------------------------------------- {
   Check([[name, argType] | ctx], ret, retType)
 }
 
-clause Check(ctx, ap(target, arg), retType)
+clause Check(ctx, Exp::Ap(target, arg), retType)
 ------------------------------------- {
-  Check(ctx, target, arrow(argType, retType))
+  Check(ctx, target, Type::Arrow(argType, retType))
   Check(ctx, arg, argType)
 }
 
 print find type {
   Equal(ctx, [])
-  Equal(exp, fn("x", var("x")))
+  Equal(exp, Exp::Fn("x", Exp::Var("x")))
   Check(ctx, exp, type)
 }
 
 print find exp limit 10 {
   Equal(ctx, [])
-  Equal(type, arrow("A", "A"))
+  Equal(type, Type::Arrow("A", "A"))
   Check(ctx, exp, type)
 }
 
@@ -51,6 +51,6 @@ print find exp limit 10 {
 
 print find type {
   Equal(ctx, [])
-  Equal(exp, fn("f", ap(var("f"), var("f"))))
+  Equal(exp, Exp::Fn("f", Exp::Ap(Exp::Var("f"), Exp::Var("f"))))
   Check(ctx, exp, type)
 }
