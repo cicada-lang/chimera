@@ -1,3 +1,5 @@
+用 constraint programming 的知识来实现类型检查器。
+
 `Data` instead of `Term` -- only defined by `datatype`
 
 [maybe] remove eval

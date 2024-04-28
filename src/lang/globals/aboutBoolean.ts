@@ -5,8 +5,8 @@ import type { GlobalStore } from "./GlobalStore.js"
 export function aboutBoolean(globals: GlobalStore): void {
   globals.code(`
 
-clause Boolean(x) -- { Equal(x, false) }
-clause Boolean(x) -- { Equal(x, true) }
+relation Boolean(x) -- { Equal(x, false) }
+relation Boolean(x) -- { Equal(x, true) }
 
 `)
 }

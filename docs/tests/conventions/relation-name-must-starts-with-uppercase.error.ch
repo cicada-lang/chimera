@@ -1,1 +1,0 @@
-clause border("sussex", "kent")

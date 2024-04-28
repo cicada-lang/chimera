@@ -1,9 +1,0 @@
-clause Datom(1, "name", "A")
-clause Datom(1, "age", 45)
-clause Datom(2, "name", "X")
-clause Datom(2, "age", 2)
-
-print find n {
-  Datom(e, "age", 2)
-  Datom(e, "name", n)
-}

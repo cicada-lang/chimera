@@ -1,19 +1,19 @@
 export const stmt = {
   $grammar: {
     "stmt:clause_no_goals_no_name": [
-      '"clause"',
+      '"relation"',
       { name: "relation_name" },
       { args: "args" },
     ],
     "stmt:clause_no_goals": [
-      '"clause"',
+      '"relation"',
       { name: "relation_name" },
       { args: "args" },
       "dashline",
       { clause_name: "clause_name" },
     ],
     "stmt:clause_no_name": [
-      '"clause"',
+      '"relation"',
       { name: "relation_name" },
       { args: "args" },
       "dashline",
@@ -22,7 +22,7 @@ export const stmt = {
       '"}"',
     ],
     "stmt:clause": [
-      '"clause"',
+      '"relation"',
       { name: "relation_name" },
       { args: "args" },
       "dashline",

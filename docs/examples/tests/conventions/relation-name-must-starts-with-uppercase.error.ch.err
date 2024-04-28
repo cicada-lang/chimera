@@ -1,0 +1,14 @@
+I found syntax error in code:
+
+ 1 |relation border("sussex", "kent")
+ 2 |
+
+
+Found the identifier "border" in [9, 15], while expecting:
+ ["identifier"]:
+     stmt:clause_no_goals_no_name@0 -> "relation"@1 > (name: identifier) (args: args) 
+ ["identifier"]:
+     stmt:clause_no_goals@0 -> "relation"@1 > (name: identifier) (args: args) dashline (clause_name: identifier) 
+ ["identifier"]:
+     stmt:clause_no_name@0 -> "relation"@1 > (name: identifier) (args: args) dashline "{" (goals: goals) "}" 
+ and so on ...

@@ -9,8 +9,8 @@ import { stripAnsi } from "./utils/ansi.js"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
 
-test("snapshot docs/**/*.ch", async () => {
-  const files = await glob(`${__dirname}/../docs/**/*.ch`)
+test("snapshot docs/examples/**/*.ch", async () => {
+  const files = await glob(`${__dirname}/../docs/examples/**/*.ch`)
   for (const file of files) {
     if (file.endsWith(".error.ch")) {
       await snapshotError(new URL(`file:${file}`))
