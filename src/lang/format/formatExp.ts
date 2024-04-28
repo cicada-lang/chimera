@@ -66,10 +66,6 @@ export function formatExp(exp: Exp): string {
         : `(${patterns}) => {\n${indent(stmts.join("\n"))}\n}`
     }
 
-    case "Quote": {
-      return `quote ${formatExp(exp.exp)}`
-    }
-
     case "Eval": {
       return `eval ${formatExp(exp.exp)}`
     }

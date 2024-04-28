@@ -1,6 +1,7 @@
-remove quote and eval
-
 `datatype` -- `Data` should have `type` and `kind`
+
+[maybe] remove eval
+[maybe] remove print -- find should print
 
 type constraint should not be `String(x)`
 

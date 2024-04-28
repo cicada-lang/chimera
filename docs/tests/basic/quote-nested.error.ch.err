@@ -1,5 +1,0 @@
-[quote] can not handle nested quote
-
- 1 |print quote f(quote x)
- 2 |
-

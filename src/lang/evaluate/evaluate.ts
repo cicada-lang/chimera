@@ -91,10 +91,6 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
-    case "Quote": {
-      return quote(mod, env, exp.exp)
-    }
-
     case "Eval": {
       return evaluate(mod, env, exp.exp)
     }

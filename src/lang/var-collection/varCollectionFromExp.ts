@@ -51,10 +51,6 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       return createVarCollection()
     }
 
-    case "Quote": {
-      return varCollectionFromExp(exp.exp)
-    }
-
     case "Eval": {
       return createVarCollection()
     }

@@ -14,7 +14,6 @@ export type Exp =
   | Dot
   | Ap
   | Fn
-  | Quote
   | Eval
   | Find
   | And
@@ -203,21 +202,6 @@ export function Fn(patterns: Array<Exp>, stmts: Array<Stmt>, span: Span): Fn {
   }
 }
 
-export type Quote = {
-  "@type": "Exp"
-  "@kind": "Quote"
-  exp: Exp
-  span: Span
-}
-
-export function Quote(exp: Exp, span: Span): Quote {
-  return {
-    "@type": "Exp",
-    "@kind": "Quote",
-    exp,
-    span,
-  }
-}
 
 export type Eval = {
   "@type": "Exp"

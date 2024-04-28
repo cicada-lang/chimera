@@ -1,2 +1,0 @@
-print quote f(x)
-

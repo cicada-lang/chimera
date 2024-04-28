@@ -85,8 +85,6 @@ export function operand_matcher(tree: pt.Tree): Exp {
         [Stmts.Return(matchers.exp_matcher(ret), span)],
         span,
       ),
-    "operand:quote": ({ exp }, { span }) =>
-      Exps.Quote(matchers.exp_matcher(exp), span),
     "operand:eval": ({ exp }, { span }) =>
       Exps.Eval(matchers.exp_matcher(exp), span),
     "operand:find": ({ pattern, limit, goals }, { span }) => {

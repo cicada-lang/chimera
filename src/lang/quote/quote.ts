@@ -78,12 +78,6 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       )
     }
 
-    case "Quote": {
-      throw new Errors.LangError(`[quote] can not handle nested quote`, {
-        span: exp.span,
-      })
-    }
-
     case "Eval": {
       return evaluate(mod, env, exp.exp)
     }
