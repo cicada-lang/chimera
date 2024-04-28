@@ -18,3 +18,7 @@ More important features are:
 Having no preserved keywords and being not ambiguous,
 are more important than the ease of
 not having to write `;` or `compute`.
+
+- Solution 3: only allow function application expression as statement.
+
+Solution 3 is the best solution.

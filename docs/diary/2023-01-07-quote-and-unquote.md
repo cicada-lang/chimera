@@ -32,3 +32,6 @@ let("f", fn(quote [], quote sequence([
   return(...),
 ])))
 ```
+
+maybe I should use `\`` as quote and `~` as unquote.
+and `'` for quote without unquote
