@@ -17,9 +17,6 @@ export type Exp =
   | Fn
   | Eval
   | Find
-  | And
-  | Or
-  | Not
   | If
   | Match
 
@@ -265,54 +262,6 @@ export function Find(
     pattern,
     limit,
     goals,
-    span,
-  }
-}
-
-export type And = {
-  "@type": "Exp"
-  "@kind": "And"
-  exps: Array<Exp>
-  span: Span
-}
-
-export function And(exps: Array<Exp>, span: Span): And {
-  return {
-    "@type": "Exp",
-    "@kind": "And",
-    exps,
-    span,
-  }
-}
-
-export type Or = {
-  "@type": "Exp"
-  "@kind": "Or"
-  exps: Array<Exp>
-  span: Span
-}
-
-export function Or(exps: Array<Exp>, span: Span): Or {
-  return {
-    "@type": "Exp",
-    "@kind": "Or",
-    exps,
-    span,
-  }
-}
-
-export type Not = {
-  "@type": "Exp"
-  "@kind": "Not"
-  exp: Exp
-  span: Span
-}
-
-export function Not(exp: Exp, span: Span): Not {
-  return {
-    "@type": "Exp",
-    "@kind": "Not",
-    exp,
     span,
   }
 }

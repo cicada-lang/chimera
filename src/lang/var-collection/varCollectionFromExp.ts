@@ -63,18 +63,6 @@ export function varCollectionFromExp(exp: Exp): VarCollection {
       return createVarCollection()
     }
 
-    case "And": {
-      return createVarCollection()
-    }
-
-    case "Or": {
-      return createVarCollection()
-    }
-
-    case "Not": {
-      return createVarCollection()
-    }
-
     case "If": {
       return createVarCollection()
     }

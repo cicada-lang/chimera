@@ -52,7 +52,7 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
       return Values.Term(
         exp.type,
         exp.kind,
-        exp.args.map(arg => evaluate(mod, env, arg))
+        exp.args.map((arg) => evaluate(mod, env, arg)),
       )
     }
 
@@ -118,36 +118,6 @@ export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
         exp.goals.map((goal) => evaluateGoalExp(mod, mod.env, goal)),
       )
       return Values.fromArray(find(exp.limit, pattern, goals))
-    }
-
-    case "And": {
-      for (const arg of exp.exps) {
-        const value = evaluate(mod, env, arg)
-        Values.assertValue(value, "Boolean", { who: "evaluate And" })
-        if (value.data === false) {
-          return Values.Boolean(false)
-        }
-      }
-
-      return Values.Boolean(true)
-    }
-
-    case "Or": {
-      for (const arg of exp.exps) {
-        const value = evaluate(mod, env, arg)
-        Values.assertValue(value, "Boolean", { who: "evaluate And" })
-        if (value.data === true) {
-          return Values.Boolean(true)
-        }
-      }
-
-      return Values.Boolean(false)
-    }
-
-    case "Not": {
-      const value = evaluate(mod, env, exp.exp)
-      Values.assertValue(value, "Boolean", { who: "evaluate Not" })
-      return Values.Boolean(!value.data)
     }
 
     case "If": {

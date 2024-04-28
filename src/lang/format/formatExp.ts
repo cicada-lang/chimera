@@ -88,20 +88,6 @@ export function formatExp(exp: Exp): string {
       )}\n}`
     }
 
-    case "And": {
-      const exps = exp.exps.map((arg) => formatExp(arg))
-      return `and [${exps.join(", ")}]`
-    }
-
-    case "Or": {
-      const exps = exp.exps.map((arg) => formatExp(arg))
-      return `or [${exps.join(", ")}]`
-    }
-
-    case "Not": {
-      return `not ${formatExp(exp.exp)}`
-    }
-
     case "If": {
       const target = formatExp(exp.target)
       const thenExp = formatExp(exp.thenExp)

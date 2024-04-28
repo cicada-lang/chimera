@@ -89,24 +89,6 @@ export function quote(mod: Mod, env: Env, exp: Exp): Value {
       })
     }
 
-    case "And": {
-      throw new Errors.LangError(`[quote] can not handle Exps.And`, {
-        span: exp.span,
-      })
-    }
-
-    case "Or": {
-      throw new Errors.LangError(`[quote] can not handle Exps.Or`, {
-        span: exp.span,
-      })
-    }
-
-    case "Not": {
-      throw new Errors.LangError(`[quote] can not handle Exps.Not`, {
-        span: exp.span,
-      })
-    }
-
     case "If": {
       throw new Errors.LangError(`[quote] can not handle Exps.If`, {
         span: exp.span,
