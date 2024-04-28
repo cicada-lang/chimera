@@ -1,5 +1,3 @@
-用 constraint programming 的知识来实现类型检查器。
-
 `Data` instead of `Term` -- only defined by `datatype`
 
 [maybe] remove eval
@@ -10,11 +8,15 @@ type constraint should not be `String(x)`
 - should be `The(String, x)`
 - or just `x: String`
 
-# chimera
+用 constraint programming 的知识来实现类型检查器。
 
-[chimera] 如何在逻辑式中恢复部分的过程式 contral flow？
+# contral flow
+
+如何在逻辑式中恢复部分的过程式 contral flow？
 
 - contral flow 是程序员最好的朋友。
+
+# chimera
 
 [chimera] 完成更多的 clause-and-effect 中的例子。
 
