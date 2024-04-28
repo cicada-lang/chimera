@@ -8,7 +8,14 @@ type constraint should not be `String(x)`
 - should be `The(String, x)`
 - or just `x: String`
 
-用 constraint programming 的知识来实现类型检查器。
+# note
+
+修复模块系统，应该用两次 pass。
+
+NOTE 我们想把很多 `Set` 处理函数整理到 `Set.*` 这个命名空间下，
+因为我们想要避免大量的 import。
+但是 vue 的 API 都是单个的 import，而不是 `Vue.*`。
+所以也许不应该避免大量的 import。
 
 # contral flow
 
