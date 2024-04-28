@@ -8,15 +8,6 @@ type constraint should not be `String(x)`
 - should be `The(String, x)`
 - or just `x: String`
 
-# syntax
-
-> remove partech -- use hand write parser
-
-parseOperator
-parseOperand
-parseStmt & parseStmts
-loopUntilEnd
-
 # chimera
 
 [chimera] 如何在逻辑式中恢复部分的过程式 contral flow？
