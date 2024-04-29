@@ -1,3 +1,5 @@
+abduction is neg by fail?
+
 `Data` instead of `Term` -- only defined by `datatype`
 
 [maybe] remove eval
