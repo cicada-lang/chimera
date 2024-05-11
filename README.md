@@ -38,17 +38,6 @@ for your book ["The Reasoned Schemer"](https://mitpress.mit.edu/9780262535519/th
 Thank you, [Bharathi Ramana Joshi](https://bharathi.xyz/) and [William E. Byrd](http://webyrd.net),
 for writing [a great tutorial](docs/papers/an-annotated-implementation-of-minikanren-with-constraints.pdf) about implementing constraint logic programming.
 
-## Community
-
-GitHub:
-
-- Organization: [github.com/cicada-lang](https://github.com/cicada-lang)
-
-Telegram:
-
-- English chat group: [CicadaLanguage](https://t.me/CicadaLanguage)
-- Chinese chat group: [CicadaLanguageCN](https://t.me/CicadaLanguageCN)
-
 ## Contributions
 
 To make a contribution, fork this project and create a pull request.
