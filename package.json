@@ -24,16 +24,16 @@
     "@cicada-lang/partech": "^0.2.5",
     "@xieyuheng/command-line": "^0.1.2",
     "@xieyuheng/ty": "^0.2.1",
-    "glob": "^10.3.12",
-    "immutable": "^4.3.5",
+    "glob": "^10.3.15",
+    "immutable": "^4.3.6",
     "lodash": "^4.17.21",
     "node-watch": "^0.7.4",
-    "picocolors": "^1.0.0",
+    "picocolors": "^1.0.1",
     "readdirp": "^3.6.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.0",
-    "@types/node": "^20.12.7",
+    "@types/lodash": "^4.17.4",
+    "@types/node": "^20.12.12",
     "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
     "typescript": "^5.4.5"
