@@ -15,8 +15,8 @@
     "chimera": "bin/chimera.js"
   },
   "scripts": {
-    "build": "rm -rf lib && tsc",
-    "build:watch": "rm -rf lib && tsc --watch",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
     "test": "node --test",
     "format": "prettier src --write"
   },
