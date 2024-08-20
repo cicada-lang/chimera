@@ -77,7 +77,7 @@ export function solve(
   problem: Solution,
   options: { limit: number },
 ): Array<Solution> {
-  const problems = [problem]
+  const partialSolutions = [problem]
   const solutions: Array<Solution> = []
   const limit = options.limit || Infinity
   while (true) {
@@ -87,28 +87,28 @@ export function solve(
       return solutions.slice(0, limit)
     }
 
-    // NOTE Working on the first `problem`.
-    const problem = problems.shift()
-    if (problem === undefined) {
+    // NOTE Working on the first `partialSolution`.
+    const partialSolution = partialSolutions.shift()
+    if (partialSolution === undefined) {
       return solutions
     }
 
-    if (problem.goals.length === 0) {
-      solutions.push(problem)
+    if (partialSolution.goals.length === 0) {
+      solutions.push(partialSolution)
       continue
     }
 
-    const [goal, ...restGoals] = problem.goals
-    const newSolution = solutionUpdate(problem, { goals: restGoals })
-    const newProblems = pursue(newSolution, goal)
+    const [goal, ...restGoals] = partialSolution.goals
+    const newSolution = solutionUpdate(partialSolution, { goals: restGoals })
+    const newPartialSolutions = pursue(newSolution, goal)
 
     // NOTE We try to be fair by pushing
     // the newly generated partial solutions to the end.
-    for (const solution of newProblems) {
+    for (const solution of newPartialSolutions) {
       if (solution.goals.length === 0) {
         solutions.push(solution)
       } else {
-        problems.push(solution)
+        partialSolutions.push(solution)
       }
     }
   }
