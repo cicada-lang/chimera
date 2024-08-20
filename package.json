@@ -24,19 +24,19 @@
     "@cicada-lang/partech": "^0.2.5",
     "@xieyuheng/command-line": "^0.1.2",
     "@xieyuheng/ty": "^0.2.1",
-    "glob": "^10.4.1",
-    "immutable": "^4.3.6",
+    "glob": "^11.0.0",
+    "immutable": "^4.3.7",
     "lodash": "^4.17.21",
     "node-watch": "^0.7.4",
     "picocolors": "^1.0.1",
     "readdirp": "^3.6.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.4",
-    "@types/node": "^20.13.0",
-    "prettier": "^3.3.0",
-    "prettier-plugin-organize-imports": "^3.2.4",
-    "typescript": "^5.4.5"
+    "@types/lodash": "^4.17.7",
+    "@types/node": "^22.4.1",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.0.0",
+    "typescript": "^5.5.4"
   },
   "license": "GPL-3.0-or-later"
 }
