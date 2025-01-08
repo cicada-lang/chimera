@@ -27,7 +27,6 @@ npm run build         # Compile `src/` to `lib/`
 npm run build:watch   # Watch the compilation
 npm run format        # Format the code
 npm run test          # Run test
-npm run test:watch    # Watch the testing
 ```
 
 ## Thanks

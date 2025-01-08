@@ -32,12 +32,7 @@ export function operand_matcher(tree: pt.Tree): Exp {
     "operand:number": ({ data }, { span }) =>
       Exps.Number(Number.parseFloat(pt.str(data)), span),
     "operand:term": ({ type, kind, args }, { span }) =>
-      Exps.Term(
-        pt.str(type),
-        pt.str(kind),
-        matchers.args_matcher(args),
-        span,
-      ),
+      Exps.Term(pt.str(type), pt.str(kind), matchers.args_matcher(args), span),
     "operand:null": ({}, { span }) => Exps.Null(span),
     "operand:true": ({}, { span }) => Exps.Boolean(true, span),
     "operand:false": ({}, { span }) => Exps.Boolean(false, span),

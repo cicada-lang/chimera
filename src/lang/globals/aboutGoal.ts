@@ -1,6 +1,4 @@
 import * as Goals from "../goal/index.ts"
-import { createSolutionFromGoals, solutionUpdate } from "../solution/index.ts"
-import { solve } from "../solve/index.ts"
 import * as Values from "../value/index.ts"
 import type { GlobalStore } from "./GlobalStore.ts"
 

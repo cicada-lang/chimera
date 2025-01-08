@@ -1,5 +1,3 @@
-import * as Values from "../value/index.ts"
-import { assertValue } from "../value/index.ts"
 import type { GlobalStore } from "./GlobalStore.ts"
 
 export function aboutBoolean(globals: GlobalStore): void {
