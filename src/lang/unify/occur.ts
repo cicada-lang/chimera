@@ -1,5 +1,5 @@
-import { substitutionWalk, type Substitution } from "../substitution/index.js"
-import type { Value } from "../value/index.js"
+import { substitutionWalk, type Substitution } from "../substitution/index.ts"
+import type { Value } from "../value/index.ts"
 
 export function occur(
   substitution: Substitution,

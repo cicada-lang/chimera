@@ -1,9 +1,9 @@
-import type { Clause } from "../clause/index.js"
-import type { Env } from "../env/index.js"
-import type { Goal as EmbeddedGoal } from "../goal/index.js"
-import type { Mod } from "../mod/index.js"
-import type { Solution as EmbeddedSolution } from "../solution/index.js"
-import type { Stmt } from "../stmt/index.js"
+import type { Clause } from "../clause/index.ts"
+import type { Env } from "../env/index.ts"
+import type { Goal as EmbeddedGoal } from "../goal/index.ts"
+import type { Mod } from "../mod/index.ts"
+import type { Solution as EmbeddedSolution } from "../solution/index.ts"
+import type { Stmt } from "../stmt/index.ts"
 
 export type Value =
   | PatternVar

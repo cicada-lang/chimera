@@ -1,12 +1,12 @@
-import * as Actions from "../actions/index.js"
-import * as Errors from "../errors/index.js"
-import type { Goal } from "../goal/index.js"
-import { solutionUpdate, type Solution } from "../solution/index.js"
-import * as Values from "../value/index.js"
-import { applyEqual } from "./applyEqual.js"
-import { applyNotEqual } from "./applyNotEqual.js"
-import { pursueRelation } from "./pursueRelation.js"
-import { pursueTypeConstraint } from "./pursueTypeConstraint.js"
+import * as Actions from "../actions/index.ts"
+import * as Errors from "../errors/index.ts"
+import type { Goal } from "../goal/index.ts"
+import { solutionUpdate, type Solution } from "../solution/index.ts"
+import * as Values from "../value/index.ts"
+import { applyEqual } from "./applyEqual.ts"
+import { applyNotEqual } from "./applyNotEqual.ts"
+import { pursueRelation } from "./pursueRelation.ts"
+import { pursueTypeConstraint } from "./pursueTypeConstraint.ts"
 
 function unit(solution: Solution | undefined): Array<Solution> {
   if (solution === undefined) return []

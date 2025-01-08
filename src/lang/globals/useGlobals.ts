@@ -1,10 +1,10 @@
-import { aboutBoolean } from "./aboutBoolean.js"
-import { aboutEqual } from "./aboutEqual.js"
-import { aboutGoal } from "./aboutGoal.js"
-import { aboutNull } from "./aboutNull.js"
-import { aboutNumber } from "./aboutNumber.js"
-import { aboutString } from "./aboutString.js"
-import { GlobalStore } from "./GlobalStore.js"
+import { aboutBoolean } from "./aboutBoolean.ts"
+import { aboutEqual } from "./aboutEqual.ts"
+import { aboutGoal } from "./aboutGoal.ts"
+import { aboutNull } from "./aboutNull.ts"
+import { aboutNumber } from "./aboutNumber.ts"
+import { aboutString } from "./aboutString.ts"
+import { GlobalStore } from "./GlobalStore.ts"
 
 let globals: GlobalStore | undefined = undefined
 

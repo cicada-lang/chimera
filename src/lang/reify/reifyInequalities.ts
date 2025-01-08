@@ -1,15 +1,15 @@
-import * as Goals from "../goal/index.js"
-import { type Goal } from "../goal/index.js"
-import { type Solution } from "../solution/index.js"
+import * as Goals from "../goal/index.ts"
+import { type Goal } from "../goal/index.ts"
+import { type Solution } from "../solution/index.ts"
 import {
   substitutionContainsPatternVarInValue,
   substitutionDeepWalk,
   substitutionEqual,
   substitutionPairs,
   type Substitution,
-} from "../substitution/index.js"
-import { unifyMany } from "../unify/index.js"
-import { type Value } from "../value/Value.js"
+} from "../substitution/index.ts"
+import { unifyMany } from "../unify/index.ts"
+import { type Value } from "../value/Value.ts"
 
 export function reifyInequalities(
   solution: Solution,

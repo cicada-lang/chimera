@@ -1,5 +1,5 @@
-import * as Values from "../value/index.js"
-import type { GlobalStore } from "./GlobalStore.js"
+import * as Values from "../value/index.ts"
+import type { GlobalStore } from "./GlobalStore.ts"
 
 export function aboutString(globals: GlobalStore): void {
   globals.define(

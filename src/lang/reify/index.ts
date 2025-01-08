@@ -1,1 +1,1 @@
-export * from "./reify.js"
+export * from "./reify.ts"

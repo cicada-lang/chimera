@@ -1,5 +1,5 @@
-import * as Errors from "../errors/index.js"
-import type { Mod } from "../mod/index.js"
+import * as Errors from "../errors/index.ts"
+import type { Mod } from "../mod/index.ts"
 
 export function importMod(mod: Mod, path: string): Mod {
   const url = mod.resolve(path)

@@ -1,6 +1,6 @@
 import { Command, CommandRunner } from "@xieyuheng/command-line"
-import { ty } from "@xieyuheng/ty"
-import * as Commands from "../commands/index.js"
+import ty from "@xieyuheng/ty"
+import * as Commands from "../commands/index.ts"
 
 type Args = { file?: string }
 type Opts = { help?: boolean; version?: boolean }

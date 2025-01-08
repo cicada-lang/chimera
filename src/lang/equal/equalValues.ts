@@ -1,5 +1,5 @@
-import type { Value } from "../value/index.js"
-import { equal } from "./equal.js"
+import type { Value } from "../value/index.ts"
+import { equal } from "./equal.ts"
 
 export function equalValues(
   leftValues: Array<Value>,

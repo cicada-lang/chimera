@@ -1,17 +1,17 @@
-import { doAp } from "../actions/index.js"
-import { envMerge } from "../env/index.js"
-import * as Errors from "../errors/index.js"
-import { formatValue } from "../format/index.js"
-import { match } from "../match/index.js"
-import type { Mod } from "../mod/index.js"
+import { doAp } from "../actions/index.ts"
+import { envMerge } from "../env/index.ts"
+import * as Errors from "../errors/index.ts"
+import { formatValue } from "../format/index.ts"
+import { match } from "../match/index.ts"
+import type { Mod } from "../mod/index.ts"
 import {
   substitutionDeepWalk,
   substitutionEmpty,
   substitutionEntries,
-} from "../substitution/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
-import { catchReturnValue } from "./catchReturnValue.js"
+} from "../substitution/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
+import { catchReturnValue } from "./catchReturnValue.ts"
 
 export function applyFn(target: Values.Fn, args: Array<Value>): Value {
   const mod = target.mod.copy()

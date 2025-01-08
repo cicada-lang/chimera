@@ -1,7 +1,7 @@
 import * as pt from "@cicada-lang/partech"
-import type { GoalExp } from "../../goal-exp/index.js"
-import * as GoalExps from "../../goal-exp/index.js"
-import * as matchers from "./index.js"
+import type { GoalExp } from "../../goal-exp/index.ts"
+import * as GoalExps from "../../goal-exp/index.ts"
+import * as matchers from "./index.ts"
 
 export function goal_matcher(tree: pt.Tree): GoalExp {
   return pt.matcher<GoalExp>({

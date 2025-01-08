@@ -1,11 +1,11 @@
-import { equal } from "../equal/index.js"
+import { equal } from "../equal/index.ts"
 import {
   substitutionExtend,
   substitutionLookup,
   type Substitution,
-} from "../substitution/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
+} from "../substitution/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
 
 export function matchMany(
   substitution: Substitution,

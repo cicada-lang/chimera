@@ -1,9 +1,9 @@
-import { solutionUpdate, type Solution } from "../solution/index.js"
-import { substitutionEqual } from "../substitution/index.js"
-import { unify } from "../unify/index.js"
-import { type Value } from "../value/index.js"
-import { maintainInequalities } from "./maintainInequalities.js"
-import { maintainTypeConstraints } from "./maintainTypeConstraints.js"
+import { solutionUpdate, type Solution } from "../solution/index.ts"
+import { substitutionEqual } from "../substitution/index.ts"
+import { unify } from "../unify/index.ts"
+import { type Value } from "../value/index.ts"
+import { maintainInequalities } from "./maintainInequalities.ts"
+import { maintainTypeConstraints } from "./maintainTypeConstraints.ts"
 
 export function applyEqual(
   solution: Solution,

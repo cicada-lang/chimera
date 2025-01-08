@@ -1,7 +1,7 @@
-import * as Goals from "../goal/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
-import { assertArity } from "./assertArity.js"
+import * as Goals from "../goal/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
+import { assertArity } from "./assertArity.ts"
 
 export function applyTypeConstraint(
   target: Values.TypeConstraint,

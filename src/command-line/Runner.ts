@@ -1,5 +1,5 @@
-import { highlightErrorMessage } from "../lang/errors/index.js"
-import { Loader } from "../loader/index.js"
+import { highlightErrorMessage } from "../lang/errors/index.ts"
+import { Loader } from "../loader/index.ts"
 
 export class Runner {
   loader = new Loader({

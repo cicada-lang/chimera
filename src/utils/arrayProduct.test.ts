@@ -1,6 +1,6 @@
 import assert from "node:assert"
 import { test } from "node:test"
-import { arrayProduct } from "./arrayProduct.js"
+import { arrayProduct } from "./arrayProduct.ts"
 
 test("arrayProduct", () => {
   assert.deepStrictEqual(

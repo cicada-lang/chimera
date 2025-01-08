@@ -1,1 +1,1 @@
-export * from "./match.js"
+export * from "./match.ts"

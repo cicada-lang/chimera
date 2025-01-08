@@ -1,3 +1,3 @@
-export * from "./Value.js"
-export * from "./assertValue.js"
-export * from "./toArray.js"
+export * from "./Value.ts"
+export * from "./assertValue.ts"
+export * from "./toArray.ts"

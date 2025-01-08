@@ -1,5 +1,5 @@
-import { formatValue } from "../format/index.js"
-import type { Goal } from "../goal/index.js"
+import { formatValue } from "../format/index.ts"
+import type { Goal } from "../goal/index.ts"
 
 export function formatGoal(goal: Goal): string {
   switch (goal["@kind"]) {

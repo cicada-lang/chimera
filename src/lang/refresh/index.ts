@@ -1,2 +1,2 @@
-export * from "./refresh.js"
-export * from "./refreshGoal.js"
+export * from "./refresh.ts"
+export * from "./refreshGoal.ts"

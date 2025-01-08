@@ -1,7 +1,7 @@
-import type { Goal } from "../goal/index.js"
-import type { Substitution } from "../substitution/index.js"
-import { substitutionEmpty } from "../substitution/index.js"
-import type * as Values from "../value/index.js"
+import type { Goal } from "../goal/index.ts"
+import type { Substitution } from "../substitution/index.ts"
+import { substitutionEmpty } from "../substitution/index.ts"
+import type * as Values from "../value/index.ts"
 
 export type Solution = {
   goals: Array<Goal>

@@ -1,6 +1,6 @@
-import * as Errors from "../errors/index.js"
-import { formatValue } from "../format/index.js"
-import type { Value } from "../value/index.js"
+import * as Errors from "../errors/index.ts"
+import { formatValue } from "../format/index.ts"
+import type { Value } from "../value/index.ts"
 
 export function assertValue<Kind extends Value["@kind"]>(
   value: Value,

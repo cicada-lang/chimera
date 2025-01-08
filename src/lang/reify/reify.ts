@@ -1,10 +1,10 @@
-import { type Solution } from "../solution/index.js"
-import { substitutionDeepWalk } from "../substitution/index.js"
-import * as Values from "../value/index.js"
-import { type Value } from "../value/index.js"
-import { prepareSubstitution } from "./prepareSubstitution.js"
-import { reifyInequalities } from "./reifyInequalities.js"
-import { reifyTypeConstraints } from "./reifyTypeConstraints.js"
+import { type Solution } from "../solution/index.ts"
+import { substitutionDeepWalk } from "../substitution/index.ts"
+import * as Values from "../value/index.ts"
+import { type Value } from "../value/index.ts"
+import { prepareSubstitution } from "./prepareSubstitution.ts"
+import { reifyInequalities } from "./reifyInequalities.ts"
+import { reifyTypeConstraints } from "./reifyTypeConstraints.ts"
 
 /**
 

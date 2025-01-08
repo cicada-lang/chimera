@@ -1,4 +1,4 @@
 export { ParsingError } from "@cicada-lang/partech"
-export * from "./ErrorReport.js"
-export * from "./LangError.js"
-export * from "./createErrorReport.js"
+export * from "./ErrorReport.ts"
+export * from "./LangError.ts"
+export * from "./createErrorReport.ts"

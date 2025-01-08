@@ -1,6 +1,6 @@
 import Immutable from "immutable"
-import * as Values from "../value/index.js"
-import { type Value } from "../value/index.js"
+import * as Values from "../value/index.ts"
+import { type Value } from "../value/index.ts"
 
 export type Substitution = Immutable.Map<string, Value>
 

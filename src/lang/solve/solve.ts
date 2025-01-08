@@ -1,5 +1,5 @@
-import { pursue } from "../pursue/index.js"
-import { solutionUpdate, type Solution } from "../solution/index.js"
+import { pursue } from "../pursue/index.ts"
+import { solutionUpdate, type Solution } from "../solution/index.ts"
 
 /**
 

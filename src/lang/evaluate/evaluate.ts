@@ -1,23 +1,23 @@
-import * as Actions from "../actions/index.js"
-import { Caze } from "../caze/index.js"
-import type { Env } from "../env/index.js"
-import * as Errors from "../errors/index.js"
-import { evaluateGoalExp } from "../evaluate/index.js"
-import type { Exp } from "../exp/index.js"
-import { find } from "../find/index.js"
-import { freshen } from "../freshen/index.js"
-import type { Mod } from "../mod/index.js"
-import { quote } from "../quote/index.js"
-import { refresh, refreshGoals } from "../refresh/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
+import * as Actions from "../actions/index.ts"
+import { Caze } from "../caze/index.ts"
+import type { Env } from "../env/index.ts"
+import * as Errors from "../errors/index.ts"
+import { evaluateGoalExp } from "../evaluate/index.ts"
+import type { Exp } from "../exp/index.ts"
+import { find } from "../find/index.ts"
+import { freshen } from "../freshen/index.ts"
+import type { Mod } from "../mod/index.ts"
+import { quote } from "../quote/index.ts"
+import { refresh, refreshGoals } from "../refresh/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
 import {
   varCollectionFromExp,
   varCollectionFromGoalExp,
   varCollectionMerge,
   varCollectionValidate,
-} from "../var-collection/index.js"
-import { lookup } from "./lookup.js"
+} from "../var-collection/index.ts"
+import { lookup } from "./lookup.ts"
 
 export function evaluate(mod: Mod, env: Env, exp: Exp): Value {
   switch (exp["@kind"]) {

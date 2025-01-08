@@ -1,6 +1,6 @@
-import * as Errors from "../errors/index.js"
-import { formatValue } from "../format/index.js"
-import type { Value } from "../value/index.js"
+import * as Errors from "../errors/index.ts"
+import { formatValue } from "../format/index.ts"
+import type { Value } from "../value/index.ts"
 
 export function doDot(target: Value, name: string): Value {
   if (target["@kind"] === "Objekt") {

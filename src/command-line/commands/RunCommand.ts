@@ -1,8 +1,8 @@
 import { Command, CommandRunner } from "@xieyuheng/command-line"
-import { ty } from "@xieyuheng/ty"
+import ty from "@xieyuheng/ty"
 import fs from "fs"
 import Path from "path"
-import { Runner } from "../Runner.js"
+import { Runner } from "../Runner.ts"
 
 type Args = { file: string }
 type Opts = {}

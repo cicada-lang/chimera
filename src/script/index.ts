@@ -1,1 +1,1 @@
-export * from "./Script.js"
+export * from "./Script.ts"

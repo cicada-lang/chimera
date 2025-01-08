@@ -1,4 +1,4 @@
-import type { GlobalStore } from "./GlobalStore.js"
+import type { GlobalStore } from "./GlobalStore.ts"
 
 export function aboutNull(globals: GlobalStore): void {
   globals.code(`

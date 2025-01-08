@@ -1,6 +1,6 @@
 import fs from "node:fs"
-import { Mod } from "../lang/mod/index.js"
-import { Script } from "../script/index.js"
+import { Mod } from "../lang/mod/index.ts"
+import { Script } from "../script/index.ts"
 
 export interface LoaderOptions {
   onOutput?: (output: string) => void

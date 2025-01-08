@@ -1,11 +1,11 @@
-import type { Solution } from "../solution/index.js"
+import type { Solution } from "../solution/index.ts"
 import {
   substitutionPairs,
   substitutionWalk,
   type Substitution,
-} from "../substitution/index.js"
-import type * as Values from "../value/index.js"
-import { type Value } from "../value/index.js"
+} from "../substitution/index.ts"
+import type * as Values from "../value/index.ts"
+import { type Value } from "../value/index.ts"
 
 export function removeInequalitiesSubsumedByTypeConstraints(
   solution: Solution,

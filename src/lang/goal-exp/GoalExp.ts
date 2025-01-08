@@ -1,5 +1,5 @@
-import type { Exp } from "../exp/index.js"
-import type { Span } from "../span/index.js"
+import type { Exp } from "../exp/index.ts"
+import type { Span } from "../span/index.ts"
 
 export type GoalExp = Apply | Equal | NotEqual | Conj | Disj
 

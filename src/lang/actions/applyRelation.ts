@@ -1,8 +1,8 @@
-import * as Errors from "../errors/index.js"
-import { formatValue } from "../format/index.js"
-import * as Goals from "../goal/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
+import * as Errors from "../errors/index.ts"
+import { formatValue } from "../format/index.ts"
+import * as Goals from "../goal/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
 
 export function applyRelation(
   target: Values.Relation,

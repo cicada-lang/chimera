@@ -1,1 +1,1 @@
-export * from "./pursue.js"
+export * from "./pursue.ts"

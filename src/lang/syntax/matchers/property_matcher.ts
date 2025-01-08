@@ -1,7 +1,7 @@
 import * as pt from "@cicada-lang/partech"
-import type { Exp } from "../../exp/index.js"
-import * as Exps from "../../exp/index.js"
-import * as matchers from "./index.js"
+import type { Exp } from "../../exp/index.ts"
+import * as Exps from "../../exp/index.ts"
+import * as matchers from "./index.ts"
 
 export function property_matcher(tree: pt.Tree): [string, Exp] {
   return pt.matcher<[string, Exp]>({

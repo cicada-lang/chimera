@@ -1,6 +1,6 @@
-import * as Errors from "../errors/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
+import * as Errors from "../errors/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
 
 export function toArray(value: Value): Array<Value> {
   const array: Array<Value> = []

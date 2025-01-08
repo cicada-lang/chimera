@@ -1,10 +1,10 @@
-import { Clause as createClause } from "../clause/index.js"
-import * as Errors from "../errors/index.js"
-import type { Exp } from "../exp/index.js"
-import type { GoalExp } from "../goal-exp/index.js"
-import type { Mod } from "../mod/index.js"
-import * as Values from "../value/index.js"
-import { Relation } from "../value/index.js"
+import { Clause as createClause } from "../clause/index.ts"
+import * as Errors from "../errors/index.ts"
+import type { Exp } from "../exp/index.ts"
+import type { GoalExp } from "../goal-exp/index.ts"
+import type { Mod } from "../mod/index.ts"
+import * as Values from "../value/index.ts"
+import { Relation } from "../value/index.ts"
 
 export function defineClause(
   mod: Mod,

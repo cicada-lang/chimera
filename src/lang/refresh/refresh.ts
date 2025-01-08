@@ -1,6 +1,6 @@
-import { freshen } from "../freshen/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
+import { freshen } from "../freshen/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
 
 // NOTE Do side-effect on `renames`.
 

@@ -1,7 +1,7 @@
-import { createErrorReport } from "../lang/errors/index.js"
-import { executeStmts } from "../lang/execute/index.js"
-import type { Mod } from "../lang/mod/index.js"
-import { parseStmts } from "../lang/syntax/index.js"
+import { createErrorReport } from "../lang/errors/index.ts"
+import { executeStmts } from "../lang/execute/index.ts"
+import type { Mod } from "../lang/mod/index.ts"
+import { parseStmts } from "../lang/syntax/index.ts"
 
 export class Script {
   constructor(

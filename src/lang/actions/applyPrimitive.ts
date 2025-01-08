@@ -1,6 +1,6 @@
-import { doAp } from "../actions/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
+import { doAp } from "../actions/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
 
 export function applyPrimitive(
   target: Values.Primitive,

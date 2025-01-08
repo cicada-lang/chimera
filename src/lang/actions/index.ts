@@ -1,3 +1,3 @@
-export * from "./doAp.js"
-export * from "./doDot.js"
-export * from "./doMatch.js"
+export * from "./doAp.ts"
+export * from "./doDot.ts"
+export * from "./doMatch.ts"

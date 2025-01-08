@@ -1,8 +1,8 @@
-import type { Goal } from "../goal/index.js"
-import { reify } from "../reify/index.js"
-import { createSolutionFromGoals } from "../solution/index.js"
-import { solve } from "../solve/index.js"
-import type { Value } from "../value/index.js"
+import type { Goal } from "../goal/index.ts"
+import { reify } from "../reify/index.ts"
+import { createSolutionFromGoals } from "../solution/index.ts"
+import { solve } from "../solve/index.ts"
+import type { Value } from "../value/index.ts"
 
 export function find(
   limit: number,

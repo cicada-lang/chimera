@@ -1,8 +1,8 @@
-import * as Goals from "../goal/index.js"
-import { createSolutionFromGoals, solutionUpdate } from "../solution/index.js"
-import { solve } from "../solve/index.js"
-import * as Values from "../value/index.js"
-import type { GlobalStore } from "./GlobalStore.js"
+import * as Goals from "../goal/index.ts"
+import { createSolutionFromGoals, solutionUpdate } from "../solution/index.ts"
+import { solve } from "../solve/index.ts"
+import * as Values from "../value/index.ts"
+import type { GlobalStore } from "./GlobalStore.ts"
 
 export function aboutGoal(globals: GlobalStore): void {
   globals.primitive("Equal", 2, ([x, y]) => {

@@ -1,28 +1,28 @@
-import * as Errors from "../errors/index.js"
-import { evaluate } from "../evaluate/index.js"
-import * as Exps from "../exp/index.js"
-import { formatExp, formatValue } from "../format/index.js"
-import { match } from "../match/index.js"
-import type { Mod } from "../mod/index.js"
-import { quote } from "../quote/index.js"
-import type { Stmt } from "../stmt/index.js"
-import { ReturnValue } from "../stmt/index.js"
+import * as Errors from "../errors/index.ts"
+import { evaluate } from "../evaluate/index.ts"
+import * as Exps from "../exp/index.ts"
+import { formatExp, formatValue } from "../format/index.ts"
+import { match } from "../match/index.ts"
+import type { Mod } from "../mod/index.ts"
+import { quote } from "../quote/index.ts"
+import type { Stmt } from "../stmt/index.ts"
+import { ReturnValue } from "../stmt/index.ts"
 import {
   substitutionDeepWalk,
   substitutionEmpty,
   substitutionEntries,
-} from "../substitution/index.js"
-import type { Value } from "../value/index.js"
-import * as Values from "../value/index.js"
+} from "../substitution/index.ts"
+import type { Value } from "../value/index.ts"
+import * as Values from "../value/index.ts"
 import {
   varCollectionFromExps,
   varCollectionFromGoalExp,
   varCollectionMerge,
   varCollectionValidate,
-} from "../var-collection/index.js"
-import { defineClause } from "./defineClause.js"
-import { executeStmts } from "./executeStmts.js"
-import { importMod } from "./importMod.js"
+} from "../var-collection/index.ts"
+import { defineClause } from "./defineClause.ts"
+import { executeStmts } from "./executeStmts.ts"
+import { importMod } from "./importMod.ts"
 
 export function execute(mod: Mod, stmt: Stmt): undefined | string {
   switch (stmt["@kind"]) {

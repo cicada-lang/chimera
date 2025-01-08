@@ -1,5 +1,5 @@
-import { colors } from "../../utils/colors.js"
-import * as Errors from "../errors/index.js"
+import { colors } from "../../utils/colors.ts"
+import * as Errors from "../errors/index.ts"
 
 export function createErrorReport(
   error: unknown,

@@ -1,11 +1,11 @@
-import { solutionUpdate, type Solution } from "../solution/index.js"
+import { solutionUpdate, type Solution } from "../solution/index.ts"
 import {
   substitutionEqual,
   substitutionPairs,
   substitutionPrefix,
   type Substitution,
-} from "../substitution/index.js"
-import { unifyMany } from "../unify/index.js"
+} from "../substitution/index.ts"
+import { unifyMany } from "../unify/index.ts"
 
 export function maintainInequalities(
   solution: Solution | undefined,

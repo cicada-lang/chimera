@@ -1,2 +1,2 @@
-export * from "./equal.js"
-export * from "./equalValues.js"
+export * from "./equal.ts"
+export * from "./equalValues.ts"

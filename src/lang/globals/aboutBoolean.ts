@@ -1,6 +1,6 @@
-import * as Values from "../value/index.js"
-import { assertValue } from "../value/index.js"
-import type { GlobalStore } from "./GlobalStore.js"
+import * as Values from "../value/index.ts"
+import { assertValue } from "../value/index.ts"
+import type { GlobalStore } from "./GlobalStore.ts"
 
 export function aboutBoolean(globals: GlobalStore): void {
   globals.code(`

@@ -4,9 +4,9 @@ import {
   substitutionLength,
   substitutionWalk,
   type Substitution,
-} from "../substitution/index.js"
-import * as Values from "../value/index.js"
-import { type Value } from "../value/index.js"
+} from "../substitution/index.ts"
+import * as Values from "../value/index.ts"
+import { type Value } from "../value/index.ts"
 
 /**
 

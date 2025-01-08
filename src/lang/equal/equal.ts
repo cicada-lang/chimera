@@ -1,4 +1,4 @@
-import type { Value } from "../value/index.js"
+import type { Value } from "../value/index.ts"
 
 export function equal(left: Value, right: Value): boolean {
   if (left["@kind"] === "PatternVar" && right["@kind"] === "PatternVar") {
